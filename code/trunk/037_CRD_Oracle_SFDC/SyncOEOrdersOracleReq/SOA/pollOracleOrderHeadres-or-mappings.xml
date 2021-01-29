@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Eclipse Persistence Services - 2.3.1.v20111018-r10243">
+   <name>pollOracleOrderHeadres-OR</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>pollOracleOrderHeadres.XxspwrOmHeaderSync</class>
+         <alias>XXSPWR.XXSPWR_OM_HEADER_SYNC</alias>
+         <primary-key>
+            <field table="XXSPWR_OM_HEADER_SYNC" name="HEADER_ID" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="pollOracleOrderHeadresSelect" xsi:type="read-all-query">
+                  <criteria operator="or" xsi:type="logic-expression">
+                     <left operator="notEqual" xsi:type="relation-expression">
+                        <left name="inboundProcessFlag" xsi:type="query-key-expression">
+                           <base xsi:type="base-expression"/>
+                        </left>
+                        <right xsi:type="constant-expression">
+                           <value>E</value>
+                        </right>
+                     </left>
+                     <right operator="equal" xsi:type="relation-expression">
+                        <left name="inboundProcessFlag" xsi:type="query-key-expression">
+                           <base xsi:type="base-expression"/>
+                        </left>
+                        <right xsi:type="constant-expression">
+                           <value></value>
+                        </right>
+                     </right>
+                  </criteria>
+                  <reference-class>pollOracleOrderHeadres.XxspwrOmHeaderSync</reference-class>
+                  <lock-mode>none</lock-mode>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SFDC_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>operatingUnit</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="OPERATING_UNIT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>headerId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="HEADER_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderNumber</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>oracleRequestId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORACLE_REQUEST_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcRequestId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SFDC_REQUEST_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcRequestStatus</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SFDC_REQUEST_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>emailId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="EMAIL_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>oracleUserId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORACLE_USER_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custAcctNumber</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CUST_ACCT_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creditLimit</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CREDIT_LIMIT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>transactionDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="TRANSACTION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dueDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="DUE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>amount</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="AMOUNT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>amountOpen</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="AMOUNT_OPEN" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentScheduleId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PAYMENT_SCHEDULE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>balance</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BALANCE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>locationNumber</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="LOCATION_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>reference</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="REFERENCE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>trasactionType</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="TRASACTION_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>qadCustomerNumber</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="QAD_CUSTOMER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerName</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CUSTOMER_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>region</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="REGION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>invoiceReference</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="INVOICE_REFERENCE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>siteStatus</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SITE_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orgId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poSubmitDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PO_SUBMIT_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipFromOrgId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SHIP_FROM_ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToSiteId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToSiteId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SHIP_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine1</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ADDRESS_LINE_1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine2</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ADDRESS_LINE_2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine3</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ADDRESS_LINE_3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>city</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>state</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="STATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>country</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="COUNTRY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>postalCode</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="POSTAL_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone1</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CONTACT_PHONE1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone2</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CONTACT_PHONE2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPersonName</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CONTACT_PERSON_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactEmail</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CONTACT_EMAIL" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactFax</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CONTACT_FAX" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToContactId</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SHIP_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingMethod</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SHIPPING_METHOD" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>specialInstructions</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SPECIAL_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingInstructions</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SHIPPING_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>packingInstructions</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PACKING_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestedDeliveryDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="REQUESTED_DELIVERY_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>adjustedAmount</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ADJUSTED_AMOUNT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>smartpackFlag</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SMARTPACK_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderStatus</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORDER_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderCreationDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORDER_CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderType</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORDER_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseValue</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="LEASE_VALUE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorNumber</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="VENDOR_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorSiteCode</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="VENDOR_SITE_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerName</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PARTNER_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseFlag</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="LEASE_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseNumber</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="LEASE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>financier</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="FINANCIER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerAccNumber</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PARTNER_ACC_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>processFlag</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PROCESS_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>processMessage</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PROCESS_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaFlag</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SOA_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaErrormsg</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SOA_ERRORMSG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderRecordType</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="ORDER_RECORD_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>systemSize</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SYSTEM_SIZE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billAddressLine1</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_ADDRESS_LINE_1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billAddressLine2</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_ADDRESS_LINE_2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billAddressLine3</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_ADDRESS_LINE_3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billCity</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_CITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billState</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_STATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billCountry</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_COUNTRY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billPostalCode</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_POSTAL_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerPromiseDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CUSTOMER_PROMISE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToCounty</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SHIP_TO_COUNTY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToCounty</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="BILL_TO_COUNTY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaCreationDate</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SOA_CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaLastUpdateDate</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="SOA_LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>holdStatus</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="HOLD_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creditCheckPaymentDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CREDIT_CHECK_PAYMENT_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>okToShipFlag</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="OK_TO_SHIP_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>cancelFlag</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CANCEL_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>minScheduleShipDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="MIN_SCHEDULE_SHIP_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>minScheduleArrivalDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="MIN_SCHEDULE_ARRIVAL_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerConfirmDueDate</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="PARTNER_CONFIRM_DUE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>currencyCode</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="CURRENCY_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>inboundProcessFlag</attribute-name>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="INBOUND_PROCESS_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>inboundProcessMessage</attribute-name>
+               <properties>
+                  <property name="enabled">
+                     <value>false</value>
+                  </property>
+               </properties>
+               <field table="XXSPWR_OM_HEADER_SYNC" name="INBOUND_PROCESS_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXSPWR.XXSPWR_OM_HEADER_SYNC"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.oracle.Oracle9Platform</platform-class>
+      <connection-url></connection-url>
+   </login>
+</object-persistence>

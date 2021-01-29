@@ -1,0 +1,37 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="SFDC_LOGIN_DETAILS.NO:db_column_scale">0</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_7">EXPTIMESTAMP</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_6">CREATETIMESTAMP</entry>
+   <entry key="SFDC_LOGIN_DETAILS.NO:db_column_type">NUMBER</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_5">STATUS</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_4">NO</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_3">USERNAME</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_2">USERID</entry>
+   <entry key="SFDC_LOGIN_DETAILS.SESSIONID:db_column_type">VARCHAR2</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_1">SESSIONID</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_column_0">SERVERURL</entry>
+   <entry key="SFDC_LOGIN_DETAILS.NO:db_column_not_null">false</entry>
+   <entry key="SFDC_LOGIN_DETAILS.SERVERURL:db_column_size">1000</entry>
+   <entry key="SFDC_LOGIN_DETAILS.USERID:db_column_type">VARCHAR2</entry>
+   <entry key="SFDC_LOGIN_DETAILS.SERVERURL:db_column_not_null">false</entry>
+   <entry key="SFDC_LOGIN_DETAILS.USERID:db_column_not_null">false</entry>
+   <entry key="SFDC_LOGIN_DETAILS.USERNAME:db_column_not_null">false</entry>
+   <entry key="SFDC_LOGIN_DETAILS.SESSIONID:db_column_not_null">false</entry>
+   <entry key="SFDC_LOGIN_DETAILS.USERNAME:db_column_type">VARCHAR2</entry>
+   <entry key="SFDC_LOGIN_DETAILS.STATUS:db_column_type">VARCHAR2</entry>
+   <entry key="SFDC_LOGIN_DETAILS.EXPTIMESTAMP:db_column_type">DATE</entry>
+   <entry key="SFDC_LOGIN_DETAILS.SESSIONID:db_column_size">1000</entry>
+   <entry key="SFDC_LOGIN_DETAILS.STATUS:db_column_not_null">false</entry>
+   <entry key="root_descriptor_alias">SFDC_LOGIN_DETAILS</entry>
+   <entry key="SFDC_LOGIN_DETAILS.USERID:db_column_size">100</entry>
+   <entry key="SFDC_LOGIN_DETAILS.USERNAME:db_column_size">100</entry>
+   <entry key="SFDC_LOGIN_DETAILS.CREATETIMESTAMP:db_column_type">DATE</entry>
+   <entry key="SFDC_LOGIN_DETAILS:db_table_type">TABLE</entry>
+   <entry key="SFDC_LOGIN_DETAILS.NO:db_column_precision">20</entry>
+   <entry key="SFDC_LOGIN_DETAILS.STATUS:db_column_size">50</entry>
+   <entry key="SFDC_LOGIN_DETAILS.CREATETIMESTAMP:db_column_not_null">false</entry>
+   <entry key="SFDC_LOGIN_DETAILS.SERVERURL:db_column_type">VARCHAR2</entry>
+   <entry key="SFDC_LOGIN_DETAILS.EXPTIMESTAMP:db_column_not_null">false</entry>
+</properties>

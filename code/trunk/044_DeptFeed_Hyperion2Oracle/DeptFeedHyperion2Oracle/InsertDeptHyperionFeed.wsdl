@@ -1,0 +1,22 @@
+<?binding.jca InsertDeptHyperionFeed_db.jca?>
+<wsdl:definitions name="InsertDeptHyperionFeed" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/DEVELOPMENT_CODE/DeptFeedHyperion2Oracle/InsertDeptHyperionFeed" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/DEVELOPMENT_CODE/DeptFeedHyperion2Oracle/InsertDeptHyperionFeed" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertDeptHyperionFeed">
+    <plt:partnerLinkType name="InsertDeptHyperionFeed_plt">
+        <plt:role name="InsertDeptHyperionFeed_role">
+            <plt:portType name="tns:InsertDeptHyperionFeed_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertDeptHyperionFeed"
+                    schemaLocation="Schemas/InsertDeptHyperionFeed_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrHypDeptBuMapTabCollection_msg">
+        <wsdl:part name="XxspwrHypDeptBuMapTabCollection" element="top:XxspwrHypDeptBuMapTabCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="InsertDeptHyperionFeed_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:XxspwrHypDeptBuMapTabCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

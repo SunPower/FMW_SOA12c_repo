@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/ListOfVendorsArenaAsls/V1" targetNamespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/ListOfVendorsArenaAsls/V1" elementFormDefault="qualified">
+   <xsd:element name="ListOfVendorsArenaAsls">
+      <xsd:annotation>
+         <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="ListOfVendorArenaAsls" type="ListOfVendorArenaAslsType" maxOccurs="unbounded"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:complexType name="ListOfVendorArenaAslsType">
+      <xsd:sequence>
+         <xsd:element name="ManufacturedBy" type="xsd:string"/>
+         <xsd:element name="ARENA_ASLS" type="ARENA_ASLS_Type" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ARENA_ASLS_Type">
+      <xsd:sequence>
+         <xsd:element name="Vendar_Name" type="xsd:string"/>
+         <xsd:element name="Vendar_Number" type="xsd:string"/>
+         <xsd:element name="Vendar_Item" type="xsd:string"/>
+         <xsd:element name="Vendar_Status" type="xsd:string"/>
+         <xsd:element name="Vendar_Comment" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

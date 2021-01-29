@@ -1,0 +1,524 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Aug 02 13:14:25 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="SOAPDFMETASyncReq_BPEL" targetNamespace="http://www.sunpowercorp.com/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/SOAPDFMETASyncReq_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/SOAPDFMETASyncReq_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/PollPDFFileFTP" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/GetFTPDataDetailsDB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/GetFTPDataDetailsDB" xmlns:ns5="http://www.sunpowercorp.com/PDFFTPCanonical/" xmlns:ns9="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1" xmlns:ns8="http://www.sunpowercorp.com/Noun/PDFFTPSalesForce/V1" xmlns:ns7="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" xmlns:ns6="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns10="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL" xmlns:ns11="http://xmlns.oracle.com/SOAUtilityServices/FTPFileMoveService/FTPFileMoveService" xmlns:ns12="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" xmlns:ns13="http://www.sunpowercorp.com/SunPowerDevelopment/FTPFileMoveService/v1/xsd" xmlns:ns14="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL" xmlns:ns15="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns16="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:ns17="http://CustFault/Fault/Business" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        PollPDFFileFTP.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="PollPDFFileFTP" partnerLinkType="ns1:Get_plt" myRole="Get_role"/>
+    <partnerLink name="GetFTPDataDetailsDB" partnerLinkType="ns3:GetFTPDataDetailsDB_plt" partnerRole="GetFTPDataDetailsDB_role"/>
+    <partnerLink name="PDFFTPOSBService" partnerLinkType="ns5:PDFFTPOSBService" partnerRole="PDFFTPCanonical"/>
+    <partnerLink name="RenameFTPFileService" partnerLinkType="ns11:FTPFileMoveService" partnerRole="FTPFileMoveServiceProvider"/>
+    <partnerLink name="FTPFileMoveService" partnerLinkType="ns11:FTPFileMoveService" partnerRole="FTPFileMoveServiceProvider"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns15:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+  </partnerLinks>
+  <variables>
+    <variable name="ReceivePollFTP_Get_IV" messageType="ns1:Get_msg"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="FTPDirectory" type="xsd:string"/>
+    <variable name="InvokeEbzDB_IV" messageType="ns3:GetFTPDataDetailsDBInput_msg"/>
+    <variable name="InvokeEbzDB_OV" messageType="ns3:GetFTPDataDetailsDBOutputCollection_msg"/>
+    <variable name="InvokePDFOSBSvc_IV" messageType="ns5:PDFFTPCanonicalRequest"/>
+    <variable name="InvokePDFOSBSvc_OV" messageType="ns5:PDFFTPCanonicalResponse"/>
+   
+    <variable name="InvokeErrFTPSvc_IV" messageType="ns11:FTPFileMoveServiceRequestMessage"/>
+    <variable name="InvokeErrFTPSvc_OV" messageType="ns11:FTPFileMoveServiceResponseMessage"/>
+    <variable name="FaultVar" messageType="bpelx:RuntimeFaultMessage"/>
+    <variable name="RenameFileName" type="xsd:string"/>
+    <variable name="InvokeRenameFileSvc_IV" messageType="ns11:FTPFileMoveServiceRequestMessage"/>
+    <variable name="InvokeRenameFileSvc_OV" messageType="ns11:FTPFileMoveServiceResponseMessage"/>
+  
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns15:requestMessage"/>
+                <variable name="CommErr" messageType="ns15:requestMessage"/>
+    <variable name="SetTitle" type="xsd:string"/>
+    <variable name="CustomFault" messageType="bpelx:RuntimeFaultMessage"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <!--<catch faultName="bpelx:bindingFault" faultVariable="FaultVar">
+      <sequence>
+        <assign name="AsgnFTPFileMoveService">
+          <copy>
+            <from variable="RenameFileName"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:SourceFileName"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:TargetFileName"/>
+          </copy>
+          <copy>
+            <from variable="FTPDirectory"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:SourcePhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from expression="'/home/ftpaccount/errorFiles'"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:TargetPhysicalDirectory"/>
+          </copy>
+        </assign>
+        <invoke name="InvFTPFileMoveService"
+                inputVariable="InvokeErrFTPSvc_IV"
+                outputVariable="InvokeErrFTPSvc_OV"
+                partnerLink="FTPFileMoveService"
+                portType="ns11:FTPFileMoveService"
+                operation="process" bpelx:invokeAsDetail="no"/>
+        <assign name="AsgnCommonErrorHandler">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:InstanceNumber"/>
+          </copy>
+         <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:InterfaceNumber"/>
+          </copy>
+          <copy>
+               <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:InterfaceName"/>
+          </copy>
+          <copy>
+             <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:ProcessName"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="code"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:Fault/ns12:FaultCode"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="summary"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:Fault/ns12:FaultDescription"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="detail"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:Fault/ns12:FaultMessage"/>
+          </copy>
+        <copy>
+           <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:bOpenServiceTicket"/>
+          </copy>
+        </assign>
+          <invoke name="InvCommonErrorHandler"
+                inputVariable="InvokeCommnErrSvc_IV"
+                partnerLink="CommonErrorHandler"
+                portType="ns10:CommonErrorHandler_BPEL" operation="process"
+                  bpelx:invokeAsDetail="no"/>
+        <assign name="AsgnCommonLogging">
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:status"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:uniqueIdentifier"/>
+          </copy>
+          <copy>
+           <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:processname"/>
+          </copy>
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:instancenumber"/>
+          </copy>
+          <copy>
+             <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:interfacename"/>
+          </copy>
+          <copy>
+             <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:interfacenumber"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonLogging"
+                inputVariable="InvokeLoggSvc_IV" partnerLink="CommonLogging"
+                portType="ns14:CommonLoggingService_BPEL" operation="process"
+                bpelx:invokeAsDetail="no"/>
+      </sequence>
+    </catch>
+    <catch faultName="bpelx:remoteFault" faultVariable="FaultVar">
+      <sequence name="Sequence1">
+       <assign name="AsgnFTPFileMoveService">
+          <copy>
+            <from variable="RenameFileName"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:SourceFileName"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:TargetFileName"/>
+          </copy>
+          <copy>
+            <from variable="FTPDirectory"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:SourcePhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from expression="'/home/ftpaccount/errorFiles'"/>
+            <to variable="InvokeErrFTPSvc_IV" part="payload"
+                query="/ns13:FileMoveReq/ns13:TargetPhysicalDirectory"/>
+          </copy>
+        </assign>
+        <invoke name="InvFTPFileMoveService"
+                inputVariable="InvokeErrFTPSvc_IV"
+                outputVariable="InvokeErrFTPSvc_OV"
+                partnerLink="FTPFileMoveService"
+                portType="ns11:FTPFileMoveService" bpelx:invokeAsDetail="no"
+                operation="process"/>
+        <assign name="AsgnCommonErrorHandler">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:InstanceNumber"/>
+          </copy>
+          <copy>
+           <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:InterfaceNumber"/>
+          </copy>
+          <copy>
+           <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:ProcessName"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="code"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:Fault/ns12:FaultCode"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="summary"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:Fault/ns12:FaultDescription"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="detail"/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:Fault/ns12:FaultMessage"/>
+          </copy>
+          <copy>
+             <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="InvokeCommnErrSvc_IV" part="payload"
+                query="/ns12:CommonErrorHandlerInput/ns12:bOpenServiceTicket"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonErrorHandler" bpelx:invokeAsDetail="no"
+                inputVariable="InvokeCommnErrSvc_IV"
+                partnerLink="CommonErrorHandler"
+                portType="ns10:CommonErrorHandler_BPEL" operation="process"/>
+                 <assign name="AsgnCommonLogging">
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:status"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:uniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:processname"/>
+          </copy>
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:instancenumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:interfacename"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:interfacenumber"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonLogging"
+                inputVariable="InvokeLoggSvc_IV" partnerLink="CommonLogging"
+                portType="ns14:CommonLoggingService_BPEL" operation="process"
+                bpelx:invokeAsDetail="no"/>
+      </sequence>
+    </catch> -->
+    <catchAll id="BpCAl0">
+       <sequence id="BpSeq0">
+        <switch name="Switch2" id="BpSwt0">
+          <case condition="contains(bpws:getVariableData('CustomFault','detail'),'PDFBusinessFault')">
+            <empty name="Continue" id="BpEmp0"/>
+          </case>
+          <otherwise>
+            <sequence id="BpSeq1">
+              <assign name="AsgnFTPFileMoveService" id="BpAss0">
+                <copy>
+                  <from variable="RenameFileName"/>
+                  <to variable="InvokeErrFTPSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:SourceFileName"/>
+                </copy>
+                <copy>
+                  <from variable="FileName"/>
+                  <to variable="InvokeErrFTPSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:TargetFileName"/>
+                </copy>
+                <copy>
+                  <from variable="FTPDirectory"/>
+                  <to variable="InvokeErrFTPSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:SourcePhysicalDirectory"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;ErrTargetPath&quot;)"/>
+                  <to variable="InvokeErrFTPSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:TargetPhysicalDirectory"/>
+                </copy>
+              </assign>
+              <invoke name="InvFTPFileMoveService" inputVariable="InvokeErrFTPSvc_IV" outputVariable="InvokeErrFTPSvc_OV" partnerLink="FTPFileMoveService" portType="ns11:FTPFileMoveService" bpelx:invokeAsDetail="no" operation="process" id="BpInv0"/>
+            </sequence>
+          </otherwise>
+        </switch>
+      <assign name="AsgnCommonErrorHandler" id="BpAss1">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Fault/ns16:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Fault/ns16:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Fault/ns16:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:SendEmail"/>
+          </copy>
+        </assign>
+        <assign name="TransformErrLogParms" id="BpAss2">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TransformErrLogParms.xsl', $CommErr.request)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"/>
+          </copy>
+        </assign>
+        <assign name="AssignFileName" id="BpAss3">
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:UniqueIdentNum/ns16:UniqueIdentifier"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns15:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv1"/>
+                   <!--<assign name="AsgnCommonLogging">
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:status"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:uniqueIdentifier"/>
+          </copy>
+          <copy>
+           <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:processname"/>
+          </copy>
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:instancenumber"/>
+          </copy>
+          <copy>
+             <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:interfacename"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvokeLoggSvc_IV" part="payload"
+                query="/ns14:Process/ns14:ProcessLog/ns14:interfacenumber"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonLogging"
+                inputVariable="InvokeLoggSvc_IV" partnerLink="CommonLogging"
+                portType="ns14:CommonLoggingService_BPEL" operation="process"
+                bpelx:invokeAsDetail="no"/> -->
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>  
+      
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main" id="BpSeq2">
+    <receive name="ReceivePollFTP" createInstance="yes" variable="ReceivePollFTP_Get_IV" partnerLink="PollPDFFileFTP" portType="ns1:Get_ptt" operation="Get" id="BpRcv0">
+      <bpelx:property name="jca.ftp.FileName" variable="FileName"/>
+      <bpelx:property name="jca.ftp.Directory" variable="FTPDirectory"/>
+    </receive>
+    <assign name="AssignSetTitle" id="BpAss4">
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(concat('FileNameReq:',bpws:getVariableData('FileName')))"/>
+        <to variable="SetTitle"/>
+      </copy>
+    </assign>
+    <assign name="AssignPDFFileName" id="BpAss5">
+      <copy>
+        <from variable="FileName"/>
+        <to variable="InvokeEbzDB_IV" part="GetFTPDataDetailsDBInput_msg" query="/ns4:GetFTPDataDetailsDBInput/ns4:PDF_FILE_NAME"/>
+      </copy>
+    </assign>
+    <invoke name="InvokeEBSDB" bpelx:invokeAsDetail="no" inputVariable="InvokeEbzDB_IV" outputVariable="InvokeEbzDB_OV" partnerLink="GetFTPDataDetailsDB" portType="ns3:GetFTPDataDetailsDB_ptt" operation="GetFTPDataDetailsDB" id="BpInv2"/>
+    <switch name="Switch1" id="BpSwt1">
+      <case condition="count(bpws:getVariableData('InvokeEbzDB_OV','GetFTPDataDetailsDBOutputCollection','/ns4:GetFTPDataDetailsDBOutputCollection/ns4:GetFTPDataDetailsDBOutput')) > 0">
+        <sequence id="BpSeq3">
+          <assign name="AssignRenameFileName" id="BpAss6">
+            <copy>
+              <from expression="concat(bpws:getVariableData('FileName'),'.s')"/>
+              <to variable="RenameFileName"/>
+            </copy>
+            <copy>
+              <from variable="FileName"/>
+              <to variable="InvokeRenameFileSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:SourceFileName"/>
+            </copy>
+            <copy>
+              <from variable="RenameFileName"/>
+              <to variable="InvokeRenameFileSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:TargetFileName"/>
+            </copy>
+            <copy>
+              <from variable="FTPDirectory"/>
+              <to variable="InvokeRenameFileSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:SourcePhysicalDirectory"/>
+            </copy>
+            <copy>
+              <from variable="FTPDirectory"/>
+              <to variable="InvokeRenameFileSvc_IV" part="payload" query="/ns13:FileMoveReq/ns13:TargetPhysicalDirectory"/>
+            </copy>
+          </assign>
+          <invoke name="InvokeRenameFileSvc" bpelx:invokeAsDetail="no" inputVariable="InvokeRenameFileSvc_IV" outputVariable="InvokeRenameFileSvc_OV" partnerLink="RenameFTPFileService" portType="ns11:FTPFileMoveService" operation="process" id="BpInv3"/>
+          <assign name="TransformEbizToOSB" id="BpAss7">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/XFormEbizToOSB.xsl', $InvokeEbzDB_OV.GetFTPDataDetailsDBOutputCollection)"/>
+              <to variable="InvokePDFOSBSvc_IV" part="parameters"/>
+            </copy>
+          </assign>
+          <assign name="AssignFileOSBParms" id="BpAss8">
+            <copy>
+              <from variable="ReceivePollFTP_Get_IV" part="opaque" query="/ns2:opaqueElement"/>
+              <to variable="InvokePDFOSBSvc_IV" part="parameters" query="/ns6:ProcessPDFFTPSalesForce/ns6:DataArea/ns8:PDFSalesForce/ns8:PDFSalesForceDetails/ns9:Body"/>
+            </copy>
+            <copy>
+              <from variable="RenameFileName"/>
+              <to variable="InvokePDFOSBSvc_IV" part="parameters" query="/ns6:ProcessPDFFTPSalesForce/ns6:DataArea/ns8:PDFSalesForce/ns8:PDFSalesForceDetails/ns9:PDF_FILE_NAME"/>
+            </copy>
+            <copy>
+              <from variable="FTPDirectory"/>
+              <to variable="InvokePDFOSBSvc_IV" part="parameters" query="/ns6:ProcessPDFFTPSalesForce/ns6:DataArea/ns8:PDFSalesForce/ns8:PDFSalesForceDetails/ns9:SourceDirectoryPath"/>
+            </copy>
+          </assign>
+          <invoke name="InvokePDFOSBSvc" bpelx:invokeAsDetail="no" inputVariable="InvokePDFOSBSvc_IV" outputVariable="InvokePDFOSBSvc_OV" partnerLink="PDFFTPOSBService" portType="ns5:PDFFTPCanonical" operation="PDFFTP" id="BpInv4"/>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence name="Sequence2" id="BpSeq4">
+         <assign name="AssignFault" id="BpAss9">
+            <copy>
+              <from expression="'PDF101RL'"/>
+              <to variable="CustomFault" part="code"/>
+            </copy>
+            <copy>
+              <from expression="&quot;No Records Found&quot;"/>
+              <to variable="CustomFault" part="summary"/>
+            </copy>
+            <copy>
+              <from expression="&quot;PDFBusinessFault&quot;"/>
+              <to variable="CustomFault" part="detail"/>
+            </copy>
+          </assign>
+          <throw name="ThrowNoRecords" faultName="ns17:BusinessFault" faultVariable="CustomFault" id="BpThw0"/>
+        </sequence>
+      </otherwise>
+    </switch>
+  </sequence>
+</process>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="pollEDI214Files" adapter="file" wsdlLocation="pollEDI214Files.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory location="eis/FileAdapter" UIincludeWildcard="*.csv"/>
+   <endpoint-activation portType="Read_ptt" operation="Read">
+      <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+         <property name="DeleteFile" value="false"/>
+         <property name="MinimumAge" value="0"/>
+         <property name="Recursive" value="true"/>
+         <property name="PollingFrequency" value="60"/>
+         <property name="LogicalDirectory" value="EDI214_Inbound"/>
+         <property name="IncludeFiles" value=".*\.csv"/>
+         <property name="UseHeaders" value="false"/>
+      </activation-spec>
+   </endpoint-activation>
+</adapter-config>

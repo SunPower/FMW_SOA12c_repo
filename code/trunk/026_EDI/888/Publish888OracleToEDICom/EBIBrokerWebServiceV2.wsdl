@@ -1,0 +1,1482 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="EBIBrokerWebServiceV2" targetNamespace="http://com.edicom.broker.adapter.services"
+                  xmlns:ns1="http://com.edicom.broker.adapter.services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+               targetNamespace="http://com.edicom.broker.adapter.services"
+               xmlns:tns="http://com.edicom.broker.adapter.services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ebiMessageServerWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ebiDocumentWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="applicationdst" type="xs:string"/>
+          <xs:element minOccurs="0" name="applicationsub" type="xs:string"/>
+          <xs:element minOccurs="0" name="countsub" type="xs:int"/>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element minOccurs="0" name="idsub" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messages" nillable="true"
+                      type="tns:ebiMessageServerWS"/>
+          <xs:element minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element minOccurs="0" name="size" type="xs:int"/>
+          <xs:element minOccurs="0" name="type" type="tns:ebiDocumentTypeWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ebiAttributeWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="key" type="xs:string"/>
+          <xs:element minOccurs="0" name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ebiApplicationWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="tns:ebiApplicationIdWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ebiApplicationIdWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="ebiDocumentTypeWS">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PUBLISHED"/>
+          <xs:enumeration value="SUBSCRIPTIONED"/>
+          <xs:enumeration value="CONFIRMED"/>
+          <xs:enumeration value="BLOCKED"/>
+          <xs:enumeration value="PUBLISHPARTLYCONFIRMED"/>
+          <xs:enumeration value="PUBLISHCONFIRMED"/>
+          <xs:enumeration value="PUBLISHNOTIFIED"/>
+          <xs:enumeration value="PENDINGCONFIRMATION"/>
+          <xs:enumeration value="INEBIMAPFORMAT"/>
+          <xs:enumeration value="REJECTED"/>
+          <xs:enumeration value="PUBLISHREJECTED"/>
+          <xs:enumeration value="PUBLISHREJECTEDNOTIFIED"/>
+          <xs:enumeration value="PUBLISHPARTLYREJECTED"/>
+          <xs:enumeration value="DELETED"/>
+          <xs:enumeration value="DELETEDONLYDOC"/>
+          <xs:enumeration value="COPIED"/>
+          <xs:enumeration value="NOCOPIED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="EBIBrokerServerException" type="tns:EBIBrokerServerException"/>
+      <xs:complexType name="EBIBrokerServerException">
+        <xs:sequence>
+          <xs:element name="message" nillable="true" type="xs:string"/>
+          <xs:element name="number" nillable="true" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="messageReference" type="tns:messageReference"/>
+      <xs:complexType name="messageReference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="messageId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="messageReferenceResponse" type="tns:messageReferenceResponse"/>
+      <xs:complexType name="messageReferenceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateTimeStamp" type="tns:updateTimeStamp"/>
+      <xs:complexType name="updateTimeStamp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateTimeStampResponse" type="tns:updateTimeStampResponse"/>
+      <xs:complexType name="updateTimeStampResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="beginTrans" type="tns:beginTrans"/>
+      <xs:complexType name="beginTrans">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element name="timeoutSec" type="xs:int"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="beginTransResponse" type="tns:beginTransResponse"/>
+      <xs:complexType name="beginTransResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="notifiedPublication" type="tns:notifiedPublication"/>
+      <xs:complexType name="notifiedPublication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="notifiedPublicationResponse" type="tns:notifiedPublicationResponse"/>
+      <xs:complexType name="notifiedPublicationResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getMessage" type="tns:getMessage"/>
+      <xs:complexType name="getMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="messageId" type="xs:string"/>
+          <xs:element name="messageType" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getMessageResponse" type="tns:getMessageResponse"/>
+      <xs:complexType name="getMessageResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiMessageServerWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="remoteSQL" type="tns:remoteSQL"/>
+      <xs:complexType name="remoteSQL">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="connectString" type="xs:string"/>
+          <xs:element minOccurs="0" name="user" type="xs:string"/>
+          <xs:element minOccurs="0" name="passwordE" type="xs:string"/>
+          <xs:element minOccurs="0" name="sql" type="xs:string"/>
+          <xs:element minOccurs="0" name="sqlE" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="parameters" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="remoteSQLResponse" type="tns:remoteSQLResponse"/>
+      <xs:complexType name="remoteSQLResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="release" type="tns:release"/>
+      <xs:complexType name="release">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="releaseResponse" type="tns:releaseResponse"/>
+      <xs:complexType name="releaseResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="processExecuted" type="tns:processExecuted"/>
+      <xs:complexType name="processExecuted">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="scriptId" type="xs:string"/>
+          <xs:element name="scriptStatus" type="xs:int"/>
+          <xs:element minOccurs="0" name="scriptDescription" type="xs:string"/>
+          <xs:element minOccurs="0" name="scriptLog" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="processExecutedResponse" type="tns:processExecutedResponse"/>
+      <xs:complexType name="processExecutedResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmSubscriptionWS" type="tns:confirmSubscriptionWS"/>
+      <xs:complexType name="confirmSubscriptionWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clientId" type="xs:string"/>
+          <xs:element minOccurs="0" name="user" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmSubscriptionWSResponse" type="tns:confirmSubscriptionWSResponse"/>
+      <xs:complexType name="confirmSubscriptionWSResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateAcquireApplication" type="tns:updateAcquireApplication"/>
+      <xs:complexType name="updateAcquireApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element name="timeOut" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateAcquireApplicationResponse" type="tns:updateAcquireApplicationResponse"/>
+      <xs:complexType name="updateAcquireApplicationResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getRepositoryItem" type="tns:getRepositoryItem"/>
+      <xs:complexType name="getRepositoryItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="type" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getRepositoryItemResponse" type="tns:getRepositoryItemResponse"/>
+      <xs:complexType name="getRepositoryItemResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:ebiMessageServerWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="executeTemplate" type="tns:executeTemplate"/>
+      <xs:complexType name="executeTemplate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="templateName" type="xs:string"/>
+          <xs:element minOccurs="0" name="parameters" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="executeTemplateResponse" type="tns:executeTemplateResponse"/>
+      <xs:complexType name="executeTemplateResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmSubscriptionEx" type="tns:confirmSubscriptionEx"/>
+      <xs:complexType name="confirmSubscriptionEx">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmSubscriptionExResponse" type="tns:confirmSubscriptionExResponse"/>
+      <xs:complexType name="confirmSubscriptionExResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmedPublications" type="tns:confirmedPublications"/>
+      <xs:complexType name="confirmedPublications">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmedPublicationsResponse" type="tns:confirmedPublicationsResponse"/>
+      <xs:complexType name="confirmedPublicationsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="publish" type="tns:publish"/>
+      <xs:complexType name="publish">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="message" type="tns:ebiMessageServerWS"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element minOccurs="0" name="destination" type="xs:string"/>
+          <xs:element minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element name="duplicates" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="publishResponse" type="tns:publishResponse"/>
+      <xs:complexType name="publishResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscription" type="tns:subscription"/>
+      <xs:complexType name="subscription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element name="maxSubscriptions" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+          <xs:element name="noChangeState" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="transaction" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element name="keepFileName" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscriptionResponse" type="tns:subscriptionResponse"/>
+      <xs:complexType name="subscriptionResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="fileFound" type="tns:fileFound"/>
+      <xs:complexType name="fileFound">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="file" type="xs:string"/>
+          <xs:element minOccurs="0" name="processId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="fileFoundResponse" type="tns:fileFoundResponse"/>
+      <xs:complexType name="fileFoundResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="rejectedPublications" type="tns:rejectedPublications"/>
+      <xs:complexType name="rejectedPublications">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="rejectedPublicationsResponse" type="tns:rejectedPublicationsResponse"/>
+      <xs:complexType name="rejectedPublicationsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transformAndPublishWS" type="tns:transformAndPublishWS"/>
+      <xs:complexType name="transformAndPublishWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clientId" type="xs:string"/>
+          <xs:element minOccurs="0" name="user" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="transformation" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="profile" type="tns:ebiAttributeWS"/>
+          <xs:element minOccurs="0" name="filter" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element minOccurs="0" name="destination" type="xs:string"/>
+          <xs:element minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messages" type="tns:ebiMessageServerWS"/>
+          <xs:element name="duplicates" type="xs:int"/>
+          <xs:element minOccurs="0" name="mask" type="xs:string"/>
+          <xs:element minOccurs="0" name="maskOut" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transformAndPublishWSResponse" type="tns:transformAndPublishWSResponse"/>
+      <xs:complexType name="transformAndPublishWSResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiMessageServerWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="registerSession" type="tns:registerSession"/>
+      <xs:complexType name="registerSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="client" type="xs:string"/>
+          <xs:element minOccurs="0" name="user" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="data" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="registerSessionResponse" type="tns:registerSessionResponse"/>
+      <xs:complexType name="registerSessionResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="releaseApplication" type="tns:releaseApplication"/>
+      <xs:complexType name="releaseApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="releaseApplicationResponse" type="tns:releaseApplicationResponse"/>
+      <xs:complexType name="releaseApplicationResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscriptionsPending" type="tns:subscriptionsPending"/>
+      <xs:complexType name="subscriptionsPending">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="messageID" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscriptionsPendingResponse" type="tns:subscriptionsPendingResponse"/>
+      <xs:complexType name="subscriptionsPendingResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="isAlive" type="tns:isAlive"/>
+      <xs:complexType name="isAlive">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="isAliveResponse" type="tns:isAliveResponse"/>
+      <xs:complexType name="isAliveResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="endSession" type="tns:endSession"/>
+      <xs:complexType name="endSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="endSessionResponse" type="tns:endSessionResponse"/>
+      <xs:complexType name="endSessionResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:element name="messageByReference" type="tns:messageByReference"/>
+      <xs:complexType name="messageByReference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element minOccurs="0" name="applicationSource" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="messageByReferenceResponse" type="tns:messageByReferenceResponse"/>
+      <xs:complexType name="messageByReferenceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getScript" type="tns:getScript"/>
+      <xs:complexType name="getScript">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element name="scriptId" type="xs:int"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getScriptResponse" type="tns:getScriptResponse"/>
+      <xs:complexType name="getScriptResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="setDocumentProperty" type="tns:setDocumentProperty"/>
+      <xs:complexType name="setDocumentProperty">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+          <xs:element minOccurs="0" name="property" type="xs:string"/>
+          <xs:element minOccurs="0" name="newValue" type="xs:string"/>
+          <xs:element minOccurs="0" name="transaction" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="setDocumentPropertyResponse" type="tns:setDocumentPropertyResponse"/>
+      <xs:complexType name="setDocumentPropertyResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="notifiedRejectedPublication" type="tns:notifiedRejectedPublication"/>
+      <xs:complexType name="notifiedRejectedPublication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="notifiedRejectedPublicationResponse" type="tns:notifiedRejectedPublicationResponse"/>
+      <xs:complexType name="notifiedRejectedPublicationResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="executeScript" type="tns:executeScript"/>
+      <xs:complexType name="executeScript">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="scriptName" type="xs:string"/>
+          <xs:element minOccurs="0" name="processId" type="xs:string"/>
+          <xs:element minOccurs="0" name="scriptLanguage" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="executeScriptResponse" type="tns:executeScriptResponse"/>
+      <xs:complexType name="executeScriptResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+          <xs:element minOccurs="0" name="processId" type="xs:string"/>
+          <xs:element minOccurs="0" name="scriptLanguage" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="acquireApplication" type="tns:acquireApplication"/>
+      <xs:complexType name="acquireApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element name="timeOut" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="acquireApplicationResponse" type="tns:acquireApplicationResponse"/>
+      <xs:complexType name="acquireApplicationResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscriptionsList" type="tns:subscriptionsList"/>
+      <xs:complexType name="subscriptionsList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element name="maxSubscriptions" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscriptionsListResponse" type="tns:subscriptionsListResponse"/>
+      <xs:complexType name="subscriptionsListResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="schemaFiles" type="tns:schemaFiles"/>
+      <xs:complexType name="schemaFiles">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="schemaFilesResponse" type="tns:schemaFilesResponse"/>
+      <xs:complexType name="schemaFilesResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmSubscription" type="tns:confirmSubscription"/>
+      <xs:complexType name="confirmSubscription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="messageID" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="confirmSubscriptionResponse" type="tns:confirmSubscriptionResponse"/>
+      <xs:complexType name="confirmSubscriptionResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transformAndPublish" type="tns:transformAndPublish"/>
+      <xs:complexType name="transformAndPublish">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="transformation" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="profile" type="tns:ebiAttributeWS"/>
+          <xs:element minOccurs="0" name="filter" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element minOccurs="0" name="destination" type="xs:string"/>
+          <xs:element minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messages" type="tns:ebiMessageServerWS"/>
+          <xs:element name="duplicates" type="xs:int"/>
+          <xs:element minOccurs="0" name="mask" type="xs:string"/>
+          <xs:element minOccurs="0" name="maskOut" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transformAndPublishResponse" type="tns:transformAndPublishResponse"/>
+      <xs:complexType name="transformAndPublishResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiMessageServerWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="publishWS" type="tns:publishWS"/>
+      <xs:complexType name="publishWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clientId" type="xs:string"/>
+          <xs:element minOccurs="0" name="user" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element minOccurs="0" name="destination" type="xs:string"/>
+          <xs:element minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messages" type="tns:ebiMessageServerWS"/>
+          <xs:element name="duplicates" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="publishWSResponse" type="tns:publishWSResponse"/>
+      <xs:complexType name="publishWSResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transformation" type="tns:transformation"/>
+      <xs:complexType name="transformation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="transformation" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messagesIn" type="tns:ebiMessageServerWS"/>
+          <xs:element minOccurs="0" name="filter" type="xs:string"/>
+          <xs:element name="generateLog" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="appTransSource" type="xs:string"/>
+          <xs:element name="mapFormat" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="profile" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="transformationResponse" type="tns:transformationResponse"/>
+      <xs:complexType name="transformationResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiMessageServerWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="rejectSubscription" type="tns:rejectSubscription"/>
+      <xs:complexType name="rejectSubscription">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+          <xs:element minOccurs="0" name="info" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="rejectSubscriptionResponse" type="tns:rejectSubscriptionResponse"/>
+      <xs:complexType name="rejectSubscriptionResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subsAndTransform" type="tns:subsAndTransform"/>
+      <xs:complexType name="subsAndTransform">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element minOccurs="0" name="transformation" type="xs:string"/>
+          <xs:element minOccurs="0" name="filter" type="xs:string"/>
+          <xs:element name="generateLog" type="xs:boolean"/>
+          <xs:element name="maxSubscriptions" type="xs:int"/>
+          <xs:element name="mapFormat" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="transaction" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element name="keepFileName" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="profile" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subsAndTransformResponse" type="tns:subsAndTransformResponse"/>
+      <xs:complexType name="subsAndTransformResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getConfigApplication" type="tns:getConfigApplication"/>
+      <xs:complexType name="getConfigApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="qualifier" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getConfigApplicationResponse" type="tns:getConfigApplicationResponse"/>
+      <xs:complexType name="getConfigApplicationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="commitTrans" type="tns:commitTrans"/>
+      <xs:complexType name="commitTrans">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="commitTransResponse" type="tns:commitTransResponse"/>
+      <xs:complexType name="commitTransResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getSchema" type="tns:getSchema"/>
+      <xs:complexType name="getSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getSchemaResponse" type="tns:getSchemaResponse"/>
+      <xs:complexType name="getSchemaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:ebiMessageServerWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="remoteAdpterSQLResult" type="tns:remoteAdpterSQLResult"/>
+      <xs:complexType name="remoteAdpterSQLResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="processId" type="xs:string"/>
+          <xs:element minOccurs="0" name="sqlResult" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="remoteAdpterSQLResultResponse" type="tns:remoteAdpterSQLResultResponse"/>
+      <xs:complexType name="remoteAdpterSQLResultResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="applicationList" type="tns:applicationList"/>
+      <xs:complexType name="applicationList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="applicationListResponse" type="tns:applicationListResponse"/>
+      <xs:complexType name="applicationListResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiApplicationWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="activeProcess" type="tns:activeProcess"/>
+      <xs:complexType name="activeProcess">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="processId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="activeProcessResponse" type="tns:activeProcessResponse"/>
+      <xs:complexType name="activeProcessResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="processShouldExecuted" type="tns:processShouldExecuted"/>
+      <xs:complexType name="processShouldExecuted">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="processShouldExecutedResponse" type="tns:processShouldExecutedResponse"/>
+      <xs:complexType name="processShouldExecutedResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getBrokerSources" type="tns:getBrokerSources"/>
+      <xs:complexType name="getBrokerSources">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:element name="getBrokerSourcesResponse" type="tns:getBrokerSourcesResponse"/>
+      <xs:complexType name="getBrokerSourcesResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="documentList" type="tns:documentList"/>
+      <xs:complexType name="documentList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+          <xs:element minOccurs="0" name="reference" type="xs:string"/>
+          <xs:element name="type" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="documentListResponse" type="tns:documentListResponse"/>
+      <xs:complexType name="documentListResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="documentDeleteOld" type="tns:documentDeleteOld"/>
+      <xs:complexType name="documentDeleteOld">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element name="minuteOld" type="xs:int"/>
+          <xs:element name="onlyFinnalState" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="documentDeleteOldResponse" type="tns:documentDeleteOldResponse"/>
+      <xs:complexType name="documentDeleteOldResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscriptionWS" type="tns:subscriptionWS"/>
+      <xs:complexType name="subscriptionWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clientId" type="xs:string"/>
+          <xs:element minOccurs="0" name="user" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="schema" type="xs:string"/>
+          <xs:element minOccurs="0" name="transformation" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reference" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="subscriptionWSResponse" type="tns:subscriptionWSResponse"/>
+      <xs:complexType name="subscriptionWSResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:ebiDocumentWS"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateTimeStampTimeOut" type="tns:updateTimeStampTimeOut"/>
+      <xs:complexType name="updateTimeStampTimeOut">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element name="timeOut" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateTimeStampTimeOutResponse" type="tns:updateTimeStampTimeOutResponse"/>
+      <xs:complexType name="updateTimeStampTimeOutResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="rollbackTrans" type="tns:rollbackTrans"/>
+      <xs:complexType name="rollbackTrans">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+          <xs:element name="KeepTransaction" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="rollbackTransResponse" type="tns:rollbackTransResponse"/>
+      <xs:complexType name="rollbackTransResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="acquire" type="tns:acquire"/>
+      <xs:complexType name="acquire">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element name="timeOut" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="acquireResponse" type="tns:acquireResponse"/>
+      <xs:complexType name="acquireResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="setDocumentState" type="tns:setDocumentState"/>
+      <xs:complexType name="setDocumentState">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+          <xs:element minOccurs="0" name="domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="application" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:string"/>
+          <xs:element name="state" type="xs:int"/>
+          <xs:element minOccurs="0" name="transaction" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="setDocumentStateResponse" type="tns:setDocumentStateResponse"/>
+      <xs:complexType name="setDocumentStateResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="transformAndPublishWSResponse">
+    <wsdl:part element="ns1:transformAndPublishWSResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="schemaFilesResponse">
+    <wsdl:part element="ns1:schemaFilesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processExecuted">
+    <wsdl:part element="ns1:processExecuted" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="publishWSResponse">
+    <wsdl:part element="ns1:publishWSResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscriptionsList">
+    <wsdl:part element="ns1:subscriptionsList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notifiedPublication">
+    <wsdl:part element="ns1:notifiedPublication" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="activeProcess">
+    <wsdl:part element="ns1:activeProcess" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acquire">
+    <wsdl:part element="ns1:acquire" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="documentList">
+    <wsdl:part element="ns1:documentList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="publishResponse">
+    <wsdl:part element="ns1:publishResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acquireApplicationResponse">
+    <wsdl:part element="ns1:acquireApplicationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTimeStamp">
+    <wsdl:part element="ns1:updateTimeStamp" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transformAndPublish">
+    <wsdl:part element="ns1:transformAndPublish" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endSession">
+    <wsdl:part element="ns1:endSession" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remoteSQLResponse">
+    <wsdl:part element="ns1:remoteSQLResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processExecutedResponse">
+    <wsdl:part element="ns1:processExecutedResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remoteSQL">
+    <wsdl:part element="ns1:remoteSQL" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTimeStampTimeOutResponse">
+    <wsdl:part element="ns1:updateTimeStampTimeOutResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDocumentState">
+    <wsdl:part element="ns1:setDocumentState" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="publish">
+    <wsdl:part element="ns1:publish" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applicationListResponse">
+    <wsdl:part element="ns1:applicationListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subsAndTransformResponse">
+    <wsdl:part element="ns1:subsAndTransformResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmSubscriptionResponse">
+    <wsdl:part element="ns1:confirmSubscriptionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscriptionWS">
+    <wsdl:part element="ns1:subscriptionWS" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeTemplate">
+    <wsdl:part element="ns1:executeTemplate" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMessageResponse">
+    <wsdl:part element="ns1:getMessageResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeScript">
+    <wsdl:part element="ns1:executeScript" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRepositoryItemResponse">
+    <wsdl:part element="ns1:getRepositoryItemResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isAliveResponse">
+    <wsdl:part element="ns1:isAliveResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processShouldExecuted">
+    <wsdl:part element="ns1:processShouldExecuted" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDocumentProperty">
+    <wsdl:part element="ns1:setDocumentProperty" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConfigApplicationResponse">
+    <wsdl:part element="ns1:getConfigApplicationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rejectedPublications">
+    <wsdl:part element="ns1:rejectedPublications" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rejectSubscription">
+    <wsdl:part element="ns1:rejectSubscription" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTimeStampResponse">
+    <wsdl:part element="ns1:updateTimeStampResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getScript">
+    <wsdl:part element="ns1:getScript" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmSubscriptionEx">
+    <wsdl:part element="ns1:confirmSubscriptionEx" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscriptionsPending">
+    <wsdl:part element="ns1:subscriptionsPending" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAcquireApplicationResponse">
+    <wsdl:part element="ns1:updateAcquireApplicationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rollbackTrans">
+    <wsdl:part element="ns1:rollbackTrans" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getScriptResponse">
+    <wsdl:part element="ns1:getScriptResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDocumentStateResponse">
+    <wsdl:part element="ns1:setDocumentStateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notifiedRejectedPublicationResponse">
+    <wsdl:part element="ns1:notifiedRejectedPublicationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscriptionResponse">
+    <wsdl:part element="ns1:subscriptionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmSubscriptionExResponse">
+    <wsdl:part element="ns1:confirmSubscriptionExResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transformationResponse">
+    <wsdl:part element="ns1:transformationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rejectedPublicationsResponse">
+    <wsdl:part element="ns1:rejectedPublicationsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="messageByReference">
+    <wsdl:part element="ns1:messageByReference" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endSessionResponse">
+    <wsdl:part element="ns1:endSessionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmSubscriptionWS">
+    <wsdl:part element="ns1:confirmSubscriptionWS" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commitTransResponse">
+    <wsdl:part element="ns1:commitTransResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeTemplateResponse">
+    <wsdl:part element="ns1:executeTemplateResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="documentDeleteOld">
+    <wsdl:part element="ns1:documentDeleteOld" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transformAndPublishWS">
+    <wsdl:part element="ns1:transformAndPublishWS" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="executeScriptResponse">
+    <wsdl:part element="ns1:executeScriptResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subsAndTransform">
+    <wsdl:part element="ns1:subsAndTransform" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transformation">
+    <wsdl:part element="ns1:transformation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmedPublicationsResponse">
+    <wsdl:part element="ns1:confirmedPublicationsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fileFound">
+    <wsdl:part element="ns1:fileFound" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="messageReference">
+    <wsdl:part element="ns1:messageReference" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notifiedRejectedPublication">
+    <wsdl:part element="ns1:notifiedRejectedPublication" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="messageReferenceResponse">
+    <wsdl:part element="ns1:messageReferenceResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acquireApplication">
+    <wsdl:part element="ns1:acquireApplication" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMessage">
+    <wsdl:part element="ns1:getMessage" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="beginTrans">
+    <wsdl:part element="ns1:beginTrans" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remoteAdpterSQLResultResponse">
+    <wsdl:part element="ns1:remoteAdpterSQLResultResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscriptionsPendingResponse">
+    <wsdl:part element="ns1:subscriptionsPendingResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="documentListResponse">
+    <wsdl:part element="ns1:documentListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRepositoryItem">
+    <wsdl:part element="ns1:getRepositoryItem" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSchema">
+    <wsdl:part element="ns1:getSchema" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBrokerSourcesResponse">
+    <wsdl:part element="ns1:getBrokerSourcesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="remoteAdpterSQLResult">
+    <wsdl:part element="ns1:remoteAdpterSQLResult" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateTimeStampTimeOut">
+    <wsdl:part element="ns1:updateTimeStampTimeOut" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acquireResponse">
+    <wsdl:part element="ns1:acquireResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmSubscriptionWSResponse">
+    <wsdl:part element="ns1:confirmSubscriptionWSResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="messageByReferenceResponse">
+    <wsdl:part element="ns1:messageByReferenceResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmSubscription">
+    <wsdl:part element="ns1:confirmSubscription" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="activeProcessResponse">
+    <wsdl:part element="ns1:activeProcessResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isAlive">
+    <wsdl:part element="ns1:isAlive" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscriptionsListResponse">
+    <wsdl:part element="ns1:subscriptionsListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="notifiedPublicationResponse">
+    <wsdl:part element="ns1:notifiedPublicationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="commitTrans">
+    <wsdl:part element="ns1:commitTrans" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscription">
+    <wsdl:part element="ns1:subscription" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="releaseApplication">
+    <wsdl:part element="ns1:releaseApplication" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processShouldExecutedResponse">
+    <wsdl:part element="ns1:processShouldExecutedResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="confirmedPublications">
+    <wsdl:part element="ns1:confirmedPublications" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerSessionResponse">
+    <wsdl:part element="ns1:registerSessionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rejectSubscriptionResponse">
+    <wsdl:part element="ns1:rejectSubscriptionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subscriptionWSResponse">
+    <wsdl:part element="ns1:subscriptionWSResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fileFoundResponse">
+    <wsdl:part element="ns1:fileFoundResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="release">
+    <wsdl:part element="ns1:release" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="documentDeleteOldResponse">
+    <wsdl:part element="ns1:documentDeleteOldResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EBIBrokerServerException">
+    <wsdl:part element="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConfigApplication">
+    <wsdl:part element="ns1:getConfigApplication" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerSession">
+    <wsdl:part element="ns1:registerSession" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="schemaFiles">
+    <wsdl:part element="ns1:schemaFiles" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAcquireApplication">
+    <wsdl:part element="ns1:updateAcquireApplication" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSchemaResponse">
+    <wsdl:part element="ns1:getSchemaResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="publishWS">
+    <wsdl:part element="ns1:publishWS" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rollbackTransResponse">
+    <wsdl:part element="ns1:rollbackTransResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBrokerSources">
+    <wsdl:part element="ns1:getBrokerSources" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="releaseApplicationResponse">
+    <wsdl:part element="ns1:releaseApplicationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="releaseResponse">
+    <wsdl:part element="ns1:releaseResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="applicationList">
+    <wsdl:part element="ns1:applicationList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transformAndPublishResponse">
+    <wsdl:part element="ns1:transformAndPublishResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDocumentPropertyResponse">
+    <wsdl:part element="ns1:setDocumentPropertyResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="beginTransResponse">
+    <wsdl:part element="ns1:beginTransResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EBIBrokerWebServiceV2">
+    <wsdl:operation name="messageReference">
+      <wsdl:input message="ns1:messageReference" name="messageReference"></wsdl:input>
+      <wsdl:output message="ns1:messageReferenceResponse" name="messageReferenceResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTimeStamp">
+      <wsdl:input message="ns1:updateTimeStamp" name="updateTimeStamp"></wsdl:input>
+      <wsdl:output message="ns1:updateTimeStampResponse" name="updateTimeStampResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="beginTrans">
+      <wsdl:input message="ns1:beginTrans" name="beginTrans"></wsdl:input>
+      <wsdl:output message="ns1:beginTransResponse" name="beginTransResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notifiedPublication">
+      <wsdl:input message="ns1:notifiedPublication" name="notifiedPublication"></wsdl:input>
+      <wsdl:output message="ns1:notifiedPublicationResponse" name="notifiedPublicationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <wsdl:input message="ns1:getMessage" name="getMessage"></wsdl:input>
+      <wsdl:output message="ns1:getMessageResponse" name="getMessageResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="remoteSQL">
+      <wsdl:input message="ns1:remoteSQL" name="remoteSQL"></wsdl:input>
+      <wsdl:output message="ns1:remoteSQLResponse" name="remoteSQLResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="release">
+      <wsdl:input message="ns1:release" name="release"></wsdl:input>
+      <wsdl:output message="ns1:releaseResponse" name="releaseResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processExecuted">
+      <wsdl:input message="ns1:processExecuted" name="processExecuted"></wsdl:input>
+      <wsdl:output message="ns1:processExecutedResponse" name="processExecutedResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmSubscriptionWS">
+      <wsdl:input message="ns1:confirmSubscriptionWS" name="confirmSubscriptionWS"></wsdl:input>
+      <wsdl:output message="ns1:confirmSubscriptionWSResponse" name="confirmSubscriptionWSResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAcquireApplication">
+      <wsdl:input message="ns1:updateAcquireApplication" name="updateAcquireApplication"></wsdl:input>
+      <wsdl:output message="ns1:updateAcquireApplicationResponse" name="updateAcquireApplicationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepositoryItem">
+      <wsdl:input message="ns1:getRepositoryItem" name="getRepositoryItem"></wsdl:input>
+      <wsdl:output message="ns1:getRepositoryItemResponse" name="getRepositoryItemResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="executeTemplate">
+      <wsdl:input message="ns1:executeTemplate" name="executeTemplate"></wsdl:input>
+      <wsdl:output message="ns1:executeTemplateResponse" name="executeTemplateResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmSubscriptionEx">
+      <wsdl:input message="ns1:confirmSubscriptionEx" name="confirmSubscriptionEx"></wsdl:input>
+      <wsdl:output message="ns1:confirmSubscriptionExResponse" name="confirmSubscriptionExResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmedPublications">
+      <wsdl:input message="ns1:confirmedPublications" name="confirmedPublications"></wsdl:input>
+      <wsdl:output message="ns1:confirmedPublicationsResponse" name="confirmedPublicationsResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="publish">
+      <wsdl:input message="ns1:publish" name="publish"></wsdl:input>
+      <wsdl:output message="ns1:publishResponse" name="publishResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscription">
+      <wsdl:input message="ns1:subscription" name="subscription"></wsdl:input>
+      <wsdl:output message="ns1:subscriptionResponse" name="subscriptionResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fileFound">
+      <wsdl:input message="ns1:fileFound" name="fileFound"></wsdl:input>
+      <wsdl:output message="ns1:fileFoundResponse" name="fileFoundResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rejectedPublications">
+      <wsdl:input message="ns1:rejectedPublications" name="rejectedPublications"></wsdl:input>
+      <wsdl:output message="ns1:rejectedPublicationsResponse" name="rejectedPublicationsResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="transformAndPublishWS">
+      <wsdl:input message="ns1:transformAndPublishWS" name="transformAndPublishWS"></wsdl:input>
+      <wsdl:output message="ns1:transformAndPublishWSResponse" name="transformAndPublishWSResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerSession">
+      <wsdl:input message="ns1:registerSession" name="registerSession"></wsdl:input>
+      <wsdl:output message="ns1:registerSessionResponse" name="registerSessionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="releaseApplication">
+      <wsdl:input message="ns1:releaseApplication" name="releaseApplication"></wsdl:input>
+      <wsdl:output message="ns1:releaseApplicationResponse" name="releaseApplicationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscriptionsPending">
+      <wsdl:input message="ns1:subscriptionsPending" name="subscriptionsPending"></wsdl:input>
+      <wsdl:output message="ns1:subscriptionsPendingResponse" name="subscriptionsPendingResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+      <wsdl:input message="ns1:isAlive" name="isAlive"></wsdl:input>
+      <wsdl:output message="ns1:isAliveResponse" name="isAliveResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endSession">
+      <wsdl:input message="ns1:endSession" name="endSession"></wsdl:input>
+      <wsdl:output message="ns1:endSessionResponse" name="endSessionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messageByReference">
+      <wsdl:input message="ns1:messageByReference" name="messageByReference"></wsdl:input>
+      <wsdl:output message="ns1:messageByReferenceResponse" name="messageByReferenceResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getScript">
+      <wsdl:input message="ns1:getScript" name="getScript"></wsdl:input>
+      <wsdl:output message="ns1:getScriptResponse" name="getScriptResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentProperty">
+      <wsdl:input message="ns1:setDocumentProperty" name="setDocumentProperty"></wsdl:input>
+      <wsdl:output message="ns1:setDocumentPropertyResponse" name="setDocumentPropertyResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="notifiedRejectedPublication">
+      <wsdl:input message="ns1:notifiedRejectedPublication" name="notifiedRejectedPublication"></wsdl:input>
+      <wsdl:output message="ns1:notifiedRejectedPublicationResponse" name="notifiedRejectedPublicationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="executeScript">
+      <wsdl:input message="ns1:executeScript" name="executeScript"></wsdl:input>
+      <wsdl:output message="ns1:executeScriptResponse" name="executeScriptResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="acquireApplication">
+      <wsdl:input message="ns1:acquireApplication" name="acquireApplication"></wsdl:input>
+      <wsdl:output message="ns1:acquireApplicationResponse" name="acquireApplicationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscriptionsList">
+      <wsdl:input message="ns1:subscriptionsList" name="subscriptionsList"></wsdl:input>
+      <wsdl:output message="ns1:subscriptionsListResponse" name="subscriptionsListResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="schemaFiles">
+      <wsdl:input message="ns1:schemaFiles" name="schemaFiles"></wsdl:input>
+      <wsdl:output message="ns1:schemaFilesResponse" name="schemaFilesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmSubscription">
+      <wsdl:input message="ns1:confirmSubscription" name="confirmSubscription"></wsdl:input>
+      <wsdl:output message="ns1:confirmSubscriptionResponse" name="confirmSubscriptionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transformAndPublish">
+      <wsdl:input message="ns1:transformAndPublish" name="transformAndPublish"></wsdl:input>
+      <wsdl:output message="ns1:transformAndPublishResponse" name="transformAndPublishResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="publishWS">
+      <wsdl:input message="ns1:publishWS" name="publishWS"></wsdl:input>
+      <wsdl:output message="ns1:publishWSResponse" name="publishWSResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transformation">
+      <wsdl:input message="ns1:transformation" name="transformation"></wsdl:input>
+      <wsdl:output message="ns1:transformationResponse" name="transformationResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rejectSubscription">
+      <wsdl:input message="ns1:rejectSubscription" name="rejectSubscription"></wsdl:input>
+      <wsdl:output message="ns1:rejectSubscriptionResponse" name="rejectSubscriptionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subsAndTransform">
+      <wsdl:input message="ns1:subsAndTransform" name="subsAndTransform"></wsdl:input>
+      <wsdl:output message="ns1:subsAndTransformResponse" name="subsAndTransformResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getConfigApplication">
+      <wsdl:input message="ns1:getConfigApplication" name="getConfigApplication"></wsdl:input>
+      <wsdl:output message="ns1:getConfigApplicationResponse" name="getConfigApplicationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="commitTrans">
+      <wsdl:input message="ns1:commitTrans" name="commitTrans"></wsdl:input>
+      <wsdl:output message="ns1:commitTransResponse" name="commitTransResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSchema">
+      <wsdl:input message="ns1:getSchema" name="getSchema"></wsdl:input>
+      <wsdl:output message="ns1:getSchemaResponse" name="getSchemaResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="remoteAdpterSQLResult">
+      <wsdl:input message="ns1:remoteAdpterSQLResult" name="remoteAdpterSQLResult"></wsdl:input>
+      <wsdl:output message="ns1:remoteAdpterSQLResultResponse" name="remoteAdpterSQLResultResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applicationList">
+      <wsdl:input message="ns1:applicationList" name="applicationList"></wsdl:input>
+      <wsdl:output message="ns1:applicationListResponse" name="applicationListResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="activeProcess">
+      <wsdl:input message="ns1:activeProcess" name="activeProcess"></wsdl:input>
+      <wsdl:output message="ns1:activeProcessResponse" name="activeProcessResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processShouldExecuted">
+      <wsdl:input message="ns1:processShouldExecuted" name="processShouldExecuted"></wsdl:input>
+      <wsdl:output message="ns1:processShouldExecutedResponse" name="processShouldExecutedResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBrokerSources">
+      <wsdl:input message="ns1:getBrokerSources" name="getBrokerSources"></wsdl:input>
+      <wsdl:output message="ns1:getBrokerSourcesResponse" name="getBrokerSourcesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="documentList">
+      <wsdl:input message="ns1:documentList" name="documentList"></wsdl:input>
+      <wsdl:output message="ns1:documentListResponse" name="documentListResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="documentDeleteOld">
+      <wsdl:input message="ns1:documentDeleteOld" name="documentDeleteOld"></wsdl:input>
+      <wsdl:output message="ns1:documentDeleteOldResponse" name="documentDeleteOldResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscriptionWS">
+      <wsdl:input message="ns1:subscriptionWS" name="subscriptionWS"></wsdl:input>
+      <wsdl:output message="ns1:subscriptionWSResponse" name="subscriptionWSResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTimeStampTimeOut">
+      <wsdl:input message="ns1:updateTimeStampTimeOut" name="updateTimeStampTimeOut"></wsdl:input>
+      <wsdl:output message="ns1:updateTimeStampTimeOutResponse" name="updateTimeStampTimeOutResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rollbackTrans">
+      <wsdl:input message="ns1:rollbackTrans" name="rollbackTrans"></wsdl:input>
+      <wsdl:output message="ns1:rollbackTransResponse" name="rollbackTransResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="acquire">
+      <wsdl:input message="ns1:acquire" name="acquire"></wsdl:input>
+      <wsdl:output message="ns1:acquireResponse" name="acquireResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentState">
+      <wsdl:input message="ns1:setDocumentState" name="setDocumentState"></wsdl:input>
+      <wsdl:output message="ns1:setDocumentStateResponse" name="setDocumentStateResponse"></wsdl:output>
+      <wsdl:fault message="ns1:EBIBrokerServerException" name="EBIBrokerServerException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

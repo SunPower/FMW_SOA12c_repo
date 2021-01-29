@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="PollSFJobFeedFile">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="125" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="118" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="PollSFJobFeedFile" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/SuccessFactor/JobFeedSF2Oracle/PollSFJobFeedFile#wsdl.interface(Read_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/file_adapter_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Read</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="InsertJobFeedSF2Oracle">
+        <dgm:body borderWidth="2" arcRad="20" X="570" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="560" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="InsertJobFeedSF2Oracle" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/JobFeedSF2Oracle/InsertJobFeedSF2Oracle#wsdl.interface(InsertJobFeedSF2Oracle_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CommonSFDCErrorLogService">
+        <dgm:body borderWidth="2" arcRad="20" X="570" Y="144" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="560" Y="137" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonSFDCErrorLogService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
+    <dgm:gReference name="BulkEmailService">
+        <dgm:body borderWidth="2" arcRad="20" X="570" Y="232" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="560" Y="225" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="BulkEmailService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL#wsdl.interface(BulkEmailServiceProviderBPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
+    <dgm:gComponent name="JobFeedSF2Oracle">
+        <dgm:body borderWidth="2" arcRad="20" X="299" Y="110" width="130" height="111">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="289" Y="103" width="150" height="127">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="PollSFJobFeedFile" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/SuccessFactor/JobFeedSF2Oracle/PollSFJobFeedFile#wsdl.interface(Read_ptt)"/>
+        <dgm:outputPort name="InsertJobFeedSF2Oracle" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/JobFeedSF2Oracle/InsertJobFeedSF2Oracle#wsdl.interface(InsertJobFeedSF2Oracle_ptt)"/>
+        <dgm:outputPort name="CommonSFDCErrorLogService" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:outputPort name="BulkEmailService" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL#wsdl.interface(BulkEmailServiceProviderBPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="PollSFJobFeedFile" target="JobFeedSF2Oracle/PollSFJobFeedFile" width="2">
+        <dgm:gSegment X1="168" Y1="135" X2="289" Y2="135"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="JobFeedSF2Oracle/InsertJobFeedSF2Oracle" target="InsertJobFeedSF2Oracle" width="2">
+        <dgm:gSegment X1="439" Y1="135" X2="463" Y2="135"/>
+        <dgm:gSegment X1="463" Y1="135" X2="463" Y2="36"/>
+        <dgm:gSegment X1="463" Y1="36" X2="560" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="JobFeedSF2Oracle/CommonSFDCErrorLogService" target="CommonSFDCErrorLogService" width="2">
+        <dgm:gSegment X1="439" Y1="160" X2="463" Y2="160"/>
+        <dgm:gSegment X1="463" Y1="160" X2="463" Y2="154"/>
+        <dgm:gSegment X1="463" Y1="154" X2="560" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="JobFeedSF2Oracle/BulkEmailService" target="BulkEmailService" width="2">
+        <dgm:gSegment X1="439" Y1="185" X2="463" Y2="185"/>
+        <dgm:gSegment X1="463" Y1="185" X2="463" Y2="242"/>
+        <dgm:gSegment X1="463" Y1="242" X2="560" Y2="242"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

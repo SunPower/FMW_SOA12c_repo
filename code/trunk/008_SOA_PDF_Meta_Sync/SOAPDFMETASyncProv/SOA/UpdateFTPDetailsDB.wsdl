@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="UpdateFTPDetailsDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/UpdateFTPDetailsDB" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateFTPDetailsDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/UpdateFTPDetailsDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <plt:partnerLinkType name="UpdateFTPDetailsDB_plt">
+      <plt:role name="UpdateFTPDetailsDB_role">
+         <plt:portType name="tns:UpdateFTPDetailsDB_ptt"/>
+      </plt:role>
+   </plt:partnerLinkType>
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateFTPDetailsDB" schemaLocation="Schemas/UpdateFTPDetailsDB.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="UpdateFTPDetailsDBInput_msg">
+      <wsdl:part name="UpdateFTPDetailsDBInput_msg" element="db:UpdateFTPDetailsDBInput"/>
+   </wsdl:message>
+   <wsdl:portType name="UpdateFTPDetailsDB_ptt">
+      <wsdl:operation name="UpdateFTPDetailsDB">
+         <wsdl:input message="tns:UpdateFTPDetailsDBInput_msg"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

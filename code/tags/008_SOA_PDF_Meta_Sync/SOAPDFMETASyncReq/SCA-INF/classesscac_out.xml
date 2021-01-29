@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[3]/copy</loc>
+      <line>584</line>
+      <col/>
+      <file>SOAPDFMETASyncReq_BPEL.bpel</file>
+      <name>SOAPDFMETASyncReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}base64Binary" is not compatible with &lt;to> value type "{http://www.sunpowercorp.com/Common/CommonDataTypes/V1}base64_1"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[3]/copy[2]</loc>
+      <line>590</line>
+      <col/>
+      <file>SOAPDFMETASyncReq_BPEL.bpel</file>
+      <name>SOAPDFMETASyncReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.sunpowercorp.com/Common/CommonDataTypes/V1}String200"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[3]/copy[3]</loc>
+      <line>595</line>
+      <col/>
+      <file>SOAPDFMETASyncReq_BPEL.bpel</file>
+      <name>SOAPDFMETASyncReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.sunpowercorp.com/Common/CommonDataTypes/V1}String200"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='RenameFTPFileService']</loc>
+      <line>138</line>
+      <col>17</col>
+      <file>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\SOAPDFMETASyncReq\composite.xml</file>
+      <name>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\SOAPDFMETASyncReq\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

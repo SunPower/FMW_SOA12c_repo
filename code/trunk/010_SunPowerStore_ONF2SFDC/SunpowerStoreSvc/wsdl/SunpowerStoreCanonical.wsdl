@@ -1,0 +1,24 @@
+<wsdl:definitions name="SunPowerStoreCanonical" targetNamespace="http://www.sunpowercorp.com/SunPowerStoreONFToSFDC/SunPowerStoreSvc/SunPowerStoreCanonical" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSunPowerStoreONFToSFDC/V1" xmlns:client="http://www.sunpowercorp.com/SunPowerStoreONFToSFDC/SunPowerStoreSvc/SunPowerStoreCanonical" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+       <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessSunPowerStoreONFToSFDC/V1" schemaLocation="../xsd/CDM/BOD/Nouns/SunPowerStoreONFToSFDC/V1/ProcessSunPowerStoreONFToSFDC.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SunPowerStoreCanonicalMsg">
+        <wsdl:part name="payload" element="ns1:ProcessSunPowerStoreONFToSFDC"/>
+    </wsdl:message>
+    <wsdl:portType name="SunPowerStoreCanonical_pt">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SunPowerStoreCanonicalMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SunPowerStoreCanonicalBinding" type="client:SunPowerStoreCanonical_pt">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>    
+</wsdl:definitions>

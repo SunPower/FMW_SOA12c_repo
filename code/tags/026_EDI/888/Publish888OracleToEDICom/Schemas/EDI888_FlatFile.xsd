@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://sunpowercorp.com/Publish888OracleToEDICom/writeFileToSOADir/xsd/v1"
+            targetNamespace="http://sunpowercorp.com/Publish888OracleToEDICom/writeFileToSOADir/xsd/v1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="US-ASCII"
+            nxsd:hasHeader="true" nxsd:headerLines="1"
+            nxsd:headerLinesTerminatedBy="${eol}">
+  <xsd:element name="Records">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="record" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="REGION" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="PURPOSE_CODE" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ITEM_NUMBER" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="PRODUCT_TYPE" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ITEM_DESCRIPTION" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ITEM_STATUS" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="UNIT_WEIGHT" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="WEIGHT_UOM_CODE" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="UNIT_LENGTH" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="UNIT_WIDTH" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="UNIT_HEIGHT" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="DIMENSION" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="PRIMARY_UOM_CODE" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="HTS_CODE" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ATTRIBUTE1" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ATTRIBUTE2" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ATTRIBUTE3" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ATTRIBUTE4" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="ATTRIBUTE5" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="BATCH_ID" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="${eol}"
+                           nxsd:quotedBy='"'/>
+                            <xsd:element name="UNIT_COST" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="${eol}"
+                           nxsd:quotedBy='"'/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+<!--NXSDWIZ:D:\ProjDocs\EDICom\EDI888_SampleFile.csv:-->
+<!--USE-HEADER:true:-->

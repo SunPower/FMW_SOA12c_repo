@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="executeFusionOrchestrationsProc" adapter="db"
+                wsdlLocation="WSDLs/executeFusionOrchestrationsProc.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOACustom" UIConnectionName="SOA_CUSTOM" adapterRef=""/>
+  <endpoint-interaction portType="executeFusionOrchestrationsProc_ptt" operation="executeFusionOrchestrationsProc">
+    <interaction-spec className="oracle.tip.adapter.db.DBStoredProcedureInteractionSpec">
+      <property name="ProcedureName" value="FUSION_ORCHESTRATIONS"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

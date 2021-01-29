@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:tns="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL" targetNamespace="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="process" type="tns:processT"/>
+   <complexType name="processT">
+      <sequence>
+         <element name="deleteQuery" type="string"/>
+         <element name="SFDCSessionID" type="string"/>
+         <element name="URL" type="string"/>
+      </sequence>
+   </complexType>
+   <element name="processResponse" type="tns:processResponseT"/>
+   <complexType name="processResponseT">
+      <sequence>
+         <element name="status" type="string"/>
+      </sequence>
+   </complexType>
+</schema>

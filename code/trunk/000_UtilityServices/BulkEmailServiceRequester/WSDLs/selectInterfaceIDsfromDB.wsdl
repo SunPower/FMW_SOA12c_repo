@@ -1,0 +1,26 @@
+<?binding.jca selectInterfaceIDsfromDB_db.jca?>
+<wsdl:definitions name="selectInterfaceIDsfromDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceRequester/selectInterfaceIDsfromDB" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/selectInterfaceIDsfromDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceRequester/selectInterfaceIDsfromDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="selectInterfaceIDsfromDB_plt">
+        <plt:role name="selectInterfaceIDsfromDB_role">
+            <plt:portType name="tns:selectInterfaceIDsfromDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectInterfaceIDsfromDB"
+                    schemaLocation="../Schemas/selectInterfaceIDsfromDB.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="selectInterfaceIDsfromDBInput_msg">
+        <wsdl:part name="selectInterfaceIDsfromDBInput_msg" element="db:selectInterfaceIDsfromDBInput"/>
+    </wsdl:message>
+    <wsdl:message name="selectInterfaceIDsfromDBOutputCollection_msg">
+        <wsdl:part name="selectInterfaceIDsfromDBOutputCollection" element="db:selectInterfaceIDsfromDBOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="selectInterfaceIDsfromDB_ptt">
+        <wsdl:operation name="selectInterfaceIDsfromDB">
+            <wsdl:input message="tns:selectInterfaceIDsfromDBInput_msg"/>
+            <wsdl:output message="tns:selectInterfaceIDsfromDBOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

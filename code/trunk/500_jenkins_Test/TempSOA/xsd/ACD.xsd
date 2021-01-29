@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/ACD" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/ACD" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="ACDInput" type="ACDInput"/>
+   <xs:complexType name="ACDInput">
+      <xs:sequence>
+         <xs:element name="ReqShipDate" type="xs:string" nillable="true"/>
+         <xs:element name="ReqShipDate" type="xs:string" nillable="true"/>
+         <xs:element name="ReqShipDate" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="ACDOutputCollection" type="ACDOutputCollection"/>
+   <xs:complexType name="ACDOutputCollection">
+      <xs:sequence>
+         <xs:element name="ACDOutput" type="ACDOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ACDOutput">
+      <xs:sequence>
+         <xs:element name="SNO" type="xs:decimal" nillable="true"/>
+         <xs:element name="HEADER_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="PURCHASE_ORDER" type="xs:string" nillable="true"/>
+         <xs:element name="ORDER_NUMBER" type="xs:decimal" nillable="true"/>
+         <xs:element name="CUST_ACCOUNT_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="CUST_ACC_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="CATEGORY_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="ORDER_CATEGORY" type="xs:string" nillable="true"/>
+         <xs:element name="DATE_ORDERED" type="xs:dateTime" nillable="true"/>
+         <xs:element name="REQUESTED_SHIP_DATE" type="xs:dateTime" nillable="true"/>
+         <xs:element name="FLOW_STATUS_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="TOTAL" type="xs:decimal" nillable="true"/>
+         <xs:element name="ORG_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="CUSTOMER_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="ORDER_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="CUSTOMER_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="CUSTOMER_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="INVOICE_TO_ORG_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="SHIP_TO_ORG_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="OPEN_FLAG" type="xs:string" nillable="true"/>
+         <xs:element name="TRANSACTION_PHASE_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="OPERATING_UNIT" type="xs:string" nillable="true"/>
+         <xs:element name="SOURCE_DOCUMENT_TYPE_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="ORIG_SYS_DOCUMENT_REF" type="xs:string" nillable="true"/>
+         <xs:element name="PARTNER_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="SALES_CHANNEL_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="SHIP_TO_ADDRESS" type="xs:string" nillable="true"/>
+         <xs:element name="ORDER_NAME" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,18 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/ACBApproverToSFDCCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/ACBApproverToSFDCCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="Id" type="cdt:String50"/>
+    <xsd:element name="Account__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Promotion__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Promotion_Description__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Promotion_Year__c" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="Appr_Num__c" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="Date_From__c" type="cdt:datetime_11" nillable="true"/>
+    <xsd:element name="Date_To__c" type="cdt:datetime_11" nillable="true"/>
+    <xsd:element name="Media__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Media_Description__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Estimated_cost__c" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="Balance" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="Expired_date__c" type="cdt:datetime_11" nillable="true"/>
+    <xsd:element name="ACBParanetID__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Open_Amount__c" type="cdt:Decimal11_4" nillable="true"/>
+</xsd:schema>

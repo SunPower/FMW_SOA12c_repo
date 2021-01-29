@@ -1,0 +1,164 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Jul 30 13:17:34 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="WarrantyORACLEToSFDCReq_BPEL" targetNamespace="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/WarrantyORACLEToSFDCReq_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/WarrantyORACLEToSFDCReq_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/FetchWarrantyFrmOracleDB" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns2="http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/FetchWarrantyFrmOracleDB" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns4="http://xmlns.oracle.com/ias/pcbpel/NotificationService" xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollOracleAppsDB" xmlns:ns6="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollWarantyOrcDB" xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollOrcDataDB" xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/dfdf" xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollOrcEbzDataDB" xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollWarantyOracleDB" xmlns:ns11="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollOracleDataDB" xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollOracleDataDB" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns13="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL" xmlns:ns14="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" xmlns:ns15="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollOracleDBData" xmlns:ns16="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollOracleDBData" xmlns:ns17="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/UpdateErrorDB" xmlns:ns18="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateErrorDB" xmlns:ns19="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/UpdateOrcDBData" xmlns:ns20="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL" xmlns:ns21="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCReq/PollOracleEBSDataDB" xmlns:ns22="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollOracleEBSDataDB" xmlns:ns23="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns24="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" id="BpPrc0">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                WarrantyOracleToSFDCCanonicalWrapper.wsdl
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="WarrantyOSBService" partnerLinkType="ns2:WarrantyOSBService" partnerRole="WarrantyOracleToSFDCCanonical"/>
+        <partnerLink name="UpdateOrcDBData" partnerLinkType="ns19:UpdateOrcDBData_plt" partnerRole="UpdateOrcDBData_role"/>
+        <partnerLink name="PollOracleEBSDataDB" partnerLinkType="ns21:PollOracleEBSDataDB_plt" myRole="PollOracleEBSDataDB_role"/>
+        <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns23:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    </partnerLinks>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="InvokeOSBSvc_InputVariable" messageType="ns2:WarrantyOracleToSFDCCanonicalRequest"/>
+        <variable name="InvokeOSBSvc_OutputVariable" messageType="ns2:WarrantyOracleToSFDCCanonicalResponse"/>
+        <variable name="SetTitle" type="xsd:string"/>
+        <variable name="PollDB_InputVariable" messageType="ns21:SalesOrdDetCollection_msg"/>
+        <variable name="FaultVar" messageType="bpelx:RuntimeFaultMessage"/>
+        <variable name="UpdateOrc_DB_IV" messageType="ns19:SalesOrdDetCollection_msg"/>
+        <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns23:requestMessage"/>
+        <variable name="CommErr" messageType="ns23:requestMessage"/>
+    </variables>
+    <faultHandlers id="BpFhs0">
+        <catchAll id="BpCAl0">
+            <sequence name="Sequence1" id="BpSeq0">
+                <assign name="AsgnCommonErrorHandler" id="BpAss0">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:Fault/ns24:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:Fault/ns24:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:Fault/ns24:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:CorrectiveAction"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                        <to variable="CommErr" part="request" query="/ns24:CommonSFDCErrorLog/ns24:CommonErrorHandlerInputDetails/ns24:SendEmail"/>
+                    </copy>
+                </assign>
+                <assign name="TransErrLogparms" id="BpAss1">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('Transformations/TransErrlogparms.xsl', $CommErr.request, 'PollDB_InputVariable.SalesOrdDetCollection', $PollDB_InputVariable.SalesOrdDetCollection)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns23:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+                <assign name="TransformUpdDBParms" id="BpAss2">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('Transformations/TransformUpdData.xsl', $PollDB_InputVariable.SalesOrdDetCollection)"/>
+                        <to variable="UpdateOrc_DB_IV" part="SalesOrdDetCollection"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokeUpdDB" inputVariable="UpdateOrc_DB_IV" bpelx:invokeAsDetail="no" partnerLink="UpdateOrcDBData" portType="ns19:UpdateOrcDBData_ptt" operation="update" id="BpInv1"/>
+                <terminate name="Terminate" id="BpTer0"/>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main" id="BpSeq1">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in WarrantyORACLEToSFDCReq_BPEL.wsdl) -->
+        <receive name="receiveInput" createInstance="yes" partnerLink="PollOracleEBSDataDB" portType="ns21:PollOracleEBSDataDB_ptt" operation="receive" variable="PollDB_InputVariable" id="BpRcv0"/>
+        <assign name="AssignSetTitle" id="BpAss3">
+            <copy>
+                <from expression="bpws:getVariableData('PollDB_InputVariable','SalesOrdDetCollection','/ns22:SalesOrdDetCollection/ns22:SalesOrdDet[1]/ns22:no')"/>
+                <to variable="SetTitle"/>
+            </copy>
+            <copy>
+                <from expression="oraext:setFlowInstanceTitle(concat('ReqNumber:',bpws:getVariableData('SetTitle')))"/>
+                <to variable="SetTitle"/>
+            </copy>
+        </assign>
+        <assign name="TransformWarantyOSB" id="BpAss4">
+            <bpelx:annotation>
+                <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+                <from expression="ora:doXSLTransformForDoc('Transformations/TransformEBSToOSB.xsl', $PollDB_InputVariable.SalesOrdDetCollection)"/>
+                <to variable="InvokeOSBSvc_InputVariable" part="parameters"/>
+            </copy>
+        </assign>
+        <invoke name="InvokeOSBSvc" bpelx:invokeAsDetail="no" inputVariable="InvokeOSBSvc_InputVariable" outputVariable="InvokeOSBSvc_OutputVariable" partnerLink="WarrantyOSBService" portType="ns2:WarrantyOracleToSFDCCanonical" operation="WarrantyOracleToSFDC" id="BpInv2"/>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+    </sequence>
+</process>

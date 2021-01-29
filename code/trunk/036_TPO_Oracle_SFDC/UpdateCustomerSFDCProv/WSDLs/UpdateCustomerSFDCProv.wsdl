@@ -1,0 +1,51 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="UpdateCustomerSFDCProv"
+     targetNamespace="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerSFDCProv/UpdateCustomerSFDCProv"
+     xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://xmlns.oracle.com/SFDCUtilityServiceCustomer/SFDCUtilityService"
+     xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerSFDCProv/UpdateCustomerSFDCProv"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="UpdateCustomerSFDCProv">
+        <plnk:role name="UpdateCustomerSFDCProvProvider">
+            <plnk:portType name="client:UpdateCustomerSFDCProv"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:ns3="http://xmlns.oracle.com/SFDCUtilityServiceCustomer/SFDCUtilityService"
+             xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerSFDCProv/UpdateCustomerSFDCProv"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1"
+                    schemaLocation="../Schemas/CDM/BOD/Nouns/SyncAccCustomers/V1/ProcessSFDCSyncCustomers.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:ns3="http://xmlns.oracle.com/SFDCUtilityServiceCustomer/SFDCUtilityService"
+             xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerSFDCProv/UpdateCustomerSFDCProv"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+       <!-- <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:ns3="http://xmlns.oracle.com/SFDCUtilityServiceCustomer/SFDCUtilityService"
+             xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerSFDCProv/UpdateCustomerSFDCProv"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import namespace="http://xmlns.oracle.com/SFDCUtilityServiceCustomer/SFDCUtilityService"
+                 schemaLocation="xsd/SFDCUtilityServiceCustomer.xsd"/>
+        </xsd:schema>-->
+    </wsdl:types>
+    <wsdl:message name="UpdateCustomerSFDCProvRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessSFDCSyncCustResp"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateCustomerSFDCProv">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:UpdateCustomerSFDCProvRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

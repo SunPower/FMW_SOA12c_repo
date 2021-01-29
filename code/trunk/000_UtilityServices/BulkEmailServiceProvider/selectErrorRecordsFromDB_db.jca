@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="selectErrorRecordsFromDB" adapter="db" wsdlLocation="WSDLs/selectErrorRecordsFromDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOACustom" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="selectErrorRecordsFromDB_ptt" operation="update">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="selectErrorRecordsFromDB.MiddlewareErrorLog"/>
+      <property name="DmlType" value="update"/>
+      <property name="MappingsMetaDataURL" value="selectErrorRecordsFromDB-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+  <endpoint-interaction portType="selectErrorRecordsFromDB_ptt" operation="selectErrorRecordsFromDBSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="selectErrorRecordsFromDB.MiddlewareErrorLog"/>
+      <property name="QueryName" value="selectErrorRecordsFromDBSelect"/>
+      <property name="MappingsMetaDataURL" value="selectErrorRecordsFromDB-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions targetNamespace="urn:SFDCLookUpUtilityMediator"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="urn:SFDCLookUpUtilityMediator"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:nsd="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService"
+                    schemaLocation="Schemas/SFDCLookUpUtilityService.xsd"/>
+        </schema>
+    </types>
+    <message name="SFDCLookUpUtilityMediatorResponseMessage">
+        <part name="payload" element="nsd:processResponse"/>
+    </message>
+    <message name="SFDCLookUpUtilityMediatorRequestMessage">
+        <part name="payload" element="nsd:process"/>
+    </message>
+    <portType name="SFDCLookUpUtilityMediatorCallback">
+        <operation name="processResponse">
+            <input message="tns:SFDCLookUpUtilityMediatorResponseMessage"/>
+        </operation>
+    </portType>
+    <portType name="SFDCLookUpUtilityMediator">
+        <operation name="process">
+            <input message="tns:SFDCLookUpUtilityMediatorRequestMessage"/>
+        </operation>
+    </portType>
+</definitions>

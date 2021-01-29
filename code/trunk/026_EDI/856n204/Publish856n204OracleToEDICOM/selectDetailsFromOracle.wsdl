@@ -1,0 +1,26 @@
+<?binding.jca selectDetailsFromOracle_db.jca?>
+<wsdl:definitions name="selectDetailsFromOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/selectDetailsFromOracle" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/selectDetailsFromOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/selectDetailsFromOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="selectDetailsFromOracle_plt">
+        <plt:role name="selectDetailsFromOracle_role">
+            <plt:portType name="tns:selectDetailsFromOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectDetailsFromOracle"
+                    schemaLocation="Schemas/selectDetailsFromOracle.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="selectDetailsFromOracleInput_msg">
+        <wsdl:part name="selectDetailsFromOracleInput_msg" element="db:selectDetailsFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:message name="selectDetailsFromOracleOutputCollection_msg">
+        <wsdl:part name="selectDetailsFromOracleOutputCollection" element="db:selectDetailsFromOracleOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="selectDetailsFromOracle_ptt">
+        <wsdl:operation name="selectDetailsFromOracle">
+            <wsdl:input message="tns:selectDetailsFromOracleInput_msg"/>
+            <wsdl:output message="tns:selectDetailsFromOracleOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

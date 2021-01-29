@@ -1,0 +1,73 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="OracleSFDCVertexDataLoadProv_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadProv/OracleSFDCVertexDataLoadProv_BPEL"
+     xmlns:ns2="urn:partner.soap.sforce.com"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+     xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:client="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadProv/OracleSFDCVertexDataLoadProv_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns5="http://www.sunpowercorp.com/GeographyIDs/xsd/v1"
+     xmlns:ns6="http://schemas.oracle.com/bpel/extension"
+    >
+    <plnk:partnerLinkType name="OracleSFDCVertexDataLoadProv_BPEL">
+        <plnk:role name="OracleSFDCVertexDataLoadProv_BPELProvider">
+            <plnk:portType name="client:OracleSFDCVertexDataLoadProv_BPEL"/>
+        </plnk:role>
+        <plnk:role name="OracleSFDCVertexDataLoadProv_BPELRequester">
+            <plnk:portType name="client:OracleSFDCVertexDataLoadProv_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/WSDLs/CallCommSFDCErrMediator.wsdl"/>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:partner.soap.sforce.com"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+             xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:client="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadProv/OracleSFDCVertexDataLoadProv_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns5="http://www.sunpowercorp.com/SunPowerDevelopment/OracleSFDC_VertexDataLoad/OracleSFDC_VertexDataLoad_Prov/CustomParams/xsd/v1">
+            <import namespace="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadProv/OracleSFDCVertexDataLoadProv_BPEL"
+                 schemaLocation="Schemas/OracleSFDCVertexDataLoadProv_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:partner.soap.sforce.com"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+             xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:client="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadProv/OracleSFDCVertexDataLoadProv_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns5="http://www.sunpowercorp.com/SunPowerDevelopment/OracleSFDC_VertexDataLoad/OracleSFDC_VertexDataLoad_Prov/CustomParams/xsd/v1">
+            <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1"
+                 schemaLocation="Schemas/CDM/BOD/Nouns/VertexDataFeed/V1/ProcessVertexDataFeedDetails.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:partner.soap.sforce.com"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+             xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:client="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadProv/OracleSFDCVertexDataLoadProv_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns5="http://www.sunpowercorp.com/SunPowerDevelopment/OracleSFDC_VertexDataLoad/OracleSFDC_VertexDataLoad_Prov/CustomParams/xsd/v1">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="Schemas/wsaddress.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/GeographyIDs/xsd/v1"
+                        schemaLocation="Schemas/GeographyIDs.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="OracleSFDCVertexDataLoadProv_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:message name="OracleSFDCVertexDataLoadProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessVertexDataFeedDetails"/>
+    </wsdl:message>
+    <wsdl:portType name="OracleSFDCVertexDataLoadProv_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:OracleSFDCVertexDataLoadProv_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="OracleSFDCVertexDataLoadProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:OracleSFDCVertexDataLoadProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

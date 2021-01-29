@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Sep 14 19:38:06 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="AdvocateInterface_BPEL" targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/AdvocateInterface/AdvocateInterface_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/AdvocateInterface/AdvocateInterface_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SOAUtilityServices/AdvocateInterface/pollAdvocateFiles" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/ftp/SOAUtilityServices/AdvocateInterface/putFTPToAdvocate" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns4="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL" xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns6="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" xmlns:ns7="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns8="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/" id="BpPrc0">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        pollAdvocateFiles.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="pollAdvocateFiles" partnerLinkType="ns1:Read_plt" myRole="Read_role"/>
+    <partnerLink name="putFTPToAdvocate" partnerLinkType="ns2:Put_plt" partnerRole="Put_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns7:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+  </partnerLinks>
+  <variables>
+    <variable name="polllAdvocateFiles_Read_IV" messageType="ns1:Read_msg"/>
+    <variable name="InvPutFTPToAdvocate_Put_IV" messageType="ns2:Put_msg"/>
+    <variable name="fileName" type="xsd:string"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns7:requestMessage"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="SequenceCatchAll" id="BpSeq0">
+        <assign name="AsgCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+			<to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:UniqueIdentNum/ns8:UniqueIdentifier"/>       
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="&quot;AdvocateInterface&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;AdvocateInterface&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns7:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main" id="BpSeq1">
+    <receive name="polllAdvocateFiles" createInstance="yes" variable="polllAdvocateFiles_Read_IV" partnerLink="pollAdvocateFiles" portType="ns1:Read_ptt" operation="Read" id="BpRcv0">
+      <bpelx:property name="jca.file.FileName" variable="fileName"/>
+    </receive>
+    <assign name="SetTitle" id="BpAss1">
+      <copy>
+        <from expression="ora:setCompositeInstanceTitle($fileName)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+<bpelx:exec import="java.util.Date" id="BxExe0"/>
+    <bpelx:exec import="java.text.DateFormat" id="BxExe1"/>
+    <bpelx:exec import="java.text.SimpleDateFormat" id="BxExe2"/>
+   
+    <!-- need to be remove the below assign activity before migrating to  PROD deployment -->
+    <assign name="AsgnPutFTPToAdvocate" id="BpAss2">
+      <copy>
+        <from variable="polllAdvocateFiles_Read_IV" part="attach" query="/ns9:attachmentElement/@href"/>
+        <to variable="InvPutFTPToAdvocate_Put_IV" part="body" query="/ns9:attachmentElement/@href"/>
+      </copy>
+    </assign>
+    <invoke name="InvPutFTPToAdvocate" inputVariable="InvPutFTPToAdvocate_Put_IV" partnerLink="putFTPToAdvocate" portType="ns2:Put_ptt" operation="Put" bpelx:invokeAsDetail="no" id="BpInv1">
+      <bpelx:inputProperty name="jca.ftp.FileName" variable="fileName"/>
+
+    </invoke>
+  </sequence>
+</process>

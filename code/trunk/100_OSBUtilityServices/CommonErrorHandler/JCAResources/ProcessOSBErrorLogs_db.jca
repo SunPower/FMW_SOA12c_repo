@@ -1,0 +1,14 @@
+<adapter-config name="ProcessOSBErrorLogs" adapter="Database Adapter" wsdlLocation="ProcessOSBErrorLogs.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOACustom" UIConnectionName="SunPower_DEV" adapterRef=""/>
+  <endpoint-interaction portType="ProcessOSBErrorLogs_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="ProcessOSBErrorLogs.OsbErrorLog"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="ProcessOSBErrorLogs-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

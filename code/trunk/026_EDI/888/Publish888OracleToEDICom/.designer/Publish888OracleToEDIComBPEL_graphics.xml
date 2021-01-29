@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<graphics>
+   <diagram optimizeLayout="false" fixedWidthSwimlanes="true" roundedPartnerlinks="true" centerZoom="true" validateOnLoad="true" confirmBeforeDelete="true" selectedPartnerLinkColor="0,0,153" swimlaneBackground="240,240,240" swimlaneDividerBackground="218,218,218" graphBackground="255,255,255" selectedBorderBackground="49,105,198" connectedPartnerLinkColor="204,204,255" connectablePartnerLinkColor="0,0,255" unconnectedPartnerLinkColor="192,192,192"/>
+   <annotationfile/>
+   <iconize/>
+   <partnerlink_locations>
+      <partnerlink name="GetDetailsFromOBDataTab" x="0" y="380" side="left"/>
+      <partnerlink name="writeFileToSOADir" x="0" y="668" side="left"/>
+      <partnerlink name="EBIBrokerWebServiceV2ImplService" x="0" y="1036" side="left"/>
+      <partnerlink name="PollNewBatchesFromPartnerTab" x="0" y="90" side="left"/>
+      <partnerlink name="CommonSFDCErrorLogService" x="0" y="450" side="left"/>
+      <partnerlink name="SyncReadEDI888FileFromSOADir" x="0" y="860" side="left"/>
+      <partnerlink name="FileUtilityService" x="0" y="1093" side="left"/>
+      <partnerlink name="UpdateStatusToPartnerTab" x="1307" y="705" side="right"/>
+      <partnerlink name="NotificationService1" x="1307" y="18" side="right"/>
+   </partnerlink_locations>
+   <graph_layout viewport="0,713,964,329" show_swimlanes="true">
+      <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catch" type="catch"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catch/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catch/sequence/switch" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catch/sequence/switch/case/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll" type="catchall"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll/sequence/switch" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll/sequence/switch/case/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/switch" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/switch/case[1]/sequence" type="sequence"/>
+      <layout_item collapsed="true" xpath="/process/sequence/switch/case[1]/sequence/scope" type="email" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/switch/case[1]/sequence/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/switch/case[2]/sequence" type="sequence"/>
+   </graph_layout>
+   <bookmarks/>
+</graphics>

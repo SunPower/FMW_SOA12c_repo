@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ns0:Process xmlns:ns0="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL">
+   <ns0:ProcessLog>
+      <ns0:interfacenumber>InterfaceNumber14</ns0:interfacenumber>
+      <ns0:interfacename>InterfaceName15</ns0:interfacename>
+      <ns0:instancenumber>InstanceNumber13</ns0:instancenumber>
+      <ns0:processname>ProcessName16</ns0:processname>
+      <ns0:bopenserviceticket>bOpenServiceTicket23</ns0:bopenserviceticket>
+      <ns0:status>string1</ns0:status>
+      <ns0:createddatetime>2012-08-24T19:21:54.535+05:30</ns0:createddatetime>
+      <ns0:uniqueIdentifier>-0</ns0:uniqueIdentifier>
+   </ns0:ProcessLog>
+   <ns0:ProcessLog>
+      <ns0:interfacenumber>InterfaceNumber14</ns0:interfacenumber>
+      <ns0:interfacename>InterfaceName15</ns0:interfacename>
+      <ns0:instancenumber>InstanceNumber13</ns0:instancenumber>
+      <ns0:processname>ProcessName16</ns0:processname>
+      <ns0:bopenserviceticket>bOpenServiceTicket23</ns0:bopenserviceticket>
+      <ns0:status>string5</ns0:status>
+      <ns0:createddatetime>2012-08-24T19:21:54.536+05:30</ns0:createddatetime>
+      <ns0:uniqueIdentifier>-0</ns0:uniqueIdentifier>
+   </ns0:ProcessLog>
+   <ns0:ProcessLog>
+      <ns0:interfacenumber>InterfaceNumber14</ns0:interfacenumber>
+      <ns0:interfacename>InterfaceName15</ns0:interfacename>
+      <ns0:instancenumber>InstanceNumber13</ns0:instancenumber>
+      <ns0:processname>ProcessName16</ns0:processname>
+      <ns0:bopenserviceticket>bOpenServiceTicket23</ns0:bopenserviceticket>
+      <ns0:status>string9</ns0:status>
+      <ns0:createddatetime>2012-08-24T19:21:54.536+05:30</ns0:createddatetime>
+      <ns0:uniqueIdentifier>-0</ns0:uniqueIdentifier>
+   </ns0:ProcessLog>
+</ns0:Process>

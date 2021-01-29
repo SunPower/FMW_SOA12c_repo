@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<InitParams xmlns="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1">
+   <startIndex>1</startIndex>
+   <endIndex>20</endIndex>
+</InitParams>

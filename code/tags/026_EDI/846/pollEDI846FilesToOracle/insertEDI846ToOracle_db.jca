@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="insertEDI846ToOracle" adapter="db" wsdlLocation="insertEDI846ToOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="insertEDI846ToOracle_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="insertEDI846ToOracle.Xxspwr3PlInvAdviceHdr"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="insertEDI846ToOracle-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

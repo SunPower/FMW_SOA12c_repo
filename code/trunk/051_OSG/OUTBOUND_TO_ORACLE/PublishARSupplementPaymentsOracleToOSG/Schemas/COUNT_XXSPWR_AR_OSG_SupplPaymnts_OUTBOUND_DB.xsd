@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DBInput" type="COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DBInput"/>
+   <xs:complexType name="COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DBInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DBOutput" type="COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DBOutput"/>
+   <xs:complexType name="COUNT_XXSPWR_AR_OSG_SupplPaymnts_OUTBOUND_DBOutput">
+      <xs:sequence>
+         <xs:element name="RecordCount" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

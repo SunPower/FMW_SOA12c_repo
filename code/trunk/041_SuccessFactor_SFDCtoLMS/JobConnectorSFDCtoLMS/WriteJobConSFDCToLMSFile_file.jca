@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="WriteJobConSFDCToLMSFile" adapter="file" wsdlLocation="WSDLs/WriteJobConSFDCToLMSFile.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FileAdapter"/>
+  <endpoint-interaction portType="Write_ptt" operation="Write">
+    <interaction-spec className="oracle.tip.adapter.file.outbound.FileInteractionSpec">
+      <property name="LogicalDirectory" value="USERDATA_SOA_INBOUND"/>
+      <property name="Append" value="true"/>
+      <property name="FileNamingConvention" value="DYNAMIC_FILE_NAME"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

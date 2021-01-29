@@ -1,0 +1,113 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sun Jan 17 07:05:39 IST 2021
+  Author:  sn38854
+  Type: BPEL 2.0 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="DecsFeedSF2Sql"
+         targetNamespace="http://xmlns.oracle.com/SOA_DEV/DecsFeedSF2Sql/DecsFeedSF2Sql"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/SOA_DEV/DecsFeedSF2Sql/DecsFeedSF2Sql"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SOA_DEV/DecsFeedSF2Sql/PollSFDecsFeedFile"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/SOA_DEV/DecsFeedSF2Sql/InsertDecsFeedSF2SqlDB"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns3="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+            location="../Schemas/inputParams.xsd" importType="http://www.w3.org/2001/XMLSchema"/>
+    <import location="../WSDLs/DecsFeedSF2Sql.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"
+            ui:processWSDL="true"/>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="PollSFDecsFeedFile" partnerLinkType="ns1:Read_plt" myRole="Read_role"/>
+        <partnerLink name="InsertDecsFeedSF2SqlDB" partnerLinkType="ns2:InsertDecsFeedSF2SqlDB_plt"
+                     partnerRole="InsertDecsFeedSF2SqlDB_role"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="FileName" type="xsd:string"/>
+        <variable name="InsertDecsFeedFiletoDB_IV" messageType="ns2:EmployeesCollection_msg"/>
+        <variable name="initParams" element="ns3:InitParams"/>
+        <variable name="Title" type="xsd:string"/>
+        <variable name="PoolDecsFeed_IV" messageType="ns1:Read_msg"/>
+    </variables>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in DecsFeedSF2Sql.wsdl) -->
+        <receive name="receiveInput" partnerLink="PollSFDecsFeedFile" portType="ns1:Read_ptt" operation="Read"
+                 variable="PoolDecsFeed_IV" createInstance="yes">
+            <bpelx:fromProperties>
+                <bpelx:fromProperty name="jca.file.FileName" variable="FileName"/>
+            </bpelx:fromProperties>
+        </receive>
+        <assign name="setTitle">
+            <copy>
+                <from>$FileName</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$initParams/ns3:FileName</to>
+            </copy>
+            <copy>
+                <from>oraext:setFlowInstanceTitle(bpws:getVariableData('FileName'))</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Title</to>
+            </copy>
+        </assign>
+        <assign name="TransEMPFeedFiletoDB">
+            <bpelx:annotation>
+                <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+                <from>ora:doXSLTransformForDoc("../Transformations/TransEMPFeedFiletoDB.xsl", $PoolDecsFeed_IV.body)</from>
+                <to variable="InsertDecsFeedFiletoDB_IV" part="EmployeesCollection"/>
+            </copy>
+        </assign>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="InvInsertDecsFeedFiletoDB" partnerLink="InsertDecsFeedSF2SqlDB"
+                portType="ns2:InsertDecsFeedSF2SqlDB_ptt" operation="merge" inputVariable="InsertDecsFeedFiletoDB_IV"
+                bpelx:invokeAsDetail="no"/>
+    </sequence>
+</process>

@@ -1,0 +1,27 @@
+<wsdl:definitions name="SyncCreditHoldPS" targetNamespace="http://www.example.org/SyncCreditHoldPS/" xmlns:tns="http://www.example.org/SyncCreditHoldPS/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    
+ 
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1" schemaLocation="../xsd/CDM/BOD/Nouns/Dealer_PartnerCreditINFO/V1/ProcessDealer_PartnerCreditINFO.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SyncCreditHoldSFDCEBSRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessDealer_PartnerCreditINFO"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncCreditHoldSFDCEBS">
+        <wsdl:operation name="process">
+            <wsdl:input message="tns:SyncCreditHoldSFDCEBSRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SyncCreditHoldSFDCEBSBinding" type="tns:SyncCreditHoldSFDCEBS">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+   
+</wsdl:definitions>

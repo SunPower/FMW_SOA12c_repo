@@ -1,0 +1,11 @@
+<adapter-config name="FetchOrcEbizDataDB" adapter="db" wsdlLocation="WSDLs/FetchOrcEbizDataDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="FetchOrcEbizDataDB_ptt" operation="FetchOrcEbizDataDB">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select * from APPS.XXSPWR_ONL_ORDER_ITEM_DETAILS where LAST_UPDATE_DATE >= sysdate - #noOfdays"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

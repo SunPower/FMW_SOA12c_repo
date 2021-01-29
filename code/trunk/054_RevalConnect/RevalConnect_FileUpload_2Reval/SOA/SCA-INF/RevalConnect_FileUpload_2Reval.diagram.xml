@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="revalconnect_fileupload_2reval_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="152" width="137" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="145" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="revalconnect_fileupload_2reval_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval#wsdl.interface(RevalConnect_FileUpload_2Reval)" callbackInterface="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval#wsdl.interface(RevalConnect_FileUpload_2RevalCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+            <dgm:item>processResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="RevalFileRead">
+        <dgm:body borderWidth="2" arcRad="20" X="714" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="704" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="RevalFileRead" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalFileRead#wsdl.interface(SynchRead_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/file_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>SynchRead</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="RevalConnect_Webservice">
+        <dgm:body borderWidth="2" arcRad="20" X="714" Y="144" width="136" height="108">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="704" Y="137" width="156" height="122">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="RevalConnect_Webservice" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://com.reval.webservices/#wsdl.interface(ProcessServerSoap)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Upload</dgm:item>
+            <dgm:item>Process</dgm:item>
+            <dgm:item>Login</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CommonSFDCErrorLogService">
+        <dgm:body borderWidth="2" arcRad="20" X="714" Y="286" width="136" height="54">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="704" Y="279" width="156" height="68">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonSFDCErrorLogService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="14" Y="4" width="20" height="20"/>
+        <dgm:operations/>
+    </dgm:gReference>
+    <dgm:gComponent name="RevalConnect_FileUpload_2Reval">
+        <dgm:body borderWidth="2" arcRad="20" X="371" Y="137" width="130" height="111">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="361" Y="130" width="150" height="127">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="revalconnect_fileupload_2reval_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval#wsdl.interface(RevalConnect_FileUpload_2Reval)" callbackInterface="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval#wsdl.interface(RevalConnect_FileUpload_2RevalCallback)"/>
+        <dgm:outputPort name="RevalFileRead" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalFileRead#wsdl.interface(SynchRead_ptt)"/>
+        <dgm:outputPort name="RevalConnect_Webservice" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://com.reval.webservices/#wsdl.interface(ProcessServerSoap)"/>
+        <dgm:outputPort name="CommonSFDCErrorLogService" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="revalconnect_fileupload_2reval_client_ep" target="RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client" width="2">
+        <dgm:gSegment X1="168" Y1="162" X2="361" Y2="162"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RevalConnect_FileUpload_2Reval/RevalFileRead" target="RevalFileRead" width="2">
+        <dgm:gSegment X1="511" Y1="162" X2="535" Y2="162"/>
+        <dgm:gSegment X1="535" Y1="162" X2="535" Y2="36"/>
+        <dgm:gSegment X1="535" Y1="36" X2="704" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RevalConnect_FileUpload_2Reval/RevalConnect_Webservice" target="RevalConnect_Webservice" width="2">
+        <dgm:gSegment X1="511" Y1="187" X2="550" Y2="187"/>
+        <dgm:gSegment X1="550" Y1="187" X2="550" Y2="154"/>
+        <dgm:gSegment X1="550" Y1="154" X2="704" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RevalConnect_FileUpload_2Reval/CommonSFDCErrorLogService" target="CommonSFDCErrorLogService" width="2">
+        <dgm:gSegment X1="511" Y1="212" X2="535" Y2="212"/>
+        <dgm:gSegment X1="535" Y1="212" X2="535" Y2="296"/>
+        <dgm:gSegment X1="535" Y1="296" X2="704" Y2="296"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

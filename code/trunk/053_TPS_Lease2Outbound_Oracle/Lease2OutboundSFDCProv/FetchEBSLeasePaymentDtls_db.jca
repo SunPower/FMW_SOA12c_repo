@@ -1,0 +1,11 @@
+<adapter-config name="FetchEBSLeasePaymentDtls" adapter="db" wsdlLocation="WSDLs/FetchEBSLeasePaymentDtls.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="FetchEBSLeasePaymentDtls_ptt" operation="FetchEBSLeasePaymentDtls">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="SELECT h.SFDC_ID,l.SFDC_ID, l.LEASE_NUMBER,l.LINE_NUMBER,l.ORDER_NUMBER,l.HEADER_ID,l.LINE_ID,l.VENDOR_TYPE,l.VENDOR_NAME,l.ITEM_NUMBER,l.ITEM_DESCRIPTION,l.PO_NUMBER, l.PO_CREATION_DATE,l.PO_AMOUNT,l.PO_RECEIPT_DATE,l.SUPPLIER_INVOICE_NUMBER,l.SUPPLIER_INVOICE_AMOUNT,l.PAYMENT_AMOUNT,l.PAYMENT_DATE,l.SCHEDULE_PAYMENT_DATE, l.LPD_STATUS,l.PO_RECEIPT_NUMBER,l.INVOICE_DATE,l.INVOICE_STATUS,l.PAYMENT_STATUS,l.PO_DESCRIPTION,l.PAYMENT_NUMBER,l.PO_LINE_STATUS,l.SO_LINE_STATUS FROM xxspwr.xxspwr_om_Lease_Payment_Dtls l, xxspwr.XXSPWR_LEASE2_OUTBOUND_DETAILS h WHERE  h.SO_HEADER_ID = l.header_id  AND l.SOA_STATUS ='NEW' AND h.SOA_STATUS='SentToSFDC' AND  l.HEADER_ID in (WITH VALUE_LIST AS (SELECT ? val FROM dual) SELECT SUBSTR(val, (decode(LEVEL, 1, 0, instr(val, ':', 1, LEVEL -1)) + 1), (decode(instr(val, ':', 1, LEVEL) -1, -1, LENGTH(val), instr(val, ':', 1, LEVEL) -1)) -(decode(LEVEL, 1, 0, instr(val, ':', 1, LEVEL -1)) + 1) + 1) a FROM VALUE_LIST CONNECT BY LEVEL &lt;= (SELECT(LENGTH(val) -LENGTH(REPLACE(val, ':', NULL))) FROM VALUE_LIST) + 1)"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

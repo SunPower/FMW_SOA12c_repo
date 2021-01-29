@@ -1,0 +1,41 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SyncCreditLimitSFDCProv"
+     targetNamespace="http://xmlns.oracle.com/DealerPartnerCreditDetalis/SyncCreditLimitSFDCProv/SyncCreditLimitSFDCProv"
+     xmlns:ns2="http://www.sunpowercorp.com/OracleAccountNumbers/xsd/v1"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1"
+     xmlns:ns4="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="urn:partner.soap.sforce.com"
+     xmlns:client="http://xmlns.oracle.com/DealerPartnerCreditDetalis/SyncCreditLimitSFDCProv/SyncCreditLimitSFDCProv"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SyncCreditLimitSFDCProv">
+        <plnk:role name="SyncCreditLimitSFDCProvProvider">
+            <plnk:portType name="client:SyncCreditLimitSFDCProv"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1"
+                 schemaLocation="../Schemas/CDM/BOD/Nouns/Dealer_PartnerCreditINFO/V1/ProcessDealer_PartnerCreditINFO.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/OracleAccountNumbers/xsd/v1"
+                        schemaLocation="../Schemas/OracleAccountNumbers.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SyncCreditLimitSFDCProvRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessDealer_PartnerCreditINFO"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncCreditLimitSFDCProv">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncCreditLimitSFDCProvRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

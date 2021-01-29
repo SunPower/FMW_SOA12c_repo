@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollNewBatchesFromPartnerTab" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollNewBatchesFromPartnerTab" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxspwrEdicom888_ObPartnerCollection" type="XxspwrEdicom888_ObPartnerCollection"/>
+   <xs:complexType name="XxspwrEdicom888_ObPartnerCollection">
+      <xs:sequence>
+         <xs:element name="XxspwrEdicom888_ObPartner" type="XxspwrEdicom888_ObPartner" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrEdicom888_ObPartner">
+      <xs:sequence>
+         <xs:element name="batchId" type="xs:decimal"/>
+         <xs:element name="receivingPartner" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="10"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="batchStatus" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="10"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

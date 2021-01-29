@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OrderDetails xmlns="http://sunpowercorp.com/846FlatFile/xsd/v1">
+   <HEADER>
+      <Signal_Type>-0</Signal_Type>
+      <Snapshot_Date>Snapshot_Date10</Snapshot_Date>
+      <warehouse_Identifier>warehouse_Identifier11</warehouse_Identifier>
+      <Warehouse_Name>Warehouse_Name12</Warehouse_Name>
+      <Warehouse_Code>Warehouse_Code13</Warehouse_Code>
+      <Address_1>Address_114</Address_1>
+      <Address_2>Address_215</Address_2>
+      <City>City16</City>
+      <StateProvince_Code>StateProvince_Code17</StateProvince_Code>
+      <Postal_Code>-0</Postal_Code>
+      <Country_Code>Country_Code18</Country_Code>
+      <Attribute1>-0</Attribute1>
+      <Attribute2>-0</Attribute2>
+      <Attribute3>-0</Attribute3>
+      <Attribute4>-0</Attribute4>
+      <Attribute5>-0</Attribute5>
+      <Attribute6>-0</Attribute6>
+      <Attribute7>-0</Attribute7>
+      <Attribute8>-0</Attribute8>
+   </HEADER>
+</OrderDetails>

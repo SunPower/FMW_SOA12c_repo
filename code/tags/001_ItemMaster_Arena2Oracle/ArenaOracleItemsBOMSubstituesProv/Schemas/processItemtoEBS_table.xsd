@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/processItemtoEBS" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/processItemtoEBS" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxspwrArenaItemsCollection" type="XxspwrArenaItemsCollection"/>
+   <xs:complexType name="XxspwrArenaItemsCollection">
+      <xs:sequence>
+         <xs:element name="XxspwrArenaItems" type="XxspwrArenaItems" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrArenaItems">
+      <xs:sequence>
+         <xs:element name="itemId" type="xs:decimal"/>
+         <xs:element name="lastUpdateDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdatedBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="creationDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="createdBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="documentIdentifier" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="documentGenDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="documentName" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="description" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="buyerId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute1" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute4" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute5" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute6" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute11" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute15" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="shippableItemFlag" type="string1" minOccurs="0" nillable="true"/>
+         <xs:element name="customerOrderEnabledFlag" type="string1" minOccurs="0" nillable="true"/>
+         <xs:element name="listPricePerUnit" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="unitWeight" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="weightUomCode" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="volumeUomCode" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="unitVolume" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="bomItemType" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="wipSupplyType" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="primaryUnitOfMeasure" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="inventoryItemStatusCode" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="plannerCode" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="planningMakeBuyCode" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="fullLeadTime" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="mustUseApprovedVendorFlag" type="string1" minOccurs="0" nillable="true"/>
+         <xs:element name="revision" type="string3" minOccurs="0" nillable="true"/>
+         <xs:element name="processFlag" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="itemNumber" type="string700" minOccurs="0" nillable="true"/>
+         <xs:element name="materialCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="setProcessId" type="xs:decimal" minOccurs="0"/>
+         <xs:element name="longDescription" type="string4000" minOccurs="0" nillable="true"/>
+         <xs:element name="dimensionUomCode" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="unitLength" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="unitWidth" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="unitHeight" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute16" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="ecoNumber" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="revisionEffectivityDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="arenaItemType" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="partOfBom" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="productType" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="arenaCategory" type="string200" minOccurs="0" nillable="true"/>
+         <xs:element name="arenaCategoryPath" type="string400" minOccurs="0" nillable="true"/>
+         <xs:element name="bAttribute15" type="string150" minOccurs="0" nillable="true"/>
+         <xs:element name="moduleTechnology" type="string100" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string100">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="100"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string240">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="240"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string1">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="1"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string30">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="30"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string25">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="25"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string50">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="50"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string10">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="10"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string3">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="3"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string700">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="700"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string4000">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="4000"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string200">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="200"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string400">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="400"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string150">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="150"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

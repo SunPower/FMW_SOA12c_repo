@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrEdi997_InboundStgCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/insertEDI997ToOracle">
+   <top:XxspwrEdi997_InboundStg>
+      <top:controlNumber>CONTROL_NUMBER1</top:controlNumber>
+      <top:signalType>SIGNAL_TYPE2</top:signalType>
+      <top:ackType>ACK_TYPE3</top:ackType>
+      <top:ackDate>2015-03-27T19:28:00</top:ackDate>
+      <top:fileName>fileName49</top:fileName>
+      <top:errorCode>ERROR_CODE5</top:errorCode>
+      <top:errorMessage>ERROR_MESSAGE6</top:errorMessage>
+      <top:attribute1>ATTRIBUTE17</top:attribute1>
+      <top:attribute2>ATTRIBUTE28</top:attribute2>
+      <top:attribute3>ATTRIBUTE39</top:attribute3>
+      <top:attribute4>ATTRIBUTE410</top:attribute4>
+      <top:attribute5>ATTRIBUTE511</top:attribute5>
+      <top:attribute6>ATTRIBUTE612</top:attribute6>
+      <top:attribute7>ATTRIBUTE713</top:attribute7>
+      <top:attribute8>ATTRIBUTE814</top:attribute8>
+      <top:attribute9>ATTRIBUTE915</top:attribute9>
+      <top:attribute10>ATTRIBUTE1016</top:attribute10>
+      <top:creationDate>2015-04-01T16:51:18.603+05:30</top:creationDate>
+      <top:createdBy>-1</top:createdBy>
+      <top:lastUpdatedBy>-1</top:lastUpdatedBy>
+      <top:lastUpdatedDate>2015-04-01T16:51:18.603+05:30</top:lastUpdatedDate>
+   </top:XxspwrEdi997_InboundStg>
+</top:XxspwrEdi997_InboundStgCollection>

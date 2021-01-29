@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="selectNoItemBillToFromEBS" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OnlineOrderingNoItemOracleToSFDC/EnqueOracleSFDCNoItemBillTo/selectNoItemBillToFromEBS" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/selectNoItemBillToFromEBS" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OnlineOrderingNoItemOracleToSFDC/EnqueOracleSFDCNoItemBillTo/selectNoItemBillToFromEBS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <plt:partnerLinkType name="selectNoItemBillToFromEBS_plt">
+      <plt:role name="selectNoItemBillToFromEBS_role">
+         <plt:portType name="tns:selectNoItemBillToFromEBS_ptt"/>
+      </plt:role>
+   </plt:partnerLinkType>
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectNoItemBillToFromEBS"
+                 schemaLocation="Schemas/selectNoItemBillToFromEBS.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="selectNoItemBillToFromEBSInput_msg">
+      <wsdl:part name="selectNoItemBillToFromEBSInput_msg" element="db:selectNoItemBillToFromEBSInput"/>
+   </wsdl:message>
+   <wsdl:message name="selectNoItemBillToFromEBSOutputCollection_msg">
+      <wsdl:part name="selectNoItemBillToFromEBSOutputCollection" element="db:selectNoItemBillToFromEBSOutputCollection"/>
+   </wsdl:message>
+   <wsdl:portType name="selectNoItemBillToFromEBS_ptt">
+      <wsdl:operation name="selectNoItemBillToFromEBS">
+         <wsdl:input message="tns:selectNoItemBillToFromEBSInput_msg"/>
+         <wsdl:output message="tns:selectNoItemBillToFromEBSOutputCollection_msg"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

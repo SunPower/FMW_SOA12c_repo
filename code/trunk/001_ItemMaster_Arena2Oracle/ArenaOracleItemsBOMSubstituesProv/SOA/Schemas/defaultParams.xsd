@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/defaultParams/V1" targetNamespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/defaultParams/V1" elementFormDefault="qualified">
+   <xsd:element name="defaultParams">
+      <xsd:annotation>
+         <xsd:documentation>This XSD is used to carry the default intialize
+                         parameters which can be used in different
+                         Transformations to the target systems.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="filename" type="xsd:string"/>
+            <xsd:element name="documentIdentifier" type="xsd:string"/>
+            <xsd:element name="documentGenerationDateTime" type="xsd:string"/>
+            <xsd:element name="supplierName" type="xsd:string"/>
+            <xsd:element name="processId" type="xsd:int"/>
+            <xsd:element name="itemId" type="xsd:int"/>
+            <xsd:element name="itemNumber" type="xsd:int"/>
+            <xsd:element name="P_SEQUENCE_NAME" type="xsd:string"/>
+            <xsd:element name="makeBuyCode" type="xsd:string"/>
+            <xsd:element name="JNDI" type="xsd:string"/>
+            <xsd:element name="ModuleTechnology" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+</xsd:schema>

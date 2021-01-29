@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Aug 29 10:23:24 CDT 2013
+  Author:  SSUURA-KY
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="SFDCLookUpUtilityService" targetNamespace="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="urn:partner.soap.sforce.com" xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:ns3="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="BpPrc0">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                SFDCLookUpUtilityService.wsdl
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="sfdclookuputilityservice_client" partnerLinkType="client:SFDCLookUpUtilityService" myRole="SFDCLookUpUtilityServiceProvider" partnerRole="SFDCLookUpUtilityServiceRequester"/>
+        <partnerLink name="SFDCLogin" partnerLinkType="ns3:SFDCLogin_BPEL" partnerRole="SFDCLogin_BPELProvider"/>
+        <partnerLink name="SFDC" partnerLinkType="ns1:SFDC" partnerRole="Soap"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:SFDCLookUpUtilityServiceRequestMessage"/>
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable" messageType="client:SFDCLookUpUtilityServiceResponseMessage"/>
+        <variable name="Header" messageType="ns1:Header"/>
+        <variable name="partnerReference" element="ns2:EndpointReference"/>
+        <variable name="InvSFDCLogin_IV" messageType="ns3:SFDCLogin_BPELRequestMessage"/>
+        <variable name="InvSFDCLogin_OV" messageType="ns3:SFDCLogin_BPELResponseMessage"/>
+        <variable name="InvSFDC_IV" messageType="ns1:queryRequest"/>
+        <variable name="InvSFDC_OV" messageType="ns1:queryResponse"/>
+        <variable name="SFDCResult" type="xsd:string"/>
+    </variables>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main" id="BpSeq0">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in SFDCLookUpUtilityService.wsdl) -->
+        <receive name="receiveInput" partnerLink="sfdclookuputilityservice_client" portType="client:SFDCLookUpUtilityService" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+        <invoke name="InvSFDCLogin" inputVariable="InvSFDCLogin_IV" outputVariable="InvSFDCLogin_OV" partnerLink="SFDCLogin" portType="ns3:SFDCLogin_BPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <assign name="AsgnSessionHeader" id="BpAss0">
+            <copy>
+                <from variable="InvSFDCLogin_OV" part="payload" query="/ns3:SFDCLoginResp/ns3:sessionId"/>
+                <to variable="Header" part="SessionHeader" query="/ns1:SessionHeader/ns1:sessionId"/>
+            </copy>
+        </assign>
+        <assign name="AsignPartnerReference" id="BpAss1">
+            <copy>
+                <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+                <to variable="partnerReference"/>
+            </copy>
+            <copy>
+                <from variable="InvSFDCLogin_OV" part="payload" query="/ns3:SFDCLoginResp/ns3:serverUrl"/>
+                <to variable="partnerReference" query="/ns2:EndpointReference/ns2:Address"/>
+            </copy>
+            <copy>
+                <from variable="partnerReference"/>
+                <to partnerLink="SFDC"/>
+            </copy>
+        </assign>
+        <assign name="AssignLookUpQuery" id="BpAss2">
+            <copy>
+                <from expression="concat('select ',bpws:getVariableData('inputVariable','payload','/client:process/client:selectAttribute'), ' from ',bpws:getVariableData('inputVariable','payload','/client:process/client:objectName'), ' where ',bpws:getVariableData('inputVariable','payload','/client:process/client:whereColumn'),' = ',&quot;'&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:whereColumnValue'),&quot;'&quot;) "/>
+                <to variable="InvSFDC_IV" part="parameters" query="/ns1:query/ns1:queryString"/>
+            </copy>
+        </assign>
+        <invoke name="InvSFDC" partnerLink="SFDC" portType="ns1:Soap" operation="query" inputVariable="InvSFDC_IV" outputVariable="InvSFDC_OV" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header" id="BpInv1"/>
+        <assign name="AssignResult" id="BpAss3">
+            <copy>
+                <from expression="concat('Dummy',bpws:getVariableData('InvSFDC_OV','parameters','/ns1:queryResponse/ns1:result/ns1:records'))"/>
+                <to variable="SFDCResult"/>
+            </copy>
+            <copy>
+                <from expression="substring-after(bpws:getVariableData('SFDCResult'),'DummyAccount')"/>
+                <to variable="outputVariable" part="payload" query="/client:processResponse/client:result"/>
+            </copy>
+        </assign>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="callbackClient" partnerLink="sfdclookuputilityservice_client" portType="client:SFDCLookUpUtilityServiceCallback" operation="processResponse" inputVariable="outputVariable" id="BpInv2"/>
+    </sequence>
+</process>

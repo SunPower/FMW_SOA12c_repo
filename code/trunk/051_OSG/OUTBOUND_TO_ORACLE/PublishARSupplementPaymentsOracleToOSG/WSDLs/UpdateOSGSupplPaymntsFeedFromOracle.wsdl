@@ -1,0 +1,22 @@
+<?binding.jca UpdateOSGSupplPaymntsFeedFromOracle_db.jca?>
+<wsdl:definitions name="UpdateOSGSupplPaymntsFeedFromOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplementPaymentsOracleToOSG/UpdateOSGSupplPaymntsFeedFromOracle" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOSGSupplPaymntsFeedFromOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplementPaymentsOracleToOSG/UpdateOSGSupplPaymntsFeedFromOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="UpdateOSGSupplPaymntsFeedFromOracle_plt">
+        <plt:role name="UpdateOSGSupplPaymntsFeedFromOracle_role">
+            <plt:portType name="tns:UpdateOSGSupplPaymntsFeedFromOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOSGSupplPaymntsFeedFromOracle"
+                    schemaLocation="../Schemas/UpdateOSGSupplPaymntsFeedFromOracle.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="UpdateOSGSupplPaymntsFeedFromOracleInput_msg">
+        <wsdl:part name="UpdateOSGSupplPaymntsFeedFromOracleInput_msg" element="db:UpdateOSGSupplPaymntsFeedFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateOSGSupplPaymntsFeedFromOracle_ptt">
+        <wsdl:operation name="UpdateOSGSupplPaymntsFeedFromOracle">
+            <wsdl:input message="tns:UpdateOSGSupplPaymntsFeedFromOracleInput_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

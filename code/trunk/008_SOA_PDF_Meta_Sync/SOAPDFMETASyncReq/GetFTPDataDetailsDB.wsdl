@@ -1,0 +1,26 @@
+<?binding.jca GetFTPDataDetailsDB_db.jca?>
+<wsdl:definitions name="GetFTPDataDetailsDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/GetFTPDataDetailsDB" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/GetFTPDataDetailsDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/GetFTPDataDetailsDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="GetFTPDataDetailsDB_plt">
+        <plt:role name="GetFTPDataDetailsDB_role">
+            <plt:portType name="tns:GetFTPDataDetailsDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetFTPDataDetailsDB"
+                    schemaLocation="Schemas/GetFTPDataDetailsDB.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="GetFTPDataDetailsDBInput_msg">
+        <wsdl:part name="GetFTPDataDetailsDBInput_msg" element="db:GetFTPDataDetailsDBInput"/>
+    </wsdl:message>
+    <wsdl:message name="GetFTPDataDetailsDBOutputCollection_msg">
+        <wsdl:part name="GetFTPDataDetailsDBOutputCollection" element="db:GetFTPDataDetailsDBOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="GetFTPDataDetailsDB_ptt">
+        <wsdl:operation name="GetFTPDataDetailsDB">
+            <wsdl:input message="tns:GetFTPDataDetailsDBInput_msg"/>
+            <wsdl:output message="tns:GetFTPDataDetailsDBOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

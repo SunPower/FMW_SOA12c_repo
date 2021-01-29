@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectOSGINVFeedFromOracle" adapter="db" wsdlLocation="WSDLs/SelectOSGINVFeedFromOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="SelectOSGINVFeedFromOracle_ptt" operation="SelectOSGINVFeedFromOracle">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select SEQUENCE_ID,ORG_ID,SOURCE,TRANSACTION_NAME,TRX_TYPE_ID,TRX_NUMBER,CUSTOMER_TRX_ID,TRX_TYPE_NAME,TRX_DATE,ORDER_NUMBER,CUSTOMER_NAME,ADDRESS1,ADDRESS2,ADDRESS3,ADDRESS4,CITY,COUNTY,STATE,POSTALCODE,COUNTRY,ACCOUNT_NUMBER,EMAIL_ADDRESS,INVOICE_AMOUNT,ITEM_DESCRIPTION,PAST_PAYMENT_DUE,BALANCE_DUE,BATCH_ID,SOA_STATUS,SOA_MESSAGE,STATUS,PROCESS_MESSAGE,REQUEST_ID,CREATION_DATE,CREATED_BY,LAST_UPDATE_DATE,LAST_UPDATED_BY,ATTRIBUTE1,ATTRIBUTE2,ATTRIBUTE3,ATTRIBUTE4,ATTRIBUTE5,ATTRIBUTE6,ATTRIBUTE7,ATTRIBUTE8,ATTRIBUTE9,ATTRIBUTE10,ATTRIBUTE11,ATTRIBUTE12,ATTRIBUTE13,ATTRIBUTE14,ATTRIBUTE15,ATTRIBUTE16,ATTRIBUTE17,ATTRIBUTE18, ATTRIBUTE19,ATTRIBUTE20 from (Select rownum rn, a.* from XXSPWR.XXSPWR_AR_OSG_INV_OUTBOUND  a where STATUS='NEW' and SOA_STATUS is null)  where  rn >= #minrow and rn &lt;= #maxrow"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

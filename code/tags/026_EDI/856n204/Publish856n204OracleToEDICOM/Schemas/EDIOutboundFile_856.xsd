@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI_856/xsd/v1"
+            targetNamespace="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI_856/xsd/v1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="ISO-8859-1">
+  <xsd:element name="OrderDetails">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="OrderLines" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Invoice_No" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="PackSlip_Number" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Document_Date" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="OU_Name" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_Address1" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_Address2" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_Address3" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_City" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_Region" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_PostalCode" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_from_Country" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="PortOfLoading" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="SHIP_TO_CUSTOMER_NAME" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_to_Address1" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_to_Address2" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_to_Address3" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_to_City" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_to_Region" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_to_Postal_Code" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Ship_to_Country" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="PortOfDischarge" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="DateOfDeparture" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="DateOfArrival_Port" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Destination_Warehouse" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Forwarder" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="ShipMethodCode" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Waybill" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Incoterm" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Shipping_Instructions" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Item_Number" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Item_Description" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Shipped_Qty" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Req_UOM" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Unit_Price" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Total_Amount" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Blank_One" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Blank_Two" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Pallet_No" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Container" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Seal_Number" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Shipment_Date" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="DateOfArrival_Site" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Internal_Request_Number" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Source_Warehouse" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Source_Project_ID" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <xsd:element name="Source_Project_Name" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","/>
+              <!--extra mappings for US     -->
+              <xsd:element name="Destination_Project_ID" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="Destination_Project_Name" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="Business_Group" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="ShipFromAddress_ID" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="ShipToAddress_ID" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="BillToAddressID" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="From_Subinventory" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="From_Locator" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="To_Subinventory" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="To_Locator" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="Serial_Number" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="Blank_Three" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="Blank_Four" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           minOccurs="0"/>
+              <xsd:element name="EOL" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="${eol}"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+<!--NXSDWIZ:D:\ProjDocs\EDICom\DESADV_US_7718644_20140314031417.csv:-->
+<!--USE-HEADER:false:-->

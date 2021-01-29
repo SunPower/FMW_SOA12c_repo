@@ -1,0 +1,16 @@
+<adapter-config name="EInvoiceRead" adapter="file" wsdlLocation="../WSDLs/EInvoiceRead.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIincludeWildcard="*.XML" location="eis/FileAdapter"/>
+  <endpoint-activation portType="Read_ptt" operation="Read">
+    <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+      <property name="LogicalDirectory" value="EinvoiceReadLoc"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="MinimumAge" value="30"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="10"/>
+      <property name="DeleteFile" value="false"/>
+      <property name="IncludeFiles" value=".*\.XML"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

@@ -1,0 +1,69 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<!--
+    Name: ProcessOnlineCustomerOrders.xsd
+    Change history
+
+    Author      date        purpose
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/O2C/ProcessOnlineCustomerOrders/V1"
+            xmlns:tns="http://www.sunpowercorp.com/O2C/ProcessOnlineCustomerOrders/V1"
+            targetNamespace="http://www.sunpowercorp.com/O2C/ProcessOnlineCustomerOrders/V1"
+            xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+            xmlns:vct="http://www.sunpowercorp.com/order/Verb/VerbCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">    
+     <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+                schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+     <xsd:import namespace="http://www.sunpowercorp.com/order/Verb/VerbCommonTypes/V1"
+                schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+                
+                
+                
+    <xsd:element name="ProcessOnlineCustomerOrdersReq"
+                 type="tns:ProcessOnlineCustomerOrdersReqType"/>
+    <xsd:complexType name="ProcessOnlineCustomerOrdersReqType">
+        <!--<xsd:complexContent>
+            <xsd:extension base="vct:BusinessObjectDocumentType">-->
+                <xsd:sequence>
+                    <xsd:element name="DataArea"
+                                 type="tns:OnlineCustomerOrdersReqType"/>
+                </xsd:sequence>
+            <!--</xsd:extension>
+        </xsd:complexContent>-->
+    </xsd:complexType>
+    <xsd:complexType name="OnlineCustomerOrdersReqType">
+        <xsd:sequence>            
+            <xsd:element name="BusinessObjectDocument" type="vct:BusinessObjectDocumentType" minOccurs="0" nillable="true"/>
+            <xsd:element name="ORDER_HEADER_REC_IN" type="vct:ORDER_HEADER_TYPE" minOccurs="0" nillable="true"/>
+              <xsd:element name="ORDER_LINE_REC_IN" type="vct:ORDER_LINE_TBL_TYPE" minOccurs="0" nillable="true"/>
+            
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    
+    
+    
+    <xsd:element name="ProcessOnlineCustomerOrdersResp"
+                 type="tns:ProcessOnlineCustomerOrdersRespType"/>
+    <xsd:complexType name="ProcessOnlineCustomerOrdersRespType">
+        <!--<xsd:complexContent>
+            <xsd:extension base="vct:BusinessObjectDocumentType">-->
+                <xsd:sequence>
+                    <xsd:element name="DataArea"
+                                 type="tns:OnlineCustomerOrdersRespType"/>
+                </xsd:sequence>
+            <!--</xsd:extension>
+        </xsd:complexContent>-->
+    </xsd:complexType>
+    <xsd:complexType name="OnlineCustomerOrdersRespType">
+        <xsd:sequence>                   
+            <xsd:element name="BusinessObjectDocument" type="vct:BusinessObjectDocumentType" minOccurs="0" nillable="true"/>            
+            <xsd:element name="ORDER_HEADER_REC_IN" type="vct:ORDER_HEADER_TYPE" minOccurs="0" nillable="true"/>
+            <xsd:element name="ORDER_LINE_REC_IN" type="vct:ORDER_LINE_TBL_TYPE" minOccurs="0" nillable="true"/>
+            <xsd:element name="ORDER_HEADER_REC_OUT" type="vct:ORDER_HEADER_TYPE" minOccurs="0" nillable="true"/>
+            <xsd:element name="ORDER_LINE_REC_OUT" type="vct:ORDER_LINE_TBL_TYPE" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

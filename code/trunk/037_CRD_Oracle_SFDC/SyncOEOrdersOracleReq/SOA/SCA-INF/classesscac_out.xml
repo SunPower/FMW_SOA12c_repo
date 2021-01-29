@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='WSDLs/CallCommSFDCErrMediatorWrapper.wsdl']</loc>
+      <line>21</line>
+      <col>83</col>
+      <file>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\SyncOEOrdersOracleReq\SOA\composite.xml</file>
+      <name>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\SyncOEOrdersOracleReq\SOA\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "WSDLs/CallCommSFDCErrMediatorWrapper.wsdl" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>0</line>
+      <col/>
+      <file>SyncOEOrdersOracleReq_BPEL</file>
+      <name>SyncOEOrdersOracleReq_BPEL</name>
+      <fix>n/a</fix>
+      <msg>XML parsing failed because "FabricException: javax.wsdl.WSDLException: WSDLException: faultCode=INVALID_WSDL: Error reading import of file:/C:/SunPower/ANT_Script/12cMigrationScripts/12c_Ant/ant_soa/code/SyncOEOrdersOracleReq/SOA/WSDLs/CallCommSFDCErrMediatorWrapper.wsdl: oracle.j2ee.ws.wsdl.LocalizedWSDLException: WSDLException: faultCode=OTHER_ERROR: Failed to read WSDL from http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/CallCommSFDCErrMediator.wsdl:WSDL not found: WSDLException: faultCode=INVALID_WSDL: Error reading import of file:/C:/SunPower/ANT_Script/12cMigrationScripts/12c_Ant/ant_soa/code/SyncOEOrdersOracleReq/SOA/WSDLs/CallCommSFDCErrMediatorWrapper.wsdl: oracle.j2ee.ws.wsdl.LocalizedWSDLException: WSDLException: faultCode=OTHER_ERROR: Failed to read WSDL from http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/CallCommSFDCErrMediator.wsdl:WSDL not found"</msg>
+   </Fault>
+</Faults>

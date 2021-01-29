@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SFEC/FPNAEmployeeFeedOracle2SF/XXSPWR_ORACLE_EC_EMP_FPNA_V_DB" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/XXSPWR_ORACLE_EC_EMP_FPNA_V_DB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SFEC/FPNAEmployeeFeedOracle2SF/XXSPWR_ORACLE_EC_EMP_FPNA_V_DB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <plt:partnerLinkType name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DB_plt">
+      <plt:role name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DB_role">
+         <plt:portType name="tns:XXSPWR_ORACLE_EC_EMP_FPNA_V_DB_ptt"/>
+      </plt:role>
+   </plt:partnerLinkType>
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/XXSPWR_ORACLE_EC_EMP_FPNA_V_DB" schemaLocation="../Transformations/XXSPWR_ORACLE_EC_EMP_FPNA_V_DB.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBInput_msg">
+      <wsdl:part name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBInput_msg" element="db:XXSPWR_ORACLE_EC_EMP_FPNA_V_DBInput"/>
+   </wsdl:message>
+   <wsdl:message name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutputCollection_msg">
+      <wsdl:part name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutputCollection" element="db:XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutputCollection"/>
+   </wsdl:message>
+   <wsdl:portType name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DB_ptt">
+      <wsdl:operation name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DB">
+         <wsdl:input message="tns:XXSPWR_ORACLE_EC_EMP_FPNA_V_DBInput_msg"/>
+         <wsdl:output message="tns:XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutputCollection_msg"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

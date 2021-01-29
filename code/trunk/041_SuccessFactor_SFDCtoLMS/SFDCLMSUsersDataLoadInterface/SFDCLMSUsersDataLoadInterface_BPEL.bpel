@@ -1,0 +1,920 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Sep 13 16:35:07 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="SFDCLMSUsersDataLoadInterface_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SFDCLMSUsersDataLoadInterface_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SFDCLMSUsersDataLoadInterface_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns1="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns2="urn:partner.soap.sforce.com"
+         xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns4="http://www.sunpowercorp.com/PlateauHRConectorFFData"
+         xmlns:ns5="http://www.sunpowercorp.com/PlateauHRConectorFFAccountData"
+         xmlns:ns6="http://www.sunpowercorp.com/MergedRows"
+         xmlns:ns7="http://TargetNamespace.com/SFDCLMSFlatFile"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/file/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/WriteSFDCToLMSFile"
+         xmlns:ns9="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:ns10="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns11="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:ns12="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+         xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/file/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SyncReadSFDCFile"
+         xmlns:ns14="http://xmlns.oracle.com/pcbpel/adapter/ftp/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/WriteSFDCLmsFileFTP"
+         xmlns:ns15="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns16="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns17="http://CustFault/Fault/Business"
+         xmlns:ns18="urn:sobject.partner.soap.sforce.com"
+         xmlns:ns19="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+         xmlns:ns20="http://www.sunpowercorp.com/MergeLmsRows"
+         xmlns:ns21="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns:ns22="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd"
+         xmlns:ns23="http://xmlns.oracle.com/pcbpel/adapter/file/lmsnewapplication/SFDCLMSUsersDataLoadInterface/CheckForTempFile"
+         xmlns:ns24="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL"
+         xmlns:ns25="http://www.sunpowercorp.com/SOAUtilityServices/FileToFTPMoveUtilityService/xsd/v1">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[SFDCLMSUsersDataLoadInterface_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="sfdclmsusersdataloadreq_bpel_client"
+                 partnerLinkType="client:SFDCLMSUsersDataLoadInterface_BPEL"
+                 myRole="SFDCLMSUsersDataLoadInterface_BPELProvider"/>
+    <partnerLink name="SFDCLogin" partnerLinkType="ns1:SFDCLogin_BPEL"
+                 partnerRole="SFDCLogin_BPELProvider"/>
+    <partnerLink name="SFDCService" partnerLinkType="ns2:Soap_PL"
+                 partnerRole="Soap_Role"/>
+    <partnerLink name="WriteSFDCToLMSFile" partnerLinkType="ns8:Write_plt"
+                 partnerRole="Write_role"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns15:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="FileUtilityService"
+                 partnerLinkType="ns21:FileUtilityService_BPEL"
+                 partnerRole="FileUtilityService_BPELProvider"/>
+    <partnerLink name="CheckForTempFile" partnerLinkType="ns23:FileListing_plt"
+                 partnerRole="FileListing_role"/>
+    <partnerLink name="FileToFTPMoveUtilitySerivce"
+                 partnerLinkType="ns24:FileToFTPMoveUtilitySerivce_BPEL"
+                 partnerRole="FileToFTPMoveUtilitySerivce_BPELProvider"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable"
+              messageType="client:SFDCLMSUsersDataLoadInterface_BPELRequestMessage"/>
+    <variable name="InvSFDCLogin_IV"
+              messageType="ns1:SFDCLogin_BPELRequestMessage"/>
+    <variable name="InvSFDCLogin_OV"
+              messageType="ns1:SFDCLogin_BPELResponseMessage"/>
+    <variable name="InvSFDCServiceQuery_IV" messageType="ns2:queryRequest"/>
+    <variable name="InvSFDCServiceQuery_OV" messageType="ns2:queryResponse"/>
+    <variable name="Header" messageType="ns2:Header"/>
+    <variable name="partnerReference" element="ns3:EndpointReference"/>
+    <variable name="PlateauHRFFData"
+              element="ns4:PlateauHRConectorFFDataCollection"/>
+    <variable name="PlateauHRFFAccountData"
+              element="ns5:PlateauHRConectorFFAccountDataCollection"/>
+    <variable name="MergedRows" element="ns6:MergedRowsCollection"/>
+    <variable name="PlateauFlatFile" element="ns7:SFDCLMSFlatFileCollection"/>
+    <variable name="InvWriteSFDCToLMSFile_IV" messageType="ns8:Write_msg"/>
+    <variable name="InvSFDCServiceCreate_IV" messageType="ns2:createRequest"/>
+    <variable name="InvSFDCServiceCreate_OV" messageType="ns2:createResponse"/>
+    <variable name="InvCommonSFDCErrorLogService_IV"
+              messageType="ns15:requestMessage"/>
+    <variable name="CommErrParm" messageType="ns15:requestMessage"/>
+    <variable messageType="bpelx:RuntimeFaultMessage" name="FaultVar"/>
+    <variable name="SetTitle" type="xsd:string"/>
+    <variable name="CustomFault" messageType="bpelx:RuntimeFaultMessage"/>
+    <variable name="recordsProcessed" type="xsd:integer"/>
+    <variable name="totalRecords" type="xsd:integer"/>
+    <variable name="noOfIterations" type="xsd:integer"/>
+    <variable name="sizeofBunch" type="xsd:integer"/>
+    <variable name="recordsLeft" type="xsd:integer"/>
+    <variable name="MergeLMS" element="ns20:MergeLmsRowsCollection"/>
+    <variable name="LastLoop" type="xsd:string"/>
+    <variable name="initParams" element="ns19:InitParams"/>
+    <variable name="QueryMore" type="xsd:string"/>
+    <variable name="Counter" type="xsd:int"/>
+    <variable name="InvSFDCQueryMore_IV" messageType="ns2:queryMoreRequest"/>
+    <variable name="InvSFDCQueryMore_OV" messageType="ns2:queryMoreResponse"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="FirstLoop" type="xsd:string"/>
+    <variable name="Size" type="xsd:string"/>
+    <variable name="QueryLocator" type="xsd:string"/>
+    <variable name="InvCheckForTempFile_IV" messageType="ns23:Empty_msg"/>
+    <variable name="InvCheckForTempFile_OV" messageType="ns23:FileListing_msg"/>
+    <variable name="InvFileUtilityServiceDel_IV"
+              messageType="ns21:FileDeleteService_BPELRequestMessage"/>
+    <variable name="InvFileUtilityServiceDel_OV"
+              messageType="ns21:FileUtilityService_BPELResponseMessage"/>
+    <variable name="InvFileToFTPMoveUtilitySerivce_IV"
+              messageType="ns24:FileToFTPMoveUtilitySerivce_BPELRequestMessage"/>
+    <variable name="InvFileToFTPMoveUtilitySerivce_OV"
+              messageType="ns24:FileToFTPMoveUtilitySerivce_BPELResponseMessage"/>
+    <variable name="dateTime" type="xsd:dateTime"/>
+    <variable name="InvFileUtilityService_Move_IV"
+              messageType="ns21:FileUtilityService_BPELRequestMessage"/>
+    <variable name="InvFileUtilityService_Move_OV"
+              messageType="ns21:FileUtilityService_BPELResponseMessage"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence1">
+        <assign name="AsgnCommonErrorHandler">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Severity"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultCode")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("CorrectiveAction")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:CorrectiveAction"/>
+          </copy>
+        </assign>
+        <assign name="TransformErrPams">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TransformCommErrParms.xsl', $CommErrParm.request, 'MergedRows', $MergedRows)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" bpelx:invokeAsDetail="no"
+                inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns15:execute_ptt" operation="execute"/>
+        <!--  <switch name="Switch2">
+          <case condition='ora:getPreference("SendEmail")="Y"'>
+            <invoke name="InvCommonErrorHandler"
+                    inputVariable="InvCommonErrorHandler_IV"
+                    partnerLink="CommonErrorHandler"
+                    portType="ns10:CommonErrorHandler_BPEL" operation="process"
+                    bpelx:invokeAsDetail="no"/>
+          </case>
+        </switch>
+        <assign name="TransformErrLog">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('xsl/TransformErrLog.xsl', $InvCommonErrorHandler_IV.payload, 'MergedRows', $MergedRows)"/>
+            <to variable="InvCommonLoggingService_IV" part="payload"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonLoggingService" bpelx:invokeAsDetail="no"
+                inputVariable="InvCommonLoggingService_IV"
+                partnerLink="CommonLoggingService"
+                portType="ns11:CommonLoggingService_BPEL" operation="process"/>
+        <assign name="TransformCreateSFDC">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('xsl/TransformCreateErrSFDC.xsl', $InvCommonErrorHandler_IV.payload)"/>
+            <to variable="InvSFDCServiceCreate_IV" part="parameters"/>
+          </copy>
+        </assign>
+        <invoke name="InvSFDCService"
+                inputVariable="InvSFDCServiceCreate_IV"
+                outputVariable="InvSFDCServiceCreate_OV"
+                partnerLink="SFDCService" portType="ns2:Soap"
+                operation="create" bpelx:invokeAsDetail="no"
+                bpelx:inputHeaderVariable="Header"/>-->
+        <terminate name="Terminate"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in SFDCLMSUsersDataLoadInterface_BPEL.wsdl) -->
+    <receive name="receiveInput"
+             partnerLink="sfdclmsusersdataloadreq_bpel_client"
+             portType="client:SFDCLMSUsersDataLoadInterface_BPEL"
+             operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="AssignSetTitle">
+      <copy>
+        <from expression='"SFDCLMSUsers"'/>
+        <to variable="SetTitle"/>
+      </copy>
+      <copy>
+        <from expression="xp20:format-dateTime(xp20:current-dateTime(),'[M01][D01][Y0001]_[H01][m01][s01]')"/>
+        <to variable="dateTime"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(concat('SFDCLMS:',bpws:getVariableData('SetTitle')))"/>
+        <to variable="SetTitle"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("FileName")'/>
+        <to variable="FileName"/>
+      </copy>
+    </assign>
+    <invoke name="InvExistFileCheck" bpelx:invokeAsDetail="no"
+            inputVariable="InvCheckForTempFile_IV"
+            outputVariable="InvCheckForTempFile_OV"
+            partnerLink="CheckForTempFile" portType="ns23:FileListing_ptt"
+            operation="FileListing"/>
+    <switch name="ExistFileCheckSwitch">
+      <case condition="bpws:getVariableData('InvCheckForTempFile_OV','filelist','/ns23:filelist/@size') > 0">
+        <sequence name="Sequence6">
+          <assign name="AssignFileParms">
+             <copy>
+              <from expression='ora:getPreference("LocalFileDir")'/>
+              <to variable="InvFileUtilityService_Move_IV" part="payload"
+                  query="/ns22:FileUtilityReq/ns22:SourcePhysicalDirectory"/>
+            </copy>
+            <copy>
+              <from variable="FileName"/>
+              <to variable="InvFileUtilityService_Move_IV" part="payload"
+                  query="/ns22:FileUtilityReq/ns22:SourceFileName"/>
+            </copy>
+                     
+              <copy>
+              <from expression='ora:getPreference("ArchiveDir")'/>
+              <to variable="InvFileUtilityService_Move_IV" part="payload"
+                  query="/ns22:FileUtilityReq/ns22:TargetPhysicalDirectory"/>
+            </copy>
+            <copy>
+              <from expression="concat('user_data_sunpower_',$dateTime,'.txt')"/>
+              <to variable="InvFileUtilityService_Move_IV" part="payload"
+                  query="/ns22:FileUtilityReq/ns22:TargetFileName"/>
+            </copy>
+          
+          </assign>
+          <invoke name="InvFileUtilityService"
+                  inputVariable="InvFileUtilityService_Move_IV"
+                  outputVariable="InvFileUtilityService_Move_OV"
+                  partnerLink="FileUtilityService"
+                  portType="ns21:FileUtilityService_BPEL" operation="Move"
+                  bpelx:invokeAsDetail="no"/>
+        </sequence>
+      </case>
+      <otherwise>
+        <empty name="Continue"/>
+      </otherwise>
+    </switch>
+    <invoke name="InvSFDCLogin" bpelx:invokeAsDetail="no"
+            inputVariable="InvSFDCLogin_IV" outputVariable="InvSFDCLogin_OV"
+            partnerLink="SFDCLogin" portType="ns1:SFDCLogin_BPEL"
+            operation="process"/>
+    <assign name="AssignSessionID">
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload"
+              query="/ns1:SFDCLoginResp/ns1:sessionId"/>
+        <to variable="Header" part="SessionHeader"
+            query="/ns2:SessionHeader/ns2:sessionId"/>
+      </copy>
+    </assign>
+    <assign name="AssignPatnerRef">
+      <copy>
+        <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+        <to variable="partnerReference"/>
+      </copy>
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload"
+              query="/ns1:SFDCLoginResp/ns1:serverUrl"/>
+        <to variable="partnerReference"
+            query="/ns3:EndpointReference/ns3:Address"/>
+      </copy>
+      <copy>
+        <from variable="partnerReference"/>
+        <to partnerLink="SFDCService"/>
+      </copy>
+    </assign>
+    <assign name="AssgAccountSFDCQuery">
+      <copy>
+        <from expression="concat(&quot;Select u.Contact.Account.BillingState, u.Contact.Account.BillingCountry, u.Portal_User_Type__c, u.contact.Account.status__c, u.isActive, u.Username, u.UserType, u.Contact.LMS_Job_ID__c, u.Plateau_Id__c, u.Contact.Terminated__c, u.Contact.title, u.Contact.FirstName, u.Contact.LastName, u.ContactId, u.Contact.Email, u.Contact.HomePhone, u.Contact.MobilePhone, u.Contact.Phone, u.Contact.AccountId, u.Contact.Account.Type, u.Contact.Account.Id, u.Contact.Account.AccountNumber, u.Contact.LMS_Role__c,  u.LMS_Supervisor_ID__c, u.LocaleSidKey, u.Country_Domain__c, u.LanguageLocaleKey, u.Contact.Account.Name, u.Contact.Account.IsPartner, u.Contact.Account.Authorized_Partner_Date__c, u.Contact.Account.Territory__c, u.Contact.Account.Country_Domain__c, u.Contact.Account.Integration_ID__c From User u where u.UserType='PowerPartner' and u.Plateau_Id__c != null and  u.Country_Domain__c  like '%-us' and u.Contact.Account.IsPartner=True and u.Portal_User_Type__c !=null and lastmodifieddate = LAST_N_DAYS:&quot;,ora:getPreference(&quot;noOfDaysToSync&quot;))"/>
+        <to variable="InvSFDCServiceQuery_IV" part="parameters"
+            query="/ns2:query/ns2:queryString"/>
+      </copy>
+    </assign>
+    <invoke name="InvSFDCService" inputVariable="InvSFDCServiceQuery_IV"
+            outputVariable="InvSFDCServiceQuery_OV" partnerLink="SFDCService"
+            portType="ns2:Soap" operation="query" bpelx:invokeAsDetail="no"
+            bpelx:inputHeaderVariable="Header"/>
+    <assign name="AssAccSize">
+      <copy>
+        <from expression="bpws:getVariableData('InvSFDCServiceQuery_OV','parameters','/ns2:queryResponse/ns2:result/ns2:size')"/>
+        <to variable="Size"/>
+      </copy>
+      <copy>
+        <from variable="InvSFDCServiceQuery_OV" part="parameters"
+              query="/ns2:queryResponse/ns2:result/ns2:queryLocator"/>
+        <to variable="QueryLocator"/>
+      </copy>
+    </assign>
+    <assign name="TransMergeLMSSFDCQuery">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransMergeLMSSFDCQuery.xsl', $InvSFDCServiceQuery_OV.parameters)"/>
+        <to variable="MergeLMS"/>
+      </copy>
+    </assign>
+    <assign name="TransformWriteFile">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransUserAccLMSFile.xsl', $MergeLMS)"/>
+        <to variable="InvWriteSFDCToLMSFile_IV" part="body"/>
+      </copy>
+    </assign>
+    <invoke name="InvWriteSFDCToLMSFile"
+            inputVariable="InvWriteSFDCToLMSFile_IV"
+            partnerLink="WriteSFDCToLMSFile" portType="ns8:Write_ptt"
+            operation="Write" bpelx:invokeAsDetail="no">
+      <bpelx:inputProperty name="jca.file.FileName" variable="FileName"/>
+    </invoke>
+    <switch name="Switch2">
+      <case condition="$Size > 2000">
+        <sequence name="Sequence4">
+          <assign name="AssignParms">
+            <copy>
+              <from expression="floor($Size div 2000)"/>
+              <to variable="QueryMore"/>
+            </copy>
+            <copy>
+              <from expression="1"/>
+              <to variable="Counter"/>
+            </copy>
+          </assign>
+          <while name="WhileMoreRecords" condition="$Counter &lt;= $QueryMore">
+            <sequence>
+              <switch name="Switch4">
+                <case condition="$Counter=1">
+                  <assign name="AssignQueryMore">
+                    <copy>
+                      <from variable="QueryLocator"/>
+                      <to variable="InvSFDCQueryMore_IV" part="parameters"
+                          query="/ns2:queryMore/ns2:queryLocator"/>
+                    </copy>
+                    <copy>
+                      <from expression="$Counter+1"/>
+                      <to variable="Counter"/>
+                    </copy>
+                  </assign>
+                </case>
+                <otherwise>
+                  <assign name="AssignQueryMore">
+                    <copy>
+                      <from variable="InvSFDCQueryMore_OV" part="parameters"
+                            query="/ns2:queryMoreResponse/ns2:result/ns2:queryLocator"/>
+                      <to variable="InvSFDCQueryMore_IV" part="parameters"
+                          query="/ns2:queryMore/ns2:queryLocator"/>
+                    </copy>
+                    <copy>
+                      <from expression="$Counter+1"/>
+                      <to variable="Counter"/>
+                    </copy>
+                  </assign>
+                </otherwise>
+              </switch>
+              <invoke name="InvQueryMoreSFDCService"
+                      inputVariable="InvSFDCQueryMore_IV"
+                      outputVariable="InvSFDCQueryMore_OV"
+                      partnerLink="SFDCService" portType="ns2:Soap"
+                      operation="queryMore" bpelx:invokeAsDetail="no"
+                      bpelx:inputHeaderVariable="Header"/>
+              <assign name="Transform2">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransQueryMoreLMSSFDC.xsl', $InvSFDCQueryMore_OV.parameters)"/>
+                  <to variable="MergeLMS"/>
+                </copy>
+              </assign>
+              <assign name="TransformWriteFile">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransOthrLMSWiteFile.xsl', $MergeLMS)"/>
+                  <to variable="InvWriteSFDCToLMSFile_IV" part="body"/>
+                </copy>
+              </assign>
+              <invoke name="InvWriteSFDCToLMSFile"
+                      inputVariable="InvWriteSFDCToLMSFile_IV"
+                      partnerLink="WriteSFDCToLMSFile" portType="ns8:Write_ptt"
+                      operation="Write" bpelx:invokeAsDetail="no">
+                <bpelx:inputProperty name="jca.file.FileName"
+                                     variable="FileName"/>
+              </invoke>
+            </sequence>
+          </while>
+          <assign name="AssignLastLoop">
+            <copy>
+              <from expression="'Y'"/>
+              <to variable="LastLoop"/>
+            </copy>
+          </assign>
+        </sequence>
+      </case>
+      <!-- <otherwise>
+        <sequence>
+          <assign name="TransformAccountFFParms">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('xsl/TransformAccountFFParms.xsl', $InvSFDCServiceQuery_OV.parameters)"/>
+              <to variable="PlateauHRFFAccountData"/>
+            </copy>
+          </assign>
+          <switch name="Switch3">
+            <case condition="count(bpws:getVariableData('PlateauHRFFAccountData','/ns5:PlateauHRConectorFFAccountDataCollection/ns5:PlateauHRConectorFFAccountDataItems')) > 200">
+              <sequence name="Sequence2">
+                <assign name="InitializeParms">
+                  <copy>
+                    <from expression="count(bpws:getVariableData('PlateauHRFFAccountData','/ns5:PlateauHRConectorFFAccountDataCollection/ns5:PlateauHRConectorFFAccountDataItems'))"/>
+                    <to variable="totalRecords"/>
+                  </copy>
+                  <copy>
+                    <from expression="1"/>
+                    <to variable="initParams"
+                        query="/ns19:InitParams/ns19:startIndex"/>
+                  </copy>
+                  <copy>
+                    <from expression="0"/>
+                    <to variable="initParams"
+                        query="/ns19:InitParams/ns19:endIndex"/>
+                  </copy>
+                  <copy>
+                    <from expression="0"/>
+                    <to variable="recordsProcessed"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("sizeOfBunch")'/>
+                    <to variable="sizeofBunch"/>
+                  </copy>
+                  <copy>
+                    <from expression="ceiling($totalRecords div $sizeofBunch)"/>
+                    <to variable="noOfIterations"/>
+                  </copy>
+                  <copy>
+                    <from expression="'Y'"/>
+                    <to variable="FirstLoop"/>
+                  </copy>
+                </assign>
+                <while name="WhileMoreRecrds" condition="$noOfIterations > 0">
+                  <sequence name="Sequence3">
+                    <assign name="AssignParmValues">
+                      <copy>
+                        <from expression="$totalRecords - $recordsProcessed"/>
+                        <to variable="recordsLeft"/>
+                      </copy>
+                      <copy>
+                        <from expression="$recordsProcessed + 1"/>
+                        <to variable="initParams"
+                            query="/ns19:InitParams/ns19:startIndex"/>
+                      </copy>
+                    </assign>
+                    <switch name="Switch8">
+                      <case condition="bpws:getVariableData('initParams','/ns19:InitParams/ns19:startIndex') =1">
+                        <sequence>
+                          <switch name="Switch2">
+                            <case condition="($recordsLeft div $sizeofBunch) >= 1">
+                              <assign name="updateEndIndex">
+                                <copy>
+                                  <from expression="$recordsProcessed + $sizeofBunch"/>
+                                  <to variable="initParams"
+                                      query="/ns19:InitParams/ns19:endIndex"/>
+                                </copy>
+                              </assign>
+                            </case>
+                            <otherwise>
+                              <assign name="updateEndIndex">
+                                <copy>
+                                  <from variable="totalRecords"/>
+                                  <to variable="initParams"
+                                      query="/ns19:InitParams/ns19:endIndex"/>
+                                </copy>
+                                <copy>
+                                  <from expression="'Y'"/>
+                                  <to variable="LastLoop"/>
+                                </copy>
+                              </assign>
+                            </otherwise>
+                          </switch>
+                          <assign name="TransIndexAccParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransIndexAccParms.xsl', $PlateauHRFFAccountData, 'initParams', $initParams)"/>
+                              <to variable="MergedRows"/>
+                            </copy>
+                          </assign>
+                          <assign name="TransformEndOfRowParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransEndOfRowParms.xsl', $MergedRows)"/>
+                              <to variable="MergeLMS"/>
+                            </copy>
+                          </assign>
+                          <assign name="AssigUserSFDC">
+                            <copy>
+                              <from expression="concat(&quot;Select u.Contact.Account.BillingState,u.Portal_User_Type__c, u.isActive, u.Username, u.UserType, u.Contact.LMS_Job_ID__c, u.Plateau_Id__c, u.Contact.Terminated__c, u.Contact.title, u.Contact.FirstName, u.Contact.LastName, u.ContactId, u.Contact.Email, u.Contact.HomePhone, u.Contact.MobilePhone, u.Contact.Phone, u.Contact.AccountId, u.Contact.Account.Type, u.Contact.Account.Id, u.Contact.Account.AccountNumber ,u.Contact.LMS_Role__c,  u.LMS_Supervisor_ID__c, u.LocaleSidKey, u.Country_Domain__c, u.LanguageLocaleKey  From User u where u.UserType='PowerPartner' and u.Plateau_Id__c != null and  u.Country_Domain__c  like '%-us' and u.Contact.AccountId in (&quot;,substring(bpws:getVariableData('MergeLMS','/ns20:MergeLmsRowsCollection/ns20:MergeLmsRowsItems/ns20:end_of_row'),1,string-length(bpws:getVariableData('MergeLMS','/ns20:MergeLmsRowsCollection/ns20:MergeLmsRowsItems/ns20:end_of_row')) -1),&quot;)&quot;)"/>
+                              <to variable="InvSFDCServiceQuery_IV"
+                                  part="parameters"
+                                  query="/ns2:query/ns2:queryString"/>
+                            </copy>
+                          </assign>
+                          <invoke name="InvSFDCService"
+                                  inputVariable="InvSFDCServiceQuery_IV"
+                                  outputVariable="InvSFDCServiceQuery_OV"
+                                  partnerLink="SFDCService" portType="ns2:Soap"
+                                  operation="query" bpelx:invokeAsDetail="no"
+                                  bpelx:inputHeaderVariable="Header"/>
+                          <assign name="TransformFFParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransformHRFFParms.xsl', $InvSFDCServiceQuery_OV.parameters)"/>
+                              <to variable="PlateauHRFFData"/>
+                            </copy>
+                          </assign>
+                          <assign name="TransAccUserParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransAccUserMergeData.xsl', $PlateauHRFFData, 'MergedRows', $MergedRows)"/>
+                              <to variable="MergeLMS"/>
+                            </copy>
+                          </assign>
+                          <assign name="TransformWriteFile">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransUserAccLMSFile.xsl', $MergeLMS)"/>
+                              <to variable="InvWriteSFDCToLMSFile_IV"
+                                  part="body"/>
+                            </copy>
+                          </assign>
+                        </sequence>
+                      </case>
+                      <otherwise>
+                        <sequence>
+                          <switch name="Switch2">
+                            <case condition="($recordsLeft div $sizeofBunch) >= 1">
+                              <assign name="updateEndIndex">
+                                <copy>
+                                  <from expression="$recordsProcessed + $sizeofBunch"/>
+                                  <to variable="initParams"
+                                      query="/ns19:InitParams/ns19:endIndex"/>
+                                </copy>
+                              </assign>
+                            </case>
+                            <otherwise>
+                              <assign name="updateEndIndex">
+                                <copy>
+                                  <from variable="totalRecords"/>
+                                  <to variable="initParams"
+                                      query="/ns19:InitParams/ns19:endIndex"/>
+                                </copy>
+                              </assign>
+                            </otherwise>
+                          </switch>
+                          <assign name="TransIndexAccParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransIndexAccParms.xsl', $PlateauHRFFAccountData, 'initParams', $initParams)"/>
+                              <to variable="MergedRows"/>
+                            </copy>
+                          </assign>
+                          <assign name="TransformEndOfRowParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransEndOfRowParms.xsl', $MergedRows)"/>
+                              <to variable="MergeLMS"/>
+                            </copy>
+                          </assign>
+                          <assign name="AssigUserSFDC">
+                            <copy>
+                              <from expression="concat(&quot;Select u.Contact.Account.BillingState,u.Portal_User_Type__c, u.isActive, u.Username, u.UserType, u.Contact.LMS_Job_ID__c, u.Plateau_Id__c, u.Contact.Terminated__c, u.Contact.title, u.Contact.FirstName, u.Contact.LastName, u.ContactId, u.Contact.Email, u.Contact.HomePhone, u.Contact.MobilePhone, u.Contact.Phone, u.Contact.AccountId, u.Contact.Account.Type, u.Contact.Account.Id, u.Contact.Account.AccountNumber ,u.Contact.LMS_Role__c,  u.LMS_Supervisor_ID__c, u.LocaleSidKey, u.Country_Domain__c, u.LanguageLocaleKey  From User u where u.UserType='PowerPartner' and u.Plateau_Id__c != null and  u.Country_Domain__c  like '%-us' and u.Contact.AccountId in (&quot;,substring(bpws:getVariableData('MergeLMS','/ns20:MergeLmsRowsCollection/ns20:MergeLmsRowsItems/ns20:end_of_row'),1,string-length(bpws:getVariableData('MergeLMS','/ns20:MergeLmsRowsCollection/ns20:MergeLmsRowsItems/ns20:end_of_row')) -1),&quot;)&quot;)"/>
+                              <to variable="InvSFDCServiceQuery_IV"
+                                  part="parameters"
+                                  query="/ns2:query/ns2:queryString"/>
+                            </copy>
+                          </assign>
+                          <invoke name="InvSFDCService"
+                                  inputVariable="InvSFDCServiceQuery_IV"
+                                  outputVariable="InvSFDCServiceQuery_OV"
+                                  partnerLink="SFDCService" portType="ns2:Soap"
+                                  operation="query" bpelx:invokeAsDetail="no"
+                                  bpelx:inputHeaderVariable="Header"/>
+                          <assign name="TransformFFParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransformHRFFParms.xsl', $InvSFDCServiceQuery_OV.parameters)"/>
+                              <to variable="PlateauHRFFData"/>
+                            </copy>
+                          </assign>
+                          <assign name="TransAccUserParms">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransAccUserMergeData.xsl', $PlateauHRFFData, 'MergedRows', $MergedRows)"/>
+                              <to variable="MergeLMS"/>
+                            </copy>
+                          </assign>
+                          <assign name="TransOthrFileWrite">
+                            <bpelx:annotation>
+                              <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                              <from expression="ora:doXSLTransformForDoc('xsl/TransOthrLMSWiteFile.xsl', $MergeLMS)"/>
+                              <to variable="InvWriteSFDCToLMSFile_IV"
+                                  part="body"/>
+                            </copy>
+                          </assign>
+                        </sequence>
+                      </otherwise>
+                    </switch>
+                    <invoke name="InvWriteSFDCToLMSFile"
+                            inputVariable="InvWriteSFDCToLMSFile_IV"
+                            partnerLink="WriteSFDCToLMSFile"
+                            portType="ns8:Write_ptt" operation="Write"
+                            bpelx:invokeAsDetail="no">
+                      <bpelx:inputProperty name="jca.file.FileName"
+                                           variable="FileName"/>
+                    </invoke>
+                    <switch name="Switch9">
+                      <case condition="bpws:getVariableData('totalRecords') = bpws:getVariableData('initParams','/ns19:InitParams/ns19:endIndex')">
+                        <sequence>
+                          <assign name="AssignLastLoop">
+                            <copy>
+                              <from expression="'Y'"/>
+                              <to variable="LastLoop"/>
+                            </copy>
+                          </assign>
+                          <assign name="updateRecordProcessed">
+                            <copy>
+                              <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns19:InitParams/ns19:endIndex')) - bpws:getVariableData('initParams','/ns19:InitParams/ns19:startIndex') ) + 1"/>
+                              <to variable="recordsProcessed"/>
+                            </copy>
+                            <copy>
+                              <from expression="$noOfIterations -1"/>
+                              <to variable="noOfIterations"/>
+                            </copy>
+                          </assign>
+                        </sequence>
+                      </case>
+                      <otherwise>
+                        <assign name="updateRecordProcessed">
+                          <copy>
+                            <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns19:InitParams/ns19:endIndex')) - bpws:getVariableData('initParams','/ns19:InitParams/ns19:startIndex') ) + 1"/>
+                            <to variable="recordsProcessed"/>
+                          </copy>
+                          <copy>
+                            <from expression="$noOfIterations -1"/>
+                            <to variable="noOfIterations"/>
+                          </copy>
+                        </assign>
+                      </otherwise>
+                    </switch>
+                  </sequence>
+                </while>
+              </sequence>
+            </case>
+            <otherwise>
+              <sequence>
+                <assign name="TransAccParms">
+                  <bpelx:annotation>
+                    <bpelx:pattern>transformation</bpelx:pattern>
+                  </bpelx:annotation>
+                  <copy>
+                    <from expression="ora:doXSLTransformForDoc('xsl/TransAccMergeData.xsl', $PlateauHRFFAccountData)"/>
+                    <to variable="MergedRows"/>
+                  </copy>
+                </assign>
+                <assign name="TransformEndOfRowParms">
+                  <bpelx:annotation>
+                    <bpelx:pattern>transformation</bpelx:pattern>
+                  </bpelx:annotation>
+                  <copy>
+                    <from expression="ora:doXSLTransformForDoc('xsl/TransEndOfRowParms.xsl', $MergedRows)"/>
+                    <to variable="MergeLMS"/>
+                  </copy>
+                </assign>
+                <assign name="AssigUserSFDC">
+                  <copy>
+                    <from expression="concat(&quot;Select u.Contact.Account.BillingState,u.Portal_User_Type__c, u.isActive, u.Username, u.UserType, u.Contact.LMS_Job_ID__c, u.Plateau_Id__c, u.Contact.Terminated__c, u.Contact.title, u.Contact.FirstName, u.Contact.LastName, u.ContactId, u.Contact.Email, u.Contact.HomePhone, u.Contact.MobilePhone, u.Contact.Phone, u.Contact.AccountId, u.Contact.Account.Type, u.Contact.Account.Id, u.Contact.Account.AccountNumber ,u.Contact.LMS_Role__c,  u.LMS_Supervisor_ID__c, u.LocaleSidKey, u.Country_Domain__c, u.LanguageLocaleKey  From User u where u.UserType='PowerPartner' and u.Plateau_Id__c != null and  u.Country_Domain__c  like '%-us' and u.Contact.AccountId in (&quot;,substring(bpws:getVariableData('MergeLMS','/ns20:MergeLmsRowsCollection/ns20:MergeLmsRowsItems/ns20:end_of_row'),1,string-length(bpws:getVariableData('MergeLMS','/ns20:MergeLmsRowsCollection/ns20:MergeLmsRowsItems/ns20:end_of_row')) -1),&quot;)&quot;)"/>
+                    <to variable="InvSFDCServiceQuery_IV" part="parameters"
+                        query="/ns2:query/ns2:queryString"/>
+                  </copy>
+                </assign>
+                <invoke name="InvSFDCService"
+                        inputVariable="InvSFDCServiceQuery_IV"
+                        outputVariable="InvSFDCServiceQuery_OV"
+                        partnerLink="SFDCService" portType="ns2:Soap"
+                        operation="query" bpelx:invokeAsDetail="no"
+                        bpelx:inputHeaderVariable="Header"/>
+                <assign name="TransformFFParms">
+                  <bpelx:annotation>
+                    <bpelx:pattern>transformation</bpelx:pattern>
+                  </bpelx:annotation>
+                  <copy>
+                    <from expression="ora:doXSLTransformForDoc('xsl/TransformHRFFParms.xsl', $InvSFDCServiceQuery_OV.parameters)"/>
+                    <to variable="PlateauHRFFData"/>
+                  </copy>
+                </assign>
+                <assign name="TransAccUserParms">
+                  <bpelx:annotation>
+                    <bpelx:pattern>transformation</bpelx:pattern>
+                  </bpelx:annotation>
+                  <copy>
+                    <from expression="ora:doXSLTransformForDoc('xsl/TransAccUserMergeData.xsl', $PlateauHRFFData, 'MergedRows', $MergedRows)"/>
+                    <to variable="MergeLMS"/>
+                  </copy>
+                </assign>
+                <assign name="TransformWriteFile">
+                  <bpelx:annotation>
+                    <bpelx:pattern>transformation</bpelx:pattern>
+                  </bpelx:annotation>
+                  <copy>
+                    <from expression="ora:doXSLTransformForDoc('xsl/TransUserAccLMSFile.xsl', $MergeLMS)"/>
+                    <to variable="InvWriteSFDCToLMSFile_IV" part="body"/>
+                  </copy>
+                </assign>
+                <invoke name="InvWriteSFDCToLMSFile"
+                        inputVariable="InvWriteSFDCToLMSFile_IV"
+                        partnerLink="WriteSFDCToLMSFile"
+                        portType="ns8:Write_ptt" operation="Write"
+                        bpelx:invokeAsDetail="no">
+                  <bpelx:inputProperty name="jca.file.FileName"
+                                       variable="FileName"/>
+                </invoke>
+                <assign name="AssignLoop">
+                  <copy>
+                    <from expression="'Y'"/>
+                    <to variable="LastLoop"/>
+                  </copy>
+                </assign>
+              </sequence>
+            </otherwise>
+          </switch>
+        </sequence>
+      </otherwise> -->
+      <otherwise>
+        <sequence name="Sequence7">
+          <assign name="AssignLastLoop">
+            <copy>
+              <from expression="'Y'"/>
+              <to variable="LastLoop"/>
+            </copy>
+          </assign>
+        </sequence>
+      </otherwise>
+    </switch>
+    <switch name="Switch5">
+      <case condition="bpws:getVariableData('LastLoop') ='Y'">
+        <sequence name="Sequence5">
+          <assign name="asgnFileToFTPMoveUtilitySerivce">
+            <copy>
+              <from variable="FileName"/>
+              <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns25:input/ns25:SourceFileName"/>
+            </copy>
+            <copy>
+              <from variable="FileName"/>
+              <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns25:input/ns25:TargetFileName"/>
+            </copy>
+            <copy>
+              <from expression='ora:getPreference("LocalFileDir")'/>
+              <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns25:input/ns25:SourceDirectory"/>
+            </copy>
+            <copy>
+              <from expression='ora:getPreference("FileToken")'/>
+              <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns25:input/ns25:FileToken"/>
+            </copy>
+            <copy>
+              <from expression='"COPY"'/>
+              <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns25:input/ns25:Action"/>
+            </copy>
+          </assign>
+          <invoke name="InvFileToFTPMoveUtilitySerivce"
+                  inputVariable="InvFileToFTPMoveUtilitySerivce_IV"
+                  outputVariable="InvFileToFTPMoveUtilitySerivce_OV"
+                  partnerLink="FileToFTPMoveUtilitySerivce"
+                  portType="ns24:FileToFTPMoveUtilitySerivce_BPEL"
+                  operation="process" bpelx:invokeAsDetail="no"/>
+        </sequence>
+      </case>
+    </switch>
+  </sequence>
+</process>

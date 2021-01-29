@@ -1,0 +1,47 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions name="OracleSFDCItemPRODReq_BPEL"
+                  targetNamespace="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODReq/OracleSFDCItemPRODReq_BPEL"
+                  xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+                  xmlns:ns4="urn:partner.soap.sforce.com"
+                  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+                  xmlns:ns3="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+                  xmlns:client="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODReq/OracleSFDCItemPRODReq_BPEL"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <plnk:partnerLinkType name="OracleSFDCItemPRODReq_BPEL">
+        <plnk:role name="OracleSFDCItemPRODReq_BPELProvider">
+            <plnk:portType name="client:OracleSFDCItemPRODReq_BPEL"/>
+        </plnk:role>
+        <plnk:role name="OracleSFDCItemPRODReq_BPELRequester">
+            <plnk:portType name="client:OracleSFDCItemPRODReq_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension"
+                 location="RuntimeFault.wsdl"/>
+
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODReq/OracleSFDCItemPRODReq_BPEL"
+                    schemaLocation="../Schemas/OracleSFDCItemPRODReq_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+                        schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="OracleSFDCItemPRODReq_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="OracleSFDCItemPRODReq_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="OracleSFDCItemPRODReq_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:OracleSFDCItemPRODReq_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="OracleSFDCItemPRODReq_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:OracleSFDCItemPRODReq_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

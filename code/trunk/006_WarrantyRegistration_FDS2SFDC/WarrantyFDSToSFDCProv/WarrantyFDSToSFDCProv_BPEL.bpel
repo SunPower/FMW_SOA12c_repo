@@ -1,0 +1,627 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Jul 25 18:48:43 IST 2012
+  Author:  kj38273
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="WarrantyFDSToSFDCProv_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/WarrantyFDSToSFDCProv_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/WarrantyFDSToSFDCProv_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+         xmlns:ns2="urn:partner.soap.sforce.com"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ns7="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ns5="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+         xmlns:ns4="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1"
+         xmlns:ns6="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/UpdateDB"
+         xmlns:ns9="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns10="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+         xmlns:ns11="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/UpdateFDSDB"
+         xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateFDSDB"
+         xmlns:ns14="urn:sobject.partner.soap.sforce.com"
+         xmlns:ns15="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns16="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                <![CDATA[WarrantyFDSToSFDCProv_BPEL.wsdl]]>
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="warrantyfdstosfdcprov_bpel_client"
+                     partnerLinkType="client:WarrantyFDSToSFDCProv_BPEL"
+                     myRole="WarrantyFDSToSFDCProv_BPELProvider"
+                     partnerRole="WarrantyFDSToSFDCProv_BPELRequester"/>
+        <partnerLink name="SFDCLogin" partnerLinkType="ns1:SFDCLogin_BPEL"
+                     partnerRole="SFDCLogin_BPELProvider"/>
+        <partnerLink name="SFDC" partnerLinkType="ns2:SFDC" partnerRole="Soap"/>
+        <partnerLink name="UpdateFDSDB" partnerLinkType="ns12:UpdateFDSDB_plt"
+                     partnerRole="UpdateFDSDB_role"/>
+        <partnerLink name="CommonSFDCErrorLogService"
+                     partnerLinkType="ns15:CommonSFDCErrorLogService"
+                     partnerRole="execute_ptt"/>
+    </partnerLinks>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable"
+                  messageType="client:WarrantyFDSToSFDCProv_BPELRequestMessage"/>
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable"
+                  messageType="client:WarrantyFDSToSFDCProv_BPELResponseMessage"/>
+        <variable name="InvSFDCLogin_IV"
+                  messageType="ns1:SFDCLogin_BPELRequestMessage"/>
+        <variable name="InvSFDCLogin_OV"
+                  messageType="ns1:SFDCLogin_BPELResponseMessage"/>
+        <variable name="partnerReference" element="ns3:EndpointReference"/>
+        <variable name="header" messageType="ns2:Header"/>
+        <variable name="InvSFDCUpsert_IV" messageType="ns2:upsertRequest"/>
+        <variable name="InvSFDCUpsert_OV" messageType="ns2:upsertResponse"/>
+        <variable name="CounterRecords" type="xsd:int"/>
+        <variable messageType="bpelx:RuntimeFaultMessage" name="FaultVar"/>
+        <variable name="InvUPDFDSDB_IV"
+                  messageType="ns12:WarrantyViewFlushCollection_msg"/>
+        <variable name="InvCommonSFDCErrorLogService_IV"
+                  messageType="ns15:requestMessage"/>
+        <variable name="CommErr" messageType="ns15:requestMessage"/>
+        <variable name="SetTitle" type="xsd:string"/>
+    </variables>
+    <faultHandlers>
+        <!--<catch faultName="bpelx:remoteFault" faultVariable="FaultVar">
+            <sequence name="Sequence1">
+                <assign name="AsgnCommonErrorHandler">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNumber")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='"WarrantyFDSToSFDC"'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceName"/>
+                    </copy>
+                    <copy>
+                       <from expression='ora:getPreference("ProcessName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("Severity")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultCode")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultTime"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultSystemName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("CorrectiveAction")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:CorrectiveAction"/>
+                    </copy>
+                </assign>
+                <switch name="Switch2">
+                    <case condition='ora:getPreference("SendEmail")="Y"'>
+                        <invoke name="InvCommonErrorHandler"
+                                inputVariable="InvCommonErrorHandler_IV"
+                                partnerLink="CommonErrorHandler"
+                                portType="ns9:CommonErrorHandler_BPEL"
+                                operation="process" bpelx:invokeAsDetail="no"/>
+                    </case>
+                </switch>
+                <assign name="AsgnCommonErrorHandler">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNumber")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='"WarrantyFDSToSFDC"'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("ProcessName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("Severity")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultCode")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultTime"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultSystemName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("CorrectiveAction")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:CorrectiveAction"/>
+                    </copy>
+                </assign>
+                <assign name="TransErrorLoggingService">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('xsl/TransErrorLoggingService.xsl', $inputVariable.payload, 'InvCommonErrorHandler_IV.payload', $InvCommonErrorHandler_IV.payload)"/>
+                        <to variable="Invcommonloggingservice_IV"
+                            part="payload"/>
+                    </copy>
+                </assign>
+                <invoke name="InvcommonLoggingService"
+                        inputVariable="Invcommonloggingservice_IV"
+                        partnerLink="CommonLoggingService"
+                        portType="ns11:CommonLoggingService_BPEL"
+                        operation="process" bpelx:invokeAsDetail="no"/>
+                <assign name="TransUpdateFDSDB">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('xsl/TransUpdateErrorFDSDB.xsl', $inputVariable.payload)"/>
+                        <to variable="InvUPDFDSDB_IV"
+                            part="WarrantyViewFlushCollection"/>
+                    </copy>
+                </assign>
+                <invoke name="InvUpdateFDSDB" inputVariable="InvUPDFDSDB_IV"
+                        partnerLink="UpdateFDSDB"
+                        portType="ns12:UpdateFDSDB_ptt" operation="update"
+                        bpelx:invokeAsDetail="no"/>
+                <terminate name="Terminate"/>
+            </sequence>
+        </catch>
+        <catch faultName="bpelx:bindingFault" faultVariable="FaultVar">
+            <sequence name="Sequence1">
+                <assign name="AsgnCommonErrorHandler">
+                    <copy>
+                        <from expression='ora:getPreference("ProcessName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNumber")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='"WarrantyFDSToSFDC"'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("Severity")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultCode")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultTime"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultSystemName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("CorrectiveAction")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:CorrectiveAction"/>
+                    </copy>
+                </assign>
+                <switch name="Switch2">
+                    <case condition='ora:getPreference("SendEmail")="Y"'>
+                        <invoke name="InvCommonErrorHandler"
+                                inputVariable="InvCommonErrorHandler_IV"
+                                partnerLink="CommonErrorHandler"
+                                portType="ns9:CommonErrorHandler_BPEL"
+                                operation="process" bpelx:invokeAsDetail="no"/>
+                    </case>
+                </switch>
+                <assign name="AsgnCommonErrorHandler">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNumber")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='"WarrantyFDSToSFDC"'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("ProcessName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("Severity")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultCode")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:Fault/ns10:FaultTime"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultSystemName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("CorrectiveAction")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns10:CommonErrorHandlerInput/ns10:CorrectiveAction"/>
+                    </copy>
+                </assign>
+                <assign name="TransErrorLoggingService">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('xsl/TransErrorLoggingService.xsl', $inputVariable.payload, 'InvCommonErrorHandler_IV.payload', $InvCommonErrorHandler_IV.payload)"/>
+                        <to variable="inputVariable" part="payload"/>
+                    </copy>
+                </assign>
+                <invoke name="InvcommonLoggingService"
+                        inputVariable="Invcommonloggingservice_IV"
+                        partnerLink="CommonLoggingService"
+                        portType="ns11:CommonLoggingService_BPEL"
+                        operation="process" bpelx:invokeAsDetail="no"/>
+                <assign name="TransUpdateFDSDB">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('xsl/TransUpdateErrorFDSDB.xsl', $inputVariable.payload)"/>
+                        <to variable="InvUPDFDSDB_IV"
+                            part="WarrantyViewFlushCollection"/>
+                    </copy>
+                </assign>
+                <invoke name="InvUpdateFDSDB" bpelx:invokeAsDetail="no"
+                        inputVariable="InvUPDFDSDB_IV" partnerLink="UpdateFDSDB"
+                        portType="ns12:UpdateFDSDB_ptt" operation="update"/>
+                <terminate name="Terminate"/>
+            </sequence>
+        </catch> -->
+        <catchAll>
+            <sequence name="Sequence1">
+                <assign name="AsgnCommonErrorHandler">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("ProcessName")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("Severity")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNumber")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultCode")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Fault/ns16:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Fault/ns16:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:Fault/ns16:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("CorrectiveAction")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:CorrectiveAction"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultSystemName")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceName")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("SendEmail")'/>
+                        <to variable="CommErr" part="request"
+                            query="/ns16:CommonSFDCErrorLog/ns16:CommonErrorHandlerInputDetails/ns16:SendEmail"/>
+                    </copy>
+                </assign>
+                <assign name="TransformErrLogParms">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('xsl/TransErrLogParms.xsl', $inputVariable.payload, 'CommErr.request', $CommErr.request)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonSFDCErrorLogService"
+                        inputVariable="InvCommonSFDCErrorLogService_IV"
+                        partnerLink="CommonSFDCErrorLogService"
+                        portType="ns15:execute_ptt" operation="execute"
+                        bpelx:invokeAsDetail="no"/>
+                <assign name="TransUpdateFDSDB">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('xsl/TransUpdateErrorFDSDB.xsl', $inputVariable.payload)"/>
+                        <to variable="InvUPDFDSDB_IV"
+                            part="WarrantyViewFlushCollection"/>
+                    </copy>
+                </assign>
+                <invoke name="InvUpdateFDSDB" bpelx:invokeAsDetail="no"
+                        inputVariable="InvUPDFDSDB_IV" partnerLink="UpdateFDSDB"
+                        portType="ns12:UpdateFDSDB_ptt" operation="update"/>
+                <terminate name="Terminate"/>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in WarrantyFDSToSFDCProv_BPEL.wsdl) -->
+        <receive name="receiveInput"
+                 partnerLink="warrantyfdstosfdcprov_bpel_client"
+                 portType="client:WarrantyFDSToSFDCProv_BPEL"
+                 operation="process" variable="inputVariable"
+                 createInstance="yes"/>
+        <assign name="AssignSetTitle">
+            <copy>
+                <from variable="inputVariable" part="payload"
+                      query="/ns4:ProcessWarrantyFDSToSFDC/ns4:DataArea/ns6:WRFDS2SFDC/ns6:WRFDSToSFDCDetails/ns7:ID"/>
+                <to variable="SetTitle"/>
+            </copy>
+            <copy>
+                <from expression="ora:setCompositeInstanceTitle(concat('FDSIDProv:',bpws:getVariableData('SetTitle')))"/>
+                <to variable="SetTitle"/>
+            </copy>
+        </assign>
+        <invoke name="InvSFDCLogin" inputVariable="InvSFDCLogin_IV"
+                outputVariable="InvSFDCLogin_OV" partnerLink="SFDCLogin"
+                portType="ns1:SFDCLogin_BPEL" operation="process"
+                bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="header"/>
+        <assign name="AssgnSessionHeader">
+            <copy>
+                <from variable="InvSFDCLogin_OV" part="payload"
+                      query="/ns1:SFDCLoginResp/ns1:sessionId"/>
+                <to variable="header" part="SessionHeader"
+                    query="/ns2:SessionHeader/ns2:sessionId"/>
+            </copy>
+        </assign>
+        <assign name="AsgnPartnerReference">
+            <copy>
+                <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+                <to variable="partnerReference"/>
+            </copy>
+            <copy>
+                <from variable="InvSFDCLogin_OV" part="payload"
+                      query="/ns1:SFDCLoginResp/ns1:serverUrl"/>
+                <to variable="partnerReference"
+                    query="/ns3:EndpointReference/ns3:Address"/>
+            </copy>
+            <copy>
+                <from variable="partnerReference"/>
+                <to partnerLink="SFDC"/>
+            </copy>
+        </assign>
+        <assign name="TransInputToUpsertSFDC">
+            <bpelx:annotation>
+                <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+                <from expression="ora:doXSLTransformForDoc('xsl/TransformUpsertFDSParms.xsl', $inputVariable.payload)"/>
+                <to variable="InvSFDCUpsert_IV" part="parameters"/>
+            </copy>
+        </assign>
+        <invoke name="InvSFDCUpsert" partnerLink="SFDC" portType="ns2:Soap"
+                operation="upsert" inputVariable="InvSFDCUpsert_IV"
+                outputVariable="InvSFDCUpsert_OV" bpelx:invokeAsDetail="no"
+                bpelx:inputHeaderVariable="header"/>
+        <assign name="TranSFDCOutputToFDS">
+            <bpelx:annotation>
+                <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+                <from expression="ora:doXSLTransformForDoc('xsl/TranSFDCOutputToFDSDB.xsl', $inputVariable.payload, 'InvSFDCUpsert_OV.parameters', $InvSFDCUpsert_OV.parameters)"/>
+                <to variable="InvUPDFDSDB_IV"
+                    part="WarrantyViewFlushCollection"/>
+            </copy>
+        </assign>
+        <invoke name="InvUPDFDSDB" inputVariable="InvUPDFDSDB_IV"
+                partnerLink="UpdateFDSDB" portType="ns12:UpdateFDSDB_ptt"
+                operation="update" bpelx:invokeAsDetail="no"/>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="callbackClient"
+                partnerLink="warrantyfdstosfdcprov_bpel_client"
+                portType="client:WarrantyFDSToSFDCProv_BPELCallback"
+                operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>

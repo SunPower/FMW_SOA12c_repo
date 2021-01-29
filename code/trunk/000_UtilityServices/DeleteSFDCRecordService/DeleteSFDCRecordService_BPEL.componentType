@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+   <service name="deletesfdcrecordservice_bpel_client" ui:wsdlLocation="DeleteSFDCRecordService_BPEL.wsdl">
+      <interface.wsdl interface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPEL)" callbackInterface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPELCallback)"/>
+   </service>
+   <reference name="SFDCService" ui:wsdlLocation="partnerWrapper.wsdl">
+      <interface.wsdl interface="urn:partner.soap.sforce.com#wsdl.interface(Soap)"/>
+   </reference>
+   <reference name="CommonSFDCErrorLogService" ui:wsdlLocation="CallCommSFDCErrMediatorWrapper.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+   </reference>
+</componentType>

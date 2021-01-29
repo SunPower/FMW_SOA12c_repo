@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="PollOSGFiles" adapter="ftp" wsdlLocation="WSDLs/PollOSGFiles.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/ftp/OSGFtp" UIincludeWildcard="*.csv"/>
+  <endpoint-activation portType="Get_ptt" operation="Get">
+    <activation-spec className="oracle.tip.adapter.ftp.inbound.FTPActivationSpec">
+      <property name="AsAttachment" value="true"/>
+      <property name="DeleteFile" value="false"/>
+      <property name="MinimumAge" value="60"/>
+      <property name="Recursive" value="false"/>
+      <property name="FileModificationTime" value="FileSystem"/>
+      <property name="PollingFrequency" value="120"/>
+      <property name="LogicalDirectory" value="PaymentLoc"/>
+      <property name="FileType" value="binary"/>
+      <property name="IncludeFiles" value=".*\.CSV"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="ModificationTimeFormat" value="4,18,yyyyMMddHHmmSS"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

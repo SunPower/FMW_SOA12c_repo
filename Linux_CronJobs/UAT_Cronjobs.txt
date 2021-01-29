@@ -1,0 +1,111 @@
+## Interface Trigger Jobs
+#### default:
+*/10     *  *  *  *       /soadata/scripts/invokeBPEL/invokeArenaFileExchangeService.sh
+#####00      */4  *  *  *       /soadata/scripts/invokeBPEL/invokeBulkEmailService.sh
+00      */3  *  *  *       /soadata/scripts/invokeBPEL/invokeSFDCLogin.sh
+00       */2 *  *  *       /soadata/scripts/invokeBPEL/invokePingSFDC.sh
+
+#### ebiz:
+#44      *  *  *  *       /soadata/scripts/invokeBPEL/invokeEnqueOracleSFDCNoItemOperatingUnit.sh
+#23      *  *  *  *       /soadata/scripts/invokeBPEL/invokeEnqueOracleSFDCNoItemBillTo.sh
+#####15     23  *  *  *       /soadata/scripts/invokeBPEL/invokeEnqueOrderDetails.sh
+#0  07  *  * Sun          /soadata/scripts/invokeBPEL/invokeVertexDataLoadProcCall.sh
+
+#### edi:
+*/14    *  *  *  *      /soadata/scripts/invokeBPEL/invokeGetEDI214n861.sh
+#####00 3,5,7,9,11,13,15,17,19,21,23  *  *  *      /soadata/scripts/invokeBPEL/invokeGetEDI997.sh
+00,15,30,45     *   *  *  *      /soadata/scripts/invokeBPEL/invokeGetEDI997.sh
+*/30 * * * *      /soadata/scripts/invokeBPEL/invokeGetEDI846.sh
+
+##### hr:
+#####30  08    *  *  *        /soadata/scripts/invokeBPEL/invokeOracleCWTTravelersProfilesRemove.sh
+#####01  08    * * *          /soadata/scripts/invokeBPEL/invokeOracleCWTTravelersProfilesLoadJob.sh
+#####00 7,11,16,19 * * *      /soadata/scripts/invokeBPEL/invokeSyncHRISEmployeeEBSReqABCS.sh
+#####40 09     *  *  *        /soadata/scripts/invokeBPEL/invokeHrfeedtoicims.sh
+#####35 09     *  *  *        /soadata/scripts/invokeBPEL/invokeJobfeedtoicims.sh
+#####30 09     *  *  *        /soadata/scripts/invokeBPEL/invokeDeptfeedtoicims.sh
+#####26 01     *  *  *        /soadata/scripts/invokeBPEL/invokeOrgConnectorOracleToLMS.sh
+#####26 02     *  *  *        /soadata/scripts/invokeBPEL/invokeHRConnectorOracletoLMS.sh
+#####30 03,15     *  *  *        /soadata/scripts/invokeBPEL/invokeUserFeedOracleToTTB.sh
+#####0 18 * * Mon-Fri         /soadata/scripts/invokeBPEL/invokeHRFeedtoBusinesSolver.sh
+
+#### online:
+#*/20  *  *  *  *          /soadata/scripts/invokeBPEL/invokeCreateSalesOrderSFDCReq.sh
+31  10,13,15,17  *  *  *          /soadata/scripts/invokeBPEL/invokeOracleSFDCItemPRODReq.sh
+#####*/15  *  *  *  *          /soadata/scripts/invokeBPEL/invokeSyncOEHeadersSFDC.sh
+#15    *  *  *  *          /soadata/scripts/invokeBPEL/invokeSyncCreditLimitOracleReq.sh
+#20    *  *  *  *          /soadata/scripts/invokeBPEL/invokeSyncCreditHoldOracleReq.sh
+
+###payments:
+#30 16  *  *  *          /soadata/scripts/invokeBPEL/invokePublishARInvoiceOracleToOSG.sh
+#####30 16  *  *  *          /soadata/scripts/invokeBPEL/invokePublishARSupplPaymntReversalsOracleToOSG.sh
+#30 16  *  *  *          /soadata/scripts/invokeBPEL/invokePublishARSupplementPaymentsOracleToOSG.sh
+
+### sfactors_outbound:
+#00    01  *  *  *       /soadata/scripts/invokeBPEL/invokeCostCenterFeedOracle2SF.sh
+#00    01  *  *  *       /soadata/scripts/invokeBPEL/invokeCompanyProjectFeedOracle2SF.sh
+#00    01  *  *  *       /soadata/scripts/invokeBPEL/invokeFPNAEmployeeFeedOracle2SF.sh
+#00    01  *  *  *       /soadata/scripts/invokeBPEL/invokeEmployeeCentralFeedOracle2SF.sh
+#15    01,19  *  *  *       /soadata/scripts/invokeBPEL/invokeOIM_Feeds_2SF.sh
+#00 05 * * *     /soadata/SuccessFactor/inbound/ADP/scripts/SPWR_SF_ADP_TimeOffFeeds.sh
+#00 04 * * *     /soadata/SuccessFactor/inbound/ADP/scripts/SPWR_SF_ADP_US_TimeOffFeeds.sh
+#00 18 * * *     /soadata/SuccessFactor/inbound/ADP/scripts/SPWR_SF_ADP_EmployeeChanges.sh
+#00 05,17 * * *     /soadata/SuccessFactor/inbound/BoomiReports/scripts/SPWR_SF_BoomiReports.sh
+
+####successfactors_inbound:
+#15 */1 * * *    /soadata/SuccessFactor/inbound/EmployeeFeed/Employee_OracleFeed_SF2Oracle.sh
+#10 */1 * * *    /soadata/SuccessFactor/inbound/TressFeed/EmployeeFeedSF2Tress.sh
+#05 */1 * * *    /soadata/SuccessFactor/inbound/TrewIAGFeed/EmployeeFeedSF2TrewIAG.sh
+00  22 * * *    /soadata/SuccessFactor/inbound/JobFeed/JobFeedSF2Oracle.sh
+#00  16 * * *    /soadata/SFTP/hyperion/outgoing/SuccessFactorFeeds/HyperionFeed.sh
+
+#### System:
+#9   01  *  *  *          /soadata/scripts/invokeBPEL/invokeACBGAPriorApprovalsmerge.sh
+#13   01  *  *  *          /soadata/scripts/invokeBPEL/invokeACBGAClaimsmerge.sh
+#04   01  *  *  *          /soadata/scripts/invokeBPEL/invokeACBGAActivitesmerge.sh
+#00   02  *  *  *          /soadata/scripts/invokeBPEL/invokeSunpowerStoreONF.sh
+#26 3,5,7,9,11,13,15,17,19,21,23 * * *  /soadata/scripts/invokeBPEL/invokeOrgConnectorSFDCtoLMS.sh
+#26 0,4,6,8,10,12,14,16,18,20,22 * * *  /soadata/scripts/invokeBPEL/invokeSFDCLMSUsersDataLoadInterface.sh
+#44 0,4,6,8,10,12,14,16,18,20,22 * * *  /soadata/scripts/invokeBPEL/invokeJobConnectorSFDCtoLMS.sh
+
+### finance
+#00   07  *  *  *          /soadata/scripts/invokeBPEL/invokeRevalConnect_FileDownload_Reval2Orcl.sh
+#00   07  *  *  *          /soadata/scripts/invokeBPEL/invokeRevalConnect_FileDownload_Reval2Orcl_BOA.sh
+#####00   18  *  *  *          /soadata/scripts/invokeBPEL/invokeRevalConnect_FileDownload_Reval2Orcl_GLExtact.sh
+#####*/10  *   *  *  *          /soadata/scripts/invokeBPEL/invokeRevalConnect_FileDownload_Reval2Orcl_GLExtact.sh
+
+
+#######################################################################################################################################################
+
+
+#### Interface Adhoc Jobs
+#####*/15  *   * * *   /soadata/Schwab/SchwabEncryption.sh                  ##This encrypt script is retired
+#####00   2   * * *   /soadata/LMS/inbound/EmailOracleSFDC_LMSZipFile.sh    ##This script is retired
+#####44   02   * * *   /soadata/LMS/OracleHRConnector/SendEmail2LMS.sh
+#### Monitoring Jobs
+#0 */01 * * *  /home/soaadmin/opt/scripts/monitor/checkDiskSpace.sh
+#00 */2 * * *  /home/soaadmin/opt/scripts/interfaceAlerts/monitorEDIFileAgeFiles.sh
+####55 00 * * * /home/soaadmin/opt/scripts/Activecomposites.sh
+#0  *   * * *  /home/soaadmin/opt/scripts/interfaceAlerts/monitorArenaFileAgeFiles.sh  >> /home/soaadmin/opt/scripts/interfaceAlerts/tmp/monitorArenaFileAgeFiles.log
+#### Reports
+##### 0 0,2,4,6,9,12,14,16,18,20,22 * * *  /home/soaadmin/opt/scripts/monitor/DailyErrorSoaServer.sh
+###30 * * * * /home/soaadmin/opt/scripts/monitor/JVMMonitor.sh
+##############################################
+
+####Server Logs Purge
+* 5 * * * find /soalog/logs/Server_logs/AdminServer/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/Server_logs/soa_server1/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/Server_logs/osb_server1/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/Server_logs/ess_server1/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/Domain_Logs/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/DiagnosticLogs/AdminServer/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/DiagnosticLogs/soa_server1/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/DiagnosticLogs/osb_server1/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/DiagnosticLogs/ess_server1/*.* -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/Access_Logs/osb_server1/*.*  -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/Access_Logs/soa_server1/*.*  -type f -mtime +10 -exec rm {} \;
+* 5 * * * find /soalog/logs/Access_Logs/AdminServer/*.*  -type f -mtime +10 -exec rm {} \;
+
+###SOA HEALTH MONITOR###########
+*/60 * * * * /home/soaadmin/opt/scripts/monitor/Healthcheck/DS_Monitoring/monitorDS.sh > /home/soaadmin/opt/scripts/monitor/Healthcheck/DS_Monitoring/monitorDS.log
+*/60 * * * * /home/soaadmin/opt/scripts/monitor/Healthcheck/DS_Monitoring/monitorDSsoa.sh > /home/soaadmin/opt/scripts/monitor/Healthcheck/DS_Monitoring/monitorDSsoa.log

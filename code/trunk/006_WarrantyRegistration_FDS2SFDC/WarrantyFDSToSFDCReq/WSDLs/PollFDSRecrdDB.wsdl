@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<?binding.jca PollFDSRecrdDB_db.jca?>
+<wsdl:definitions
+     name="PollFDSRecrdDB"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCReq/PollFDSRecrdDB"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCReq/PollFDSRecrdDB"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollFDSRecrdDB"
+    >
+    <plt:partnerLinkType name="PollFDSRecrdDB_plt">
+        <plt:role name="PollFDSRecrdDB_role">
+            <plt:portType name="tns:PollFDSRecrdDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollFDSRecrdDB"
+                    schemaLocation="../Schemas/PollFDSRecrdDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="WarrantyViewFlushCollection_msg">
+        <wsdl:part name="WarrantyViewFlushCollection" element="top:WarrantyViewFlushCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="PollFDSRecrdDB_ptt">
+        <wsdl:operation name="receive">
+            <wsdl:input message="tns:WarrantyViewFlushCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,47 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="RevalConnect_FileUpload_2Reval"
+     targetNamespace="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns1="http://com.reval.webservices/params"
+    >
+    <plnk:partnerLinkType name="RevalConnect_FileUpload_2Reval">
+        <plnk:role name="RevalConnect_FileUpload_2RevalProvider">
+            <plnk:portType name="client:RevalConnect_FileUpload_2Reval"/>
+        </plnk:role>
+        <plnk:role name="RevalConnect_FileUpload_2RevalRequester">
+            <plnk:portType name="client:RevalConnect_FileUpload_2RevalCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns1="http://com.reval.webservices/params">
+            <import namespace="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"
+                 schemaLocation="../Schemas/RevalConnect_FileUpload_2Reval.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns1="http://com.reval.webservices/params">
+            <xsd:import namespace="http://com.reval.webservices/params" schemaLocation="../Schemas/RevalParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="RevalConnect_FileUpload_2RevalRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="RevalConnect_FileUpload_2RevalResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="RevalConnect_FileUpload_2Reval">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:RevalConnect_FileUpload_2RevalRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="RevalConnect_FileUpload_2RevalCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:RevalConnect_FileUpload_2RevalResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CommonSFDCErrorLog xmlns="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL">
+   <CommonErrorHandlerInputDetails>
+      <InstanceNumber>InstanceNumber121</InstanceNumber>
+      <InterfaceNumber>InterfaceNumber122</InterfaceNumber>
+      <InterfaceName>InterfaceName123</InterfaceName>
+      <ProcessName>ProcessName124</ProcessName>
+      <Severity>Severity125</Severity>
+      <Fault>
+         <FaultCode>FaultCode126</FaultCode>
+         <FaultDescription>FaultDescription127</FaultDescription>
+         <FaultMessage>FaultMessage128</FaultMessage>
+         <FaultTime>FaultTime129</FaultTime>
+      </Fault>
+      <FaultSystemName>FaultSystemName130</FaultSystemName>
+      <bOpenServiceTicket>bOpenServiceTicket131</bOpenServiceTicket>
+      <CorrectiveAction>CorrectiveAction132</CorrectiveAction>
+      <UniqueIdentNum>
+         <UniqueIdentifier>UniqueIdentifier133</UniqueIdentifier>
+      </UniqueIdentNum>
+      <UniqueIdentNum>
+         <UniqueIdentifier>UniqueIdentifier134</UniqueIdentifier>
+      </UniqueIdentNum>
+      <UniqueIdentNum>
+         <UniqueIdentifier>UniqueIdentifier135</UniqueIdentifier>
+      </UniqueIdentNum>
+      <SendEmail>SendEmail136</SendEmail>
+      <status>status137</status>
+      <createddatetime>2012-10-16T17:35:40.832</createddatetime>
+      <Related_Object_ID__c>Related_Object_ID__c138</Related_Object_ID__c>
+      <Router_Host_Name__c>Router_Host_Name__c139</Router_Host_Name__c>
+      <Salesforce_User_ID__c>Salesforce_User_ID__c140</Salesforce_User_ID__c>
+      <SFDCErrObj>SFDCErrObj141</SFDCErrObj>
+   </CommonErrorHandlerInputDetails>
+ 
+</CommonSFDCErrorLog>

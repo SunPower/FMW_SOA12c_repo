@@ -1,0 +1,288 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Sep 09 09:36:19 IST 2015
+  Author:  sn38854
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="JobFeedSF2Oracle" targetNamespace="http://www.sunpowercorp.com/SuccessFactor/JobFeedSF2Oracle/JobFeedSF2Oracle" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/SuccessFactor/JobFeedSF2Oracle/JobFeedSF2Oracle" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SuccessFactor/JobFeedSF2Oracle/PollSFJobFeedFile" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/JobFeedSF2Oracle/InsertJobFeedSF2Oracle" xmlns:ns3="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1" xmlns:ns4="http://www.sunpowercorp.com/PollSFJobFeedFile" xmlns:ns5="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns6="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns7="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceRequester/BulkEmailServiceRequesterBPEL" xmlns:ns8="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        PollSFJobFeedFile.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="PollSFJobFeedFile" partnerLinkType="ns1:Read_plt" myRole="Read_role"/>
+    <partnerLink name="InsertJobFeedSF2Oracle" partnerLinkType="ns2:InsertJobFeedSF2Oracle_plt" partnerRole="InsertJobFeedSF2Oracle_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns5:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="BulkEmailService" partnerLinkType="ns8:BulkEmailServiceProviderBPEL" partnerRole="BulkEmailServiceProviderBPELProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="PoolSFJobFeedFile_IV" messageType="ns1:Read_msg"/>
+    <variable name="Title" type="xsd:string"/>
+    <variable name="InsertJobFeedSF2Oracle_IV" messageType="ns2:XxspwrSfJobFeedCollection_msg"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="initParams" element="ns3:InitParams"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns5:requestMessage"/>
+    <variable name="I" type="xsd:int"/>
+    <variable name="RecordCount" type="xsd:int"/>
+    <variable name="InvInsertJobFeedFiletoEBS_IV" messageType="ns2:XxspwrSfJobFeedCollection_msg"/>
+    <variable name="RecordsFailed" type="xsd:boolean"/>
+    <variable name="InvBulkEmailServiceProvider_IV" messageType="ns8:BulkEmailServiceProviderBPELRequestMessage"/>
+    <variable name="InvWhileCommonSFDCErrorLogService_IV" messageType="ns5:requestMessage"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;ERROR&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:status"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:SendEmail"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:UniqueIdentNum/ns6:UniqueIdentifier"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns5:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in JobFeedSF2Oracle.wsdl) -->
+    <receive name="ReceiveSFJobFeedFile" partnerLink="PollSFJobFeedFile" portType="ns1:Read_ptt" operation="Read" variable="PoolSFJobFeedFile_IV" createInstance="yes" id="BpRcv0">
+      <bpelx:property name="jca.file.FileName" variable="FileName"/>
+    </receive>
+    <assign name="setTitle" id="BpAss1">
+      <copy>
+        <from variable="FileName"/>
+        <to variable="initParams" query="/ns3:InitParams/ns3:FileName"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(bpws:getVariableData('FileName'))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to variable="Title"/>
+      </copy>
+    </assign>
+    <scope name="Scope1" id="BpScp0">
+      <faultHandlers id="BpFhs1">
+        <catchAll id="BpCAl1">
+          <sequence name="Sequence3" id="BpSeq2">
+            <assign name="intialiseAllVariables" id="BpAss2">
+              <copy>
+                <from expression="ora:countNodes('PoolSFJobFeedFile_IV','body','/ns4:SFJobFeed/ns4:JobFeed')"/>
+                <to variable="RecordCount"/>
+              </copy>
+              <copy>
+                <from expression="1"/>
+                <to variable="I"/>
+              </copy>
+            </assign>
+            <while name="While" condition="$I &lt;= $RecordCount" id="BpWhl0">
+              <sequence name="Sequence4" id="BpSeq3">
+                <scope name="Scope2" id="BpScp1">
+                  <faultHandlers id="BpFhs2">
+                    <catchAll id="BpCAl2">
+                      <sequence name="Sequence8" id="BpSeq4">
+                        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss3">
+                          <copy>
+                            <from expression="ora:getCompositeInstanceId()"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InstanceNumber"/>
+                          </copy>
+                          <copy>
+                            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceNumber"/>
+                          </copy>
+                          <copy>
+                            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceName"/>
+                          </copy>
+                          <copy>
+                            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:ProcessName"/>
+                          </copy>
+                          <copy>
+                            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultCode"/>
+                          </copy>
+                          <copy>
+                            <from expression="concat(&quot;&lt;b>JOB_CODE:  &lt;/b> &quot;,bpws:getVariableData('PoolSFJobFeedFile_IV','body','/ns4:SFJobFeed/ns4:JobFeed/ns4:Job_Code'),'  ',&quot;&lt;b>Exception Description:&lt;/b>&quot;, substring(substring-after(ora:getFaultAsString(),&quot;&lt;summary>&quot;),1,2000))"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultDescription"/>
+                          </copy>
+                          <copy>
+                            <from expression="substring(ora:getFaultAsString(),1,2000)"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultMessage"/>
+                          </copy>
+                          <copy>
+                            <from expression="xp20:current-dateTime()"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultTime"/>
+                          </copy>
+                          <copy>
+                            <from expression="ora:getPreference(&quot;SendBatchEmail&quot;)"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:SendEmail"/>
+                          </copy>
+                          <copy>
+                            <from variable="FileName"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:UniqueIdentNum/ns6:UniqueIdentifier"/>
+                          </copy>
+                          <copy>
+                            <from expression="&quot;E&quot;"/>
+                            <to variable="InvWhileCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:status"/>
+                          </copy>
+                        </assign>
+                        <assign name="IncremantValue" id="BpAss4">
+                          <copy>
+                            <from expression="$I+1"/>
+                            <to variable="I"/>
+                          </copy>
+                          <copy>
+                            <from expression="true()"/>
+                            <to variable="RecordsFailed"/>
+                          </copy>
+                        </assign>
+                        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvWhileCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns5:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv1"/>
+                      </sequence>
+                    </catchAll>
+                  </faultHandlers>
+                  <sequence id="BpSeq5">
+                    <assign name="assignInputs" id="BpAss5">
+                      <copy>
+                        <from variable="I"/>
+                        <to variable="initParams" query="/ns3:InitParams/ns3:i"/>
+                      </copy>
+                      <copy>
+                        <from variable="FileName"/>
+                        <to variable="initParams" query="/ns3:InitParams/ns3:FileName"/>
+                      </copy>
+                    </assign>
+                    <assign name="TransJobFeedFiletoEBS" id="BpAss6">
+                      <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                      </bpelx:annotation>
+                      <copy>
+                        <from expression="ora:doXSLTransformForDoc('Transformations/TransFileToEBS.xsl', $PoolSFJobFeedFile_IV.body, 'initParams', $initParams)"/>
+                        <to variable="InvInsertJobFeedFiletoEBS_IV" part="XxspwrSfJobFeedCollection"/>
+                      </copy>
+                    </assign>
+                    <invoke name="InvInsertJobFeedFiletoEBS" inputVariable="InvInsertJobFeedFiletoEBS_IV" partnerLink="InsertJobFeedSF2Oracle" portType="ns2:InsertJobFeedSF2Oracle_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv2"/>
+                    <assign name="IncremantValue" id="BpAss7">
+                      <copy>
+                        <from expression="$I+1"/>
+                        <to variable="I"/>
+                      </copy>
+                    </assign>
+                  </sequence>
+                </scope>
+              </sequence>
+            </while>
+          </sequence>
+        </catchAll>
+      </faultHandlers>
+      <sequence id="BpSeq6">
+        <assign name="TransJobFeedFiletoDB" id="BpAss8">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TransJobFeedFiletoDB.xsl', $PoolSFJobFeedFile_IV.body, 'initParams', $initParams)"/>
+            <to variable="InsertJobFeedSF2Oracle_IV" part="XxspwrSfJobFeedCollection"/>
+          </copy>
+        </assign>
+        <invoke name="InvInsertJobFeedFiletoDB" inputVariable="InsertJobFeedSF2Oracle_IV" partnerLink="InsertJobFeedSF2Oracle" portType="ns2:InsertJobFeedSF2Oracle_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv3"/>
+      </sequence>
+    </scope>
+    <switch name="Switch1" id="BpSwt0">
+      <case condition="bpws:getVariableData('RecordsFailed')">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">RecordsFailed</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence name="Sequence6" id="BpSeq7">
+          <wait name="Wait" for="'PT10S'" id="BpWai0"/>
+          <assign name="asgnInterfaceNo" id="BpAss9">
+            <copy>
+              <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+              <to variable="InvBulkEmailServiceProvider_IV" part="payload" query="/ns8:BulkEmailServiceProviderInput/ns8:interfaceNumber"/>
+            </copy>
+          </assign>
+          <invoke name="InvBulkEmailServiceProvider" inputVariable="InvBulkEmailServiceProvider_IV" partnerLink="BulkEmailService" portType="ns8:BulkEmailServiceProviderBPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv4"/>
+          <terminate name="Terminate" id="BpTer1"/>
+        </sequence>
+      </case>
+    </switch>
+  </sequence>
+</process>

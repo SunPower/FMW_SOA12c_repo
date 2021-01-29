@@ -1,0 +1,34 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="CreateSalesOrderOracleProv"
+     targetNamespace="http://xmlns.oracle.com/OnLineSalesOrder/CreateSalesOrderOracleProv/CreateSalesOrderOracleProv"
+     xmlns:ns2="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOrders/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/OnLineSalesOrder/CreateSalesOrderOracleProv/CreateSalesOrderOracleProv"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="CreateSalesOrderOracleProv">
+        <plnk:role name="CreateSalesOrderOracleProvProvider">
+            <plnk:portType name="client:CreateSalesOrderOracleProv"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOrders/V1"
+                 schemaLocation="../Schemas/CDM/BOD/Nouns/OracleSFDCNoItemOrders/V1/ProcessOracleSFDCNoItemOrders.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+                        schemaLocation="../Schemas/inputparams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CreateSalesOrderOracleProvRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessOracleSFDCNoItemOrdersReq"/>
+    </wsdl:message>
+    <wsdl:portType name="CreateSalesOrderOracleProv">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:CreateSalesOrderOracleProvRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

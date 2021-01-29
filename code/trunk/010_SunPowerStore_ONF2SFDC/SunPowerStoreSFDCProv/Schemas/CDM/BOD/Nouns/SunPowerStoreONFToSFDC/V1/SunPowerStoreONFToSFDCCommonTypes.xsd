@@ -1,0 +1,81 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns="http://www.sunpowercorp.com/Common/SunPowerStoreONFToSFDCDetailsCommonTypes/V1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.sunpowercorp.com/Common/SunPowerStoreONFToSFDCDetailsCommonTypes/V1"
+            xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+            attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+                schemaLocation="../../../../../../Schemas/CDM/Common/V1/CommonDataTypes.xsd"/>
+    <xsd:attribute name="version" type="cdt:String1000"/>
+    <xsd:element name="Count" type="cdt:String1000"/>
+    <xsd:element name="OrderNumber" type="cdt:String1000"/>
+    <xsd:element name="Number" type="cdt:String1000"/>
+    <xsd:element name="Description" type="cdt:String1000"/>
+    <xsd:element name="CreateDate" type="xsd:date"/>
+    <xsd:element name="RequestIdentifier" type="cdt:String1000"/>
+    <xsd:element name="Status" type="cdt:String1000"/>
+    <xsd:element name="PaymentMethod" type="cdt:String1000"/>
+    <xsd:attribute name="type" type="cdt:String1000"/>
+    <xsd:element name="Name" type="cdt:String1000"/>
+    <xsd:attribute name="Name" type="cdt:String1000"/>
+    <xsd:element name="Value" type="cdt:String1000"/>
+    <xsd:attribute name="Value" type="cdt:String1000"/>
+    <xsd:element name="FirstName" type="cdt:String1000"/>
+    <xsd:element name="LastName" type="cdt:String1000"/>
+    <xsd:element name="LoginID" type="cdt:String1000"/>
+    <xsd:element name="Email" type="cdt:String1000"/>
+    <xsd:attribute name="SyncMode" type="cdt:String1000"/>
+    <xsd:attribute name="AllOrNone" type="cdt:String1000"/>
+    <xsd:element name="Address1" type="cdt:String1000"/>
+    <xsd:element name="Address2" type="cdt:String1000"/>
+    <xsd:element name="Address3" type="cdt:String1000"/>
+    <xsd:element name="Address4" type="cdt:String1000"/>
+    <xsd:element name="City" type="cdt:String1000"/>
+    <xsd:element name="State" type="cdt:String1000"/>
+    <xsd:element name="Zip" type="cdt:String1000"/>
+    <xsd:element name="Country" type="cdt:String1000"/>
+    <xsd:element name="PhoneNumber" type="cdt:String1000"/>
+    <xsd:element name="FaxNumber" type="cdt:String1000"/>
+    <xsd:element name="CompanyName" type="cdt:String1000"/>
+    <xsd:element name="CityName" type="cdt:String1000"/>
+    <xsd:element name="CountyName" type="cdt:String1000"/>
+    <xsd:element name="StateName" type="cdt:String1000"/>
+    <xsd:element name="Attn" type="cdt:String1000"/>
+    <xsd:attribute name="Default" type="cdt:String1000"/>
+    <xsd:element name="AuthorizationNumber" type="cdt:String1000"/>
+    <xsd:element name="AuthorizationExpirationDate" type="xsd:date"/>
+    <xsd:element name="ConfirmationNumber" type="cdt:String1000"/>
+    <xsd:element name="CCType" type="cdt:String1000"/>
+    <xsd:element name="URL" type="cdt:String1000"/>
+    <xsd:element name="UserName" type="cdt:String1000"/>
+    <xsd:element name="OrderType" type="cdt:String1000"/>
+    <xsd:element name="ProductName" type="cdt:String1000"/>
+    <xsd:element name="ProductDescription" type="cdt:String1000"/>
+    <xsd:element name="SKUDescription" type="cdt:String1000"/>
+    <xsd:element name="Quantity" type="cdt:String1000"/>
+    <xsd:element name="QuantityShipped" type="cdt:String1000"/>
+    <xsd:element name="Date" type="xsd:date"/>
+    <xsd:element name="DateShipped" type="xsd:date"/>
+    <xsd:element name="Method" type="cdt:String1000"/>
+    <xsd:element name="Instructions" type="cdt:String1000"/>
+    <xsd:element name="TrackingNumber" type="cdt:String1000"/>
+    <xsd:element name="ClientPONumber" type="cdt:String1000"/>
+    <xsd:element name="ProductType" type="cdt:String1000"/>
+    <xsd:element name="DownloadURL" type="cdt:String1000"/>
+    <xsd:element name="PageCount" type="cdt:String1000"/>
+    <xsd:element name="CatalogTreeNodeExternalId" type="cdt:String1000"/>
+    <xsd:element name="FeeType" type="cdt:String1000"/>
+    <xsd:element name="QtyPerUnit" type="cdt:String1000"/>
+    <xsd:element name="Unit" type="cdt:String1000"/>
+    <xsd:element name="Warehouse" type="cdt:String1000"/>
+    <xsd:element name="Location" type="cdt:String1000"/>
+    <xsd:element name="MinInvQuantity" type="cdt:String1000"/>
+    <xsd:element name="MinOrderQuantity" type="cdt:String1000"/>
+    <xsd:element name="QtyOnHand" type="cdt:String1000"/>
+    <xsd:element name="QtyForSale" type="cdt:String1000"/>
+    <xsd:attribute name="Currency" type="cdt:String1000"/>
+    <xsd:element name="ReorderApproval" type="cdt:String1000"/>
+    <xsd:element name="SpecialInstruction" type="cdt:String1000"/>
+    <xsd:element name="SupplierName" type="cdt:String1000"/>
+    <xsd:element name="Token" type="cdt:String1000"/>
+</xsd:schema>

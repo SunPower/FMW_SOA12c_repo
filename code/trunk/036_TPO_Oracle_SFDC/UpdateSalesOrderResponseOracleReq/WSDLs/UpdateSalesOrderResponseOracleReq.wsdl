@@ -1,0 +1,41 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="UpdateSalesOrderResponseOracleReq"
+     targetNamespace="http://xmlns.oracle.com/OnLineSalesOrder/UpdateSalesOrderResponseOracleReq/UpdateSalesOrderResponseOracleReq"
+     xmlns:ns1="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/OnLineSalesOrder/UpdateSalesOrderResponseOracleReq/UpdateSalesOrderResponseOracleReq"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="UpdateSalesOrderResponseOracleReq">
+        <plnk:role name="UpdateSalesOrderResponseOracleReqProvider">
+            <plnk:portType name="client:UpdateSalesOrderResponseOracleReq"/>
+        </plnk:role>
+        <plnk:role name="UpdateSalesOrderResponseOracleReqRequester">
+            <plnk:portType name="client:UpdateSalesOrderResponseOracleReqCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/OnLineSalesOrder/UpdateSalesOrderResponseOracleReq/UpdateSalesOrderResponseOracleReq"
+                 schemaLocation="../Schemas/UpdateSalesOrderResponseOracleReq.xsd"/>
+        </schema>
+       
+    </wsdl:types>
+    <wsdl:message name="UpdateSalesOrderResponseOracleReqRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateSalesOrderResponseOracleReqResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateSalesOrderResponseOracleReq">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:UpdateSalesOrderResponseOracleReqRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="UpdateSalesOrderResponseOracleReqCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:UpdateSalesOrderResponseOracleReqResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

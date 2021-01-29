@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectInterfaceIDsfromDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/selectInterfaceIDsfromDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="selectInterfaceIDsfromDBInput" type="selectInterfaceIDsfromDBInput"/>
+   <xs:complexType name="selectInterfaceIDsfromDBInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="selectInterfaceIDsfromDBOutputCollection" type="selectInterfaceIDsfromDBOutputCollection"/>
+   <xs:complexType name="selectInterfaceIDsfromDBOutputCollection">
+      <xs:sequence>
+         <xs:element name="selectInterfaceIDsfromDBOutput" type="selectInterfaceIDsfromDBOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="selectInterfaceIDsfromDBOutput">
+      <xs:sequence>
+         <xs:element name="INTERFACENUMBER" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

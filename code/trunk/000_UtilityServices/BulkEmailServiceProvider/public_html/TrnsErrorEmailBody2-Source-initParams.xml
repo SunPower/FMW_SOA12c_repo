@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<InitParams xmlns="http://www.sunpowercorp.com/SunPowerDevelopment/BulkEmailServiceProvider/initParams/xsd/v1">
+   <startIndex>1</startIndex>
+   <endIndex>3</endIndex>
+   <interfaceNo>interfaceNo99</interfaceNo>
+</InitParams>

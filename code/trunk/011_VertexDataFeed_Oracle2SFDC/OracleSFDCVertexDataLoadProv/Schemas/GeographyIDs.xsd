@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/GeographyIDs/xsd/v1"
+            targetNamespace="http://www.sunpowercorp.com/GeographyIDs/xsd/v1"
+            elementFormDefault="qualified">
+  <xsd:element name="GeographyIDs" type="GeographyIDsType"/>    
+    <xsd:complexType name="GeographyIDsType">
+      <xsd:sequence>
+        <xsd:element name="GeographyID" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

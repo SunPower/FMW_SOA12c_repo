@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oper="http://xmlns.oracle.com/servicebus/pipeline/operations">
+    <con:coreEntry>
+        <con:binding type="Mixed" xsi:type="con:MixedBindingType">
+            <con:request type="XML">
+                <con5:schema ref="CommonErrorHandler/XSD/CommonErrorHandler" element="CommonErrorHandlerInput" xmlns:con5="http://www.bea.com/wli/sb/typesystem/config" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config" xmlns:env="http://www.bea.com/wli/config/env" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con6="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+            </con:request>
+        </con:binding>
+        <oper:operations>
+            <oper:monitoring enabled="false" aggregationInterval="10" level="pipeline"/>
+            <oper:tracingEnabled>false</oper:tracingEnabled>
+            <oper:reporting>true</oper:reporting>
+            <oper:logging enabled="true" level="debug"/>
+            <oper:sla-alerting enabled="true" level="normal"/>
+            <oper:pipeline-alerting enabled="true" level="normal"/>
+        </oper:operations>
+    </con:coreEntry>
+    <con1:router errorHandler="_onErrorHandler-7820831869171059993-e95cbe3.14811f6825e.-7fec" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con6="http://www.bea.com/wli/sb/stages/logging/config">
+        <con1:pipeline type="request" name="PipelinePairNode1_request">
+            <con1:stage name="MapInput">
+                <con1:context/>
+                <con1:actions>
+                    <con4:assign varName="ErrorHandInput">
+                        <con2:id>_ActionId-5873909675745795988-50a2f757.1477c830337.-7e44</con2:id>
+                        <con4:expr>
+                            <con2:xqueryText>$body</con2:xqueryText>
+                        </con4:expr>
+                    </con4:assign>
+                </con1:actions>
+            </con1:stage>
+            <con1:stage name="ProRecToOSBErrorLogTab">
+                <con1:context>
+                    <con2:varNsDecl namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" prefix="v1"/>
+                </con1:context>
+                <con1:actions>
+                    <con5:route>
+                        <con2:id>_ActionId-5873909675745795988-50a2f757.1477c830337.-7ee8</con2:id>
+                        <con5:service ref="CommonErrorHandler/ProxyService/ProcessOSBErrorLogs_PS" xsi:type="con1:PipelineRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con5:operation>insert</con5:operation>
+                        <con5:outboundTransform>
+                            <con4:replace varName="body" contents-only="true">
+                                <con2:id>_ActionId-5873909675745795988-50a2f757.1477c830337.-7eb3</con2:id>
+                                <con4:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con4:location>
+                                <con4:expr>
+                                    <con2:xqueryTransform>
+                                        <con2:resource ref="CommonErrorHandler/XQuery/OSBErrorLogTable_XQ"/>
+                                        <con2:param name="commonErrorHandlerInput1">
+                                            <con2:path>$body/v1:CommonErrorHandlerInput</con2:path>
+                                        </con2:param>
+                                    </con2:xqueryTransform>
+                                </con4:expr>
+                            </con4:replace>
+                            <con4:routing-options>
+                                <con2:id>_ActionId-4305464916738424281-aab892b.147825bc1f6.-7c4b</con2:id>
+                                <con4:qualityOfService>exactly-once</con4:qualityOfService>
+                            </con4:routing-options>
+                        </con5:outboundTransform>
+                    </con5:route>
+                </con1:actions>
+            </con1:stage>
+        </con1:pipeline>
+        <con1:pipeline type="response" name="PipelinePairNode1_response"/>
+        <con1:pipeline type="error" name="_onErrorHandler-7820831869171059993-e95cbe3.14811f6825e.-7fec">
+            <con1:stage name="ExceptionOccured">
+                <con1:context>
+                    <con2:varNsDecl namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" prefix="v1"/>
+                </con1:context>
+                <con1:actions>
+                    <con6:log>
+                        <con2:id>_ActionId-7820831869171059993-e95cbe3.14811f6825e.-7fd4</con2:id>
+                        <con6:logLevel>debug</con6:logLevel>
+                        <con6:expr>
+                            <con2:xqueryText>fn:concat("&lt;&lt;&lt;Exception raise in CommonErrorHandlerPS while processing with instance number: ",$body/v1:CommonErrorHandlerInput/v1:InstanceNumber,">>>>>>>>")</con2:xqueryText>
+                        </con6:expr>
+                    </con6:log>
+                </con1:actions>
+            </con1:stage>
+        </con1:pipeline>
+        <con1:flow>
+            <con1:pipeline-node name="PipelinePairNode1">
+                <con1:request>PipelinePairNode1_request</con1:request>
+                <con1:response>PipelinePairNode1_response</con1:response>
+            </con1:pipeline-node>
+            <con1:route-node name="SendEmailNotification">
+                <con1:context>
+                    <con2:varNsDecl namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" prefix="v1"/>
+                </con1:context>
+                <con1:actions>
+                    <con3:route>
+                        <con2:id>_ActionId-5189506218227940842--347b73f6.1473fe0db89.-7fbc</con2:id>
+                        <con3:service ref="CommonErrorHandler/BusinessService/MailService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:outboundTransform>
+                            <con4:transport-headers copy-all="false">
+                                <con2:id>_ActionId-5189506218227940842--347b73f6.1473fe0db89.-7ef4</con2:id>
+                                <con4:header-set>outbound-request</con4:header-set>
+                                <con4:header value="expression" name="Subject">
+                                    <con2:xqueryText>fn:concat("Exception raised while processing ",$body/v1:CommonErrorHandlerInput/v1:InterfaceName)</con2:xqueryText>
+                                </con4:header>
+                                <con4:header value="expression" name="To">
+                                    <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                                        <con:resource ref="CommonErrorHandler/XQuery/DVM_Latest"/>
+                                        <con:param name="Value">
+                                            <con:path>xs:string($body/v1:CommonErrorHandlerInput/v1:InterfaceNumber)</con:path>
+                                        </con:param>
+                                        <con:param name="default">
+                                            <con:path>"soasupport@sunpowercorp.com"</con:path>
+                                        </con:param>
+                                    </con:xqueryTransform>
+                                </con4:header>
+                                <con4:header value="expression" name="Content-Type">
+                                    <con2:xqueryText>"text/html"</con2:xqueryText>
+                                </con4:header>
+                            </con4:transport-headers>
+                            <con4:assign varName="emailBody">
+                                <con2:id>_ActionId-5189506218227940842--347b73f6.1473fe0db89.-7e91</con2:id>
+                                <con4:expr>
+                                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[fn:concat("Dear Admin",xs:string("<br><br>The following error occurred For service <b>"),$ErrorHandInput/v1:CommonErrorHandlerInput/v1:InterfaceName,xs:string("</b> in the OSB Proxy Component<b> "), $ErrorHandInput/v1:CommonErrorHandlerInput/v1:ComponentName,xs:string(" </b> with instance Id <b>"),$ErrorHandInput/v1:CommonErrorHandlerInput/v1:InstanceNumber,xs:string("</b><br><br><b>Fault Details:</b> <br>Fault Code: "),$ErrorHandInput/v1:CommonErrorHandlerInput/v1:Fault/v1:FaultCode,xs:string("<br>Fault Message: "),$ErrorHandInput/v1:CommonErrorHandlerInput/v1:Fault/v1:FaultMessage,xs:string("<br>Fault Description: "),$ErrorHandInput/v1:CommonErrorHandlerInput/v1:Fault/v1:FaultDescription,xs:string("<br>Unique Identifier: "),$ErrorHandInput/v1:CommonErrorHandlerInput/v1:UniqueIdentifier,xs:string("<br>Corrective Action: "),$ErrorHandInput/v1:CommonErrorHandlerInput/v1:CorrectiveAction)]]></con:xqueryText>
+                                </con4:expr>
+                            </con4:assign>
+                            <con4:assign varName="emailBody">
+                                <con2:id>_ActionId-5189506218227940842--347b73f6.1473fe0db89.-7e6b</con2:id>
+                                <con4:expr>
+                                    <con2:xqueryText><![CDATA[concat($emailBody,xs:string('<br><br><i>Note: This message was automatically generated, please do not reply to it</i> <br><b>Regards</b><br>System Admin'))]]></con2:xqueryText>
+                                </con4:expr>
+                            </con4:assign>
+                            <con4:replace varName="body" contents-only="true">
+                                <con2:id>_ActionId-5189506218227940842--347b73f6.1473fe0db89.-7ec4</con2:id>
+                                <con4:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con4:location>
+                                <con4:expr>
+                                    <con2:xqueryText>$emailBody</con2:xqueryText>
+                                </con4:expr>
+                            </con4:replace>
+                        </con3:outboundTransform>
+                        <con3:responseTransform/>
+                    </con3:route>
+                </con1:actions>
+            </con1:route-node>
+        </con1:flow>
+    </con1:router>
+</con:pipelineEntry>

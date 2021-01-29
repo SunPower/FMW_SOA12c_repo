@@ -1,0 +1,34 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="CreateUpdateCustomerOracleProv"
+     targetNamespace="http://xmlns.oracle.com/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateCustomerOracleProv"
+     xmlns:ns2="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateCustomerOracleProv"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="CreateUpdateCustomerOracleProv">
+        <plnk:role name="CreateUpdateCustomerOracleProvProvider">
+            <plnk:portType name="client:CreateUpdateCustomerOracleProv"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1"
+                    schemaLocation="../Schemas/CDM/BOD/Nouns/SyncAccCustomers/V1/ProcessSFDCSyncCustomers.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+                        schemaLocation="../Schemas/inputparams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CreateUpdateCustomerOracleProvRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessSFDCSyncCust"/>
+    </wsdl:message>
+    <wsdl:portType name="CreateUpdateCustomerOracleProv">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:CreateUpdateCustomerOracleProvRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

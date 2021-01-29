@@ -1,0 +1,11 @@
+<adapter-config name="UpdateOracleApps" adapter="db" wsdlLocation="../WSDLs/UpdateOracleApps.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="DEV_EBS" location="eis/DB/EBS_FUSION"/>
+  <endpoint-interaction portType="UpdateOracleApps_ptt" operation="UpdateOracleApps">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="update apps.ra_customer_trx_all ract set ract.attribute8=#Attribute8 where ract.org_id=(select organization_id from  apps.hr_operating_units hou where hou.name=#operating_units_name) and ract.trx_number=#trx_number and trunc(trx_date)=trunc(to_date(#trx_date,'YYYY-MM-DD')) and exists(select 1 from  apps.hz_cust_accounts_all hzc, apps.hz_parties hzp where hzc.cust_account_id= ract.bill_to_customer_id and hzc.party_id=hzp.party_id and hzp.party_name=#party_name )"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

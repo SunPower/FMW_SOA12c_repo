@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectSFDCLoginDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectSFDCLoginDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SfdcLoginDetailsCollection" type="SfdcLoginDetailsCollection"/>
+   <xs:complexType name="SfdcLoginDetailsCollection">
+      <xs:sequence>
+         <xs:element name="SfdcLoginDetails" type="SfdcLoginDetails" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SfdcLoginDetails">
+      <xs:sequence>
+         <xs:element name="serverurl" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="1000"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="sessionid" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="1000"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="userid" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="username" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="no" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="status" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="createtimestamp" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="exptimestamp" type="xs:dateTime" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectSFDCLoginDBSelectInputParameters" type="SelectSFDCLoginDBSelect"/>
+   <xs:complexType name="SelectSFDCLoginDBSelect">
+      <xs:sequence/>
+   </xs:complexType>
+</xs:schema>

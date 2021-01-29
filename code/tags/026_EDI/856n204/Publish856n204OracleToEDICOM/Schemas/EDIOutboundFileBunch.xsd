@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+            targetNamespace="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+            elementFormDefault="qualified">
+  <xsd:element name="EDIOutboundFileBunch">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="OrderDetails" type="OrderDetailsType"
+                     maxOccurs="unbounded" minOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="OrderDetailsType">
+    <xsd:sequence>
+      <xsd:element name="OrderLines" type="OrderLinesType" minOccurs="1"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderLinesType">
+    <xsd:sequence>
+      <xsd:element name="DELIVERY_NUMBER" type="xsd:int"/>
+      
+      <xsd:element name="PACKING_SLIP" type="xsd:string"/>
+      <xsd:element name="Ship_Address1" type="xsd:string"/>
+      <xsd:element name="Ship_Address2" type="xsd:string"/>
+      <xsd:element name="Ship_Address3" type="xsd:string"/>
+      <xsd:element name="Ship_City" type="xsd:string"/>
+      <xsd:element name="Ship_Region" type="xsd:string"/>
+      <xsd:element name="Ship_PostalCode" type="xsd:string"/>
+      <xsd:element name="Ship_from_Country" type="xsd:string"/>
+      <xsd:element name="Ship_To_Customer_Name" type="xsd:string"/>
+      <xsd:element name="Ship_to_Address1" type="xsd:int"/>
+      <xsd:element name="Ship_to_Address2" type="xsd:string"/>
+      <xsd:element name="Ship_to_Address3" type="xsd:string"/>
+      <xsd:element name="Ship_to_City" type="xsd:string"/>
+      <xsd:element name="Ship_to_Region" type="xsd:string"/>
+      <xsd:element name="Ship_to_Postal_Code" type="xsd:string"/>
+      <xsd:element name="Ship_to_Country" type="xsd:string"/>
+      <xsd:element name="Expected_Delivery_Date" type="xsd:string"/>
+      <xsd:element name="WAREHOUSE_CODE" type="xsd:string"/>
+      <xsd:element name="Carrier_Code" type="xsd:int"/>
+      <xsd:element name="Ship_Method_Code" type="xsd:string"/>
+      <xsd:element name="Waybill" type="xsd:string"/>
+      <xsd:element name="Feight_Method_Code" type="xsd:string"/>
+      <xsd:element name="Shipping_Instructions" type="xsd:string"/>
+      <xsd:element name="Item" type="xsd:string"/>
+      <xsd:element name="Item_Description" type="xsd:string"/>
+      <xsd:element name="Shipped_Qty" type="xsd:string"/>
+      <xsd:element name="UOM" type="xsd:int"/>
+      <xsd:element name="Shipment_Date" type="xsd:string"/>
+      <xsd:element name="Shipping_WhereHouse" type="xsd:string"/>
+      <xsd:element name="Project_ID" type="xsd:int"/>
+      <xsd:element name="Project_Name" type="xsd:string"/>
+      <xsd:element name="Business_Group" type="xsd:int"/>
+      <xsd:element name="Ship_From_Address_ID" type="xsd:string"/>
+      <xsd:element name="Ship_To_Address_ID" type="xsd:decimal"/>
+      <xsd:element name="Subinv" type="xsd:int"/>
+      <xsd:element name="From_Locator" type="xsd:string"/>
+      <xsd:element name="Serial_Number" type="xsd:string"/>
+      <xsd:element name="SO" type="xsd:string"/>
+      <xsd:element name="Line" type="xsd:string"/>
+      <xsd:element name="Customer_PO" type="xsd:string"/>
+      <xsd:element name="Req_Qty" type="xsd:string"/>
+      <xsd:element name="Packing_Instructions" type="xsd:string"/>
+      <xsd:element name="BillToAddressID" type="xsd:int"/>
+      <xsd:element name="BillToAddress1" type="xsd:string"/>
+      <xsd:element name="BillToAddress2" type="xsd:string"/>
+      <xsd:element name="BillToAddress3" type="xsd:string"/>
+      <xsd:element name="BillToAddress4" type="xsd:string"/>
+      <xsd:element name="BillToCity" type="xsd:int"/>
+      <xsd:element name="BillToRegion" type="xsd:string"/>
+      <xsd:element name="BillToPostalcode" type="xsd:string"/>
+      <xsd:element name="BillToCountry" type="xsd:int"/>
+      <xsd:element name="VAT" type="xsd:int"/>
+      <xsd:element name="OrderType" type="xsd:int"/>
+      <xsd:element name="ShipmentPriority" type="xsd:string"/>
+      <xsd:element name="ShipToContactName" type="xsd:string"/>
+      <xsd:element name="ShipToContactPhone" type="xsd:int"/>
+      <xsd:element name="HeaderAttachments" type="xsd:string"/>
+      <xsd:element name="ParentItemNumber" type="xsd:string"/>
+      <xsd:element name="BOMQty" type="xsd:string"/>
+      <xsd:element name="ShipFromLocation" type="xsd:string" nillable="true"/>
+      <xsd:element name="PortOfLoading" type="xsd:string" nillable="true"/>
+      <xsd:element name="Tax_Name" type="xsd:string" nillable="true"/>
+      <xsd:element name="PortOfDischarge" type="xsd:string" nillable="true"/>
+      <xsd:element name="Etd" type="xsd:string" nillable="true"/>
+      <xsd:element name="Unit_Price" type="xsd:string" nillable="true"/>
+      <xsd:element name="Total_Amount" type="xsd:string" nillable="true"/>
+      <xsd:element name="Pallet" type="xsd:string" nillable="true"/>
+      <xsd:element name="Container" type="xsd:string" nillable="true"/>
+      <xsd:element name="Seal_Code" type="xsd:string" nillable="true"/>
+      <xsd:element name="Eta_Site" type="xsd:string" nillable="true"/>
+      <xsd:element name="Internal_Request_Number" type="xsd:string"
+                   nillable="true"/>
+      <xsd:element name="Src_Proj_Num" type="xsd:string" nillable="true"/>
+      <xsd:element name="Src_Proj_Name" type="xsd:string" nillable="true"/>
+      <xsd:element name="Bill_To_Location_ID" type="xsd:string"
+                   nillable="true"/>
+      <xsd:element name="To_Locator" type="xsd:string" nillable="true"/>
+      <xsd:element name="Destination_Subinventory" type="xsd:string"
+                   nillable="true"/>
+      <xsd:element name="SIGNAL_TYPE" type="xsd:string"/>
+      <xsd:element name="REGION" type="xsd:string"/>
+      <xsd:element name="COMM_SYSDATE" type="xsd:string"/>
+      <xsd:element name="Group_ID" type="xsd:string"/>
+      
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

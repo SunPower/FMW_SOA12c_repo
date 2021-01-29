@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="selectRecordsFromDB" adapter="db" wsdlLocation="WSDLs/selectRecordsFromDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOACustom" UIConnectionName="SOA_CUSTOM" adapterRef=""/>
+  <endpoint-interaction portType="selectRecordsFromDB_ptt" operation="selectRecordsFromDB">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select FAULTMESSAGE,FAULTCODE,FAULTTIME,FAULTDESCRIPTION,CORRECTIVEACTION,INTERFACENUMBER,INTERFACENAME,INSTANCENUMBER,PROCESSNAME,UNIQUE_IDENTIFIER,EMAIL_SENT from  middleware_error_log where interfacenumber=#interfacenumber and email_sent=#email_sent order by createddatetime desc"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

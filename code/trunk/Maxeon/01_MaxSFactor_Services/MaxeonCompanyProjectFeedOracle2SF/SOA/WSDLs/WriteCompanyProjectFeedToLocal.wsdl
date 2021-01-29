@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="WriteCompanyProjectFeedToLocal" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/SuccessFactor/CompanyProjectFeedOracle2SF/WriteCompanyProjectFeedToLocal" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:FILEAPP="http://xmlns.oracle.com/pcbpel/adapter/file/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/SuccessFactor/CompanyProjectFeedOracle2SF/WriteCompanyProjectFeedToLocal" xmlns:imp1="http://www.sunpowercorp.com/WriteCompanyProjectFeedToLocal" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <plt:partnerLinkType name="Write_plt">
+      <plt:role name="Write_role">
+         <plt:portType name="tns:Write_ptt"/>
+      </plt:role>
+   </plt:partnerLinkType>
+   <wsdl:types>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/SuccessFactor/CompanyProjectFeedOracle2SF/WriteCompanyProjectFeedToLocal" xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.sunpowercorp.com/WriteCompanyProjectFeedToLocal" schemaLocation="../Schemas/CompanyProjectFeedFlatFile.xsd"/>
+      </schema>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified">
+         <element name="OutboundFileHeaderType">
+            <complexType>
+               <sequence>
+                  <element name="fileName" type="string"/>
+                  <element name="directory" type="string"/>
+               </sequence>
+            </complexType>
+         </element>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="Write_msg">
+      <wsdl:part name="body" element="imp1:ProjectFeed"/>
+   </wsdl:message>
+   <wsdl:message name="Output_msg">
+      <wsdl:part name="body" element="FILEAPP:OutboundFileHeaderType"/>
+   </wsdl:message>
+   <wsdl:portType name="Write_ptt">
+      <wsdl:operation name="Write">
+         <wsdl:input message="tns:Write_msg"/>
+         <wsdl:output message="tns:Output_msg"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

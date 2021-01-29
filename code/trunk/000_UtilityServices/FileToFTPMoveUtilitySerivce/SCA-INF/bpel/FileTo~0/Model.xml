@@ -1,0 +1,339 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri May 24 11:59:02 IST 2013
+  Author:  Hanshu
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="FileToFTPMoveUtilitySerivce_BPEL" targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SOAUtilityServices/FileToFTPMoveUtilitySerivce/ReadLocalFile" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/ftp/SOAUtilityServices/FileToFTPMoveUtilitySerivce/writeFTPFiles" xmlns:ns3="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns4="http://www.sunpowercorp.com/SOAUtilityServices/FileToFTPMoveUtilityService/xsd/v1" xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns6="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/ftp/SOAUtilityServices/FileToFTPMoveUtilitySerivce/moveFilesToRemote" id="BpPrc0">
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        FileToFTPMoveUtilitySerivce_BPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="filetoftpmoveutilityserivce_bpel_client" partnerLinkType="client:FileToFTPMoveUtilitySerivce_BPEL" myRole="FileToFTPMoveUtilitySerivce_BPELProvider"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns3:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="moveFilesToRemote" partnerLinkType="ns7:FTPMove_plt" partnerRole="SynchRead_role"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:FileToFTPMoveUtilitySerivce_BPELRequestMessage"/>
+    <variable name="sourceFileName" type="xsd:string"/>
+    <variable name="sourceFileDir" type="xsd:string"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="dynamicFTPJndi" type="xsd:string"/>
+    <variable name="targetFileName" type="xsd:string"/>
+    <variable name="targetFileDir" type="xsd:string"/>
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:FileToFTPMoveUtilitySerivce_BPELResponseMessage"/>
+  
+    <variable messageType="bpelx:RuntimeFaultMessage" name="FaultVar"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns3:requestMessage"/>
+    <variable name="InvMoveFilesToRemote_IV" messageType="ns7:Empty_msg"/>
+    <variable name="InvMoveFilesToRemote_OV" messageType="ns7:FTPMove_msg"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catch faultVariable="FaultVar" faultName="client:InvalidConfig" id="BpCFt0">
+      <sequence name="SeqInvalidConfig" id="BpSeq0">
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="&quot;FileToFTPMoveUtilityService&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;FileToFTPMoveUtilityService&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultTime"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="summary"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultDescription"/>
+          </copy>
+          <copy>
+            <from variable="FaultVar" part="detail"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultMessage"/>
+          </copy>
+          <copy>
+            <from variable="sourceFileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:UniqueIdentNum"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns3:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <assign name="asgnError" id="BpAss1">
+          <copy>
+            <from expression="&quot;Error&quot;"/>
+            <to variable="outputVariable" part="payload" query="/ns4:output/ns4:Status"/>
+          </copy>
+        </assign>
+        <reply name="ReplyError" variable="outputVariable" partnerLink="filetoftpmoveutilityserivce_bpel_client" portType="client:FileToFTPMoveUtilitySerivce_BPEL" operation="process" id="BpRpl0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catch>
+    <catchAll id="BpCAl0">
+      <sequence name="SeqCatchALL" id="BpSeq1">
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss2">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="&quot;FileToFTPMoveUtilityService&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;FileToFTPMoveUtilityService&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultMessage"/>
+          </copy>
+          <copy>
+            <from variable="sourceFileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:UniqueIdentNum"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns3:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv1"/>
+        <assign name="asgnError" id="BpAss3">
+          <copy>
+            <from expression="&quot;Error&quot;"/>
+            <to variable="outputVariable" part="payload" query="/ns4:output/ns4:Status"/>
+          </copy>
+        </assign>
+        <reply name="ReplyError" variable="outputVariable" partnerLink="filetoftpmoveutilityserivce_bpel_client" portType="client:FileToFTPMoveUtilitySerivce_BPEL" operation="process" id="BpRpl1"/>
+        <terminate name="Terminate" id="BpTer1"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq2">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in FileToFTPMoveUtilitySerivce_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="filetoftpmoveutilityserivce_bpel_client" portType="client:FileToFTPMoveUtilitySerivce_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="SetTitle" id="BpAss4">
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns4:input/ns4:SourceFileName"/>
+        <to variable="sourceFileName"/>
+      </copy>
+      <copy>
+        <from expression="ora:setCompositeInstanceTitle(concat(&quot;FileName: &quot;,$sourceFileName))"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <assign name="asgnDynamicConfig" id="BpAss5">
+      <copy>
+        <from expression="dvm:lookupValue('DynamicFTPConfig.dvm','FileToken',bpws:getVariableData('inputVariable','payload','/ns4:input/ns4:FileToken'),'DynamicJNDI','ERROR')" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to variable="dynamicFTPJndi"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns4:input/ns4:SourceDirectory"/>
+        <to variable="sourceFileDir"/>
+      </copy>
+      <copy>
+        <from expression="dvm:lookupValue(&quot;DynamicFTPConfig.dvm&quot;,&quot;FileToken&quot;,bpws:getVariableData('inputVariable','payload','/ns4:input/ns4:FileToken'),&quot;RemoteDir&quot;,&quot;ERROR&quot;)"/>
+        <to variable="targetFileDir"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns4:input/ns4:TargetFileName"/>
+        <to variable="targetFileName"/>
+      </copy>
+    </assign>
+    <switch name="Switch1" id="BpSwt0">
+      <case condition="$dynamicFTPJndi != &quot;ERROR&quot; and $targetFileDir !=&quot;ERROR&quot;">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">valid JNDI and DIR</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence id="BpSeq3">
+          <switch name="Switch2" id="BpSwt1">
+            <case condition="bpws:getVariableData('inputVariable','payload','/ns4:input/ns4:Action')='COPY'">
+              <bpelx:annotation>
+                <bpelx:general>
+                  <bpelx:property name="userLabel">COPY</bpelx:property>
+                </bpelx:general>
+              </bpelx:annotation>
+             <sequence id="BpSeq4">
+          <invoke name="InvMoveFilesToRemote" inputVariable="InvMoveFilesToRemote_IV" outputVariable="InvMoveFilesToRemote_OV" partnerLink="moveFilesToRemote" portType="ns7:FTPMove_ptt" operation="FTPCopy" bpelx:invokeAsDetail="no" id="BpInv2">
+            <bpelx:inputProperty name="jca.file.SourceDirectory" variable="sourceFileDir"/>
+            <bpelx:inputProperty name="jca.file.SourceFileName" variable="sourceFileName"/>
+            <bpelx:inputProperty name="jca.file.TargetDirectory" variable="targetFileDir"/>
+            <bpelx:inputProperty name="jca.file.TargetFileName" variable="targetFileName"/>
+                  <bpelx:inputProperty name="jca.jndi" variable="dynamicFTPJndi"/>
+          </invoke>
+                <assign name="asgnStatus" id="BpAss6">
+                  <copy>
+                    <from expression="&quot;Success&quot;"/>
+                    <to variable="outputVariable" part="payload" query="/ns4:output/ns4:Status"/>
+                  </copy>
+                </assign>
+              </sequence>
+            </case>
+            <case condition="bpws:getVariableData('inputVariable','payload','/ns4:input/ns4:Action')='MOVE'">
+              <bpelx:annotation>
+                <bpelx:general>
+                  <bpelx:property name="userLabel">MOVE</bpelx:property>
+                </bpelx:general>
+              </bpelx:annotation>
+              <sequence id="BpSeq5">
+                <invoke name="InvMoveFilesToRemote" inputVariable="InvMoveFilesToRemote_IV" outputVariable="InvMoveFilesToRemote_OV" partnerLink="moveFilesToRemote" portType="ns7:FTPMove_ptt" operation="FTPMove" bpelx:invokeAsDetail="no" id="BpInv3">
+                  <bpelx:inputProperty name="jca.file.SourceDirectory" variable="sourceFileDir"/>
+                  <bpelx:inputProperty name="jca.file.SourceFileName" variable="sourceFileName"/>
+                  <bpelx:inputProperty name="jca.file.TargetDirectory" variable="targetFileDir"/>
+                  <bpelx:inputProperty name="jca.file.TargetFileName" variable="targetFileName"/>
+                  <bpelx:inputProperty name="jca.jndi" variable="dynamicFTPJndi"/>
+                </invoke>
+                <assign name="asgnStatus" id="BpAss7">
+                  <copy>
+                    <from expression="&quot;Success&quot;"/>
+                    <to variable="outputVariable" part="payload" query="/ns4:output/ns4:Status"/>
+                  </copy>
+                </assign>
+              </sequence>
+            </case>
+            <otherwise>
+               <assign name="asgnInvalidOperation" id="BpAss8">
+                  <copy>
+                    <from expression="&quot;Invalid Operation Please use COPY or MOVE&quot;"/>
+                    <to variable="outputVariable" part="payload" query="/ns4:output/ns4:Status"/>
+                  </copy>
+                </assign>
+            </otherwise>
+          </switch>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence name="Sequence2" id="BpSeq6">
+          <assign name="AsgnError" id="BpAss9">
+            <copy>
+              <from expression="&quot;DVM Configuration Error&quot;"/>
+              <to variable="FaultVar" part="summary"/>
+            </copy>
+            <copy>
+              <from expression="concat(&quot;Invalid or No Configuraions are provided  in DynamicFTPConfig dvm for the respective file toke: &quot;,bpws:getVariableData('inputVariable','payload','/ns4:input/ns4:FileToken'))"/>
+              <to variable="FaultVar" part="detail"/>
+            </copy>
+          </assign>
+          <throw name="ThrowInvalidConfig" faultName="client:InvalidConfig" faultVariable="FaultVar" id="BpThw0"/>
+        </sequence>
+      </otherwise>
+    </switch>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="filetoftpmoveutilityserivce_bpel_client" portType="client:FileToFTPMoveUtilitySerivce_BPEL" operation="process" variable="outputVariable" id="BpRpl2"/>
+  </sequence>
+</process>

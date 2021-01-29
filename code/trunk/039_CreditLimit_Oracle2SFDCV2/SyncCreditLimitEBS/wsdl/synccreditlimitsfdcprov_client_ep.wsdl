@@ -1,0 +1,35 @@
+<wsdl:definitions name="SyncCreditLimitSFDCProv" targetNamespace="http://xmlns.oracle.com/DealerPartnerCreditDetalis/SyncCreditLimitSFDCProv/SyncCreditLimitSFDCProv" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/DealerPartnerCreditDetalis/SyncCreditLimitSFDCProv/SyncCreditLimitSFDCProv" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+ 
+    <plnk:partnerLinkType name="SyncCreditLimitSFDCProv">
+        <plnk:role name="SyncCreditLimitSFDCProvProvider">
+            <plnk:portType name="client:SyncCreditLimitSFDCProv"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1" schemaLocation="../xsd/CDM/BOD/Nouns/Dealer_PartnerCreditINFO/V1/ProcessDealer_PartnerCreditINFO.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SyncCreditLimitSFDCProvRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessDealer_PartnerCreditINFO"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncCreditLimitSFDCProv">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncCreditLimitSFDCProvRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SyncCreditLimitSFDCProvBinding" type="client:SyncCreditLimitSFDCProv">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="synccreditlimitsfdcprov_client_ep">
+        <wsdl:port name="SyncCreditLimitSFDCProv_pt" binding="client:SyncCreditLimitSFDCProvBinding">
+            <soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/online/SyncCreditLimitSFDCProv/synccreditlimitsfdcprov_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

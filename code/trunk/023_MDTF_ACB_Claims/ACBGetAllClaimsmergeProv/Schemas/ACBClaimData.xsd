@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.sunpowercorp.com/ACBClaimToSFDCDetails"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ACBClaimToSFDCRows">
+    <complexType>
+      <sequence>
+        <element name="row" maxOccurs="unbounded" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="Id" type="string"/>
+              <element name="CurrencyIsoCode" type="string"/>
+              <element name="Account__c" type="xsd:boolean"/>
+              <element name="Promotion__c" type="string"/>
+              <element name="Process_Date__c" type="date"/>
+              <element name="Pre_Approval_Number__c" type="double"/>
+              <element name="Claim_Number__c" type="string"/>
+              <element name="Acitivity_Description__c" type="string"/>
+              <element name="Activity_from_Date__c" type="date"/>
+              <element name="Activity_to_Date__c" type="date"/>
+              <element name="Claimed_Amt__c" type="double"/>
+              <element name="Approved_Amt__c" type="double"/>
+              <element name="Paid_Amt__c" type="string"/>
+              <element name="Credit_Memo__c" type="string"/>
+              <element name="Comment__c" type="string"/>
+              <element name="ACB_Paranet_ID__c" type="string"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

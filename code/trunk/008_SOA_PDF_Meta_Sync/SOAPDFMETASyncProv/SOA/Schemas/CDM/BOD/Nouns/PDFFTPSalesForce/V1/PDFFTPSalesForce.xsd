@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Noun/PDFFTPSalesForce/V1" targetNamespace="http://www.sunpowercorp.com/Noun/PDFFTPSalesForce/V1" xmlns:pdf="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+   <xsd:import namespace="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1" schemaLocation="../../../../../../Schemas/CDM/BOD/Nouns/PDFFTPSalesForce/V1/PDFFTPSalesForceCommonTypes.xsd"/>
+   <xsd:element name="PDFSalesForce" type="PDFSalesForceType"/>
+   <xsd:complexType name="PDFSalesForceType">
+      <xsd:sequence>
+         <xsd:element ref="PDFSalesForceDetails" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="PDFSalesForceDetails" type="PDFSalesForceDetailsType"/>
+   <xsd:complexType name="PDFSalesForceDetailsType">
+      <xsd:sequence>
+         <xsd:element ref="pdf:TRX_NUMBER"/>
+         <xsd:element ref="pdf:BILL_TO_CUSTOMER_ID" minOccurs="0"/>
+         <xsd:element ref="pdf:CUSTOMER_NUMBER" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_STATUS" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_DATE" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_CREATION_DATE" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_TYPE" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_TYPE_NAME" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_TYPE_DESC" minOccurs="0"/>
+         <xsd:element ref="pdf:OPERATING_UNIT_NAME" minOccurs="0"/>
+         <xsd:element ref="pdf:CURRENCY_CODE" minOccurs="0"/>
+         <xsd:element ref="pdf:TRANSACTION_CURRENCY_CODE" minOccurs="0"/>
+         <xsd:element ref="pdf:LAST_UPDATE_DATE" minOccurs="0"/>
+         <xsd:element ref="pdf:CREATED_BY" minOccurs="0"/>
+         <xsd:element ref="pdf:LAST_UPDATED_BY" minOccurs="0"/>
+         <xsd:element ref="pdf:LAST_UPDATED_LOGIN" minOccurs="0"/>
+         <xsd:element ref="pdf:RECORD_STATUS" minOccurs="0"/>
+         <xsd:element ref="pdf:RECORD_ID" minOccurs="0"/>
+         <xsd:element ref="pdf:ERROR_MESSAGE" minOccurs="0"/>
+         <xsd:element ref="pdf:PDF_FILE_NAME" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_LAST_UPDATED_DATE" minOccurs="0"/>
+         <xsd:element ref="pdf:T_CREATION_DATE" minOccurs="0"/>
+         <xsd:element ref="pdf:TRX_TYPE_MEANING" minOccurs="0"/>
+         <xsd:element ref="pdf:ORG_ID" minOccurs="0"/>
+         <xsd:element ref="pdf:CUSTOMER_NAME" minOccurs="0"/>
+         <xsd:element ref="pdf:SFDC_ACCOUNT_NAME" minOccurs="0"/>
+         <xsd:element ref="pdf:SFDC_ACCOUNT_ID" minOccurs="0"/>
+         <xsd:element ref="pdf:SFDC_USER_ID" minOccurs="0"/>
+         <xsd:element ref="pdf:SFDC_ATTACHMENT_ID" minOccurs="0"/>
+         <xsd:element ref="pdf:Body" minOccurs="0"/>
+         <xsd:element ref="pdf:SourceDirectoryPath" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

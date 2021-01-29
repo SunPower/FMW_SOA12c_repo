@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<composite name="DeleteSFDCRecordService" applicationName="system" revision="1.0" label="soa_85b85286-2fab-49a9-abbe-e697c76f1534" mode="active" state="on" home="/a02/admin/user_projects/domains/soa_domain/servers/soa_server1/dc/soa_85b85286-2fab-49a9-abbe-e697c76f1534" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/sca/1.0">
+   <import location="DeleteSFDCRecordService_BPEL.wsdl" importType="wsdl" namespace="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL"/>
+   <import location="partner.wsdl" importType="wsdl" namespace="urn:partner.soap.sforce.com"/>
+   <import location="partnerWrapper.wsdl" importType="wsdl" namespace="urn:partner.soap.sforce.com"/>
+   <import location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService!1.0/WSDLs/CallCommSFDCErrMediator.wsdl"
+   importType="wsdl" namespace="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"/>
+   <import location="CallCommSFDCErrMediatorWrapper.wsdl" importType="wsdl" namespace="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"/>
+   <service name="deletesfdcrecordservice_bpel_client_ep">
+      <interface.wsdl interface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPEL)" callbackInterface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPELCallback)"/>
+      <binding.ws port="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.endpoint(deletesfdcrecordservice_bpel_client_ep/DeleteSFDCRecordService_BPEL_pt)" streamIncomingAttachments="false" streamOutgoingAttachments="false"/>
+      <callback>
+         <binding.ws port="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.endpoint(deletesfdcrecordservice_bpel_client_ep/DeleteSFDCRecordService_BPELCallback_pt)" streamIncomingAttachments="false" streamOutgoingAttachments="false"/>
+      </callback>
+   </service>
+   <property name="auditLevel" many="false">Production</property>
+   <component name="DeleteSFDCRecordService_BPEL" version="1.1">
+      <implementation.bpel src="DeleteSFDCRecordService_BPEL.bpel"/>
+      <property name="bpel.preference.sizeOfBunch" many="false">200</property>
+      <property name="bpel.preference.InterfaceNum" many="false">DEL100</property>
+      <property name="bpel.preference.FaultSystemName" many="false">SFDC</property>
+      <property name="bpel.preference.bOpenServiceTicket" many="false">N</property>
+      <property name="bpel.preference.Severity" many="false">Low</property>
+      <property name="bpel.preference.FaultCode" many="false">DELSFDC100</property>
+      <property name="bpel.preference.SendEmail" many="false">Y</property>
+      <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">async.persist</property>
+      <business-events/>
+   </component>
+   <reference name="CommonSFDCErrorLogService">
+      <interface.wsdl interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+      <binding.ws port="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.endpoint(CallCommSFDCErrMediator_ep/execute_pt)" soapVersion="1.1" location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/CallCommSFDCErrMediator_ep?WSDL" streamIncomingAttachments="false" streamOutgoingAttachments="false">
+         <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+      </binding.ws>
+   </reference>
+   <reference name="SFDCService">
+      <interface.wsdl interface="urn:partner.soap.sforce.com#wsdl.interface(Soap)"/>
+      <binding.ws port="urn:partner.soap.sforce.com#wsdl.endpoint(SforceService/Soap)" soapVersion="1.1" location="partner.wsdl" streamIncomingAttachments="false" streamOutgoingAttachments="false">
+         <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+      </binding.ws>
+   </reference>
+   <wire>
+      <source.uri>DeleteSFDCRecordService_BPEL/CommonSFDCErrorLogService</source.uri>
+      <target.uri>CommonSFDCErrorLogService</target.uri>
+   </wire>
+   <wire>
+      <source.uri>deletesfdcrecordservice_bpel_client_ep</source.uri>
+      <target.uri>DeleteSFDCRecordService_BPEL/deletesfdcrecordservice_bpel_client</target.uri>
+   </wire>
+   <wire>
+      <source.uri>DeleteSFDCRecordService_BPEL/SFDCService</source.uri>
+      <target.uri>SFDCService</target.uri>
+   </wire>
+</composite>

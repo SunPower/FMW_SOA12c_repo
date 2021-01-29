@@ -1,0 +1,24 @@
+<wsdl:definitions name="OracleSFDCNoItemOperatingUnitCanonical" targetNamespace="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleSFDCNoItemOperatingUnitProv/OracleSFDCNoItemOperatingUnitCanonical" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOperatingUnit/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleSFDCNoItemOperatingUnitProv/OracleSFDCNoItemOperatingUnitCanonical" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOperatingUnit/V1" schemaLocation="../xsd/CDM/BOD/Nouns/OracleSFDCNoItemOperatingUnit/V1/ProcessOracleSFDCNoItemOperatingUnit.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="OracleSFDCNoItemOperatingUnitSvcRequest">
+        <wsdl:part name="payload" element="ns1:ProcessOracleSFDCNoItemOperatingUnit"/>
+    </wsdl:message>
+    <wsdl:portType name="OracleSFDCNoItemOperatingUnitCanonical">
+        <wsdl:operation name="OracleSFDCNoItemOperatingUnit">
+            <wsdl:input message="client:OracleSFDCNoItemOperatingUnitSvcRequest"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="OracleSFDCNoItemOperatingUnitCanonicalSOAP" type="client:OracleSFDCNoItemOperatingUnitCanonical">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="OracleSFDCNoItemOperatingUnit">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>   
+</wsdl:definitions>

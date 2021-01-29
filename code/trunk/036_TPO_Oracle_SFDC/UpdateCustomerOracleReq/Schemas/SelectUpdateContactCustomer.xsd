@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectUpdateContactCustomer" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectUpdateContactCustomer" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectUpdateContactCustomerInput" type="SelectUpdateContactCustomerInput"/>
+   <xs:complexType name="SelectUpdateContactCustomerInput">
+      <xs:sequence>
+         <xs:element name="dataSource" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectUpdateContactCustomerOutputCollection" type="SelectUpdateContactCustomerOutputCollection"/>
+   <xs:complexType name="SelectUpdateContactCustomerOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectUpdateContactCustomerOutput" type="SelectUpdateContactCustomerOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectUpdateContactCustomerOutput">
+      <xs:sequence>
+         <xs:element name="customer_order_link_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="sales_type" type="xs:string" nillable="true"/>
+         <xs:element name="temp_contact_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="cust_account_role_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="sfdc_contact_id" type="xs:string" nillable="true"/>
+         <xs:element name="sfdc_synced" type="xs:string" nillable="true"/>
+         <xs:element name="ERROR_MESSAGE" type="xs:string" nillable="true"/>
+         <xs:element name="process_flag" type="xs:decimal" nillable="true"/>
+         <xs:element name="SOA_S2O_ID" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

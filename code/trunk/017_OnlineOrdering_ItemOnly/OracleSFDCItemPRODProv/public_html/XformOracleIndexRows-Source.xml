@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OracleRows xmlns="http://www.sunpowercorp.com/OracleItems">
+   <Item__c>
+      <Id>Id1</Id>
+      <Name>Name2</Name>
+      <Active__c>true</Active__c>
+      <Description__c>Description__c3</Description__c>
+      <Item_ID__c>Item_ID__c4</Item_ID__c>
+      <Long_Description__c>Long_Description__c5</Long_Description__c>
+      <Item_Category_3__c>Item_Category_3__c6</Item_Category_3__c>
+      <Item_Category_2__c>Item_Category_2__c7</Item_Category_2__c>
+      <Item_Category_1__c>Item_Category_1__c8</Item_Category_1__c>
+      <Product_Type__c>Product_Type__c9</Product_Type__c>
+   </Item__c>
+   <Item__c>
+      <Id>Id10</Id>
+      <Name>Name11</Name>
+      <Active__c>true</Active__c>
+      <Description__c>Description__c12</Description__c>
+      <Item_ID__c>Item_ID__c13</Item_ID__c>
+      <Long_Description__c>Long_Description__c14</Long_Description__c>
+      <Item_Category_3__c>Item_Category_3__c15</Item_Category_3__c>
+      <Item_Category_2__c>Item_Category_2__c16</Item_Category_2__c>
+      <Item_Category_1__c>Item_Category_1__c17</Item_Category_1__c>
+      <Product_Type__c>Product_Type__c18</Product_Type__c>
+   </Item__c>
+  
+</OracleRows>

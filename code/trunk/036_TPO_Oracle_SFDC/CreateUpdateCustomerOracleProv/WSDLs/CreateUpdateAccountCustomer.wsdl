@@ -1,0 +1,22 @@
+<?binding.jca CreateUpdateAccountCustomer_db.jca?>
+<wsdl:definitions name="CreateUpdateAccountCustomer" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateAccountCustomer" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateAccountCustomer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/CreateUpdateAccountCustomer">
+    <plt:partnerLinkType name="CreateUpdateAccountCustomer_plt">
+        <plt:role name="CreateUpdateAccountCustomer_role">
+            <plt:portType name="tns:CreateUpdateAccountCustomer_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/CreateUpdateAccountCustomer"
+                    schemaLocation="../Schemas/CreateUpdateAccountCustomer_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrSforaCustomersCollection_msg">
+        <wsdl:part name="XxspwrSforaCustomersCollection" element="top:XxspwrSforaCustomersCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="CreateUpdateAccountCustomer_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:XxspwrSforaCustomersCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectNoItemBillToFromEBS" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/selectNoItemBillToFromEBS" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="selectNoItemBillToFromEBSInput" type="selectNoItemBillToFromEBSInput"/>
+   <xs:complexType name="selectNoItemBillToFromEBSInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="selectNoItemBillToFromEBSOutputCollection" type="selectNoItemBillToFromEBSOutputCollection"/>
+   <xs:complexType name="selectNoItemBillToFromEBSOutputCollection">
+      <xs:sequence>
+         <xs:element name="selectNoItemBillToFromEBSOutput" type="selectNoItemBillToFromEBSOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="selectNoItemBillToFromEBSOutput">
+      <xs:sequence>
+         <xs:element name="ACCOUNT_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="ACCOUNT_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="CUST_ACCT_SITE_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="ADDRESS1" type="xs:string" nillable="true"/>
+         <xs:element name="ADDRESS2" type="xs:string" nillable="true"/>
+         <xs:element name="ADDRESS3" type="xs:string" nillable="true"/>
+         <xs:element name="CITY" type="xs:string" nillable="true"/>
+         <xs:element name="POSTAL_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="STATE" type="xs:string" nillable="true"/>
+         <xs:element name="COUNTRY" type="xs:string" nillable="true"/>
+         <xs:element name="PRIMARY_FLAG" type="xs:string" nillable="true"/>
+        <xs:element name="OU_SHORT_CODE" type="xs:string" nillable="true"/>
+
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

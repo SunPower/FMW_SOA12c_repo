@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.bioqi.org/financialmessages"
+            targetNamespace="http://www.bioqi.org/financialmessages" elementFormDefault="qualified">
+  <xsd:element name="FinancialRequestMessage">
+    <xsd:annotation>
+      <xsd:documentation>A sample element</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="MessageTypeIdentifier" type="xsd:string"/>
+<xsd:element name="BitMap" type="xsd:string"/>
+<xsd:element name="PrimaryBitMap" type="xsd:string"/>
+<xsd:element name="SecondaryBitMap" type="xsd:string"/>
+<xsd:element name="FunctionCode" type="xsd:string"/>
+<xsd:element name="AdditionalData" type="xsd:string"/>
+<xsd:element name="FileID" type="xsd:string"/>
+<xsd:element name="LenTag" type="xsd:string"/>
+<xsd:element name="FileType" type="xsd:string"/>
+<xsd:element name="FileReferenceDate" type="xsd:string"/>
+<xsd:element name="NetworkMemberID" type="xsd:string"/>
+<xsd:element name="FileSequenceNumber" type="xsd:string"/>
+<xsd:element name="ProcessingMode" type="xsd:string"/>
+<xsd:element name="LenTag" type="xsd:string"/>
+<xsd:element name="Value" type="xsd:string"/>
+<xsd:element name="ChecksumFileAmount" type="xsd:string"/>
+<xsd:element name="LenTag" type="xsd:string"/>
+<xsd:element name="Value" type="xsd:string"/>
+<xsd:element name="FileMessageCounts" type="xsd:string"/>
+<xsd:element name="LenTag" type="xsd:string"/>
+<xsd:element name="Value" type="xsd:string"/>
+<xsd:element name="MessageNumber" type="xsd:string"/>
+</xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Eclipse Persistence Services - 2.3.1.v20111018-r10243">
+   <name>insertEDI214Files-OR</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>insertEDI214Files.XxspwrEdicomInbound</class>
+         <alias>XXSPWR.XXSPWR_EDICOM_INBOUND</alias>
+         <primary-key>
+            <field table="XXSPWR_EDICOM_INBOUND" name="ORDER_NUMBER" xsi:type="column"/>
+            <field table="XXSPWR_EDICOM_INBOUND" name="LINE_NUMBER" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="insertEDI214FilesSelect" xsi:type="read-all-query">
+                  <reference-class>insertEDI214Files.XxspwrEdicomInbound</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>signalType</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SIGNAL_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>signalName</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SIGNAL_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>delOuWhse</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DEL_OU_WHSE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lineNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LINE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>deliveryNo</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DELIVERY_NO" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>			
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>packingListNo</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="PACKING_LIST_NO" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ITEM_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+			 <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>loadNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LOAD_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingWh</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SHIPPING_WH" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>trackingNo</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="TRACKING_NO" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>departureString</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DEPARTURE_STRING" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>arrivalString</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ARRIVAL_STRING" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dateOfDeparture</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DATE_OF_DEPARTURE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dateOfArrival</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DATE_OF_ARRIVAL" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>box</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="BOX" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingQty</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SHIPPING_QTY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingInstructions</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SHIPPING_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>ediAction</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="EDI_ACTION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>weight</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="WEIGHT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>issueCode</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ISSUE_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>logisticPartnerCode</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LOGISTIC_PARTNER_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>status</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>errorMessage</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ERROR_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestId</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="REQUEST_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXSPWR.XXSPWR_EDICOM_INBOUND"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>insertEDI214Files.XxspwrEdicomInbound</class>
+         <alias>XXSPWR.XXSPWR_EDICOM_INBOUND</alias>
+         <primary-key>
+            <field table="XXSPWR_EDICOM_INBOUND" name="ITEM_NUMBER" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="insertEDI214FilesSelect" xsi:type="read-all-query">
+                  <reference-class>insertEDI214Files.XxspwrEdicomInbound</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>signalType</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SIGNAL_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>signalName</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SIGNAL_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>delOuWhse</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DEL_OU_WHSE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lineNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LINE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>deliveryNo</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DELIVERY_NO" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>packingListNo</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="PACKING_LIST_NO" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>itemNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ITEM_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+			   <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>loadNumber</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LOAD_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingWh</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SHIPPING_WH" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>trackingNo</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="TRACKING_NO" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>departureString</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DEPARTURE_STRING" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>arrivalString</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ARRIVAL_STRING" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dateOfDeparture</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DATE_OF_DEPARTURE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dateOfArrival</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="DATE_OF_ARRIVAL" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>box</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="BOX" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingQty</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SHIPPING_QTY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingInstructions</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="SHIPPING_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>ediAction</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="EDI_ACTION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>weight</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="WEIGHT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>issueCode</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ISSUE_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>logisticPartnerCode</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LOGISTIC_PARTNER_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>status</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>errorMessage</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="ERROR_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestId</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="REQUEST_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>edi214FileName</attribute-name>
+               <field table="XXSPWR_EDICOM_INBOUND" name="EDI214_FILE_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXSPWR.XXSPWR_EDICOM_INBOUND"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.oracle.Oracle9Platform</platform-class>
+      <connection-url></connection-url>
+   </login>
+</object-persistence>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="ReadSFEC_EmployeeFeed" adapter="file" wsdlLocation="WSDLs/ReadSFEC_EmployeeFeed.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FileAdapter" UIincludeWildcard="SPWR_TRESS_DAILY_FEED*.csv"/>
+  <endpoint-activation portType="Read_ptt" operation="Read">
+    <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="LogicalArchiveDirectory" value="SFECFeedArchLoc"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="Recursive" value="false"/>
+      <property name="PublishSize" value="200"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="LogicalDirectory" value="SFECFeedReadLoc"/>
+      <property name="IncludeFiles" value="SPWR_TRESS_DAILY_FEED.*\.csv"/>
+      <property name="UseHeaders" value="false"/>
+	  <property name="MaxRaiseSize" value="1"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

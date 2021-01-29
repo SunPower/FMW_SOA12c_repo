@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XxspwrOmHeaderSyncCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateOrderHeaderStatus">
+   <XxspwrOmHeaderSync>
+      <sfdcId>string25</sfdcId>
+      <headerId>27</headerId>
+      <soaFlag>s</soaFlag>
+      <soaErrormsg>string30</soaErrormsg>
+   </XxspwrOmHeaderSync>
+   <XxspwrOmHeaderSync>
+      <sfdcId>string32</sfdcId>
+      <headerId>34</headerId>
+      <soaFlag>E</soaFlag>
+      <soaErrormsg>string37</soaErrormsg>
+   </XxspwrOmHeaderSync>
+   <XxspwrOmHeaderSync>
+      <sfdcId>string39</sfdcId>
+      <headerId>41</headerId>
+      <soaFlag>E</soaFlag>
+      <soaErrormsg>string44</soaErrormsg>
+   </XxspwrOmHeaderSync>
+</XxspwrOmHeaderSyncCollection>

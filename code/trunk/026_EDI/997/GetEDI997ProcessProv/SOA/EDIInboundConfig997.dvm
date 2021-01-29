@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="EDIInboundConfig" xmlns="http://xmlns.oracle.com/dvm">
+   <description/>
+   <columns>
+      <column name="Signal"/>
+      <column name="schema"/>
+      <column name="user"/>
+      <column name="password"/>
+      <column name="application"/>
+      <column name="transformation"/>
+      <column name="SuccessDir"/>
+      <column name="InboundDir"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>997_NA</cell>
+         <cell>X12_997_004_010_4</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>X12_997_CSV_SUNPOWER_943008969</cell>
+         <cell>/erpappsdata/EDI/997/success/US</cell>
+         <cell>/erpappsdata/EDI/997/inbound</cell>
+      </row>
+      <row>
+         <cell>997_EU</cell>
+         <cell>EDI_CONTRL_D_01B_UN_000000_1</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>EDI01B_CSV_SUNPOWER_943008969</cell>
+         <cell>/erpappsdata/EDI/997/success/EU</cell>
+         <cell>/erpappsdata/EDI/997/inbound</cell>
+      </row>
+      <row>
+         <cell>997_AU</cell>
+         <cell>EDI_CONTRL_D_96A_UN_EAN002_1</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>EDI96A_CSV_SUNPOWER_943008969</cell>
+         <cell>/erpappsdata/EDI/997/success/AU</cell>
+         <cell>/erpappsdata/EDI/997/inbound</cell>
+      </row>
+   </rows>
+</dvm>

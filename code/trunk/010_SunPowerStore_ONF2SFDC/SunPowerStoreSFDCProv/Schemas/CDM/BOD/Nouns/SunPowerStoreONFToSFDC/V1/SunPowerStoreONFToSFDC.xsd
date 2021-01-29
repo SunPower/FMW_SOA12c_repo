@@ -1,0 +1,461 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Noun/SunPowerStoreONFToSFDC/V1"
+            targetNamespace="http://www.sunpowercorp.com/Noun/SunPowerStoreONFToSFDC/V1"
+            xmlns:onfCommon="http://www.sunpowercorp.com/Common/SunPowerStoreONFToSFDCDetailsCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:import namespace="http://www.sunpowercorp.com/Common/SunPowerStoreONFToSFDCDetailsCommonTypes/V1"
+              schemaLocation="../../../../../../Schemas/CDM/BOD/Nouns/SunPowerStoreONFToSFDC/V1/SunPowerStoreONFToSFDCCommonTypes.xsd"/>
+  <xsd:element name="SunPowerStoreONFToSFDC" type="SunPowerStoreONFToSFDCType"/>
+  <xsd:complexType name="SunPowerStoreONFToSFDCType">
+    <xsd:sequence>
+      <xsd:element ref="SunPowerStoreONFToSFDCDetails"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SunPowerStoreONFToSFDCDetails">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="SunPowerStoreONFToSFDCDetailsType">
+          <xsd:attribute ref="onfCommon:version"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="SunPowerStoreONFToSFDCDetailsType">
+    <xsd:sequence>
+      <xsd:element name="OrderResponse" type="OrderResponseType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderResponseType">
+    <xsd:sequence>
+      <xsd:element name="Summary" type="SummaryType"/>
+      <xsd:element name="Orders" type="OrdersType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SummaryType">
+    <xsd:sequence>
+      <xsd:element ref="onfCommon:Count"/>
+      <xsd:element name="DateRange" type="DateRangeType"/>
+      <xsd:element ref="onfCommon:RequestIdentifier"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrdersType">
+    <xsd:sequence>
+      <xsd:element name="Order" type="OrderType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:OrderNumber"/>
+      <xsd:element ref="onfCommon:Description"/>
+      <xsd:element ref="onfCommon:CreateDate"/>
+      <xsd:element ref="onfCommon:Status"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="User" type="UserLiteType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="UserGroups"
+                   type="UserGroupsType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Seller"
+                   type="EntityLiteType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Company"
+                   type="EntityLiteType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Supplier"
+                   type="EntityLiteType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="BillingAddress"
+                   type="AddressType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ShippingAddress"
+                   type="AddressType"/>
+      <xsd:element maxOccurs="1" minOccurs="1" ref="onfCommon:PaymentMethod"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="CreditCard"
+                   type="CreditCardType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="AttachedFiles"
+                   type="ArrayOfOutputFileURLType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="OrderDetails"
+                   type="ArrayOfOrderDetailType1"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SalesWorkOrders"
+                   type="ArrayOfSalesWorkOrderType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IDType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute ref="onfCommon:type"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="DateRangeType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="1" name="Start"
+                   type="xsd:dateTime"/>
+      <xsd:element maxOccurs="1" minOccurs="1" name="End" type="xsd:dateTime"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserLiteType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:Name"/>
+      <xsd:element ref="onfCommon:FirstName"/>
+      <xsd:element ref="onfCommon:LastName"/>
+      <xsd:element ref="onfCommon:LoginID"/>
+      <xsd:element ref="onfCommon:Email"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserGroupsType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="UserGroup"
+                   type="IDType"/>
+    </xsd:sequence>
+    <xsd:attribute ref="onfCommon:SyncMode"/>
+    <xsd:attribute ref="onfCommon:AllOrNone"/>
+  </xsd:complexType>
+  <xsd:complexType name="EntityLiteType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:Name"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AddressType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:Description"/>
+      <xsd:element ref="onfCommon:Address1"/>
+      <xsd:element ref="onfCommon:Address2"/>
+      <xsd:element ref="onfCommon:Address3"/>
+      <xsd:element ref="onfCommon:Address4"/>
+      <xsd:element ref="onfCommon:City"/>
+      <xsd:element ref="onfCommon:State"/>
+      <xsd:element ref="onfCommon:Zip"/>
+      <xsd:element ref="onfCommon:Country"/>
+      <xsd:element ref="onfCommon:PhoneNumber"/>
+      <xsd:element ref="onfCommon:FaxNumber"/>
+      <xsd:element ref="onfCommon:CompanyName"/>
+      <xsd:element ref="onfCommon:Attn"/>
+      <xsd:element ref="onfCommon:Email"/>
+    </xsd:sequence>
+    <xsd:attribute ref="onfCommon:type"/>
+    <xsd:attribute ref="onfCommon:Default"/>
+  </xsd:complexType>
+  <xsd:complexType name="CreditCardType">
+    <xsd:sequence>
+      <xsd:element ref="onfCommon:AuthorizationNumber"/>
+      <xsd:element ref="onfCommon:AuthorizationExpirationDate"/>
+      <xsd:element ref="onfCommon:ConfirmationNumber"/>
+      <xsd:element ref="onfCommon:CCType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfOutputFileURLType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="File"
+                   type="OutputFileURLType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OutputFileURLType">
+    <xsd:sequence>
+      <xsd:element ref="onfCommon:URL"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfOrderDetailType1">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="OrderDetail"
+                   type="OrderDetailType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderDetailType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:OrderType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="User" type="UserLiteType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ReqUser"
+                   type="UserLiteType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ProductID" type="IDType"/>
+      <xsd:element ref="onfCommon:ProductName"/>
+      <xsd:element ref="onfCommon:ProductDescription"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SKU"
+                   type="EntityLiteType"/>
+      <xsd:element ref="onfCommon:SKUDescription"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="TemplateFields"
+                   type="ArrayOfNameValuePairType"/>
+      <xsd:element ref="onfCommon:Quantity"/>
+      <xsd:element ref="onfCommon:QuantityShipped"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Price"
+                   type="OrderDetailPriceType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Department"
+                   type="DepartmentType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SupplierWorkOrder"
+                   type="EntityLiteType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SupplierID" type="IDType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Supplier"
+                   type="EntityLiteType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="OutputFileURL"
+                   type="OutputFileURLType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Shipping">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="onfCommon:Date"/>
+            <xsd:element ref="onfCommon:DateShipped"/>
+            <xsd:element ref="onfCommon:Method"/>
+            <xsd:element ref="onfCommon:Instructions"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Address"
+                         type="AddressType"/>
+            <xsd:element ref="onfCommon:TrackingNumber"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Tax"
+                         type="MoneyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Postage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="onfCommon:Method"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Cost"
+                         type="MoneyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ClientStatus"
+                   type="OrderDetailStatusType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SellerStatus"
+                   type="OrderDetailStatusType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SupplierStatus"
+                   type="OrderDetailStatusType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="CreditCardSettlement"
+                   type="CreditCardSettlementType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Kit"
+                   type="ArrayOfOrderDetailType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="OrderID" type="IDType"/>
+      <xsd:element ref="onfCommon:OrderNumber"/>
+      <xsd:element ref="onfCommon:ClientPONumber"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SalesWorkOrderID"
+                   type="IDType"/>
+      <xsd:element ref="onfCommon:ProductType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ListVendor">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="onfCommon:Name"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Cost"
+                         type="MoneyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="0" name="FinishingOptions"
+                   type="ArrayOfArrayOfOrderDetailTypeFinishingOptionFinishingOption"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Coupons"
+                   type="ArrayOfArrayOfOrderDetailTypeCouponCoupon"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="AttachedFiles"
+                   type="ArrayOfOutputFileURLType"/>
+      <xsd:element ref="onfCommon:DownloadURL"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="SKUInventorySettings"
+                   type="InventoryType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0"
+                   name="ImposedUsingDefaultImpo" type="OutputFileURLType"/>
+      <xsd:element ref="onfCommon:PageCount"/>
+      <xsd:element ref="onfCommon:CatalogTreeNodeExternalId"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="JobDirectOptions"
+                   type="JobDirectOptionsType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Impersonator"
+                   type="UserLiteType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfNameValuePairType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="TemplateField"
+                   type="NameValuePairType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NameValuePairType">
+    <xsd:attribute ref="onfCommon:Name"/>
+    <xsd:attribute ref="onfCommon:Value"/>
+  </xsd:complexType>
+  <xsd:complexType name="OrderDetailPriceType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Cost">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Customer"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Seller"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Shipping"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Unit"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CustomerDiscount"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="SellerMisc"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="SellerStoreDiscount"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="SellerShipping"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0"
+                         name="CustomerStoreDiscount" type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Postage"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CustomerMisc"
+                         type="MoneyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Tax">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CustomerSales"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="DirectAcctSales"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="City"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="County"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="State"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="District"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CityFreight"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CountyFreight"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="StateFreight"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="DistrictFreight"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TotalFreight"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TaxableSalesAmount"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExemptSalesAmount"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0"
+                         name="NonTaxableSalesAmount" type="MoneyType"/>
+            <xsd:element ref="onfCommon:CityName"/>
+            <xsd:element ref="onfCommon:CountyName"/>
+            <xsd:element ref="onfCommon:StateName"/>
+            <xsd:element ref="onfCommon:Zip"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MoneyType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:float">
+        <xsd:attribute ref="onfCommon:Currency"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="DepartmentType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:Name"/>
+      <xsd:element ref="onfCommon:Number"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderDetailStatusType">
+    <xsd:sequence>
+      <xsd:element ref="onfCommon:Value"/>
+      <xsd:element ref="onfCommon:Date"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CreditCardSettlementType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:Number"/>
+      <xsd:element ref="onfCommon:Date"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="UserID" type="IDType"/>
+      <xsd:element ref="onfCommon:UserName"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfOrderDetailType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="KitDetail"
+                   type="OrderDetailType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfArrayOfOrderDetailTypeFinishingOptionFinishingOption">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="FinishingOption">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="onfCommon:Name"/>
+            <xsd:element ref="onfCommon:Value"/>
+            <xsd:element ref="onfCommon:FeeType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CustomerCost"
+                         type="MoneyType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="SellerCost"
+                         type="MoneyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfArrayOfOrderDetailTypeCouponCoupon">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Coupon">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Code"
+                         type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Discount"
+                         type="MoneyType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InventoryType">
+    <xsd:sequence>
+      <xsd:element ref="onfCommon:Unit"/>
+      <xsd:element ref="onfCommon:QtyPerUnit"/>
+      <xsd:element ref="onfCommon:Warehouse"/>
+      <xsd:element ref="onfCommon:Location"/>
+      <xsd:element ref="onfCommon:MinInvQuantity"/>
+      <xsd:element ref="onfCommon:MinOrderQuantity"/>
+      <xsd:element ref="onfCommon:QtyOnHand"/>
+      <xsd:element ref="onfCommon:QtyForSale"/>
+      <xsd:element ref="onfCommon:ReorderApproval"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="InventoryHolder"
+                   type="IDType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="JobDirectOptionsType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Printing"
+                   type="NameValuePairType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Media"
+                   type="NameValuePairType"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Finishing"
+                   type="NameValuePairType"/>
+      <xsd:element ref="onfCommon:SpecialInstruction"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfSalesWorkOrderType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="SalesWorkOrder"
+                   type="SalesWorkOrderType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SalesWorkOrderType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ID" type="IDType"/>
+      <xsd:element ref="onfCommon:OrderNumber"/>
+      <xsd:element ref="onfCommon:SupplierName"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="CreditCard"
+                   type="CreditCardType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrderRequestByDate">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="PartnerCredentials"
+                   type="PartnerCredentialsType"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="DateRange"
+                   type="DateRangeType"/>
+      <xsd:element ref="onfCommon:RequestIdentifier"/>
+    </xsd:sequence>
+    <xsd:attribute ref="onfCommon:version"/>
+  </xsd:complexType>
+  <xsd:complexType name="PartnerCredentialsType">
+    <xsd:sequence>
+      <xsd:element ref="onfCommon:Token"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

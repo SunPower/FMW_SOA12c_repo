@@ -1,0 +1,589 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sun Aug 05 12:51:58 IST 2012
+  Author:  MANI
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="FileUtilityService_BPEL"
+         targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SOAUtilityServices/FileUtilityService/FileUtility"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+         xmlns:ns4="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:ns6="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1">
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[FileUtilityService_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="FileUtilityservice_bpel_client"
+                 partnerLinkType="client:FileUtilityService_BPEL"
+                 myRole="FileUtilityService_BPELProvider"/>
+    <partnerLink name="FileUtility" partnerLinkType="ns1:FileUtility_plt"
+                 partnerRole="FileUtility_role"/>
+    <partnerLink name="CommonErrorHandler"
+                 partnerLinkType="ns4:CommonErrorHandler_BPEL"
+                 partnerRole="CommonErrorHandler_BPELProvider"/>
+    <partnerLink name="CommonLoggingService"
+                 partnerLinkType="ns5:CommonLoggingService_BPEL"
+                 myRole="CommonLoggingService_BPELRequester"
+                 partnerRole="CommonLoggingService_BPELProvider"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable"
+              messageType="client:FileUtilityService_BPELRequestMessage"/>
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable"
+              messageType="client:FileUtilityService_BPELResponseMessage"/>
+    <variable name="sourceDirectory" type="xsd:string"/>
+    <variable name="sourceFileName" type="xsd:string"/>
+    <variable name="targetDirectory" type="xsd:string"/>
+    <variable name="targetFileName" type="xsd:string"/>
+    <variable name="InvFileMove_IV" messageType="ns1:Empty_msg"/>
+    <variable name="InvFileMove_OV" messageType="ns1:FileUtility_msg"/>
+    <variable name="OnMessage_Move_IV"
+              messageType="client:FileUtilityService_BPELRequestMessage"/>
+    <variable name="OnMessage_Delete_IV"
+              messageType="client:FileDeleteService_BPELRequestMessage"/>
+    <variable name="InvFileDelete_IV" messageType="ns1:Empty_msg"/>
+    <variable name="InvFileDelete_OV" messageType="ns1:FileUtility_msg"/>
+    <variable name="InvCommonLoggingService_IV"
+              messageType="ns5:CommonLoggingService_BPELRequestMessage"/>
+    <variable name="InvCommonErrorHandler_IV"
+              messageType="ns4:CommonErrorHandler_BPELRequestMessage"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in FileUtilityService_BPEL.wsdl) -->
+    <pick name="PickFileUtilityReqMsg" createInstance="yes">
+      <onMessage variable="OnMessage_Move_IV"
+                 partnerLink="FileUtilityservice_bpel_client"
+                 portType="client:FileUtilityService_BPEL" operation="Move">
+        <sequence name="SequenceFileUtility">
+          <scope name="ScopeFileUtility">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">ScopeFileUtility</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <faultHandlers>
+              <catchAll>
+                <sequence name="SequenceMoveFailed">
+                  <assign name="AsgnCommonErrorHandlerInput">
+                    <copy>
+                      <from expression="ora:getCompositeInstanceId()"/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                      <from expression="ora:getFaultName()"/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultMessage"/>
+                    </copy>
+                    <copy>
+                      <from expression='ora:getPreference("CorrectiveAction")'/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:CorrectiveAction"/>
+                    </copy>
+                    <copy>
+                      <from expression='ora:getPreference("InterfaceNumber")'/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                      <from expression='"SOAUtilityServices"'/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:InterfaceName"/>
+                    </copy>
+                    <copy>
+                      <from expression='ora:getPreference("FaultSystemName")'/>
+                     <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                      <from expression='"FileUtilityService"'/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:ProcessName"/>
+                    </copy>
+                    <copy>
+                      <from expression='ora:getPreference("Severity")'/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:Severity"/>
+                    </copy>
+                    <copy>
+                      <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                      <from expression="ora:getPreference('FaultCode')"/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultCode"/>
+                    </copy>
+                    <copy>
+                      <from expression="xp20:current-dateTime()"/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultTime"/>
+                    </copy>
+                    <copy>
+                      <from expression="ora:getFaultAsString()"/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultDescription"/>
+                    </copy>
+                  </assign>
+                  <switch name="SwitchSendEmail">
+                    <case condition='ora:getPreference("SendEmail")="Y"'>
+                      <bpelx:annotation>
+                        <bpelx:general>
+                          <bpelx:property name="userLabel">SendEmail_IS_YES</bpelx:property>
+                        </bpelx:general>
+                      </bpelx:annotation>
+                      <sequence>
+                        <invoke name="InvCommonErrorHandler"
+                                partnerLink="CommonErrorHandler"
+                                portType="ns4:CommonErrorHandler_BPEL"
+                                operation="process"
+                                inputVariable="InvCommonErrorHandler_IV"
+                                bpelx:invokeAsDetail="no"/>
+                      </sequence>
+                    </case>
+                  </switch>
+                  <assign name="AsgnCommonLoggingService">
+                    <copy>
+                      <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:InstanceNumber"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:instancenumber"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultCode"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:faultcode"/>
+                    </copy>
+                    <copy>
+                      <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:InterfaceNumber"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:interfacenumber"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:InterfaceName"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:interfacename"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:ProcessName"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:processname"/>
+                    </copy>
+                    <copy>
+                      <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:Severity"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:severity"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultDescription"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:faultdescription"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:FaultSystemName"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:faultsystemname"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:bOpenServiceTicket"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:bopenserviceticket"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:CorrectiveAction"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:correctiveaction"/>
+                    </copy>
+                    <copy>
+                      <from variable="sourceFileName"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:uniqueIdentifier"/>
+                    </copy>
+                    <copy>
+                      <from expression="'E'"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:status"/>
+                    </copy>
+                    <copy>
+                      <from expression="xp20:current-dateTime()"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:createddatetime"/>
+                    </copy>
+                    <copy>
+                       <from variable="InvCommonErrorHandler_IV" part="payload" 
+                            query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultTime"/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:faulttime"/>
+                    </copy>
+                    <copy>
+                      <from expression='ora:getPreference("SendEmail")'/>
+                      <to variable="InvCommonLoggingService_IV" part="payload"
+                          query="/ns5:Process/ns5:ProcessLog/ns5:emailSent"/>
+                    </copy>
+                  </assign>
+                  <invoke name="InvCommonLoggingService"
+                          inputVariable="InvCommonLoggingService_IV"
+                          partnerLink="CommonLoggingService"
+                          portType="ns5:CommonLoggingService_BPEL"
+                          operation="process" bpelx:invokeAsDetail="no"/>
+                  <assign name="AsgnFailure">
+                    <copy>
+                      <from expression='"failed"'/>
+                      <to variable="outputVariable" part="payload"
+                          query="/ns2:FileUtilityResp/ns2:Status"/>
+                    </copy>
+                  </assign>
+                  <reply name="replyFailure" variable="outputVariable"
+                         partnerLink="FileUtilityservice_bpel_client"
+                         portType="client:FileUtilityService_BPEL"
+                         operation="Move"/>
+                </sequence>
+              </catchAll>
+            </faultHandlers>
+            <sequence name="Move">
+              <assign name="AsgnFileInvokeParams">
+                <copy>
+                  <from variable="OnMessage_Move_IV" part="payload"
+                        query="/ns2:FileUtilityReq/ns2:SourcePhysicalDirectory"/>
+                  <to variable="sourceDirectory"/>
+                </copy>
+                <copy>
+                  <from variable="OnMessage_Move_IV" part="payload"
+                        query="/ns2:FileUtilityReq/ns2:SourceFileName"/>
+                  <to variable="sourceFileName"/>
+                </copy>
+                <copy>
+                  <from variable="OnMessage_Move_IV" part="payload"
+                        query="/ns2:FileUtilityReq/ns2:TargetPhysicalDirectory"/>
+                  <to variable="targetDirectory"/>
+                </copy>
+                <copy>
+                  <from variable="OnMessage_Move_IV" part="payload"
+                        query="/ns2:FileUtilityReq/ns2:TargetFileName"/>
+                  <to variable="targetFileName"/>
+                </copy>
+              </assign>
+              <invoke name="InvFileUtility" inputVariable="InvFileMove_IV"
+                      outputVariable="InvFileMove_OV" partnerLink="FileUtility"
+                      portType="ns1:FileUtility_ptt" operation="FileMove"
+                      bpelx:invokeAsDetail="no">
+                <bpelx:inputProperty name="jca.file.SourceDirectory"
+                                     variable="sourceDirectory"/>
+                <bpelx:inputProperty name="jca.file.SourceFileName"
+                                     variable="sourceFileName"/>
+                <bpelx:inputProperty name="jca.file.TargetDirectory"
+                                     variable="targetDirectory"/>
+                <bpelx:inputProperty name="jca.file.TargetFileName"
+                                     variable="targetFileName"/>
+              </invoke>
+              <assign name="AsgnSuccess">
+                <copy>
+                  <from expression='"success"'/>
+                  <to variable="outputVariable" part="payload"
+                      query="/ns2:FileUtilityResp/ns2:Status"/>
+                </copy>
+              </assign>
+              <reply name="replySucessStatus"
+                     partnerLink="FileUtilityservice_bpel_client"
+                     portType="client:FileUtilityService_BPEL" operation="Move"
+                     variable="outputVariable"/>
+            </sequence>
+          </scope>
+        </sequence>
+      </onMessage>
+      <onMessage variable="OnMessage_Delete_IV"
+                 partnerLink="FileUtilityservice_bpel_client"
+                 portType="client:FileUtilityService_BPEL" operation="Delete">
+        <scope name="ScopeFileDelete">
+          <bpelx:annotation>
+            <bpelx:general>
+              <bpelx:property name="userLabel">ScopeFileDelete</bpelx:property>
+            </bpelx:general>
+          </bpelx:annotation>
+          <faultHandlers>
+            <catchAll>
+              <sequence name="SequenceDeleteFailed">
+                <assign name="AsgnCommonErrorHandlerInput">
+                  <copy>
+                    <from expression="ora:getCompositeInstanceId()"/>
+                    <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:InstanceNumber"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getFaultName()"/>
+                     <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultMessage"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("CorrectiveAction")'/>
+                  <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:CorrectiveAction"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("InterfaceNumber")'/>
+                     <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:InterfaceNumber"/>
+                  </copy>
+                  <copy>
+                    <from expression='"SOAUtilityServices"'/>
+                    <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:InterfaceName"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("FaultSystemName")'/>
+                    <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:FaultSystemName"/>
+                  </copy>
+                  <copy>
+                    <from expression='"FileUtilityService"'/>
+                     <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:ProcessName"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("Severity")'/>
+                     <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:Severity"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                    <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:bOpenServiceTicket"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference('FaultCode')"/>
+                    <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultCode"/>
+                  </copy>
+                  <copy>
+                    <from expression="xp20:current-dateTime()"/>
+                     <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultTime"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getFaultAsString()"/>
+                     <to variable="InvCommonErrorHandler_IV" part="payload" 
+                        query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultDescription"/>
+                  </copy>
+                </assign>
+                <switch name="SwitchSendEmail">
+                  <case condition='ora:getPreference("SendEmail")="Y"'>
+                    <bpelx:annotation>
+                      <bpelx:general>
+                        <bpelx:property name="userLabel">SendEmail_IS_YES</bpelx:property>
+                      </bpelx:general>
+                    </bpelx:annotation>
+                    <sequence>
+                      <invoke name="InvCommonErrorHandler"
+                              partnerLink="CommonErrorHandler"
+                              portType="ns4:CommonErrorHandler_BPEL"
+                              operation="process"
+                              inputVariable="InvCommonErrorHandler_IV"
+                              bpelx:invokeAsDetail="no"/>
+                    </sequence>
+                  </case>
+                </switch>
+                <assign name="AsgnCommonLoggingService">
+                  <copy>
+                    <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:InstanceNumber"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:instancenumber"/>
+                  </copy>
+                  <copy>
+                   <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:InterfaceNumber"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:interfacenumber"/>
+                  </copy>
+                  <copy>
+                   <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:InterfaceName"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:interfacename"/>
+                  </copy>
+                  <copy>
+                   <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:ProcessName"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:processname"/>
+                  </copy>
+                  <copy>
+                    <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:Severity"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:severity"/>
+                  </copy>
+                  <copy>
+                   <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultDescription"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:faultdescription"/>
+                  </copy>
+                  <copy>
+                    <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:FaultSystemName"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:faultsystemname"/>
+                  </copy>
+                  <copy>
+                    <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:bOpenServiceTicket"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:bopenserviceticket"/>
+                  </copy>
+                  <copy>
+                    <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:CorrectiveAction"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:correctiveaction"/>
+                  </copy>
+                  <copy>
+                    <from variable="sourceFileName"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:uniqueIdentifier"/>
+                  </copy>
+                  <copy>
+                    <from expression="'E'"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:status"/>
+                  </copy>
+                  <copy>
+                    <from expression="xp20:current-dateTime()"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:createddatetime"/>
+                  </copy>
+                  <copy>
+                    <from variable="InvCommonErrorHandler_IV" part="payload" 
+                          query="/ns6:CommonErrorHandlerInput/ns6:Fault/ns6:FaultTime"/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:faulttime"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("SendEmail")'/>
+                    <to variable="InvCommonLoggingService_IV" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:emailSent"/>
+                  </copy>
+                </assign>
+                <invoke name="InvCommonLoggingService"
+                        inputVariable="InvCommonLoggingService_IV"
+                        partnerLink="CommonLoggingService"
+                        portType="ns5:CommonLoggingService_BPEL"
+                        operation="process" bpelx:invokeAsDetail="no"/>
+                <assign name="AsgnFailure">
+                  <copy>
+                    <from expression='"failed"'/>
+                    <to variable="outputVariable" part="payload"
+                        query="/ns2:FileUtilityResp/ns2:Status"/>
+                  </copy>
+                </assign>
+                <reply name="replyFailure" variable="outputVariable"
+                       partnerLink="FileUtilityservice_bpel_client"
+                       portType="client:FileUtilityService_BPEL"
+                       operation="Delete"/>
+              </sequence>
+            </catchAll>
+          </faultHandlers>
+          <sequence name="Delete">
+            <assign name="AsgnFileInvokeParams">
+              <copy>
+                <from variable="OnMessage_Delete_IV" part="payload"
+                      query="/ns2:FileDeleteReq/ns2:TargetPhysicalDirectory"/>
+                <to variable="targetDirectory"/>
+              </copy>
+              <copy>
+                <from variable="OnMessage_Delete_IV" part="payload"
+                      query="/ns2:FileDeleteReq/ns2:TargetFileName"/>
+                <to variable="targetFileName"/>
+              </copy>
+            </assign>
+            <invoke name="InvFileDelete" inputVariable="InvFileDelete_IV"
+                    outputVariable="InvFileDelete_OV" partnerLink="FileUtility"
+                    portType="ns1:FileUtility_ptt" operation="FileDelete"
+                    bpelx:invokeAsDetail="no">
+              <bpelx:inputProperty name="jca.file.TargetDirectory"
+                                   variable="targetDirectory"/>
+              <bpelx:inputProperty name="jca.file.TargetFileName"
+                                   variable="targetFileName"/>
+            </invoke>
+            <assign name="AsgnSuccess">
+              <copy>
+                <from expression='"success"'/>
+                <to variable="outputVariable" part="payload"
+                    query="/ns2:FileUtilityResp/ns2:Status"/>
+              </copy>
+            </assign>
+            <reply name="replySucessStatus"
+                   partnerLink="FileUtilityservice_bpel_client"
+                   portType="client:FileUtilityService_BPEL" operation="Delete"
+                   variable="outputVariable"/>
+          </sequence>
+        </scope>
+      </onMessage>
+    </pick>
+    <!-- Generate reply to synchronous request -->
+  </sequence>
+</process>

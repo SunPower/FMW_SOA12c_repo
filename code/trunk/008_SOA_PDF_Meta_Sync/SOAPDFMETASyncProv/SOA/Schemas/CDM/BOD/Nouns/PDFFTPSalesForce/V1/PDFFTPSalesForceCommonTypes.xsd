@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified">
+   <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../../../Schemas/CDM/Common/V1/CommonDataTypes.xsd"/>
+   <xsd:element name="TRX_NUMBER" type="cdt:String50"/>
+   <xsd:element name="BILL_TO_CUSTOMER_ID" type="xsd:int" nillable="true"/>
+   <xsd:element name="CUSTOMER_NUMBER" type="cdt:String50" nillable="true"/>
+   <xsd:element name="TRX_STATUS" type="cdt:String200" nillable="true"/>
+   <xsd:element name="TRX_DATE" type="xsd:dateTime" nillable="true"/>
+   <xsd:element name="TRX_CREATION_DATE" type="xsd:dateTime" nillable="true"/>
+   <xsd:element name="TRX_TYPE" type="xsd:dateTime" nillable="true"/>
+   <xsd:element name="TRX_TYPE_NAME" type="xsd:dateTime" nillable="true"/>
+   <xsd:element name="TRX_TYPE_DESC" type="xsd:dateTime" nillable="true"/>
+   <xsd:element name="OPERATING_UNIT_NAME" type="cdt:String200" nillable="true"/>
+   <xsd:element name="CURRENCY_CODE" type="cdt:String200" nillable="true"/>
+   <xsd:element name="TRANSACTION_CURRENCY_CODE" type="cdt:String200" nillable="true"/>
+   <xsd:element name="LAST_UPDATE_DATE" type="cdt:String200" nillable="true"/>
+   <xsd:element name="CREATED_BY" type="cdt:String200" nillable="true"/>
+   <xsd:element name="LAST_UPDATED_BY" type="cdt:String200" nillable="true"/>
+   <xsd:element name="LAST_UPDATED_LOGIN" type="xsd:int" nillable="true"/>
+   <xsd:element name="RECORD_STATUS" type="xsd:int" nillable="true"/>
+   <xsd:element name="RECORD_ID" type="xsd:int" nillable="true"/>
+   <xsd:element name="ERROR_MESSAGE" type="cdt:String200" nillable="true"/>
+   <xsd:element name="PDF_FILE_NAME" type="cdt:String200" nillable="true"/>
+   <xsd:element name="TRX_LAST_UPDATED_DATE" type="cdt:String200" nillable="true"/>
+   <xsd:element name="T_CREATION_DATE" type="cdt:String200" nillable="true"/>
+   <xsd:element name="TRX_TYPE_MEANING" type="cdt:String200" nillable="true"/>
+   <xsd:element name="ORG_ID" type="cdt:String200" nillable="true"/>
+   <xsd:element name="CUSTOMER_NAME" type="cdt:String200" nillable="true"/>
+   <xsd:element name="SFDC_ACCOUNT_NAME" type="cdt:String200" nillable="true"/>
+   <xsd:element name="SFDC_ACCOUNT_ID" type="cdt:String200" nillable="true"/>
+   <xsd:element name="SFDC_USER_ID" type="cdt:String200" nillable="true"/>
+   <xsd:element name="SFDC_ATTACHMENT_ID" type="cdt:String200" nillable="true"/>
+   <xsd:element name="Body" type="cdt:base64_1" nillable="true"/>
+   <xsd:element name="SourceDirectoryPath" type="cdt:String200" nillable="true"/>
+</xsd:schema>

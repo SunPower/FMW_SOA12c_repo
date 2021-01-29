@@ -1,0 +1,8 @@
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="http://uat-fusappdca02.sunpowercorp.com:7003/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2F054_RevalConnect%2FRevalConnect_FileUpload_2Reval%2FRevalConnect_FileUpload_2Reval%7Drevalconnect_fileupload_2reval_client_ep"
+          uri="http://uat-fusappdca02.sunpowercorp.com:7003/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep?WSDL"/>
+  <system systemId="http://uat-fusappdca02:7003/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2F054_RevalConnect%2FRevalConnect_FileUpload_2Reval%2FRevalConnect_FileUpload_2Reval%7Drevalconnect_fileupload_2reval_client_ep"
+          uri="http://uat-fusappdca02:7003/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep?WSDL"/>
+  <system systemId="http://dev-fusappdca02:7003/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep?WSDL#%7Bhttp%3A%2F%2Fxmlns.oracle.com%2F054_RevalConnect%2FRevalConnect_FileUpload_2Reval%2FRevalConnect_FileUpload_2Reval%7Drevalconnect_fileupload_2reval_client_ep"
+          uri="http://dev-fusappdca02:7003/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep?WSDL"/>
+</catalog>

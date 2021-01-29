@@ -1,0 +1,46 @@
+<wsdl:definitions name="PDFFTPCanonical" targetNamespace="http://www.sunpowercorp.com/PDFFTPCanonical/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.sunpowercorp.com/PDFFTPCanonical/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.sunpowercorp.com/PDFFTPCanonical/">
+         <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" schemaLocation="../XSD/CDM/BOD/Nouns/PDFFTPSalesForce/V1/ProcessPDFFTPSalesForce.xsd"/>
+  </xsd:schema>
+
+      <xsd:schema targetNamespace="http://www.sunpowercorp.com/PDFFTPCanonical/">
+      <xsd:element name="PDFFTPCanonicalResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PDFFTPCanonicalRequest">
+    <wsdl:part element="ns1:ProcessPDFFTPSalesForce" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="PDFFTPCanonicalResponse">
+    <wsdl:part element="tns:PDFFTPCanonicalResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="PDFFTPCanonical">
+    <wsdl:operation name="PDFFTP">
+      <wsdl:input message="tns:PDFFTPCanonicalRequest"/>
+      <wsdl:output message="tns:PDFFTPCanonicalResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PDFFTPCanonicalSOAP" type="tns:PDFFTPCanonical">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PDFFTP">
+      <soap:operation soapAction="http://www.sunpowercorp.com/PDFFTPCanonical/PDFFTP"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PDFFTPCanonical">
+    <wsdl:port binding="tns:PDFFTPCanonicalSOAP" name="PDFFTPCanonicalSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

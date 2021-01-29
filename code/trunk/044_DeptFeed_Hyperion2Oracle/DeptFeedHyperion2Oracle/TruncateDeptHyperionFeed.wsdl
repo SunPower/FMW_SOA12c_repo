@@ -1,0 +1,22 @@
+<?binding.jca TruncateDeptHyperionFeed_db.jca?>
+<wsdl:definitions name="TruncateDeptHyperionFeed" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/DEV_DEVELOP_CODE/DeptFeedHyperion2Oracle/TruncateDeptHyperionFeed" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/TruncateDeptHyperionFeed" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/DEV_DEVELOP_CODE/DeptFeedHyperion2Oracle/TruncateDeptHyperionFeed" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="TruncateDeptHyperionFeed_plt">
+        <plt:role name="TruncateDeptHyperionFeed_role">
+            <plt:portType name="tns:TruncateDeptHyperionFeed_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/TruncateDeptHyperionFeed"
+                    schemaLocation="Schemas/TruncateDeptHyperionFeed.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="TruncateDeptHyperionFeedInput_msg">
+        <wsdl:part name="TruncateDeptHyperionFeedInput_msg" element="db:TruncateDeptHyperionFeedInput"/>
+    </wsdl:message>
+    <wsdl:portType name="TruncateDeptHyperionFeed_ptt">
+        <wsdl:operation name="TruncateDeptHyperionFeed">
+            <wsdl:input message="tns:TruncateDeptHyperionFeedInput_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

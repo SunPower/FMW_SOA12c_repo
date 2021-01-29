@@ -1,0 +1,29 @@
+2020-12-11 20:12:26.854/1.614 Oracle Coherence 12.2.1.3.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/D:/SOA/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2020-12-11 20:12:26.874/1.634 Oracle Coherence 12.2.1.3.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/D:/SOA/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2020-12-11 20:12:26.875/1.635 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2020-12-11 20:12:26.876/1.637 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2020-12-11 20:12:26.877/1.638 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2020-12-11 20:12:26.878/1.639 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.3.0 Build 68243
+ Grid Edition: Development mode
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+2020-12-11 20:12:27.623/2.384 Oracle Coherence GE 12.2.1.3.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.ExtensibleConfigurableCacheFactory
+2020-12-11 20:12:27.722/2.483 Oracle Coherence GE 12.2.1.3.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "sn38854's cluster" has been automatically generated
+Dec 11, 2020 8:12:31 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Dec 11, 2020 8:12:34 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Dec 11, 2020 8:12:36 PM com.collaxa.cube.CubeLogger info
+INFO: validating "EmployeeCentralFeedOracle2SF_BPEL.bpel" ...
+Dec 11, 2020 8:12:44 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "EmployeeCentralFeedOracle2SF_BPEL" in 54.3 milliseconds [nodes 28=0+28, 515.7 nodes/sec]
+Dec 11, 2020 8:12:45 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "EmployeeCentralFeedOracle2SF_BPEL" in 1.109 seconds
+Dec 11, 2020 8:12:45 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0.5 milliseconds
+Dec 11, 2020 8:12:45 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "EmployeeCentralFeedOracle2SF_BPEL" in 9.7 milliseconds
+Java HotSpot(TM) Client VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) Client VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

@@ -1,0 +1,493 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Jan 08 12:48:04 IST 2013
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="DeleteSFDCRecordService_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns4="urn:partner.soap.sforce.com"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+         xmlns:ns7="http://www.sunpowercorp.com/SunPowerDevelopment/DeleteSFDCRecordService/initParams/xsd/v1"
+         xmlns:ns1="urn:sobject.partner.soap.sforce.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL">
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="deletesfdcrecordservice_bpel_client"
+                 partnerLinkType="client:DeleteSFDCRecordService_BPEL"
+                 myRole="DeleteSFDCRecordService_BPELProvider"
+                 partnerRole="DeleteSFDCRecordService_BPELRequester"/>
+    <partnerLink name="SFDCService" partnerLinkType="ns4:SFDCService"
+                 partnerRole="Soap"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns3:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+  </partnerLinks>
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <!-- Reference to the message that will be sent back to the requester during callback -->
+    <variable name="recordsProcessed" type="xsd:integer"/>
+    <variable name="totalRecords" type="xsd:integer"/>
+    <variable name="noOfIterations" type="xsd:integer"/>
+    <variable name="sizeofBunch" type="xsd:integer"/>
+    <variable name="recordsLeft" type="xsd:integer"/>
+    <variable name="initParams" element="ns7:InitParams"/>
+    <variable name="SetTitle" type="xsd:string"/>
+    <variable name="queryMore" type="xsd:int"/>
+    <variable name="i" type="xsd:int"/>
+    <variable name="InvSFDCServiceQueryMore_IV"
+              messageType="ns4:queryMoreRequest"/>
+    <variable name="InvSFDCServiceQueryMore_OV"
+              messageType="ns4:queryMoreResponse"/>
+    <variable name="InvSFDCServiceQuery_IV" messageType="ns4:queryRequest"/>
+    <variable name="InvSFDCServiceQuery_OV" messageType="ns4:queryResponse"/>
+    <variable name="Header" element="ns4:SessionHeader"/>
+    <variable name="partnerReference" element="ns2:EndpointReference"/>
+    <variable name="InvSFDCServiceDelete_IV" messageType="ns4:deleteRequest"/>
+    <variable name="InvSFDCServiceDelete_OV" messageType="ns4:deleteResponse"/>
+    <variable name="inputVariable"
+              messageType="client:DeleteSFDCRecordService_BPELRequestMessage"/>
+    <variable name="outputVariable"
+              messageType="client:DeleteSFDCRecordService_BPELResponseMessage"/>
+    <variable name="InvCommonSFDCErrorLogService_IV"
+              messageType="ns3:requestMessage"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence7">
+        <assign name="AsgnCommonSFDCErrorLogService">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Severity"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultCode")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression='"DeleteSFDCRecordService"'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='"DeleteSFDCRecordService"'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:SendEmail"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService"
+                inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns3:execute_ptt" operation="execute"
+                bpelx:invokeAsDetail="no"/>
+        <invoke name="callbackClient" inputVariable="outputVariable"
+                partnerLink="deletesfdcrecordservice_bpel_client"
+                portType="client:DeleteSFDCRecordService_BPELCallback"
+                operation="processResponse" bpelx:invokeAsDetail="no"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in DeleteSFDCRecordService_BPEL.wsdl) -->
+    <receive name="receiveInput"
+             partnerLink="deletesfdcrecordservice_bpel_client"
+             portType="client:DeleteSFDCRecordService_BPEL" operation="process"
+             variable="inputVariable" createInstance="yes"/>
+    <assign name="AsgnQuerySFDCService">
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:process/client:deleteQuery"/>
+        <to variable="InvSFDCServiceQuery_IV" part="parameters"
+            query="/ns4:query/ns4:queryString"/>
+      </copy>
+    </assign>
+    <assign name="AsgnHeaderandPartnerRef">
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:process/client:SFDCSessionID"/>
+        <to variable="Header" query="/ns4:SessionHeader/ns4:sessionId"/>
+      </copy>
+      <copy>
+        <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+        <to variable="partnerReference"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:process/client:URL"/>
+        <to variable="partnerReference"
+            query="/ns2:EndpointReference/ns2:Address"/>
+      </copy>
+      <copy>
+        <from variable="partnerReference"/>
+        <to partnerLink="SFDCService"/>
+      </copy>
+    </assign>
+    <invoke name="InvQuerySFDCService" outputVariable="InvSFDCServiceQuery_OV"
+            partnerLink="SFDCService" portType="ns4:Soap" operation="query"
+            inputVariable="InvSFDCServiceQuery_IV" bpelx:invokeAsDetail="no"
+            bpelx:inputHeaderVariable="Header"/>
+    <switch name="SwitchMoreRecordsToDelete">
+      <case condition="bpws:getVariableData('InvSFDCServiceQuery_OV','parameters','/ns4:queryResponse/ns4:result/ns4:size') > 200">
+        <sequence name="Sequence3">
+          <assign name="InitializeParms">
+            <copy>
+              <from expression="bpws:getVariableData('InvSFDCServiceQuery_OV','parameters','/ns4:queryResponse/ns4:result/ns4:size')"/>
+              <to variable="totalRecords"/>
+            </copy>
+            <copy>
+              <from expression="1"/>
+              <to variable="initParams" query="/ns7:InitParams/ns7:startIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="initParams" query="/ns7:InitParams/ns7:endIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="recordsProcessed"/>
+            </copy>
+            <copy>
+              <from expression='ora:getPreference("sizeOfBunch")'/>
+              <to variable="sizeofBunch"/>
+            </copy>
+            <copy>
+              <from expression="ceiling($totalRecords div $sizeofBunch)"/>
+              <to variable="noOfIterations"/>
+            </copy>
+          </assign>
+          <while name="WhileForRetived2000Recrds"
+                 condition="$noOfIterations > 0">
+            <sequence name="Sequence2">
+              <assign name="AssignParmValues">
+                <copy>
+                  <from expression="$totalRecords - $recordsProcessed"/>
+                  <to variable="recordsLeft"/>
+                </copy>
+                <copy>
+                  <from expression="$recordsProcessed + 1"/>
+                  <to variable="initParams"
+                      query="/ns7:InitParams/ns7:startIndex"/>
+                </copy>
+              </assign>
+              <switch name="Switch2">
+                <case condition="($recordsLeft div $sizeofBunch) >= 1">
+                  <assign name="updateEndIndex">
+                    <copy>
+                      <from expression="$recordsProcessed + $sizeofBunch"/>
+                      <to variable="initParams"
+                          query="/ns7:InitParams/ns7:endIndex"/>
+                    </copy>
+                  </assign>
+                </case>
+                <otherwise>
+                  <assign name="updateEndIndex">
+                    <copy>
+                      <from variable="totalRecords"/>
+                      <to variable="initParams"
+                          query="/ns7:InitParams/ns7:endIndex"/>
+                    </copy>
+                  </assign>
+                </otherwise>
+              </switch>
+              <assign name="TransformIndexDelSFDC">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('xsl/TransChunkSFDCDel.xsl', $initParams, 'InvSFDCServiceQuery_OV.parameters', $InvSFDCServiceQuery_OV.parameters)"/>
+                  <to variable="InvSFDCServiceDelete_IV" part="parameters"/>
+                </copy>
+              </assign>
+              <invoke name="InvDelSFDCService"
+                      inputVariable="InvSFDCServiceDelete_IV"
+                      outputVariable="InvSFDCServiceDelete_OV"
+                      partnerLink="SFDCService" portType="ns4:Soap"
+                      operation="delete" bpelx:invokeAsDetail="no"
+                      bpelx:inputHeaderVariable="Header"/>
+              <assign name="updateRecordProcessed">
+                <copy>
+                  <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns7:InitParams/ns7:endIndex')) - bpws:getVariableData('initParams','/ns7:InitParams/ns7:startIndex') ) + 1"/>
+                  <to variable="recordsProcessed"/>
+                </copy>
+                <copy>
+                  <from expression="$noOfIterations -1"/>
+                  <to variable="noOfIterations"/>
+                </copy>
+              </assign>
+            </sequence>
+          </while>
+          <switch name="Switch3">
+            <case condition="bpws:getVariableData('InvSFDCServiceQuery_OV','parameters','/ns4:queryResponse/ns4:result/ns4:size') > 2000">
+              <bpelx:annotation>
+                <bpelx:general>
+                  <bpelx:property name="userLabel">MoreThan2000RecordsAvailable</bpelx:property>
+                </bpelx:general>
+              </bpelx:annotation>
+              <sequence name="Sequence5">
+                <assign name="AsgnWhileLoopParams">
+                  <copy>
+                    <from expression="floor(bpws:getVariableData('InvSFDCServiceQuery_OV','parameters','/ns4:queryResponse/ns4:result/ns4:size') div 2000)"/>
+                    <to variable="queryMore"/>
+                  </copy>
+                  <copy>
+                    <from expression="1"/>
+                    <to variable="i"/>
+                  </copy>
+                </assign>
+                <while name="WhileAllMoreRecordsCompleted"
+                       condition='$i &lt;= $queryMore'>
+                  <sequence name="Sequence6">
+                    <switch name="SwitchFirstLoop">
+                      <case condition="$i=1">
+                        <bpelx:annotation>
+                          <bpelx:general>
+                            <bpelx:property name="userLabel">FirstLoop</bpelx:property>
+                          </bpelx:general>
+                        </bpelx:annotation>
+                        <assign name="AsgnInvSFDCQueryMore">
+                          <copy>
+                            <from variable="InvSFDCServiceQuery_OV"
+                                  part="parameters"
+                                  query="/ns4:queryResponse/ns4:result/ns4:queryLocator"/>
+                            <to variable="InvSFDCServiceQueryMore_IV"
+                                part="parameters"
+                                query="/ns4:queryMore/ns4:queryLocator"/>
+                          </copy>
+                          <copy>
+                            <from expression="$i + 1"/>
+                            <to variable="i"/>
+                          </copy>
+                        </assign>
+                      </case>
+                      <otherwise>
+                        <assign name="AsgnInvSFDCQueryMore">
+                          <copy>
+                            <from variable="InvSFDCServiceQueryMore_OV"
+                                  part="parameters"
+                                  query="/ns4:queryMoreResponse/ns4:result/ns4:queryLocator"/>
+                            <to variable="InvSFDCServiceQueryMore_IV"
+                                part="parameters"
+                                query="/ns4:queryMore/ns4:queryLocator"/>
+                          </copy>
+                          <copy>
+                            <from expression="$i +1"/>
+                            <to variable="i"/>
+                          </copy>
+                        </assign>
+                      </otherwise>
+                    </switch>
+                    <invoke name="InvSFDCServiceQueryMore"
+                            inputVariable="InvSFDCServiceQueryMore_IV"
+                            outputVariable="InvSFDCServiceQueryMore_OV"
+                            partnerLink="SFDCService" portType="ns4:Soap"
+                            operation="queryMore" bpelx:invokeAsDetail="no"
+                            bpelx:inputHeaderVariable="Header"/>
+                    <assign name="InitializeParms">
+                      <copy>
+                        <from expression="bpws:getVariableData('InvSFDCServiceQueryMore_OV','parameters','/ns4:queryMoreResponse/ns4:result/ns4:size')"/>
+                        <to variable="totalRecords"/>
+                      </copy>
+                      <copy>
+                        <from expression="1"/>
+                        <to variable="initParams"
+                            query="/ns7:InitParams/ns7:startIndex"/>
+                      </copy>
+                      <copy>
+                        <from expression="0"/>
+                        <to variable="initParams"
+                            query="/ns7:InitParams/ns7:endIndex"/>
+                      </copy>
+                      <copy>
+                        <from expression="0"/>
+                        <to variable="recordsProcessed"/>
+                      </copy>
+                      <copy>
+                        <from expression='ora:getPreference("sizeOfBunch")'/>
+                        <to variable="sizeofBunch"/>
+                      </copy>
+                      <copy>
+                        <from expression="ceiling($totalRecords div $sizeofBunch)"/>
+                        <to variable="noOfIterations"/>
+                      </copy>
+                    </assign>
+                    <while name="WhileMoreRecrds"
+                           condition="$noOfIterations > 0">
+                      <sequence name="Sequence2">
+                        <assign name="AssignParmValues">
+                          <copy>
+                            <from expression="$totalRecords - $recordsProcessed"/>
+                            <to variable="recordsLeft"/>
+                          </copy>
+                          <copy>
+                            <from expression="$recordsProcessed + 1"/>
+                            <to variable="initParams"
+                                query="/ns7:InitParams/ns7:startIndex"/>
+                          </copy>
+                        </assign>
+                        <switch name="Switch2">
+                          <case condition="($recordsLeft div $sizeofBunch) >= 1">
+                            <assign name="updateEndIndex">
+                              <copy>
+                                <from expression="$recordsProcessed + $sizeofBunch"/>
+                                <to variable="initParams"
+                                    query="/ns7:InitParams/ns7:endIndex"/>
+                              </copy>
+                            </assign>
+                          </case>
+                          <otherwise>
+                            <assign name="updateEndIndex">
+                              <copy>
+                                <from variable="totalRecords"/>
+                                <to variable="initParams"
+                                    query="/ns7:InitParams/ns7:endIndex"/>
+                              </copy>
+                            </assign>
+                          </otherwise>
+                        </switch>
+                        <assign name="TransQMoreIndexDelSFDC">
+                          <bpelx:annotation>
+                            <bpelx:pattern>transformation</bpelx:pattern>
+                          </bpelx:annotation>
+                          <copy>
+                            <from expression="ora:doXSLTransformForDoc('xsl/TransQMoreIndexDelSFDC.xsl', $initParams, 'InvSFDCServiceQueryMore_OV.parameters', $InvSFDCServiceQueryMore_OV.parameters)"/>
+                            <to variable="InvSFDCServiceDelete_IV"
+                                part="parameters"/>
+                          </copy>
+                        </assign>
+                        <invoke name="InvDelSFDCService"
+                                inputVariable="InvSFDCServiceDelete_IV"
+                                outputVariable="InvSFDCServiceDelete_OV"
+                                partnerLink="SFDCService" portType="ns4:Soap"
+                                operation="delete" bpelx:invokeAsDetail="no"
+                                bpelx:inputHeaderVariable="Header"/>
+                        <assign name="updateRecordProcessed">
+                          <copy>
+                            <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns7:InitParams/ns7:endIndex')) - bpws:getVariableData('initParams','/ns7:InitParams/ns7:startIndex') ) + 1"/>
+                            <to variable="recordsProcessed"/>
+                          </copy>
+                          <copy>
+                            <from expression="$noOfIterations -1"/>
+                            <to variable="noOfIterations"/>
+                          </copy>
+                        </assign>
+                      </sequence>
+                    </while>
+                  </sequence>
+                </while>
+              </sequence>
+            </case>
+          </switch>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence>
+          <assign name="TransformSFDC">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('xsl/TransformDelSFDC.xsl', $InvSFDCServiceQuery_OV.parameters)"/>
+              <to variable="InvSFDCServiceDelete_IV" part="parameters"/>
+            </copy>
+          </assign>
+          <invoke name="InvDelSFDCService"
+                  inputVariable="InvSFDCServiceDelete_IV"
+                  outputVariable="InvSFDCServiceDelete_OV"
+                  partnerLink="SFDCService" portType="ns4:Soap"
+                  operation="delete" bpelx:invokeAsDetail="no"
+                  bpelx:inputHeaderVariable="Header"/>
+        </sequence>
+      </otherwise>
+    </switch>
+    <invoke name="callbackClient"
+            partnerLink="deletesfdcrecordservice_bpel_client"
+            portType="client:DeleteSFDCRecordService_BPELCallback"
+            operation="processResponse" inputVariable="outputVariable"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

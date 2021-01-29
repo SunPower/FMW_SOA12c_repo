@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://TargetNamespace.com/InboundService"
+            targetNamespace="http://TargetNamespace.com/InboundService"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+
+            nxsd:version="NXSD"
+            nxsd:stream="chars"
+            nxsd:encoding="UTF-8"
+            nxsd:hasHeader="true"
+            nxsd:headerLines="1"
+            nxsd:headerLinesTerminatedBy="${eol}"
+>
+
+
+  <xsd:element name="WorkForceFeeds">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="WorkForceFeed" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="SF_EMPLOYEE_NUMBER" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="EMPLOYEE_NEW_NUMBER" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ORACLE_PERSON_ID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="PERSON_EFFECTIVE_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="LAST_NAME" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="FIRST_NAME" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="MIDDLE_NAME" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="PREFERRED_NAME" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="GENDER" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="NATIONALITY" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="DATE_OF_BIRTH" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HIRE_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="TERMINATION_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="TERM_REASON" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="EMAIL" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ADDRESS_EFFECTIVE_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HOME_COUNTRY_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HOME_ADDRESS_LINE1" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HOME_ADDRESS_LINE2" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HOME_ADDRESS_LINE3" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HOME_TOWN_OR_CITY" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HOME_STATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="HOME_ZIP_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="JOB_EFFECTIVE_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="EMPLOYEE_STATUS" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="EMPLOYEE_CLASS" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="LOCATION_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="JOB_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="BUSINESS_TITLE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="SUPERVISOR_NUMBER" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ORACLE_PAYROLL_ID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ORACLE_LE_ID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ORACLE_LEDGER_ID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ORACLE_PAY_BASIS_ID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="COMPANY_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="EXPENSE_DEPARTMENT_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="FUTURE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="CHANNEL" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ACCOUNT" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="LINE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="PROJECT" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="INTER_COMPANY" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="SALARY_EFFECTIVE_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ANNUAL_FTE_SAL_IN_LOCAL_CUR" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="LOCAL_CURRENCY_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="RATE_EFFECTIVE_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="RATE_BASIS" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="PAY_RATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="BILL_RATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="OVERTIME_RATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="DOUBLETIME_RATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="RATE_CURRENCY_CODE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="VENDOR_ON_RATE_TABLE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="PROJECTED_ASSIGNMENT_END_DATE" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="${eol}" nxsd:quotedBy="&quot;" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
+<!--NXSDWIZ:D:\Surya\SunPower\SF EC\SPWR_WORKFORCE_FEED_TO_ORACLE_MMDDYYYYHH24MISS.csv:-->
+<!--USE-HEADER:true:-->

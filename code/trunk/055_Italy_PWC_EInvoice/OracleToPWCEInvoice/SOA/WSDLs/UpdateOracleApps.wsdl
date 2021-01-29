@@ -1,0 +1,37 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="UpdateOracleApps"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SPWRSOAApp/OracleToPWCEInvoice/UpdateOracleApps"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SPWRSOAApp/OracleToPWCEInvoice/UpdateOracleApps"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOracleApps"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns1="http://www.params.oracletopwcEinv.org"
+     xmlns:ns2="http://schemas.oracle.com/bpel/extension"
+     xmlns:ns3="http://www.sunpower.com/IT/Middleware/PWC/Einvoice/schema/businessfault"
+    >
+    <plt:partnerLinkType name="UpdateOracleApps_plt">
+        <plt:role name="UpdateOracleApps_role">
+            <plt:portType name="tns:UpdateOracleApps_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOracleApps" schemaLocation="../Schemas/UpdateOracleApps.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpower.com/IT/Middleware/PWC/Einvoice/schema/businessfault"
+                 schemaLocation="../Schemas/BusinessFaultsSchema.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="UpdateOracleAppsInput_msg">
+        <wsdl:part name="UpdateOracleAppsInput_msg" element="db:UpdateOracleAppsInput"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateOracleApps_ptt">
+        <wsdl:operation name="UpdateOracleApps">
+            <wsdl:input message="tns:UpdateOracleAppsInput_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

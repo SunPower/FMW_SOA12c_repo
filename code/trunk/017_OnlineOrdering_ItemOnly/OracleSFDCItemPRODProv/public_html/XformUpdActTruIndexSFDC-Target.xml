@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns3:update xmlns:ns3="urn:partner.soap.sforce.com">
+   <ns3:sObjects>
+      <ens:type xmlns:ens="urn:sobject.partner.soap.sforce.com">Item__c</ens:type>
+      <ens:Active__c xmlns:ens="urn:sobject.partner.soap.sforce.com">false</ens:Active__c>
+      <ens:Id xmlns:ens="urn:sobject.partner.soap.sforce.com">Id30</ens:Id>
+   </ns3:sObjects>
+</ns3:update>

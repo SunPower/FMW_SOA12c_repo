@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="EnqueOracleSFDCNoItemBillTo_BPEL" targetNamespace="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/EnqueOracleSFDCNoItemBillTo/EnqueOracleSFDCNoItemBillTo_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/EnqueOracleSFDCNoItemBillTo/EnqueOracleSFDCNoItemBillTo_BPEL" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/EnqueOracleSFDCNoItemBillTo/EnqueOracleSFDCNoItemBillTo_BPEL"
+                 schemaLocation="Schemas/EnqueOracleSFDCNoItemBillTo_BPEL.xsd"/>
+      </schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/indexInputParams/xsd/v1"
+                     schemaLocation="Schemas/inputParams.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="EnqueOracleSFDCNoItemBillTo_BPELRequestMessage">
+      <wsdl:part name="payload" element="client:process"/>
+   </wsdl:message>
+   <wsdl:portType name="EnqueOracleSFDCNoItemBillTo_BPEL">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:EnqueOracleSFDCNoItemBillTo_BPELRequestMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <plnk:partnerLinkType name="EnqueOracleSFDCNoItemBillTo_BPEL">
+      <plnk:role name="EnqueOracleSFDCNoItemBillTo_BPELProvider">
+         <plnk:portType name="client:EnqueOracleSFDCNoItemBillTo_BPEL"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</wsdl:definitions>

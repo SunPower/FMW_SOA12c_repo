@@ -1,0 +1,38 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="BulkEmailServiceProviderBPEL"
+     targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL"
+     xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+     xmlns:ns1="http://www.sunpowercorp.com/SunPowerDevelopment/BulkEmailServiceProvider/initParams/xsd/v1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="BulkEmailServiceProviderBPEL">
+        <plnk:role name="BulkEmailServiceProviderBPELProvider">
+            <plnk:portType name="client:BulkEmailServiceProviderBPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL"
+                 schemaLocation="../Schemas/BulkEmailServiceProviderBPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/BulkEmailServiceProvider/initParams/xsd/v1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+                 schemaLocation="../Schemas/EmailContent.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="BulkEmailServiceProviderBPELRequestMessage">
+        <wsdl:part name="payload" element="client:BulkEmailServiceProviderInput"/>
+    </wsdl:message>
+    <wsdl:portType name="BulkEmailServiceProviderBPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:BulkEmailServiceProviderBPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

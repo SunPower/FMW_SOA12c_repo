@@ -1,0 +1,26 @@
+<?binding.jca SelectPickListFeedFromOracle_db.jca?>
+<wsdl:definitions name="SelectPickListFeedFromOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/CompanyProjectFeedOracle2SF/SelectPickListFeedFromOracle" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectPickListFeedFromOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/CompanyProjectFeedOracle2SF/SelectPickListFeedFromOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectPickListFeedFromOracle_plt">
+        <plt:role name="SelectPickListFeedFromOracle_role">
+            <plt:portType name="tns:SelectPickListFeedFromOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectPickListFeedFromOracle"
+                    schemaLocation="../Transformations/SelectPickListFeedFromOracle.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectPickListFeedFromOracleInput_msg">
+        <wsdl:part name="SelectPickListFeedFromOracleInput_msg" element="db:SelectPickListFeedFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectPickListFeedFromOracleOutputCollection_msg">
+        <wsdl:part name="SelectPickListFeedFromOracleOutputCollection" element="db:SelectPickListFeedFromOracleOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectPickListFeedFromOracle_ptt">
+        <wsdl:operation name="SelectPickListFeedFromOracle">
+            <wsdl:input message="tns:SelectPickListFeedFromOracleInput_msg"/>
+            <wsdl:output message="tns:SelectPickListFeedFromOracleOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

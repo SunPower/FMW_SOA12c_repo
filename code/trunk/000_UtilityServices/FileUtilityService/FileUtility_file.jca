@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="FileUtility" adapter="file" wsdlLocation="FileUtility.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FileAdapter"/>
+  <endpoint-interaction portType="FileUtility_ptt" operation="FileMove">
+    <interaction-spec className="oracle.tip.adapter.file.outbound.FileIoInteractionSpec">
+      <property name="SourcePhysicalDirectory" value="source"/>
+      <property name="SourceFileName" value="input"/>
+      <property name="TargetPhysicalDirectory" value="target"/>
+      <property name="TargetFileName" value="output"/>
+      <property name="Type" value="MOVE"/>
+    </interaction-spec>
+  </endpoint-interaction>
+  
+  <endpoint-interaction portType="FileUtility_ptt" operation="FileDelete">
+    <interaction-spec className="oracle.tip.adapter.file.outbound.FileIoInteractionSpec">
+      <property name="TargetPhysicalDirectory" value="target"/>
+      <property name="TargetFileName" value="output.trg"/>
+      <property name="Type" value="DELETE"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+
+</adapter-config>

@@ -1,0 +1,29 @@
+2017-11-03 00:44:40.935/4.210 Oracle Coherence 12.2.1.1.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/D:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2017-11-03 00:44:41.084/4.359 Oracle Coherence 12.2.1.1.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/D:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2017-11-03 00:44:41.092/4.366 Oracle Coherence 12.2.1.1.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2017-11-03 00:44:41.097/4.372 Oracle Coherence 12.2.1.1.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2017-11-03 00:44:41.100/4.375 Oracle Coherence 12.2.1.1.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2017-11-03 00:44:41.104/4.378 Oracle Coherence 12.2.1.1.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.1.0 Build 63073
+ Grid Edition: Development mode
+Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+
+2017-11-03 00:44:41.797/5.072 Oracle Coherence GE 12.2.1.1.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2017-11-03 00:44:44.436/7.711 Oracle Coherence GE 12.2.1.1.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "RR46183's cluster" has been automatically generated
+Nov 03, 2017 12:45:02 AM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Nov 03, 2017 12:45:15 AM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Nov 03, 2017 12:45:26 AM com.collaxa.cube.CubeLogger info
+INFO: validating "UpdateSalesOrderResponseSFDCProv.bpel" ...
+Nov 03, 2017 12:45:41 AM com.collaxa.cube.CubeLogger info
+INFO: Composed "UpdateSalesOrderResponseSFDCProv" in 498.0 milliseconds [nodes 15=0+15, 30.1 nodes/sec]
+Nov 03, 2017 12:45:48 AM com.collaxa.cube.CubeLogger info
+INFO: Compiled "UpdateSalesOrderResponseSFDCProv" in 7.427 seconds
+Nov 03, 2017 12:45:48 AM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 2.2 milliseconds
+Nov 03, 2017 12:45:51 AM com.collaxa.cube.CubeLogger info
+INFO: Packaged "UpdateSalesOrderResponseSFDCProv" in 2.746 seconds
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

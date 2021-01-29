@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectUpdateContactCustomer" adapter="db" wsdlLocation="WSDLs/SelectUpdateContactCustomer.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="SelectUpdateContactCustomer_ptt" operation="SelectUpdateContactCustomer">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select b.customer_order_link_id as customer_order_link_id,b.sales_type as sales_type,c.temp_contact_id as temp_contact_id , c.cust_account_role_id as cust_account_role_id, c.sfdc_contact_id as sfdc_contact_id, c.sfdc_synced as sfdc_synced,c.ERROR_MESSAGE as ERROR_MESSAGE ,c.process_flag as process_flag, c.SOA_S2O_ID as SOA_S2O_ID from XXSPWR.XXSPWR_CUST_CONTACTS c, xxspwr.xxspwr_dsr_so_header b where c.sfdc_synced='N'  and b.customer_order_link_id=c.customer_order_link_id and b.sales_type != 'NH LEASE' and c.DATA_SOURCE =#dataSource"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

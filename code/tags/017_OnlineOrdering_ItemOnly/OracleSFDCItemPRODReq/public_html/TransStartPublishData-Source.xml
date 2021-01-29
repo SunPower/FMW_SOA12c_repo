@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<FetchOrcEbizDataDBOutputCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/FetchOrcEbizDataDB">
+   <FetchOrcEbizDataDBOutput>
+      <NUM>1</NUM>
+      <ITEM_NUMBER>ITEM_NUMBER2</ITEM_NUMBER>
+      <DESCRIPTION>DESCRIPTION3</DESCRIPTION>
+      <LONG_DESCRIPTION>LONG_DESCRIPTION4</LONG_DESCRIPTION>
+      <INVENTORY_ITEM_ID>5</INVENTORY_ITEM_ID>
+      <Item_category1>Item_category16</Item_category1>
+      <Item_category2>Item_category27</Item_category2>
+      <Item_Category3>Item_Category38</Item_Category3>
+      <PROD_TYPE>PROD_TYPE9</PROD_TYPE>
+   </FetchOrcEbizDataDBOutput>
+   <FetchOrcEbizDataDBOutput>
+      <NUM>10</NUM>
+      <ITEM_NUMBER>ITEM_NUMBER11</ITEM_NUMBER>
+      <DESCRIPTION>DESCRIPTION12</DESCRIPTION>
+      <LONG_DESCRIPTION>LONG_DESCRIPTION13</LONG_DESCRIPTION>
+      <INVENTORY_ITEM_ID>14</INVENTORY_ITEM_ID>
+      <Item_category1>Item_category115</Item_category1>
+      <Item_category2>Item_category216</Item_category2>
+      <Item_Category3>Item_Category317</Item_Category3>
+      <PROD_TYPE>PROD_TYPE18</PROD_TYPE>
+   </FetchOrcEbizDataDBOutput>
+   <FetchOrcEbizDataDBOutput>
+      <NUM>19</NUM>
+      <ITEM_NUMBER>ITEM_NUMBER20</ITEM_NUMBER>
+      <DESCRIPTION>DESCRIPTION21</DESCRIPTION>
+      <LONG_DESCRIPTION>LONG_DESCRIPTION22</LONG_DESCRIPTION>
+      <INVENTORY_ITEM_ID>23</INVENTORY_ITEM_ID>
+      <Item_category1>Item_category124</Item_category1>
+      <Item_category2>Item_category225</Item_category2>
+      <Item_Category3>Item_Category326</Item_Category3>
+      <PROD_TYPE>PROD_TYPE27</PROD_TYPE>
+   </FetchOrcEbizDataDBOutput>
+</FetchOrcEbizDataDBOutputCollection>

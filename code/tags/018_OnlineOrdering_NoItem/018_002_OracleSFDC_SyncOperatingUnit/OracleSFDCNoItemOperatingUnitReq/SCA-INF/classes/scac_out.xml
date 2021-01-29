@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>fault-policies.xml</file>
+      <name>fault-policies.xml</name>
+      <fix/>
+      <msg>schema -  (Error) Identity constraint validation error: 'Key sequence not found in key reference'</msg>
+   </Fault>
+</Faults>

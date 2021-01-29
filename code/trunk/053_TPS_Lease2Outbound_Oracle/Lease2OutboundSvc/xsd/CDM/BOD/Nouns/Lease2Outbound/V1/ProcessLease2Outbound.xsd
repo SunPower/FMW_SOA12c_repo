@@ -1,0 +1,26 @@
+<!--
+    Name: ProcessLease2Outbound.xsd
+    Change history
+
+    Author      date        purpose
+
+--><xsd:schema targetNamespace="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1" xmlns:lo="http://www.sunpowercorp.com/Noun/Lease2Outbound/V1" xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/Lease2Outbound/V1" schemaLocation="Lease2Outbound.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessLease2Outbound" type="ProcessLease2OutboundType"/>
+    <xsd:complexType name="ProcessLease2OutboundType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="Lease2OutboundDataAreaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Lease2OutboundDataAreaType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="lo:LeaseOrder" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

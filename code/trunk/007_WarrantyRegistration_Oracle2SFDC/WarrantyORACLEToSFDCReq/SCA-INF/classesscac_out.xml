@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='http://dev-fusappdca02.sunpowercorp.com:7004/WarrantyORACLEToSFDCSvc/Proxy/WarrantyORACLEToSFDCSvcPS?wsdl']</loc>
+      <line>12</line>
+      <col>30</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "http://dev-fusappdca02.sunpowercorp.com:7004/WarrantyORACLEToSFDCSvc/Proxy/WarrantyORACLEToSFDCSvcPS?wsdl" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='WarrantyOracleToSFDCCanonicalWrapper.wsdl']</loc>
+      <line>15</line>
+      <col>30</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "WarrantyOracleToSFDCCanonicalWrapper.wsdl" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:reference[@name='WarrantyOSBService']</loc>
+      <line>70</line>
+      <col>138</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/}WarrantyOracleToSFDCCanonical" for "WarrantyOSBService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='WarrantyOSBService']</loc>
+      <line>70</line>
+      <col>138</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "WarrantyOSBService":"{http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/}WarrantyOracleToSFDCCanonicalSOAP" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='WarrantyOSBService']</loc>
+      <line>70</line>
+      <col>138</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "WarrantyOSBService":"{http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/}WarrantyOracleToSFDCCanonicalSOAP" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:component[@name='WarrantyORACLEToSFDCReq_BPEL']</loc>
+      <line>40</line>
+      <col>64</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/}WarrantyOracleToSFDCCanonical" for "WarrantyOSBService" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>0</line>
+      <col/>
+      <file>WarrantyORACLEToSFDCReq_BPEL</file>
+      <name>WarrantyORACLEToSFDCReq_BPEL</name>
+      <fix>n/a</fix>
+      <msg>XML parsing failed because "FabricException: Error in getting XML input stream: http://dev-fusappdca02.sunpowercorp.com:7004/WarrantyORACLEToSFDCSvc/Proxy/WarrantyORACLEToSFDCSvcPS?wsdl: http://dev-fusappdca02.sunpowercorp.com:7004/WarrantyORACLEToSFDCSvc/Proxy/WarrantyORACLEToSFDCSvcPS?wsdl"</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='WarrantyOSBService']</loc>
+      <line>101</line>
+      <col>17</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/}WarrantyOracleToSFDCCanonical" for "WarrantyORACLEToSFDCReq_BPEL" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='WarrantyOSBService']</loc>
+      <line>101</line>
+      <col>17</col>
+      <file>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Cannot find Port Type "{http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/}WarrantyOracleToSFDCCanonical" for "WarrantyOSBService" in WSDL Manager</msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectPickListFeedFromOracle" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectPickListFeedFromOracle" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectPickListFeedFromOracleInput" type="SelectPickListFeedFromOracleInput"/>
+   <xs:complexType name="SelectPickListFeedFromOracleInput">
+      <xs:sequence>
+         <xs:element name="minrow" type="xs:string" nillable="true"/>
+         <xs:element name="maxrow" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectPickListFeedFromOracleOutputCollection" type="SelectPickListFeedFromOracleOutputCollection"/>
+   <xs:complexType name="SelectPickListFeedFromOracleOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectPickListFeedFromOracleOutput" type="SelectPickListFeedFromOracleOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectPickListFeedFromOracleOutput">
+      <xs:sequence>
+         <xs:element name="TEXT" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

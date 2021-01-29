@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="SFDCLookUpUtilityMediator_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="120" width="137" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="113" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="SFDCLookUpUtilityMediator_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="urn:SFDCLookUpUtilityMediator#wsdl.interface(SFDCLookUpUtilityMediator)" callbackInterface="urn:SFDCLookUpUtilityMediator#wsdl.interface(SFDCLookUpUtilityMediatorCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+            <dgm:item>processResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="SFDCLogin">
+        <dgm:body borderWidth="2" arcRad="20" X="1015" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="1005" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SFDCLogin" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL#wsdl.interface(SFDCLogin_BPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="SFDC">
+        <dgm:body borderWidth="2" arcRad="20" X="1015" Y="145" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="1005" Y="138" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SFDC" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="urn:partner.soap.sforce.com#wsdl.interface(Soap)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>login</dgm:item>
+            <dgm:item>describeSObject</dgm:item>
+            <dgm:item>describeSObjects</dgm:item>
+            <dgm:item>describeGlobal</dgm:item>
+            <dgm:item>describeDataCategoryGroups</dgm:item>
+            <dgm:item>describeDataCategoryGroupStructures</dgm:item>
+            <dgm:item>describeLayout</dgm:item>
+            <dgm:item>describeSoftphoneLayout</dgm:item>
+            <dgm:item>describeTabs</dgm:item>
+            <dgm:item>create</dgm:item>
+            <dgm:item>update</dgm:item>
+            <dgm:item>upsert</dgm:item>
+            <dgm:item>merge</dgm:item>
+            <dgm:item>delete</dgm:item>
+            <dgm:item>undelete</dgm:item>
+            <dgm:item>emptyRecycleBin</dgm:item>
+            <dgm:item>retrieve</dgm:item>
+            <dgm:item>process</dgm:item>
+            <dgm:item>convertLead</dgm:item>
+            <dgm:item>logout</dgm:item>
+            <dgm:item>invalidateSessions</dgm:item>
+            <dgm:item>getDeleted</dgm:item>
+            <dgm:item>getUpdated</dgm:item>
+            <dgm:item>query</dgm:item>
+            <dgm:item>queryAll</dgm:item>
+            <dgm:item>queryMore</dgm:item>
+            <dgm:item>search</dgm:item>
+            <dgm:item>getServerTimestamp</dgm:item>
+            <dgm:item>setPassword</dgm:item>
+            <dgm:item>resetPassword</dgm:item>
+            <dgm:item>getUserInfo</dgm:item>
+            <dgm:item>sendEmail</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="SFDCLookUpUtilityService">
+        <dgm:body borderWidth="2" arcRad="20" X="686" Y="105" width="130" height="86">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="676" Y="98" width="150" height="102">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="sfdclookuputilityservice_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService#wsdl.interface(SFDCLookUpUtilityService)" callbackInterface="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService#wsdl.interface(SFDCLookUpUtilityServiceCallback)"/>
+        <dgm:outputPort name="SFDCLogin" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL#wsdl.interface(SFDCLogin_BPEL)"/>
+        <dgm:outputPort name="SFDC" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="urn:partner.soap.sforce.com#wsdl.interface(Soap)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="SFDCLookUpUtilityMediator">
+        <dgm:body borderWidth="2" arcRad="20" X="357" Y="105" width="130" height="61">
+            <dgm:borderColor r="128" g="92" b="148"/>
+            <dgm:lightBgColor r="208" g="169" b="227"/>
+            <dgm:darkBgColor r="183" g="132" b="212"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="347" Y="98" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SFDCLookUpUtilityMediator" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="urn:SFDCLookUpUtilityMediator#wsdl.interface(SFDCLookUpUtilityMediator)" callbackInterface="urn:SFDCLookUpUtilityMediator#wsdl.interface(SFDCLookUpUtilityMediatorCallback)"/>
+        <dgm:outputPort name="SFDCLookUpUtilityService.sfdclookuputilityservice_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService#wsdl.interface(SFDCLookUpUtilityService)" callbackInterface="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService#wsdl.interface(SFDCLookUpUtilityServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/mediator/resource/image/mediator_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="SFDCLookUpUtilityService/SFDCLogin" target="SFDCLogin" width="2">
+        <dgm:gSegment X1="826" Y1="130" X2="850" Y2="130"/>
+        <dgm:gSegment X1="850" Y1="130" X2="850" Y2="36"/>
+        <dgm:gSegment X1="850" Y1="36" X2="1005" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="SFDCLookUpUtilityService/SFDC" target="SFDC" width="2">
+        <dgm:gSegment X1="826" Y1="155" X2="1005" Y2="155"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="SFDCLookUpUtilityMediator_ep" target="SFDCLookUpUtilityMediator/SFDCLookUpUtilityMediator" width="2">
+        <dgm:gSegment X1="168" Y1="130" X2="347" Y2="130"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="SFDCLookUpUtilityMediator/SFDCLookUpUtilityService.sfdclookuputilityservice_client" target="SFDCLookUpUtilityService/sfdclookuputilityservice_client" width="2">
+        <dgm:gSegment X1="497" Y1="130" X2="676" Y2="130"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

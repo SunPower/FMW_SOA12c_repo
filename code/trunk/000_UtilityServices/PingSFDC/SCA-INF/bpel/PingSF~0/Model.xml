@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Dec 17 21:32:59 IST 2013
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="PingSFDCBPEL" targetNamespace="http://xmlns.oracle.com/SFDC_POC/PingSFDC/PingSFDCBPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/SFDC_POC/PingSFDC/PingSFDCBPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL" xmlns:ns2="urn:partner.soap.sforce.com" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="BpPrc0">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        PingSFDCBPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="pingsfdcbpel_client" partnerLinkType="client:PingSFDCBPEL" myRole="PingSFDCBPELProvider"/>
+    <partnerLink name="SFDCLogin" partnerLinkType="ns1:SFDCLogin_BPEL" partnerRole="SFDCLogin_BPELProvider"/>
+    <partnerLink name="SFDC" partnerLinkType="ns2:SFDC" partnerRole="Soap"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:PingSFDCBPELRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:PingSFDCBPELResponseMessage"/>
+    <variable name="InvSFDCLogin_IV" messageType="ns1:SFDCLogin_BPELRequestMessage"/>
+    <variable name="InvSFDCLogin_OV" messageType="ns1:SFDCLogin_BPELResponseMessage"/>
+    <variable name="InvSFDC_GetServerTimestamp_IV" messageType="ns2:getServerTimestampRequest"/>
+    <variable name="InvSFDC_GetServerTimestamp_OV" messageType="ns2:getServerTimestampResponse"/>
+    <variable name="partnerReference" element="ns3:EndpointReference"/>
+    <variable name="header" element="ns2:SessionHeader"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq0">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in PingSFDCBPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="pingsfdcbpel_client" portType="client:PingSFDCBPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <invoke name="InvSFDCLogin" inputVariable="InvSFDCLogin_IV" outputVariable="InvSFDCLogin_OV" partnerLink="SFDCLogin" portType="ns1:SFDCLogin_BPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv0"/>
+    <assign name="asgnSession" id="BpAss0">
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload" query="/ns1:SFDCLoginResp/ns1:sessionId"/>
+        <to variable="header" query="/ns2:SessionHeader/ns2:sessionId"/>
+      </copy>
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload" query="/ns1:SFDCLoginResp/ns1:serverUrl"/>
+        <to variable="partnerReference" query="/ns3:EndpointReference/ns3:Address"/>
+      </copy>
+      <copy>
+        <from variable="partnerReference"/>
+        <to partnerLink="SFDC"/>
+      </copy>
+    </assign>
+    <invoke name="InvSFDC" inputVariable="InvSFDC_GetServerTimestamp_IV" outputVariable="InvSFDC_GetServerTimestamp_OV" partnerLink="SFDC" portType="ns2:Soap" operation="getServerTimestamp" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="header" id="BpInv1"/>
+    <assign name="AssignResp" id="BpAss1">
+      <copy>
+        <from variable="InvSFDC_GetServerTimestamp_OV" part="parameters" query="/ns2:getServerTimestampResponse/ns2:result/ns2:timestamp"/>
+        <to variable="outputVariable" part="payload" query="/client:processResponse/client:result"/>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="pingsfdcbpel_client" portType="client:PingSFDCBPEL" operation="process" variable="outputVariable" id="BpRpl0"/>
+  </sequence>
+</process>

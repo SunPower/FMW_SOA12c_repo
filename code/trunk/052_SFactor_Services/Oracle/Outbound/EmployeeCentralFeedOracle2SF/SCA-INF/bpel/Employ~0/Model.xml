@@ -1,0 +1,272 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Oct 06 10:48:51 IST 2015
+  Author:  sn38854
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="EmployeeCentralFeedOracle2SF_BPEL" targetNamespace="http://www.sunpowercorp.com/SuccessFactor/EmployeeCentralFeedOracle2SF/EmployeeCentralFeedOracle2SF_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/SuccessFactor/EmployeeCentralFeedOracle2SF/EmployeeCentralFeedOracle2SF_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/EmployeeCentralFeedOracle2SF/SelectEmployeeCentralFromOracle" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/SuccessFactor/EmployeeCentralFeedOracle2SF/WriteEmployeeCenterFeedToLocal" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/SelectEmployeeCentralFromOracle" xmlns:ns4="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL" xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/FileToFTPMoveUtilityService/xsd/v1" xmlns:ns6="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns7="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:ns8="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL" xmlns:ns9="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        EmployeeCentralFeedOracle2SF_BPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="employeecentralfeedoracle2sf_bpel_client" partnerLinkType="client:EmployeeCentralFeedOracle2SF_BPEL" myRole="EmployeeCentralFeedOracle2SF_BPELProvider"/>
+    <partnerLink name="SelectEmployeeCentralFromOracle" partnerLinkType="ns1:SelectEmployeeCentralFromOracle_plt" partnerRole="SelectEmployeeCentralFromOracle_role"/>
+    <partnerLink name="WriteEmployeeCenterFeedToLocal" partnerLinkType="ns2:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="FileToFTPMoveUtilitySerivce" partnerLinkType="ns4:FileToFTPMoveUtilitySerivce_BPEL" partnerRole="FileToFTPMoveUtilitySerivce_BPELProvider"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns6:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="FileUtilityService" partnerLinkType="ns8:FileUtilityService_BPEL" partnerRole="FileUtilityService_BPELProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:EmployeeCentralFeedOracle2SF_BPELRequestMessage"/>
+    <variable name="InvEmployeeCenterFeedFromEBS_IV" messageType="ns1:SelectEmployeeCentralFromOracleInput_msg"/>
+    <variable name="InvEmployeeCenterFeedFromEBS_OV" messageType="ns1:SelectEmployeeCentralFromOracleOutputCollection_msg"/>
+    <variable name="Title" type="xsd:string"/>
+    <variable name="DateTime" type="xsd:dateTime"/>
+    <variable name="BatchSize" type="xsd:int"/>
+    <variable name="MinRows" type="xsd:int"/>
+    <variable name="MaxRows" type="xsd:int"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="allRecordsCompleted" type="xsd:string"/>
+    <variable name="InvWriteEmployeeCenterFeedToLocal_IV" messageType="ns2:Write_msg"/>
+    <variable name="RecordCount" type="xsd:int"/>
+    <variable name="InvFileToFTPMoveUtilitySerivce_IV" messageType="ns4:FileToFTPMoveUtilitySerivce_BPELRequestMessage"/>
+    <variable name="InvFileToFTPMoveUtilitySerivce_OV" messageType="ns4:FileToFTPMoveUtilitySerivce_BPELResponseMessage"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns6:requestMessage"/>
+    <variable name="InvFileUtilityService_Move_IV" messageType="ns8:FileUtilityService_BPELRequestMessage"/>
+    <variable name="InvFileUtilityService_Move_OV" messageType="ns8:FileUtilityService_BPELResponseMessage"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence3" id="BpSeq0">
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns6:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in EmployeeCentralFeedOracle2SF_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="employeecentralfeedoracle2sf_bpel_client" portType="client:EmployeeCentralFeedOracle2SF_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="SetTitle" id="BpAss1">
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle('EmployeeCentralFeedOracle2SF')"/>
+        <to variable="Title"/>
+      </copy>
+    </assign>
+    <assign name="intialiseAllVariables" id="BpAss2">
+      <copy>
+        <from expression="xp20:format-dateTime(xp20:current-dateTime(),&quot;[M01][D01][Y0001][H01][m01][s01]&quot;)"/>
+        <to variable="DateTime"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;sizeOfBunch&quot;)"/>
+        <to variable="BatchSize"/>
+      </copy>
+      <copy>
+        <from expression="1"/>
+        <to variable="MinRows"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;sizeOfBunch&quot;)"/>
+        <to variable="MaxRows"/>
+      </copy>
+      <copy>
+        <from expression="concat('SPWR_ORACLE_FEED_TO_SF_',$DateTime,'.csv')"/>
+        <to variable="FileName"/>
+      </copy>
+      <copy>
+        <from expression="&quot;false&quot;"/>
+        <to variable="allRecordsCompleted"/>
+      </copy>
+    </assign>
+    <while name="WhileAllRowsCompleted" condition="$allRecordsCompleted='false'" id="BpWhl0">
+      <sequence id="BpSeq2">
+        <assign name="AssignEBSInput" id="BpAss3">
+          <copy>
+            <from variable="MinRows"/>
+            <to variable="InvEmployeeCenterFeedFromEBS_IV" part="SelectEmployeeCentralFromOracleInput_msg" query="/ns3:SelectEmployeeCentralFromOracleInput/ns3:minrow"/>
+          </copy>
+          <copy>
+            <from variable="MaxRows"/>
+            <to variable="InvEmployeeCenterFeedFromEBS_IV" part="SelectEmployeeCentralFromOracleInput_msg" query="/ns3:SelectEmployeeCentralFromOracleInput/ns3:maxrow"/>
+          </copy>
+        </assign>
+        <invoke name="InvEmployeeCenterFeedFromEBS" inputVariable="InvEmployeeCenterFeedFromEBS_IV" outputVariable="InvEmployeeCenterFeedFromEBS_OV" partnerLink="SelectEmployeeCentralFromOracle" portType="ns1:SelectEmployeeCentralFromOracle_ptt" operation="SelectEmployeeCentralFromOracle" bpelx:invokeAsDetail="no" id="BpInv1"/>
+        <assign name="asgnReceivedRecordCount" id="BpAss4">
+          <copy>
+            <from expression="ora:countNodes('InvEmployeeCenterFeedFromEBS_OV','SelectEmployeeCentralFromOracleOutputCollection','/ns3:SelectEmployeeCentralFromOracleOutputCollection/ns3:SelectEmployeeCentralFromOracleOutput')"/>
+            <to variable="RecordCount"/>
+          </copy>
+        </assign>
+        <switch name="Switch1" id="BpSwt0">
+          <case condition="$RecordCount > 0">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">RecordsAvailable</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <sequence id="BpSeq3">
+              <assign name="TransWriteEmployeeCenterFeedToLocal" id="BpAss5">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransEmpolyeeCenterFeed.xsl', $InvEmployeeCenterFeedFromEBS_OV.SelectEmployeeCentralFromOracleOutputCollection)"/>
+                  <to variable="InvWriteEmployeeCenterFeedToLocal_IV" part="body"/>
+                </copy>
+              </assign>
+              <invoke name="InvWriteEmployeeCenterFeedToLocal" inputVariable="InvWriteEmployeeCenterFeedToLocal_IV" partnerLink="WriteEmployeeCenterFeedToLocal" portType="ns2:Write_ptt" operation="Write" bpelx:invokeAsDetail="no" id="BpInv2">
+                <bpelx:inputProperty name="jca.file.FileName" variable="FileName"/>
+              </invoke>
+              <assign name="updateMinRows" id="BpAss6">
+                <copy>
+                  <from expression="$MinRows+ora:getPreference('sizeOfBunch')"/>
+                  <to variable="MinRows"/>
+                </copy>
+                <copy>
+                  <from expression="$MaxRows+ora:getPreference('sizeOfBunch')"/>
+                  <to variable="MaxRows"/>
+                </copy>
+              </assign>
+            </sequence>
+          </case>
+          <otherwise>
+            <assign name="asgnRecordsCompleted" id="BpAss7">
+              <copy>
+                <from expression="&quot;true&quot;"/>
+                <to variable="allRecordsCompleted"/>
+              </copy>
+            </assign>
+          </otherwise>
+        </switch>
+      </sequence>
+    </while>
+    <assign name="asgnInvFileToFTPMoveUtilitySerivce" id="BpAss8">
+      <copy>
+        <from variable="FileName"/>
+        <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns5:input/ns5:SourceFileName"/>
+      </copy>
+      <copy>
+        <from expression="&quot;COPY&quot;"/>
+        <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns5:input/ns5:Action"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;LocalFileDir&quot;)"/>
+        <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns5:input/ns5:SourceDirectory"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;FileToken&quot;)"/>
+        <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns5:input/ns5:FileToken"/>
+      </copy>
+      <copy>
+        <from variable="FileName"/>
+        <to variable="InvFileToFTPMoveUtilitySerivce_IV" part="payload" query="/ns5:input/ns5:TargetFileName"/>
+      </copy>
+    </assign>
+    <invoke name="InvFileToFTPMoveUtilitySerivce" inputVariable="InvFileToFTPMoveUtilitySerivce_IV" outputVariable="InvFileToFTPMoveUtilitySerivce_OV" partnerLink="FileToFTPMoveUtilitySerivce" portType="ns4:FileToFTPMoveUtilitySerivce_BPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv3"/>
+    <assign name="AssignFileParms" id="BpAss9">
+      <copy>
+        <from variable="FileName"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns9:FileUtilityReq/ns9:SourceFileName"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;LocalFileDir&quot;)"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns9:FileUtilityReq/ns9:SourcePhysicalDirectory"/>
+      </copy>
+      <copy>
+        <from variable="FileName"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns9:FileUtilityReq/ns9:TargetFileName"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;ArchiveDir&quot;)"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns9:FileUtilityReq/ns9:TargetPhysicalDirectory"/>
+      </copy>
+    </assign>
+    <invoke name="InvFileUtilityService" inputVariable="InvFileUtilityService_Move_IV" outputVariable="InvFileUtilityService_Move_OV" partnerLink="FileUtilityService" portType="ns8:FileUtilityService_BPEL" operation="Move" bpelx:invokeAsDetail="no" id="BpInv4"/>
+  </sequence>
+</process>

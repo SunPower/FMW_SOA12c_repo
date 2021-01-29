@@ -1,0 +1,187 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Sep 25 16:37:09 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="SunpowerStoreONFReq_BPEL" targetNamespace="http://sunpowercorp.com/SunPowerStoreONFToSFDC/SunpowerStoreONFReq/SunpowerStoreONFReq_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://sunpowercorp.com/SunPowerStoreONFToSFDC/SunpowerStoreONFReq/SunpowerStoreONFReq_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://www.onfulfillment.com/" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns3="http://www.onfulfillment.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns6="http://www.sunpowercorp.com/SunPowerStoreONFToSFDC/SunPowerStoreSvc/SunPowerStoreCanonical" id="BpPrc0">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        SunpowerStoreONFReq_BPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="SunpowerStoreONFReq_bpel_client" partnerLinkType="client:SunpowerStoreONFReq_BPEL" myRole="SunpowerStoreONFReq_BPELProvider"/>
+    <partnerLink name="Onlinefulfillment" partnerLinkType="ns1:Onlinefulfillment" partnerRole="SPOrdersSoap"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns4:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="SunpowerStoreSvc" partnerLinkType="ns6:SunpowerStoreSvc" partnerRole="SunPowerStoreCanonical_pt"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:SunpowerStoreONFReq_BPELRequestMessage"/>
+    <variable name="InvOnlinefulfillment_GetOrdersByDate_IV" messageType="ns1:GetOrdersByDateSoapIn"/>
+    <variable name="InvOnlinefulfillment_GetOrdersByDate_OV" messageType="ns1:GetOrdersByDateSoapOut"/>
+    <variable name="dateCounter" type="xsd:int"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns4:requestMessage"/>
+    <variable name="InvSunpowerStoreSvc_IV" messageType="ns6:SunPowerStoreCanonicalMsg"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence2" id="BpSeq0">
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="&quot;SunPowerStoreONFToSFDC&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;SunpowerStoreONFReq&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns4:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in SunpowerStoreONFReq_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="SunpowerStoreONFReq_bpel_client" portType="client:SunpowerStoreONFReq_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="SetTitle" id="BpAss1">
+      <copy>
+        <from expression="&quot;SunpowerStoreONFReq&quot;"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <assign name="AsgnEndDateAsCurrentDate" id="BpAss2">
+      <copy>
+        <from expression="xp20:current-dateTime()"/>
+        <to variable="InvOnlinefulfillment_GetOrdersByDate_IV" part="parameters" query="/ns1:GetOrdersByDate/ns1:OrderRequestByDate/ns3:DateRange/ns3:End"/>
+      </copy>
+    </assign>
+    <assign name="AsgnStartDateFromRange" id="BpAss3">
+      <copy>
+        <from expression="xp20:subtract-dayTimeDuration-from-dateTime(xp20:current-dateTime(),ora:getPreference(&quot;DateCounter&quot;))"/>
+        <to variable="InvOnlinefulfillment_GetOrdersByDate_IV" part="parameters" query="/ns1:GetOrdersByDate/ns1:OrderRequestByDate/ns3:DateRange/ns3:Start"/>
+      </copy>
+    </assign>
+    <assign name="AsgnOnlinefulfillment" id="BpAss4">
+      <copy>
+        <from expression="ora:getPreference(&quot;SmartStore_Dealer_Token&quot;)"/>
+        <to variable="InvOnlinefulfillment_GetOrdersByDate_IV" part="parameters" query="/ns1:GetOrdersByDate/ns1:OrderRequestByDate/ns3:PartnerCredentials/ns3:Token"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;RequestIdentifier&quot;)"/>
+        <to variable="InvOnlinefulfillment_GetOrdersByDate_IV" part="parameters" query="/ns1:GetOrdersByDate/ns1:OrderRequestByDate/ns3:RequestIdentifier"/>
+      </copy>
+    </assign>
+    <invoke name="InvOnlinefulfillment" inputVariable="InvOnlinefulfillment_GetOrdersByDate_IV" outputVariable="InvOnlinefulfillment_GetOrdersByDate_OV" partnerLink="Onlinefulfillment" portType="ns1:SPOrdersSoap" operation="GetOrdersByDate" bpelx:invokeAsDetail="no" id="BpInv1"/>
+    <switch name="Switch1" id="BpSwt0">
+      <case condition="bpws:getVariableData('InvOnlinefulfillment_GetOrdersByDate_OV','parameters','/ns1:GetOrdersByDateResponse/ns1:GetOrdersByDateResult/ns3:GetOrdersResponse/ns3:Summary/ns3:Count') > 0">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">OrdersReturned</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence name="seqProcessOrders" id="BpSeq2">
+          <assign name="TrnsSunpowerStoreSvc" id="BpAss5">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TrnsSunpowerStoreSvc.xsl', $InvOnlinefulfillment_GetOrdersByDate_OV.parameters)"/>
+              <to variable="InvSunpowerStoreSvc_IV" part="payload"/>
+            </copy>
+          </assign>
+          <invoke name="InvSunpowerStoreSvc" partnerLink="SunpowerStoreSvc" portType="ns6:SunPowerStoreCanonical_pt" operation="process" inputVariable="InvSunpowerStoreSvc_IV" bpelx:invokeAsDetail="no" id="BpInv2"/>
+        </sequence>
+      </case>
+    </switch>
+  </sequence>
+</process>

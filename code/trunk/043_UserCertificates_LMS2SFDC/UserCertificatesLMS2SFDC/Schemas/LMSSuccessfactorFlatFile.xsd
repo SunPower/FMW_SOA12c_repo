@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://sunpowercorp.com/PoolLMSUserCertificateFileFTP/xsd/v1"
+            targetNamespace="http://sunpowercorp.com/PoolLMSUserCertificateFileFTP/xsd/v1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+
+            nxsd:version="NXSD"
+            nxsd:stream="chars"
+            nxsd:encoding="US-ASCII"
+            nxsd:hasHeader="true"
+            nxsd:headerLines="1"
+            nxsd:headerLinesTerminatedBy="${eol}"
+>
+
+
+  <xsd:element name="LMSCertificate">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="LMSSuccessfactor" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ItemID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="ItemType" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="RevisionDate" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="RevisionNumber" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="Description" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="UserID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="LastName" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="FirstName" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="MiddleInitial" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="CompletionStatusID" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="CompletionStatus" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="," nxsd:quotedBy="&quot;" />
+              <xsd:element name="CompletionDate" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="${eol}" nxsd:quotedBy="&quot;" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
+<!--NXSDWIZ:C:\Users\sn38854\Desktop\SampleReport1.csv:-->
+<!--USE-HEADER:true:-->

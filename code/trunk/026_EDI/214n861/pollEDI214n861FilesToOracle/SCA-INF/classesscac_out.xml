@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='CommonSFDCErrorLogService']</loc>
+      <line>115</line>
+      <col>169</col>
+      <file>D:\12c_Ant\ant_soa\code\pollEDI214n861FilesToOracle\composite.xml</file>
+      <name>D:\12c_Ant\ant_soa\code\pollEDI214n861FilesToOracle\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "CommonSFDCErrorLogService":"{http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator}execute_pt" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catchAll/sequence/assign[3]/copy</loc>
+      <line>224</line>
+      <col/>
+      <file>pollEDI214n861FilesToOracle_BPEL.bpel</file>
+      <name>pollEDI214n861FilesToOracle_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToDB}inboundFileName anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catchAll/sequence/assign[3]/copy[3]</loc>
+      <line>236</line>
+      <col/>
+      <file>pollEDI214n861FilesToOracle_BPEL.bpel</file>
+      <name>pollEDI214n861FilesToOracle_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToDB}signalType anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/pick/onMessage/sequence/assign[4]/copy</loc>
+      <line>409</line>
+      <col/>
+      <file>pollEDI214n861FilesToOracle_BPEL.bpel</file>
+      <name>pollEDI214n861FilesToOracle_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToDB}inboundFileName anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/pick/onMessage/sequence/assign[4]/copy[3]</loc>
+      <line>421</line>
+      <col/>
+      <file>pollEDI214n861FilesToOracle_BPEL.bpel</file>
+      <name>pollEDI214n861FilesToOracle_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToDB}signalType anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/pick/onMessage[2]/sequence/assign[4]/copy</loc>
+      <line>583</line>
+      <col/>
+      <file>pollEDI214n861FilesToOracle_BPEL.bpel</file>
+      <name>pollEDI214n861FilesToOracle_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToDB}inboundFileName anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/pick/onMessage[2]/sequence/assign[4]/copy[2]</loc>
+      <line>589</line>
+      <col/>
+      <file>pollEDI214n861FilesToOracle_BPEL.bpel</file>
+      <name>pollEDI214n861FilesToOracle_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToDB}signalType anonymous type"</msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,31 @@
+<wsdl:definitions
+     name="PollPDFFile"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/SOADEV_TEST/SOAPDFMETASyncReq/PollPDFFile"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/SOADEV_TEST/SOAPDFMETASyncReq/PollPDFFile"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+    >
+  <plt:partnerLinkType name="Read_plt" >
+    <plt:role name="Read_role" >
+      <plt:portType name="tns:Read_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+    <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+            xmlns="http://www.w3.org/2001/XMLSchema" >
+      <element name="opaqueElement" type="base64Binary" />
+    </schema>
+    </wsdl:types>
+    <wsdl:message name="Read_msg">
+        <wsdl:part name="opaque" element="opaque:opaqueElement"/>
+    </wsdl:message>
+    <wsdl:portType name="Read_ptt">
+        <wsdl:operation name="Read">
+            <wsdl:input message="tns:Read_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectUpdateCustSiteCustomer" adapter="db" wsdlLocation="WSDLs/SelectUpdateCustSiteCustomer.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="SelectUpdateCustSiteCustomer_ptt" operation="SelectUpdateCustSiteCustomer">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select temp_cust_site_id, creation_date, process_flag, error_message, cust_acct_site_id, site_usage, location, sfdc_billto_site_ID, sfdc_shipto_site_id ,SOA_S2O_ID from XXSPWR.XXSPWR_SFORA_CUST_SITES where sfdc_synced='N' and DATA_SOURCE = #dataSource"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

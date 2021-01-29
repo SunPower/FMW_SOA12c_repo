@@ -1,0 +1,41 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SyncCreditHoldSFDCProv"
+     targetNamespace="http://xmlns.oracle.com/DealerPartnerCreditDetalis/SyncCreditHoldSFDCProv/SyncCreditHoldSFDCProv"
+     xmlns:ns2="urn:partner.soap.sforce.com"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1"
+     xmlns:ns4="http://www.sunpowercorp.com/OracleAccountNumbers/xsd/v1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:client="http://xmlns.oracle.com/DealerPartnerCreditDetalis/SyncCreditHoldSFDCProv/SyncCreditHoldSFDCProv"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SyncCreditHoldSFDCProv">
+        <plnk:role name="SyncCreditHoldSFDCProvProvider">
+            <plnk:portType name="client:SyncCreditHoldSFDCProv"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1"
+                 schemaLocation="../Schemas/CDM/BOD/Nouns/Dealer_PartnerCreditINFO/V1/ProcessDealer_PartnerCreditINFO.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaddress.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/OracleAccountNumbers/xsd/v1"
+                        schemaLocation="../Schemas/OracleAccountNumbers.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SyncCreditHoldSFDCProvRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessDealer_PartnerCreditINFO"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncCreditHoldSFDCProv">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncCreditHoldSFDCProvRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

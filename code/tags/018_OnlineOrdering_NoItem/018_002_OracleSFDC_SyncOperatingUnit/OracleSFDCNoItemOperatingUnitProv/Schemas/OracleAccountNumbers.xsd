@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleAccountNumbers/xsd/v1" targetNamespace="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleAccountNumbers/xsd/v1" elementFormDefault="qualified">
+   <xsd:element name="OracleAccountNumbers" type="OracleAccountNumberType"/>
+   <xsd:complexType name="OracleAccountNumberType">
+      <xsd:sequence>
+         <xsd:element name="OracleAccountNumber" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

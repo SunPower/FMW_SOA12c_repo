@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectDetailsFromOracle" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/selectDetailsFromOracle" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="selectDetailsFromOracleInput" type="selectDetailsFromOracleInput"/>
+   <xs:complexType name="selectDetailsFromOracleInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="selectDetailsFromOracleOutputCollection" type="selectDetailsFromOracleOutputCollection"/>
+   <xs:complexType name="selectDetailsFromOracleOutputCollection">
+      <xs:sequence>
+         <xs:element name="selectDetailsFromOracleOutput" type="selectDetailsFromOracleOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="selectDetailsFromOracleOutput">
+      <xs:sequence>
+         <xs:element name="signal_type" type="xs:string" nillable="true"/>
+         <xs:element name="region" type="xs:string" nillable="true"/>
+         <xs:element name="customer_name" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_to_address_4" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_source_line_number" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_cust_po_number" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_requested_quantity" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_204_packing_instructions" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_jgzz_fiscal_code" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_bill_address_1" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_bill_address_2" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_bill_address_3" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_bill_city" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_bill_region" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_bill_postal_code" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_bill_country" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_vat" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_204_order_type" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_shipment_priority" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_204_ship_to_contact_name" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_ship_to_contact_phone" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_204_header_attachments" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_parent_item" type="xs:string" nillable="true"/>
+         <xs:element name="c_204_parent_qty" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_856_ship_from_location" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_port_of_loading" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_tax_name" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_port_of_discharge" type="xs:string" nillable="true"/>
+         <xs:element name="comn_etd" type="xs:date" nillable="true"/>
+         <xs:element name="c_856_unit_price" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_856_total_amount" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_856_pallet" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_container" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_seal_code" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_eta_site" type="xs:date" nillable="true"/>
+         <xs:element name="c_856_internal_request_number" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_856_src_proj_num" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_src_proj_name" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_bill_to_location_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_856_from_locator" type="xs:decimal" nillable="true"/>
+         <xs:element name="c_856_destination_subinventory" type="xs:string" nillable="true"/>
+         <xs:element name="comn_delivery_number" type="xs:string" nillable="true"/>
+         <xs:element name="comn_packing_slip" type="xs:string" nillable="true"/>
+         <xs:element name="comn_sys_date" type="xs:dateTime" nillable="true"/>
+         <xs:element name="comn_ship_from_address_1" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_from_address_2" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_from_address_3" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_from_city" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_from_region" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_from_postal_code" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_from_country" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_to_address_1" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_to_address_2" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_to_address_3" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_to_city" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_to_region" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_to_postal_code" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_to_country" type="xs:string" nillable="true"/>
+         <xs:element name="comn_eta_port" type="xs:date" nillable="true"/>
+         <xs:element name="comn_dest_warehouse_code" type="xs:string" nillable="true"/>
+         <xs:element name="comn_carrier_code" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_method_code" type="xs:string" nillable="true"/>
+         <xs:element name="comn_waybill" type="xs:string" nillable="true"/>
+         <xs:element name="comn_freight_terms_code" type="xs:string" nillable="true"/>
+         <xs:element name="comn_shipping_instructions" type="xs:string" nillable="true"/>
+         <xs:element name="comn_item_flex" type="xs:string" nillable="true"/>
+         <xs:element name="comn_item_description" type="xs:string" nillable="true"/>
+         <xs:element name="comn_shipped_quantity" type="xs:decimal" nillable="true"/>
+         <xs:element name="comn_requested_quantity_uom" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_date" type="xs:dateTime" nillable="true"/>
+         <xs:element name="comn_src_warehouse_code" type="xs:string" nillable="true"/>
+         <xs:element name="comn_destination_project_id" type="xs:string" nillable="true"/>
+         <xs:element name="comn_destination_project_name" type="xs:string" nillable="true"/>
+         <xs:element name="comn_business_group" type="xs:string" nillable="true"/>
+         <xs:element name="comn_ship_from_location_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="comn_ship_to_location_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="comn_source_subinventory" type="xs:string" nillable="true"/>
+         <xs:element name="c_856_to_locator" type="xs:decimal" nillable="true"/>
+         <xs:element name="comn_serial_number" type="xs:decimal" nillable="true"/>
+         <xs:element name="comn_order_number" type="xs:decimal" nillable="true"/>
+         <xs:element name="group_id" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

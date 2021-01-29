@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<copy>
+   <from expression="ora:getCompositeInstanceId()"/>
+   <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns10:CommonErrorHandlerInput/ns10:InstanceNumber"/>
+</copy>

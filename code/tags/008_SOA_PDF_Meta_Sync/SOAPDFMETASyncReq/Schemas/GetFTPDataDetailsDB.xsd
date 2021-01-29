@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetFTPDataDetailsDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/GetFTPDataDetailsDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="GetFTPDataDetailsDBInput" type="GetFTPDataDetailsDBInput"/>
+   <xs:complexType name="GetFTPDataDetailsDBInput">
+      <xs:sequence>
+         <xs:element name="PDF_FILE_NAME" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="GetFTPDataDetailsDBOutputCollection" type="GetFTPDataDetailsDBOutputCollection"/>
+   <xs:complexType name="GetFTPDataDetailsDBOutputCollection">
+      <xs:sequence>
+         <xs:element name="GetFTPDataDetailsDBOutput" type="GetFTPDataDetailsDBOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetFTPDataDetailsDBOutput">
+      <xs:sequence>
+         <xs:element name="TRX_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="BILL_TO_CUSTOMER_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="CUSTOMER_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_DATE" type="xs:dateTime" nillable="true"/>
+         <xs:element name="TRX_CREATION_DATE" type="xs:dateTime" nillable="true"/>
+         <xs:element name="TRX_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_TYPE_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_TYPE_DESC" type="xs:string" nillable="true"/>
+         <xs:element name="OPERATING_UNIT_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="CURRENCY_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="TRANSACTION_CURRENCY_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="LAST_UPDATE_DATE" type="xs:dateTime" nillable="true"/>
+         <xs:element name="CREATED_BY" type="xs:decimal" nillable="true"/>
+         <xs:element name="LAST_UPDATED_BY" type="xs:decimal" nillable="true"/>
+         <xs:element name="LAST_UPDATED_LOGIN" type="xs:decimal" nillable="true"/>
+         <xs:element name="RECORD_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="RECORD_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="ERROR_MESSAGE" type="xs:string" nillable="true"/>
+         <xs:element name="PDF_FILE_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_LAST_UPDATED_DATE" type="xs:dateTime" nillable="true"/>
+         <xs:element name="T_CREATION_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_TYPE_MEANING" type="xs:string" nillable="true"/>
+         <xs:element name="ORG_ID" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,28 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns="http://www.sunpowercorp.com/Common/ACBClaimToSFDCCommonTypes/V1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.sunpowercorp.com/Common/ACBClaimToSFDCCommonTypes/V1"
+            xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="qualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+                schemaLocation="../../../../../../Schemas/CDM/Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="DlrNum" type="cdt:String50"/>
+    <xsd:element name="DlrName" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Promotion" type="cdt:String50" nillable="true"/>
+    <xsd:element name="PromotionDescription" type="cdt:String50" nillable="true"/>
+    <xsd:element name="ProcessDate" type="cdt:date_11" nillable="true"/>
+    <xsd:element name="PreApprovalNumber" type="cdt:String50" nillable="true"/>
+    <xsd:element name="ClaimNumber" type="cdt:String50" nillable="true"/>
+    <xsd:element name="ActivityDescription" type="cdt:String50" nillable="true"/>
+    <xsd:element name="ActivityFromDate" type="cdt:date_11"
+                 nillable="true"/>
+    <xsd:element name="ActivityToDate" type="cdt:date_11" nillable="true"/>
+    <xsd:element name="ClaimedAmt" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="ApprovedAmt" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="PaidAmt" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="CreditMemo" type="cdt:String50"
+                 nillable="true"/>
+    <xsd:element name="Comment" type="cdt:String50" nillable="true"/>
+       <xsd:element name="RecordNumber" type="cdt:Decimal11_4" nillable="true"/>
+   
+</xsd:schema>

@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<queryResponse xmlns="urn:partner.soap.sforce.com">
+   <result>
+      <done>true</done>
+      <queryLocator>queryLocator154</queryLocator>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa77IAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa77IAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100012</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C150145,
+                                                                     BLACK, BIN J</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C150145,
+                                                                          BLACK,
+                                                                          BIN J</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100012</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">BLACK
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7AIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7AIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100015</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C165145,
+                                                                     BLACK, BIN K</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C165145,
+                                                                          BLACK,
+                                                                          BIN K</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100015</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C165</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">BLACK
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7OIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7OIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100029</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     B150145,
+                                                                     WHITE B,
+                                                                     BIN F</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          B150145,
+                                                                          WHITE
+                                                                          B, BIN F</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100029</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN B150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">WHITE B
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7PIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7PIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100030</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     B150145,
+                                                                     WHITE B,
+                                                                     BIN G,
+                                                                     NON-SLIM TAB</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          B150145,
+                                                                          WHITE
+                                                                          B, BIN
+                                                                          G,
+                                                                          NON-SLIM
+                                                                          TAB</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100030</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN B150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">WHITE B
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7YIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7YIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100039</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C165145,
+                                                                     WHITE B,
+                                                                     BIN I</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C165145,
+                                                                          WHITE
+                                                                          B, BIN I</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100039</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C165</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">WHITE B
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7rIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7rIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100058</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C150166,
+                                                                     BLACK, BIN D</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C150166,
+                                                                          BLACK,
+                                                                          BIN D</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100058</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DE</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7uIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7uIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100061</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C150166,
+                                                                     BLACK, BIN G</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C150166,
+                                                                          BLACK,
+                                                                          BIN G</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100061</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">BLACK
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7zIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa7zIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100066</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C150166,
+                                                                     WHITE B,
+                                                                     BIN D</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C150166,
+                                                                          WHITE
+                                                                          B, BIN D</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100066</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DE</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa87IAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa87IAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100074</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     B165166,
+                                                                     WHITE A,
+                                                                     BIN D</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          B165166,
+                                                                          WHITE
+                                                                          A, BIN D</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100074</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN B165</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DLL</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8DIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8DIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100080</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     B165166,
+                                                                     WHITE A,
+                                                                     BIN F</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          B165166,
+                                                                          WHITE
+                                                                          A, BIN F</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100080</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN B165</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">EF</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8LIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8LIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100088</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Stamped
+                                                                     Bus, Center
+                                                                     Tap</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Stamped
+                                                                          Bus,
+                                                                          Center
+                                                                          Tap</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100088</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BUS BAR</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">STAMP</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8NIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8NIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100090</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Stamped
+                                                                     Bus, String
+                                                                     to J-Box
+                                                                     Lead</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Stamped
+                                                                          Bus,
+                                                                          String
+                                                                          to
+                                                                          J-Box
+                                                                          Lead</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100090</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BUS BAR</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">STAMP</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8SIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8SIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100095</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Shield
+                                                                     Tape,
+                                                                     Interconnect,
+                                                                     White,
+                                                                     6.1mm x 72
+                                                                     yards</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Shield,
+                                                                          Interconn.,
+                                                                          White
+                                                                          3M
+                                                                          8006W
+                                                                          1 roll
+                                                                          = 72
+                                                                          yards
+                                                                          (216
+                                                                          ft /
+                                                                          2952
+                                                                          in)</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100095</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">INTERCON</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8WIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8WIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100099</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">EPE
+                                                                     Insulator,
+                                                                     Pre-cut,
+                                                                     Bottom
+                                                                     Busbar,
+                                                                     White</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">EPE
+                                                                          Insulator,
+                                                                          Pre-cut,
+                                                                          Bottom
+                                                                          Busbar,
+                                                                          White</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100099</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">INSULATOR</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8hIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8hIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100110</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">EVA sheet,
+                                                                     1060mm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">EVA
+                                                                          sheet,
+                                                                          1060mm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100110</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">EVA</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8kIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8kIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100113</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                     Black,
+                                                                     Madico TPE
+                                                                     HD, 830mm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                          Black,
+                                                                          Madico
+                                                                          TPE
+                                                                          HD,
+                                                                          830mm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100113</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACKSHT</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8nIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8nIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100116</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                     White,
+                                                                     Madico TPE
+                                                                     HD, 1070mm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                          White,
+                                                                          Madico
+                                                                          TPE
+                                                                          HD,
+                                                                          1070mm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100116</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACKSHT</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8vIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8vIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100124</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                     White,
+                                                                     Madico TPE
+                                                                     2111 HD,
+                                                                     1070 mm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                          White,
+                                                                          Madico
+                                                                          TPE
+                                                                          2111
+                                                                          HD,
+                                                                          1070 mm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100124</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACKSHT</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8zIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa8zIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100128</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                     White,
+                                                                     Madico
+                                                                     PROTEKT HD,
+                                                                     1070 mm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Backsheet,
+                                                                          White,
+                                                                          Madico
+                                                                          PROTEKT
+                                                                          HD,
+                                                                          1070 mm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100128</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACKSHT</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa93IAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa93IAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100132</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Tape,
+                                                                     Frame, 5/8
+                                                                     inch,
+                                                                     Duplomont
+                                                                     9192</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Tape,
+                                                                          Frame,
+                                                                          5/8
+                                                                          inch,
+                                                                          Duplomont
+                                                                          9192</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100132</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">TAPE</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa9MIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa9MIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100151</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     B150255,
+                                                                     WHITE B,
+                                                                     BIN J</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          B150255,
+                                                                          WHITE
+                                                                          B, BIN J</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100151</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN B150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">WHITE B
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa9dIAA</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fa9dIAA</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100168</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C150145,
+                                                                     WHITE A,
+                                                                     BIN E</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C150145,
+                                                                          WHITE
+                                                                          A, BIN E</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100168</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DE</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faA3IAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faA3IAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100194</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     B150145,
+                                                                     BLACK, BIN
+                                                                     D, NON-SLIM
+                                                                     TAB</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          B150145,
+                                                                          BLACK,
+                                                                          BIN D,
+                                                                          NON-SLIM
+                                                                          TAB</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100194</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN B150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DLL</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG OFFS</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAAIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAAIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100201</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     B150145,
+                                                                     BLACK, BIN E</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          B150145,
+                                                                          BLACK,
+                                                                          BIN E</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100201</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN B150</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">BLACK
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAUIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAUIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100221</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Sealant,
+                                                                     jbox, RTV
+                                                                     White
+                                                                     PV804, pail</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Sealant,
+                                                                          jbox,
+                                                                          RTV
+                                                                          White
+                                                                          PV804,
+                                                                          pail</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100221</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">SEALANT</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">MODULE</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAbIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAbIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100228</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Screw, DIN
+                                                                     7982
+                                                                     3.5x19mm,
+                                                                     black</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Screw,
+                                                                          DIN
+                                                                          7982
+                                                                          3.5x19mm,
+                                                                          black</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100228</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">DAS</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">MODULE</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAgIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faAgIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100233</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">SCREW, SM,
+                                                                     ST, PH, TX,
+                                                                     #10 X .375,
+                                                                     18-8SS,
+                                                                     THNLOK, BLK
+                                                                     OX
+                                                                     (1505-125)</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">SCREW,
+                                                                          SM,
+                                                                          ST,
+                                                                          PH,
+                                                                          TX,
+                                                                          #10 X
+                                                                          .375,
+                                                                          18-8SS,
+                                                                          THNLOK,
+                                                                          BLK OX</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100233</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">DAS</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">SUNTILE</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faArIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faArIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100244</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Suntile
+                                                                     Carton Box</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Suntile
+                                                                          Carton
+                                                                          Box</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100244</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">RM MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BOX</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">MODULE</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGNIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGNIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100587</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">VALVE,M#
+                                                                     821480 2,GAS</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">VALVE,M#
+                                                                          821480
+                                                                          2,GAS</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100587</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">FAC</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGTIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGTIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100592</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">TRANSMITTER,TEMPERATURE,M#El1504117/PR-12-2-100-</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">TRANSMITTER,TEMPERATURE,M#El1504117/PR-12-2-100-</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100592</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">FAC</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGWIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGWIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100595</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUNNY SUITS
+                                                                     XXL</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUNNY
+                                                                          SUITS
+                                                                          XXL</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100595</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">PRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">APPAREL</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGXIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGXIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100596</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUNNY SUITS
+                                                                     3XL</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUNNY
+                                                                          SUITS
+                                                                          3XL</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100596</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">PRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">APPAREL</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGcIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGcIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100601</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUNNY SUITS
+                                                                     10 XL</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUNNY
+                                                                          SUITS
+                                                                          10 XL</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100601</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">PRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">APPAREL</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGuIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGuIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100619</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">(DUP-Do Not
+                                                                     Use)
+                                                                     58141001164
+                                                                     ELMO DRIVER
+                                                                     MOD.COR,A9/230
+                                                                     art.1164</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">(DUP-Do
+                                                                          Not
+                                                                          Use)
+                                                                          58141001164
+                                                                          ELMO
+                                                                          DRIVER
+                                                                          MOD.COR,A9/230
+                                                                          art.1164</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100619</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">BACCINI</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGzIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faGzIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100624</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">KEITHLEY
+                                                                     DAQ BOARD
+                                                                     KPCI-3116A</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">KEITHLEY
+                                                                          DAQ
+                                                                          BOARD
+                                                                          KPCI-3116A</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100624</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">NPC</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faH9IAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faH9IAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100634</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BOARD,S#EET-100-SPAST3,ET
+                                                                     SLAVE
+                                                                     AST-503</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BOARD,S#EET-100-SPAST3,ET
+                                                                          SLAVE
+                                                                          AST-503</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100634</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">MGI</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faHBIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faHBIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100637</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BOOK REFILL
+                                                                     CLEAR A4,3
+                                                                     HOLE</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BOOK
+                                                                          REFILL
+                                                                          CLEAR
+                                                                          A4,3
+                                                                          HOLE</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100637</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">PRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">APPAREL</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faHjIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faHjIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100671</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">ATOCK
+                                                                     ABSORBER
+                                                                     MAC20-16,AL-TECH
+                                                                     ME-300-2004618</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">ATOCK
+                                                                          ABSORBER
+                                                                          MAC20-16,AL-TECH
+                                                                          ME-300-2004618</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100671</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">EDGECOAT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faI9IAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faI9IAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100697</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BELT,M#P01-3,0x55-EPDM,ROUND
+                                                                     EPDM
+                                                                     3,0x55mm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BELT,M#P01-3,0x55-EPDM,ROUND
+                                                                          EPDM
+                                                                          3,0x55mm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100697</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">CONSUMABLE</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">S-THERM</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faICIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faICIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100700</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUTTON,M#E37,ILLUMINATET
+                                                                     RED</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BUTTON,M#E37,ILLUMINATET
+                                                                          RED</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100700</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">CONSUMABLE</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">ASTEC</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIEIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIEIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100702</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">BEARING,
+                                                                     M#P01-61800-ZZ,61800-ZZ</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">BEARING,
+                                                                          M#P01-61800-ZZ,61800-ZZ</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100702</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">AMB</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIGIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIGIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100704</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CABLE,M#E37-DSL-0803-G0M,6C,
+                                                                     SENSOR 60cm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CABLE,M#E37-DSL-0803-G0M,6C,
+                                                                          SENSOR
+                                                                          60cm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100704</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">AMB</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id
+                                                         xmlns="urn:sobject.partner.soap.sforce.com"&gt;</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id
+                                                         xmlns="urn:sobject.partner.soap.sforce.com"&gt;</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100705</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CABLE,M#E37-DSL-0803-G0,1MC,
+                                                                     SENSOR 100cm</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CABLE,M#E37-DSL-0803-G0,1MC,
+                                                                          SENSOR
+                                                                          100cm</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100705</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">AMB</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIZIAY</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIZIAY</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100723</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">MOTOR,M#P01-ST5709L4008,-A
+                                                                     GR.56</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">MOTOR,M#P01-ST5709L4008,-A
+                                                                          GR.56</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100723</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">AMB</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIbIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIbIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100725</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">MOTOR,ST4018-K2V00287,STEPPER
+                                                                     GR.42
+                                                                     ENCODER</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">MOTOR,ST4018-K2V00287,STEPPER
+                                                                          GR.42
+                                                                          ENCODER</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100725</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">CONSUMABLE</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">ASTEC</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIcIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIcIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100726</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">PLC
+                                                                     S7-317-2 DP</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">PLC
+                                                                          S7-317-2
+                                                                          DP</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100726</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">BACK-UP</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">AMB</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIqIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faIqIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100740</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">SENSOR, M#
+                                                                     E37-OH5013</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">SENSOR,
+                                                                          M#
+                                                                          E37-OH5013</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100740</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">CONSUMABLE</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">S-THERM</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faMsIAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faMsIAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">100995</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                     C165166,
+                                                                     WHITE A,
+                                                                     MASTER BIN</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">CELL,
+                                                                          C165166,
+                                                                          WHITE
+                                                                          A,
+                                                                          MASTER
+                                                                          BIN</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">100995</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GEN C165</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">WHITE A
+                                                                         STD</Item_Category_3__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">FG CELL</Product_Type__c>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faN6IAI</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001faN6IAI</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">101009</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">HYDROCHLORIC
+                                                                     ACID 37%</Description__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">HYDROCHLORIC
+                                                                          ACID
+                                                                          37%,(GALLON)</Long_Description__c>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">101009</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">PRO CELL</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">CHE</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">Item__c</type>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fceUIAQ</Id>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">a0qQ0000001fceUIAQ</Id>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">109688</Name>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">ISO Oil
+                                                                     217-374</Description__c>
+         <Long_Description__c nil="true"/>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">109688</Item_ID__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">MRO MOD</Item_Category_1__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">GENERAL</Item_Category_2__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">DEFAULT</Item_Category_3__c>
+         <Product_Type__c nil="true"/>
+      </records>
+      <size>-0</size>
+   </result>
+</queryResponse>

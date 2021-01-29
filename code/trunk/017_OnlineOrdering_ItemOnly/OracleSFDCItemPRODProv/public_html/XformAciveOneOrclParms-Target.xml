@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns6:OracleRows xmlns:ns6="http://www.sunpowercorp.com/OracleItems">
+   <ns6:Item__c>
+      <ns6:Id>Id55</ns6:Id>
+      <ns6:Name>Name56</ns6:Name>
+      <ns6:Active__c>1</ns6:Active__c>
+      <ns6:Description__c>Description__c57</ns6:Description__c>
+      <ns6:Item_ID__c>Item_ID__c58</ns6:Item_ID__c>
+      <ns6:Long_Description__c>Long_Description__c59</ns6:Long_Description__c>
+      <ns6:Item_Category_3__c>Item_Category_3__c60</ns6:Item_Category_3__c>
+      <ns6:Item_Category_2__c>Item_Category_2__c61</ns6:Item_Category_2__c>
+      <ns6:Item_Category_1__c>Item_Category_1__c62</ns6:Item_Category_1__c>
+      <ns6:Product_Type__c>Product_Type__c63</ns6:Product_Type__c>
+   </ns6:Item__c>
+</ns6:OracleRows>

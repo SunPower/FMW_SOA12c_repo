@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns14:upsert xmlns:ns12="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL" xmlns:ns14="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityService">
+   <ns14:externalIDFieldName>Item_ID__c</ns14:externalIDFieldName>
+   <ns14:sObject>
+      <ns14:type>Item__c</ns14:type>
+      <ns14:Name>114632</ns14:Name>
+      <ns14:Status__c>Active</ns14:Status__c>
+      <ns14:Description__c>PVM</ns14:Description__c>
+      <ns14:Item_ID__c>114632</ns14:Item_ID__c>
+      <ns14:Long_Description__c/>
+      <ns14:Item_Category_3__c>308</ns14:Item_Category_3__c>
+      <ns14:Item_Category_2__c>WHT96CELL</ns14:Item_Category_2__c>
+      <ns14:Item_Category_1__c>FGMODULE</ns14:Item_Category_1__c>
+      <ns14:Product_Type__c>FGMODULE</ns14:Product_Type__c>
+   </ns14:sObject>
+   <ns14:sObject>
+      <ns14:type>Item__c</ns14:type>
+      <ns14:Name>500613</ns14:Name>
+      <ns14:Status__c>Active</ns14:Status__c>
+      <ns14:Description__c>LEASEORIGINATION</ns14:Description__c>
+      <ns14:Item_ID__c>500613</ns14:Item_ID__c>
+      <ns14:Long_Description__c>Service item forOrigination</ns14:Long_Description__c>
+      <ns14:Item_Category_3__c>DEFAULT</ns14:Item_Category_3__c>
+      <ns14:Item_Category_2__c>DEFAULT</ns14:Item_Category_2__c>
+      <ns14:Item_Category_1__c>SERVICES</ns14:Item_Category_1__c>
+      <ns14:Product_Type__c/>
+   </ns14:sObject>
+</ns14:upsert>

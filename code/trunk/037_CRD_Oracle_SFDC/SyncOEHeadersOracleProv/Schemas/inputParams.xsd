@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/CRD/SyncOEHeadersOracleProv/xsd/V1"
+            targetNamespace="http://www.sunpowercorp.com/CRD/SyncOEHeadersOracleProv/xsd/V1"
+            elementFormDefault="qualified">
+  <xsd:element name="inputParams">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="params" type="paramsType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="paramsType">
+    <xsd:sequence>
+      <xsd:element name="Instance_ID" type="xsd:string"/>
+      <xsd:element name="Fault_Message" type="xsd:string"/>
+      <xsd:element name="To" type="xsd:string"/> 
+      <xsd:element name="ORDER_NUMBER" type="xsd:string"/>
+      <xsd:element name="PARTNER_NAME" type="xsd:int"/>
+      <xsd:element name="PSR_NAME" type="xsd:string"/>
+      <xsd:element name="LastModifiedDate" type="xsd:string"/>
+      <xsd:element name="Process_Name" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

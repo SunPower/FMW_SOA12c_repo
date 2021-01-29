@@ -1,0 +1,22 @@
+<?binding.jca insertEDI997ToOracle_db.jca?>
+<wsdl:definitions name="insertEDI997ToOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI997FilesToOracle/insertEDI997ToOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI997FilesToOracle/insertEDI997ToOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/insertEDI997ToOracle">
+    <plt:partnerLinkType name="insertEDI997ToOracle_plt">
+        <plt:role name="insertEDI997ToOracle_role">
+            <plt:portType name="tns:insertEDI997ToOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/insertEDI997ToOracle"
+                    schemaLocation="Schemas/insertEDI997ToOracle_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrEdi997_InboundStgCollection_msg">
+        <wsdl:part name="XxspwrEdi997_InboundStgCollection" element="top:XxspwrEdi997_InboundStgCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="insertEDI997ToOracle_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:XxspwrEdi997_InboundStgCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

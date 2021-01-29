@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetDetailsFromOBDataTab" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/GetDetailsFromOBDataTab" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="GetDetailsFromOBDataTabInput" type="GetDetailsFromOBDataTabInput"/>
+   <xs:complexType name="GetDetailsFromOBDataTabInput">
+      <xs:sequence>
+         <xs:element name="batch_id" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="GetDetailsFromOBDataTabOutputCollection" type="GetDetailsFromOBDataTabOutputCollection"/>
+   <xs:complexType name="GetDetailsFromOBDataTabOutputCollection">
+      <xs:sequence>
+         <xs:element name="GetDetailsFromOBDataTabOutput" type="GetDetailsFromOBDataTabOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDetailsFromOBDataTabOutput">
+      <xs:sequence>
+         <xs:element name="BATCH_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="PURPOSE_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="ITEM_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="PRODUCT_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="ITEM_DESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="ITEM_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="UNIT_WEIGHT" type="xs:decimal" nillable="true"/>
+         <xs:element name="WEIGHT_UOM_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="UNIT_LENGTH" type="xs:decimal" nillable="true"/>
+         <xs:element name="UNIT_WIDTH" type="xs:decimal" nillable="true"/>
+         <xs:element name="UNIT_HEIGHT" type="xs:decimal" nillable="true"/>
+         <xs:element name="DIMENSION_UOM_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="PRIMARY_UOM_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="HTS_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE1" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE2" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE3" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE4" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE5" type="xs:string" nillable="true"/>
+          <xs:element name="UNIT_COST" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

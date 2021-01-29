@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<inp1:CommonSFDCErrorLog xmlns:inp1="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL">
+   <inp1:CommonErrorHandlerInputDetails>
+      <inp1:InstanceNumber>InstanceNumber218</inp1:InstanceNumber>
+      <inp1:InterfaceNumber>InterfaceNumber219</inp1:InterfaceNumber>
+      <inp1:InterfaceName>InterfaceName220</inp1:InterfaceName>
+      <inp1:ProcessName>ProcessName221</inp1:ProcessName>
+      <inp1:Severity>Severity222</inp1:Severity>
+      <inp1:Fault>
+         <inp1:FaultCode>FaultCode223</inp1:FaultCode>
+         <inp1:FaultDescription>FaultDescription224</inp1:FaultDescription>
+         <inp1:FaultMessage>FaultMessage225</inp1:FaultMessage>
+         <inp1:FaultTime>2012-10-18T17:51:24.495+05:30</inp1:FaultTime>
+      </inp1:Fault>
+      <inp1:FaultSystemName>FaultSystemName227</inp1:FaultSystemName>
+      <inp1:bOpenServiceTicket>bOpenServiceTicket228</inp1:bOpenServiceTicket>
+      <inp1:CorrectiveAction>CorrectiveAction229</inp1:CorrectiveAction>
+      <inp1:SendEmail xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="">SendEmail233</inp1:SendEmail>
+      <inp1:status>E</inp1:status>
+      <inp1:createddatetime>2012-10-18T17:51:24.495+05:30</inp1:createddatetime>
+      <inp1:Related_Object_ID__c>WR_FDS_Product__c</inp1:Related_Object_ID__c>
+      <inp1:SFDCErrObj>Y</inp1:SFDCErrObj>
+   </inp1:CommonErrorHandlerInputDetails>
+</inp1:CommonSFDCErrorLog>

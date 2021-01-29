@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="UpsertToDSRSOHDREBS" adapter="db" wsdlLocation="WSDLs/UpsertToDSRSOHDREBS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="UpsertToDSRSOHDREBS_ptt" operation="merge">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="UpsertToDSRSOHDREBS.XxspwrDsrSoHeader"/>
+      <property name="DmlType" value="merge"/>
+      <property name="MappingsMetaDataURL" value="UpsertToDSRSOHDREBS-or-mappings.xml"/>
+      <property name="OptimizeMerge" value="true"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

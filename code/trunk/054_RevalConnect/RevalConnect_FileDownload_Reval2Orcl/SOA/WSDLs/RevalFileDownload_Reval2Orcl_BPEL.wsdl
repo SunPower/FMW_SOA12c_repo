@@ -1,0 +1,40 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="RevalFileDownload_Reval2Orcl_BPEL"
+     targetNamespace="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns1="http://com.reval.webservices/params"
+     xmlns:ns2="http://com.reval.webservices/SeqIdList"
+    >
+    <plnk:partnerLinkType name="RevalFileDownload_Reval2Orcl_BPEL">
+        <plnk:role name="RevalFileDownload_Reval2Orcl_BPELProvider">
+            <plnk:portType name="client:RevalFileDownload_Reval2Orcl_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns1="http://com.reval.webservices/params">
+            <import namespace="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL"
+                 schemaLocation="../Schemas/RevalFileDownload_Reval2Orcl_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns1="http://com.reval.webservices/params">
+            <xsd:import namespace="http://com.reval.webservices/params" schemaLocation="../Schemas/RevalParams.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://com.reval.webservices/SeqIdList" schemaLocation="../Schemas/SeqIdList.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="RevalFileDownload_Reval2Orcl_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="RevalFileDownload_Reval2Orcl_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:RevalFileDownload_Reval2Orcl_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

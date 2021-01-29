@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="selectRecFromErrorLogTab" adapter="db" wsdlLocation="WSDLs/selectRecFromErrorLogTab.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOACustom" UIConnectionName="SunPower_DEV" adapterRef=""/>
+  <endpoint-interaction portType="selectRecFromErrorLogTab_ptt" operation="selectRecFromErrorLogTab">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select UNIQUE_IDENTIFIER,FAULTMESSAGE,INSTANCENUMBER,INTERFACENAME from  middleware_error_log where INSTANCENUMBER=#instanceNo"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

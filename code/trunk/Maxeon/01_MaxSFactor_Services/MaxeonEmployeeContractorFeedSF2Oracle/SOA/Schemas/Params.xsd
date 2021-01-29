@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1" targetNamespace="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1" elementFormDefault="qualified">
+   <xsd:element name="Params">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="FileName" type="xsd:string"/>
+            <xsd:element name="Counter" type="xsd:int"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+</xsd:schema>

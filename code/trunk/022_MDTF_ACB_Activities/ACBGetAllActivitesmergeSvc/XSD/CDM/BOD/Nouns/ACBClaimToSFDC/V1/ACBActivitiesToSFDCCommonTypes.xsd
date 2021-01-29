@@ -1,0 +1,15 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/ACBActivitiesToSFDCCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/ACBActivitiesToSFDCCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="Id" type="cdt:String50"/>
+    <xsd:element name="Account__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Promotion__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Promotion_Description__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Transaction_Type__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Transaction_Year__c" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="Transaction_Month__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Sum_of_Transaction_Amt__c" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="Comment__c" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Promotion_Year__c" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="Record_Number__c" type="cdt:Decimal11_4" nillable="true"/>
+    <xsd:element name="ACBParanet_ID__C" type="cdt:String50" nillable="true"/>
+</xsd:schema>

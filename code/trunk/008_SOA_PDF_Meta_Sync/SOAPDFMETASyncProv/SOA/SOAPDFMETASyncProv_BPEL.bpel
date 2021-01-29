@@ -1,0 +1,1442 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Jul 25 16:02:31 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="SOAPDFMETASyncProv_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/SOAPDFMETASyncProv_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/SOAPDFMETASyncProv_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns1="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns2="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" xmlns:ns3="urn:partner.soap.sforce.com"
+         xmlns:ns4="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+         xmlns:ns5="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+         xmlns:ns6="http://www.sunpowercorp.com/Noun/PDFFTPSalesForce/V1"
+         xmlns:ns7="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/GetFTPDataDetailsDB"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns9="urn:sobject.partner.soap.sforce.com"
+         xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/ftp/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/PutErrorFileToFTP"
+         xmlns:ns11="http://xmlns.oracle.com/pcbpel/adapter/db/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/UpdateFTPDetailsDB"
+         xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateFTPDetailsDB"
+         xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/ftp/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/GetFileFTP"
+         xmlns:ns14="http://xmlns.oracle.com/pcbpel/adapter/ftp/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/GetPDFFileFTP"
+         xmlns:ns15="http://xmlns.oracle.com/pcbpel/adapter/ftp/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/PutPDFTomanyAttachFTP"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns16="http://xmlns.oracle.com/SOAUtilityServices/FTPFileMoveService/FTPFileMoveService"
+         xmlns:ns17="http://www.sunpowercorp.com/SunPowerDevelopment/FTPFileMoveService/v1/xsd"
+         xmlns:ns18="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns19="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+         xmlns:ns20="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:ns21="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns22="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:ns23="http://www.sunpowercorp.com/MergedSFDC" xmlns:ns24="http://www.sunpowercorp.com/MergedOracleSFDC"
+         xmlns:ns25="http://www.sunpowercorp.com/MergedAttachmentSFDC"
+         xmlns:ns26="http://www.sunpowercorp.com/MergedOracleAttachmentSFDC"
+         xmlns:ns27="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns:ns28="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:ns29="http://www.pdf_meta_sync_params.org">
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[SOAPDFMETASyncProv_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="soapdfmetasyncprov_bpel_client" partnerLinkType="client:SOAPDFMETASyncProv_BPEL"
+                 myRole="SOAPDFMETASyncProv_BPELProvider" partnerRole="SOAPDFMETASyncProv_BPELRequester"/>
+    <partnerLink name="SDFCLoginService" partnerLinkType="ns1:SFDCLogin_BPEL" partnerRole="SFDCLogin_BPELProvider"/>
+    <partnerLink name="SFDCService" partnerLinkType="ns3:Soap_PL" partnerRole="Soap_Role"/>
+    <partnerLink name="UpdateFTPDetailsDB" partnerLinkType="ns11:UpdateFTPDetailsDB_plt"
+                 partnerRole="UpdateFTPDetailsDB_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns21:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="FileUtilityService" partnerLinkType="ns27:FileUtilityService_BPEL"
+                 partnerRole="FileUtilityService_BPELProvider"/>
+  </partnerLinks>
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:SOAPDFMETASyncProv_BPELRequestMessage"/>
+    <!-- Reference to the message that will be sent back to the requester during callback -->
+    <variable name="outputVariable" messageType="client:SOAPDFMETASyncProv_BPELResponseMessage"/>
+    <variable name="InvokeSFDCLogin_InputVariable" messageType="ns1:SFDCLogin_BPELRequestMessage"/>
+    <variable name="InvokeSFDCLogin_OutputVariable" messageType="ns1:SFDCLogin_BPELResponseMessage"/>
+    <variable name="Header" messageType="ns3:Header"/>
+    <variable name="CustomerNumber" type="xsd:string"/>
+    <variable name="InvSFDCQuery_InputVariable" messageType="ns3:queryRequest"/>
+    <variable name="InvSFDCQuery_OutputVariable" messageType="ns3:queryResponse"/>
+    <variable name="IntCountofSFDCAccount" type="xsd:int"/>
+    <variable name="UpdateFTPDetailsDB_IV" messageType="ns11:UpdateFTPDetailsDBInput_msg"/>
+    <variable name="SFDC_ACCOUNT_ID" type="xsd:string"/>
+    <variable name="SFDC_User_ID" type="xsd:string"/>
+    <variable name="File_Name" type="xsd:string"/>
+    <variable name="IntCountOfFoundAttachments" type="xsd:int"/>
+    <variable name="Upsert_SDFC_InputVariable" messageType="ns3:upsertRequest"/>
+    <variable name="Upsert_SDFC_OutputVariable" messageType="ns3:upsertResponse"/>
+    <variable name="UpsertAttachID" type="xsd:string"/>
+    <variable name="partnerReference" element="ns4:EndpointReference"/>
+    <variable name="InvokeMovErrFTP_IV" messageType="ns16:FTPFileMoveServiceRequestMessage"/>
+    <variable name="InvokeMovErrFTP_OV" messageType="ns16:FTPFileMoveServiceResponseMessage"/>
+    <variable messageType="bpelx:RuntimeFaultMessage" name="FaultVar"/>
+    <variable name="RenameFileName" type="xsd:string"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns21:requestMessage"/>
+    <variable name="CommErr" messageType="ns21:requestMessage"/>
+    <variable name="MergedSFDC" element="ns23:MergedSFDCRows"/>
+    <variable name="MergeOracleSFDC" element="ns24:MergedOracleSFDCRows"/>
+    <variable name="MergeAttachSFDC" element="ns25:MergedAttachmentSFDCRows"/>
+    <variable name="MergeOrcAttacSFDC" element="ns26:MergedOracleAttachmentSFDCRows"/>
+    <variable name="MovedFile" type="xsd:string"/>
+    <variable name="SetTitle" type="xsd:string"/>
+    <variable name="FileUtility_Move_IV" messageType="ns27:FileUtilityService_BPELRequestMessage"/>
+    <variable name="FileUtility_Move_OV" messageType="ns27:FileUtilityService_BPELResponseMessage"/>
+    <variable name="Temp_filename" type="xsd:string"/>
+    <variable name="params" element="ns29:params"/>
+    <variable name="loopCounter" type="xsd:int"/>
+    <variable name="Create_SDFC_InputVariable" messageType="ns3:createRequest"/>
+    <variable name="Create_SDFC_OutputVariable" messageType="ns3:createResponse"/>
+    <variable name="Update_SDFC_InputVariable" messageType="ns3:updateRequest"/>
+    <variable name="Update_SDFC_OutputVariable" messageType="ns3:updateResponse"/>
+    <variable name="FileName_ID" type="xsd:string"/>
+  </variables>
+  <faultHandlers>
+    <!--<catch faultName="bpelx:remoteFault" faultVariable="FaultVar">
+            <sequence name="Sequence11">
+                <assign name="AsgnFTPFileMoveParms">
+                    <copy>
+                        <from variable="RenameFileName"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:SourceFileName"/>
+                    </copy>
+                    <copy>
+                        <from expression="'/home/ftpaccount/errorFiles'"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:TargetPhysicalDirectory"/>
+                    </copy>
+                    <copy>
+                        <from variable="inputVariable" part="payload"
+                              query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:SourcePhysicalDirectory"/>
+                    </copy>
+                    <copy>
+                        <from variable="File_Name"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:TargetFileName"/>
+                    </copy>
+                </assign>
+                <invoke name="InvFTPFileMoveService"
+                        inputVariable="InvokeMovErrFTP_IV"
+                        outputVariable="InvokeMovErrFTP_OV"
+                        partnerLink="FTPFileMoveService"
+                        portType="ns16:FTPFileMoveService"
+                        bpelx:invokeAsDetail="no" operation="process"/>
+                <assign name="AsgnCommonErrorHandling">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from variable="FaultVar" part="code"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:Fault/ns19:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from variable="FaultVar" part="summary"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:Fault/ns19:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from variable="FaultVar" part="detail"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:Fault/ns19:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNum")'/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceName")'/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression="'SOAPDFMETASyncProv'"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("OpenTicketSvc")'/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression="'OracleEbiz'"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:FaultSystemName"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonErrorHandling"
+                        inputVariable="InvokeErrorHandSvc_IV"
+                        partnerLink="CommonErrorHandler"
+                        portType="ns18:CommonErrorHandler_BPEL"
+                        bpelx:invokeAsDetail="no" operation="process"/>
+                <assign name="AsgnCommonLogging">
+                    <copy>
+                        <from expression="'E'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:status"/>
+                    </copy>
+                    <copy>
+                        <from variable="File_Name"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:uniqueIdentifier"/>
+                    </copy>
+                    <copy>
+                        <from expression="'SOAPDFMETASyncProv'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:processname"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:instancenumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceName")'/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:interfacename"/>
+                    </copy>
+                    <copy>
+                        <from expression="'PDF101'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:interfacenumber"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonLogging"
+                        inputVariable="InvokeLoggSvc_IV"
+                        partnerLink="CommonLogging"
+                        portType="ns20:CommonLoggingService_BPEL"
+                        bpelx:invokeAsDetail="no" operation="process"/>
+            </sequence>
+        </catch>
+        <catch faultName="bpelx:bindingFault" faultVariable="FaultVar">
+            <sequence name="Sequence10">
+             <assign name="AsgnFTPFileMoveParms">
+                    <copy>
+                        <from variable="RenameFileName"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:SourceFileName"/>
+                    </copy>
+                    <copy>
+                        <from expression="'/home/ftpaccount/errorFiles'"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:TargetPhysicalDirectory"/>
+                    </copy>
+                    <copy>
+                        <from variable="inputVariable" part="payload"
+                              query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:SourcePhysicalDirectory"/>
+                    </copy>
+                    <copy>
+                        <from variable="File_Name"/>
+                        <to variable="InvokeMovErrFTP_IV" part="payload"
+                            query="/ns17:FileMoveReq/ns17:TargetFileName"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokeFTPFileMoveService"
+                        inputVariable="InvokeMovErrFTP_IV"
+                        outputVariable="InvokeMovErrFTP_OV"
+                        partnerLink="FTPFileMoveService"
+                        portType="ns16:FTPFileMoveService"
+                        bpelx:invokeAsDetail="no" operation="process"/>
+                <assign name="AsgnCommonErrorHandling">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from variable="FaultVar" part="code"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:Fault/ns19:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from variable="FaultVar" part="summary"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:Fault/ns19:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from variable="FaultVar" part="detail"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:Fault/ns19:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference('InterfaceNum')"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference('InterfaceName')"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression="'SOAPDFMETASyncProv'"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference('OpenTicketSvc')"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression="'OracleEbiz'"/>
+                        <to variable="InvokeErrorHandSvc_IV" part="payload"
+                            query="/ns19:CommonErrorHandlerInput/ns19:FaultSystemName"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonErrorHandling"
+                        inputVariable="InvokeErrorHandSvc_IV"
+                        partnerLink="CommonErrorHandler"
+                        portType="ns18:CommonErrorHandler_BPEL"
+                        bpelx:invokeAsDetail="no" operation="process"/>
+                <assign name="AsgnCommonLogging">
+                    <copy>
+                        <from expression="'E'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:status"/>
+                    </copy>
+                    <copy>
+                        <from variable="File_Name"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:uniqueIdentifier"/>
+                    </copy>
+                    <copy>
+                        <from expression="'SOAPDFMETASyncProv'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:processname"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:instancenumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="'SOA_PDF_META_Sync'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:interfacename"/>
+                    </copy>
+                    <copy>
+                          <from expression='ora:getPreference("InterfaceNum")'/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:interfacenumber"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonLogging"
+                        inputVariable="InvokeLoggSvc_IV"
+                        partnerLink="CommonLogging"
+                        portType="ns20:CommonLoggingService_BPEL"
+                        bpelx:invokeAsDetail="no" operation="process"/>
+            </sequence>
+        </catch> -->
+    <catchAll>
+      <sequence name="Sequence12">
+        <assign name="AssignFileMove">
+          <copy>
+            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="inputVariable"
+                  part="payload"
+                  query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                part="payload" query="/ns28:FileUtilityReq/ns28:SourcePhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                part="payload" query="/ns28:FileUtilityReq/ns28:SourceFileName"/>
+          </copy>
+          <copy>
+            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                part="payload" query="/ns28:FileUtilityReq/ns28:TargetFileName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ErrorFilePath")'/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                part="payload" query="/ns28:FileUtilityReq/ns28:TargetPhysicalDirectory"/>
+          </copy>
+        </assign>
+        <invoke name="Invoke_FileUtility" partnerLink="FileUtilityService" inputVariable="FileUtility_Move_IV"
+                outputVariable="FileUtility_Move_OV" portType="ns27:FileUtilityService_BPEL" operation="Move"/>
+        <assign name="AsgnCommonErrorHandler">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:Severity"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNumber")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultCode")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:Fault/ns22:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:Fault/ns22:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:Fault/ns22:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("CorrectiveAction")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="CommErr" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:SendEmail"/>
+          </copy>
+        </assign>
+        <assign name="TransformErrLogParms">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TransformErrLogParms.xsl', $CommErr.request)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"/>
+          </copy>
+        </assign>
+        <assign name="AssignFileName">
+          <copy>
+            <from variable="File_Name"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns22:CommonSFDCErrorLog/ns22:CommonErrorHandlerInputDetails/ns22:UniqueIdentNum/ns22:UniqueIdentifier"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService" portType="ns21:execute_ptt" operation="execute"
+                bpelx:invokeAsDetail="no"/>
+        <!--<assign name="AsgnCommonLogging">
+                    <copy>
+                        <from expression="'E'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:status"/>
+                    </copy>
+                    <copy>
+                        <from variable="File_Name"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:uniqueIdentifier"/>
+                    </copy>
+                    <copy>
+                        <from expression="'SOAPDFMETASyncProv'"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:processname"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:instancenumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference('InterfaceName')"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:interfacename"/>
+                    </copy>
+                    <copy>
+                         <from expression="ora:getPreference('InterfaceNum')"/>
+                        <to variable="InvokeLoggSvc_IV" part="payload"
+                            query="/ns20:Process/ns20:ProcessLog/ns20:interfacenumber"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonLogging"
+                        inputVariable="InvokeLoggSvc_IV"
+                        partnerLink="CommonLogging"
+                        portType="ns20:CommonLoggingService_BPEL"
+                        bpelx:invokeAsDetail="no" operation="process"/> -->
+        <terminate name="Terminate"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in SOAPDFMETASyncProv_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="soapdfmetasyncprov_bpel_client" portType="client:SOAPDFMETASyncProv_BPEL"
+             operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="AssignSetTitle">
+      <copy>
+        <from expression="bpws:getVariableData('inputVariable','payload','/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:PDF_FILE_NAME')"
+              bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to variable="SetTitle"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(concat('FileNameProv:',bpws:getVariableData('SetTitle')))"/>
+        <to variable="SetTitle"/>
+      </copy>
+      <copy>
+        <from expression="bpws:getVariableData('inputVariable','payload','/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:PDF_FILE_NAME')"
+              bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to variable="File_Name"/>
+      </copy>
+      <copy>
+        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Temp_filename"/>
+      </copy>
+    </assign>
+    <invoke name="InvokeSFDCLogin" bpelx:invokeAsDetail="no" inputVariable="InvokeSFDCLogin_InputVariable"
+            outputVariable="InvokeSFDCLogin_OutputVariable" partnerLink="SDFCLoginService" portType="ns1:SFDCLogin_BPEL"
+            operation="process"/>
+    <assign name="AssignSessionHeaderID">
+      <copy>
+        <from variable="InvokeSFDCLogin_OutputVariable" part="payload" query="/ns1:SFDCLoginResp/ns1:sessionId"/>
+        <to variable="Header" part="SessionHeader" query="/ns3:SessionHeader/ns3:sessionId"/>
+      </copy>
+    </assign>
+    <assign name="AsgnPartnerReference">
+      <copy>
+        <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+        <to variable="partnerReference"/>
+      </copy>
+      <copy>
+        <from variable="InvokeSFDCLogin_OutputVariable" part="payload" query="/ns1:SFDCLoginResp/ns1:serverUrl"/>
+        <to variable="partnerReference" query="/ns4:EndpointReference/ns4:Address"/>
+      </copy>
+      <copy>
+        <from variable="partnerReference"/>
+        <to partnerLink="SFDCService"/>
+      </copy>
+    </assign>
+    <assign name="AsgnSFDCQuery">
+      <copy>
+        <from expression="substring-after(bpws:getVariableData('inputVariable','payload','/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:PDF_FILE_NAME'),'_')"/>
+        <to variable="CustomerNumber"/>
+      </copy>
+      <copy>
+        <from expression="substring-before(bpws:getVariableData('CustomerNumber'),'_')"/>
+        <to variable="CustomerNumber"/>
+      </copy>
+      <copy>
+        <from expression="concat(&quot;select a.Id, a.Name, a.Oracle_Account_Number__c from Account a where Oracle_Account_Number__c =&quot;,&quot;'&quot;,bpws:getVariableData('CustomerNumber'),&quot;'&quot; )"/>
+        <to variable="InvSFDCQuery_InputVariable" part="parameters" query="/ns3:query/ns3:queryString"/>
+      </copy>
+    </assign>
+    <invoke name="InvSFDCQuery" inputVariable="InvSFDCQuery_InputVariable" outputVariable="InvSFDCQuery_OutputVariable"
+            partnerLink="SFDCService" portType="ns3:Soap" operation="query" bpelx:invokeAsDetail="no"
+            bpelx:inputHeaderVariable="Header"/>
+    <assign name="TransformMergedSFDC">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransMergedSFDC.xsl', $InvSFDCQuery_OutputVariable.parameters, 'InvokeSFDCLogin_OutputVariable.payload', $InvokeSFDCLogin_OutputVariable.payload)"/>
+        <to variable="MergedSFDC"/>
+      </copy>
+    </assign>
+    <assign name="AssignSFDCAccCount">
+      <copy>
+        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvSFDCQuery_OutputVariable"
+              part="parameters" query="/ns3:queryResponse/ns3:result/ns3:size"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="IntCountofSFDCAccount"/>
+      </copy>
+    </assign>
+    <switch name="FirstIFSwitchCond">
+      <case condition="bpws:getVariableData('IntCountofSFDCAccount') >= 1">
+        <sequence name="Sequence1">
+          <assign name="TransMergedOrcSFDC">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TransMergedOracleSFDC.xsl', $MergedSFDC, 'inputVariable.payload', $inputVariable.payload)"/>
+              <to variable="MergeOracleSFDC"/>
+            </copy>
+          </assign>
+          <assign name="initLoopCounter">
+            <copy>
+              <from expression="number(1)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="params"
+                  query="/ns29:params/ns29:loopCounter"/>
+            </copy>
+            <copy>
+              <from expression="number(1)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="loopCounter"/>
+            </copy>
+          </assign>
+          <while name="While_SFDC_ACCOUNTS"
+                 condition="bpws:getVariableData('params','/ns29:params/ns29:loopCounter') &lt;= bpws:getVariableData('IntCountofSFDCAccount')">
+            <sequence>
+              <assign name="AsgnAttachSFDCQuery">
+                <copy>
+                  <from expression="bpws:getVariableData('MergeOracleSFDC','/ns24:MergedOracleSFDCRows/ns24:row[bpws:getVariableData(&quot;loopCounter&quot;)]/ns24:SFDC_ACCOUNT_ID')"
+                        bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SFDC_ACCOUNT_ID"/>
+                </copy>
+                <copy>
+                  <from expression="bpws:getVariableData('MergeOracleSFDC','/ns24:MergedOracleSFDCRows/ns24:row[bpws:getVariableData(&quot;loopCounter&quot;)]/ns24:SFDC_USER_ID')"
+                        bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SFDC_User_ID"/>
+                </copy>
+                <copy>
+                  <from expression="concat(&quot;select a.Id,a.ParentId,a.Name,a.IsPrivate,a.ContentType,a.OwnerId from Attachment a where a.IsDeleted = false and a.ParentId ='&quot;,bpws:getVariableData('SFDC_ACCOUNT_ID'),&quot;'&quot;,&quot; and a.OwnerId =&quot;,&quot;'&quot;,bpws:getVariableData('SFDC_User_ID'),&quot;'&quot;,&quot;and a.Name =&quot;,&quot;'&quot;,bpws:getVariableData('File_Name'),&quot;'&quot;)"
+                        bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to variable="InvSFDCQuery_InputVariable" part="parameters" query="/ns3:query/ns3:queryString"/>
+                </copy>
+              </assign>
+              <invoke name="InvokeAttachQuery" inputVariable="InvSFDCQuery_InputVariable"
+                      outputVariable="InvSFDCQuery_OutputVariable" partnerLink="SFDCService" portType="ns3:Soap"
+                      operation="query" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header"/>
+              <assign name="TransMergeAttachSFDC">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransMergeAttachSFDC.xsl', $InvSFDCQuery_OutputVariable.parameters)"/>
+                  <to variable="MergeAttachSFDC"/>
+                </copy>
+              </assign>
+              <assign name="AssignCountOfAttachments">
+                <copy>
+                  <from expression="count(bpws:getVariableData('InvSFDCQuery_OutputVariable','parameters','/ns3:queryResponse/ns3:result/ns3:records/ns9:Name'))"
+                        bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to variable="IntCountOfFoundAttachments"/>
+                </copy>
+              </assign>
+              <switch name="SecndIFSwitchCond">
+                <case condition="bpws:getVariableData('IntCountOfFoundAttachments') =1">
+                  <sequence name="Sequence4">
+                    <assign name="TransMergeOrcAttachment">
+                      <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                      </bpelx:annotation>
+                      <copy>
+                        <from expression="ora:doXSLTransformForDoc('Transformations/TransMergeOrcAttacSFDC.xsl', $MergeOracleSFDC, 'MergeAttachSFDC', $MergeAttachSFDC)"/>
+                        <to variable="MergeOrcAttacSFDC"/>
+                      </copy>
+                    </assign>
+                    <assign name="TransformAttachUpsertParms">
+                      <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                      </bpelx:annotation>
+                      <copy>
+                        <from expression="ora:doXSLTransformForDoc('Transformations/TransAttachUpsertSFDC.xsl', $MergeOrcAttacSFDC)"/>
+                        <to variable="Upsert_SDFC_InputVariable" part="parameters"/>
+                      </copy>
+                    </assign>
+                    <assign name="AssgnFileContent">
+                      <copy>
+                        <from variable="inputVariable" part="payload"
+                              query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:Body"/>
+                        <to variable="Upsert_SDFC_InputVariable" part="parameters"
+                            query="/ns3:upsert/ns3:sObjects/ns9:Body"/>
+                      </copy>
+                    </assign>
+                    <!--    <assign name="Assign1">
+                                    <copy>
+                                        <from expression="'Attachment'"/>
+                                        <to variable="Upsert_SDFC_InputVariable"
+                                            part="parameters"
+                                            query="/ns3:upsert/ns3:sObjects/ns9:type"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="'application/pdf'"/>
+                                        <to variable="Upsert_SDFC_InputVariable"
+                                            part="parameters"
+                                            query="/ns3:upsert/ns3:sObjects/ns9:ContentType"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="bpws:getVariableData('CommnMergeSchma','payload','/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SFDC_ATTACHMENT_ID')"/>
+                                        <to variable="Upsert_SDFC_InputVariable"
+                                            part="parameters"
+                                            query="/ns3:upsert/ns3:sObjects/ns9:Id"/>
+                                    </copy>
+                                </assign> -->
+                    <!--   <assign name="Transform1">
+                                    <bpelx:annotation>
+                                        <bpelx:pattern>transformation</bpelx:pattern>
+                                    </bpelx:annotation>
+                                    <copy>
+                                        <from expression="ora:doXSLTransformForDoc('xsl/Transformation_1.xsl', $InvSFDCQuery_OutputVariable.parameters)"/>
+                                        <to variable="Upsert_SDFC_InputVariable"
+                                            part="parameters"/>
+                                    </copy>
+                                </assign> -->
+                    <invoke name="InvokeAttachUpsertSFDC" inputVariable="Upsert_SDFC_InputVariable"
+                            outputVariable="Upsert_SDFC_OutputVariable" partnerLink="SFDCService" portType="ns3:Soap"
+                            operation="upsert" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header"/>
+                    <switch name="ThirdIFSwitchCond">
+                      <case condition="contains(bpws:getVariableData('Upsert_SDFC_OutputVariable','parameters','/ns3:upsertResponse/ns3:result/ns3:success'),'true')">
+                        <sequence>
+                          <!--assign name="TransOrcAttacgSFDCUpsertParms">
+                                                        <bpelx:annotation>
+                                                            <bpelx:pattern>transformation</bpelx:pattern>
+                                                        </bpelx:annotation>
+                                                        <copy>
+                                                            <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcAtachSFDCUpsert.xsl', $MergeOrcAttacSFDC)"/>
+                                                            <to variable="Upsert_SDFC_InputVariable" part="parameters"/>
+                                                        </copy>
+                                                    </assign-->
+                          <!--   <assign name="XformTransUpsertParms">
+                                                <bpelx:annotation>
+                                                    <bpelx:pattern>transformation</bpelx:pattern>
+                                                </bpelx:annotation>
+                                                <copy>
+                                                    <from expression="ora:doXSLTransformForDoc('xsl/TransUpsertTransSFDC.xsl', $MergeOrcAttacSFDC)"/>
+                                                    <to variable="SOA2TransactionDetails__c_upsert_IV"
+                                                        part="parameters"/>
+                                                </copy>
+                                            </assign>  -->
+                          <!--invoke name="InvTransUpsertSFDC" partnerLink="SFDCService"
+                                                            portType="ns3:Soap" operation="upsert"
+                                                            inputVariable="Upsert_SDFC_InputVariable"
+                                                            outputVariable="Upsert_SDFC_OutputVariable"
+                                                            bpelx:invokeAsDetail="no"
+                                                            bpelx:inputHeaderVariable="Header"/-->
+                          <assign name="Asg_SOATransactions_Query">
+                            <copy>
+                              <from expression="concat(substring-before(bpws:getVariableData(&quot;File_Name&quot;),'.pdf'),'_',bpws:getVariableData(&quot;SFDC_ACCOUNT_ID&quot;),'.pdf')"/>
+                              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                  variable="FileName_ID"/>
+                            </copy>
+                            <copy>
+                              <from expression="concat(&quot;select t.Id,t.Doc_No__c,t.Partner__c from SOA2TransactionDetails__c t where t.Doc_No__c in ('&quot;,bpws:getVariableData(&quot;File_Name&quot;),&quot;','&quot;,bpws:getVariableData(&quot;FileName_ID&quot;),&quot;') and t.Partner__c='&quot;,bpws:getVariableData(&quot;SFDC_ACCOUNT_ID&quot;),&quot;'&quot;)"
+                                    bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                  variable="InvSFDCQuery_InputVariable" part="parameters"
+                                  query="/ns3:query/ns3:queryString"/>
+                            </copy>
+                          </assign>
+                          <invoke name="Inv_SOATransactions_Query" partnerLink="SFDCService"
+                                  inputVariable="InvSFDCQuery_InputVariable"
+                                  outputVariable="InvSFDCQuery_OutputVariable" portType="ns3:Soap" operation="query"
+                                  bpelx:inputHeaderVariable="Header"/>
+                          <switch name="Switch1">
+                            <case condition="bpws:getVariableData('InvSFDCQuery_OutputVariable','parameters','/ns3:queryResponse/ns3:result/ns3:size') = number(0)">
+                              <sequence>
+                                <!--assign name="TransOrcSFDCParms">
+                                                                            <bpelx:annotation>
+                                                                                <bpelx:pattern>transformation</bpelx:pattern>
+                                                                            </bpelx:annotation>
+                                                                            <copy>
+                                                                                <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcSFDCUpsert.xsl', $MergeOracleSFDC, 'Upsert_SDFC_OutputVariable.parameters', $Upsert_SDFC_OutputVariable.parameters, 'params', $params)"/>
+                                                                                <to variable="Upsert_SDFC_InputVariable"
+                                                                                    part="parameters"/>
+                                                                            </copy>
+                                                                        </assign>
+                                                                        <invoke name="InvokeTrnsUpsertSFDC"
+                                                                                inputVariable="Upsert_SDFC_InputVariable"
+                                                                                outputVariable="Upsert_SDFC_OutputVariable"
+                                                                                partnerLink="SFDCService"
+                                                                                portType="ns3:Soap" operation="upsert"
+                                                                                bpelx:invokeAsDetail="no"
+                                                                                bpelx:inputHeaderVariable="Header"/-->
+                                <!--assign name="TransOrcSFDCParms_Create">
+                                                                            <bpelx:annotation>
+                                                                                <bpelx:pattern>transformation</bpelx:pattern>
+                                                                            </bpelx:annotation>
+                                                                            <copy>
+                                                                                <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcSFDCCreate.xsl', $MergeOracleSFDC, 'Upsert_SDFC_OutputVariable.parameters', $Upsert_SDFC_OutputVariable.parameters, 'params', $params)"/>
+                                                                                <to variable="Create_SDFC_InputVariable"
+                                                                                    part="parameters"/>
+                                                                            </copy>                                                                            
+                                                                        </assign-->
+                                <assign name="TransOrcAttacgSFDCCreateParms">
+                                  <bpelx:annotation>
+                                    <bpelx:pattern>transformation</bpelx:pattern>
+                                  </bpelx:annotation>
+                                  <copy>
+                                    <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcAtachSFDCCreate.xsl', $MergeOrcAttacSFDC)"/>
+                                    <to variable="Create_SDFC_InputVariable" part="parameters"/>
+                                  </copy>
+                                </assign>
+                                <invoke name="Inv_SFDC_Create" partnerLink="SFDCService"
+                                        inputVariable="Create_SDFC_InputVariable"
+                                        outputVariable="Create_SDFC_OutputVariable" portType="ns3:Soap"
+                                        operation="create" bpelx:inputHeaderVariable="Header"/>
+                              </sequence>
+                            </case>
+                            <otherwise>
+                              <sequence name="Sequence14">
+                                <!--assign name="TransOrcSFDCParms_Update">
+                                                                            <bpelx:annotation>
+                                                                                <bpelx:pattern>transformation</bpelx:pattern>
+                                                                            </bpelx:annotation>
+                                                                            <copy>
+                                                                                <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcSFDCUpdate.xsl', $MergeOracleSFDC, 'Upsert_SDFC_OutputVariable.parameters', $Upsert_SDFC_OutputVariable.parameters, 'params', $params, 'InvSFDCQuery_OutputVariable.parameters', $InvSFDCQuery_OutputVariable.parameters)"/>
+                                                                                <to variable="Update_SDFC_InputVariable"
+                                                                                    part="parameters"/>
+                                                                            </copy>
+                                                                        </assign-->
+                                <assign name="TransOrcAttacgSFDCCreateParms">
+                                  <bpelx:annotation>
+                                    <bpelx:pattern>transformation</bpelx:pattern>
+                                  </bpelx:annotation>
+                                  <copy>
+                                    <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcAtachSFDCUpdate.xsl', $MergeOrcAttacSFDC, 'InvSFDCQuery_OutputVariable.parameters', $InvSFDCQuery_OutputVariable.parameters)"/>
+                                    <to variable="Update_SDFC_InputVariable" part="parameters"/>
+                                  </copy>
+                                </assign>
+                                <invoke name="Inv_SFDC_Update" partnerLink="SFDCService"
+                                        inputVariable="Update_SDFC_InputVariable"
+                                        outputVariable="Update_SDFC_OutputVariable" portType="ns3:Soap"
+                                        operation="update" bpelx:inputHeaderVariable="Header"/>
+                              </sequence>
+                            </otherwise>
+                          </switch>
+                        </sequence>
+                      </case>
+                      <otherwise>
+                        <sequence name="Sequence5">
+                          <assign name="AssignFileMove">
+                            <copy>
+                              <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                    variable="inputVariable" part="payload"
+                                    query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+                              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                  variable="FileUtility_Move_IV" part="payload"
+                                  query="/ns28:FileUtilityReq/ns28:SourcePhysicalDirectory"/>
+                            </copy>
+                            <copy>
+                              <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                    variable="File_Name"/>
+                              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                  variable="FileUtility_Move_IV" part="payload"
+                                  query="/ns28:FileUtilityReq/ns28:SourceFileName"/>
+                            </copy>
+                            <copy>
+                              <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                    variable="File_Name"/>
+                              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                  variable="FileUtility_Move_IV" part="payload"
+                                  query="/ns28:FileUtilityReq/ns28:TargetFileName"/>
+                            </copy>
+                            <copy>
+                              <from expression='ora:getPreference("Fail2UpsertAttach")'/>
+                              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                  variable="FileUtility_Move_IV" part="payload"
+                                  query="/ns28:FileUtilityReq/ns28:TargetPhysicalDirectory"/>
+                            </copy>
+                          </assign>
+                          <invoke name="Invoke_FileUtility" partnerLink="FileUtilityService"
+                                  inputVariable="FileUtility_Move_IV" outputVariable="FileUtility_Move_OV"
+                                  portType="ns27:FileUtilityService_BPEL" operation="Move"/>
+                          <assign name="AssignAttachFailUpd">
+                            <copy>
+                              <from variable="File_Name"/>
+                              <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                  query="/ns12:UpdateFTPDetailsDBInput/ns12:PDF_FILE_NAME"/>
+                            </copy>
+                            <copy>
+                              <from expression="'Failed to update attachment in SFDC'"/>
+                              <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                  query="/ns12:UpdateFTPDetailsDBInput/ns12:ERROR_MESSAGE"/>
+                            </copy>
+                            <copy>
+                              <from expression="'ERROR'"/>
+                              <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                  query="/ns12:UpdateFTPDetailsDBInput/ns12:RECORD_STATUS"/>
+                            </copy>
+                            <copy>
+                              <from expression="'Y'"/>
+                              <to variable="MovedFile"/>
+                            </copy>
+                          </assign>
+                          <invoke name="InvokeUpdDB" bpelx:invokeAsDetail="no" inputVariable="UpdateFTPDetailsDB_IV"
+                                  partnerLink="UpdateFTPDetailsDB" portType="ns11:UpdateFTPDetailsDB_ptt"
+                                  operation="UpdateFTPDetailsDB"/>
+                        </sequence>
+                      </otherwise>
+                    </switch>
+                  </sequence>
+                </case>
+                <otherwise>
+                  <switch name="ElseIFSwitchCond">
+                    <case condition="bpws:getVariableData('IntCountOfFoundAttachments') >1">
+                      <sequence name="Sequence2">
+                        <assign name="AssignFileMove">
+                          <copy>
+                            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                  variable="inputVariable" part="payload"
+                                  query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                variable="FileUtility_Move_IV" part="payload"
+                                query="/ns28:FileUtilityReq/ns28:SourcePhysicalDirectory"/>
+                          </copy>
+                          <copy>
+                            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                variable="FileUtility_Move_IV" part="payload"
+                                query="/ns28:FileUtilityReq/ns28:SourceFileName"/>
+                          </copy>
+                          <copy>
+                            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                variable="FileUtility_Move_IV" part="payload"
+                                query="/ns28:FileUtilityReq/ns28:TargetFileName"/>
+                          </copy>
+                          <copy>
+                            <from expression='ora:getPreference("TooManyAttachPath")'/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                variable="FileUtility_Move_IV" part="payload"
+                                query="/ns28:FileUtilityReq/ns28:TargetPhysicalDirectory"/>
+                          </copy>
+                        </assign>
+                        <invoke name="Invoke_FileUtility" partnerLink="FileUtilityService"
+                                inputVariable="FileUtility_Move_IV" outputVariable="FileUtility_Move_OV"
+                                portType="ns27:FileUtilityService_BPEL" operation="Move"/>
+                        <assign name="AssignTomanyattachDB">
+                          <copy>
+                            <from expression="'ERROR'"/>
+                            <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                query="/ns12:UpdateFTPDetailsDBInput/ns12:RECORD_STATUS"/>
+                          </copy>
+                          <copy>
+                            <from expression="'Too many attachements found for this PDF name'"/>
+                            <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                query="/ns12:UpdateFTPDetailsDBInput/ns12:ERROR_MESSAGE"/>
+                          </copy>
+                          <copy>
+                            <from variable="File_Name"/>
+                            <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                query="/ns12:UpdateFTPDetailsDBInput/ns12:PDF_FILE_NAME"/>
+                          </copy>
+                          <copy>
+                            <from expression="'Y'"/>
+                            <to variable="MovedFile"/>
+                          </copy>
+                        </assign>
+                        <invoke name="InvokeUpdDB" bpelx:invokeAsDetail="no" inputVariable="UpdateFTPDetailsDB_IV"
+                                partnerLink="UpdateFTPDetailsDB" portType="ns11:UpdateFTPDetailsDB_ptt"
+                                operation="UpdateFTPDetailsDB"/>
+                      </sequence>
+                    </case>
+                    <otherwise>
+                      <sequence name="Sequence8">
+                        <!--assign name="AssignFileContent">
+                                                    <copy>
+                                                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                                              variable="inputVariable" part="payload"
+                                                              query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:PDF_FILE_NAME"/>
+                                                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                                            variable="Upsert_SDFC_InputVariable" part="parameters"
+                                                            query="/ns3:upsert/ns3:sObjects/ns9:Name"/>
+                                                    </copy>
+                                                    <copy>
+                                                        <from variable="inputVariable" part="payload"
+                                                              query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:Body"/>
+                                                        <to variable="Upsert_SDFC_InputVariable" part="parameters"
+                                                            query="/ns3:upsert/ns3:sObjects/ns9:Body"/>
+                                                    </copy>
+                                                </assign-->
+                        <assign name="TransUpsertAttacSFDC">
+                          <bpelx:annotation>
+                            <bpelx:pattern>transformation</bpelx:pattern>
+                          </bpelx:annotation>
+                          <copy>
+                            <from expression="ora:doXSLTransformForDoc('Transformations/XformUpsertSFDC.xsl', $MergeOracleSFDC, 'inputVariable.payload', $inputVariable.payload, 'params', $params)"/>
+                            <to variable="Upsert_SDFC_InputVariable" part="parameters"/>
+                          </copy>
+                        </assign>
+                        <invoke name="InvokeAttcUpsertSFDC" bpelx:invokeAsDetail="no"
+                                inputVariable="Upsert_SDFC_InputVariable" outputVariable="Upsert_SDFC_OutputVariable"
+                                partnerLink="SFDCService" portType="ns3:Soap" operation="upsert"
+                                bpelx:inputHeaderVariable="Header"/>
+                        <assign name="AssignUpsertAttID">
+                          <copy>
+                            <from variable="Upsert_SDFC_OutputVariable" part="parameters"
+                                  query="/ns3:upsertResponse/ns3:result/ns3:id"/>
+                            <to variable="UpsertAttachID"/>
+                          </copy>
+                        </assign>
+                        <switch name="ElseIF2SwitchCond">
+                          <case condition="contains(bpws:getVariableData('Upsert_SDFC_OutputVariable','parameters','/ns3:upsertResponse/ns3:result/ns3:success'),'true')">
+                            <sequence name="Sequence9">
+                              <assign name="Asg_SOATransactions_Query">
+                                <copy>
+                                  <from expression="concat(substring-before(bpws:getVariableData(&quot;File_Name&quot;),'.pdf'),'_',bpws:getVariableData(&quot;SFDC_ACCOUNT_ID&quot;),'.pdf')"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                      variable="FileName_ID"/>
+                                </copy>
+                                <copy>
+                                  <from expression="concat(&quot;select t.Id,t.Doc_No__c,t.Partner__c from SOA2TransactionDetails__c t where t.Doc_No__c in ('&quot;,bpws:getVariableData(&quot;File_Name&quot;),&quot;','&quot;,bpws:getVariableData(&quot;FileName_ID&quot;),&quot;') and t.Partner__c='&quot;,bpws:getVariableData(&quot;SFDC_ACCOUNT_ID&quot;),&quot;'&quot;)"
+                                        bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                      variable="InvSFDCQuery_InputVariable" part="parameters"
+                                      query="/ns3:query/ns3:queryString"/>
+                                </copy>
+                              </assign>
+                              <invoke name="Inv_SOATransactions_Query" partnerLink="SFDCService"
+                                      inputVariable="InvSFDCQuery_InputVariable"
+                                      outputVariable="InvSFDCQuery_OutputVariable" portType="ns3:Soap" operation="query"
+                                      bpelx:inputHeaderVariable="Header"/>
+                              <switch name="Switch1">
+                                <case condition="bpws:getVariableData('InvSFDCQuery_OutputVariable','parameters','/ns3:queryResponse/ns3:result/ns3:size') = number(0)">
+                                  <sequence>
+                                    <!--assign name="TransOrcSFDCParms">
+                                                                            <bpelx:annotation>
+                                                                                <bpelx:pattern>transformation</bpelx:pattern>
+                                                                            </bpelx:annotation>
+                                                                            <copy>
+                                                                                <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcSFDCUpsert.xsl', $MergeOracleSFDC, 'Upsert_SDFC_OutputVariable.parameters', $Upsert_SDFC_OutputVariable.parameters, 'params', $params)"/>
+                                                                                <to variable="Upsert_SDFC_InputVariable"
+                                                                                    part="parameters"/>
+                                                                            </copy>
+                                                                        </assign>
+                                                                        <invoke name="InvokeTrnsUpsertSFDC"
+                                                                                inputVariable="Upsert_SDFC_InputVariable"
+                                                                                outputVariable="Upsert_SDFC_OutputVariable"
+                                                                                partnerLink="SFDCService"
+                                                                                portType="ns3:Soap" operation="upsert"
+                                                                                bpelx:invokeAsDetail="no"
+                                                                                bpelx:inputHeaderVariable="Header"/-->
+                                    <assign name="TransOrcSFDCParms_Create">
+                                      <bpelx:annotation>
+                                        <bpelx:pattern>transformation</bpelx:pattern>
+                                      </bpelx:annotation>
+                                      <copy>
+                                        <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcSFDCCreate.xsl', $MergeOracleSFDC, 'Upsert_SDFC_OutputVariable.parameters', $Upsert_SDFC_OutputVariable.parameters, 'params', $params)"/>
+                                        <to variable="Create_SDFC_InputVariable" part="parameters"/>
+                                      </copy>
+                                    </assign>
+                                    <invoke name="Inv_SFDC_Create" partnerLink="SFDCService"
+                                            inputVariable="Create_SDFC_InputVariable"
+                                            outputVariable="Create_SDFC_OutputVariable" portType="ns3:Soap"
+                                            operation="create" bpelx:inputHeaderVariable="Header"/>
+                                  </sequence>
+                                </case>
+                                <otherwise>
+                                  <sequence name="Sequence14">
+                                    <assign name="TransOrcSFDCParms_Update">
+                                      <bpelx:annotation>
+                                        <bpelx:pattern>transformation</bpelx:pattern>
+                                      </bpelx:annotation>
+                                      <copy>
+                                        <from expression="ora:doXSLTransformForDoc('Transformations/TransOrcSFDCUpdate.xsl', $MergeOracleSFDC, 'Upsert_SDFC_OutputVariable.parameters', $Upsert_SDFC_OutputVariable.parameters, 'params', $params, 'InvSFDCQuery_OutputVariable.parameters', $InvSFDCQuery_OutputVariable.parameters)"/>
+                                        <to variable="Update_SDFC_InputVariable" part="parameters"/>
+                                      </copy>
+                                    </assign>
+                                    <invoke name="Inv_SFDC_Update" partnerLink="SFDCService"
+                                            inputVariable="Update_SDFC_InputVariable"
+                                            outputVariable="Update_SDFC_OutputVariable" portType="ns3:Soap"
+                                            operation="update" bpelx:inputHeaderVariable="Header"/>
+                                  </sequence>
+                                </otherwise>
+                              </switch>
+                              <!-- <assign name="TransUpsertTransSFDC">
+                                                        <bpelx:annotation>
+                                                            <bpelx:pattern>transformation</bpelx:pattern>
+                                                        </bpelx:annotation>
+                                                        <copy>
+                                                            <from expression="ora:doXSLTransformForDoc('xsl/TransUpsTransatSFDC.xsl', $MergeOracleSFDC)"/>
+                                                            <to variable="SOA2TransactionDetails__c_upsert_IV"
+                                                                part="parameters"/>
+                                                        </copy>
+                                                    </assign> -->
+                              <!--   <assign name="AssignUpsertAttID">
+                                                        <copy>
+                                                            <from variable="UpsertAttachID"/>
+                                                            <to variable="Upsert_SDFC_InputVariable"
+                                                                part="parameters"
+                                                                query="/ns3:upsert/ns3:sObjects/ns9:Attachment_Id__c"/>
+                                                        </copy>
+                                                    </assign> -->
+                            </sequence>
+                          </case>
+                          <otherwise>
+                            <sequence name="Sequence13">
+                              <assign name="AssignFileMove"
+                                      xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/">
+                                <copy>
+                                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                        variable="inputVariable" part="payload"
+                                        query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"
+                                        xmlns:bpelx="http://schemas.oracle.com/bpel/extension"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                      variable="FileUtility_Move_IV" part="payload"
+                                      query="/ns28:FileUtilityReq/ns28:SourcePhysicalDirectory"
+                                      xmlns:bpelx="http://schemas.oracle.com/bpel/extension"/>
+                                </copy>
+                                <copy>
+                                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                        variable="File_Name" xmlns:bpelx="http://schemas.oracle.com/bpel/extension"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                      variable="FileUtility_Move_IV" part="payload"
+                                      query="/ns28:FileUtilityReq/ns28:SourceFileName"
+                                      xmlns:bpelx="http://schemas.oracle.com/bpel/extension"/>
+                                </copy>
+                                <copy>
+                                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                        variable="File_Name" xmlns:bpelx="http://schemas.oracle.com/bpel/extension"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                      variable="FileUtility_Move_IV" part="payload"
+                                      query="/ns28:FileUtilityReq/ns28:TargetFileName"
+                                      xmlns:bpelx="http://schemas.oracle.com/bpel/extension"/>
+                                </copy>
+                                <copy>
+                                  <from expression='ora:getPreference("Fail2UpsertAttach")'/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"
+                                      variable="FileUtility_Move_IV" part="payload"
+                                      query="/ns28:FileUtilityReq/ns28:TargetPhysicalDirectory"
+                                      xmlns:bpelx="http://schemas.oracle.com/bpel/extension"/>
+                                </copy>
+                              </assign>
+                              <invoke name="Invoke_FileUtility" partnerLink="FileUtilityService"
+                                      inputVariable="FileUtility_Move_IV" outputVariable="FileUtility_Move_OV"
+                                      portType="ns27:FileUtilityService_BPEL" operation="Move"/>
+                              <assign name="AssignFailedUpsertDB">
+                                <copy>
+                                  <from expression="'ERROR'"/>
+                                  <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                      query="/ns12:UpdateFTPDetailsDBInput/ns12:RECORD_STATUS"/>
+                                </copy>
+                                <copy>
+                                  <from expression="'Failed to upsert attachment in SFDC'"/>
+                                  <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                      query="/ns12:UpdateFTPDetailsDBInput/ns12:ERROR_MESSAGE"/>
+                                </copy>
+                                <copy>
+                                  <from variable="File_Name"/>
+                                  <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                                      query="/ns12:UpdateFTPDetailsDBInput/ns12:PDF_FILE_NAME"/>
+                                </copy>
+                                <copy>
+                                  <from expression="'Y'"/>
+                                  <to variable="MovedFile"/>
+                                </copy>
+                              </assign>
+                              <invoke name="InvokeUpdDB" bpelx:invokeAsDetail="no" inputVariable="UpdateFTPDetailsDB_IV"
+                                      partnerLink="UpdateFTPDetailsDB" portType="ns11:UpdateFTPDetailsDB_ptt"
+                                      operation="UpdateFTPDetailsDB"/>
+                            </sequence>
+                          </otherwise>
+                        </switch>
+                      </sequence>
+                    </otherwise>
+                  </switch>
+                </otherwise>
+              </switch>
+              <assign name="incLoopCounter">
+                <copy>
+                  <from expression='bpws:getVariableData("loopCounter") + number(1)'/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="loopCounter"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="loopCounter"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="params"
+                      query="/ns29:params/ns29:loopCounter"/>
+                </copy>
+              </assign>
+            </sequence>
+          </while>
+          <switch name="FourthIFSwitchCond">
+            <case condition="bpws:getVariableData('MovedFile')= 'Y'">
+              <empty name="Continue"/>
+            </case>
+            <case condition="contains(bpws:getVariableData('Upsert_SDFC_OutputVariable','parameters','/ns3:upsertResponse/ns3:result/ns3:success'),'true')">
+              <sequence name="Sequence6">
+                <assign name="AssignSucFileMove">
+                  <copy>
+                    <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="inputVariable"
+                          part="payload"
+                          query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:SourcePhysicalDirectory"/>
+                  </copy>
+                  <copy>
+                    <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:SourceFileName"/>
+                  </copy>
+                  <copy>
+                    <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:TargetFileName"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("PostCastPath")'/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:TargetPhysicalDirectory"/>
+                  </copy>
+                </assign>
+                <invoke name="InvFileMoveService" partnerLink="FileUtilityService" inputVariable="FileUtility_Move_IV"
+                        outputVariable="FileUtility_Move_OV" portType="ns27:FileUtilityService_BPEL" operation="Move"/>
+                <assign name="AssignSucessUpdDB">
+                  <copy>
+                    <from expression="'COMPLETED'"/>
+                    <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                        query="/ns12:UpdateFTPDetailsDBInput/ns12:RECORD_STATUS"/>
+                  </copy>
+                  <copy>
+                    <from expression="'COMPLETED'"/>
+                    <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                        query="/ns12:UpdateFTPDetailsDBInput/ns12:ERROR_MESSAGE"/>
+                  </copy>
+                  <copy>
+                    <from variable="File_Name"/>
+                    <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                        query="/ns12:UpdateFTPDetailsDBInput/ns12:PDF_FILE_NAME"/>
+                  </copy>
+                </assign>
+                <invoke name="InvokeUpdDB" inputVariable="UpdateFTPDetailsDB_IV" partnerLink="UpdateFTPDetailsDB"
+                        portType="ns11:UpdateFTPDetailsDB_ptt" operation="UpdateFTPDetailsDB"
+                        bpelx:invokeAsDetail="no"/>
+              </sequence>
+            </case>
+            <otherwise>
+              <sequence name="Sequence7">
+                <assign name="AssignErrFileMove">
+                  <copy>
+                    <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="inputVariable"
+                          part="payload"
+                          query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:SourcePhysicalDirectory"/>
+                  </copy>
+                  <copy>
+                    <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:SourceFileName"/>
+                  </copy>
+                  <copy>
+                    <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:TargetFileName"/>
+                  </copy>
+                  <copy>
+                    <from expression='ora:getPreference("failedUpdatePath")'
+                          bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                    <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                        part="payload" query="/ns28:FileUtilityReq/ns28:TargetPhysicalDirectory"/>
+                  </copy>
+                </assign>
+                <invoke name="InvFileMoveService" partnerLink="FileUtilityService" inputVariable="FileUtility_Move_IV"
+                        outputVariable="FileUtility_Move_OV" portType="ns27:FileUtilityService_BPEL" operation="Move"/>
+                <assign name="AssignFailureUpdDB">
+                  <copy>
+                    <from variable="File_Name"/>
+                    <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                        query="/ns12:UpdateFTPDetailsDBInput/ns12:PDF_FILE_NAME"/>
+                  </copy>
+                  <copy>
+                    <from expression="'ERROR'"/>
+                    <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                        query="/ns12:UpdateFTPDetailsDBInput/ns12:RECORD_STATUS"/>
+                  </copy>
+                  <copy>
+                    <from expression="'Failed to update SOA in SFDC'"/>
+                    <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                        query="/ns12:UpdateFTPDetailsDBInput/ns12:ERROR_MESSAGE"/>
+                  </copy>
+                </assign>
+                <invoke name="InvokeUpdDB" bpelx:invokeAsDetail="no" inputVariable="UpdateFTPDetailsDB_IV"
+                        partnerLink="UpdateFTPDetailsDB" portType="ns11:UpdateFTPDetailsDB_ptt"
+                        operation="UpdateFTPDetailsDB"/>
+              </sequence>
+            </otherwise>
+          </switch>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence name="Sequence1">
+          <assign name="AssignFileMove">
+            <copy>
+              <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="inputVariable"
+                    part="payload"
+                    query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SourceDirectoryPath"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                  part="payload" query="/ns28:FileUtilityReq/ns28:SourcePhysicalDirectory"/>
+            </copy>
+            <copy>
+              <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                  part="payload" query="/ns28:FileUtilityReq/ns28:SourceFileName"/>
+            </copy>
+            <copy>
+              <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="File_Name"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                  part="payload" query="/ns28:FileUtilityReq/ns28:TargetFileName"/>
+            </copy>
+            <copy>
+              <from expression='ora:getPreference("FailMissSFDCPath")'/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileUtility_Move_IV"
+                  part="payload" query="/ns28:FileUtilityReq/ns28:TargetPhysicalDirectory"/>
+            </copy>
+          </assign>
+          <invoke name="Invoke_FileUtility" partnerLink="FileUtilityService" inputVariable="FileUtility_Move_IV"
+                  outputVariable="FileUtility_Move_OV" portType="ns27:FileUtilityService_BPEL" operation="Move"/>
+          <assign name="AssignUpdData">
+            <copy>
+              <from variable="File_Name"/>
+              <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                  query="/ns12:UpdateFTPDetailsDBInput/ns12:PDF_FILE_NAME"/>
+            </copy>
+            <copy>
+              <from expression="'ERROR'"/>
+              <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                  query="/ns12:UpdateFTPDetailsDBInput/ns12:RECORD_STATUS"/>
+            </copy>
+            <copy>
+              <from expression="'Cannot find SFDC account to match oracle account'"/>
+              <to variable="UpdateFTPDetailsDB_IV" part="UpdateFTPDetailsDBInput_msg"
+                  query="/ns12:UpdateFTPDetailsDBInput/ns12:ERROR_MESSAGE"/>
+            </copy>
+          </assign>
+          <invoke name="InvokeUpdDB" bpelx:invokeAsDetail="no" inputVariable="UpdateFTPDetailsDB_IV"
+                  partnerLink="UpdateFTPDetailsDB" portType="ns11:UpdateFTPDetailsDB_ptt"
+                  operation="UpdateFTPDetailsDB"/>
+        </sequence>
+      </otherwise>
+    </switch>
+    <!--     <switch name="Switch1">
+            <case condition="bpws:getVariableData('IntCountofSFDCAccount') = 1">
+                <sequence name="Sequence2">
+                 <assign name="Assign1">
+                        <copy>
+                            <from variable="inputVariable" part="payload"
+                                  query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SFDC_ACCOUNT_ID"/>
+                            <to variable="SFDC_ACCOUNT_ID"/>
+                        </copy>
+                        <copy>
+                            <from variable="inputVariable" part="payload"
+                                  query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:SFDC_USER_ID"/>
+                            <to variable="SFDC_User_ID"/>
+                        </copy>
+                        <copy>
+                            <from variable="inputVariable" part="payload"
+                                  query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:PDF_FILE_NAME"/>
+                            <to variable="File_Name"/>
+                        </copy>
+                       
+                    </assign> 
+                    <invoke name="Invoke" bpelx:invokeAsDetail="no"
+                            inputVariable="InvSFDCQuery_InputVariable"
+                            outputVariable="InvSFDCQuery_OutputVariable"
+                            partnerLink="SFDCService" portType="ns3:Soap"
+                            operation="query"
+                            bpelx:inputHeaderVariable="Header"/>
+                    <invoke name="InvokeGetFile"
+                            partnerLink="GetFileFTP" bpelx:invokeAsDetail="no">
+                        <bpelx:inputProperty name="jca.ftp.FileName"
+                                             variable="File_Name"/>
+                    </invoke>
+                </sequence>
+            </case>
+            <otherwise>
+                <sequence name="Sequence1">
+                    <invoke name="InvokeErrFTP"
+                            inputVariable="InvokeErrFTP_Put_InputVariable"
+                            partnerLink="PutErrorFileToFTP"
+                            portType="ns10:Put_ptt" operation="Put"
+                            bpelx:invokeAsDetail="no">
+                        <bpelx:inputProperty name="jca.ftp.FileName"
+                                             variable="inputVariable"
+                                             part="payload"
+                                             query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:PDF_FILE_NAME"/>
+                    </invoke>
+                    <assign name="AssignUpdData">
+                        <copy>
+                            <from variable="inputVariable" part="payload"
+                                  query="/ns2:ProcessPDFFTPSalesForce/ns2:DataArea/ns6:PDFSalesForce/ns6:PDFSalesForceDetails/ns7:PDF_FILE_NAME"/>
+                            <to variable="UpdateFTPDetailsDB_IV"
+                                part="UpdateFTPDetailsDBInput_msg"
+                                query="/ns12:UpdateFTPDetailsDBInput/ns12:PDF_FILE_NAME"/>
+                        </copy>
+                        <copy>
+                            <from expression="'ERROR'"/>
+                            <to variable="UpdateFTPDetailsDB_IV"
+                                part="UpdateFTPDetailsDBInput_msg"
+                                query="/ns12:UpdateFTPDetailsDBInput/ns12:RECORD_STATUS"/>
+                        </copy>
+                        <copy>
+                            <from expression="'Cannot find SFDC account to match oracle account'"/>
+                            <to variable="UpdateFTPDetailsDB_IV"
+                                part="UpdateFTPDetailsDBInput_msg"
+                                query="/ns12:UpdateFTPDetailsDBInput/ns12:ERROR_MESSAGE"/>
+                        </copy>
+                    </assign>
+                    <invoke name="InvokeUpdDB" bpelx:invokeAsDetail="no"
+                            inputVariable="UpdateFTPDetailsDB_IV"
+                            partnerLink="UpdateFTPDetailsDB"
+                            portType="ns11:UpdateFTPDetailsDB_ptt"
+                            operation="UpdateFTPDetailsDB"/>
+                </sequence>
+            </otherwise>
+        </switch> -->
+  </sequence>
+</process>

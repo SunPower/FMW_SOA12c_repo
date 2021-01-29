@@ -1,0 +1,26 @@
+<?binding.jca SelectOSGINVFeedFromOracle_db.jca?>
+<wsdl:definitions name="SelectOSGINVFeedFromOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOA_DEV/PublishARInvoiceOracleToOSG/SelectOSGINVFeedFromOracle" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGINVFeedFromOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOA_DEV/PublishARInvoiceOracleToOSG/SelectOSGINVFeedFromOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectOSGINVFeedFromOracle_plt">
+        <plt:role name="SelectOSGINVFeedFromOracle_role">
+            <plt:portType name="tns:SelectOSGINVFeedFromOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGINVFeedFromOracle"
+                    schemaLocation="../Schemas/SelectOSGINVFeedFromOracle.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectOSGINVFeedFromOracleInput_msg">
+        <wsdl:part name="SelectOSGINVFeedFromOracleInput_msg" element="db:SelectOSGINVFeedFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectOSGINVFeedFromOracleOutputCollection_msg">
+        <wsdl:part name="SelectOSGINVFeedFromOracleOutputCollection" element="db:SelectOSGINVFeedFromOracleOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectOSGINVFeedFromOracle_ptt">
+        <wsdl:operation name="SelectOSGINVFeedFromOracle">
+            <wsdl:input message="tns:SelectOSGINVFeedFromOracleInput_msg"/>
+            <wsdl:output message="tns:SelectOSGINVFeedFromOracleOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

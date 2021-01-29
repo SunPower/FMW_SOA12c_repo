@@ -1,0 +1,22 @@
+Feb 11, 2016 12:01:33 AM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Feb 11, 2016 12:01:46 AM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Feb 11, 2016 12:01:54 AM com.collaxa.cube.CubeLogger info
+INFO: validating "TrewIAG_Feeds_2SF_BPEL.bpel" ...
+Feb 11, 2016 12:01:54 AM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+Feb 11, 2016 12:01:54 AM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSequenceBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchAllBlock
+Feb 11, 2016 12:02:08 AM com.collaxa.cube.CubeLogger info
+INFO: Composed "TrewIAG_Feeds_2SF_BPEL" in 49.2 milliseconds [nodes 17=0+17, 345.5 nodes/sec]
+Feb 11, 2016 12:02:10 AM com.collaxa.cube.CubeLogger info
+INFO: Compiled "TrewIAG_Feeds_2SF_BPEL" in 1.823 seconds
+Feb 11, 2016 12:02:10 AM com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0.6 milliseconds
+
+Feb 11, 2016 12:02:10 AM com.collaxa.cube.CubeLogger info
+INFO: Packaged "TrewIAG_Feeds_2SF_BPEL" in 8.2 milliseconds
+

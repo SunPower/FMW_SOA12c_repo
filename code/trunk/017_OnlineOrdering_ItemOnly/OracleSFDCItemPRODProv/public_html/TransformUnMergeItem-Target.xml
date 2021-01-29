@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns5:MergedRows xmlns:ns5="http://www.sunpowercorp.com/MergedItems">
+   <ns5:Item__c>
+      <ns5:Id>Id46</ns5:Id>
+      <ns5:Name>Name47</ns5:Name>
+      <ns5:Active__c>true</ns5:Active__c>
+      <ns5:Description__c>Description__c48</ns5:Description__c>
+      <ns5:Item_ID__c>3</ns5:Item_ID__c>
+      <ns5:Long_Description__c>Long_Description__c50</ns5:Long_Description__c>
+      <ns5:Item_Category_3__c>Item_Category_3__c51</ns5:Item_Category_3__c>
+      <ns5:Item_Category_2__c>Item_Category_2__c52</ns5:Item_Category_2__c>
+      <ns5:Item_Category_1__c>Item_Category_1__c53</ns5:Item_Category_1__c>
+      <ns5:Product_Type__c>Product_Type__c54</ns5:Product_Type__c>
+   </ns5:Item__c>
+   <ns5:Item__c>
+      <ns5:Id>Id19</ns5:Id>
+      <ns5:Name>Name20</ns5:Name>
+      <ns5:Active__c>true</ns5:Active__c>
+      <ns5:Description__c>Description__c21</ns5:Description__c>
+      <ns5:Item_ID__c>7</ns5:Item_ID__c>
+      <ns5:Long_Description__c>Long_Description__c23</ns5:Long_Description__c>
+      <ns5:Item_Category_3__c>Item_Category_3__c24</ns5:Item_Category_3__c>
+      <ns5:Item_Category_2__c>Item_Category_2__c25</ns5:Item_Category_2__c>
+      <ns5:Item_Category_1__c>Item_Category_1__c26</ns5:Item_Category_1__c>
+      <ns5:Product_Type__c>Product_Type__c27</ns5:Product_Type__c>
+   </ns5:Item__c>
+</ns5:MergedRows>

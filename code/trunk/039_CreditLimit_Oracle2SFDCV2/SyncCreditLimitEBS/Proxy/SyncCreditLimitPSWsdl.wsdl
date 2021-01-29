@@ -1,0 +1,24 @@
+<wsdl:definitions name="SyncCreditLimitPSWsdl" targetNamespace="http://www.example.org/SyncCreditLimitPSWsdl" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://www.example.org/SyncCreditLimitPSWsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"> 
+  <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessDealer_PartnerCreditINFO/V1" schemaLocation="../xsd/CDM/BOD/Nouns/Dealer_PartnerCreditINFO/V1/ProcessDealer_PartnerCreditINFO.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SyncCreditLimitSFDCLimitRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessDealer_PartnerCreditINFO"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncCreditLimitSFDCLimit">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncCreditLimitSFDCLimitRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SyncCreditLimitSFDCLimitBinding" type="client:SyncCreditLimitSFDCLimit">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

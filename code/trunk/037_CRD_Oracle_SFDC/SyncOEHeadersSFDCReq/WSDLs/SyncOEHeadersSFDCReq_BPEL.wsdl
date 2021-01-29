@@ -1,0 +1,34 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions name="SyncOEHeadersSFDCReq_BPEL"
+                  targetNamespace="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersSFDCReq/SyncOEHeadersSFDCReq_BPEL"
+                  xmlns:ns2="urn:partner.soap.sforce.com"
+                  xmlns:ns1="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+                  xmlns:client="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersSFDCReq/SyncOEHeadersSFDCReq_BPEL"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <plnk:partnerLinkType name="SyncOEHeadersSFDCReq_BPEL">
+        <plnk:role name="SyncOEHeadersSFDCReq_BPELProvider">
+            <plnk:portType name="client:SyncOEHeadersSFDCReq_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com"
+                 location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersSFDCReq/SyncOEHeadersSFDCReq_BPEL"
+                    schemaLocation="../Schemas/SyncOEHeadersSFDCReq_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SyncOEHeadersSFDCReq_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncOEHeadersSFDCReq_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncOEHeadersSFDCReq_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

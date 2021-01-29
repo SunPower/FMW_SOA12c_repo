@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectCreditHoldInfo" adapter="db" wsdlLocation="WSDLs/SelectCreditHoldInfo.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="SelectCreditHoldInfo_ptt" operation="SelectCreditHoldInfo">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="SELECT ACCOUNT_NUMBER, LAST_UPDATE_DATE, ACCOUNT_NAME, CUST_ACCOUNT_ID, CREDIT_HOLD, CREDIT_CHECKING, NetTerm  FROM (         SELECT DISTINCT ROWNUM RN ,accts.ACCOUNT_NUMBER, accts.last_update_date, accts.ACCOUNT_NAME, a.Left_ID AS CUST_ACCOUNT_ID,        b.CREDIT_HOLD,  b.CREDIT_CHECKING, b.NetTerm FROM  (SELECT a.cust_account_id AS Left_ID,           MAX(a.last_update_date) AS Left_date   FROM apps.hz_customer_profiles a   GROUP BY a.cust_account_id   )        a LEFT JOIN   (SELECT b.cust_account_id AS Right_ID,     b.last_update_date      AS Right_date,     b.CREDIT_HOLD,        b.CREDIT_CHECKING,     (SELECT rt.name     FROM apps.RA_TERMS_TL rt     WHERE rt.TERM_ID = b.STANDARD_TERMS           AND rt.LANGUAGE  = userenv('LANG')     ) AS NetTerm   FROM apps.hz_customer_profiles b   ) b ON       A.LEFT_ID    = B.RIGHT_ID AND A.LEFT_DATE = B.RIGHT_DATE INNER JOIN APPS.HZ_CUST_ACCOUNTS ACCTS ON A.LEFT_ID = ACCTS.CUST_ACCOUNT_ID       WHERE  ( (sysdate - #NoDays ) &lt; accts.last_update_date ) ORDER BY accts.last_update_date ) where rn > #minrow and rn &lt;= #maxrow"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

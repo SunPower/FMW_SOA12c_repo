@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCreditHoldInfo" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCreditHoldInfo" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectCreditHoldInfoInput" type="SelectCreditHoldInfoInput"/>
+   <xs:complexType name="SelectCreditHoldInfoInput">
+      <xs:sequence>
+         <xs:element name="NoDays" type="xs:string" nillable="true"/>
+         <xs:element name="minrow" type="xs:string" nillable="true"/>
+         <xs:element name="maxrow" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectCreditHoldInfoOutputCollection" type="SelectCreditHoldInfoOutputCollection"/>
+   <xs:complexType name="SelectCreditHoldInfoOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectCreditHoldInfoOutput" type="SelectCreditHoldInfoOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectCreditHoldInfoOutput">
+      <xs:sequence>
+         <xs:element name="ACCOUNT_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="LAST_UPDATE_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="ACCOUNT_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="CUST_ACCOUNT_ID" type="xs:string" nillable="true"/>
+         <xs:element name="CREDIT_HOLD" type="xs:string" nillable="true"/>
+         <xs:element name="CREDIT_CHECKING" type="xs:string" nillable="true"/>
+         <xs:element name="NetTerm" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

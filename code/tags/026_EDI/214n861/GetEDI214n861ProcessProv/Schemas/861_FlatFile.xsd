@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://www.sunpowercorp.com/861_FlatFile"
+            targetNamespace="http://www.sunpowercorp.com/861_FlatFile"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="US-ASCII">
+  <xsd:element name="OrderDetails">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Order" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="TRANSACTION_SIGNAL" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="TRANSACTION_SET_CONTROL_NUMBER" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="EDISIGNAL_SENT_DATE" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="TRANSACTION_TRANSMIT_STATUS" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="TRANSACTION_DATE" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="TRANSACTION_TYPE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="RECEIPT_ROUTING" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="SOURCE_DOCUMENT_CODE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="RECEIPT_NUMBER" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="SHIPMENT_NUMBER" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="SHIPMENT_LINE_NUMBER" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="OPERATING_UNIT" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="PO_IR_NUMBER" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="PO_IR_LINE_NUMBER" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="PO_IR_UNIT_PRICE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="ISO_DELIVERY_NUMBER" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="QUANTITY" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="UNIT_OF_MEASURE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="ITEM_NUMBER" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="ITEM_DESCRIPTION" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="UOM_CODE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="CURRENCY_CODE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="INSPECTION_STATUS_CODE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="SHIP_TO_ORGANIZATION_CODE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="TO_SUBINVENTORY" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="FREIGHT_CARRIER_CODE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="BILL_OF_LADING" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="PACKING_SLIP" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="SHIPPED_DATE" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="RECEIPT_DATE" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="WAYBILL_AIRBILL_NUM" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="VENDOR_NAME" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="VENDOR_NUMBER" type="xsd:int" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="VENDOR_ITEM_NUM" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="COMMENTS" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>                          
+              <xsd:element name="REASON_CODE" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>  
+              <xsd:element name="REFERENCE_IDENTIFICATION" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="," nxsd:quotedBy='"'/>
+              <xsd:element name="REFERENCE_DESCRIPTION" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="${eol}" nxsd:quotedBy='"'/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+<!--NXSDWIZ:C:\Users\va35739\Downloads\861_EU_REQ_6269793_12121212.csv:-->
+<!--USE-HEADER:false:-->

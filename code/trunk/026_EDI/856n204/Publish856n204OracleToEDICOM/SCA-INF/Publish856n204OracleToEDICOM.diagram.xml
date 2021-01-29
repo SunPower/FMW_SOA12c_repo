@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="DequeEDISignal">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="454" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="447" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="DequeEDISignal" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal#wsdl.interface(Dequeue_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/aq_adapter_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Dequeue</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="selectDetailsFromOracle">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="selectDetailsFromOracle" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/selectDetailsFromOracle#wsdl.interface(selectDetailsFromOracle_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>selectDetailsFromOracle</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="WriteEDIFileToLocal">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="144" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="137" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="WriteEDIFileToLocal" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/EDI_204/WriteEDIFileToLocal#wsdl.interface(Write_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/file_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Write</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="WriteEDI_856FileToLocal">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="262" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="255" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="WriteEDI_856FileToLocal" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/WriteEDI_856FileToLocal#wsdl.interface(Write_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/file_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Write</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="updateStatusToOracle">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="380" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="373" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="updateStatusToOracle" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/updateStatusToOracle#wsdl.interface(updateStatusToOracle_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>update</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CommonSFDCErrorLogService">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="498" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="491" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonSFDCErrorLogService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="SyncReadEDIFiles">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="616" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="609" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SyncReadEDIFiles" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/SyncReadEDIFiles#wsdl.interface(SynchRead_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/file_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>SynchRead</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="EBIBrokerWebServiceV2ImplService">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="734" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="727" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="EBIBrokerWebServiceV2ImplService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://com.edicom.broker.adapter.services#wsdl.interface(EBIBrokerWebServiceV2)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>messageReference</dgm:item>
+            <dgm:item>updateTimeStamp</dgm:item>
+            <dgm:item>beginTrans</dgm:item>
+            <dgm:item>notifiedPublication</dgm:item>
+            <dgm:item>getMessage</dgm:item>
+            <dgm:item>remoteSQL</dgm:item>
+            <dgm:item>release</dgm:item>
+            <dgm:item>processExecuted</dgm:item>
+            <dgm:item>confirmSubscriptionWS</dgm:item>
+            <dgm:item>updateAcquireApplication</dgm:item>
+            <dgm:item>getRepositoryItem</dgm:item>
+            <dgm:item>executeTemplate</dgm:item>
+            <dgm:item>confirmSubscriptionEx</dgm:item>
+            <dgm:item>confirmedPublications</dgm:item>
+            <dgm:item>publish</dgm:item>
+            <dgm:item>subscription</dgm:item>
+            <dgm:item>fileFound</dgm:item>
+            <dgm:item>rejectedPublications</dgm:item>
+            <dgm:item>transformAndPublishWS</dgm:item>
+            <dgm:item>registerSession</dgm:item>
+            <dgm:item>releaseApplication</dgm:item>
+            <dgm:item>subscriptionsPending</dgm:item>
+            <dgm:item>isAlive</dgm:item>
+            <dgm:item>endSession</dgm:item>
+            <dgm:item>messageByReference</dgm:item>
+            <dgm:item>getScript</dgm:item>
+            <dgm:item>setDocumentProperty</dgm:item>
+            <dgm:item>notifiedRejectedPublication</dgm:item>
+            <dgm:item>executeScript</dgm:item>
+            <dgm:item>acquireApplication</dgm:item>
+            <dgm:item>subscriptionsList</dgm:item>
+            <dgm:item>schemaFiles</dgm:item>
+            <dgm:item>confirmSubscription</dgm:item>
+            <dgm:item>transformAndPublish</dgm:item>
+            <dgm:item>publishWS</dgm:item>
+            <dgm:item>transformation</dgm:item>
+            <dgm:item>rejectSubscription</dgm:item>
+            <dgm:item>subsAndTransform</dgm:item>
+            <dgm:item>getConfigApplication</dgm:item>
+            <dgm:item>commitTrans</dgm:item>
+            <dgm:item>getSchema</dgm:item>
+            <dgm:item>remoteAdpterSQLResult</dgm:item>
+            <dgm:item>applicationList</dgm:item>
+            <dgm:item>activeProcess</dgm:item>
+            <dgm:item>processShouldExecuted</dgm:item>
+            <dgm:item>getBrokerSources</dgm:item>
+            <dgm:item>documentList</dgm:item>
+            <dgm:item>documentDeleteOld</dgm:item>
+            <dgm:item>subscriptionWS</dgm:item>
+            <dgm:item>updateTimeStampTimeOut</dgm:item>
+            <dgm:item>rollbackTrans</dgm:item>
+            <dgm:item>acquire</dgm:item>
+            <dgm:item>setDocumentState</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="FileUtilityService">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="936" width="136" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="929" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="FileUtilityService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL#wsdl.interface(FileUtilityService_BPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Move</dgm:item>
+            <dgm:item>Delete</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="NotificationService1">
+        <dgm:body borderWidth="2" arcRad="20" X="718" Y="1066" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="708" Y="1059" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="NotificationService1" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>sendIMNotification</dgm:item>
+            <dgm:item>sendFaxNotification</dgm:item>
+            <dgm:item>sendVoiceNotification</dgm:item>
+            <dgm:item>sendSMSNotification</dgm:item>
+            <dgm:item>sendPagerNotification</dgm:item>
+            <dgm:item>sendURINotification</dgm:item>
+            <dgm:item>sendEmailNotification</dgm:item>
+            <dgm:item>sendNotificationToUser</dgm:item>
+            <dgm:item>sendNotificationToGroup</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="Publish856n204OracleToEDICOMBPEL">
+        <dgm:body borderWidth="2" arcRad="20" X="373" Y="439" width="130" height="261">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="363" Y="432" width="150" height="277">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="DequeEDISignal" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal#wsdl.interface(Dequeue_ptt)"/>
+        <dgm:outputPort name="selectDetailsFromOracle" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/selectDetailsFromOracle#wsdl.interface(selectDetailsFromOracle_ptt)"/>
+        <dgm:outputPort name="WriteEDIFileToLocal" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/EDI_204/WriteEDIFileToLocal#wsdl.interface(Write_ptt)"/>
+        <dgm:outputPort name="WriteEDI_856FileToLocal" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/WriteEDI_856FileToLocal#wsdl.interface(Write_ptt)"/>
+        <dgm:outputPort name="updateStatusToOracle" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/updateStatusToOracle#wsdl.interface(updateStatusToOracle_ptt)"/>
+        <dgm:outputPort name="CommonSFDCErrorLogService" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:outputPort name="SyncReadEDIFiles" X="120" Y="140" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/SyncReadEDIFiles#wsdl.interface(SynchRead_ptt)"/>
+        <dgm:outputPort name="EBIBrokerWebServiceV2ImplService" X="120" Y="165" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://com.edicom.broker.adapter.services#wsdl.interface(EBIBrokerWebServiceV2)"/>
+        <dgm:outputPort name="FileUtilityService" X="120" Y="190" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL#wsdl.interface(FileUtilityService_BPEL)"/>
+        <dgm:outputPort name="NotificationService1" X="120" Y="215" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="DequeEDISignal" target="Publish856n204OracleToEDICOMBPEL/DequeEDISignal" width="2">
+        <dgm:gSegment X1="168" Y1="464" X2="363" Y2="464"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/selectDetailsFromOracle" target="selectDetailsFromOracle" width="2">
+        <dgm:gSegment X1="513" Y1="464" X2="537" Y2="464"/>
+        <dgm:gSegment X1="537" Y1="464" X2="537" Y2="36"/>
+        <dgm:gSegment X1="537" Y1="36" X2="708" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/WriteEDIFileToLocal" target="WriteEDIFileToLocal" width="2">
+        <dgm:gSegment X1="513" Y1="489" X2="552" Y2="489"/>
+        <dgm:gSegment X1="552" Y1="489" X2="552" Y2="154"/>
+        <dgm:gSegment X1="552" Y1="154" X2="708" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/WriteEDI_856FileToLocal" target="WriteEDI_856FileToLocal" width="2">
+        <dgm:gSegment X1="513" Y1="514" X2="567" Y2="514"/>
+        <dgm:gSegment X1="567" Y1="514" X2="567" Y2="272"/>
+        <dgm:gSegment X1="567" Y1="272" X2="708" Y2="272"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/updateStatusToOracle" target="updateStatusToOracle" width="2">
+        <dgm:gSegment X1="513" Y1="539" X2="582" Y2="539"/>
+        <dgm:gSegment X1="582" Y1="539" X2="582" Y2="390"/>
+        <dgm:gSegment X1="582" Y1="390" X2="708" Y2="390"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/CommonSFDCErrorLogService" target="CommonSFDCErrorLogService" width="2">
+        <dgm:gSegment X1="513" Y1="564" X2="597" Y2="564"/>
+        <dgm:gSegment X1="597" Y1="564" X2="597" Y2="508"/>
+        <dgm:gSegment X1="597" Y1="508" X2="708" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/SyncReadEDIFiles" target="SyncReadEDIFiles" width="2">
+        <dgm:gSegment X1="513" Y1="589" X2="582" Y2="589"/>
+        <dgm:gSegment X1="582" Y1="589" X2="582" Y2="626"/>
+        <dgm:gSegment X1="582" Y1="626" X2="708" Y2="626"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/EBIBrokerWebServiceV2ImplService" target="EBIBrokerWebServiceV2ImplService" width="2">
+        <dgm:gSegment X1="513" Y1="614" X2="567" Y2="614"/>
+        <dgm:gSegment X1="567" Y1="614" X2="567" Y2="744"/>
+        <dgm:gSegment X1="567" Y1="744" X2="708" Y2="744"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/FileUtilityService" target="FileUtilityService" width="2">
+        <dgm:gSegment X1="513" Y1="639" X2="552" Y2="639"/>
+        <dgm:gSegment X1="552" Y1="639" X2="552" Y2="946"/>
+        <dgm:gSegment X1="552" Y1="946" X2="708" Y2="946"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Publish856n204OracleToEDICOMBPEL/NotificationService1" target="NotificationService1" width="2">
+        <dgm:gSegment X1="513" Y1="664" X2="537" Y2="664"/>
+        <dgm:gSegment X1="537" Y1="664" X2="537" Y2="1076"/>
+        <dgm:gSegment X1="537" Y1="1076" X2="708" Y2="1076"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

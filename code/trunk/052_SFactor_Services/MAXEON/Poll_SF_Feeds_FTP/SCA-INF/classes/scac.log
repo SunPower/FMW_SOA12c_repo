@@ -1,0 +1,25 @@
+Feb 10, 2016 7:48:49 PM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Feb 10, 2016 7:49:04 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Feb 10, 2016 7:49:06 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Poll_SF_Feeds_FTP_BPEL.bpel" ...
+Feb 10, 2016 7:49:06 PM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+Feb 10, 2016 7:49:06 PM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSequenceBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELPickBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELPickDecisionBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELOnMessageBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchAllBlock
+Feb 10, 2016 7:49:11 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Poll_SF_Feeds_FTP_BPEL" in 45.8 milliseconds [nodes 24=0+24, 524.2 nodes/sec]
+Feb 10, 2016 7:49:13 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Poll_SF_Feeds_FTP_BPEL" in 1.872 seconds
+Feb 10, 2016 7:49:13 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0.6 milliseconds
+
+Feb 10, 2016 7:49:13 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Poll_SF_Feeds_FTP_BPEL" in 7.7 milliseconds
+

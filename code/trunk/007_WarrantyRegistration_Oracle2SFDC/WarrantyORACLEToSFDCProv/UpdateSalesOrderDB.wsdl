@@ -1,0 +1,22 @@
+<?binding.jca UpdateSalesOrderDB_db.jca?>
+<wsdl:definitions name="UpdateSalesOrderDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/UpdateSalesOrderDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/UpdateSalesOrderDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateSalesOrderDB">
+    <plt:partnerLinkType name="UpdateSalesOrderDB_plt">
+        <plt:role name="UpdateSalesOrderDB_role">
+            <plt:portType name="tns:UpdateSalesOrderDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateSalesOrderDB"
+                    schemaLocation="Schemas/UpdateSalesOrderDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SalesOrdDetCollection_msg">
+        <wsdl:part name="SalesOrdDetCollection" element="top:SalesOrdDetCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateSalesOrderDB_ptt">
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:SalesOrdDetCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

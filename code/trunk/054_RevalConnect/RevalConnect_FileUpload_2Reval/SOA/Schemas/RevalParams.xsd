@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://com.reval.webservices/params"
+            xmlns:tns="http://com.reval.webservices/params" targetNamespace="http://com.reval.webservices/params" elementFormDefault="qualified">
+  <xsd:element name="RevalParams">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="LoginResult" type="xsd:string"/>
+        <xsd:element name="Data"> 
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="tns:datatype">
+                <xsd:attribute name="AsyncId" type="xsd:string"/>
+                <xsd:attribute name="DataNodeName" type="xsd:string"/>
+                <xsd:attribute name="DataType" type="xsd:string"/>
+              </xsd:extension>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Param">
+          <xsd:complexType>
+            <xsd:complexContent>
+              <xsd:extension base="tns:paramtype">
+                <xsd:attribute name="ProcessName" type="xsd:string"/>
+              </xsd:extension>
+            </xsd:complexContent>
+          </xsd:complexType>
+        </xsd:element> 
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="datatype">
+    <xsd:sequence>
+      <xsd:element name="Descr" type="xsd:string"/>
+      <xsd:element name="SessionId" type="xsd:string"/>
+      <xsd:element name="QJobSysId" type="xsd:string"/>      
+      <xsd:element name="QJobStatus" type="tns:qjobstatustype"/>      
+      <xsd:element name="CData" type="xsd:string"/>      
+      <xsd:element name="Error" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="paramtype">
+    <xsd:sequence>
+      <xsd:element name="FileName" type="xsd:string"/>
+      <xsd:element name="CSVData" type="tns:csvdatatype"/>
+      <xsd:element name="uiData" type="tns:uidatatype"/>
+      <xsd:element name="QJobSysId" type="xsd:string"/>      
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="qjobstatustype">
+    <xsd:sequence>
+      <xsd:element name="QJobSysId" type="xsd:string"/>
+      <xsd:element name="QJobStatusCode" type="xsd:string"/>
+      <xsd:element name="QJobStatusText" type="xsd:string"/>      
+      <xsd:element name="QJobErrDescr" type="xsd:string"/>      
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="csvdatatype">
+    <xsd:sequence>
+      <xsd:element name="line" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>        
+    </xsd:sequence>
+  </xsd:complexType>
+  
+   <xsd:complexType name="uidatatype">
+    <xsd:sequence>
+      <xsd:element name="ProcessSubType" type="xsd:string"/>        
+      <xsd:element name="ITSServiceFunction" type="xsd:string"/>        
+      <xsd:element name="ITSServiceID" type="xsd:string"/>        
+    </xsd:sequence>
+  </xsd:complexType>
+  
+</xsd:schema>
+

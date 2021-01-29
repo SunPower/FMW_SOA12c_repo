@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="EmployeeContractorFeedSF2Oracle_BPEL" targetNamespace="http://xmlns.oracle.com/SFEC/EmployeeContractorFeedSF2Oracle/EmployeeContractorFeedSF2Oracle_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB" xmlns:client="http://xmlns.oracle.com/SFEC/EmployeeContractorFeedSF2Oracle/EmployeeContractorFeedSF2Oracle_BPEL" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB" schemaLocation="../Schemas/XXSPWR_SF_EMP_FEED_DB_table.xsd"/>
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1" schemaLocation="../Schemas/Params.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="EmployeeContractorFeedSF2Oracle_BPELRequestMessage">
+      <wsdl:part name="payload" element="ns1:XxspwrSfEmpFeedCollection"/>
+   </wsdl:message>
+   <wsdl:portType name="EmployeeContractorFeedSF2Oracle_BPEL">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:EmployeeContractorFeedSF2Oracle_BPELRequestMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <plnk:partnerLinkType name="EmployeeContractorFeedSF2Oracle_BPEL">
+      <plnk:role name="EmployeeContractorFeedSF2Oracle_BPELProvider">
+         <plnk:portType name="client:EmployeeContractorFeedSF2Oracle_BPEL"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</wsdl:definitions>

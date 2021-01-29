@@ -1,0 +1,37 @@
+<wsdl:definitions name="ArenaOracleItemsBOMSubstituesProv_BPEL" targetNamespace="http://www.sunpowercorp.com/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesProv/ArenaOracleItemsBOMSubstituesProv_BPEL" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://www.sunpowercorp.com/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesProv/ArenaOracleItemsBOMSubstituesProv_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:documentation>
+        <abstractWSDL>http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/ArenaOracleItemsBOMSubstituesProv!1.0/ArenaOracleItemsBOMSubstituesProv_BPEL.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="ArenaOracleItemsBOMSubstituesProv_BPEL">
+        <plnk:role name="ArenaOracleItemsBOMSubstituesProv_BPELProvider">
+            <plnk:portType name="client:ArenaOracleItemsBOMSubstituesProv_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1" schemaLocation="../xsd/CDM/BOD/Nouns/ArenaOracleDataFeed/V1/ProcessArenaOracleDataFeed.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="ArenaOracleItemsBOMSubstituesProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessArenaOracleDataFeed"/>
+    </wsdl:message>
+    <wsdl:portType name="ArenaOracleItemsBOMSubstituesProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ArenaOracleItemsBOMSubstituesProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ArenaOracleItemsBOMSubstituesProv_BPELBinding" type="client:ArenaOracleItemsBOMSubstituesProv_BPEL">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ArenaOracleItemsBOMSubstituesProv_bpel_client_ep">
+        <wsdl:port name="ArenaOracleItemsBOMSubstituesProv_BPEL_pt" binding="client:ArenaOracleItemsBOMSubstituesProv_BPELBinding">
+            <soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/ebiz/ArenaOracleItemsBOMSubstituesProv/ArenaOracleItemsBOMSubstituesProv_bpel_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

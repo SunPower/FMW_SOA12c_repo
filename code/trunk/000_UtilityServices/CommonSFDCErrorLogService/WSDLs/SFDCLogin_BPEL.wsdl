@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+     name="SFDCLogin_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="urn:partner.soap.sforce.com"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <plnk:partnerLinkType name="SFDCLogin_BPEL">
+        <plnk:role name="SFDCLogin_BPELProvider">
+            <plnk:portType name="client:SFDCLogin_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+                 schemaLocation="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/SFDCLogin/sfdclogin_bpel_client_ep?XSD=../Schemas/SFDCLogin_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SFDCLogin_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:SFDCLoginReq"/>
+    </wsdl:message>
+    <wsdl:message name="SFDCLogin_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:SFDCLoginResp"/>
+    </wsdl:message>
+    <wsdl:portType name="SFDCLogin_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SFDCLogin_BPELRequestMessage"/>
+            <wsdl:output message="client:SFDCLogin_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SFDCLogin_BPELBinding" type="client:SFDCLogin_BPEL">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="sfdclogin_bpel_client_ep">
+        <wsdl:port name="SFDCLogin_BPEL_pt" binding="client:SFDCLogin_BPELBinding">
+            <soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/SFDCLogin/sfdclogin_bpel_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

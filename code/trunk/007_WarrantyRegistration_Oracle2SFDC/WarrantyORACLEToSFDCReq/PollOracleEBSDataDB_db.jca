@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="PollOracleEBSDataDB" adapter="db" wsdlLocation="PollOracleEBSDataDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="CastIronDevConn" adapterRef=""/>
+  <endpoint-activation portType="PollOracleEBSDataDB_ptt" operation="receive">
+    <activation-spec className="oracle.tip.adapter.db.DBActivationSpec">
+      <property name="DescriptorName" value="PollOracleEBSDataDB.SalesOrdDet"/>
+      <property name="QueryName" value="PollOracleEBSDataDBSelect"/>
+      <property name="MappingsMetaDataURL" value="PollOracleEBSDataDB-or-mappings.xml"/>
+      <property name="PollingStrategy" value="LogicalDeletePollingStrategy"/>
+      <property name="MarkReadColumn" value="SFDC_STATUS"/>
+      <property name="MarkReadValue" value="Processed"/>
+      <property name="PollingInterval" value="5"/>
+      <property name="MaxRaiseSize" value="1"/>
+      <property name="MaxTransactionSize" value="1"/>
+      <property name="NumberOfThreads" value="1"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

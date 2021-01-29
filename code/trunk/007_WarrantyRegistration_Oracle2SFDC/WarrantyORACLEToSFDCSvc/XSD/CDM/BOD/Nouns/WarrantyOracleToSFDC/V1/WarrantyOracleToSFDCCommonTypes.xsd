@@ -1,0 +1,18 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/WarrantyOracleToSFDCCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/WarrantyOracleToSFDCCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+
+
+
+            <xsd:element name="occurrence" type="cdt:String50" nillable="true"/>
+            <xsd:element name="No" type="cdt:Decimal11_6" nillable="true"/>
+            <xsd:element name="Quantity_Ordered" type="cdt:Decimal11_6" nillable="true"/>
+            <xsd:element name="Delivery_No" type="cdt:Decimal11_6" nillable="true"/>
+            <xsd:element name="Customer_Number" type="cdt:String50" nillable="true"/>
+            <xsd:element name="ORDER_CREATION_DATE" type="xsd:dateTime" nillable="true"/>
+            <xsd:element name="CUSTOMER_NAME" type="cdt:String200" nillable="true"/>
+            <xsd:element name="PURCHASE_ORDER" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SALES_ORDER" type="cdt:Decimal11_6" nillable="true"/>
+            <xsd:element name="Theater" type="cdt:String200" nillable="true"/>
+            <xsd:element name="Packing_SLIP" type="cdt:String200" nillable="true"/>
+          
+</xsd:schema>

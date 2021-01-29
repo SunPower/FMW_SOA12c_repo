@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns5:MergedRows xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODReq/FetchOrcEbizDataDB" xmlns:ns5="http://www.sunpowercorp.com/MergedItems">
+   <ns5:Item__c>
+      <ns5:Id>Id46</ns5:Id>
+      <ns5:Name>Name2</ns5:Name>
+      <ns5:Active__c>true</ns5:Active__c>
+      <ns5:Description__c>Description__c3</ns5:Description__c>
+      <ns5:Item_ID__c>1</ns5:Item_ID__c>
+      <ns5:Long_Description__c>Long_Description__c5</ns5:Long_Description__c>
+      <ns5:Item_Category_3__c>Item_Category_3__c6</ns5:Item_Category_3__c>
+      <ns5:Item_Category_2__c>Item_Category_2__c7</ns5:Item_Category_2__c>
+      <ns5:Item_Category_1__c>Item_Category_1__c8</ns5:Item_Category_1__c>
+      <ns5:Product_Type__c>Product_Type__c9</ns5:Product_Type__c>
+   </ns5:Item__c>
+</ns5:MergedRows>

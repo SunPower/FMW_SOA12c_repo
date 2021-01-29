@@ -1,0 +1,45 @@
+2018-10-15 23:17:00.456/16.794 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/D:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2018-10-15 23:17:00.594/16.931 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/D:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2018-10-15 23:17:00.601/16.939 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2018-10-15 23:17:00.607/16.945 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2018-10-15 23:17:00.620/16.958 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2018-10-15 23:17:00.624/16.962 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2018-10-15 23:17:02.359/18.697 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2018-10-15 23:17:02.364/18.702 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2018-10-15 23:17:05.648/21.986 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "RR46183's cluster" has been automatically generated
+Oct 15, 2018 11:17:20 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Oct 15, 2018 11:17:25 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Oct 15, 2018 11:17:27 PM com.collaxa.cube.CubeLogger info
+INFO: validating "OracleSFDCItemPRODReq_BPEL.bpel" ...
+Oct 15, 2018 11:17:27 PM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+Oct 15, 2018 11:17:35 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "OracleSFDCItemPRODReq_BPEL" in 318.6 milliseconds [nodes 18=0+18, 56.5 nodes/sec]
+Oct 15, 2018 11:17:44 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "OracleSFDCItemPRODReq_BPEL" in 9.111 seconds
+Oct 15, 2018 11:17:44 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 5.0 milliseconds
+Oct 15, 2018 11:17:44 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "OracleSFDCItemPRODReq_BPEL" in 45.6 milliseconds
+Schema validation failed with exception "null"
+oracle.xml.parser.schema.XSDException
+	at oracle.xml.parser.schema.XSDBuilder.buildSchema(XSDBuilder.java:1124)
+	at oracle.xml.parser.schema.XSDBuilder.build(XSDBuilder.java:630)
+	at oracle.soa.scac.ValidationFaultUtil.validateSourceWithSchema(ValidationFaultUtil.java:182)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:241)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:225)
+	at oracle.soa.scac.ValidateComposite.validateFaultPolicy(ValidateComposite.java:1399)
+	at oracle.soa.scac.ValidateComposite.doValidation0(ValidateComposite.java:604)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:577)
+	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:228)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:209)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:201)
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

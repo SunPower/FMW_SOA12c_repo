@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrOmLineSyncCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateOrderLineStatusToOracle">
+   <top:XxspwrOmLineSync>
+      <top:lineId>395</top:lineId>
+      <top:soaFlag>E</top:soaFlag>
+      <top:soaErrormsg>process3</top:soaErrormsg>
+   </top:XxspwrOmLineSync>
+   <top:XxspwrOmLineSync>
+      <top:lineId>504</top:lineId>
+      <top:soaFlag>E</top:soaFlag>
+      <top:soaErrormsg>process3</top:soaErrormsg>
+   </top:XxspwrOmLineSync>
+   <top:XxspwrOmLineSync>
+      <top:lineId>613</top:lineId>
+      <top:soaFlag>E</top:soaFlag>
+      <top:soaErrormsg>process3</top:soaErrormsg>
+   </top:XxspwrOmLineSync>
+</top:XxspwrOmLineSyncCollection>

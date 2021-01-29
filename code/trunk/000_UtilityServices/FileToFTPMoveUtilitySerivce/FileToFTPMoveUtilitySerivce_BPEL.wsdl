@@ -1,0 +1,35 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="FileToFTPMoveUtilitySerivce_BPEL"
+     targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL"
+     xmlns:ns2="http://schemas.oracle.com/bpel/extension"
+     xmlns:ns1="http://www.sunpowercorp.com/SOAUtilityServices/FileToFTPMoveUtilityService/xsd/v1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="FileToFTPMoveUtilitySerivce_BPEL">
+        <plnk:role name="FileToFTPMoveUtilitySerivce_BPELProvider">
+            <plnk:portType name="client:FileToFTPMoveUtilitySerivce_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="WSDLs/RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/SOAUtilityServices/FileToFTPMoveUtilityService/xsd/v1"
+                 schemaLocation="Schemas/FileToFTPMoveUtilityService.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="FileToFTPMoveUtilitySerivce_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:input"/>
+    </wsdl:message>
+    <wsdl:message name="FileToFTPMoveUtilitySerivce_BPELResponseMessage">
+        <wsdl:part name="payload" element="ns1:output"/>
+    </wsdl:message>
+    <wsdl:portType name="FileToFTPMoveUtilitySerivce_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:FileToFTPMoveUtilitySerivce_BPELRequestMessage"/>
+            <wsdl:output message="client:FileToFTPMoveUtilitySerivce_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

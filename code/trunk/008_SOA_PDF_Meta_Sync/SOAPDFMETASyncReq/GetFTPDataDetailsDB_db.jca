@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="GetFTPDataDetailsDB" adapter="db" wsdlLocation="GetFTPDataDetailsDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="GetFTPDataDetailsDB_ptt" operation="GetFTPDataDetailsDB">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="SELECT distinct   TRX_NUMBER,     BILL_TO_CUSTOMER_ID,   CUSTOMER_NUMBER,   TRX_STATUS,   TRX_DATE,   TRX_CREATION_DATE,   TRX_TYPE,   TRX_TYPE_NAME,   TRX_TYPE_DESC,   OPERATING_UNIT_NAME,   CURRENCY_CODE,   TRANSACTION_CURRENCY_CODE,   LAST_UPDATE_DATE,   CREATED_BY,   LAST_UPDATED_BY,   LAST_UPDATED_LOGIN,   RECORD_STATUS,   RECORD_ID,   ERROR_MESSAGE,   PDF_FILE_NAME,   TRX_LAST_UPDATED_DATE,   T_CREATION_DATE,   TRX_TYPE_MEANING,   ORG_ID FROM    XXSPWR.XXSPWR_SOA_INV_HIST_TBL WHERE   PDF_FILE_NAME = ?"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config name="SelectEmployeeCentralFromOracle" adapter="db" wsdlLocation="WSDLs/SelectEmployeeCentralFromOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory location="eis/DB/EBS_HRREADONLY" UIConnectionName="hreadonly_DEV" adapterRef=""/>
+   <endpoint-interaction portType="SelectEmployeeCentralFromOracle_ptt" operation="SelectEmployeeCentralFromOracle">
+      <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+         <property name="SqlString" value="select TEXT from (select rownum rn, a.* from apps.XXSPWR_ORACLE_EC_EMP_ID_V a) where rn >= #minrow and rn &lt;= #maxrow"/>
+         <property name="GetActiveUnitOfWork" value="false"/>
+      </interaction-spec>
+      <input/>
+      <output/>
+   </endpoint-interaction>
+</adapter-config>

@@ -1,0 +1,1788 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<!--
+    Name: ProcessOnlineCustomerOrders.xsd
+    Change history
+
+    Author      date        purpose
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/O2C/ProcessCustomerOrders/V1"
+            xmlns:ns="http://www.sunpowercorp.com/O2C/ProcessCustomerOrders/V1"
+            targetNamespace="http://www.sunpowercorp.com/O2C/ProcessCustomerOrders/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">    
+     
+                
+                
+                
+   <xsd:element name="ProcessCustomersOrdersReq" type="ProcessCustomersOrdersReqType"/>
+   <xsd:complexType name="ProcessCustomersOrdersReqType">
+      <xsd:sequence>
+         <xsd:element name="BusinessObjectDocument"
+                      type="ns:BusinessObjectDocumentType" minOccurs="0"
+                      nillable="true"/>
+         <xsd:element name="CUSTOMER_DETAILS" type="CUSTOMER_DETAILS_TYPE"
+                      minOccurs="0" nillable="true"/>
+         <xsd:element name="CUSTOMER_SITES_LIST"
+                      type="CUSTOMER_SITES_LIST_TYPE" minOccurs="0"
+                      nillable="true"/>
+                      <xsd:element name="ORDER_HEADER" type="ns:ORDER_HEADER_TYPE" minOccurs="0" nillable="true"/>
+              <xsd:element name="ORDER_LINE_LIST" type="ns:ORDER_LINES_TYPE" minOccurs="0" nillable="true"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="ProcessCustomersOrdersResp" type="ProcessCustomersOrdersRespType"/>
+   <xsd:complexType name="ProcessCustomersOrdersRespType">
+      <xsd:sequence>
+         <xsd:element name="BusinessObjectDocument"
+                      type="ns:BusinessObjectDocumentType" minOccurs="0"
+                      nillable="true"/>         
+         <xsd:element name="CUSTOMER_DETAILS" type="CUSTOMER_DETAILS_TYPE"
+                      minOccurs="0" nillable="true"/>
+         <xsd:element name="CUSTOMER_SITES_LIST"
+                      type="CUSTOMER_SITES_LIST_TYPE" minOccurs="0"
+                      nillable="true"/>
+        <xsd:element name="ORDER_HEADER" type="ns:ORDER_HEADER_TYPE" minOccurs="0" nillable="true"/>
+            <xsd:element name="ORDER_LINE_LIST" type="ns:ORDER_LINES_TYPE" minOccurs="0" nillable="true"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="BusinessObjectDocumentType">
+      <xsd:sequence>
+         <xsd:element name="CreationDateTime" minOccurs="0"
+                      type="xsd:dateTime"/>
+         <xsd:element name="Action" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="Response_Status" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="Error_Code" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="Response_Message" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="Cust_Account_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="Account_Number" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="Order_Number" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="Header_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="Source" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="Operation" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="CorrelationID" minOccurs="0" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CUSTOMER_SITE_TYPE">
+      <xsd:sequence>
+         <xsd:element name="CRM_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CRM_LINE_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PARTY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SITE_STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ACCOUNT_SITE_STATUS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRIMARY_BILL_TO" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SITE_USE_STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SALESREP_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PRICELIST_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SITEUSE_VER_NO" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="BILL_TO_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SHIP_TO_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="BILL_TO_PRIMARY_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PRIMARY_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LOCATION_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="COUNTRY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESS1" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESS2" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESS3" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESS4" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CITY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="POSTAL_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STATE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PROVINCE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="COUNTY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESS_KEY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESS_STYLE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="VALIDATED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESS_LINES_PHONETIC" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PO_BOX_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="HOUSE_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STREET_SUFFIX" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STREET" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STREET_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FLOOR" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SUITE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="POSTAL_PLUS4_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="POSITION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LOCATION_DIRECTIONS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ADDRESS_EFFECTIVE_DATE" type="xsd:dateTime"
+                      minOccurs="0" />
+         <xsd:element name="ADDRESS_EXPIRATION_DATE" type="xsd:dateTime"
+                      minOccurs="0" />
+         <xsd:element name="CLLI_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SHORT_DESCRIPTION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DESCRIPTION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LOC_HIERARCHY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SALES_TAX_GEOCODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SALES_TAX_INSIDE_CITY_LIMITS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FA_LOCATION_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TIMEZONE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ACTUAL_CONTENT_SOURCE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVERY_POINT_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PARTY_SITE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PARTY_SITE_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="MAILSTOP" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="IDENTIFYING_ADDRESS_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PARTY_SITE_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADDRESSEE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="GLOBAL_LOCATION_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DUNS_NUMBER_C" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUST_ACCT_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_ACCOUNT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_CATEGORY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LANGUAGE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="KEY_ACCOUNT_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_HEADER_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ECE_TP_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRIMARY_SPECIALIST_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SECONDARY_SPECIALIST_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="TERRITORY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TRANSLATED_CUSTOMER_NAME" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SITE_USE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SITE_USE_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PRIMARY_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LOCATION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CONTACT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="BILL_TO_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ORIG_SYSTEM_REFERENCE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORIG_SYSTEM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SIC_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PAYMENT_TERM_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GSA_INDICATOR" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SHIP_PARTIAL" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SHIP_VIA" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FOB_POINT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORDER_TYPE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PRICE_LIST_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="FREIGHT_TERM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="WAREHOUSE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TERRITORY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TAX_REFERENCE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SORT_PRIORITY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TAX_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DEMAND_CLASS_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TAX_HEADER_LEVEL_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_ROUNDING_RULE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PRIMARY_SALESREP_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="FINCHRG_RECEIVABLES_TRX_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DATES_NEGATIVE_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DATES_POSITIVE_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DATE_TYPE_PREFERENCE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="OVER_SHIPMENT_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNDER_SHIPMENT_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ITEM_CROSS_REF_PREF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="OVER_RETURN_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNDER_RETURN_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_SETS_INCLUDE_LINES_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ARRIVALSETS_INCLUDE_LINES_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SCHED_DATE_PUSH_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_QUANTITY_RULE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_EVENT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="GL_ID_REC" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_REV" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_TAX" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_FREIGHT" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_CLEARING" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_UNBILLED" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_UNEARNED" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_UNPAID_REC" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_REMITTANCE" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="GL_ID_FACTOR" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TAX_CLASSIFICATION" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREATED_BY_MODULE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="APPLICATION_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ADDRESS_VALIDATION_STATUS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ADDRESS_VALIDATION_MESSAGE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LOCATION_RETURN_STATUS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LOCATION_ERROR_MESSAGE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PARTY_SITE_RETURN_STATUS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PARTY_SITE_ERROR_MESSAGE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_ACCT_SITE_RETURN_STATUS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_ACCT_SITE_ERROR_MESSAGE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_SITE_USE_RETURN_STATUS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_SITE_USE_ERROR_MESSAGE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LOCATION_VERSION" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SITE_VER_NO" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ACCTSITE_VER_NO" type="xsd:decimal" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CUSTOMER_DETAILS_TYPE">
+      <xsd:sequence>
+         <xsd:element name="CRM_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORDER_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PRICE_LIST_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PAYMENT_TERMS" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SALES_CHANNEL" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ACCOUNT_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_CLASSIFICATION" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_HOLD" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PARTY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PARTY_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PROFILE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SALES_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORGANIZATION_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DUNS_NUMBER_C" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ENQUIRY_DUNS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CEO_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CEO_TITLE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PRINCIPAL_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PRINCIPAL_TITLE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LEGAL_STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CONTROL_YR" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="EMPLOYEES_TOTAL" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="HQ_BRANCH_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="BRANCH_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="OOB_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LINE_OF_BUSINESS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CONG_DIST_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SIC_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="IMPORT_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="EXPORT_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LABOR_SURPLUS_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DEBARMENT_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="MINORITY_OWNED_IND" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="MINORITY_OWNED_TYPE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="WOMAN_OWNED_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DISADV_8A_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SMALL_BUS_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="RENT_OWN_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DEBARMENTS_COUNT" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="DEBARMENTS_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_NATNL_PERCENTILE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_OVERRIDE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_FAILURE_SCORE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DB_RATING" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PAYDEX_SCORE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PAYDEX_THREE_MONTHS_AGO" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PAYDEX_NORM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="BEST_TIME_CONTACT_BEGIN" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="BEST_TIME_CONTACT_END" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="ORGANIZATION_NAME_PHONETIC" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_REFERENCE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="GSA_INDICATOR_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="JGZZ_FISCAL_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ANALYSIS_FY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FISCAL_YEAREND_MONTH" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CURR_FY_POTENTIAL_REVENUE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="NEXT_FY_POTENTIAL_REVENUE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="YEAR_ESTABLISHED" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="MISSION_STATEMENT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORGANIZATION_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="BUSINESS_SCOPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CORPORATION_CLASS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="KNOWN_AS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="KNOWN_AS2" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="KNOWN_AS3" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="KNOWN_AS4" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="KNOWN_AS5" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LOCAL_BUS_IDEN_TYPE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LOCAL_BUS_IDENTIFIER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PREF_FUNCTIONAL_CURRENCY" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="REGISTRATION_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TOTAL_EMPLOYEES_TEXT" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TOTAL_EMPLOYEES_IND" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TOTAL_EMP_EST_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TOTAL_EMP_MIN_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PARENT_SUB_IND" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="INCORP_YEAR" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SIC_CODE_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PUBLIC_PRIVATE_OWNERSHIP_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INTERNAL_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LOCAL_ACTIVITY_CODE_TYPE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LOCAL_ACTIVITY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="EMP_AT_PRIMARY_ADR" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="EMP_AT_PRIMARY_ADR_TEXT" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="EMP_AT_PRIMARY_ADR_EST_IND" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="EMP_AT_PRIMARY_ADR_MIN_IND" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="HIGH_CREDIT" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="AVG_HIGH_CREDIT" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TOTAL_PAYMENTS" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_CLASS" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_NATL_PERCENTILE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_INCD_DEFAULT" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_AGE" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY3" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY4" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY5" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY6" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY7" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY8" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY9" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_SCORE_COMMENTARY10" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_CLASS" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_INCD_DEFAULT" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_AGE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY3" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY4" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY5" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY6" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY7" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY8" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY9" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FAILURE_SCORE_COMMENTARY10" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="MAXIMUM_CREDIT_RECOMMENDATION" type="xsd:decimal"
+                      minOccurs="0" nillable="true"/>
+         <xsd:element name="MAXIMUM_CREDIT_CURRENCY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DISPLAYED_DUNS_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CONTENT_SOURCE_TYPE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CONTENT_SOURCE_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DO_NOT_CONFUSE_WITH" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ACTUAL_CONTENT_SOURCE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="HOME_COUNTRY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PARTY_REC" type="ns:PARTY_REC_TYPE" minOccurs="0"/>
+         <xsd:element name="CUST_ACCOUNT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ACCOUNT_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORIG_SYSTEM_REFERENCE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORIG_SYSTEM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_CLASS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRIMARY_SALESREP_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SALES_CHANNEL_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORDER_TYPE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PRICE_LIST_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TAX_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FOB_POINT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FREIGHT_TERM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SHIP_PARTIAL" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SHIP_VIA" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="WAREHOUSE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TAX_HEADER_LEVEL_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_ROUNDING_RULE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="COTERMINATE_DAY_MONTH" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRIMARY_SPECIALIST_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SECONDARY_SPECIALIST_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ACCOUNT_LIABLE_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CURRENT_BALANCE" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ACCOUNT_ESTABLISHED_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="ACCOUNT_TERMINATION_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="ACCOUNT_ACTIVATION_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="DEPARTMENT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="HELD_BILL_EXPIRATION_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="HOLD_BILL_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="REALTIME_RATE_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ACCT_LIFE_CYCLE_STATUS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ACCOUNT_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DEPOSIT_REFUND_METHOD" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DORMANT_ACCOUNT_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="NPA_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SUSPENSION_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="SOURCE_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="COMMENTS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DATES_NEGATIVE_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DATES_POSITIVE_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DATE_TYPE_PREFERENCE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="OVER_SHIPMENT_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNDER_SHIPMENT_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="OVER_RETURN_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNDER_RETURN_TOLERANCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ITEM_CROSS_REF_PREF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_SETS_INCLUDE_LINES_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ARRIVALSETS_INCLUDE_LINES_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SCHED_DATE_PUSH_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_QUANTITY_RULE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_EVENT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STATUS_UPDATE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="AUTOPAY_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="NOTIFY_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LAST_BATCH_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SELLING_PARTY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CREATED_BY_MODULE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="APPLICATION_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CUST_OBJECT_VERSION_NO" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_ACCT_OBJECT_VERSION_NO" type="xsd:decimal"
+                      minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CUSTOMER_SITES_LIST_TYPE">
+      <xsd:sequence>
+         <xsd:element name="CUSTOMER_SITE"
+                      type="CUSTOMER_SITE_TYPE" minOccurs="0"
+                      maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="PARTY_REC_TYPE">
+      <xsd:sequence>
+         <xsd:element name="PARTY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PARTY_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="VALIDATED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORIG_SYSTEM_REFERENCE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORIG_SYSTEM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CATEGORY_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SALUTATION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE_CATEGORY" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE1" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE2" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE3" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE4" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE5" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE6" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE7" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE8" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE9" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE10" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE11" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE12" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE13" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE14" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE15" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE16" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE17" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE18" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE19" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE20" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE21" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE22" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE23" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE24" type="xsd:string" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ORDER_LINE_TYPE">
+      <xsd:sequence>
+         <xsd:element name="CRM_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORDER_LINE_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PRODUCT_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="WATTAGE_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ITEM_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CRM_ORDER_LINE_ID" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="VENDOR_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="VENDOR_SITE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ACCOUNTING_RULE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="PARTY_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="BILL_TO_SITE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_TO_SITE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIPPING_METHOD" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="RETURN_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ACTUAL_ARRIVAL_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="ACTUAL_SHIPMENT_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="AGREEMENT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ARRIVAL_SET_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ATO_LINE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE1" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE10" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE11" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE12" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE13" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE14" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE15" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE16" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE17" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE18" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE19" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE2" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE20" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE3" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE4" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE5" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE6" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE7" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE8" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE9" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="AUTHORIZED_TO_SHIP_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="AUTO_SELECTED_QUANTITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="BOOKED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CANCELLED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CANCELLED_QUANTITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CANCELLED_QUANTITY2" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="COMMITMENT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="COMPONENT_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="COMPONENT_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="COMPONENT_SEQUENCE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CONFIG_HEADER_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CONFIG_REV_NBR" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CONFIG_DISPLAY_SEQUENCE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CONFIGURATION_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CONTEXT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CREATED_BY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CREATION_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="CREDIT_INVOICE_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_DOCK_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_JOB" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_PRODUCTION_LINE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_TRX_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_MODEL_SERIAL_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUST_PO_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUST_PRODUCTION_SEQ_NUM" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVERY_LEAD_TIME" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_ORG_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DEMAND_BUCKET_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DEMAND_CLASS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DEP_PLAN_REQUIRED_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="EARLIEST_ACCEPTABLE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="END_ITEM_UNIT_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="EXPLOSION_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="FOB_POINT_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FREIGHT_CARRIER_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FREIGHT_TERMS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FULFILLED_QUANTITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="FULFILLED_QUANTITY2" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE1" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE10" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE11" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE12" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE13" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE14" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE15" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE16" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE17" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE18" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE19" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE20" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE3" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE4" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE5" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE6" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE7" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE8" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE9" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE_CATEGORY" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="HEADER_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE1" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE10" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE11" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE12" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE13" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE14" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE15" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE16" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE17" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE18" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE19" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE20" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE21" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE22" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE23" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE24" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE25" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE26" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE27" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE28" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE29" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE30" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE3" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE4" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE5" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE6" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE7" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE8" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_ATTRIBUTE9" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INDUSTRY_CONTEXT" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TP_CONTEXT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE1" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE2" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE3" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE4" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE5" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE6" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE7" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE8" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE9" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE10" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE11" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE12" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE13" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE14" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE15" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="INTERMED_SHIP_TO_ORG_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INTERMED_SHIP_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVENTORY_ITEM_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_INTERFACE_STATUS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_ORG_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICING_RULE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ORDERED_ITEM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ITEM_REVISION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ITEM_TYPE_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LAST_UPDATED_BY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="LAST_UPDATE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="LAST_UPDATE_LOGIN" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="LATEST_ACCEPTABLE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="LINE_CATEGORY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LINE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="LINE_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="LINE_TYPE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="LINK_TO_LINE_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LINK_TO_LINE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="LINK_TO_LINE_INDEX" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="MODEL_GROUP_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="MFG_COMPONENT_SEQUENCE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="MFG_LEAD_TIME" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="OPEN_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="OPTION_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="OPTION_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORDERED_QUANTITY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORDERED_QUANTITY2" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ORDER_QUANTITY_UOM" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORDERED_QUANTITY_UOM2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORIG_SYS_DOCUMENT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORIG_SYS_LINE_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="OVER_SHIP_REASON_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="OVER_SHIP_RESOLVED_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PAYMENT_TERM_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PLANNING_PRIORITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="PREFERRED_GRADE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICE_LIST_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PRICE_REQUEST_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE1" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE10" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE3" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE4" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE5" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE6" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE7" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE8" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_ATTRIBUTE9" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_CONTEXT" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="PRICING_QUANTITY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PRICING_QUANTITY_UOM" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PROGRAM_APPLICATION_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="PROGRAM_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PROGRAM_UPDATE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="PROJECT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PROMISE_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="RE_SOURCE_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="REFERENCE_CUSTOMER_TRX_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="REFERENCE_HEADER_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="REFERENCE_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="REFERENCE_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="REQUEST_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="REQUEST_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="RESERVED_QUANTITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE1" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE10" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE11" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE12" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE13" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE14" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE15" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE3" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE4" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE5" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE6" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE7" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE8" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_ATTRIBUTE9" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_CONTEXT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="RETURN_REASON_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RLA_SCHEDULE_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SALESREP_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SCHEDULE_ARRIVAL_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SCHEDULE_SHIP_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SCHEDULE_ACTION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SCHEDULE_STATUS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPMENT_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIPMENT_PRIORITY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPED_QUANTITY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIPPED_QUANTITY2" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_INTERFACED_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_METHOD_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_QUANTITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_QUANTITY2" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_QUANTITY_UOM" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_QUANTITY_UOM2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_FROM_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_MODEL_COMPLETE_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_SET_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="FULFILLMENT_SET_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TOLERANCE_ABOVE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TOLERANCE_BELOW" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOLD_TO_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOLD_FROM_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SORT_ORDER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SOURCE_DOCUMENT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOURCE_DOCUMENT_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOURCE_DOCUMENT_TYPE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOURCE_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SPLIT_FROM_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="TASK_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TAX_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TAX_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="TAX_EXEMPT_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TAX_EXEMPT_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_EXEMPT_REASON_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_POINT_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TAX_RATE" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TAX_VALUE" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="TOP_MODEL_LINE_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TOP_MODEL_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="TOP_MODEL_LINE_INDEX" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNIT_LIST_PRICE" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="UNIT_LIST_PRICE_PER_PQTY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNIT_SELLING_PRICE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNIT_SELLING_PRICE_PER_PQTY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="VEH_CUS_ITEM_CUM_KEY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="VISIBLE_DEMAND_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RETURN_STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DB_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="OPERATION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FIRST_ACK_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FIRST_ACK_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="LAST_ACK_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LAST_ACK_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="CHANGE_REASON" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CHANGE_COMMENTS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ARRIVAL_SET" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SHIP_SET" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FULFILLMENT_SET" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORDER_SOURCE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORIG_SYS_SHIPMENT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CHANGE_SEQUENCE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CHANGE_REQUEST_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="STATUS_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DROP_SHIP_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_LINE_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_SHIPMENT_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_ITEM_NET_PRICE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_PAYMENT_TERM_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ORDERED_ITEM_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ITEM_IDENTIFIER_TYPE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_INSTRUCTIONS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PACKING_INSTRUCTIONS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CALCULATE_PRICE_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICED_QUANTITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_TXN_REASON_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_TXN_COMMENTS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_DURATION" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SERVICE_PERIOD" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SERVICE_START_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_END_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_COTERMINATE_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="UNIT_LIST_PERCENT" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNIT_SELLING_PERCENT" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNIT_PERCENT_BASE_PRICE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SERVICE_REFERENCE_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REFERENCE_LINE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REFERENCE_SYSTEM_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REF_ORDER_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REF_LINE_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REFERENCE_ORDER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REFERENCE_LINE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REFERENCE_SYSTEM" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REF_SHIPMENT_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_REF_OPTION_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SERVICE_LINE_INDEX" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="LINE_SET_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SPLIT_BY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SPLIT_ACTION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPABLE_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="MODEL_REMNANT_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FLOW_STATUS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FULFILLED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FULFILLMENT_METHOD_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="REVENUE_AMOUNT" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="MARKETING_SOURCE_CODE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="FULFILLMENT_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SEMI_PROCESSED_FLAG" type="xsd:int" minOccurs="0"/>
+         <xsd:element name="UPGRADED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LOCK_CONTROL" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SUBINVENTORY" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SPLIT_FROM_LINE_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SPLIT_FROM_SHIPMENT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_EDI_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="BILL_TO_EDI_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_FROM_EDI_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_FROM_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ADDRESS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORIGINAL_INVENTORY_ITEM_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ORIGINAL_ITEM_IDENTIFIER_TYPE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORIGINAL_ORDERED_ITEM_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ORIGINAL_ORDERED_ITEM" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ITEM_SUBSTITUTION_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="LATE_DEMAND_PENALTY_FACTOR" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="OVERRIDE_ATP_DATE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CUSTOMER_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CUSTOMER_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CUSTOMER_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ACCOUNTING_RULE_DURATION" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UNIT_COST" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="USER_ITEM_DESCRIPTION" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="XML_TRANSACTION_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ITEM_RELATIONSHIP_TYPE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="BLANKET_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="BLANKET_LINE_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="BLANKET_VERSION_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CSO_RESPONSE_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FIRM_DEMAND_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="EARLIEST_SHIP_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="TRANSACTION_PHASE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SOURCE_DOCUMENT_VERSION_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="MINISITE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="IB_OWNER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="IB_INSTALLED_AT_LOCATION" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="IB_CURRENT_LOCATION" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SUPPLIER_SIGNATURE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SUPPLIER_SIGNATURE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_SIGNATURE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_SIGNATURE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="RETROBILL_REQUEST_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ORIGINAL_LIST_PRICE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="COMMITMENT_APPLIED_AMOUNT" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORDER_FIRMED_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="ACTUAL_FULFILLMENT_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="CHANGED_LINES_POCAO" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CHARGE_PERIODICITY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="RESERVED_QUANTITY2" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CONTINGENCY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="REVREC_EVENT_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="REVREC_EXPIRATION_DAYS" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ACCEPTED_QUANTITY" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ACCEPTED_BY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="REVREC_COMMENTS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="REVREC_REFERENCE_DOCUMENT" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="REVREC_SIGNATURE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="REVREC_SIGNATURE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="REVREC_IMPLICIT_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ADDRESS_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_ADDRESS_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_ADDRESS_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CONTACT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CONTACT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CONTACT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SPLIT_REQUEST_DATE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SPLIT_SHIP_FROM" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SPLIT_SHIP_TO" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="BYPASS_SCH_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PRE_EXPLODED_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ORDER_HEADER_TYPE">
+      <xsd:sequence>
+         <xsd:element name="CRM_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="PSR_EMAIL_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORACLE_USER_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CUST_ACCT_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="BILL_TO_SITE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_TO_SITE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIPPING_METHOD" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SPECIAL_INSTRUCTIONS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ADJUSTED_AMOUNT" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SMARTPACK_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="INTERFACE_MESSAGE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="NEW_ORDER_CLASS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVERTER_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="VENDOR_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="VENDOR_SITE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PARTNER_ACC_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_IDENTIFIER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SALES_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_SYNC" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_ORDER_LINK_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <!--xsd:element name="CRM_SHIP_TO_SITE_ID" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CRM_BILL_TO_SITE_ID" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CRM_BILL_TO_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CRM_SHIP_TO_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CRM_BILL_TO_CONTACT_ID" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CRM_SHIP_TO_CONTACT_ID" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CRM_PARTNER_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CRM_HOMEOWNER_ID" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CRM_TPO_ID" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="MODE_TYPE" type="xsd:string" minOccurs="0"/-->
+         <xsd:element name="CHANNEL_TYPE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="SOA_INSTANCE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOA_ERROR_MESSAGE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="BILL_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DATA_SOURCE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="RETURN_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ACCOUNTING_RULE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="PARTY_TYPE" type="xsd:string" minOccurs="0"/>         
+         <xsd:element name="ORDER_TYPE_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="WAREHOUSE_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="FINANCIER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="AGREEMENT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE1" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE10" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE11" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE12" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE13" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE14" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE15" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE16" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE17" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE18" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE19" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE2" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE20" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE3" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE4" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE5" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE6" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE7" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE8" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ATTRIBUTE9" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="BOOKED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CANCELLED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CONTEXT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CONVERSION_RATE" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CONVERSION_RATE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="CONVERSION_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_PREFERENCE_SET_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREATED_BY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CREATION_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="CUST_PO_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_ORG_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DEMAND_CLASS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="EARLIEST_SCHEDULE_LIMIT" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="EXPIRATION_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="FOB_POINT_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FREIGHT_CARRIER_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FREIGHT_TERMS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE1" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE10" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE11" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE12" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE13" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE14" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE15" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE16" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE17" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE18" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE19" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE2" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE20" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE3" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE4" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE5" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE6" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE7" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE8" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE9" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="GLOBAL_ATTRIBUTE_CATEGORY" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TP_CONTEXT" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE1" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE2" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE3" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE4" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE5" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE6" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE7" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE8" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE9" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE10" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE11" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE12" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE13" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE14" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TP_ATTRIBUTE15" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="HEADER_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_ORG_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICING_RULE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="LAST_UPDATED_BY" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="LAST_UPDATE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="LAST_UPDATE_LOGIN" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="LATEST_SCHEDULE_LIMIT" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="OPEN_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ORDER_CATEGORY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORDERED_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="ORDER_DATE_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORDER_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORDER_SOURCE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORDER_TYPE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="ORIG_SYS_DOCUMENT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PARTIAL_SHIPMENTS_ALLOWED" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PAYMENT_TERM_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PRICE_LIST_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PRICE_REQUEST_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PRICING_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="PROGRAM_APPLICATION_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="PROGRAM_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="PROGRAM_UPDATE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="REQUEST_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="REQUEST_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="RETURN_REASON_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SALESREP_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SALES_CHANNEL_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPMENT_PRIORITY_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_METHOD_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_FROM_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_TOLERANCE_ABOVE" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TOLERANCE_BELOW" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOLD_FROM_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOLD_TO_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_ORG_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOLD_TO_PHONE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOURCE_DOCUMENT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOURCE_DOCUMENT_TYPE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_EXEMPT_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TAX_EXEMPT_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_EXEMPT_REASON_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TAX_POINT_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="TRANSACTIONAL_CURR_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="VERSION_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="RETURN_STATUS" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DB_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="OPERATION" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FIRST_ACK_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FIRST_ACK_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="LAST_ACK_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LAST_ACK_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="CHANGE_REASON" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CHANGE_COMMENTS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CHANGE_SEQUENCE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CHANGE_REQUEST_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="READY_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="STATUS_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FORCE_APPLY_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="DROP_SHIP_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CUSTOMER_PAYMENT_TERM_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="PAYMENT_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PAYMENT_AMOUNT" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CHECK_NUMBER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CREDIT_CARD_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_CARD_HOLDER_NAME" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_CARD_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_CARD_EXPIRATION_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_CARD_APPROVAL_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CREDIT_CARD_APPROVAL_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SHIPPING_INSTRUCTIONS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="PACKING_INSTRUCTIONS" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="FLOW_STATUS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="BOOKED_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="MARKETING_SOURCE_CODE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="UPGRADED_FLAG" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="LOCK_CONTROL" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_TO_EDI_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_EDI_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="BILL_TO_EDI_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_FROM_EDI_LOCATION_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_FROM_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_ADDRESS_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ADDRESS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="XML_MESSAGE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CUSTOMER_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CUSTOMER_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CUSTOMER_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="ACCOUNTING_RULE_DURATION" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="XML_TRANSACTION_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="BLANKET_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="LINE_SET_NAME" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="FULFILLMENT_SET_NAME" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DEFAULT_FULFILLMENT_SET" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="QUOTE_DATE" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="QUOTE_NUMBER" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SALES_DOCUMENT_NAME" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="TRANSACTION_PHASE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="USER_STATUS_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DRAFT_SUBMITTED_FLAG" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SOURCE_DOCUMENT_VERSION_NUMBER" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="MINISITE_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="IB_OWNER" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="IB_INSTALLED_AT_LOCATION" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="IB_CURRENT_LOCATION" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SUPPLIER_SIGNATURE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SUPPLIER_SIGNATURE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_SIGNATURE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CUSTOMER_SIGNATURE_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_PARTY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SOLD_TO_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_SITE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_SITE_USE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="END_CUSTOMER_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CUSTOMER_PARTY_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_ORG_CONTACT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CONTRACT_TEMPLATE_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="CONTRACT_SOURCE_DOC_TYPE_CODE" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="CONTRACT_SOURCE_DOCUMENT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_PARTY_NUMBER" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="ORDER_FIRMED_DATE" type="xsd:dateTime"
+                      minOccurs="0"/>
+         <xsd:element name="INSTRUMENT_SECURITY_CODE" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="CC_INSTRUMENT_ID" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="CC_INSTRUMENT_ASSIGNMENT_ID" type="xsd:decimal"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CUSTOMER_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_ADDRESS_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_ADDRESS_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_ADDRESS_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_ADDRESS_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SOLD_TO_CONTACT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="SHIP_TO_CONTACT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="INVOICE_TO_CONTACT_REF" type="xsd:string"
+                      minOccurs="0"/>
+         <xsd:element name="DELIVER_TO_CONTACT_REF" type="xsd:string"
+                      minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ORDER_LINES_TYPE">
+      <xsd:sequence>
+         <xsd:element name="ORDER_LINE" type="ns:ORDER_LINE_TYPE"
+                      minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   </xsd:schema>
+

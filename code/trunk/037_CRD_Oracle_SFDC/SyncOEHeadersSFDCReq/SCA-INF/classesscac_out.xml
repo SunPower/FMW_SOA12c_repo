@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/assign[3]/copy[2]</loc>
+      <line>256</line>
+      <col/>
+      <file>SyncOEHeadersSFDCReq_BPEL.bpel</file>
+      <name>SyncOEHeadersSFDCReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://schemas.xmlsoap.org/ws/2003/03/addressing}AttributedURI"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/assign/copy</loc>
+      <line>309</line>
+      <col/>
+      <file>SyncOEHeadersSFDCReq_BPEL.bpel</file>
+      <name>SyncOEHeadersSFDCReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}dateTime" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}string"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch[2]/case/sequence/assign[3]/copy</loc>
+      <line>371</line>
+      <col/>
+      <file>SyncOEHeadersSFDCReq_BPEL.bpel</file>
+      <name>SyncOEHeadersSFDCReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}dateTime" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}string"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch[2]/case/sequence/switch/case/sequence/while/sequence/switch/case/assign/copy</loc>
+      <line>401</line>
+      <col/>
+      <file>SyncOEHeadersSFDCReq_BPEL.bpel</file>
+      <name>SyncOEHeadersSFDCReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{urn:partner.soap.sforce.com}QueryLocator"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='SyncOEHeadersOracleProv']</loc>
+      <line>144</line>
+      <col>17</col>
+      <file>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\SyncOEHeadersSFDCReq\composite.xml</file>
+      <name>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\SyncOEHeadersSFDCReq\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

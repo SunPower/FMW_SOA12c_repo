@@ -1,0 +1,29 @@
+<wsdl:definitions name="OracleSFDCVertexDataLoadCanonical" targetNamespace="http://www.sunpowercorp.com/OracleSFDCVertexDataLoadCanonical/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1" xmlns:tns="http://www.sunpowercorp.com/OracleSFDCVertexDataLoadCanonical/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <xsd:schema>
+   <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1" schemaLocation="../xsd/CDM/BOD/Nouns/VertexDataFeed/V1/ProcessVertexDataFeedDetails.xsd"/>
+  </xsd:schema>
+ </wsdl:types>
+ <wsdl:message name="VertexDataLoadRequest">
+  <wsdl:part element="ns1:ProcessVertexDataFeedDetails" name="parameters"/>
+ </wsdl:message>
+ <wsdl:portType name="OracleSFDCVertexDataLoadCanonical">
+  <wsdl:operation name="OracleSFDCVertexDataLoadSvc">
+   <wsdl:input message="tns:VertexDataLoadRequest"/>
+  </wsdl:operation>
+ </wsdl:portType>
+ <wsdl:binding name="OracleSFDCVertexDataLoadCanonicalSOAP" type="tns:OracleSFDCVertexDataLoadCanonical">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <wsdl:operation name="OracleSFDCVertexDataLoadSvc">
+   <soap:operation soapAction="http://www.sunpowercorp.com/OracleSFDCVertexDataLoadCanonical/OracleSFDCVertexDataLoadSvc"/>
+   <wsdl:input>
+    <soap:body use="literal"/>
+   </wsdl:input>
+  </wsdl:operation>
+ </wsdl:binding>
+ <wsdl:service name="OracleSFDCVertexDataLoadCanonical">
+  <wsdl:port binding="tns:OracleSFDCVertexDataLoadCanonicalSOAP" name="OracleSFDCVertexDataLoadCanonicalSOAP">
+   <soap:address location="http://www.example.org/"/>
+  </wsdl:port>
+ </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,51 @@
+2019-05-06 22:59:35.166/4.616 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2019-05-06 22:59:35.227/4.676 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2019-05-06 22:59:35.229/4.678 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2019-05-06 22:59:35.233/4.682 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2019-05-06 22:59:35.235/4.684 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2019-05-06 22:59:35.237/4.686 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2019-05-06 22:59:35.613/5.063 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2019-05-06 22:59:35.616/5.066 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2019-05-06 22:59:37.048/6.497 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "sn38854's cluster" has been automatically generated
+May 06, 2019 10:59:39 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+May 06, 2019 10:59:41 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+May 06, 2019 10:59:44 PM com.collaxa.cube.CubeLogger info
+INFO: validating "ArenaOracleItemsBOMSubstituesProv_BPEL.bpel" ...
+May 06, 2019 10:59:44 PM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+May 06, 2019 10:59:50 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+May 06, 2019 10:59:50 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+May 06, 2019 10:59:50 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+May 06, 2019 10:59:50 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "ArenaOracleItemsBOMSubstituesProv_BPEL" in 228.5 milliseconds [nodes 97=1+96, 424.6 nodes/sec]
+May 06, 2019 10:59:54 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "ArenaOracleItemsBOMSubstituesProv_BPEL" in 4.299 seconds
+May 06, 2019 10:59:54 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 9 files in 1.5 milliseconds
+May 06, 2019 10:59:54 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "ArenaOracleItemsBOMSubstituesProv_BPEL" in 55.7 milliseconds
+Schema validation failed with exception "null"
+oracle.xml.parser.schema.XSDException
+	at oracle.xml.parser.schema.XSDBuilder.buildSchema(XSDBuilder.java:1124)
+	at oracle.xml.parser.schema.XSDBuilder.build(XSDBuilder.java:630)
+	at oracle.soa.scac.ValidationFaultUtil.validateSourceWithSchema(ValidationFaultUtil.java:182)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:241)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:225)
+	at oracle.soa.scac.ValidateComposite.validateFaultPolicy(ValidateComposite.java:1399)
+	at oracle.soa.scac.ValidateComposite.doValidation0(ValidateComposite.java:604)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:577)
+	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:228)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:209)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:201)
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

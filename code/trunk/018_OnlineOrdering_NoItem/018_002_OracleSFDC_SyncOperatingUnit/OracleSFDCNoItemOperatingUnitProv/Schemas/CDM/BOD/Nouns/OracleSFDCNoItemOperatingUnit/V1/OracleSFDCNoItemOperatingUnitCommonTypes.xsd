@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns="http://www.sunpowercorp.com/Common/OnlineOrderingNoItemOracleToSFDCCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sunpowercorp.com/Common/OracleSFDCNoItemOperatingUnitCommonTypes/V1" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified">
+   <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+               schemaLocation="../../../../../../Schemas/CDM/Common/V1/CommonDataTypes.xsd"/>
+   <xsd:element name="ID" type="cdt:String1000"/>
+   <xsd:element name="NAME" type="cdt:String1000"/>
+   <xsd:element name="ORALCE_ACCOUNT_NUMBER" type="cdt:String1000"/>
+   <xsd:element name="ORALCE_OPERATING_UNIT" type="cdt:String1000"/>
+    <xsd:element name="REVIEW_PROPOSAL_DESIGN__C" type="cdt:String1000"/>
+    <xsd:element name="LOYALTY_PARTNER" type="cdt:String1000"/>
+    <xsd:element name="MW_COMMITTED" type="cdt:String1000"/>
+   <xsd:element name="STATUS" type="cdt:String1000"/>
+    <xsd:element name="CUSTOMER_GROUP" type="cdt:String1000"/>
+</xsd:schema>

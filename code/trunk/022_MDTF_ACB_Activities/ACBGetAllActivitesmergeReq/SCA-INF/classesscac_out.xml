@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='CommonSFDCErrorLogService']</loc>
+      <line>114</line>
+      <col>17</col>
+      <file>E:\JDeveloper1221\mywork\MDTF_ACB_Activities\022_MDTF_ACB_Activities\ACBGetAllActivitesmergeReq\composite.xml</file>
+      <name>E:\JDeveloper1221\mywork\MDTF_ACB_Activities\022_MDTF_ACB_Activities\ACBGetAllActivitesmergeReq\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

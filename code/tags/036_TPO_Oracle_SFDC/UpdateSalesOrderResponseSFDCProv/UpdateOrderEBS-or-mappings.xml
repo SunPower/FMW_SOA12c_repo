@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" version="Eclipse Persistence Services - 2.6.1.v20150916-55dc7c3">
+   <name>UpdateOrderEBS-OR</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>UpdateOrderEBS.XxspwrDsrSoHeader</class>
+         <alias>XXSPWR.XXSPWR_DSR_SO_HEADER</alias>
+         <primary-key>
+            <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_ID" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="UpdateOrderEBSSelect" xsi:type="read-all-query">
+                  <reference-class>UpdateOrderEBS.XxspwrDsrSoHeader</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dsrEmailId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="DSR_EMAIL_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dsrOracleUserId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="DSR_ORACLE_USER_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custAcctNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUST_ACCT_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orgId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custPoNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUST_PO_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipFromOrgId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_FROM_ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="BILL_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine1</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine2</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine3</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>city</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>state</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="STATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>country</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="COUNTRY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>postalCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="POSTAL_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>status</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone1</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PHONE1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone2</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PHONE2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPersonName</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PERSON_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactEmail</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_EMAIL" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactFax</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_FAX" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingMethod</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIPPING_METHOD" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>specialInstructions</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SPECIAL_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>taxFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="TAX_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderCurrencyCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_CURRENCY_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestedDeliveryDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="REQUESTED_DELIVERY_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>adjustedAmount</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADJUSTED_AMOUNT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>smartpackFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SMARTPACK_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderStatus</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>interfaceStatus</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INTERFACE_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>interfaceMessage</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INTERFACE_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>newOrderClass</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="NEW_ORDER_CLASS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>inverterType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INVERTER_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseValue</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_VALUE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>operatingUnit</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="OPERATING_UNIT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="VENDOR_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorSiteCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="VENDOR_SITE_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>effectiveGoodsPrice</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="EFFECTIVE_GOODS_PRICE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerName</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PARTNER_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>financier</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="FINANCIER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerAccNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PARTNER_ACC_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>salesType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SALES_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerSync</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUSTOMER_SYNC" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerOrderLinkId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUSTOMER_ORDER_LINK_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcPartnerId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_PARTNER_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcHomeownerId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_HOMEOWNER_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcTpoId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_TPO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PAYMENT_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>modeType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="MODE_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>channelType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CHANNEL_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcSynced</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SYNCED" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaS2OId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_S2O_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaO2SId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_O2S_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaMessage</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="BILL_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXSPWR.XXSPWR_DSR_SO_HEADER"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>UpdateOrderEBS.XxspwrDsrSoHeader</class>
+         <alias>XXSPWR.XXSPWR_DSR_SO_HEADER</alias>
+         <primary-key>
+            <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_ID" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="UpdateOrderEBSSelect" xsi:type="read-all-query">
+                  <reference-class>UpdateOrderEBS.XxspwrDsrSoHeader</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dsrEmailId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="DSR_EMAIL_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dsrOracleUserId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="DSR_ORACLE_USER_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custAcctNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUST_ACCT_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orgId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custPoNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUST_PO_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipFromOrgId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_FROM_ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="BILL_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine1</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine2</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine3</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>city</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>state</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="STATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>country</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="COUNTRY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>postalCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="POSTAL_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>status</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone1</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PHONE1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone2</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PHONE2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPersonName</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PERSON_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactEmail</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_EMAIL" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactFax</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_FAX" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingMethod</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIPPING_METHOD" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>specialInstructions</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SPECIAL_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>taxFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="TAX_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderCurrencyCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_CURRENCY_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestedDeliveryDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="REQUESTED_DELIVERY_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>adjustedAmount</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADJUSTED_AMOUNT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>smartpackFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SMARTPACK_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderStatus</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>interfaceStatus</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INTERFACE_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>interfaceMessage</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INTERFACE_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>newOrderClass</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="NEW_ORDER_CLASS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>inverterType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INVERTER_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseValue</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_VALUE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>operatingUnit</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="OPERATING_UNIT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="VENDOR_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorSiteCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="VENDOR_SITE_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>effectiveGoodsPrice</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="EFFECTIVE_GOODS_PRICE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerName</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PARTNER_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>financier</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="FINANCIER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerAccNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PARTNER_ACC_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>salesType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SALES_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerSync</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUSTOMER_SYNC" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerOrderLinkId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUSTOMER_ORDER_LINK_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcPartnerId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_PARTNER_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcHomeownerId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_HOMEOWNER_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcTpoId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_TPO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PAYMENT_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>modeType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="MODE_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>channelType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CHANNEL_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcSynced</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SYNCED" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaS2OId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_S2O_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaO2SId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_O2S_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaErrorMessage</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_ERROR_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="BILL_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXSPWR.XXSPWR_DSR_SO_HEADER"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>UpdateOrderEBS.XxspwrDsrSoHeader</class>
+         <alias>XXSPWR.XXSPWR_DSR_SO_HEADER</alias>
+         <primary-key>
+            <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_ID" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="UpdateOrderEBSSelect" xsi:type="read-all-query">
+                  <reference-class>UpdateOrderEBS.XxspwrDsrSoHeader</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dsrEmailId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="DSR_EMAIL_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dsrOracleUserId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="DSR_ORACLE_USER_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custAcctNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUST_ACCT_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orgId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custPoNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUST_PO_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipFromOrgId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_FROM_ORG_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="BILL_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine1</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine2</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>addressLine3</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADDRESS_LINE_3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>city</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CITY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>state</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="STATE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>country</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="COUNTRY" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>postalCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="POSTAL_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>status</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone1</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PHONE1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPhone2</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PHONE2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactPersonName</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_PERSON_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactEmail</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_EMAIL" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>contactFax</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CONTACT_FAX" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shipToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIP_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>shippingMethod</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SHIPPING_METHOD" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>specialInstructions</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SPECIAL_INSTRUCTIONS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>taxFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="TAX_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderCurrencyCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_CURRENCY_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>requestedDeliveryDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="REQUESTED_DELIVERY_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>adjustedAmount</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ADJUSTED_AMOUNT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>smartpackFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SMARTPACK_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderStatus</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>interfaceStatus</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INTERFACE_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>interfaceMessage</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INTERFACE_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.lang.Long</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>newOrderClass</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="NEW_ORDER_CLASS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>inverterType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="INVERTER_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="ORDER_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseValue</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_VALUE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>operatingUnit</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="OPERATING_UNIT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="VENDOR_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>vendorSiteCode</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="VENDOR_SITE_CODE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>effectiveGoodsPrice</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="EFFECTIVE_GOODS_PRICE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerName</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PARTNER_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseFlag</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_FLAG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="LEASE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>financier</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="FINANCIER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>partnerAccNumber</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PARTNER_ACC_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>salesType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SALES_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerSync</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUSTOMER_SYNC" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>customerOrderLinkId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CUSTOMER_ORDER_LINK_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToSiteId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_SITE_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcBillToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_BILL_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcShipToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SHIP_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcPartnerId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_PARTNER_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcHomeownerId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_HOMEOWNER_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcTpoId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_TPO_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="PAYMENT_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>modeType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="MODE_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>channelType</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="CHANNEL_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcSynced</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SFDC_SYNCED" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaS2OId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_S2O_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaO2SId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_O2S_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaErrorMessage</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="SOA_ERROR_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>billToContactId</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="BILL_TO_CONTACT_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>dataSource</attribute-name>
+               <field table="XXSPWR_DSR_SO_HEADER" name="DATA_SOURCE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXSPWR.XXSPWR_DSR_SO_HEADER"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.oracle.Oracle9Platform</platform-class>
+      <connection-url></connection-url>
+   </login>
+</object-persistence>

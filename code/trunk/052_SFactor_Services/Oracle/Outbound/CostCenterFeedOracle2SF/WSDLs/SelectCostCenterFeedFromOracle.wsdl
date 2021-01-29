@@ -1,0 +1,47 @@
+<wsdl:definitions
+     name="SelectCostCenterFeedFromOracle"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/CostCenterFeedOracle2SF/SelectCostCenterFeedFromOracle"
+     xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCostCenterFeedFromOracle"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/CostCenterFeedOracle2SF/SelectCostCenterFeedFromOracle"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+  <plt:partnerLinkType name="SelectCostCenterFeedFromOracle_plt" >
+    <plt:role name="SelectCostCenterFeedFromOracle_role" >
+      <plt:portType name="tns:SelectCostCenterFeedFromOracle_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="SelectCostCenterFeedFromOracle_plt" >
+    <plt:role name="SelectCostCenterFeedFromOracle_role" >
+      <plt:portType name="tns:SelectCostCenterFeedFromOracle_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="SelectCostCenterFeedFromOracle_plt" >
+    <plt:role name="SelectCostCenterFeedFromOracle_role" >
+      <plt:portType name="tns:SelectCostCenterFeedFromOracle_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCostCenterFeedFromOracle" schemaLocation="../Schemas/SelectCostCenterFeedFromOracle.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCostCenterFeedFromOracle" schemaLocation="../Schemas/SelectCostCenterFeedFromOracle.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCostCenterFeedFromOracle" schemaLocation="../Schemas/SelectCostCenterFeedFromOracle.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectCostCenterFeedFromOracleInput_msg">
+        <wsdl:part name="SelectCostCenterFeedFromOracleInput_msg" element="db:SelectCostCenterFeedFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectCostCenterFeedFromOracleOutputCollection_msg">
+        <wsdl:part name="SelectCostCenterFeedFromOracleOutputCollection" element="db:SelectCostCenterFeedFromOracleOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectCostCenterFeedFromOracle_ptt">
+        <wsdl:operation name="SelectCostCenterFeedFromOracle">
+            <wsdl:input message="tns:SelectCostCenterFeedFromOracleInput_msg"/>
+            <wsdl:output message="tns:SelectCostCenterFeedFromOracleOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

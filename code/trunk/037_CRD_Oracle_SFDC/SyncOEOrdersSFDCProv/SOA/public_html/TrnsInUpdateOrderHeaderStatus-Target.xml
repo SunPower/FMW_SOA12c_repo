@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrOmHeaderSyncCollection xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateOrderHeaderStatus">
+   <top:XxspwrOmHeaderSync>
+      <top:sfdcId>id4524524524524524</top:sfdcId>
+      <top:headerId>-0</top:headerId>
+      <top:soaFlag>S</top:soaFlag>
+      <top:soaErrormsg> </top:soaErrormsg>
+   </top:XxspwrOmHeaderSync>
+   <top:XxspwrOmHeaderSync>
+      <top:sfdcId>id4684684684684684</top:sfdcId>
+      <top:headerId>-0</top:headerId>
+      <top:soaFlag>S</top:soaFlag>
+      <top:soaErrormsg> </top:soaErrormsg>
+   </top:XxspwrOmHeaderSync>
+   <top:XxspwrOmHeaderSync>
+      <top:sfdcId>id4844844844844844</top:sfdcId>
+      <top:headerId>-0</top:headerId>
+      <top:soaFlag>S</top:soaFlag>
+      <top:soaErrormsg> </top:soaErrormsg>
+   </top:XxspwrOmHeaderSync>
+</top:XxspwrOmHeaderSyncCollection>

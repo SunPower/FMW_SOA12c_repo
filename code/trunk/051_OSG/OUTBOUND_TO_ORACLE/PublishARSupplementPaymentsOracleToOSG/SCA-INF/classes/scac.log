@@ -1,0 +1,32 @@
+2016-10-06 19:30:04.112/2.825 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/E:/Jdev1221/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2016-10-06 19:30:04.218/2.931 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/E:/Jdev1221/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2016-10-06 19:30:04.221/2.934 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2016-10-06 19:30:04.226/2.939 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2016-10-06 19:30:04.227/2.940 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2016-10-06 19:30:04.229/2.942 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2016-10-06 19:30:04.432/3.145 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2016-10-06 19:30:04.436/3.149 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2016-10-06 19:30:05.251/3.963 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "RD42768's cluster" has been automatically generated
+Oct 06, 2016 7:30:21 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Oct 06, 2016 7:30:24 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Oct 06, 2016 7:30:28 PM com.collaxa.cube.CubeLogger info
+INFO: validating "PublishARSupplementPaymentsOracleToOSG_BPEL.bpel" ...
+Oct 06, 2016 7:30:28 PM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+Oct 06, 2016 7:30:33 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "PublishARSupplementPaymentsOracleToOSG_BPEL" in 204.2 milliseconds [nodes 33=0+33, 161.6 nodes/sec]
+Oct 06, 2016 7:30:37 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "PublishARSupplementPaymentsOracleToOSG_BPEL" in 4.284 seconds
+Oct 06, 2016 7:30:37 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 6 files in 1.5 milliseconds
+Oct 06, 2016 7:30:38 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "PublishARSupplementPaymentsOracleToOSG_BPEL" in 226.5 milliseconds
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

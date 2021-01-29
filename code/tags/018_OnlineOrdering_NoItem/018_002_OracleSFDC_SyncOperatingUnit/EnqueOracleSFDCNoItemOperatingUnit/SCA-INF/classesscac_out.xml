@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/CallCommSFDCErrMediator.wsdl']</loc>
+      <line>10</line>
+      <col>274</col>
+      <file>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</file>
+      <name>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</name>
+      <fix/>
+      <msg>Load of wsdl "http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/CallCommSFDCErrMediator.wsdl" failed</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>0</line>
+      <col/>
+      <file>EnqueOracleSFDCNoItemOperatingUnit_BPEL</file>
+      <name>EnqueOracleSFDCNoItemOperatingUnit_BPEL</name>
+      <fix>n/a</fix>
+      <msg>XML parsing failed because "FabricException: Error in getting XML input stream: http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/CallCommSFDCErrMediator.wsdl: http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/CallCommSFDCErrMediator.wsdl"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='CommonSFDCErrorLogService']</loc>
+      <line>75</line>
+      <col>19</col>
+      <file>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</file>
+      <name>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

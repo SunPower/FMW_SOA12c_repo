@@ -1,0 +1,17 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+                schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+            <xsd:element name="ITEM_NUMBER" type="cdt:String50"/>
+            <xsd:element name="DESCRIPTION" type="cdt:String50" nillable="true"/>
+            <xsd:element name="LONG_DESCRIPTION" type="cdt:String50" nillable="true"/>
+            <xsd:element name="INVENTORY_ITEM_ID" type="xsd:int" nillable="true"/>
+            <xsd:element name="ITEM_CATEGORY1" type="cdt:String50" nillable="true"/>
+            <xsd:element name="ITEM_CATEGORY2" type="cdt:String50" nillable="true"/>
+            <xsd:element name="ITEM_CATEGORY3" type="cdt:String50" nillable="true"/>
+            <xsd:element name="PROD_TYPE" type="cdt:String50" nillable="true"/>
+            <xsd:element name="ITEM_STATUS_CODE" type="cdt:String50" nillable="true"/>
+             <xsd:element name="LAST_RUN_FLAG" type="cdt:String50" nillable="true"/>
+               <xsd:element name="FIRST_RUN_FLAG" type="cdt:String50" nillable="true"/>
+             
+           
+</xsd:schema>

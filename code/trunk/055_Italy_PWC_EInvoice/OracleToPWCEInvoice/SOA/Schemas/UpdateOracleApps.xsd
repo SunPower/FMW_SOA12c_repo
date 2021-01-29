@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOracleApps" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOracleApps" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="UpdateOracleAppsInput" type="UpdateOracleAppsInput"/>
+   <xs:complexType name="UpdateOracleAppsInput">
+      <xs:sequence>
+         <xs:element name="attribute8" type="xs:string" nillable="true"/>
+         <xs:element name="global_attribute8" type="xs:string" nillable="true"/>
+         <xs:element name="operating_units_name" type="xs:string" nillable="true"/>
+         <xs:element name="trx_number" type="xs:string" nillable="true"/>
+         <xs:element name="trx_date" type="xs:string" nillable="true"/>
+         <xs:element name="party_name" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,26 @@
+<?binding.jca COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_db.jca?>
+<wsdl:definitions name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplPaymntReversalsOracleToOSG/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplPaymntReversalsOracleToOSG/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_plt">
+        <plt:role name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_role">
+            <plt:portType name="tns:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB"
+                    schemaLocation="../Schemas/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBInput_msg">
+        <wsdl:part name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBInput_msg" element="db:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBInput"/>
+    </wsdl:message>
+    <wsdl:message name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput_msg">
+        <wsdl:part name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput" element="db:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput"/>
+    </wsdl:message>
+    <wsdl:portType name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_ptt">
+        <wsdl:operation name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB">
+            <wsdl:input message="tns:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBInput_msg"/>
+            <wsdl:output message="tns:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

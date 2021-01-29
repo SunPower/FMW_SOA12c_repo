@@ -1,0 +1,18 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/Dealer_PartnerCreditINFOTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/Dealer_PartnerCreditINFOTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="AccountNumber" type="cdt:String50" nillable="true"/>
+    <xsd:element name="AccountName" type="cdt:String50" nillable="true"/>
+    <xsd:element name="CustAccountId" type="xsd:decimal" nillable="true"/>
+    <xsd:element name="OverallCreditLimit" type="cdt:String200" nillable="true"/>
+    <xsd:element name="LastUpdateDate" type="cdt:String200" nillable="true"/>
+    <xsd:element name="AvailableCreditLimit" type="cdt:String200" nillable="true"/>
+    <xsd:element name="AmountPastDue" type="cdt:String50" nillable="true"/>
+    <xsd:element name="CreditHold" type="cdt:String50" nillable="true"/>
+    <xsd:element name="CreditCheck" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Netterm" type="cdt:String50" nillable="true"/>
+    <xsd:element name="Id" type="cdt:String50" nillable="true"/>
+    <xsd:element name="OracleAccountNumber" type="cdt:String50" nillable="true"/>
+    <xsd:element name="CreditLimitDate" type="cdt:String50" nillable="true"/>
+    <xsd:element name="CreditLimitC" type="cdt:String50" nillable="true"/>
+                
+</xsd:schema>

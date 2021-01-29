@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="PoolLMSUserCertificateFileFTP" adapter="ftp"
+                wsdlLocation="WSDLs/PoolLMSUserCertificateFileFTP.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FTP/successfact" UIincludeWildcard="*.csv"/>
+  <endpoint-activation portType="Get_ptt" operation="Get">
+    <activation-spec className="oracle.tip.adapter.ftp.inbound.FTPActivationSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="LogicalArchiveDirectory" value="out_archive"/>
+      <property name="MinimumAge" value="60"/>
+      <property name="Recursive" value="true"/>
+      <property name="PollingFrequency" value="600"/>
+      <property name="LogicalDirectory" value="outgoing"/>
+      <property name="FileType" value="ascii"/>
+       <property name="PublishSize" value="1000"/>
+      <property name="IncludeFiles" value="UserItemStatusCSV.*\.csv"/>
+      <property name="UseHeaders" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='CommonSFDCErrorLogService']</loc>
+      <line>57</line>
+      <col>48</col>
+      <file>D:\SOA_12c_SUPPORT\SOA_CR\OracleSFDCNoItemOperatingUnit\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</file>
+      <name>D:\SOA_12c_SUPPORT\SOA_CR\OracleSFDCNoItemOperatingUnit\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "CommonSFDCErrorLogService":"{http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator}execute_pt" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='CommonSFDCErrorLogService']</loc>
+      <line>57</line>
+      <col>48</col>
+      <file>D:\SOA_12c_SUPPORT\SOA_CR\OracleSFDCNoItemOperatingUnit\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</file>
+      <name>D:\SOA_12c_SUPPORT\SOA_CR\OracleSFDCNoItemOperatingUnit\EnqueOracleSFDCNoItemOperatingUnit\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "CommonSFDCErrorLogService":"{http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator}execute_pt" in WSDL Manager</msg>
+   </Fault>
+</Faults>

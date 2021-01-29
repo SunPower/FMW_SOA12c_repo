@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<CommonErrorHandlerInput xmlns="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1">
+   <InstanceNumber>InstanceNumber13</InstanceNumber>
+   <InterfaceNumber>InterfaceNumber14</InterfaceNumber>
+   <InterfaceName>InterfaceName15</InterfaceName>
+   <ProcessName>ProcessName16</ProcessName>
+   <Severity>Severity17</Severity>
+   <Fault>
+      <FaultCode>FaultCode18</FaultCode>
+      <FaultDescription>FaultDescription19</FaultDescription>
+      <FaultMessage>FaultMessage20</FaultMessage>
+      <FaultTime>FaultTime21</FaultTime>
+   </Fault>
+   <FaultSystemName>FaultSystemName22</FaultSystemName>
+   <bOpenServiceTicket>bOpenServiceTicket23</bOpenServiceTicket>
+   <CorrectiveAction>CorrectiveAction24</CorrectiveAction>
+</CommonErrorHandlerInput>

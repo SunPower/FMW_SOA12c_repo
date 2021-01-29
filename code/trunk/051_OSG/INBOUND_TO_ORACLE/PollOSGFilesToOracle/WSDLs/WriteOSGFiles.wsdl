@@ -1,0 +1,27 @@
+<wsdl:definitions
+     name="WriteOSGFiles"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/OSG/PollOSGFilesToOracle/WriteOSGFiles"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/OSG/PollOSGFilesToOracle/WriteOSGFiles"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:imp1="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+  <plt:partnerLinkType name="Write_plt" >
+    <plt:role name="Write_role" >
+      <plt:portType name="tns:Write_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/"
+                 location="PollOSGFiles.wsdl"/>
+    <wsdl:types>
+    </wsdl:types>
+    <wsdl:message name="Write_msg">
+        <wsdl:part name="body" element="imp1:attachmentElement"/>
+    </wsdl:message>
+    <wsdl:portType name="Write_ptt">
+        <wsdl:operation name="Write">
+            <wsdl:input message="tns:Write_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

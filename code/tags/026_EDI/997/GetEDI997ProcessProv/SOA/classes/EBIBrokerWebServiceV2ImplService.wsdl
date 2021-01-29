@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="EBIBrokerWebServiceV2ImplService" targetNamespace="http://impl.webservice.services.broker.edicom.com/" xmlns:ns1="http://com.edicom.broker.adapter.services" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.webservice.services.broker.edicom.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="EBIBrokerWebServiceV2.wsdl" namespace="http://com.edicom.broker.adapter.services">
+    </wsdl:import>
+  <wsdl:binding name="EBIBrokerWebServiceV2ImplServiceSoapBinding" type="ns1:EBIBrokerWebServiceV2">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="messageReference">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="messageReference">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="messageReferenceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="beginTrans">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="beginTrans">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="beginTransResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTimeStamp">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateTimeStamp">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateTimeStampResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="notifiedPublication">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="notifiedPublication">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="notifiedPublicationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="remoteSQL">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="remoteSQL">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="remoteSQLResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processExecuted">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="processExecuted">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="processExecutedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="release">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="release">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="releaseResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmSubscriptionWS">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="confirmSubscriptionWS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="confirmSubscriptionWSResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="executeTemplate">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="executeTemplate">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="executeTemplateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepositoryItem">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getRepositoryItem">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRepositoryItemResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAcquireApplication">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateAcquireApplication">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateAcquireApplicationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmSubscriptionEx">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="confirmSubscriptionEx">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="confirmSubscriptionExResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmedPublications">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="confirmedPublications">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="confirmedPublicationsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="publish">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="publish">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="publishResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscription">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="subscription">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="subscriptionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fileFound">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="fileFound">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="fileFoundResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rejectedPublications">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="rejectedPublications">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rejectedPublicationsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerSession">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="registerSession">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerSessionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transformAndPublishWS">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="transformAndPublishWS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transformAndPublishWSResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="releaseApplication">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="releaseApplication">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="releaseApplicationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscriptionsPending">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="subscriptionsPending">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="subscriptionsPendingResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="isAlive">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="isAliveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endSession">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="endSession">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="endSessionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScript">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getScript">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getScriptResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="messageByReference">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="messageByReference">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="messageByReferenceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentProperty">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="setDocumentProperty">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setDocumentPropertyResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="acquireApplication">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="acquireApplication">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="acquireApplicationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="executeScript">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="executeScript">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="executeScriptResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="notifiedRejectedPublication">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="notifiedRejectedPublication">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="notifiedRejectedPublicationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscriptionsList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="subscriptionsList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="subscriptionsListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="schemaFiles">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="schemaFiles">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="schemaFilesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmSubscription">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="confirmSubscription">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="confirmSubscriptionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="publishWS">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="publishWS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="publishWSResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transformAndPublish">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="transformAndPublish">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transformAndPublishResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="transformation">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="transformation">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transformationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rejectSubscription">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="rejectSubscription">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rejectSubscriptionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConfigApplication">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getConfigApplication">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getConfigApplicationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subsAndTransform">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="subsAndTransform">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="subsAndTransformResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="commitTrans">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="commitTrans">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="commitTransResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSchema">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getSchema">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getSchemaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="activeProcess">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="activeProcess">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="activeProcessResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="applicationList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="applicationList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="applicationListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="remoteAdpterSQLResult">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="remoteAdpterSQLResult">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="remoteAdpterSQLResultResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processShouldExecuted">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="processShouldExecuted">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="processShouldExecutedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="documentList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="documentList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBrokerSources">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getBrokerSources">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBrokerSourcesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="documentDeleteOld">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="documentDeleteOld">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="documentDeleteOldResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subscriptionWS">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="subscriptionWS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="subscriptionWSResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rollbackTrans">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="rollbackTrans">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rollbackTransResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTimeStampTimeOut">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateTimeStampTimeOut">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateTimeStampTimeOutResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acquire">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="acquire">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="acquireResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentState">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="setDocumentState">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setDocumentStateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="EBIBrokerServerException">
+        <soap:fault name="EBIBrokerServerException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EBIBrokerWebServiceV2ImplService">
+    <wsdl:port binding="tns:EBIBrokerWebServiceV2ImplServiceSoapBinding" name="EBIBrokerWebServiceV2ImplPort">
+      <soap:address location="https://aspebi.sedeb2b.com:9120/services/EBIBrokerWSV2" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

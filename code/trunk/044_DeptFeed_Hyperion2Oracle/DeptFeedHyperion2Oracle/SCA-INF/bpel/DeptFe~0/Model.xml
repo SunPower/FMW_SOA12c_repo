@@ -1,0 +1,287 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jun 19 12:17:50 IST 2014
+  Author:  sn38854
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="DeptFeedHyperion2Oracle" targetNamespace="http://www.sunpowercorp.com/DEVELOPMENT_CODE/DeptFeedHyperion2Oracle/DeptFeedHyperion2Oracle" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/DEVELOPMENT_CODE/DeptFeedHyperion2Oracle/DeptFeedHyperion2Oracle" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/DEVELOPMENT_CODE/DeptFeedHyperion2Oracle/syncReadHyperionFile" xmlns:ns2="http://www.sunpowercorp.com/PoolDeptFeedHyperionFile" xmlns:ns3="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/DEVELOPMENT_CODE/DeptFeedHyperion2Oracle/InsertDeptHyperionFeed" xmlns:ns5="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns6="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/db/DEVELOPMENT_CODE/DeptFeedHyperion2Oracle/TruncateDB" xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/file/Test/DeptFeedHyperion2Oracle/PollDeptHyperionFeedFile" xmlns:ns9="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL" xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/DEV_DEVELOP_CODE/DeptFeedHyperion2Oracle/TruncateDeptHyperionFeed" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        InsertDeptHyperionFeed.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="InsertDeptHyperionFeed" partnerLinkType="ns4:InsertDeptHyperionFeed_plt" partnerRole="InsertDeptHyperionFeed_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns5:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="PollDeptHyperionFeedFile" partnerLinkType="ns8:Read_plt" myRole="Read_role"/>
+    <partnerLink name="BulkEmailServiceProvider" partnerLinkType="ns9:BulkEmailServiceProviderBPEL" partnerRole="BulkEmailServiceProviderBPELProvider"/>
+    <partnerLink name="TruncateDeptHyperionFeed" partnerLinkType="ns10:TruncateDeptHyperionFeed_plt" partnerRole="TruncateDeptHyperionFeed_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="title" type="xsd:string"/>
+    <variable name="fileName" type="xsd:string"/>
+    <variable name="RecordCount" type="xsd:int"/>
+    <variable name="InvInsertDeptHyperionFeed_IV" messageType="ns4:XxspwrHypDeptBuMapTabCollection_msg"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns5:requestMessage"/>
+    <variable name="ReceivePollFile_Read_IV" messageType="ns8:Read_msg"/>
+    <variable name="i" type="xsd:int"/>
+    <variable name="initParams" element="ns3:InitParams"/>
+    <variable name="recordFailed" type="xsd:boolean"/>
+    <variable name="InvBulkEmailServiceProvider_IV" messageType="ns9:BulkEmailServiceProviderBPELRequestMessage"/>
+    <variable name="TruncateDeptHyperionFeed_IV" messageType="ns10:TruncateDeptHyperionFeedInput_msg"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="&quot;E&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:status"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns5:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in DeptFeedHyperion2Oracle.wsdl) -->
+    <receive name="ReceivePollFile" createInstance="yes" variable="ReceivePollFile_Read_IV" partnerLink="PollDeptHyperionFeedFile" portType="ns8:Read_ptt" operation="Read" id="BpRcv0">
+      <bpelx:property name="jca.file.FileName" variable="fileName"/>
+    </receive>
+    <assign name="setTile" id="BpAss1">
+      <copy>
+        <from expression="ora:setCompositeInstanceTitle($fileName)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <invoke name="InvTruncateDeptHyperionFeed" inputVariable="TruncateDeptHyperionFeed_IV" partnerLink="TruncateDeptHyperionFeed" portType="ns10:TruncateDeptHyperionFeed_ptt" operation="TruncateDeptHyperionFeed" bpelx:invokeAsDetail="no" id="BpInv1"/>
+    <assign name="intialiseAllVariables" id="BpAss2">
+      <copy>
+        <from expression="ora:countNodes('ReceivePollFile_Read_IV','body','/ns2:DeptFeed/ns2:DeptFeedHyperion')"/>
+        <to variable="RecordCount"/>
+      </copy>
+      <copy>
+        <from expression="1"/>
+        <to variable="i"/>
+      </copy>
+    </assign>
+    <while name="WhileAllRecords" condition="$i &lt;= $RecordCount" id="BpWhl0">
+      <scope name="Scope1" id="BpScp0">
+        <faultHandlers id="BpFhs1">
+          <catchAll id="BpCAl1">
+            <sequence name="Sequence3" id="BpSeq2">
+              <assign name="AsgnCommonSFDCErrorLogService" id="BpAss3">
+                <copy>
+                  <from expression="ora:getCompositeInstanceId()"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InstanceNumber"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceNumber"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:InterfaceName"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:ProcessName"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Severity"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultCode"/>
+                </copy>
+                <copy>
+                  <from expression="concat(&quot;&lt;b>EXEC_OWNER_NAME:&lt;/b> &quot;,bpws:getVariableData('ReceivePollFile_Read_IV','body','/ns2:DeptFeed/ns2:DeptFeedHyperion[$i]/ns2:EXEC_OWNER_NAME'),&quot; &lt;br>&lt;b>DEPT_NUM:&lt;/b>&quot;,bpws:getVariableData('ReceivePollFile_Read_IV','body','/ns2:DeptFeed/ns2:DeptFeedHyperion[$i]/ns2:DEPT_NUM'),&quot;&lt;br>&lt;b>Exception Description : &lt;/b> &quot;, substring(substring-after(ora:getFaultAsString(),&quot;&lt;summary>&quot;),1,200))"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultDescription"/>
+                </copy>
+                <copy>
+                  <from expression="substring(ora:getFaultAsString(),1,2000)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultMessage"/>
+                </copy>
+                <copy>
+                  <from expression="xp20:current-dateTime()"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:Fault/ns6:FaultTime"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:FaultSystemName"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:bOpenServiceTicket"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:CorrectiveAction"/>
+                </copy>
+                <copy>
+                  <from variable="fileName"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:UniqueIdentNum/ns6:UniqueIdentifier"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;SendBatchEmail&quot;)"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:SendEmail"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;E&quot;"/>
+                  <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns6:CommonSFDCErrorLog/ns6:CommonErrorHandlerInputDetails/ns6:status"/>
+                </copy>
+              </assign>
+              <assign name="IncremantValue" id="BpAss4">
+                <copy>
+                  <from expression="$i+1"/>
+                  <to variable="i"/>
+                </copy>
+                <copy>
+                  <from expression="true()"/>
+                  <to variable="recordFailed"/>
+                </copy>
+              </assign>
+              <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns5:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv2"/>
+            </sequence>
+          </catchAll>
+        </faultHandlers>
+        <sequence name="Sequence2" id="BpSeq3">
+          <assign name="assignInputs" id="BpAss5">
+            <copy>
+              <from variable="fileName"/>
+              <to variable="initParams" query="/ns3:InitParams/ns3:fileName"/>
+            </copy>
+            <copy>
+              <from variable="i"/>
+              <to variable="initParams" query="/ns3:InitParams/ns3:i"/>
+            </copy>
+          </assign>
+          <assign name="TransHyperionFile2DB" id="BpAss6">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TransHyperionFeedFile2DB.xsl', $ReceivePollFile_Read_IV.body, 'initParams', $initParams)"/>
+              <to variable="InvInsertDeptHyperionFeed_IV" part="XxspwrHypDeptBuMapTabCollection"/>
+            </copy>
+          </assign>
+          <invoke name="InvInsertDeptHyperionFeed" inputVariable="InvInsertDeptHyperionFeed_IV" partnerLink="InsertDeptHyperionFeed" portType="ns4:InsertDeptHyperionFeed_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv3"/>
+          <assign name="IncremantValue" id="BpAss7">
+            <copy>
+              <from expression="$i+1"/>
+              <to variable="i"/>
+            </copy>
+          </assign>
+        </sequence>
+      </scope>
+    </while>
+    <switch name="Switch1" id="BpSwt0">
+      <case condition="bpws:getVariableData('recordFailed')">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">RecordsFailed</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence name="Sequence4" id="BpSeq4">
+          <wait name="Wait" for="'PT10S'" id="BpWai0"/>
+          <assign name="asgnInterfaceNo" id="BpAss8">
+            <copy>
+              <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+              <to variable="InvBulkEmailServiceProvider_IV" part="payload" query="/ns9:BulkEmailServiceProviderInput/ns9:interfaceNumber"/>
+            </copy>
+          </assign>
+          <invoke name="InvBulkEmailServiceProvider" inputVariable="InvBulkEmailServiceProvider_IV" partnerLink="BulkEmailServiceProvider" portType="ns9:BulkEmailServiceProviderBPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv4"/>
+          <terminate name="Terminate" id="BpTer1"/>
+        </sequence>
+      </case>
+    </switch>
+  </sequence>
+</process>

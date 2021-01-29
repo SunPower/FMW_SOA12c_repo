@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oper="http://xmlns.oracle.com/servicebus/pipeline/operations">
+    <con:coreEntry>
+        <con:description/>
+        <con:binding type="Mixed" xsi:type="con:MixedBindingType">
+            <con:request type="XML">
+                <con5:schema ref="CommonComponents/XSD/AuditLogHeaders" element="OsbAuditLogHeaderCollection" xmlns:con5="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/services/bindings/config" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+            </con:request>
+        </con:binding>
+        <oper:operations>
+            <oper:monitoring enabled="false" aggregationInterval="10" level="pipeline"/>
+            <oper:tracingEnabled>false</oper:tracingEnabled>
+            <oper:reporting>true</oper:reporting>
+            <oper:logging enabled="true" level="debug"/>
+            <oper:sla-alerting enabled="true" level="normal"/>
+            <oper:pipeline-alerting enabled="true" level="normal"/>
+        </oper:operations>
+        <con:transactions isRequired="false" sameTxForResponse="false"/>
+    </con:coreEntry>
+    <con:router errorHandler="_onErrorHandler-5873909675745795988-50a2f757.1477c830337.-7f45" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:con1="http://www.bea.com/wli/sb/typesystem/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+        <con:pipeline type="error" name="_onErrorHandler-5873909675745795988-50a2f757.1477c830337.-7f45">
+            <con:stage name="LogErrorDetails">
+                <con:context xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config"/>
+                <con:actions xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                    <con1:log>
+                        <con2:id>_ActionId-5873909675745795988-50a2f757.1477c830337.-7f0d</con2:id>
+                        <con1:logLevel>debug</con1:logLevel>
+                        <con1:expr>
+                            <con2:xqueryText>concat("&lt;&lt;&lt;&lt;Exception occured while inserting to Audit Log: ",$fault/ctx:details/*,">>>>")</con2:xqueryText>
+                        </con1:expr>
+                    </con1:log>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:route-node name="RouteTo_CommonAuditLogHeaders_BS">
+                <con:context>
+                    <con2:varNsDecl namespace="http://xmlns.sunpowercorp.com/CommonAuditLogSvc/AuditLogHeaders/xsd/v1" prefix="v1"/>
+                </con:context>
+                <con:actions>
+                    <con3:route>
+                        <con2:id>_ActionId-5897501125825658197-1a7aa817.147d438b0ed.-7ed1</con2:id>
+                        <con3:service ref="CommonAuditLogSvc/BusinessService/CommonAuditLogHeaders_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:operation>insert</con3:operation>
+                        <con3:outboundTransform>
+                            <con4:replace contents-only="true" varName="body">
+                                <con2:id>_ActionId-5897501125825658197-1a7aa817.147d438b0ed.-7e60</con2:id>
+                                <con4:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con4:location>
+                                <con4:expr>
+                                    <con2:xqueryTransform>
+                                        <con2:resource ref="CommonAuditLogSvc/XQuery/mapHeaderLog_XQ"/>
+                                        <con2:param name="osbAuditLogHeaderCollection">
+                                            <con2:path>$body/*:OsbAuditLogHeaderCollection</con2:path>
+                                        </con2:param>
+                                    </con2:xqueryTransform>
+                                </con4:expr>
+                            </con4:replace>
+                        </con3:outboundTransform>
+                        <con3:responseTransform/>
+                    </con3:route>
+                </con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

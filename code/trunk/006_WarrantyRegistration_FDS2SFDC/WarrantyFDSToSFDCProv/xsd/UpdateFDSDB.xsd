@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateFDSDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateFDSDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="UpdateFDSDBInput" type="UpdateFDSDBInput"/>
+   <xs:complexType name="UpdateFDSDBInput">
+      <xs:sequence>
+         <xs:element name="sfdc_status" type="xs:string" nillable="true"/>
+         <xs:element name="sfdc_status_date" type="xs:string" nillable="true"/>
+         <xs:element name="sfdc_remarks" type="xs:string" nillable="true"/>
+         <xs:element name="ID" type="xs:int" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

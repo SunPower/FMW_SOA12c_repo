@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://TargetNamespace.com/WriteOSGSupplPaymntReversalsFeedToLocal"
+            targetNamespace="http://TargetNamespace.com/WriteOSGSupplPaymntReversalsFeedToLocal"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="UTF-8"
+            nxsd:hasHeader="true" nxsd:headerLines="1"
+            nxsd:headerLinesTerminatedBy="${eol}">
+  <xsd:element name="OSGSupplPaymntReversals">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="OSGSupplPaymntReversalsFeed" minOccurs="1"
+                     maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ACCOUNT_NUMBER" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="TRX_NUMBER" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>             
+              <xsd:element name="RECEIPT_AMOUNT" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy=","
+                           nxsd:quotedBy='"'/>            
+              <xsd:element name="REVERSAL_DATE" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="${eol}"
+                           nxsd:quotedBy='"'/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+<!--NXSDWIZ:D:\Surya\SunPower\OSG\OSGReversalFlatFile.csv:-->
+<!--USE-HEADER:true:-->

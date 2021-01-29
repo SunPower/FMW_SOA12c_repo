@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catchAll/sequence/assign[3]/copy/from</loc>
+      <line>197</line>
+      <col/>
+      <file>WarrantyORACLEToSFDCProv_BPEL.bpel</file>
+      <name>WarrantyORACLEToSFDCProv_BPEL.bpel</name>
+      <fix>Double check and correct arguments used : doXSLTransformForDoc(url_to_xslt,input,[paramQname,paramValue]*)</fix>
+      <msg>Invalid usage of doXSLTransformForDoc. Reason is: Cannot retrieve and parse xslt: Error in getting XML input stream: file:/C:/SunPower/ANT_Script/12cMigrationScripts/12c_Ant/ant_soa/code/WarrantyORACLEToSFDCProv/xsl/TransformErrorUpdDB.xsl: C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCProv\xsl\TransformErrorUpdDB.xsl (The system cannot find the path specified)</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/assign/copy</loc>
+      <line>224</line>
+      <col/>
+      <file>WarrantyORACLEToSFDCProv_BPEL.bpel</file>
+      <name>WarrantyORACLEToSFDCProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.sunpowercorp.com/Common/CommonDataTypes/V1}Decimal11_6" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}string"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/assign[3]/copy[2]</loc>
+      <line>258</line>
+      <col/>
+      <file>WarrantyORACLEToSFDCProv_BPEL.bpel</file>
+      <name>WarrantyORACLEToSFDCProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://schemas.xmlsoap.org/ws/2003/03/addressing}AttributedURI"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='UpdateSalesOrderDB']</loc>
+      <line>121</line>
+      <col>17</col>
+      <file>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCProv\composite.xml</file>
+      <name>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCProv\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

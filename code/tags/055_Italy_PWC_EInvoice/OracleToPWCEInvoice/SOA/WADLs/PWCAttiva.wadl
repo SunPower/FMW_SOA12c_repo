@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="PWCAttiva">RestReference</doc>
+   <resources>
+      <resource path="/{COMPANY_UUID}/fatturaElettronicaAttiva/">
+         <method name="POST" soa:name="Attiva">
+            <request>
+               <param name="COMPANY_UUID" style="template" type="xsd:string" default=""/>
+               <param name="base64" style="query" type="xsd:string" default=""/>
+               <representation mediaType="application/json"/>
+            </request>
+            <response/>
+            <response/>
+         </method>
+      </resource>
+   </resources>
+</application>

@@ -1,0 +1,284 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Sep 16 11:00:07 CDT 2013
+  Author:  SSUURA-KY
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="CreateSalesOrderOracleProv" targetNamespace="http://xmlns.oracle.com/OnLineSalesOrder/CreateSalesOrderOracleProv/CreateSalesOrderOracleProv" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/OnLineSalesOrder/CreateSalesOrderOracleProv/CreateSalesOrderOracleProv" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:ns1="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns2="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/SelectSFDCIDStatusSOHeader" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/UpsertToDSRSOHDREBS" xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/UpsertToDSRSOLines" xmlns:ns6="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/UpsertToDSRSOLinesEBS" xmlns:ns7="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1" xmlns:ns8="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator" xmlns:ns11="http://www.sunpowercorp.com/Noun/OracleSFDCNoItemOrders/V1" xmlns:ns10="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" xmlns:ns12="http://www.sunpowercorp.com/Common/OracleSFDCNoItemOrdersCommonTypes/V1" xmlns:ns9="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOrders/V1" xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/UpdateToDSRSOHDREBS" xmlns:ns14="http://www.sunpowercorp.com/order/Verb/VerbCommonTypes/V1" xmlns:ns15="http://xmlns.oracle.com/OnLineSalesOrder/UpdateSalesOrderResponseOracleReq/UpdateSalesOrderResponseOracleReq" xmlns:ns16="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/UpdateStatusToDSRSOHDREBS" xmlns:ns17="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/DeleteToDSRSOLinesEBS" xmlns:ns18="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpsertToDSRSOLinesEBS" xmlns:ns19="http://xmlns.oracle.com/pcbpel/adapter/db/DeleteToDSRSOLinesEBS" id="BpPrc0">
+    <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                CreateSalesOrderOracleProv.wsdl
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="createsalesorderoracleprov_client" partnerLinkType="client:CreateSalesOrderOracleProv" myRole="CreateSalesOrderOracleProvProvider"/>
+        <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns1:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+        <partnerLink name="UpsertToDSRSOHDREBS" partnerLinkType="ns4:UpsertToDSRSOHDREBS_plt" partnerRole="UpsertToDSRSOHDREBS_role"/>
+        <partnerLink name="SFDCUtilityService" partnerLinkType="ns8:SFDCUtilityService" myRole="SFDCUtilityServiceCallback" partnerRole="SFDCUtilityService"/>
+        <partnerLink name="UpdateSalesOrderResponseOracleReq" partnerLinkType="ns15:UpdateSalesOrderResponseOracleReq" myRole="UpdateSalesOrderResponseOracleReqRequester" partnerRole="UpdateSalesOrderResponseOracleReqProvider"/>
+        <partnerLink name="DeleteToDSRSOLinesEBS" partnerLinkType="ns17:DeleteToDSRSOLinesEBS_plt" partnerRole="DeleteToDSRSOLinesEBS_role"/>
+    </partnerLinks>
+    <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:CreateSalesOrderOracleProvRequestMessage"/>
+        <variable name="title" type="xsd:string"/>
+        <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns1:requestMessage"/>
+        <variable name="InvUpsertToDSRSOHDREBS_IV" messageType="ns4:XxspwrDsrSoHeaderCollection_msg"/>
+        <variable name="Inputparam" element="ns7:Inputparam"/>
+        <variable name="InvSFDCUtilityService_IV" messageType="ns8:SFDCUtilityServiceRequestMessage"/>
+        <variable name="InvUpdateFailureStatus_IV" messageType="ns8:SFDCUtilityServiceRequestMessage"/>
+        <variable name="InvUpdateSalesOrderResponseOracleReq_IV" messageType="ns15:UpdateSalesOrderResponseOracleReqRequestMessage"/>
+        <variable name="InvDeleteToDSRSOLinesEBS_IV" messageType="ns17:DeleteToDSRSOLinesEBSInput_msg"/>
+    </variables>
+    <faultHandlers id="BpFhs0">
+        <catchAll id="BpCAl0">
+            <sequence name="Sequence1" id="BpSeq0">
+                <assign name="AssignCommonErrorHandler" id="BpAss0">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="bpws:getVariableData('inputVariable','payload','/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns11:OracleSFDCNoItemOrderHeader/ns11:OracleSFDCNoItemOrderDetailsHeader/ns12:CUST_PO_NUMBER')"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:UniqueIdentNum"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:Fault/ns2:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:Fault/ns2:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:Fault/ns2:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:Fault/ns2:FaultTime"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:CorrectiveAction"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:SendEmail"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;status&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:status"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:createddatetime"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;Related_Object_ID__c&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:Related_Object_ID__c"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference('routerHostName')"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:Router_Host_Name__c"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference('SFDCErrObj')"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns2:CommonSFDCErrorLog/ns2:CommonErrorHandlerInputDetails/ns2:SFDCErrObj"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns1:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+                <switch name="Switch2" id="BpSwt0">
+                    <case condition="bpws:getVariableData('inputVariable','payload','/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns14:process')='SFDC'">
+                        <bpelx:annotation>
+                            <bpelx:general>
+                                <bpelx:property name="userLabel">SFDCSource</bpelx:property>
+                            </bpelx:general>
+                        </bpelx:annotation>
+                        <sequence name="Sequence8" id="BpSeq1">
+                            <assign name="AssignErrorMessage" id="BpAss1">
+                                <copy>
+                                    <from expression="concat('ErrorMessage : ',substring(ora:getFaultAsString(),1,2000))"/>
+                                    <to variable="Inputparam" query="/ns7:Inputparam/ns7:errorMessage"/>
+                                </copy>
+                            </assign>
+                            <assign name="TransUpdateFailureStatus" id="BpAss2">
+                                <bpelx:annotation>
+                                    <bpelx:pattern>transformation</bpelx:pattern>
+                                </bpelx:annotation>
+                                <copy>
+                                    <from expression="ora:doXSLTransformForDoc('Transformations/TransUpdateFailureStatus.xsl', $inputVariable.payload, 'Inputparam', $Inputparam)"/>
+                                    <to variable="InvUpdateFailureStatus_IV" part="payload"/>
+                                </copy>
+                            </assign>
+                            <invoke name="InvUpdateFailureStatus" inputVariable="InvUpdateFailureStatus_IV" partnerLink="SFDCUtilityService" portType="ns8:SFDCUtilityService" operation="update" bpelx:invokeAsDetail="no" id="BpInv1"/>
+                        </sequence>
+                    </case>
+                    <otherwise>
+                        <empty name="Empty" id="BpEmp0"/>
+                    </otherwise>
+                </switch>
+                <terminate name="Terminate" id="BpTer0"/>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+    <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+    <sequence name="main" id="BpSeq2">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in CreateSalesOrderOracleProv.wsdl) -->
+        <receive name="receiveInput" partnerLink="createsalesorderoracleprov_client" portType="client:CreateSalesOrderOracleProv" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+        <switch name="Switch4" id="BpSwt1">
+            <case condition="ora:countNodes('inputVariable','payload','/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns11:OracleSFDCNoItemOrderHeader/ns11:OracleSFDCNoItemOrderDetailsHeader')>0">
+                <bpelx:annotation>
+                    <bpelx:general>
+                        <bpelx:property name="userLabel">OrderExist</bpelx:property>
+                    </bpelx:general>
+                </bpelx:annotation>
+                <sequence id="BpSeq3">
+                    <assign name="AssignTitle" id="BpAss3">
+                        <copy>
+                            <from expression="concat('PO Number : ',  bpws:getVariableData('inputVariable','payload','/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns11:OracleSFDCNoItemOrderHeader/ns11:OracleSFDCNoItemOrderDetailsHeader/ns12:CUST_PO_NUMBER'))"/>
+                            <to variable="title"/>
+                        </copy>
+                        <copy>
+                            <from expression="oraext:setFlowInstanceTitle($title)"/>
+                            <to variable="title"/>
+                        </copy>
+                        <copy>
+                            <from expression="ora:getCompositeInstanceId()"/>
+                            <to variable="Inputparam" query="/ns7:Inputparam/ns7:instanceid"/>
+                        </copy>
+                    </assign>
+                    <assign name="AssignOrderId" id="BpAss4">
+                        <copy>
+                            <from variable="inputVariable" part="payload" query="/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns11:OracleSFDCNoItemOrderHeader/ns11:OracleSFDCNoItemOrderDetailsHeader/ns12:SFDC_ID"/>
+                            <to variable="InvDeleteToDSRSOLinesEBS_IV" part="DeleteToDSRSOLinesEBSInput_msg" query="/ns19:DeleteToDSRSOLinesEBSInput/ns19:OrderId"/>
+                        </copy>
+                    </assign>
+                    <invoke name="InvDeleteToDSRSOLinesOracle" partnerLink="DeleteToDSRSOLinesEBS" portType="ns17:DeleteToDSRSOLinesEBS_ptt" operation="DeleteToDSRSOLinesEBS" inputVariable="InvDeleteToDSRSOLinesEBS_IV" bpelx:invokeAsDetail="no" id="BpInv2"/>
+                    <assign name="TransUpsertToDSRSOHDROracle" id="BpAss5">
+                        <bpelx:annotation>
+                            <bpelx:pattern>transformation</bpelx:pattern>
+                        </bpelx:annotation>
+                        <copy>
+                            <from expression="ora:doXSLTransformForDoc('Transformations/TransUpsertToDSRSOHDREBS.xsl', $inputVariable.payload, 'Inputparam', $Inputparam)"/>
+                            <to variable="InvUpsertToDSRSOHDREBS_IV" part="XxspwrDsrSoHeaderCollection"/>
+                        </copy>
+                    </assign>
+                    <invoke name="InvUpsertToDSRSOHDROracle" inputVariable="InvUpsertToDSRSOHDREBS_IV" partnerLink="UpsertToDSRSOHDREBS" portType="ns4:UpsertToDSRSOHDREBS_ptt" operation="merge" bpelx:invokeAsDetail="no" id="BpInv3"/>
+                    <scope name="ScopeSFDC" variableAccessSerializable="no" id="BpScp0">
+                        <switch name="Switch1" id="BpSwt2">
+                            <case condition="bpws:getVariableData('inputVariable','payload','/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns14:process')='SFDC'">
+                                <bpelx:annotation>
+                                    <bpelx:general>
+                                        <bpelx:property name="userLabel">SFDCSource</bpelx:property>
+                                    </bpelx:general>
+                                </bpelx:annotation>
+                                <sequence id="BpSeq4">
+                                    <assign name="TransUpdateInterfaceStatus" id="BpAss6">
+                                        <bpelx:annotation>
+                                            <bpelx:pattern>transformation</bpelx:pattern>
+                                        </bpelx:annotation>
+                                        <copy>
+                                            <from expression="ora:doXSLTransformForDoc('Transformations/TransUpdateInterfaceStatus.xsl', $inputVariable.payload)"/>
+                                            <to variable="InvSFDCUtilityService_IV" part="payload"/>
+                                        </copy>
+                                    </assign>
+                                    <invoke name="InvSFDCUtilityService" inputVariable="InvSFDCUtilityService_IV" partnerLink="SFDCUtilityService" portType="ns8:SFDCUtilityService" operation="update" bpelx:invokeAsDetail="no" id="BpInv4"/>
+                                </sequence>
+                            </case>
+                            <otherwise>
+                                <empty name="Empty" id="BpEmp1"/>
+                            </otherwise>
+                        </switch>
+                    </scope>
+                </sequence>
+            </case>
+            <otherwise>
+                <sequence name="Sequence11" id="BpSeq5">
+                    <assign name="AssignTitle" id="BpAss7">
+                        <copy>
+                            <from expression="oraext:setFlowInstanceTitle('NoData')"/>
+                            <to variable="title"/>
+                        </copy>
+                    </assign>
+                    <empty name="Empty" id="BpEmp2"/>
+                </sequence>
+            </otherwise>
+        </switch>
+        <switch name="Switch" id="BpSwt3">
+            <case condition="bpws:getVariableData('inputVariable','payload','/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns14:callService')='true'">
+                <bpelx:annotation>
+                    <bpelx:pattern>CallOracleRequester</bpelx:pattern>
+                    <bpelx:general>
+                        <bpelx:property name="userLabel">CallOracleRequester</bpelx:property>
+                    </bpelx:general>
+                </bpelx:annotation>
+                <sequence name="Sequence10" id="BpSeq6">
+                    <assign name="AssignDataSource" id="BpAss8">
+                        <copy>
+                            <from variable="inputVariable" part="payload" query="/ns9:ProcessOracleSFDCNoItemOrdersReq/ns9:DataArea/ns14:process"/>
+                            <to variable="InvUpdateSalesOrderResponseOracleReq_IV" part="payload" query="/ns15:process/ns15:input"/>
+                        </copy>
+                    </assign>
+                    <invoke name="InvUpdateSalesOrderResponseOracleReq" inputVariable="InvUpdateSalesOrderResponseOracleReq_IV" partnerLink="UpdateSalesOrderResponseOracleReq" portType="ns15:UpdateSalesOrderResponseOracleReq" operation="process" bpelx:invokeAsDetail="no" id="BpInv5"/>
+                </sequence>
+            </case>
+            <otherwise>
+                <empty name="Empty" id="BpEmp3"/>
+            </otherwise>
+        </switch>
+    </sequence>
+</process>

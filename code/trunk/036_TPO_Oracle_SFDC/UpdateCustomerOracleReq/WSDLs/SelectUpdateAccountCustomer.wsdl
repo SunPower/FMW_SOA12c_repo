@@ -1,0 +1,26 @@
+<?binding.jca SelectUpdateAccountCustomer_db.jca?>
+<wsdl:definitions name="SelectUpdateAccountCustomer" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/UpdateCustomerOracleReq/SelectUpdateAccountCustomer" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectUpdateAccountCustomer" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/UpdateCustomerOracleReq/SelectUpdateAccountCustomer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectUpdateAccountCustomer_plt">
+        <plt:role name="SelectUpdateAccountCustomer_role">
+            <plt:portType name="tns:SelectUpdateAccountCustomer_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectUpdateAccountCustomer"
+                    schemaLocation="../Schemas/SelectUpdateAccountCustomer.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectUpdateAccountCustomerInput_msg">
+        <wsdl:part name="SelectUpdateAccountCustomerInput_msg" element="db:SelectUpdateAccountCustomerInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectUpdateAccountCustomerOutputCollection_msg">
+        <wsdl:part name="SelectUpdateAccountCustomerOutputCollection" element="db:SelectUpdateAccountCustomerOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectUpdateAccountCustomer_ptt">
+        <wsdl:operation name="SelectUpdateAccountCustomer">
+            <wsdl:input message="tns:SelectUpdateAccountCustomerInput_msg"/>
+            <wsdl:output message="tns:SelectUpdateAccountCustomerOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

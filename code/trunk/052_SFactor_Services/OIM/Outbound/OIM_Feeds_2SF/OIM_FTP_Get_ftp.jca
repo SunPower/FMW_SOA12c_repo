@@ -1,0 +1,15 @@
+<adapter-config name="OIM_FTP_Get" adapter="ftp" wsdlLocation="WSDLs/OIM_FTP_Get.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/ftp/oim"/>
+  <endpoint-interaction portType="SynchRead_ptt" operation="SynchRead">
+    <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPReadInteractionSpec">
+      <property name="LogicalArchiveDirectory" value="OIM_ArchLoc"/>
+      <property name="UseRemoteArchive" value="true"/>
+      <property name="FileType" value="ascii"/>
+      <property name="LogicalDirectory" value="OIM_ReadLoc"/>
+      <property name="FileName" value="dynamicfilename"/>
+      <property name="DeleteFile" value="true"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

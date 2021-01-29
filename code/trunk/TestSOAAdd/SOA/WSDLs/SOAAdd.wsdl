@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="SOAAdd" targetNamespace="http://xmlns.oracle.com/POCApp/TestSOAAdd/SOAAdd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/POCApp/TestSOAAdd/SOAAdd" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/POCApp/TestSOAAdd/SOAAdd" schemaLocation="../Schemas/SOAAdd.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="SOAAddRequestMessage">
+      <wsdl:part name="payload" element="client:process"/>
+   </wsdl:message>
+   <wsdl:message name="SOAAddResponseMessage">
+      <wsdl:part name="payload" element="client:processResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="SOAAdd">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:SOAAddRequestMessage"/>
+         <wsdl:output message="client:SOAAddResponseMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <plnk:partnerLinkType name="SOAAdd">
+      <plnk:role name="SOAAddProvider" portType="client:SOAAdd"/>
+   </plnk:partnerLinkType>
+</wsdl:definitions>

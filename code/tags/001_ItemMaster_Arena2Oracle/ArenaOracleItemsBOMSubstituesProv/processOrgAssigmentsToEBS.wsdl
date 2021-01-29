@@ -1,0 +1,22 @@
+<?binding.jca processOrgAssigmentsToEBS_db.jca?>
+<wsdl:definitions name="processOrgAssigmentsToEBS" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesProv/processOrgAssigmentsToEBS" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesProv/processOrgAssigmentsToEBS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/processOrgAssigmentsToEBS">
+    <plt:partnerLinkType name="processOrgAssigmentsToEBS_plt">
+        <plt:role name="processOrgAssigmentsToEBS_role">
+            <plt:portType name="tns:processOrgAssigmentsToEBS_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/processOrgAssigmentsToEBS"
+                    schemaLocation="Schemas/processOrgAssigmentsToEBS_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrArenaOrgAssignmentsCollection_msg">
+        <wsdl:part name="XxspwrArenaOrgAssignmentsCollection" element="top:XxspwrArenaOrgAssignmentsCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="processOrgAssigmentsToEBS_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:XxspwrArenaOrgAssignmentsCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

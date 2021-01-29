@@ -1,0 +1,21 @@
+<adapter-config name="SF_FTP_MDECSFeed" adapter="ftp" wsdlLocation="../SF_FTP_MDECSFeed.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIincludeWildcard="SF_MDECS*.csv" location="eis/FTP/successfact"/>
+  <endpoint-activation portType="Get_ptt" operation="Get">
+    <activation-spec className="oracle.tip.adapter.ftp.inbound.FTPActivationSpec">
+      <property name="LogicalArchiveDirectory" value="SF_MDECSArchiveLoc"/>
+      <property name="FileModificationTime" value="FileSystem"/>
+      <property name="FileType" value="ascii"/>
+      <property name="AsAttachment" value="true"/>
+      <property name="LogicalDirectory" value="SF_MDECSReadLoc"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="MinimumAge" value="60"/>
+      <property name="ModificationTimeFormat" value="4,18,yyyyMMddHHmmSS"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="DeleteFile" value="true"/>
+      <property name="IncludeFiles" value="SF_MDECS.*\.csv"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

@@ -1,0 +1,24 @@
+<wsdl:definitions name="ArenaOracleDataFeedSvc" targetNamespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesCanonical" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1" xmlns:tns="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesCanonical" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1" schemaLocation="../xsd/CDM/BOD/Nouns/ArenaOracleDataFeed/V1/ProcessArenaOracleDataFeed.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="requestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessArenaOracleDataFeed"/>
+    </wsdl:message>
+    <wsdl:portType name="ArenaOracleItemsBOMSubstituesSvc_ptt">
+        <wsdl:operation name="execute">
+            <wsdl:input message="tns:requestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ArenaOracleItemsBOMSubstituesSvcSOAP" type="tns:ArenaOracleItemsBOMSubstituesSvc_ptt">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="execute">
+            <soap:operation style="document" soapAction="http://oracle.com/sca/soapservice/POC/Project1/ArenaOracleItemsBOMSubstituesSvc/execute"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="payload"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

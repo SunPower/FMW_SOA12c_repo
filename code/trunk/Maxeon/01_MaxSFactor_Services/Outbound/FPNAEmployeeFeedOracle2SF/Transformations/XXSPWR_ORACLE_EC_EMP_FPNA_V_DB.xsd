@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/XXSPWR_ORACLE_EC_EMP_FPNA_V_DB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/XXSPWR_ORACLE_EC_EMP_FPNA_V_DB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBInput" type="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBInput"/>
+   <xs:complexType name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBInput">
+      <xs:sequence>
+         <xs:element name="minrow" type="xs:string" nillable="true"/>
+         <xs:element name="maxrow" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutputCollection" type="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutputCollection"/>
+   <xs:complexType name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutputCollection">
+      <xs:sequence>
+         <xs:element name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutput" type="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XXSPWR_ORACLE_EC_EMP_FPNA_V_DBOutput">
+      <xs:sequence>
+         <xs:element name="text" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

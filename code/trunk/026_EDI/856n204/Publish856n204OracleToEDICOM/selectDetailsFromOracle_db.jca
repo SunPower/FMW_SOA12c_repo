@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="selectDetailsFromOracle" adapter="db" wsdlLocation="selectDetailsFromOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="selectDetailsFromOracle_ptt" operation="selectDetailsFromOracle">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select signal_type,region,customer_name,c_204_ship_to_address_4,c_204_source_line_number,c_204_cust_po_number,c_204_requested_quantity,c_204_packing_instructions,c_204_jgzz_fiscal_code,c_204_ship_bill_address_1,c_204_ship_bill_address_2,c_204_ship_bill_address_3,c_204_ship_bill_city,c_204_ship_bill_region,c_204_ship_bill_postal_code,c_204_ship_bill_country,c_204_vat,c_204_order_type,c_204_shipment_priority,c_204_ship_to_contact_name,c_204_ship_to_contact_phone,c_204_header_attachments ,c_204_parent_item,c_204_parent_qty,c_856_ship_from_location,c_856_port_of_loading,c_856_tax_name,c_856_port_of_discharge,comn_etd,c_856_unit_price,c_856_total_amount,c_856_pallet,c_856_container,c_856_seal_code,c_856_eta_site,c_856_internal_request_number,c_856_src_proj_num,c_856_src_proj_name,c_856_bill_to_location_id,c_856_from_locator,c_856_destination_subinventory,comn_delivery_number,comn_packing_slip,comn_sys_date,comn_ship_from_address_1,comn_ship_from_address_2,comn_ship_from_address_3,comn_ship_from_city,comn_ship_from_region,comn_ship_from_postal_code,comn_ship_from_country,comn_ship_to_address_1,comn_ship_to_address_2,comn_ship_to_address_3,comn_ship_to_city,comn_ship_to_region,comn_ship_to_postal_code,comn_ship_to_country,comn_eta_port,comn_dest_warehouse_code,comn_carrier_code,comn_ship_method_code,comn_waybill,comn_freight_terms_code,comn_shipping_instructions,comn_item_flex,comn_item_description,comn_shipped_quantity,comn_requested_quantity_uom,comn_ship_date,comn_src_warehouse_code,comn_destination_project_id,comn_destination_project_name,comn_business_group,comn_ship_from_location_id,comn_ship_to_location_id,comn_source_subinventory,c_856_to_locator,comn_serial_number,comn_order_number,group_id  from xxspwr.xxspwr_edicom_856n204_outbound where STATUS_CODE in('New','Failed in SOA','Failed to publish') and LAST_UPDATE_DATE >= sysdate - 1"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

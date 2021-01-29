@@ -1,0 +1,18 @@
+<adapter-config name="PollPDFFile" adapter="file" wsdlLocation="../PollPDFFile.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIincludeWildcard="*.pdf" location="eis/FileAdapter"/>
+  <endpoint-activation portType="Read_ptt" operation="Read">
+    <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+      <property name="LogicalArchiveDirectory" value="PDFArchLoc"/>
+      <property name="LogicalDirectory" value="PDFReadLoc"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="DeleteFile" value="false"/>
+      <property name="IncludeFiles" value=".*\.pdf"/>
+	  <property name="MaxRaiseSize" value="15"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

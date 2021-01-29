@@ -1,0 +1,28 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="PublishARSupplementPaymentsOracleToOSG_BPEL"
+     targetNamespace="http://xmlns.oracle.com/OSG/PublishARSupplementPaymentsOracleToOSG/PublishARSupplementPaymentsOracleToOSG_BPEL"     
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/OSG/PublishARSupplementPaymentsOracleToOSG/PublishARSupplementPaymentsOracleToOSG_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="PublishARSupplementPaymentsOracleToOSG_BPEL">
+        <plnk:role name="PublishARSupplementPaymentsOracleToOSG_BPELProvider">
+            <plnk:portType name="client:PublishARSupplementPaymentsOracleToOSG_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/OSG/PublishARSupplementPaymentsOracleToOSG/PublishARSupplementPaymentsOracleToOSG_BPEL"
+                 schemaLocation="../Schemas/PublishARSupplementPaymentsOracleToOSG_BPEL.xsd"/>
+        </schema>        
+    </wsdl:types>
+    <wsdl:message name="PublishARSupplementPaymentsOracleToOSG_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="PublishARSupplementPaymentsOracleToOSG_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:PublishARSupplementPaymentsOracleToOSG_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

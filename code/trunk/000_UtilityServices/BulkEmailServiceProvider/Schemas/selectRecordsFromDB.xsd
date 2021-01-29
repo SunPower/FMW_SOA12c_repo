@@ -1,0 +1,31 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectRecordsFromDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/selectRecordsFromDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="selectRecordsFromDBInput" type="selectRecordsFromDBInput"/>
+   <xs:complexType name="selectRecordsFromDBInput">
+      <xs:sequence>
+         <xs:element name="interfacenumber" type="xs:string" nillable="true"/>
+         <xs:element name="email_sent" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="selectRecordsFromDBOutputCollection" type="selectRecordsFromDBOutputCollection"/>
+   <xs:complexType name="selectRecordsFromDBOutputCollection">
+      <xs:sequence>
+         <xs:element name="selectRecordsFromDBOutput" type="selectRecordsFromDBOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="selectRecordsFromDBOutput">
+      <xs:sequence>
+         <xs:element name="FAULTMESSAGE" type="xs:string" nillable="true"/>
+         <xs:element name="FAULTCODE" type="xs:string" nillable="true"/>
+         <xs:element name="FAULTTIME" type="xs:dateTime" nillable="true"/>
+         <xs:element name="FAULTDESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="CORRECTIVEACTION" type="xs:string" nillable="true"/>
+         <xs:element name="INTERFACENUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="INTERFACENAME" type="xs:string" nillable="true"/>
+         <xs:element name="INSTANCENUMBER" type="xs:decimal" nillable="true"/>
+         <xs:element name="PROCESSNAME" type="xs:string" nillable="true"/>
+         <xs:element name="UNIQUE_IDENTIFIER" type="xs:string" nillable="true"/>
+         <xs:element name="EMAIL_SENT" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

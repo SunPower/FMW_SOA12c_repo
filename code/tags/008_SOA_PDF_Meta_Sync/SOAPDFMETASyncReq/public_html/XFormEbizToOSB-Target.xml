@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns1:ProcessPDFFTPSalesForce xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1">
+   <ns1:DataArea>
+      <ns4:PDFSalesForce xmlns:ns4="http://www.sunpowercorp.com/Noun/PDFFTPSalesForce/V1">
+         <ns4:PDFSalesForceDetails>
+            <ns2:TRX_NUMBER xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">TRX_NUMBER16</ns2:TRX_NUMBER>
+            <ns2:BILL_TO_CUSTOMER_ID xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">17</ns2:BILL_TO_CUSTOMER_ID>
+            <ns2:CUSTOMER_NUMBER xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">CUSTOMER_NUMBER18</ns2:CUSTOMER_NUMBER>
+            <ns2:TRX_STATUS xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">TRX_STATUS19</ns2:TRX_STATUS>
+            <ns2:TRX_DATE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">2012-12-13T16:13:54.255</ns2:TRX_DATE>
+            <ns2:TRX_CREATION_DATE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">2012-12-13T16:13:54.255</ns2:TRX_CREATION_DATE>
+            <ns2:TRX_TYPE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">TRX_TYPE20</ns2:TRX_TYPE>
+            <ns2:TRX_TYPE_NAME xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">TRX_TYPE_NAME21</ns2:TRX_TYPE_NAME>
+            <ns2:TRX_TYPE_DESC xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">TRX_TYPE_DESC22</ns2:TRX_TYPE_DESC>
+            <ns2:OPERATING_UNIT_NAME xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">OPERATING_UNIT_NAME23</ns2:OPERATING_UNIT_NAME>
+            <ns2:CURRENCY_CODE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">CURRENCY_CODE24</ns2:CURRENCY_CODE>
+            <ns2:TRANSACTION_CURRENCY_CODE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">TRANSACTION_CURRENCY_CODE25</ns2:TRANSACTION_CURRENCY_CODE>
+            <ns2:LAST_UPDATE_DATE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">2012-12-13T16:13:54.256</ns2:LAST_UPDATE_DATE>
+            <ns2:CREATED_BY xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">26</ns2:CREATED_BY>
+            <ns2:LAST_UPDATED_BY xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">27</ns2:LAST_UPDATED_BY>
+            <ns2:LAST_UPDATED_LOGIN xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">28</ns2:LAST_UPDATED_LOGIN>
+            <ns2:RECORD_STATUS xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">RECORD_STATUS29</ns2:RECORD_STATUS>
+            <ns2:RECORD_ID xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">30</ns2:RECORD_ID>
+            <ns2:ERROR_MESSAGE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">ERROR_MESSAGE31</ns2:ERROR_MESSAGE>
+            <ns2:PDF_FILE_NAME xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">PDF_FILE_NAME32</ns2:PDF_FILE_NAME>
+            <ns2:TRX_LAST_UPDATED_DATE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">2012-12-13T16:13:54.256</ns2:TRX_LAST_UPDATED_DATE>
+            <ns2:T_CREATION_DATE xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">T_CREATION_DATE33</ns2:T_CREATION_DATE>
+            <ns2:TRX_TYPE_MEANING xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">TRX_TYPE_MEANING34</ns2:TRX_TYPE_MEANING>
+            <ns2:ORG_ID xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1">35</ns2:ORG_ID>
+            <ns2:Body xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1"/>
+            <ns2:SourceDirectoryPath xmlns:ns2="http://www.sunpowercorp.com/Common/PDFFTPSalesForceCommonTypes/V1"/>
+         </ns4:PDFSalesForceDetails>
+      </ns4:PDFSalesForce>
+   </ns1:DataArea>
+</ns1:ProcessPDFFTPSalesForce>

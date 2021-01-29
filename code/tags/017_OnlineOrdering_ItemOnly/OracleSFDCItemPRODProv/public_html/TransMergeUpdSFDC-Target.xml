@@ -1,0 +1,42 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:update xmlns:tns="urn:partner.soap.sforce.com">
+   <tns:sObjects>
+      <ens:type xmlns:ens="urn:sobject.partner.soap.sforce.com">Item__c</ens:type>
+      <ens:Name xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_ID__c228</ens:Name>
+      <ens:Active__c xmlns:ens="urn:sobject.partner.soap.sforce.com">true</ens:Active__c>
+      <ens:Description__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Description__c227</ens:Description__c>
+      <ens:Item_ID__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_ID__c228</ens:Item_ID__c>
+      <ens:Long_Description__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Long_Description__c229</ens:Long_Description__c>
+      <ens:Item_Category_3__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_3__c230</ens:Item_Category_3__c>
+      <ens:Item_Category_2__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_2__c231</ens:Item_Category_2__c>
+      <ens:Item_Category_1__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_1__c232</ens:Item_Category_1__c>
+      <ens:Product_Type__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Product_Type__c233</ens:Product_Type__c>
+      <ens:Id xmlns:ens="urn:sobject.partner.soap.sforce.com">Id2382382382382382</ens:Id>
+   </tns:sObjects>
+   <tns:sObjects>
+      <ens:type xmlns:ens="urn:sobject.partner.soap.sforce.com">Item__c</ens:type>
+      <ens:Name xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_ID__c242</ens:Name>
+      <ens:Active__c xmlns:ens="urn:sobject.partner.soap.sforce.com">true</ens:Active__c>
+      <ens:Description__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Description__c241</ens:Description__c>
+      <ens:Item_ID__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_ID__c242</ens:Item_ID__c>
+      <ens:Long_Description__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Long_Description__c243</ens:Long_Description__c>
+      <ens:Item_Category_3__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_3__c244</ens:Item_Category_3__c>
+      <ens:Item_Category_2__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_2__c245</ens:Item_Category_2__c>
+      <ens:Item_Category_1__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_1__c246</ens:Item_Category_1__c>
+      <ens:Product_Type__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Product_Type__c247</ens:Product_Type__c>
+      <ens:Id xmlns:ens="urn:sobject.partner.soap.sforce.com">Id2522522522522522</ens:Id>
+   </tns:sObjects>
+   <tns:sObjects>
+      <ens:type xmlns:ens="urn:sobject.partner.soap.sforce.com">Item__c</ens:type>
+      <ens:Name xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_ID__c256</ens:Name>
+      <ens:Active__c xmlns:ens="urn:sobject.partner.soap.sforce.com">true</ens:Active__c>
+      <ens:Description__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Description__c255</ens:Description__c>
+      <ens:Item_ID__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_ID__c256</ens:Item_ID__c>
+      <ens:Long_Description__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Long_Description__c257</ens:Long_Description__c>
+      <ens:Item_Category_3__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_3__c258</ens:Item_Category_3__c>
+      <ens:Item_Category_2__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_2__c259</ens:Item_Category_2__c>
+      <ens:Item_Category_1__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Item_Category_1__c260</ens:Item_Category_1__c>
+      <ens:Product_Type__c xmlns:ens="urn:sobject.partner.soap.sforce.com">Product_Type__c261</ens:Product_Type__c>
+      <ens:Id xmlns:ens="urn:sobject.partner.soap.sforce.com">Id2662662662662662</ens:Id>
+   </tns:sObjects>
+</tns:update>

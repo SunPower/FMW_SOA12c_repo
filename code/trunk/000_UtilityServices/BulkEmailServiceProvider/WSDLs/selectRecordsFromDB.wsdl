@@ -1,0 +1,26 @@
+<?binding.jca selectRecordsFromDB_db.jca?>
+<wsdl:definitions name="selectRecordsFromDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/selectRecordsFromDB" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/selectRecordsFromDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/selectRecordsFromDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="selectRecordsFromDB_plt">
+        <plt:role name="selectRecordsFromDB_role">
+            <plt:portType name="tns:selectRecordsFromDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/selectRecordsFromDB"
+                    schemaLocation="../Schemas/selectRecordsFromDB.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="selectRecordsFromDBInput_msg">
+        <wsdl:part name="selectRecordsFromDBInput_msg" element="db:selectRecordsFromDBInput"/>
+    </wsdl:message>
+    <wsdl:message name="selectRecordsFromDBOutputCollection_msg">
+        <wsdl:part name="selectRecordsFromDBOutputCollection" element="db:selectRecordsFromDBOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="selectRecordsFromDB_ptt">
+        <wsdl:operation name="selectRecordsFromDB">
+            <wsdl:input message="tns:selectRecordsFromDBInput_msg"/>
+            <wsdl:output message="tns:selectRecordsFromDBOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

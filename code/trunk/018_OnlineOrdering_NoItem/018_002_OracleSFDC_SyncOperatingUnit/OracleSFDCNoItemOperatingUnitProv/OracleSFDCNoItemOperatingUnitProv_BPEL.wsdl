@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="OracleSFDCNoItemOperatingUnitProv_BPEL" targetNamespace="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleSFDCNoItemOperatingUnitProv/OracleSFDCNoItemOperatingUnitProv_BPEL" xmlns:ns2="urn:partner.soap.sforce.com" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOperatingUnit/V1" xmlns:ns4="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleAccountNumbers/xsd/v1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:client="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleSFDCNoItemOperatingUnitProv/OracleSFDCNoItemOperatingUnitProv_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+   <plnk:partnerLinkType name="OracleSFDCNoItemOperatingUnitProv_BPEL">
+      <plnk:role name="OracleSFDCNoItemOperatingUnitProv_BPELProvider">
+         <plnk:portType name="client:OracleSFDCNoItemOperatingUnitProv_BPEL"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+   <wsdl:import namespace="urn:partner.soap.sforce.com" location="SFDCPartner.wsdl"/>
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOperatingUnit/V1"
+                 schemaLocation="Schemas/CDM/BOD/Nouns/OracleSFDCNoItemOperatingUnit/V1/ProcessOracleSFDCNoItemOperatingUnit.xsd"/>
+      </schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                     schemaLocation="Schemas/wsaaddress.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleAccountNumbers/xsd/v1"
+                     schemaLocation="Schemas/OracleAccountNumbers.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="OracleSFDCNoItemOperatingUnitProv_BPELRequestMessage">
+      <wsdl:part name="payload" element="ns1:ProcessOracleSFDCNoItemOperatingUnit"/>
+   </wsdl:message>
+   <wsdl:portType name="OracleSFDCNoItemOperatingUnitProv_BPEL">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:OracleSFDCNoItemOperatingUnitProv_BPELRequestMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

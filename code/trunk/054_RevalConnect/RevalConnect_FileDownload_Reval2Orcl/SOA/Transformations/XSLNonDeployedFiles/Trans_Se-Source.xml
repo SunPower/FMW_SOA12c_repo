@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<RevalParams xmlns="http://com.reval.webservices/params">
+   <LoginResult>LoginResult1</LoginResult>
+   <Data AsyncId="AsyncId2" DataNodeName="DataNodeName3" DataType="DataType4" AsyncRepSysId="AsyncRepSysId5">
+      <SessionId>SessionId6</SessionId>
+      <QJobSysId>QJobSysId7</QJobSysId>
+      <QJobStatus>
+         <QJobSysId>QJobSysId8</QJobSysId>
+         <QJobStatusCode>QJobStatusCode9</QJobStatusCode>
+         <QJobStatusText>QJobStatusText10</QJobStatusText>
+         <QJobErrDescr>QJobErrDescr11</QJobErrDescr>
+      </QJobStatus>
+      <CData SeqId="SeqId12">string13</CData>
+      <CData SeqId="SeqId13">string13</CData>
+      <CData SeqId="SeqId14">string13</CData>
+      <Error>Error14</Error>
+   </Data>
+   <Param ProcessName="ProcessName15">
+      <RepFavoriteName>RepFavoriteName16</RepFavoriteName>
+      <FileFormat>FileFormat17</FileFormat>
+      <QJobSysId>QJobSysId18</QJobSysId>
+      <AsyncRepSysId>AsyncRepSysId19</AsyncRepSysId>
+      <SeqId>SeqId20</SeqId>
+   </Param>
+</RevalParams>

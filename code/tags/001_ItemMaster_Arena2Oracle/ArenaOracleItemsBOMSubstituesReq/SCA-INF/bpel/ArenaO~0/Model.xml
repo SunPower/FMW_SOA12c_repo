@@ -1,0 +1,351 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jul 19 15:16:11 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="ArenaOracleItemsBOMSubstituesReq_BPEL" targetNamespace="http://www.sunpowercorp.com/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesReq/ArenaOracleItemsBOMSubstituesReq_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesReq/ArenaOracleItemsBOMSubstituesReq_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesReq/getFilesFromSunExchange" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:ns2="http://www.sunpowercorp.com/ArenaOracleDataFeedCanonical" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns3="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesCanonical" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns7="http://www.sunpowercorp.com/Common/ArenaOracleDataFeedDetailsCommonTypes/V1" xmlns:ns4="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1" xmlns:ns5="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" xmlns:ns6="http://www.sunpowercorp.com/Noun/ArenaOracleDataFeed/V1" xmlns:ns8="http://xmlns.oracle.com/SOAUtilityServices/FTPFileMoveSvc/FTPFileMoveSvc_BPEL" xmlns:ns9="http://www.sunpowercorp.com/SunPowerDevelopment/FileMove/v1/xsd" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns10="http://xmlns.oracle.com/SOAUtilityServices/FTPFileMoveService/FTPFileMoveService" xmlns:ns11="http://www.sunpowercorp.com/SunPowerDevelopment/FTPFileMoveService/v1/xsd" xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/file/ArenaOracleDataFeed/ArenaOracleItemsBOMSubstituesReq/readFilesFromArenaDir" xmlns:ns13="http://xmlns.oracle.com/SOAUtilityServices/FileMoveService/FileMoveService_BPEL" xmlns:ns14="http://www.sunpowercorp.com/SunPowerDevelopment/FileMoveService/v1/xsd" xmlns:ns15="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL" xmlns:ns16="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" xmlns:ns17="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL" xmlns:ns18="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd" xmlns:ns19="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        ArenaOracleItemsBOMSubstituesSvcWrapper.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="ArenaOracleItemsBOMSubstituesSvc" partnerLinkType="ns3:ArenaOracleItemsBOMSubstituesSvc" partnerRole="ArenaOracleItemsBOMSubstituesSvc_ptt"/>
+    <partnerLink name="readFilesFromArenaDir" partnerLinkType="ns12:Read_plt" myRole="Read_role"/>
+    <partnerLink name="CommonErrorHandler" partnerLinkType="ns15:CommonErrorHandler_BPEL" partnerRole="CommonErrorHandler_BPELProvider"/>
+    <partnerLink name="FileUtilityService" partnerLinkType="ns17:FileUtilityService_BPEL" partnerRole="FileUtilityService_BPELProvider"/>
+    <partnerLink name="CommonLoggingService" partnerLinkType="ns19:CommonLoggingService_BPEL" myRole="CommonLoggingService_BPELRequester" partnerRole="CommonLoggingService_BPELProvider"/>
+  </partnerLinks>
+  <variables>
+    <variable name="ArenaOracleItemsBOMSubstituesSvc_IV" messageType="ns3:requestMessage"/>
+    <variable name="fileName" type="xsd:string"/>
+     <variable name="fileDirectory" type="xsd:string"/>
+    <variable messageType="bpelx:RuntimeFaultMessage" name="FaultVar"/>
+    <variable name="inputVariable" messageType="ns12:Read_msg"/>
+    <variable name="InvCommonErrorHandler_IV" messageType="ns15:CommonErrorHandler_BPELRequestMessage"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="renamedFileName" type="xsd:string"/>
+    <variable name="InvFileMoveService_IV" messageType="ns17:FileUtilityService_BPELRequestMessage"/>
+    <variable name="InvFileMoveService_OV" messageType="ns17:FileUtilityService_BPELResponseMessage"/>
+    <variable name="FileDeleteService_IV" messageType="ns17:FileDeleteService_BPELRequestMessage"/>
+    <variable name="FileDeleteService_OV" messageType="ns17:FileUtilityService_BPELResponseMessage"/>
+    <variable name="InvFileDeleteService_IV" messageType="ns17:FileDeleteService_BPELRequestMessage"/>
+    <variable name="InvFileDeleteService_OV" messageType="ns17:FileUtilityService_BPELResponseMessage"/>
+    <variable name="InvCommonLoggingService_IV" messageType="ns19:CommonLoggingService_BPELRequestMessage"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+  
+  <!--
+    <catch faultName="bpelx:remoteFault" faultVariable="FaultVar">
+      <sequence name="remoteFault">
+        <assign name="AsgnFTPFileMovService">
+          <copy>
+            <from variable="fileName"/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:SourceFileName"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:TargetFileName"/>
+          </copy>
+          <copy>
+            <from variable="fileDirectory"/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:SourcePhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("errorDir")'/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:TargetPhysicalDirectory"/>
+          </copy>
+        </assign>
+        <invoke name="InvFTPFileMoveService" partnerLink="FTPFileMoveService"
+                portType="ns10:FTPFileMoveService" operation="process"
+                inputVariable="FTPFileMoveService_IV"
+                outputVariable="FTPFileMoveService_OV"
+                bpelx:invokeAsDetail="no"/>
+      </sequence>
+    </catch>
+    <catch faultName="bpelx:bindingFault" faultVariable="FaultVar">
+    <sequence name="bindingFault">
+      <assign name="AsgnFTPFileMovService">
+          <copy>
+            <from variable="fileName"/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:SourceFileName"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:TargetFileName"/>
+          </copy>
+          <copy>
+            <from variable="fileDirectory"/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:SourcePhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("errorDir")'/>
+            <to variable="FTPFileMoveService_IV" part="payload"
+                query="/ns11:FileMoveReq/ns11:TargetPhysicalDirectory"/>
+          </copy>
+        </assign>
+        <invoke name="InvFTPFileMoveService" partnerLink="FTPFileMoveService"
+                portType="ns10:FTPFileMoveService" operation="process"
+                inputVariable="FTPFileMoveService_IV"
+                outputVariable="FTPFileMoveService_OV"
+                bpelx:invokeAsDetail="no"/>
+              </sequence>
+    </catch>-->
+    <catchAll id="BpCAl0">
+     <sequence name="catchAll" id="BpSeq0">
+       <assign name="AsgnFileMovService" id="BpAss0">
+          <copy>
+            <from variable="fileDirectory"/>
+            <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:SourcePhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:SourceFileName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;errorDir&quot;)"/>
+            <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:TargetPhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:TargetFileName"/>
+          </copy>
+        </assign>
+        <invoke name="InvFileMoveService" inputVariable="InvFileMoveService_IV" outputVariable="InvFileMoveService_OV" partnerLink="FileUtilityService" portType="ns17:FileUtilityService_BPEL" operation="Move" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <assign name="AsgnInvCommonErrorHandler" id="BpAss1">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="concat(&quot;File Name-&quot;,bpws:getVariableData('fileName'))"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="&quot;ArenaOracle_ItemsBOMSubstitues&quot;"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;ArenaOracleItemsBOMSubstituesReq&quot;"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference('FaultCode')"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultMessage"/>
+          </copy>
+        </assign>
+        <switch name="SwitchSendEmail" id="BpSwt0">
+          <case condition="ora:getPreference(&quot;SendEmail&quot;)=&quot;Y&quot;">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">SendEmail_IS_YES</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <invoke name="InvCommonErrorHandler" inputVariable="InvCommonErrorHandler_IV" partnerLink="CommonErrorHandler" portType="ns15:CommonErrorHandler_BPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv1"/>
+          </case>
+        </switch>
+        <assign name="AsgnCommonLoggingService" id="BpAss2">
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:InstanceNumber"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:instancenumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:emailSent"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:InterfaceNumber"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:interfacenumber"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:InterfaceName"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:interfacename"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:ProcessName"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:processname"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Severity"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:severity"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultCode"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:faultcode"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultDescription"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:faultdescription"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultMessage"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:faultmessage"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:Fault/ns16:FaultTime"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:faulttime"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:FaultSystemName"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:faultsystemname"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:bOpenServiceTicket"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:bopenserviceticket"/>
+          </copy>
+          <copy>
+            <from variable="InvCommonErrorHandler_IV" part="payload" query="/ns16:CommonErrorHandlerInput/ns16:CorrectiveAction"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:correctiveaction"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:createddatetime"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="InvCommonLoggingService_IV" part="payload" query="/ns19:Process/ns19:ProcessLog/ns19:uniqueIdentifier"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonLoggingService" inputVariable="InvCommonLoggingService_IV" partnerLink="CommonLoggingService" portType="ns19:CommonLoggingService_BPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv2"/>
+        <terminate name="Terminate1" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main" id="BpSeq1">
+    <receive name="receiveFilesFromArenaDir" createInstance="yes" partnerLink="readFilesFromArenaDir" portType="ns12:Read_ptt" operation="Read" variable="inputVariable" id="BpRcv0">
+      <bpelx:property name="jca.file.FileName" variable="fileName"/>
+      <bpelx:property name="jca.file.Directory" variable="fileDirectory"/>
+    </receive>
+    
+    <assign name="AsgnSetTitle" id="BpAss3">
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(concat(&quot;FileName: &quot;,$fileName))"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="concat(bpws:getVariableData('fileName'),&quot;.s&quot;)"/>
+        <to variable="renamedFileName"/>
+      </copy>
+    </assign>
+    <assign name="AsgnFileDeleteServiceInput" id="BpAss4">
+      <copy>
+        <from variable="fileDirectory"/>
+        <to variable="InvFileDeleteService_IV" part="payload" query="/ns18:FileDeleteReq/ns18:TargetPhysicalDirectory"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;trriggerFile&quot;)"/>
+        <to variable="InvFileDeleteService_IV" part="payload" query="/ns18:FileDeleteReq/ns18:TargetFileName"/>
+      </copy>
+    </assign>
+    <invoke name="InvFileDeleteService" inputVariable="InvFileDeleteService_IV" outputVariable="InvFileDeleteService_OV" partnerLink="FileUtilityService" portType="ns17:FileUtilityService_BPEL" operation="Delete" bpelx:invokeAsDetail="no" id="BpInv3"/>
+    <assign name="TransFTPInputToArenaOracleItemsBOMSubstituesSvcInput" id="BpAss5">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransFTPInputToArenaOracleBOMSubSvcInput.xsl', $inputVariable.body)"/>
+        <to part="payload" variable="ArenaOracleItemsBOMSubstituesSvc_IV"/>
+      </copy>
+    </assign>
+    <assign name="AsgnFileNameToBOMSubstituesSvcInput" id="BpAss6">
+      <copy>
+        <from expression="ora:getPreference(&quot;successDir&quot;)"/>
+        <to variable="ArenaOracleItemsBOMSubstituesSvc_IV" part="payload" query="/ns4:ProcessArenaOracleDataFeed/ns5:ApplicationArea/ns5:FileInfo/ns5:SuccessDir"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;errorDir&quot;)"/>
+        <to variable="ArenaOracleItemsBOMSubstituesSvc_IV" part="payload" query="/ns4:ProcessArenaOracleDataFeed/ns5:ApplicationArea/ns5:FileInfo/ns5:ErrorDir"/>
+      </copy>
+      <copy>
+        <from variable="fileDirectory"/>
+        <to variable="ArenaOracleItemsBOMSubstituesSvc_IV" part="payload" query="/ns4:ProcessArenaOracleDataFeed/ns5:ApplicationArea/ns5:FileInfo/ns5:InboundDir"/>
+      </copy>
+      <copy>
+        <from variable="fileName"/>
+        <to variable="ArenaOracleItemsBOMSubstituesSvc_IV" part="payload" query="/ns4:ProcessArenaOracleDataFeed/ns5:ApplicationArea/ns5:FileInfo/ns5:TargetFileName"/>
+      </copy>
+      <copy>
+        <from variable="renamedFileName"/>
+        <to variable="ArenaOracleItemsBOMSubstituesSvc_IV" part="payload" query="/ns4:ProcessArenaOracleDataFeed/ns5:ApplicationArea/ns5:FileInfo/ns5:sourceFileName"/>
+      </copy>
+    </assign>
+    <invoke name="ArenaOracleItemsBOMSubstituesSvc" partnerLink="ArenaOracleItemsBOMSubstituesSvc" portType="ns3:ArenaOracleItemsBOMSubstituesSvc_ptt" operation="execute" inputVariable="ArenaOracleItemsBOMSubstituesSvc_IV" bpelx:invokeAsDetail="no" id="BpInv4"/>
+            <assign name="AsgnFileMovService" id="BpAss7">
+      <copy>
+        <from variable="fileDirectory"/>
+        <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:SourcePhysicalDirectory"/>
+      </copy>
+      <copy>
+        <from variable="fileName"/>
+        <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:SourceFileName"/>
+      </copy>
+      <copy>
+        <from variable="fileDirectory"/>
+        <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:TargetPhysicalDirectory"/>
+      </copy>
+      <copy>
+        <from variable="renamedFileName"/>
+        <to variable="InvFileMoveService_IV" part="payload" query="/ns18:FileUtilityReq/ns18:TargetFileName"/>
+      </copy>
+    </assign>
+    <invoke name="InvFileMoveService" partnerLink="FileUtilityService" portType="ns17:FileUtilityService_BPEL" operation="Move" inputVariable="InvFileMoveService_IV" outputVariable="InvFileMoveService_OV" bpelx:invokeAsDetail="no" id="BpInv5"/>
+  </sequence>
+</process>

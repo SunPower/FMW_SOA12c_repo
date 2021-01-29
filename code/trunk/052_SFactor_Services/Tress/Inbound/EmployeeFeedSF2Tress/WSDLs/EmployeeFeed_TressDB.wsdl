@@ -1,0 +1,22 @@
+<?binding.jca EmployeeFeed_TressDB_db.jca?>
+<wsdl:definitions name="EmployeeFeed_TressDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SFEC/EmployeeFeedSF2Tress/EmployeeFeed_TressDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SFEC/EmployeeFeedSF2Tress/EmployeeFeed_TressDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/EmployeeFeed_TressDB">
+    <plt:partnerLinkType name="EmployeeFeed_TressDB_plt">
+        <plt:role name="EmployeeFeed_TressDB_role">
+            <plt:portType name="tns:EmployeeFeed_TressDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/EmployeeFeed_TressDB"
+                    schemaLocation="../Schemas/EmployeeFeed_TressDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="HireCollection_msg">
+        <wsdl:part name="HireCollection" element="top:HireCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="EmployeeFeed_TressDB_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:HireCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

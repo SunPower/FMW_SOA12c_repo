@@ -1,0 +1,48 @@
+2017-03-09 03:30:27.730/2.923 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2017-03-09 03:30:27.836/3.028 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2017-03-09 03:30:27.839/3.031 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2017-03-09 03:30:27.846/3.039 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2017-03-09 03:30:27.848/3.041 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2017-03-09 03:30:27.850/3.043 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2017-03-09 03:30:28.019/3.211 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2017-03-09 03:30:28.025/3.216 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2017-03-09 03:30:28.525/3.717 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "sn38854's cluster" has been automatically generated
+Mar 09, 2017 3:30:32 AM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Mar 09, 2017 3:30:34 AM oracle.fabric.common.wsdl.SchemaBuilder resolveWorkFlowSchemas
+WARNING: Ignoring composite local workflow schema of file:/D:/12c_Ant/ant_soa/code/Publish856n204OracleToEDICOM/Schemas/NotificationService.xsd as there is a MDS shared version of the schema used by workflow engine oramds:/soa/shared/workflow/NotificationService.xsd
+Mar 09, 2017 3:30:35 AM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Mar 09, 2017 3:30:36 AM com.collaxa.cube.CubeLogger info
+INFO: validating "Publish856n204OracleToEDICOMBPEL.bpel" ...
+Mar 09, 2017 3:30:37 AM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+Mar 09, 2017 3:30:40 AM oracle.fabric.common.wsdl.SchemaBuilder resolveWorkFlowSchemas
+WARNING: Ignoring composite local workflow schema of file:/D:/12c_Ant/ant_soa/code/Publish856n204OracleToEDICOM/Schemas/NotificationService.xsd as there is a MDS shared version of the schema used by workflow engine oramds:/soa/shared/workflow/NotificationService.xsd
+Mar 09, 2017 3:30:44 AM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Mar 09, 2017 3:30:44 AM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Mar 09, 2017 3:30:44 AM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Mar 09, 2017 3:30:44 AM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Mar 09, 2017 3:30:44 AM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Mar 09, 2017 3:30:44 AM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Mar 09, 2017 3:30:44 AM com.collaxa.cube.CubeLogger info
+INFO: Composed "Publish856n204OracleToEDICOMBPEL" in 228.6 milliseconds [nodes 88=2+86, 385.0 nodes/sec]
+Mar 09, 2017 3:30:47 AM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Publish856n204OracleToEDICOMBPEL" in 3.063 seconds
+Mar 09, 2017 3:30:47 AM com.collaxa.cube.CubeLogger info
+INFO: Gathered 9 files in 2.6 milliseconds
+Mar 09, 2017 3:30:47 AM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Publish856n204OracleToEDICOMBPEL" in 257.7 milliseconds
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

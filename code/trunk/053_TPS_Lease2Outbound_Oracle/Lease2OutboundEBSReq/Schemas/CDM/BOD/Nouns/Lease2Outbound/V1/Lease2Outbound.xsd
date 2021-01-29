@@ -1,0 +1,101 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Noun/Lease2Outbound/V1"
+            targetNamespace="http://www.sunpowercorp.com/Noun/Lease2Outbound/V1"
+            xmlns:lo="http://www.sunpowercorp.com/Common/Lease2OutboundCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/Lease2OutboundCommonTypes/V1"
+                schemaLocation="Lease2OutboundCommonTypes.xsd"/>
+    <xsd:element name="LeaseOrder" type="LeaseOrderType"/>
+    <xsd:complexType name="LeaseOrderType">
+        <xsd:sequence>
+            <xsd:element ref="Lease2OrderDetails" minOccurs="0"  maxOccurs="unbounded"/>
+            
+          
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="Lease2OrderDetails" type="LeaseOrderDetailsType"/>
+    <xsd:complexType name="LeaseOrderDetailsType">
+        <xsd:sequence>
+        
+        <xsd:element ref="lo:SoNumber" />
+            <xsd:element ref="lo:SoHeaderId" minOccurs="0"/>
+            <xsd:element ref="lo:LeaseNumber" minOccurs="0"/>
+            <xsd:element ref="lo:SchDelivDatePv" minOccurs="0"/>
+            <xsd:element ref="lo:SchDelivDateInv" minOccurs="0"/>
+            <xsd:element ref="lo:SchDelivDateMount" minOccurs="0"/>
+            <xsd:element ref="lo:DelivDatePv"  minOccurs="0"/>
+            <xsd:element ref="lo:DelivDateInv" minOccurs="0"/>
+            <xsd:element ref="lo:DelivDateMount" minOccurs="0"/>
+            <xsd:element ref="lo:PONumberOrig" minOccurs="0"/>
+            <xsd:element ref="lo:PONumberInstall" minOccurs="0"/>
+            <xsd:element ref="lo:PONumberInter" minOccurs="0"/>
+            <xsd:element ref="lo:POCreationDateOrig" minOccurs="0"/>
+           <xsd:element ref="lo:POCreationDateInstall" minOccurs="0"/>
+            <xsd:element ref="lo:POCreationDateInter" minOccurs="0"/>
+            <xsd:element ref="lo:POAmountOrig" minOccurs="0"/>
+            <xsd:element ref="lo:POAmountInstall" minOccurs="0"/>
+            <xsd:element ref="lo:POAmountInter" minOccurs="0"/>
+            <xsd:element ref="lo:POReceiptDateOrigination"  minOccurs="0"/>
+            <xsd:element ref="lo:POReceiptDateInstallation"  minOccurs="0"/>
+            <xsd:element ref="lo:POReceiptDateInterConnect" minOccurs="0"/>
+            <xsd:element ref="lo:SupInvNumOrigination" minOccurs="0"/>
+            <xsd:element ref="lo:SupInvNumInstallation" minOccurs="0"/>
+            <xsd:element ref="lo:SupInvNumInterConnect" minOccurs="0"/>
+            <xsd:element ref="lo:SupInvAmtOrigination" minOccurs="0"/>
+            <xsd:element ref="lo:SupInvAmtInstallation" minOccurs="0"/>
+            <xsd:element ref="lo:SupInvAmtInterConnect" minOccurs="0"/>
+            <xsd:element ref="lo:PaymentAmtOrigination" minOccurs="0"/>
+            <xsd:element ref="lo:PaymentAmtInstallation" minOccurs="0"/>
+            <xsd:element ref="lo:PaymentAmtInterConnect" minOccurs="0"/>
+            <xsd:element ref="lo:PaymentDateOrigination" minOccurs="0"/>
+            <xsd:element ref="lo:PaymentDateInstallation" minOccurs="0"/>
+            <xsd:element ref="lo:PaymentDateInterConnect" minOccurs="0"/>
+            <xsd:element ref="lo:SchedulePayDateOrig" minOccurs="0"/>
+            <xsd:element ref="lo:SchedulePayDateInstall" minOccurs="0"/>
+            <xsd:element ref="lo:SchedulePayDateInter" minOccurs="0"/>
+            <xsd:element ref="lo:CustReqDatePv" minOccurs="0"/>
+            <xsd:element ref="lo:CustReqDateInv" minOccurs="0"/>
+            <xsd:element ref="lo:CustReqDateMount" minOccurs="0"/>
+            <xsd:element ref="lo:CustPromiseDatePv" minOccurs="0"/>
+            <xsd:element ref="lo:CustPromiseDateInv" minOccurs="0"/>
+            <xsd:element ref="lo:CustPromiseDateMount" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute1" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute2" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute3" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute4" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute5" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute6" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute7" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute8" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute9" minOccurs="0"/>
+            <xsd:element ref="lo:Attribute10" minOccurs="0"/>
+            <xsd:element ref="lo:SOA_STATUS" minOccurs="0"/>
+             <xsd:element ref="lo:LEASE_COST" minOccurs="0"/>
+            <xsd:element ref="lo:LEASE_CLOSE_STATUS" minOccurs="0"/>
+            <xsd:element ref="lo:LEASE_CLOSE_DATE" minOccurs="0"/>
+            <xsd:element ref="lo:LEASE_CLOSE_REQ_ID" minOccurs="0"/>
+            <xsd:element ref="lo:CreationDate" minOccurs="0"/>
+            <xsd:element ref="lo:CreatedBy" minOccurs="0"/>
+            <xsd:element ref="lo:LastUpdateDate" minOccurs="0"/>
+            <xsd:element ref="lo:LastUpdatedBy" minOccurs="0"/>
+            <xsd:element ref="lo:PV_COST" minOccurs="0"/>
+          <xsd:element ref="lo:INVERTER_COST" minOccurs="0"/>
+          <xsd:element ref="lo:MONITORING_COST" minOccurs="0"/>
+          <xsd:element ref="lo:BOS_COST" minOccurs="0"/>
+          <xsd:element ref="lo:RACKING_COST_INTERNAL" minOccurs="0"/>
+          <xsd:element ref="lo:MISC_COST_INTERNAL" minOccurs="0"/>
+          <xsd:element ref="lo:RACKING_COST_INSTALLER" minOccurs="0"/>
+          <xsd:element ref="lo:MISC_COST_INSTALLER" minOccurs="0"/>
+          <xsd:element ref="lo:TOTAL_SPWR_SUPP_MATERIAL" minOccurs="0"/>
+          <xsd:element ref="lo:TOTAL_DEALER_SUPP_MATERIAL" minOccurs="0"/>
+          <xsd:element ref="lo:TOTAL_MATERIAL_COST" minOccurs="0"/>
+          <xsd:element ref="lo:TOTAL_SERVICE_COST" minOccurs="0"/>
+          <xsd:element ref="lo:TAX_AMOUNT" minOccurs="0"/>
+          <xsd:element ref="lo:NET_DEALER_SERVICE_COST" minOccurs="0"/>
+          <xsd:element ref="lo:ORDER_STATUS" minOccurs="0"/>
+          <xsd:element ref="lo:TAX_IDENTIFIER" minOccurs="0"/>
+          <xsd:element ref="lo:ERROR_MESSAGE" minOccurs="0"/>
+             </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

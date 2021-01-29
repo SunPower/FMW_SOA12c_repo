@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+            targetNamespace="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+            elementFormDefault="qualified">
+  <xsd:element name="Inputparam">
+  
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="instanceid" type="xsd:int"/>
+         <xsd:element name="errorMessage" type="xsd:int"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

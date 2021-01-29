@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catchAll/sequence/assign[3]/copy[10]</loc>
+      <line>337</line>
+      <col/>
+      <file>ArenaOracleItemsBOMSubstituesReq_BPEL.bpel</file>
+      <name>ArenaOracleItemsBOMSubstituesReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}dateTime"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='CommonErrorHandler']</loc>
+      <line>125</line>
+      <col>17</col>
+      <file>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\ArenaOracleItemsBOMSubstituesReq\composite.xml</file>
+      <name>C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\ArenaOracleItemsBOMSubstituesReq\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

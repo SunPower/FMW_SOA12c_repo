@@ -1,0 +1,14 @@
+<adapter-config name="updateOrderHeaderStatus" adapter="db" wsdlLocation="updateOrderHeaderStatus.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="updateOrderHeaderStatus_ptt" operation="update">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="updateOrderHeaderStatus.XxspwrOmHeaderSync"/>
+      <property name="DmlType" value="update"/>
+      <property name="MappingsMetaDataURL" value="updateOrderHeaderStatus-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

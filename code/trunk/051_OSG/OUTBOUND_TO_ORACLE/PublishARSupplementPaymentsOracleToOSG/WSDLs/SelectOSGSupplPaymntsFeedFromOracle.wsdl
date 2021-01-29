@@ -1,0 +1,26 @@
+<?binding.jca SelectOSGSupplPaymntsFeedFromOracle_db.jca?>
+<wsdl:definitions name="SelectOSGSupplPaymntsFeedFromOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplementPaymentsOracleToOSG/SelectOSGSupplPaymntsFeedFromOracle" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGSupplPaymntsFeedFromOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplementPaymentsOracleToOSG/SelectOSGSupplPaymntsFeedFromOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectOSGSupplPaymntsFeedFromOracle_plt">
+        <plt:role name="SelectOSGSupplPaymntsFeedFromOracle_role">
+            <plt:portType name="tns:SelectOSGSupplPaymntsFeedFromOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGSupplPaymntsFeedFromOracle"
+                    schemaLocation="../Schemas/SelectOSGSupplPaymntsFeedFromOracle.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectOSGSupplPaymntsFeedFromOracleInput_msg">
+        <wsdl:part name="SelectOSGSupplPaymntsFeedFromOracleInput_msg" element="db:SelectOSGSupplPaymntsFeedFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectOSGSupplPaymntsFeedFromOracleOutputCollection_msg">
+        <wsdl:part name="SelectOSGSupplPaymntsFeedFromOracleOutputCollection" element="db:SelectOSGSupplPaymntsFeedFromOracleOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectOSGSupplPaymntsFeedFromOracle_ptt">
+        <wsdl:operation name="SelectOSGSupplPaymntsFeedFromOracle">
+            <wsdl:input message="tns:SelectOSGSupplPaymntsFeedFromOracleInput_msg"/>
+            <wsdl:output message="tns:SelectOSGSupplPaymntsFeedFromOracleOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

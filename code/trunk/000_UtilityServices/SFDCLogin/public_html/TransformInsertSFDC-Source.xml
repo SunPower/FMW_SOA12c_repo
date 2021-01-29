@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<loginResponse xmlns="urn:partner.soap.sforce.com">
+   <result>
+      <metadataServerUrl>metadataServerUrl1</metadataServerUrl>
+      <passwordExpired>true</passwordExpired>
+      <sandbox>true</sandbox>
+      <serverUrl>serverUrl2</serverUrl>
+      <sessionId>sessionId3</sessionId>
+      <userId>userId444444444444</userId>
+      <userInfo>
+         <accessibilityMode>true</accessibilityMode>
+         <currencySymbol>currencySymbol5</currencySymbol>
+         <orgAttachmentFileSizeLimit>-0</orgAttachmentFileSizeLimit>
+         <orgDefaultCurrencyIsoCode>orgDefaultCurrencyIsoCode6</orgDefaultCurrencyIsoCode>
+         <orgDisallowHtmlAttachments>true</orgDisallowHtmlAttachments>
+         <orgHasPersonAccounts>true</orgHasPersonAccounts>
+         <organizationId>organizationId7777</organizationId>
+         <organizationMultiCurrency>true</organizationMultiCurrency>
+         <organizationName>organizationName8</organizationName>
+         <profileId>profileId999999999</profileId>
+         <roleId>roleId101010101010</roleId>
+         <sessionSecondsValid>-0</sessionSecondsValid>
+         <userDefaultCurrencyIsoCode>userDefaultCurrencyIsoCode11</userDefaultCurrencyIsoCode>
+         <userEmail>userEmail12</userEmail>
+         <userFullName>userFullName13</userFullName>
+         <userId>userId141414141414</userId>
+         <userLanguage>userLanguage15</userLanguage>
+         <userLocale>userLocale16</userLocale>
+         <userName>userName17</userName>
+         <userTimeZone>userTimeZone18</userTimeZone>
+         <userType>userType19</userType>
+         <userUiSkin>userUiSkin20</userUiSkin>
+      </userInfo>
+   </result>
+</loginResponse>

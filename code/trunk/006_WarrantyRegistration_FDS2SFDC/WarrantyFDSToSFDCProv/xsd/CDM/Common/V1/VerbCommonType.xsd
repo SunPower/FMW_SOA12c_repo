@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" targetNamespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+   <xsd:complexType name="BusinessObjectDocumentType">
+      <xsd:sequence>
+         <xsd:element ref="ApplicationArea"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="ApplicationArea" type="ApplicationAreaType"/>
+   <xsd:complexType name="ApplicationAreaType">
+      <xsd:sequence>
+         <xsd:element name="CreationDateTime" minOccurs="0" type="xsd:dateTime"/>
+         <xsd:element name="Signature" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="BODID" minOccurs="0" type="xsd:string"/>
+         <xsd:element ref="UserArea" minOccurs="0"/>
+         <xsd:element ref="Sender" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="Sender" type="SenderType"/>
+   <xsd:complexType name="SenderType">
+      <xsd:sequence>
+         <xsd:element name="LogicalId" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="ComponentId" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="TaskId" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="ReferenceId" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="ConfirmationCode" minOccurs="0" type="xsd:string"/>
+         <xsd:element name="AuthorizationId" minOccurs="0" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="UserArea" type="UserAreaType"/>
+   <xsd:complexType name="UserAreaType" block="restriction">
+      <xsd:sequence>
+         <xsd:any namespace="##any" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="process" type="xsd:string"/>
+</xsd:schema>

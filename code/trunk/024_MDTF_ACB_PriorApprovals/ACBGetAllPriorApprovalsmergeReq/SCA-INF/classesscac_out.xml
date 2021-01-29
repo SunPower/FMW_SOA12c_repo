@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='ACBGetAllPriorApprovalsmergeReq_BPEL/acbgetallpriorapprovalsmergereq_bpel_client']</loc>
+      <line>103</line>
+      <col>17</col>
+      <file>E:\JDeveloper1221\mywork\MDTF_ACB_PriorApprovals\024_MDTF_ACB_PriorApprovals\ACBGetAllPriorApprovalsmergeReq\composite.xml</file>
+      <name>E:\JDeveloper1221\mywork\MDTF_ACB_PriorApprovals\024_MDTF_ACB_PriorApprovals\ACBGetAllPriorApprovalsmergeReq\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

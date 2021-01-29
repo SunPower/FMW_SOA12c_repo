@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<upsert xmlns="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityService">
+   <externalIDFieldName>externalIDFieldName112</externalIDFieldName>
+   <sObject>
+      <any_0 xmlns="##any">
+         <any_01>any content</any_01>
+      </any_0>
+      <any_1 xmlns="##any">
+         <any_11>any content</any_11>
+      </any_1>
+      <any_2 xmlns="##any">
+         <any_21>any content</any_21>
+      </any_2>
+   </sObject>
+   <sObject>
+      <any_0 xmlns="##any">
+         <any_01>any content</any_01>
+      </any_0>
+      <any_1 xmlns="##any">
+         <any_11>any content</any_11>
+      </any_1>
+      <any_2 xmlns="##any">
+         <any_21>any content</any_21>
+      </any_2>
+   </sObject>
+   <sObject>
+      <any_0 xmlns="##any">
+         <any_01>any content</any_01>
+      </any_0>
+      <any_1 xmlns="##any">
+         <any_11>any content</any_11>
+      </any_1>
+      <any_2 xmlns="##any">
+         <any_21>any content</any_21>
+      </any_2>
+   </sObject>
+</upsert>

@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="DEV_EBS" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="DEV_EBS" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="sid">
+            <Contents>PROJ</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>castiron</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>dev-erpdca01.sunpowercorp.com</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1524</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="DEV_EBS_XXSPWRSOA" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="DEV_EBS_XXSPWRSOA" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="sid">
+            <Contents>PROJ</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>xxspwrsoa</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>dev-erpdca01.sunpowercorp.com</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1524</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="readFilesFromArenaDir" adapter="file" wsdlLocation="readFilesFromArenaDir.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIexcludeWildcard="*.trg" location="eis/FileAdapter" UIincludeWildcard="*.xml"/>
+  <endpoint-activation portType="Read_ptt" operation="Read">
+    <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+      <property name="DeleteFile" value="false"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="Recursive" value="true"/>
+      <property name="TriggerFileLogicalDirectory" value="source"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="LogicalDirectory" value="source"/>
+      <property name="TriggerFile" value="trigger.trg"/>
+      <property name="TriggerFileStrategy" value="EveryTime"/>
+      <property name="IncludeFiles" value=".*\.xml"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="ExcludeFiles" value=".*\.trg"/>
+    </activation-spec>
+  </endpoint-activation>
+</adapter-config>

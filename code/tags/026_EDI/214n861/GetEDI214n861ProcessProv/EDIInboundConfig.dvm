@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="EDIInboundConfig" xmlns="http://xmlns.oracle.com/dvm">
+   <description/>
+   <columns>
+      <column name="Signal"/>
+      <column name="schema"/>
+      <column name="user"/>
+      <column name="password"/>
+      <column name="application"/>
+      <column name="transformation"/>
+      <column name="SuccessDir"/>
+      <column name="InboundDir"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>214_US</cell>
+         <cell>X12_214_004_010</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>OSTRPT_SUNPOWER_X12_214_2_TXT_943008969_TEST</cell>
+         <cell>/erpappsdata/EDI/861n214/214/success/US</cell>
+         <cell>/erpappsdata/EDI/861n214/214/inbound</cell>
+      </row>
+      <row>
+         <cell>861_US</cell>
+         <cell>X12_861_004_010_4</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>X12_861_004_010_SUNPOWER_943008969_test</cell>
+         <cell>/erpappsdata/EDI/861n214/861/success/US</cell>
+         <cell>/erpappsdata/EDI/861n214/861/inbound</cell>
+      </row>
+      <row>
+         <cell>214_EU</cell>
+         <cell>EDI_OSTRPT_D_96A_EN_EAN002_1_EU</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>OSTRPT_SUNPOWER_EDI_2_TXT_943008969_EU_TEST</cell>
+         <cell>/erpappsdata/EDI/861n214/214/success/EU</cell>
+         <cell>/erpappsdata/EDI/861n214/214/inbound</cell>
+      </row>
+      <row>
+         <cell>861_EU</cell>
+         <cell>EDI_RECADV_D_01B_UN_EAN006_1_SUNPOWER</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>RECADV_SUNPOWER_EDI_2_TXT_943008969_test</cell>
+         <cell>/erpappsdata/EDI/861n214/861/success/EU</cell>
+         <cell>/erpappsdata/EDI/861n214/861/inbound</cell>
+      </row>
+      <row>
+         <cell>214_AU</cell>
+         <cell>EDI_OSTRPT_D_96A_EN_EAN002_1_AU</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>OSTRPT_SUNPOWER_EDI_2_TXT_943008969_test</cell>
+         <cell>/erpappsdata/EDI/861n214/214/success/AU</cell>
+         <cell>/erpappsdata/EDI/861n214/214/inbound</cell>
+      </row>
+      <row>
+         <cell>861_AU</cell>
+         <cell>EDI_RECADV_D_01B_UN_EAN006_1_AU</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>RECADV_SUNPOWER_EDI_2_TXT_943008969_TEST_AUS</cell>
+         <cell>/erpappsdata/EDI/861n214/861/success/AU</cell>
+         <cell>/erpappsdata/EDI/861n214/861/inbound</cell>
+      </row>
+      <row>
+         <cell>214T_US</cell>
+         <cell>X12_214_004_010_RYDER</cell>
+         <cell>943008969_test</cell>
+         <cell>hkqebpzmz</cell>
+         <cell>943008969_test</cell>
+         <cell>OSTRPT_SUNPOWER_X12_214_2_TXT_RYDER_943008969_TEST</cell>
+         <cell>/erpappsdata/EDI/861n214/214/success/Transfer</cell>
+         <cell>/erpappsdata/EDI/861n214/214/inbound</cell>
+      </row>
+   </rows>
+</dvm>

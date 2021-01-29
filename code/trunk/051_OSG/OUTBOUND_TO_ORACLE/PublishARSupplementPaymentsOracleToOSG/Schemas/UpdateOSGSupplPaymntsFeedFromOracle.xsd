@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOSGSupplPaymntsFeedFromOracle" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOSGSupplPaymntsFeedFromOracle" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="UpdateOSGSupplPaymntsFeedFromOracleInput" type="UpdateOSGSupplPaymntsFeedFromOracleInput"/>
+   <xs:complexType name="UpdateOSGSupplPaymntsFeedFromOracleInput">
+      <xs:sequence>
+         <xs:element name="SoaStatus" type="xs:string" nillable="true"/>
+         <xs:element name="LastUpdateDate" type="xs:dateTime" nillable="true"/>
+         <xs:element name="LastUpdatedBy" type="xs:decimal" nillable="true"/>
+         <xs:element name="SoaMessage" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

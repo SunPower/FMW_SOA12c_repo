@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+    <display-name>FileUpload</display-name>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>RevalUpload</web-resource-name>
+            <url-pattern>/upload.jsp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>webuser</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>default</realm-name>
+    </login-config>
+    <security-role>
+        <role-name>webuser</role-name>
+    </security-role>
+    <servlet>
+        <display-name>FileUploadServlet</display-name>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>net.codejava.upload.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RevalConnect_FileUpload_2RevalCallback</servlet-name>
+        <servlet-class>com.oracle.xmlns._054_revalconnect.revalconnect_fileupload_2reval.revalconnect_fileupload_2reval.RevalConnect_FileUpload_2RevalCallbackImpl</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/uploadFile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RevalConnect_FileUpload_2RevalCallback</servlet-name>
+        <url-pattern>/RevalConnect_FileUpload_2RevalCallback</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>upload.jsp</welcome-file>
+        <!--welcome-file>index.html</welcome-file-->
+    </welcome-file-list>
+</web-app>

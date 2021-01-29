@@ -1,0 +1,92 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns="http://www.sunpowercorp.com/Common/Lease2OutboundCommonTypes/V1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.sunpowercorp.com/Common/Lease2OutboundCommonTypes/V1"
+            xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="qualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+                schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+
+
+
+			<xsd:element name="SoNumber" type="cdt:String50"/>
+            <xsd:element name="SoHeaderId" type="xsd:int" nillable="true"/>
+            <xsd:element name="LeaseNumber" type="cdt:String50" nillable="true"/>
+            <xsd:element name="SchDelivDatePv" type="xsd:date" nillable="true"/>
+            <xsd:element name="SchDelivDateInv" type="xsd:date" nillable="true"/>
+            <xsd:element name="SchDelivDateMount" type="xsd:date" nillable="true"/>
+            <xsd:element name="DelivDatePv"  type="xsd:date" nillable="true"/>
+            <xsd:element name="DelivDateInv" type="xsd:date" nillable="true"/>
+            <xsd:element name="DelivDateMount" type="xsd:date" nillable="true"/>
+            <xsd:element name="PONumberOrig" type="cdt:String200" nillable="true"/>
+            <xsd:element name="PONumberInstall" type="cdt:String200" nillable="true"/>
+            <xsd:element name="PONumberInter" type="cdt:String200" nillable="true"/>
+            <xsd:element name="POCreationDateOrig" type="cdt:String200" nillable="true"/>
+           <xsd:element name="POCreationDateInstall" type="cdt:String200" nillable="true"/>
+            <xsd:element name="POCreationDateInter" type="cdt:String200" nillable="true"/>
+            <xsd:element name="POAmountOrig" type="xsd:int" nillable="true"/>
+            <xsd:element name="POAmountInstall" type="xsd:int" nillable="true"/>
+            <xsd:element name="POAmountInter" type="xsd:int" nillable="true"/>
+            <xsd:element name="POReceiptDateOrigination"  type="cdt:String200" nillable="true"/>
+            <xsd:element name="POReceiptDateInstallation"  type="cdt:String200" nillable="true"/>
+            <xsd:element name="POReceiptDateInterConnect" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SupInvNumOrigination" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SupInvNumInstallation" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SupInvNumInterConnect" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SupInvAmtOrigination" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SupInvAmtInstallation" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SupInvAmtInterConnect" type="cdt:String200" nillable="true"/>
+            <xsd:element name="PaymentAmtOrigination" type="xsd:int" nillable="true"/>
+            <xsd:element name="PaymentAmtInstallation" type="xsd:int" nillable="true"/>
+            <xsd:element name="PaymentAmtInterConnect" type="xsd:int" nillable="true"/>
+            <xsd:element name="PaymentDateOrigination" type="cdt:String200" nillable="true"/>
+            <xsd:element name="PaymentDateInstallation" type="cdt:String200" nillable="true"/>
+            <xsd:element name="PaymentDateInterConnect" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SchedulePayDateOrig" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SchedulePayDateInstall" type="cdt:String200" nillable="true"/>
+            <xsd:element name="SchedulePayDateInter" type="cdt:String200" nillable="true"/>
+            <xsd:element name="CustReqDatePv" type="xsd:date" nillable="true"/>
+            <xsd:element name="CustReqDateInv" type="xsd:date" nillable="true"/>
+            <xsd:element name="CustReqDateMount" type="xsd:date" nillable="true"/>
+            <xsd:element name="CustPromiseDatePv" type="xsd:date" nillable="true"/>
+            <xsd:element name="CustPromiseDateInv" type="xsd:date" nillable="true"/>
+            <xsd:element name="CustPromiseDateMount" type="xsd:date" nillable="true"/>
+            <xsd:element name="Attribute1" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute2" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute3" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute4" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute5" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute6" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute7" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute8" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute9" type="cdt:String100" nillable="true"/>
+            <xsd:element name="Attribute10" type="cdt:String100" nillable="true"/>
+            <xsd:element name="SOA_STATUS" type="cdt:String10" nillable="true"/>
+             <xsd:element name="LEASE_COST" type="xsd:int" nillable="true"/>
+             <xsd:element name="LEASE_CLOSE_STATUS" type="cdt:String3" nillable="true"/>
+            <xsd:element name="LEASE_CLOSE_DATE" type="xsd:date" nillable="true"/>
+            <xsd:element name="LEASE_CLOSE_REQ_ID" type="xsd:int" nillable="true"/>
+            <xsd:element name="CreationDate" type="xsd:date" nillable="true"/>
+            <xsd:element name="CreatedBy" type="xsd:int" nillable="true"/>
+            <xsd:element name="LastUpdateDate" type="xsd:date" nillable="true"/>
+            <xsd:element name="LastUpdatedBy" type="xsd:int" nillable="true"/>
+            <xsd:element name="PV_COST" type="xsd:int" nillable="true"/>
+ <xsd:element name="INVERTER_COST" type="xsd:int" nillable="true"/>
+ <xsd:element name="MONITORING_COST" type="xsd:int" nillable="true"/>
+ <xsd:element name="BOS_COST" type="xsd:int" nillable="true"/>
+ <xsd:element name="RACKING_COST_INTERNAL" type="xsd:int" nillable="true"/>
+<xsd:element name="MISC_COST_INTERNAL" type="xsd:int" nillable="true"/>
+<xsd:element name="RACKING_COST_INSTALLER" type="xsd:int" nillable="true"/>
+<xsd:element name="MISC_COST_INSTALLER" type="xsd:int" nillable="true"/>
+<xsd:element name="TOTAL_SPWR_SUPP_MATERIAL" type="xsd:int" nillable="true"/>
+<xsd:element name="TOTAL_DEALER_SUPP_MATERIAL" type="xsd:int" nillable="true"/>
+<xsd:element name="TOTAL_MATERIAL_COST" type="xsd:int" nillable="true"/>
+<xsd:element name="TOTAL_SERVICE_COST" type="xsd:int" nillable="true"/>
+<xsd:element name="TAX_AMOUNT" type="xsd:int" nillable="true"/>
+<xsd:element name="NET_DEALER_SERVICE_COST" type="xsd:int" nillable="true"/>
+ <xsd:element name="ORDER_STATUS" type="cdt:String100" nillable="true"/>
+  <xsd:element name="TAX_IDENTIFIER" type="cdt:String100" nillable="true"/>
+   <xsd:element name="ERROR_MESSAGE" type="cdt:String200" nillable="true"/>
+
+
+</xsd:schema>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="readFilesFromArenaDir">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="198" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="191" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="readFilesFromArenaDir" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/ArenaOracleDataFeed/ArenaOracleItemsBOMSubstituesReq/readFilesFromArenaDir#wsdl.interface(Read_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/file_adapter_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Read</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="ArenaOracleItemsBOMSubstituesSvc">
+        <dgm:body borderWidth="2" arcRad="20" X="902" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="892" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="ArenaOracleItemsBOMSubstituesSvc" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesCanonical#wsdl.interface(ArenaOracleItemsBOMSubstituesSvc_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="FileUtilityService">
+        <dgm:body borderWidth="2" arcRad="20" X="902" Y="262" width="136" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="892" Y="255" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="FileUtilityService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL#wsdl.interface(FileUtilityService_BPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Move</dgm:item>
+            <dgm:item>Delete</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CommonErrorHandler">
+        <dgm:body borderWidth="2" arcRad="20" X="902" Y="144" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="892" Y="137" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonErrorHandler" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL#wsdl.interface(CommonErrorHandler_BPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CommonLoggingService">
+        <dgm:body borderWidth="2" arcRad="20" X="902" Y="392" width="136" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="892" Y="385" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonLoggingService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL#wsdl.interface(CommonLoggingService_BPEL)" callbackInterface="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL#wsdl.interface(CommonLoggingService_BPELCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+            <dgm:item>processResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="ArenaOracleItemsBOMSubstituesReq_BPEL">
+        <dgm:body borderWidth="2" arcRad="20" X="465" Y="183" width="130" height="136">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="455" Y="176" width="150" height="152">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="readFilesFromArenaDir" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/ArenaOracleDataFeed/ArenaOracleItemsBOMSubstituesReq/readFilesFromArenaDir#wsdl.interface(Read_ptt)"/>
+        <dgm:outputPort name="ArenaOracleItemsBOMSubstituesSvc" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesCanonical#wsdl.interface(ArenaOracleItemsBOMSubstituesSvc_ptt)"/>
+        <dgm:outputPort name="CommonErrorHandler" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL#wsdl.interface(CommonErrorHandler_BPEL)"/>
+        <dgm:outputPort name="FileUtilityService" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL#wsdl.interface(FileUtilityService_BPEL)"/>
+        <dgm:outputPort name="CommonLoggingService" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL#wsdl.interface(CommonLoggingService_BPEL)" callbackInterface="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL#wsdl.interface(CommonLoggingService_BPELCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="ArenaOracleItemsBOMSubstituesReq_BPEL/ArenaOracleItemsBOMSubstituesSvc" target="ArenaOracleItemsBOMSubstituesSvc" width="2">
+        <dgm:gSegment X1="605" Y1="208" X2="629" Y2="208"/>
+        <dgm:gSegment X1="629" Y1="208" X2="629" Y2="36"/>
+        <dgm:gSegment X1="629" Y1="36" X2="892" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="readFilesFromArenaDir" target="ArenaOracleItemsBOMSubstituesReq_BPEL/readFilesFromArenaDir" width="2">
+        <dgm:gSegment X1="168" Y1="208" X2="455" Y2="208"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ArenaOracleItemsBOMSubstituesReq_BPEL/CommonErrorHandler" target="CommonErrorHandler" width="2">
+        <dgm:gSegment X1="605" Y1="233" X2="644" Y2="233"/>
+        <dgm:gSegment X1="644" Y1="233" X2="644" Y2="154"/>
+        <dgm:gSegment X1="644" Y1="154" X2="892" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ArenaOracleItemsBOMSubstituesReq_BPEL/FileUtilityService" target="FileUtilityService" width="2">
+        <dgm:gSegment X1="605" Y1="258" X2="644" Y2="258"/>
+        <dgm:gSegment X1="644" Y1="258" X2="644" Y2="272"/>
+        <dgm:gSegment X1="644" Y1="272" X2="892" Y2="272"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ArenaOracleItemsBOMSubstituesReq_BPEL/CommonLoggingService" target="CommonLoggingService" width="2">
+        <dgm:gSegment X1="605" Y1="283" X2="629" Y2="283"/>
+        <dgm:gSegment X1="629" Y1="283" X2="629" Y2="402"/>
+        <dgm:gSegment X1="629" Y1="402" X2="892" Y2="402"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

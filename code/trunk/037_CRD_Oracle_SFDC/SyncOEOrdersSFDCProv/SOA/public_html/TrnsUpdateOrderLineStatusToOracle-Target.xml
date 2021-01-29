@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrOmLineSyncCollection xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateOrderLineStatusToOracle">
+   <top:XxspwrOmLineSync>
+      <top:sfdcId>id1616161616161616</top:sfdcId>
+      <top:lineId>-0</top:lineId>
+      <top:soaFlag>S</top:soaFlag>
+      <top:soaErrormsg> </top:soaErrormsg>
+      <top:soaLastUpdateDate>2013-07-11T18:05:57.791+05:30</top:soaLastUpdateDate>
+   </top:XxspwrOmLineSync>
+   <top:XxspwrOmLineSync>
+      <top:sfdcId>id3232323232323232</top:sfdcId>
+      <top:lineId>-0</top:lineId>
+      <top:soaFlag>S</top:soaFlag>
+      <top:soaErrormsg> </top:soaErrormsg>
+      <top:soaLastUpdateDate>2013-07-11T18:05:57.791+05:30</top:soaLastUpdateDate>
+   </top:XxspwrOmLineSync>
+   <top:XxspwrOmLineSync>
+      <top:sfdcId>id4848484848484848</top:sfdcId>
+      <top:lineId>-0</top:lineId>
+      <top:soaFlag>S</top:soaFlag>
+      <top:soaErrormsg> </top:soaErrormsg>
+      <top:soaLastUpdateDate>2013-07-11T18:05:57.792+05:30</top:soaLastUpdateDate>
+   </top:XxspwrOmLineSync>
+</top:XxspwrOmLineSyncCollection>

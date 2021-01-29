@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<WarrantyViewFlushCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateFDSDB">
+   <WarrantyViewFlush>
+      <id>-0</id>
+      <sfdcStatus>string1</sfdcStatus>
+      <sfdcRemarks>string3</sfdcRemarks>
+   </WarrantyViewFlush>
+   <WarrantyViewFlush>
+      <id>-0</id>
+      <sfdcStatus>string5</sfdcStatus>
+      <sfdcRemarks>string7</sfdcRemarks>
+   </WarrantyViewFlush>
+   <WarrantyViewFlush>
+      <id>-0</id>
+      <sfdcStatus>string9</sfdcStatus>
+      <sfdcRemarks>string11</sfdcRemarks>
+   </WarrantyViewFlush>
+</WarrantyViewFlushCollection>

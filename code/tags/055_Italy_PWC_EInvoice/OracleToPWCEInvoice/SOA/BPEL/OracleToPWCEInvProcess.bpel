@@ -1,0 +1,358 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sat Dec 01 17:03:04 IST 2018
+  Author:  RR46183
+  Type: BPEL 2.0 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="OracleToPWCEInvProcess"
+         targetNamespace="http://xmlns.oracle.com/SPWRSOAApp/OracleToPWCEInvoice/OracleToPWCEInvProcess"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/SPWRSOAApp/OracleToPWCEInvoice/OracleToPWCEInvProcess"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.w3.org/2000/09/xmldsig#"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/SPWRSOAApp/OracleToPWCEInvoice/UpdateOracleEBS"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/SPWRSOAApp/OracleToPWCEInvoice/UpdateOracleApps"
+         xmlns:ns4="json" xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOracleApps"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns6="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns7="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:ns8="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+         xmlns:ns9="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns10="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns:ns11="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd"
+         xmlns:ns12="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/file/SOAAppDemo/OracleToPWCEInvoice/EInvoiceRead"
+         xmlns:ns14="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"         >
+  <!--<import ui:processWSDL="true"
+          namespace="http://xmlns.oracle.com/SPWRSOAApp/OracleToPWCEInvoice/OracleToPWCEInvProcess"
+          location="../WSDLs/OracleToPWCEInvProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/> -->
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SPWRSOAApp/OracleToPWCEInvoice/UpdateOracleApps"
+          location="../WSDLs/UpdateOracleApps.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"
+          ui:processWSDL="true"/>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="PWCRestLogin" bpelx:wadl="yes"/>
+    <partnerLink name="PWCGetUUIDRest" bpelx:wadl="yes"/>
+    <partnerLink name="UpdateOracleApps" partnerLinkType="ns3:UpdateOracleApps_plt"
+                 partnerRole="UpdateOracleApps_role"/>
+    <partnerLink name="PWCAttiva" bpelx:wadl="yes"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns9:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="FileUtilityService" partnerLinkType="ns10:FileUtilityService_BPEL"
+                 partnerRole="FileUtilityService_BPELProvider"/>
+    <partnerLink name="EInvoiceRead" partnerLinkType="ns13:Read_plt" myRole="Read_role"/>
+  </partnerLinks>
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="ReadIV" messageType="ns13:Read_msg"/>
+    <!-- Reference to the message that will be sent back to the requester during callback -->
+    <variable name="base64" type="xsd:base64Binary"/>
+    <variable name="Login_In" bpelx:json="object"/>
+    <variable name="Login_Out" bpelx:json="object"/>
+    <variable name="UUIDRequest" bpelx:json="object"/>
+    <variable name="UUIDResponse" bpelx:json="object"/>
+    <variable name="AuthToken" type="xsd:string"/>
+    <variable name="InvUpdateOracleIV" messageType="ns3:UpdateOracleAppsInput_msg"/>
+    <variable name="FatturaAttivaIn" bpelx:json="object"/>
+    <variable name="FatturaAttivaOut" bpelx:json="object"/>
+    <variable name="Company_UUID" type="xsd:string"/>
+    <variable name="StatusCode" type="xsd:string"/>
+    <variable name="InvCommonErrorHandler_IV" messageType="ns9:requestMessage"/>
+    <variable name="InvokeFileMoveUtility_IV" messageType="ns10:FileUtilityService_BPELRequestMessage"/>
+    <variable name="InvArchiveFile_Archive_IV" messageType="ns10:FileUtilityService_BPELRequestMessage"/>
+    <variable name="InvArchiveFile_Move_OV" messageType="ns10:FileUtilityService_BPELResponseMessage"/>
+    <variable name="InvokeFileMoveUtility_Move_OV" messageType="ns10:FileUtilityService_BPELResponseMessage"/>
+    <variable name="FileName" type="xsd:string"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence2">
+       <!-- <assign name="AssignFileMove">
+          <copy>
+            <from>$FileName</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeFileMoveUtility_IV.payload/ns11:SourceFileName</to>
+          </copy>
+          <copy>
+            <from>$FileName</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeFileMoveUtility_IV.payload/ns11:TargetFileName</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("errorDir")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeFileMoveUtility_IV.payload/ns11:TargetPhysicalDirectory</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("SourceDir")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeFileMoveUtility_IV.payload/ns11:SourcePhysicalDirectory</to>
+          </copy>
+        </assign> -->
+       <!-- <invoke name="InvFileMoveUtility" partnerLink="FileUtilityService"
+                portType="ns10:FileUtilityService_BPEL" operation="Move" inputVariable="InvokeFileMoveUtility_IV" outputVariable="InvokeFileMoveUtility_Move_OV"
+                bpelx:invokeAsDetail="no"/> -->
+        <assign name="AssignCommonErrorHandler">
+          <copy>
+            <from>ora:getComponentInstanceId()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:InstanceNumber</to>
+          </copy>
+          <copy>
+            <from>concat('FileName :',$FileName)</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:UniqueIdentNum/ns12:UniqueIdentifier</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("InterfaceNumber")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:InterfaceNumber</to>
+          </copy>
+          <copy>
+            <from>'EInvoiceItalyOracleToPWC'</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:InterfaceName</to>
+          </copy>
+          <copy>
+            <from>'OracleToPWCEInvoice'</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:ProcessName</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("Severity")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Severity</to>
+          </copy>
+          <copy>
+            <from>ora:getFaultName()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultMessage</to>
+          </copy>
+          <copy>
+            <from>xp20:current-dateTime()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultTime</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference('FaultCode')</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultCode</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("bOpenServiceTicket")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:bOpenServiceTicket</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("SendEmail")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:SendEmail</to>
+          </copy>
+          <copy>
+            <from>ora:getFaultAsString()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultDescription</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("FaultSystemName")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:FaultSystemName</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("CorrectiveAction")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvCommonErrorHandler_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:CorrectiveAction</to>
+          </copy>
+        </assign>
+        <invoke name="InvCommonErrorHandler" partnerLink="CommonSFDCErrorLogService" portType="ns9:execute_ptt"
+                operation="execute" inputVariable="InvCommonErrorHandler_IV" bpelx:invokeAsDetail="no"/>
+        <forEach parallel="no" counterName="InvoiceCounter" name="ForEachInvoice">
+          <startCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">number(1)</startCounterValue>
+          <finalCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">count($ReadIV.body/FatturaElettronicaBody)</finalCounterValue>
+          <scope name="Scope1">
+            <sequence>
+              <assign name="AsgStatus">
+                <copy>
+                  <from>'ERROR'</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:Attribute8</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaHeader/CedentePrestatore/DatiAnagrafici/Anagrafica/Denominazione</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:operating_units_name</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaHeader/CessionarioCommittente/DatiAnagrafici/Anagrafica/Denominazione</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:party_name</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaBody[$InvoiceCounter]/DatiGenerali/DatiGeneraliDocumento/Numero</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:trx_number</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaBody[$InvoiceCounter]/DatiGenerali/DatiGeneraliDocumento/Data</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:trx_date</to>
+                </copy>
+              </assign>
+              <!--assign name="TransUpdateOracle" xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+                <bpelx:annotation xmlns:bpelx="http://schemas.oracle.com/bpel/extension">
+                  <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from>ora:doXSLTransformForDoc("../Transformations/TransUpdateErrorStatusToOrcl.xsl", $ReadIV.body, "Params", $Params)</from>
+                  <to variable="InvUpdateOracleIV" part="UpdateOracleAppsInput_msg"/>
+                </copy>
+              </assign-->
+              <invoke name="InvErrorStatus" bpelx:invokeAsDetail="no" partnerLink="UpdateOracleApps"
+                      portType="ns3:UpdateOracleApps_ptt" operation="UpdateOracleApps"
+                      inputVariable="InvUpdateOracleIV"/>
+            </sequence>
+          </scope>
+        </forEach>
+        <exit name="Exit"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in OracleToPWCEInvProcess.wsdl) -->
+    <receive name="ReceiveInput" variable="ReadIV" createInstance="yes" partnerLink="EInvoiceRead"
+             portType="ns13:Read_ptt" operation="Read">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.file.FileName" variable="FileName"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="AssignSetTitle">
+      <copy>
+        <from>oraext:setFlowInstanceTitle($FileName)</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$FileName</to>
+      </copy>
+    </assign>
+    <invoke name="InvPWCLogin" xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+            partnerLink="PWCRestLogin" inputVariable="Login_In" outputVariable="Login_Out" bpelx:method="Login"
+            bpelx:invokeAsDetail="no">
+      <bpelx:toProperties>
+        <bpelx:toProperty name="rest.query.username">ora:getPreference('username')</bpelx:toProperty>
+        <bpelx:toProperty name="rest.query.password">ora:getPreference('password')</bpelx:toProperty>
+      </bpelx:toProperties>
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="rest.binding.http.x-auth-token" variable="AuthToken"/>
+        <bpelx:fromProperty name="rest.binding.http.statusCode" variable="StatusCode"/>
+      </bpelx:fromProperties>
+    </invoke>
+    <invoke name="InvGetUUID" partnerLink="PWCGetUUIDRest" inputVariable="UUIDRequest" outputVariable="UUIDResponse"
+            bpelx:method="GetUUID" xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+            xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable" bpelx:invokeAsDetail="no">
+      <bpelx:toProperties>
+        <bpelx:toProperty name="rest.binding.http.x-auth-token" variable="AuthToken"/>
+      </bpelx:toProperties>
+    </invoke>
+    <assign name="AssignFatturaRequest">
+      <copy>
+        <from>ora:readFile(concat('file:///erpappsdata/PWC/italy/AR/out/',$FileName))</from>
+        <to expressionLanguage="javascript">process.FatturaAttivaIn.base64</to>
+      </copy>
+      <copy>
+        <from expressionLanguage="javascript">process.UUIDResponse.content[0].id</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Company_UUID</to>
+      </copy>
+      <copy>
+        <from>'AUTOMATICO_XML'</from>
+        <to expressionLanguage="javascript">process.FatturaAttivaIn.tipologiaCaricamento</to>
+      </copy>
+    </assign>
+    <invoke name="InvFatturaAttiva" partnerLink="PWCAttiva" bpelx:method="Attiva"
+            inputVariable="FatturaAttivaIn" outputVariable="FatturaAttivaOut" bpelx:invokeAsDetail="no">
+      <bpelx:toProperties>
+        <bpelx:toProperty name="rest.template.COMPANY_UUID" variable="Company_UUID"/>
+        <bpelx:toProperty name="rest.binding.http.x-auth-token" variable="AuthToken"/>
+      </bpelx:toProperties>
+    </invoke>
+    <forEach parallel="no" counterName="InvoiceCounter" name="ForEachUpdate">
+      <startCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">number(1)</startCounterValue>
+      <finalCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">count($ReadIV.body/FatturaElettronicaBody)</finalCounterValue>
+      <scope name="Scope2">
+        <sequence>
+        <assign name="AsgStatus">
+                <copy>
+                  <from>'TRAN'</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:Attribute8</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaHeader/CedentePrestatore/DatiAnagrafici/Anagrafica/Denominazione</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:operating_units_name</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaHeader/CessionarioCommittente/DatiAnagrafici/Anagrafica/Denominazione</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:party_name</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaBody[$InvoiceCounter]/DatiGenerali/DatiGeneraliDocumento/Numero</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:trx_number</to>
+                </copy>
+                <copy>
+                  <from>$ReadIV.body/FatturaElettronicaBody[$InvoiceCounter]/DatiGenerali/DatiGeneraliDocumento/Data</from>
+                  <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvUpdateOracleIV.UpdateOracleAppsInput_msg/ns5:trx_date</to>
+                </copy>
+              </assign>
+          <!--assign name="TransUpdateOracle">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from>ora:doXSLTransformForDoc("../Transformations/TransUpdateStautusOracle.xsl", $ReadIV.body)</from>
+              <to variable="InvUpdateOracleIV" part="UpdateOracleAppsInput_msg"/>
+            </copy>
+          </assign-->
+          <invoke name="InvUpdateOracle" partnerLink="UpdateOracleApps" portType="ns3:UpdateOracleApps_ptt"
+                  operation="UpdateOracleApps" inputVariable="InvUpdateOracleIV" bpelx:invokeAsDetail="no"/>
+        </sequence>
+      </scope>
+    </forEach>
+    <assign name="AssignArchiveFile">
+      <copy>
+        <from>$FileName</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvArchiveFile_Archive_IV.payload/ns11:SourceFileName</to>
+      </copy>
+      <copy>
+        <from>concat(substring-before($FileName,'.XML'),'_',translate(xp20:current-date(),'-',''),'.XML')</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvArchiveFile_Archive_IV.payload/ns11:TargetFileName</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference('SourceDir')</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvArchiveFile_Archive_IV.payload/ns11:SourcePhysicalDirectory</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference('ArchiveDir')</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvArchiveFile_Archive_IV.payload/ns11:TargetPhysicalDirectory</to>
+      </copy>
+    </assign>
+    <invoke name="InvArchiveFile" bpelx:invokeAsDetail="no" partnerLink="FileUtilityService"
+            portType="ns10:FileUtilityService_BPEL" operation="Move" inputVariable="InvArchiveFile_Archive_IV"
+            outputVariable="InvArchiveFile_Move_OV"/>
+    <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+  </sequence>
+</process>

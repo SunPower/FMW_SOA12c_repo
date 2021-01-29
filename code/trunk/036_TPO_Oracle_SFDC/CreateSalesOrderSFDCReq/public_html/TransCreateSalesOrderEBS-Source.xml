@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GetNewOrdersResponse xmlns="http://soap.sforce.com/schemas/class/OrderIntegrationService">
+   <result>
+      <orders>
+         <accountList/>
+         <orderHeader/>
+      </orders>
+      <orders>
+         <accountList/>
+         <orderHeader/>
+      </orders>
+      <orders>
+         <accountList/>
+         <orderHeader/>
+      </orders>
+   </result>
+</GetNewOrdersResponse>

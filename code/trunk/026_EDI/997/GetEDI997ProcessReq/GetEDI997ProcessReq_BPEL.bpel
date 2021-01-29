@@ -1,0 +1,231 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Dec 31 12:27:49 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="GetEDI997ProcessReq_BPEL"
+               targetNamespace="http://www.sunpowercorp.com/EDICom/GetEDI997ProcessReq/GetEDI997ProcessReq_BPEL"
+               xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+               xmlns:client="http://www.sunpowercorp.com/EDICom/GetEDI997ProcessReq/GetEDI997ProcessReq_BPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns1="http://www.sunpowercorp.com/EDICom/GetEDI997Process/xsd/v1"
+         xmlns:ns2="http://xmlns.oracle.com/EDICom/GetEDI997ProcessProv/GetEDI997ProcessProv_BPEL"
+         xmlns:ns3="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns4="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns5="http://xmlns.oracle.com/EDICom/GetEDI846ProcessProv/GetEDI846ProcessProv_BPEL">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[GetEDI997ProcessReq_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="GetEDI997processreq_bpel_client" partnerLinkType="client:GetEDI997ProcessReq_BPEL" myRole="GetEDI997ProcessReq_BPELProvider"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns3:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="GetEDI997ProcessProv"
+                 partnerLinkType="ns2:GetEDI997ProcessProv_BPEL"
+                 partnerRole="GetEDI997ProcessProv_BPELProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:GetEDI997ProcessReq_BPELRequestMessage"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="schemaList" element="ns1:SchemaList"/>
+    <variable name="I" type="xsd:int"/>
+    <variable name="InvCommonSFDCErrorLogService_IV"
+              messageType="ns3:requestMessage"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence1">
+        <assign name="AsgnCommonSFDCErrorLogService">
+          
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InterfaceNumber"/>
+          </copy>
+          
+          <copy>
+            <from expression='"EDICom"'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='"GetEDI997ProcessReq"'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Severity"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultCode")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("CorrectiveAction")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:createddatetime"/>
+          </copy>
+        </assign>
+        
+          
+          
+          
+       
+        <invoke name="InvCommonSFDCErrorLogService"
+                inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns3:execute_ptt" operation="execute"
+                bpelx:invokeAsDetail="no"/>
+        <terminate name="Terminate"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in GetEDI997ProcessReq_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="GetEDI997processreq_bpel_client" portType="client:GetEDI997ProcessReq_BPEL" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="SetTitle">
+      <copy>
+        <from expression='"GetEDI997ProcessReq"'/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <assign name="FetchSchemasFromDVM">
+      <bpelx:copyList>
+        <bpelx:from expression="oraext:create-nodeset-from-delimited-string('{http://www.sunpowercorp.com/EDICom/GetEDI997Process/xsd/v1}Schema',dvm:lookupValue('EDIInboundSchemas_997.dvm','SchemaName','ALL','Values','NA'),',')"/>
+        <bpelx:to variable="schemaList" query="/ns1:SchemaList/ns1:Schema"/>
+      </bpelx:copyList>
+    </assign>
+    <bpelx:flowN name="FlowN"
+                 N="ora:countNodes('schemaList','/ns1:SchemaList/ns1:Schema')"
+                 indexVariable="I">
+      
+        <scope name="ScopeFlowN">
+        <variables>
+          <variable name="InvGetEDI997ProcessProv_IV"
+              messageType="ns2:GetEDI997ProcessProv_BPELRequestMessage"/>
+        </variables>
+        <sequence>
+            <assign name="AsgnGetEDI997ProcessProv">
+            <copy>
+              <from variable="schemaList"
+                    query="/ns1:SchemaList/ns1:Schema[$I]"/>
+              <to variable="InvGetEDI997ProcessProv_IV" part="payload"
+                  query="/ns2:process/ns2:input"/>
+            </copy>
+          </assign>
+            <invoke name="InvGetEDI997ProcessProv"
+                    inputVariable="InvGetEDI997ProcessProv_IV"
+                    partnerLink="GetEDI997ProcessProv"
+                    portType="ns2:GetEDI997ProcessProv_BPEL"
+                    operation="process" bpelx:invokeAsDetail="no"/>
+          </sequence>
+        </scope>
+      
+    </bpelx:flowN>
+  </sequence>
+</process>

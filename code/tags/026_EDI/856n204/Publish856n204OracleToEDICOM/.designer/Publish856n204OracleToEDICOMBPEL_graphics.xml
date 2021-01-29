@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<graphics>
+   <diagram optimizeLayout="false" fixedWidthSwimlanes="true" roundedPartnerlinks="true" centerZoom="true" validateOnLoad="true" confirmBeforeDelete="true" selectedPartnerLinkColor="0,0,153" swimlaneBackground="240,240,240" swimlaneDividerBackground="218,218,218" graphBackground="255,255,255" selectedBorderBackground="49,105,198" connectedPartnerLinkColor="204,204,255" connectablePartnerLinkColor="0,0,255" unconnectedPartnerLinkColor="192,192,192"/>
+   <annotationfile/>
+   <iconize/>
+   <partnerlink_locations>
+      <partnerlink name="DequeEDISignal" x="13" y="90" side="left"/>
+      <partnerlink name="selectDetailsFromOracle" x="1823" y="188" side="right"/>
+      <partnerlink name="WriteEDI_856FileToLocal" x="1823" y="1597" side="right"/>
+      <partnerlink name="CommonSFDCErrorLogService" x="1823" y="1216" side="right"/>
+      <partnerlink name="EBIBrokerWebServiceV2ImplService" x="1823" y="2095" side="right"/>
+      <partnerlink name="NotificationService1" x="1823" y="18" side="right"/>
+      <partnerlink name="WriteEDIFileToLocal" x="1823" y="1654" side="right"/>
+      <partnerlink name="updateStatusToOracle" x="1823" y="1393" side="right"/>
+      <partnerlink name="SyncReadEDIFiles" x="1823" y="1909" side="right"/>
+      <partnerlink name="FileUtilityService" x="1823" y="2152" side="right"/>
+   </partnerlink_locations>
+   <graph_layout viewport="592,1670,1219,440" show_swimlanes="true">
+      <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catch" type="catch"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catch/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll" type="catchall"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/switch" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/switch/case/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN" type="flowN"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/faultHandlers/catch" type="catch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/faultHandlers/catch/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/faultHandlers/catchAll" type="catchall"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/faultHandlers/catchAll/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/faultHandlers/catchAll/sequence/switch" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/faultHandlers/catchAll/sequence/switch/case/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[1]" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[1]/case[1]/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[1]/case[2]/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[2]" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[2]/case[1]/sequence" type="sequence"/>
+      <layout_item collapsed="true" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[2]/case[1]/sequence/scope" type="email" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[2]/case[1]/sequence/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/flowN/sequence/scope/sequence/switch[2]/case[2]/sequence" type="sequence"/>
+   </graph_layout>
+   <bookmarks/>
+</graphics>

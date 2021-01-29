@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>236</line>
+      <col/>
+      <file>OracleSFDCNoItemOperatingUnitProv_BPEL.bpel</file>
+      <name>OracleSFDCNoItemOperatingUnitProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://schemas.xmlsoap.org/ws/2003/03/addressing}AttributedURI"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>fault-policies.xml</file>
+      <name>fault-policies.xml</name>
+      <fix/>
+      <msg>schema -  (Error) Identity constraint validation error: 'Key sequence not found in key reference'</msg>
+   </Fault>
+</Faults>

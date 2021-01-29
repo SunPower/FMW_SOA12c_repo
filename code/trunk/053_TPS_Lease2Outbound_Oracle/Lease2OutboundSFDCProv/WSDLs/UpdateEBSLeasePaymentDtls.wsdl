@@ -1,0 +1,22 @@
+<?binding.jca UpdateEBSLeasePaymentDtls_db.jca?>
+<wsdl:definitions name="UpdateEBSLeasePaymentDtls" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/Lease2Outbound/Lease2OutboundSFDCProv/UpdateEBSLeasePaymentDtls" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/Lease2Outbound/Lease2OutboundSFDCProv/UpdateEBSLeasePaymentDtls" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateEBSLeasePaymentDtls">
+    <plt:partnerLinkType name="UpdateEBSLeasePaymentDtls_plt">
+        <plt:role name="UpdateEBSLeasePaymentDtls_role">
+            <plt:portType name="tns:UpdateEBSLeasePaymentDtls_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateEBSLeasePaymentDtls"
+                    schemaLocation="../Schemas/UpdateEBSLeasePaymentDtls_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrOmLeasePaymentDtlsCollection_msg">
+        <wsdl:part name="XxspwrOmLeasePaymentDtlsCollection" element="top:XxspwrOmLeasePaymentDtlsCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateEBSLeasePaymentDtls_ptt">
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:XxspwrOmLeasePaymentDtlsCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

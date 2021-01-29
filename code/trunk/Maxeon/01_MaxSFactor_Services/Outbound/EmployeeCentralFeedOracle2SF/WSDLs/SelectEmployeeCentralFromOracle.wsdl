@@ -1,0 +1,26 @@
+<?binding.jca SelectEmployeeCentralFromOracle_db.jca?>
+<wsdl:definitions name="SelectEmployeeCentralFromOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/EmployeeCentralFeedOracle2SF/SelectEmployeeCentralFromOracle" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectEmployeeCentralFromOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SuccessFactor/EmployeeCentralFeedOracle2SF/SelectEmployeeCentralFromOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectEmployeeCentralFromOracle_plt">
+        <plt:role name="SelectEmployeeCentralFromOracle_role">
+            <plt:portType name="tns:SelectEmployeeCentralFromOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectEmployeeCentralFromOracle"
+                    schemaLocation="../Schemas/SelectEmployeeCentralFromOracle.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectEmployeeCentralFromOracleInput_msg">
+        <wsdl:part name="SelectEmployeeCentralFromOracleInput_msg" element="db:SelectEmployeeCentralFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectEmployeeCentralFromOracleOutputCollection_msg">
+        <wsdl:part name="SelectEmployeeCentralFromOracleOutputCollection" element="db:SelectEmployeeCentralFromOracleOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectEmployeeCentralFromOracle_ptt">
+        <wsdl:operation name="SelectEmployeeCentralFromOracle">
+            <wsdl:input message="tns:SelectEmployeeCentralFromOracleInput_msg"/>
+            <wsdl:output message="tns:SelectEmployeeCentralFromOracleOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

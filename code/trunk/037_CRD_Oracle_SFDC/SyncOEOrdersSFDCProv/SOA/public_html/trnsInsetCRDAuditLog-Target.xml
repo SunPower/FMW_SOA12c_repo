@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns10:CrdAuditLogCollection xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertCRD_Audit_LOG">
+   <ns10:CrdAuditLog>
+      <ns10:instanceId>-0</ns10:instanceId>
+      <ns10:headerId>3</ns10:headerId>
+      <ns10:creationDate>2014-12-09T22:48:24.380+05:30</ns10:creationDate>
+      <ns10:source>ORACLE</ns10:source>
+      <ns10:status>ERROR</ns10:status>
+      <ns10:message>string6</ns10:message>
+   </ns10:CrdAuditLog>
+   <ns10:CrdAuditLog>
+      <ns10:instanceId>-0</ns10:instanceId>
+      <ns10:headerId>10</ns10:headerId>
+      <ns10:creationDate>2014-12-09T22:48:24.380+05:30</ns10:creationDate>
+      <ns10:source>ORACLE</ns10:source>
+      <ns10:status>ERROR</ns10:status>
+      <ns10:message>string13</ns10:message>
+   </ns10:CrdAuditLog>
+   <ns10:CrdAuditLog>
+      <ns10:instanceId>-0</ns10:instanceId>
+      <ns10:headerId>17</ns10:headerId>
+      <ns10:creationDate>2014-12-09T22:48:24.380+05:30</ns10:creationDate>
+      <ns10:source>ORACLE</ns10:source>
+      <ns10:status>ERROR</ns10:status>
+      <ns10:message>string20</ns10:message>
+   </ns10:CrdAuditLog>
+</ns10:CrdAuditLogCollection>

@@ -1,0 +1,40 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Noun/VertexDataFeed/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Noun/VertexDataFeed/V1"
+            xmlns:Vdf="http://www.sunpowercorp.com/Common/VertexDataFeedDetailsCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/VertexDataFeedDetailsCommonTypes/V1"
+                schemaLocation="../../../../../../Schemas/CDM/BOD/Nouns/VertexDataFeed/V1/VertexDataFeedDetailsCommonTypes.xsd"/>
+    <xsd:element name="VertexDataFeedDetails" type="VertexDataFeedDataType"/>
+    <xsd:complexType name="VertexDataFeedDataType">
+        <xsd:sequence>
+            <xsd:element ref="VertexDataFeedDetails" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="VertexDataFeedDetail" type="VertexDataFeedDetailsType"/>
+    <xsd:complexType name="VertexDataFeedDetailsType">
+        <xsd:sequence>
+            <xsd:element ref="Vdf:GeoGRAPHY_ID" minOccurs="0"/>
+            <xsd:element ref="Vdf:COUNTRY" minOccurs="0"/>
+            <xsd:element ref="Vdf:COUNTRY_CODE" minOccurs="0"/>
+            <xsd:element ref="Vdf:CITY" minOccurs="0"/>
+            <xsd:element ref="Vdf:COUNTY" minOccurs="0"/>
+            <xsd:element ref="Vdf:STATE" minOccurs="0"/>
+            <xsd:element ref="Vdf:POSTAL_CODE" minOccurs="0"/>
+            <xsd:element ref="Vdf:INTERFACE_STATUS" minOccurs="0"/>
+            <xsd:element ref="Vdf:ERROR_MESSAGE" minOccurs="0"/>
+            <xsd:element ref="Vdf:TRANSACTION_DATE" minOccurs="0"/>
+            <xsd:element ref="Vdf:REQUEST_ID" minOccurs="0"/>
+            <xsd:element ref="Vdf:GEO_CREATED_BY" minOccurs="0"/>
+            <xsd:element ref="Vdf:GEO_CREATION_DATE" minOccurs="0"/>
+            <xsd:element ref="Vdf:GEO_LAST_UPDATED_BY" minOccurs="0"/>
+            <xsd:element ref="Vdf:GEO_LAST_UPDATE_DATE" minOccurs="0"/>
+            <xsd:element ref="Vdf:CREATED_BY" minOccurs="0"/>
+            <xsd:element ref="Vdf:CREATION_DATE" minOccurs="0"/>
+            <xsd:element ref="Vdf:LAST_UPDATED_BY" minOccurs="0"/>
+            <xsd:element ref="Vdf:LAST_UPDATED_DATE" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

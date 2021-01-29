@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='ProcedureCall']</loc>
+      <line>56</line>
+      <col>17</col>
+      <file>D:\NEW_CODE\011_VertexDataFeed_Oracle2SFDC\VertexDataLoadProcCall\composite.xml</file>
+      <name>D:\NEW_CODE\011_VertexDataFeed_Oracle2SFDC\VertexDataLoadProcCall\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

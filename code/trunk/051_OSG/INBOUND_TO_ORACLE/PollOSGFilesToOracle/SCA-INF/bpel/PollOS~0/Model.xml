@@ -1,0 +1,225 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Jul 17 17:11:26 IST 2015
+  Author:  RD42768
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="PollOSGFile_BPEL" targetNamespace="http://xmlns.oracle.com/OSG/PollOSGFilesToOracle/PollOSGFile_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/OSG/PollOSGFilesToOracle/PollOSGFile_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/OSG/PollOSGFilesToOracle/PollOSGFiles" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/OSG/PollOSGFilesToOracle/WriteOSGFiles" xmlns:ns3="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/" xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        PollOSGFiles.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="PollOSGFiles" partnerLinkType="ns1:Get_plt" myRole="Get_role"/>
+    <partnerLink name="WriteOSGFiles" partnerLinkType="ns2:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns3:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+  </partnerLinks>
+  <variables>
+    <variable name="RcvPollOSGFiles_IV" messageType="ns1:Get_msg"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns3:requestMessage"/>
+    <variable name="InvWriteOSGFiles_IV" messageType="ns2:Write_msg"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="ReadFileLoc" type="xsd:string"/>
+    <variable name="WriteFileLoc" type="xsd:string"/>
+    <variable name="SourceLoc" type="xsd:string"/>
+    <variable name="DestLoc" type="xsd:string"/>
+    <variable name="WriteLoc" type="xsd:string"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="AsgCommonSFDCErrorLogService" id="BpAss0">          
+          <copy>
+            <from expression="ora:getComponentInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:UniqueIdentNum/ns5:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="&quot;E&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:status"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns3:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main" id="BpSeq1">
+    <receive name="RcvPollOSGFiles" createInstance="yes" variable="RcvPollOSGFiles_IV" partnerLink="PollOSGFiles" portType="ns1:Get_ptt" operation="Get" id="BpRcv0">
+      <bpelx:property name="jca.ftp.FileName" variable="FileName"/>
+      <bpelx:property name="jca.ftp.Directory" variable="ReadFileLoc"/>
+    </receive>
+    <switch name="Switch1" id="BpSwt0">
+      <case condition="starts-with(bpws:getVariableData('FileName'),'SPD-SPD-RETURN')">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">CheckPaymentType</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <assign name="asg_ReceiptReversalPayment" id="BpAss1">
+          <copy>
+            <from expression="dvm:lookupValue(&quot;OSGFileLoc.dvm&quot;,&quot;PaymentType&quot;,&quot;ReceiptReversal&quot;,&quot;ToLoc&quot;,&quot;/soadata/osg/inbound&quot;)"/>
+            <to variable="WriteLoc"/>
+          </copy>
+        </assign>
+      </case>
+      <otherwise>
+        <assign name="asg_ReceiptPayment" id="BpAss2">
+          <copy>
+            <from expression="dvm:lookupValue(&quot;OSGFileLoc.dvm&quot;,&quot;PaymentType&quot;,&quot;Receipts&quot;,&quot;ToLoc&quot;,&quot;/soadata/osg/inbound&quot;)"/>
+            <to variable="WriteLoc"/>
+          </copy>
+        </assign>
+      </otherwise>
+    </switch>
+    <assign name="asgData" id="BpAss3">
+      <copy>
+        <from variable="WriteLoc"/>
+        <to variable="WriteFileLoc"/>
+      </copy>
+      <copy>
+        <from variable="WriteLoc"/>
+        <to variable="SourceLoc"/>
+      </copy>
+      <copy>
+        <from variable="WriteLoc"/>
+        <to variable="DestLoc"/>
+      </copy>
+      <copy>
+        <from variable="RcvPollOSGFiles_IV" part="attach" query="/ns4:attachmentElement/@href"/>
+        <to variable="InvWriteOSGFiles_IV" part="body" query="/ns4:attachmentElement/@href"/>
+      </copy>
+    </assign>
+    <invoke name="InvWriteOSGFiles" partnerLink="WriteOSGFiles" portType="ns2:Write_ptt" operation="Write" inputVariable="InvWriteOSGFiles_IV" bpelx:invokeAsDetail="no" id="BpInv1">
+      <bpelx:inputProperty name="jca.file.FileName" variable="FileName"/>
+      <bpelx:inputProperty name="jca.file.Directory" variable="WriteFileLoc"/>
+    </invoke>
+    <!--<bpelx:exec import="java.io.*"/>
+    <bpelx:exec import="java.util.zip.*"/>
+    <bpelx:exec name="UnzipFiles" version="1.5" language="java">
+      <![CDATA[/*Write your java code below e.g.   
+	System.out.println("Hello, World");  
+*/ 
+ 
+FileInputStream fis = null; 
+ZipInputStream zipIs = null; 
+ZipEntry zEntry = null; 
+String SourceLoc =  (String)getVariableData("SourceLoc"); 
+String DestLoc = (String)getVariableData("DestLoc"); 
+String FileName = (String)getVariableData("FileName"); 
+ 
+addAuditTrailEntry("Source Loc "+SourceLoc);         
+addAuditTrailEntry("Destination Loc "+DestLoc); 
+addAuditTrailEntry("File Name "+FileName); 
+ 
+try { 
+            String filePath = SourceLoc+'/'+FileName; 
+            System.out.println("FilePath = "+filePath); 
+            addAuditTrailEntry(filePath); 
+            fis = new FileInputStream(filePath); 
+            zipIs = new ZipInputStream(new BufferedInputStream(fis)); 
+            while((zEntry = zipIs.getNextEntry()) != null){ 
+                try{ 
+                    addAuditTrailEntry("Trying "+zEntry.getName()); 
+                    byte[] tmp = new byte[4*1024]; 
+                    FileOutputStream fos = null; 
+                    String opFilePath = DestLoc+"/"+zEntry.getName(); 
+                    addAuditTrailEntry("opFilePath ==== "+opFilePath); 
+                    System.out.println("Extracting file to "+opFilePath); 
+                    fos = new FileOutputStream(opFilePath); 
+                    int size = 0; 
+                    while((size = zipIs.read(tmp)) != -1){ 
+                        fos.write(tmp, 0 , size); 
+                        addAuditTrailEntry("Writing"); 
+                    } 
+                    fos.flush(); 
+                    fos.close(); 
+                    File file = new File(filePath);
+                    if(file.delete()){
+    			System.out.println(file.getName() + " is deleted!");
+                        addAuditTrailEntry(file.getName() + " is deleted!"); 
+                    }else{
+    			System.out.println("Delete operation is failed.");
+                        addAuditTrailEntry("Delete operation is failed."); 
+                    }
+                } catch(Exception ex){ 
+                     ex.printStackTrace(); 
+            addAuditTrailEntry(ex);         
+                } 
+            } 
+            zipIs.close(); 
+        } catch (FileNotFoundException fnofe) { 
+            fnofe.printStackTrace(); 
+            addAuditTrailEntry(fnofe);         
+        } catch (IOException ioe) { 
+            ioe.printStackTrace(); 
+            addAuditTrailEntry(ioe);         
+        }]]>
+    </bpelx:exec>-->
+  </sequence>
+</process>

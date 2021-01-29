@@ -1,0 +1,20 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1"
+            xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="qualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1"
+                schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="ID" type="cdt:Int15" nillable="true"/>
+    <xsd:element name="manufacturer" type="cdt:String50" nillable="true"/>
+    <xsd:element name="product_type" type="cdt:String50" nillable="true"/>
+    <xsd:element name="serial_number" type="cdt:String50" nillable="true"/>
+    <xsd:element name="packing_list_no" type="cdt:String50" nillable="true"/>
+    <xsd:element name="trad_ship_date" type="xsd:dateTime" nillable="true"/>
+    <xsd:element name="dealer_name" type="cdt:String50" nillable="true"/>
+    <xsd:element name="third_party_logistics_name" type="cdt:String50"
+                 nillable="true"/>
+    <xsd:element name="product_group" type="cdt:String200" nillable="true"/>
+    <xsd:element name="last_updated_stamp" type="xsd:dateTime" nillable="true"/>
+</xsd:schema>

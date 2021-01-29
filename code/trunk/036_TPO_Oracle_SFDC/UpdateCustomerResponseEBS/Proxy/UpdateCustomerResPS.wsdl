@@ -1,0 +1,29 @@
+<wsdl:definitions name="UpdateCustomerResPS" targetNamespace="http://www.example.org/UpdateCustomerResPS/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" xmlns:tns="http://www.example.org/UpdateCustomerResPS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" schemaLocation="../xsd/CDM/BOD/Nouns/SyncAccCustomers/V1/ProcessSFDCSyncCustomers.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateCustomerResMsg">
+    <wsdl:part element="ns1:ProcessSFDCSyncCustResp" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="UpdateCustomerResPS">
+    <wsdl:operation name="UpdateCustomer">
+      <wsdl:input message="tns:UpdateCustomerResMsg"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UpdateCustomerResPSSOAP" type="tns:UpdateCustomerResPS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="UpdateCustomer">
+      <soap:operation soapAction="http://www.example.org/UpdateCustomerResPS/UpdateCustomer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UpdateCustomerResPS">
+    <wsdl:port binding="tns:UpdateCustomerResPSSOAP" name="UpdateCustomerResPSSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

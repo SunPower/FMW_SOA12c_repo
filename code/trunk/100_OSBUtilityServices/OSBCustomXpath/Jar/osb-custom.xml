@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xpf:xpathFunctions xmlns:xpf="http://www.bea.com/wli/sb/xpath/config">
+    <xpf:category id="Custom Functions">
+        <xpf:function>
+            <xpf:name>encodeToBase64</xpf:name>
+            <xpf:comment>FUNC to convert into BASE64</xpf:comment>
+            <xpf:namespaceURI>http://sunpowercorp.com/osb/custom/functions/OSBUtils</xpf:namespaceURI>
+            <xpf:className>sunpowercorp.com.osb.custom.functions.OSBUtils.Base64Conversion</xpf:className>
+            <xpf:method>java.lang.String encodeToBase64(java.lang.String)</xpf:method>
+            <xpf:isDeterministic>true</xpf:isDeterministic>
+            <xpf:scope>Pipeline</xpf:scope>
+            <xpf:scope>SplitJoin</xpf:scope>
+        </xpf:function>
+    </xpf:category>
+</xpf:xpathFunctions>
+

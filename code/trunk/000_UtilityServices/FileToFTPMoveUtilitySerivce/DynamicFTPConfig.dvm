@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="DynamicConfig" xmlns="http://xmlns.oracle.com/dvm">
+   <description/>
+   <columns>
+      <column name="FileToken"/>
+      <column name="DynamicJNDI"/>
+      <column name="RemoteDir"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>ORACLE_LMS_HR</cell>
+         <cell>eis/FTP/successfact</cell>
+         <cell>/incoming</cell>
+      </row>
+      <row>
+         <cell>SFDC_LMS_Users</cell>
+         <cell>eis/FTP/successfact</cell>
+         <cell>/incoming</cell>
+      </row>
+      <row>
+         <cell>ORACLE_LMS_ORG</cell>
+         <cell>eis/FTP/successfact</cell>
+         <cell>/incoming</cell>
+      </row>
+      <row>
+         <cell>SFDC_LMS_JOB</cell>
+         <cell>eis/FTP/successfact</cell>
+         <cell>/incoming</cell>
+      </row>
+      <row>
+         <cell>SFDC_LMS_ORG</cell>
+         <cell>eis/FTP/successfact</cell>
+         <cell>/incoming</cell>
+      </row>
+      <row>
+         <cell>ORACLE_TTB_HR</cell>
+         <cell>eis/FTP/successfact</cell>
+         <cell>/incoming</cell>
+      </row>
+      
+      <row>
+         <cell>CCF_O2SF</cell>
+         <cell>eis/ftp/SuccessFactor</cell>
+         <cell>/oracle/test/inbound</cell>
+      </row>
+      <row>
+         <cell>CPF_O2SF</cell>
+         <cell>eis/ftp/SuccessFactor</cell>
+         <cell>/oracle/test/inbound</cell>
+      </row>
+      <row>
+         <cell>FPNA_O2SF</cell>
+         <cell>eis/ftp/SuccessFactor</cell>
+         <cell>/oracle/test/inbound</cell>
+      </row>
+      <row>
+         <cell>ECF_O2SF</cell>
+         <cell>eis/ftp/SuccessFactor</cell>
+         <cell>/oracle/test/inbound</cell>
+      </row>
+      <row>
+         <cell>TrewIAG_2SF</cell>
+         <cell>eis/ftp/SuccessFactor</cell>
+         <cell>/trewiag/test/inbound</cell>
+      </row>
+      <row>
+         <cell>EMPFEEDSF2TrewIAG</cell>
+         <cell>eis/ftp/TrewIAG</cell>
+         <cell>/successfactors/incoming</cell>
+      </row>
+   </rows>
+</dvm>

@@ -1,0 +1,30 @@
+<wsdl:definitions
+     name="writeFileToSOADir"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish888OracleToEDICom/writeFileToSOADir"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish888OracleToEDICom/writeFileToSOADir"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:imp1="http://sunpowercorp.com/Publish888OracleToEDICom/writeFileToSOADir/xsd/v1"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+  <plt:partnerLinkType name="Write_plt" >
+    <plt:role name="Write_role" >
+      <plt:portType name="tns:Write_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish888OracleToEDICom/writeFileToSOADir"
+              xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://sunpowercorp.com/Publish888OracleToEDICom/writeFileToSOADir/xsd/v1"
+                schemaLocation="Schemas/EDI888_FlatFile.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="Write_msg">
+        <wsdl:part name="body" element="imp1:Records"/>
+    </wsdl:message>
+    <wsdl:portType name="Write_ptt">
+        <wsdl:operation name="Write">
+            <wsdl:input message="tns:Write_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

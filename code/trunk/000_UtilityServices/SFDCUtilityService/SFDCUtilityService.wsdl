@@ -1,0 +1,69 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SFDCUtilityService"
+     targetNamespace="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityService"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="urn:partner.soap.sforce.com"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://www.sunpowercorp.com/SFDCUtilityServiceIndex/xsd/v1"
+     xmlns:client="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityService"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SFDCUtilityService">
+        <plnk:role name="SFDCUtilityServiceProvider">
+            <plnk:portType name="client:SFDCUtilityService"/>
+        </plnk:role>
+        <plnk:role name="SFDCUtilityServiceRequester">
+            <plnk:portType name="client:SFDCUtilityServiceCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityService"
+                    schemaLocation="Schemas/SFDCUtilityService.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SFDCUtilityServiceIndex/xsd/v1"
+                        schemaLocation="Schemas/inputparams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SFDCUtilityServiceRequestMessage">
+        <wsdl:part name="payload" element="client:update"/>
+    </wsdl:message>
+    <wsdl:message name="SFDCUtilityServiceResponseMessage">
+        <wsdl:part name="payload" element="client:updateResponse"/>
+    </wsdl:message>
+      <wsdl:message name="SFDCUtilityServiceUpsertRequestMessage">
+        <wsdl:part name="payload" element="client:upsert"/>
+    </wsdl:message>
+    <wsdl:message name="SFDCUtilityServiceUpsertResponseMessage">
+        <wsdl:part name="payload" element="client:upsertResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="SFDCUtilityService">
+        <wsdl:operation name="update">
+            <wsdl:input message="client:SFDCUtilityServiceRequestMessage"/>
+        </wsdl:operation>
+         <wsdl:operation name="upsert">
+            <wsdl:input message="client:SFDCUtilityServiceUpsertRequestMessage"/>
+        </wsdl:operation>
+         <wsdl:operation name="create">
+            <wsdl:input message="client:SFDCUtilityServiceRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="SFDCUtilityServiceCallback">
+        <wsdl:operation name="updateResponse">
+            <wsdl:input message="client:SFDCUtilityServiceResponseMessage"/>
+        </wsdl:operation>
+         <wsdl:operation name="upsertResponse">
+            <wsdl:input message="client:SFDCUtilityServiceUpsertResponseMessage"/>
+        </wsdl:operation>
+         <wsdl:operation name="createResponse">
+            <wsdl:input message="client:SFDCUtilityServiceResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

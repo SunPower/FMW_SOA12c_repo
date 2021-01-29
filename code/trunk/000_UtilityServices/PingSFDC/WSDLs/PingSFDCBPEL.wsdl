@@ -1,0 +1,39 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="PingSFDCBPEL"
+     targetNamespace="http://xmlns.oracle.com/SFDC_POC/PingSFDC/PingSFDCBPEL"
+     xmlns:ns2="urn:partner.soap.sforce.com"
+     xmlns:ns1="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/SFDC_POC/PingSFDC/PingSFDCBPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="PingSFDCBPEL">
+        <plnk:role name="PingSFDCBPELProvider">
+            <plnk:portType name="client:PingSFDCBPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/SFDC_POC/PingSFDC/PingSFDCBPEL"
+                    schemaLocation="../Schemas/PingSFDCBPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="PingSFDCBPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="PingSFDCBPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="PingSFDCBPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:PingSFDCBPELRequestMessage"/>
+            <wsdl:output message="client:PingSFDCBPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

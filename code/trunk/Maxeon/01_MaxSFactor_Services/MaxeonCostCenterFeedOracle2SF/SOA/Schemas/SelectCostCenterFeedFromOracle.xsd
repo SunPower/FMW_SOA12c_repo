@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCostCenterFeedFromOracle" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCostCenterFeedFromOracle" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectCostCenterFeedFromOracleInput" type="SelectCostCenterFeedFromOracleInput"/>
+   <xs:complexType name="SelectCostCenterFeedFromOracleInput">
+      <xs:sequence>
+         <xs:element name="minrow" type="xs:string" nillable="true"/>
+         <xs:element name="maxrow" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectCostCenterFeedFromOracleOutputCollection" type="SelectCostCenterFeedFromOracleOutputCollection"/>
+   <xs:complexType name="SelectCostCenterFeedFromOracleOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectCostCenterFeedFromOracleOutput" type="SelectCostCenterFeedFromOracleOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectCostCenterFeedFromOracleOutput">
+      <xs:sequence>
+         <xs:element name="TEXT" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

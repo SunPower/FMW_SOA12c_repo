@@ -1,0 +1,26 @@
+<!--
+    Name: ProcessLease2Outbound.xsd
+    Change history
+
+    Author      date        purpose
+
+--><xsd:schema targetNamespace="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/BOD/ProcessVertexDataFeedDetails/V1" xmlns:Vdf="http://www.sunpowercorp.com/Noun/VertexDataFeed/V1" xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/VertexDataFeed/V1" schemaLocation="VertexDataFeedDetails.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessVertexDataFeedDetails" type="ProcessVertexDataFeedDetailsType"/>
+    <xsd:complexType name="ProcessVertexDataFeedDetailsType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="VertexDataFeedDetailsDataAreaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="VertexDataFeedDetailsDataAreaType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="Vdf:VertexDataFeedDetail" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

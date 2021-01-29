@@ -1,0 +1,55 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<!--
+    Name: SyncOEOrders.xsd
+    Change history
+
+    Author      date        purpose
+    Venkat
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/BOD/ProcessSyncOEOrders/V1"
+            targetNamespace="http://www.sunpowercorp.com/BOD/ProcessSyncOEOrders/V1"
+            xmlns:soe="http://www.sunpowercorp.com/Noun/SyncOEOrders/V1"
+            xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/SyncOEOrders/V1"
+                schemaLocation="SyncOEOrders.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+                schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessSyncOEOrders" type="ProcessSyncOEOrdersType"/>
+    <xsd:element name="ProcessSyncOEOrdersResp"
+                 type="ProcessSyncOEOrdersRespType"/>
+    <xsd:complexType name="ProcessSyncOEOrdersType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="SyncOEOrdersType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProcessSyncOEOrdersRespType">
+        <xsd:sequence>
+            <xsd:element name="status" type="xsd:string"/>
+            <xsd:element name="FaultDetails" type="faultType"/> 
+           
+        </xsd:sequence>
+    </xsd:complexType>
+    
+     <xsd:complexType name="faultType">
+        <xsd:sequence>
+            <xsd:element name="code" type="xsd:string"/>
+            <xsd:element name="message" type="xsd:string"/> 
+            <xsd:element name="detail" type="xsd:string"/> 
+            
+           
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SyncOEOrdersType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="soe:SyncOEOrders"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

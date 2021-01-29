@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxspwrSfEmpFeedCollection" type="XxspwrSfEmpFeedCollection"/>
+   <xs:complexType name="XxspwrSfEmpFeedCollection">
+      <xs:sequence>
+         <xs:element name="XxspwrSfEmpFeed" type="XxspwrSfEmpFeed" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrSfEmpFeed">
+      <xs:sequence>
+         <xs:element name="sfEmployeeNumber" type="xs:string" nillable="true"/>
+         <xs:element name="oracleEmployeeNumber" type="xs:string" nillable="true"/>
+         <xs:element name="oraclePersonId" type="xs:decimal" nillable="true"/>
+         <xs:element name="personEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastName" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="firstName" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="middleName" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="preferredName" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="gender" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="nationality" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="dateOfBirth" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="hireDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="termDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="termReasonCode" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="emailAddress" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="addressEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="country" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="addressLine1" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="addressLine2" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="addressLine3" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="townOrCity" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="stateOrProvince" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="postalCode" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="jobEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="employeeStatus" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="employeeClass" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="workLocationCode" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="jobCode" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="businessTitle" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="managerId" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="oraclePayrollId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="oracleLeId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="oracleLedgerId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="oraclePayBasisId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="company" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="department" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="future" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="channel" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="account" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="line" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="project" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="intercompany" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="salaryEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="salaryAmount" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="salaryCurrencyCode" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="rateEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="rateBasis" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="payRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="billRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="overtimeRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="doubleTimeRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="currency" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="vendor" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="projectedAssEndDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="fileName" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="requestId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="status" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="errorMessage" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="statusBeforeProcess" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="statusAfterProcess" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="empNumBeforeProcess" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="empNumAfterProcess" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="hireDateBeforeProcess" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="hireDateAfterProcess" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="creationDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="createdBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdateDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdatedBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

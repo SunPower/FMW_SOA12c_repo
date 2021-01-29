@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ns3:delete xmlns:ns3="urn:partner.soap.sforce.com">
+   <ns3:ids>Id1471471471471471</ns3:ids>
+   <ns3:ids>Id1671671671671671</ns3:ids>
+   <ns3:ids>Id1871871871871871</ns3:ids>
+</ns3:delete>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" adapter="db"
+                wsdlLocation="WSDLs/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_ptt" operation="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select count(*) as RecordCount from XXSPWR.XXSPWR_AR_OSG_REV_OUTBOUND where status like 'NEW' and SOA_STATUS is null"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

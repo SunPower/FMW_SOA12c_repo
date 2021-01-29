@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="PollNewBatchesFromPartnerTab" adapter="db" wsdlLocation="PollNewBatchesFromPartnerTab.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-activation portType="PollNewBatchesFromPartnerTab_ptt" operation="receive">
+    <activation-spec className="oracle.tip.adapter.db.DBActivationSpec">
+      <property name="DescriptorName" value="PollNewBatchesFromPartnerTab.XxspwrEdicom888_ObPartner"/>
+      <property name="QueryName" value="PollNewBatchesFromPartnerTabSelect"/>
+      <property name="MappingsMetaDataURL" value="PollNewBatchesFromPartnerTab-or-mappings.xml"/>
+      <property name="PollingStrategy" value="LogicalDeletePollingStrategy"/>
+      <property name="MarkReadColumn" value="BATCH_STATUS"/>
+      <property name="MarkReadValue" value="INPROGRESS"/>
+      <property name="MarkUnreadValue" value="NEW"/>
+      <property name="PollingInterval" value="5"/>
+      <property name="MaxRaiseSize" value="1"/>
+      <property name="MaxTransactionSize" value="10"/>
+      <property name="SequencingColumn" value="BATCH_ID"/>
+      <property name="NumberOfThreads" value="1"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

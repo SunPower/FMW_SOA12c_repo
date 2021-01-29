@@ -1,0 +1,31 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"
+            targetNamespace="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"
+            xmlns:wfs="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1"
+                schemaLocation="WarrantyFDSToSFDCCommonTypes.xsd"/>
+    <xsd:element name="WRFDS2SFDC" type="WRFDS2SFDCDataType"/>
+    <xsd:complexType name="WRFDS2SFDCDataType">
+        <xsd:sequence>
+            <xsd:element ref="WRFDSToSFDCDetails" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="WRFDSToSFDCDetails" type="WRFDSToSFDCDetailsType"/>
+    <xsd:complexType name="WRFDSToSFDCDetailsType">
+        <xsd:sequence>
+            <xsd:element ref="wfs:ID" minOccurs="0"/>
+            <xsd:element ref="wfs:manufacturer" minOccurs="0"/>
+            <xsd:element ref="wfs:product_type" minOccurs="0"/>
+            <xsd:element ref="wfs:serial_number" minOccurs="0"/>
+            <xsd:element ref="wfs:packing_list_no" minOccurs="0"/>
+            <xsd:element ref="wfs:trad_ship_date" minOccurs="0"/>
+            <xsd:element ref="wfs:dealer_name" minOccurs="0"/>
+            <xsd:element ref="wfs:third_party_logistics_name" minOccurs="0"/>
+            <xsd:element ref="wfs:product_group" minOccurs="0"/>
+            <xsd:element ref="wfs:last_updated_stamp" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

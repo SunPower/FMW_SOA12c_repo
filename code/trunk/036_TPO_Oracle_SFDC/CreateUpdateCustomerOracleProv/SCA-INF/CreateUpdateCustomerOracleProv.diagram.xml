@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="createupdatecustomeroracleprov_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="290" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="283" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="createupdatecustomeroracleprov_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateCustomerOracleProv#wsdl.interface(CreateUpdateCustomerOracleProv)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="CommonSFDCErrorLogService">
+        <dgm:body borderWidth="2" arcRad="20" X="896" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="886" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonSFDCErrorLogService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CreateUpdateAccountCustomer">
+        <dgm:body borderWidth="2" arcRad="20" X="896" Y="144" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="886" Y="137" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CreateUpdateAccountCustomer" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateAccountCustomer#wsdl.interface(CreateUpdateAccountCustomer_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CreateUpdateCustSiteCustomer">
+        <dgm:body borderWidth="2" arcRad="20" X="896" Y="262" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="886" Y="255" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CreateUpdateCustSiteCustomer" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateCustSiteCustomer#wsdl.interface(CreateUpdateCustSiteCustomer_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CreateUpdateContactCustomer">
+        <dgm:body borderWidth="2" arcRad="20" X="896" Y="380" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="886" Y="373" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CreateUpdateContactCustomer" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateContactCustomer#wsdl.interface(CreateUpdateContactCustomer_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="UpdateCustomerOracleReq">
+        <dgm:body borderWidth="2" arcRad="20" X="896" Y="498" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="886" Y="491" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="UpdateCustomerOracleReq" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerOracleReq/UpdateCustomerOracleReq#wsdl.interface(UpdateCustomerOracleReq)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="SFDCUtilityService">
+        <dgm:body borderWidth="2" arcRad="20" X="896" Y="616" width="136" height="144">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="886" Y="609" width="156" height="158">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SFDCUtilityService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityService)" callbackInterface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>update</dgm:item>
+            <dgm:item>upsert</dgm:item>
+            <dgm:item>create</dgm:item>
+            <dgm:item>updateResponse</dgm:item>
+            <dgm:item>upsertResponse</dgm:item>
+            <dgm:item>createResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="CreateUpdateCustomerOracleProv">
+        <dgm:body borderWidth="2" arcRad="20" X="462" Y="275" width="130" height="186">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="452" Y="268" width="150" height="202">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="createupdatecustomeroracleprov_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateCustomerOracleProv#wsdl.interface(CreateUpdateCustomerOracleProv)"/>
+        <dgm:outputPort name="CommonSFDCErrorLogService" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:outputPort name="CreateUpdateAccountCustomer" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateAccountCustomer#wsdl.interface(CreateUpdateAccountCustomer_ptt)"/>
+        <dgm:outputPort name="CreateUpdateCustSiteCustomer" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateCustSiteCustomer#wsdl.interface(CreateUpdateCustSiteCustomer_ptt)"/>
+        <dgm:outputPort name="CreateUpdateContactCustomer" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/TPOSOACustomerSync/CreateUpdateCustomerOracleProv/CreateUpdateContactCustomer#wsdl.interface(CreateUpdateContactCustomer_ptt)"/>
+        <dgm:outputPort name="UpdateCustomerOracleReq" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerOracleReq/UpdateCustomerOracleReq#wsdl.interface(UpdateCustomerOracleReq)"/>
+        <dgm:outputPort name="SFDCUtilityService" X="120" Y="140" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityService)" callbackInterface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="createupdatecustomeroracleprov_client_ep" target="CreateUpdateCustomerOracleProv/createupdatecustomeroracleprov_client" width="2">
+        <dgm:gSegment X1="168" Y1="300" X2="452" Y2="300"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreateUpdateCustomerOracleProv/CommonSFDCErrorLogService" target="CommonSFDCErrorLogService" width="2">
+        <dgm:gSegment X1="602" Y1="300" X2="626" Y2="300"/>
+        <dgm:gSegment X1="626" Y1="300" X2="626" Y2="36"/>
+        <dgm:gSegment X1="626" Y1="36" X2="886" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreateUpdateCustomerOracleProv/CreateUpdateAccountCustomer" target="CreateUpdateAccountCustomer" width="2">
+        <dgm:gSegment X1="602" Y1="325" X2="641" Y2="325"/>
+        <dgm:gSegment X1="641" Y1="325" X2="641" Y2="154"/>
+        <dgm:gSegment X1="641" Y1="154" X2="886" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreateUpdateCustomerOracleProv/CreateUpdateCustSiteCustomer" target="CreateUpdateCustSiteCustomer" width="2">
+        <dgm:gSegment X1="602" Y1="350" X2="656" Y2="350"/>
+        <dgm:gSegment X1="656" Y1="350" X2="656" Y2="272"/>
+        <dgm:gSegment X1="656" Y1="272" X2="886" Y2="272"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreateUpdateCustomerOracleProv/CreateUpdateContactCustomer" target="CreateUpdateContactCustomer" width="2">
+        <dgm:gSegment X1="602" Y1="375" X2="656" Y2="375"/>
+        <dgm:gSegment X1="656" Y1="375" X2="656" Y2="390"/>
+        <dgm:gSegment X1="656" Y1="390" X2="886" Y2="390"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreateUpdateCustomerOracleProv/UpdateCustomerOracleReq" target="UpdateCustomerOracleReq" width="2">
+        <dgm:gSegment X1="602" Y1="400" X2="641" Y2="400"/>
+        <dgm:gSegment X1="641" Y1="400" X2="641" Y2="508"/>
+        <dgm:gSegment X1="641" Y1="508" X2="886" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreateUpdateCustomerOracleProv/SFDCUtilityService" target="SFDCUtilityService" width="2">
+        <dgm:gSegment X1="602" Y1="425" X2="626" Y2="425"/>
+        <dgm:gSegment X1="626" Y1="425" X2="626" Y2="626"/>
+        <dgm:gSegment X1="626" Y1="626" X2="886" Y2="626"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

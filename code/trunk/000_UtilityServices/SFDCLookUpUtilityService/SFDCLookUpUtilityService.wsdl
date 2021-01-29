@@ -1,0 +1,46 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SFDCLookUpUtilityService"
+     targetNamespace="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="urn:partner.soap.sforce.com"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SFDCLookUpUtilityService">
+        <plnk:role name="SFDCLookUpUtilityServiceProvider">
+            <plnk:portType name="client:SFDCLookUpUtilityService"/>
+        </plnk:role>
+        <plnk:role name="SFDCLookUpUtilityServiceRequester">
+            <plnk:portType name="client:SFDCLookUpUtilityServiceCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/TPOSOACustomerSync/SFDCLookUpUtilityService/SFDCLookUpUtilityService"
+                 schemaLocation="Schemas/SFDCLookUpUtilityService.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SFDCLookUpUtilityServiceResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SFDCLookUpUtilityServiceRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="SFDCLookUpUtilityServiceCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:SFDCLookUpUtilityServiceResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="SFDCLookUpUtilityService">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SFDCLookUpUtilityServiceRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

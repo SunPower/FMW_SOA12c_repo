@@ -1,0 +1,46 @@
+<wsdl:definitions name="OracleSFDCItemCanonical" targetNamespace="http://www.sunpowercorp.com/OracleSFDCItemCanonical/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.sunpowercorp.com/OracleSFDCItemCanonical/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCItem/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+   <xsd:schema>
+			<xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCItem/V1" schemaLocation="../XSD/CDM/BOD/Nouns/OracleSFDCItem/V1/ProcessOracleSFDCItem.xsd"/>
+		</xsd:schema>
+
+      <xsd:schema targetNamespace="http://www.sunpowercorp.com/OracleSFDCItemCanonical/">
+      <xsd:element name="OracleSFDCItemCanonicalResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="OracleSFDCItemCanonicalRequest">
+    <wsdl:part element="ns1:ProcessOracleSFDCItem" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="OracleSFDCItemCanonicalResponse">
+    <wsdl:part element="tns:OracleSFDCItemCanonicalResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="OracleSFDCItemCanonical">
+    <wsdl:operation name="OracleSFDCItem">
+      <wsdl:input message="tns:OracleSFDCItemCanonicalRequest"/>
+      <wsdl:output message="tns:OracleSFDCItemCanonicalResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OracleSFDCItemCanonicalSOAP" type="tns:OracleSFDCItemCanonical">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="OracleSFDCItem">
+      <soap:operation soapAction="http://www.sunpowercorp.com/OracleSFDCItemCanonical/OracleSFDCItem"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OracleSFDCItemCanonical">
+    <wsdl:port binding="tns:OracleSFDCItemCanonicalSOAP" name="OracleSFDCItemCanonicalSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,256 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Aug 06 12:19:00 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="ArenaFileExchangeService_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/ArenaOracleDataFeed/ArenaFileExchangeService/ArenaFileExchangeService_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/ArenaOracleDataFeed/ArenaFileExchangeService/ArenaFileExchangeService_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns1="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/file/ArenaOracleDataFeed/ArenaFileExchangeService/createTriggerFile"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/opaque/">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                <![CDATA[ArenaFileExchangeService_BPEL.wsdl]]>
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="arenafileexchangeservice_bpel_client"
+                     partnerLinkType="client:ArenaFileExchangeService_BPEL"
+                     myRole="ArenaFileExchangeService_BPELProvider"
+                     partnerRole="ArenaFileExchangeService_BPELRequester"/>
+        <partnerLink name="CommonErrorHandler"
+                     partnerLinkType="ns1:CommonErrorHandler_BPEL"
+                     partnerRole="CommonErrorHandler_BPELProvider"/>
+                     
+                     <!--
+        <partnerLink name="createTriggerFile" partnerLinkType="ns3:Write_plt"
+                     partnerRole="Write_role"/>  -->
+    </partnerLinks>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable"
+                  messageType="client:ArenaFileExchangeService_BPELRequestMessage"/>
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable"
+                  messageType="client:ArenaFileExchangeService_BPELResponseMessage"/>
+        <variable name="scriptDirLoc" type="xsd:string"/>
+        <variable messageType="bpelx:RuntimeFaultMessage" name="FaultVar"/>
+        <variable name="InvCommonErrorHandler_IV"
+                  messageType="ns1:CommonErrorHandler_BPELRequestMessage"/>
+    </variables>
+    <faultHandlers>
+        <catchAll>
+            <sequence name="Sequence2">
+                <assign name="AsgnCommonErrorHandlerInput">
+                    <copy>
+                        <from expression='"ArenaOracleDataFeed"'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:InstanceNumber"/>
+                    </copy>
+                    
+                     <copy>
+                      <from expression="ora:getPreference('FaultCode')"/>
+                      <to variable="InvCommonErrorHandler_IV" part="payload"
+                          query="/ns2:CommonErrorHandlerInput/ns2:Fault/ns2:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from variable="FaultVar" part="summary"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:Fault/ns2:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression='"ArenaFileExchangeService"'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNumber")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("CorrectiveAction")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:CorrectiveAction"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultSystemName")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("Severity")'/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonErrorHandler_IV" part="payload"
+                            query="/ns2:CommonErrorHandlerInput/ns2:Fault/ns2:FaultTime"/>
+                    </copy>
+                </assign>
+                 <switch name="SwitchSendEmail">
+                    <case condition='ora:getPreference("SendEmail")="Y"'>
+                        <bpelx:annotation>
+                            <bpelx:general>
+                                <bpelx:property name="userLabel">SendEmail_IS_Y</bpelx:property>
+                            </bpelx:general>
+                        </bpelx:annotation>
+                <invoke name="InvCommonErrorHandler"
+                        inputVariable="InvCommonErrorHandler_IV"
+                        partnerLink="CommonErrorHandler"
+                        portType="ns1:CommonErrorHandler_BPEL"
+                        operation="process" bpelx:invokeAsDetail="no"/>
+                        </case>
+                </switch>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in ArenaFileExchangeService_BPEL.wsdl) -->
+        <receive name="receiveInput"
+                 partnerLink="arenafileexchangeservice_bpel_client"
+                 portType="client:ArenaFileExchangeService_BPEL"
+                 operation="process" variable="inputVariable"
+                 createInstance="yes"/>
+        <assign name="AsgnScriptDirLoc">
+            <copy>
+                <from expression='ora:getPreference("scriptDirLoc")'/>
+                <to variable="scriptDirLoc"/>
+            </copy>
+        </assign>
+        <switch name="Switch1">
+            <case condition="bpws:getVariableData('scriptDirLoc') =''">
+                <bpelx:annotation>
+                    <bpelx:general>
+                        <bpelx:property name="userLabel">scriptLocEmpty</bpelx:property>
+                    </bpelx:general>
+                </bpelx:annotation>
+                <sequence name="Sequence1">
+                    <assign name="AsgnFaultMsg">
+                        <copy>
+                            <from expression='"Arena Script Directory Location was not mentioned in interface preference variable"'/>
+                            <to variable="FaultVar" part="detail"/>
+                        </copy>
+                    </assign>
+                    <throw name="ThrowFault" faultName="bpelx:bindingFault"
+                           faultVariable="FaultVar"/>
+                </sequence>
+            </case>
+            <otherwise>
+             <bpelx:exec import="java.io.*"/>
+                <sequence name="Sequence3">
+                    <bpelx:exec name="Java_ArenaCall" version="1.5"
+                                language="java">
+                        <![CDATA[System.out.println("<<<=========Entering Java Embedding for ArenaFileDownloader=============>>");     
+Runtime rt = Runtime.getRuntime();    
+String scriptLoc="";  
+Process proc = null;   
+try {    
+scriptLoc=(String)getVariableData("scriptDirLoc"); 
+   
+if(scriptLoc !=""){ 
+addAuditTrailEntry("Calling Arena ErpExchange Script file located at"+scriptLoc.toString()); 
+proc = rt.exec(scriptLoc.toString()); 
+}else{ 
+addAuditTrailEntry("empty directory loation specified for Arena Script"); 
+} 
+addAuditTrailEntry("Call Completed");     
+System.out.println("<<<=========Leaving Java Embedding for ArenaFileDownloader=============>>"); 
+} catch (IOException ioe) {    
+System.out.println("<<<=========Faulted Inside Java Embedding for ArenaFileDownloader=============>>");  
+ioe.printStackTrace();    
+addAuditTrailEntry(ioe);     
+}]]>
+                    </bpelx:exec>
+                    
+                    <!--
+                    <assign name="AsgnInvCreateTriggerFileInput">
+                        <copy>
+                            <from expression='"START"'/>
+                            <to variable="InvCreateTriggerFile_IV" part="body"
+                                query="/client:process/client:input"/>
+                        </copy>
+                    </assign>
+                    <invoke name="InvCreateTriggerFile"
+                            partnerLink="createTriggerFile"
+                            portType="ns3:Write_ptt" operation="Write"
+                            inputVariable="InvCreateTriggerFile_IV"
+                            bpelx:invokeAsDetail="no">
+                        <bpelx:outputProperty name="jca.file.FileName"
+                                              expression="trigger.txt"/>
+                    </invoke>
+                    
+                    -->
+                </sequence>
+            </otherwise>
+        </switch>
+       
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="callbackClient"
+                partnerLink="arenafileexchangeservice_bpel_client"
+                portType="client:ArenaFileExchangeService_BPELCallback"
+                operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>

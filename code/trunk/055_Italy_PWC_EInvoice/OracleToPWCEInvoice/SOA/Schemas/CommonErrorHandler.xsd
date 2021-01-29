@@ -1,0 +1,30 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+     targetNamespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+     elementFormDefault="qualified">
+    <element name="CommonErrorHandlerInput">
+        <complexType>
+            <sequence>
+                <element name="InstanceNumber" type="string"/>
+                <element name="InterfaceNumber" type="string"/>
+                <element name="InterfaceName" type="string"/>
+                <element name="ProcessName" type="string"/>
+                <element name="Severity" type="string"/>
+                <element name="Fault" type="tns:FaultType"/>
+                <element name="FaultSystemName" type="string"/>
+                <element name="bOpenServiceTicket" type="string"/>
+                <element name="CorrectiveAction" type="string" minOccurs="0"/>
+                <element name="UniqueIdentifier" type="string" minOccurs="0"/>
+                <element name="SendEmail" type="string" nillable="true" maxOccurs="1" minOccurs="0"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="FaultType">
+        <sequence>
+            <element name="FaultCode" type="string"/>
+            <element name="FaultDescription" type="string"/>
+            <element name="FaultMessage" type="string"/>
+            <element name="FaultTime" type="string"/>
+        </sequence>
+    </complexType>
+</schema>

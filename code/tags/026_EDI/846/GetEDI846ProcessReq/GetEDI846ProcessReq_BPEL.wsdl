@@ -1,0 +1,33 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="GetEDI846ProcessReq_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/EDICom/GetEDI846ProcessReq/GetEDI846ProcessReq_BPEL"
+     xmlns:ns1="http://www.sunpowercorp.com/EDICom/GetEDI846Process/xsd/v1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/EDICom/GetEDI846ProcessReq/GetEDI846ProcessReq_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="GetEDI846ProcessReq_BPEL">
+        <plnk:role name="GetEDI846ProcessReq_BPELProvider">
+            <plnk:portType name="client:GetEDI846ProcessReq_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/EDICom/GetEDI846ProcessReq/GetEDI846ProcessReq_BPEL"
+                 schemaLocation="Schemas/GetEDI846ProcessReq_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/EDICom/GetEDI846Process/xsd/v1"
+                 schemaLocation="Schemas/EdiSchemas.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetEDI846ProcessReq_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="GetEDI846ProcessReq_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:GetEDI846ProcessReq_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

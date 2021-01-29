@@ -1,0 +1,185 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Noun/ArenaOracleDataFeed/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Noun/ArenaOracleDataFeed/V1" xmlns:aodCommon="http://www.sunpowercorp.com/Common/ArenaOracleDataFeedDetailsCommonTypes/V1">
+  <xsd:import namespace="http://www.sunpowercorp.com/Common/ArenaOracleDataFeedDetailsCommonTypes/V1" schemaLocation="ArenaOracleDataFeedCommonTypes.xsd"/>
+  <xsd:element name="ArenaOracleDataFeed" type="ArenaOracleDataFeedType"/>
+  <xsd:complexType name="ArenaOracleDataFeedType">
+    <xsd:sequence>
+      <xsd:element ref="ArenaOracleDataFeedDetails"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArenaOracleDataFeedDetails" type="ArenaOracleDataFeedDetailsType"/>
+  <xsd:complexType name="ArenaOracleDataFeedDetailsType">
+    <xsd:sequence>
+      <xsd:element name="Items" type="ItemsType"/>
+      <xsd:element name="ManufacturerParts" type="ManufacturerPartsType"/>
+      <xsd:element name="SupplierParts" type="SupplierPartsType"/>
+      <xsd:element name="Contacts" type="ContactsType"/>
+    </xsd:sequence>
+    <xsd:attribute ref="aodCommon:thisDocumentIdentifier"/>
+    <xsd:attribute ref="aodCommon:thisDocumentGenerationDateTime"/>
+    <xsd:attribute ref="aodCommon:thisDocumentModificationDateTime"/>
+    <xsd:attribute ref="aodCommon:originatedByContactName"/>
+    <xsd:attribute ref="aodCommon:packageType"/>
+    <xsd:attribute ref="aodCommon:dataSource"/>
+    <xsd:attribute ref="aodCommon:thisDocumentCopyright"/>
+  </xsd:complexType>
+  <xsd:complexType name="ItemsType">
+    <xsd:sequence>
+      <xsd:element name="Item" type="ItemType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ManufacturerPartsType">
+    <xsd:sequence>
+      <xsd:element name="ManufacturerPart" type="ManufacturerPartType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SupplierPartsType">
+    <xsd:sequence>
+      <xsd:element name="SupplierPart" type="SupplierPartType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ContactsType">
+    <xsd:sequence>
+      <xsd:element name="Contact" type="ContactType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ItemType">
+    <xsd:sequence>
+      <xsd:element name="AdditionalAttributes" type="AdditionalAttributesType" maxOccurs="unbounded"/>
+     <xsd:element name="BillOfMaterial" type="BillOfMaterialType" minOccurs="0"/>
+      <xsd:element name="ApprovedManufacturerList" type="ApprovedManufacturerListType" minOccurs="0"/>
+     
+    </xsd:sequence>
+    <xsd:attribute name="itemIdentifier"/>
+                  <xsd:attribute ref="aodCommon:itemUniqueIdentifier"/>
+                  <xsd:attribute ref="aodCommon:globalLifeCyclePhaseCode"/>
+                  <xsd:attribute ref="aodCommon:globalProductTypeCode"/>
+                  <xsd:attribute ref="aodCommon:revisionIdentifier"/>
+                  <xsd:attribute ref="aodCommon:proprietaryProductFamily"/>
+                  <xsd:attribute ref="aodCommon:category"/>
+                  <xsd:attribute ref="aodCommon:globalProductUnitOfMeasureCode"/>
+                  <xsd:attribute ref="aodCommon:revisionReleasedDate"/>
+                  <xsd:attribute ref="aodCommon:ownerName"/>
+                  <xsd:attribute ref="aodCommon:isTopLevel"/>
+                  <xsd:attribute ref="aodCommon:description"/>
+   
+  </xsd:complexType>
+  <xsd:complexType name="ApprovedManufacturerListType">
+    <xsd:sequence>
+      <xsd:element name="ApprovedManufacturerListItem" type="ApprovedManufacturerListItemType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ManufacturerPartType">
+    <xsd:sequence>
+      <xsd:element name="ApprovedSupplierList" type="ApprovedSupplierListType"/>
+    </xsd:sequence>
+    <xsd:attribute ref="aodCommon:manufacturerPartIdentifier"/>
+    <xsd:attribute ref="aodCommon:manufacturerPartUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:manufacturerName"/>
+    <xsd:attribute ref="aodCommon:manufacturerContactUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:referenceNotes"/>
+    <xsd:attribute ref="aodCommon:manufacturerPartType"/>
+    <xsd:attribute ref="aodCommon:description"/>
+    <xsd:attribute ref="aodCommon:isTopLevel"/>
+  </xsd:complexType>
+  <xsd:complexType name="ApprovedSupplierListType">
+    <xsd:sequence>
+      <xsd:element name="ApprovedSupplierListItem" type="ApprovedSupplierListItemType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ApprovedSupplierListItemType">
+    <xsd:attribute ref="aodCommon:supplierPartIdentifier"/>
+    <xsd:attribute ref="aodCommon:supplierPartUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:supplierPartContactUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:globalSupplierPartStatusCode"/>
+    <xsd:attribute ref="aodCommon:comments"/>
+    <xsd:attribute ref="aodCommon:suppliedBy"/>
+  </xsd:complexType>
+  <xsd:complexType name="ContactType">
+    <xsd:attribute ref="aodCommon:contactIdentifier"/>
+    <xsd:attribute ref="aodCommon:contactUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:contactName"/>
+    <xsd:attribute ref="aodCommon:addressLine2"/>
+    <xsd:attribute ref="aodCommon:cityName"/>
+    <xsd:attribute ref="aodCommon:regionName"/>
+    <xsd:attribute ref="aodCommon:globalCountryCode"/>
+    <xsd:attribute ref="aodCommon:nationalPostalCode"/>
+    <xsd:attribute ref="aodCommon:telephoneNumber"/>
+    <xsd:attribute ref="aodCommon:facsimileNumber"/>
+    <xsd:attribute ref="aodCommon:department"/>
+    <xsd:attribute ref="aodCommon:businessName"/>
+    <xsd:attribute ref="aodCommon:emailAddress"/>
+    <xsd:attribute ref="aodCommon:universalResourceIdentifier"/>
+    <xsd:attribute ref="aodCommon:contactStatus"/>
+    <xsd:attribute ref="aodCommon:isTopLevel"/>
+    <xsd:attribute ref="aodCommon:addressLine1"/>
+  </xsd:complexType>
+  <xsd:complexType name="SupplierPartType">
+    <xsd:attribute ref="aodCommon:supplierPartIdentifier"/>
+    <xsd:attribute ref="aodCommon:supplierPartUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:supplierName"/>
+    <xsd:attribute ref="aodCommon:supplierContactUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:referenceNotes"/>
+    <xsd:attribute ref="aodCommon:supplierPartType"/>
+    <xsd:attribute ref="aodCommon:description"/>
+    <xsd:attribute ref="aodCommon:isTopLevel"/>
+  </xsd:complexType>
+  <xsd:complexType name="AdditionalAttributesType">
+    <xsd:sequence>
+      <xsd:element name="AdditionalAttribute" type="AdditionalAttributeType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="groupLabel" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:complexType name="AdditionalAttributeType">
+    <xsd:attribute ref="aodCommon:name"/>
+    <xsd:attribute ref="aodCommon:value"/>
+    <xsd:attribute ref="aodCommon:dataType"/>
+    <xsd:attribute ref="aodCommon:dimension"/>
+    <xsd:attribute ref="aodCommon:description"/>
+  </xsd:complexType>
+  <xsd:complexType name="ApprovedManufacturerListItemType">
+    <xsd:sequence>
+      <xsd:element name="AdditionalAttributes" type="AdditionalAttributesType"/>
+    </xsd:sequence>
+    <xsd:attribute ref="aodCommon:manufacturerPartIdentifier"/>
+    <xsd:attribute ref="aodCommon:manufacturerPartUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:manufacturerContactUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:globalManufacturerPartStatusCode"/>
+    <xsd:attribute ref="aodCommon:description"/>
+    <xsd:attribute ref="aodCommon:manufacturedBy"/>
+  </xsd:complexType>
+  <xsd:complexType name="BillOfMaterialType">
+    <xsd:sequence>
+      <xsd:element name="BillOfMaterialItem" type="BillOfMaterialItemType" maxOccurs="unbounded"/>
+                    </xsd:sequence> 
+   
+  </xsd:complexType>
+  <xsd:complexType name="BillOfMaterialItemType">
+    <xsd:sequence>
+      <xsd:element name="AlternateItems" type="AlternateItemsType" minOccurs="0"/>
+     <xsd:element name="AdditionalAttributes" type="AdditionalAttributesType" maxOccurs="unbounded" minOccurs="0"/>
+     
+    </xsd:sequence>
+      <xsd:attribute ref="aodCommon:revisionIdentifier"/>
+      <xsd:attribute ref="aodCommon:billOfMaterialItemIdentifier"/>
+      <xsd:attribute ref="aodCommon:billOfMaterialItemUniqueIdentifier"/>
+      <xsd:attribute ref="aodCommon:itemQuantity"/>
+      <xsd:attribute ref="aodCommon:globalProductQuantityTypeCode"/>
+      <xsd:attribute ref="aodCommon:globalProductQuantityTypeCodeOther"/>
+      <xsd:attribute ref="aodCommon:notes"/>
+      <xsd:attribute ref="aodCommon:description"/>
+      <xsd:attribute ref="aodCommon:proprietarySequenceIdentifier"/>
+  </xsd:complexType>
+  <xsd:complexType name="AlternateItemsType">
+    <xsd:sequence>
+      <xsd:element name="AlternateItem" type="AlternateItemType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AlternateItemType">
+    <xsd:sequence>
+      <xsd:element name="AdditionalAttributes" type="AdditionalAttributesType"/>
+    </xsd:sequence>
+    <xsd:attribute ref="aodCommon:itemIdentifier"/>
+    <xsd:attribute ref="aodCommon:itemUniqueIdentifier"/>
+    <xsd:attribute ref="aodCommon:globalPreferredStatusCode"/>
+  </xsd:complexType>
+</xsd:schema>

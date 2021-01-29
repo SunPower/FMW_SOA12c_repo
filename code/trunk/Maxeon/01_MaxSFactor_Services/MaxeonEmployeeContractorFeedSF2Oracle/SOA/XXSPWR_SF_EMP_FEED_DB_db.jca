@@ -1,0 +1,14 @@
+<adapter-config name="XXSPWR_SF_EMP_FEED_DB" adapter="db" wsdlLocation="WSDLs/XXSPWR_SF_EMP_FEED_DB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/HREADONLYUAT" UIConnectionName="hreadonlyUAT3" adapterRef=""/>
+  <endpoint-interaction portType="XXSPWR_SF_EMP_FEED_DB_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="XXSPWR_SF_EMP_FEED_DB.XxspwrSfEmpFeed"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="XXSPWR_SF_EMP_FEED_DB-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

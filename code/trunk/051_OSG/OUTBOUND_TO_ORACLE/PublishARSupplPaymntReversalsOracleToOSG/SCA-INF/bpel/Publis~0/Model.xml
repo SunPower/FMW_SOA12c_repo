@@ -1,0 +1,325 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Jun 15 18:52:02 IST 2015
+  Author:  RD42768
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="PublishARSupplPaymntReversalsOracleToOSG_BPEL" targetNamespace="http://xmlns.oracle.com/OSG/PublishARSupplPaymntReversalsOracleToOSG/PublishARSupplPaymntReversalsOracleToOSG_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/OSG/PublishARSupplPaymntReversalsOracleToOSG/PublishARSupplPaymntReversalsOracleToOSG_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplPaymntReversalsOracleToOSG/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplPaymntReversalsOracleToOSG/SelectOSGSupplPaymntReversalsFeedFromOracle" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/file/OSG/PublishARSupplPaymntReversalsOracleToOSG/WriteOSGSupplPaymntReversalsFeedToLocal" xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns6="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGSupplPaymntReversalsFeedFromOracle" xmlns:ns7="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplPaymntReversalsOracleToOSG/UpdateOSGSupplPaymntReversalsFeedFromOracle" xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOSGSupplPaymntReversalsFeedFromOracle" xmlns:ns10="http://www.sunpowercorp.com/params/xsd" xmlns:ns11="http://TargetNamespace.com/WriteOSGSupplPaymntReversalsFeedToLocal" id="BpPrc0">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        PublishARSupplPaymntReversalsOracleToOSG_BPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="publisharreversaloracletoosg_bpel_client" partnerLinkType="client:PublishARSupplPaymntReversalsOracleToOSG_BPEL" myRole="PublishARSupplPaymntReversalsOracleToOSG_BPELProvider"/>
+    <partnerLink name="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" partnerLinkType="ns1:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_plt" partnerRole="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_role"/>
+    <partnerLink name="SelectOSGSupplPaymntReversalsFeedFromOracle" partnerLinkType="ns2:SelectOSGSupplPaymntReversalsFeedFromOracle_plt" partnerRole="SelectOSGSupplPaymntReversalsFeedFromOracle_role"/>
+    <partnerLink name="WriteOSGSupplPaymntReversalsFeedToLocal" partnerLinkType="ns3:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns4:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="UpdateOSGSupplPaymntReversalsFeedFromOracle" partnerLinkType="ns8:UpdateOSGSupplPaymntReversalsFeedFromOracle_plt" partnerRole="UpdateOSGSupplPaymntReversalsFeedFromOracle_role"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:PublishARSupplPaymntReversalsOracleToOSG_BPELRequestMessage"/>
+    <variable name="INV_COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_IV" messageType="ns1:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBInput_msg"/>
+    <variable name="INV_COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_OV" messageType="ns1:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput_msg"/>
+    <variable name="Inv_SelectOSGSupplPaymntReversalsFeedFromOracle_IV" messageType="ns2:SelectOSGSupplPaymntReversalsFeedFromOracleInput_msg"/>
+    <variable name="Inv_SelectOSGSupplPaymntReversalsFeedFromOracle_OV" messageType="ns2:SelectOSGSupplPaymntReversalsFeedFromOracleOutputCollection_msg"/>
+    <variable name="Inv_WriteOSGSupplPaymntReversalsFeedToLocal_IV" messageType="ns3:Write_msg"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns4:requestMessage"/>
+    <variable name="TotalRecordCount" type="xsd:int"/>
+    <variable name="LoopCounter" type="xsd:int"/>
+    <variable name="MinRows" type="xsd:int"/>
+    <variable name="MaxRows" type="xsd:int"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="BatchSize" type="xsd:int"/>
+    <variable name="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" messageType="ns8:UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg"/>
+    <variable name="FileHeader" messageType="ns3:Write_msg"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="ScriptDirLoc" type="xsd:string"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="AsgCommonSFDCErrorLogService" id="BpAss0">          
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="&quot;E&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" bpelx:invokeAsDetail="no" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns4:execute_ptt" operation="execute" id="BpInv0"/>
+        <assign name="Asg_UpdateOSGSupplPaymntReversalsFeedFromOracle" id="BpAss1">
+          <copy>
+            <from expression="&quot;ERROR&quot;"/>
+            <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:SoaStatus"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:LastUpdateDate"/>
+          </copy>
+          <copy>
+            <from expression="'-99'"/>
+            <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:LastUpdatedBy"/>
+          </copy>
+          <copy>
+            <from expression="&quot;substring(ora:getFaultAsString(),1,4000)&quot;"/>
+            <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:SoaMessage"/>
+          </copy>
+        </assign>
+        <invoke name="InvUpdateOSGSupplPaymntReversalsFeedFromOracle" bpelx:invokeAsDetail="no" inputVariable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" partnerLink="UpdateOSGSupplPaymntReversalsFeedFromOracle" portType="ns8:UpdateOSGSupplPaymntReversalsFeedFromOracle_ptt" operation="UpdateOSGSupplPaymntReversalsFeedFromOracle" id="BpInv1"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in PublishARSupplPaymntReversalsOracleToOSG_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="publisharreversaloracletoosg_bpel_client" portType="client:PublishARSupplPaymntReversalsOracleToOSG_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <invoke name="INV_COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" bpelx:invokeAsDetail="no" inputVariable="INV_COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_IV" outputVariable="INV_COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_OV" partnerLink="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" portType="ns1:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_ptt" operation="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB" id="BpInv2"/>
+    <assign name="InitVariables" id="BpAss2">
+      <copy>
+        <from expression="&quot;PublishARSupplPaymntReversalsOracleToOSG&quot;"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;ScriptDirLoc&quot;)"/>
+        <to variable="ScriptDirLoc"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(bpws:getVariableData('title'))"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;BatchSize&quot;)"/>
+        <to variable="BatchSize"/>
+      </copy>
+      <copy>
+        <from variable="INV_COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_OV" part="COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput" query="/ns5:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput/ns5:RecordCount"/>
+        <to variable="TotalRecordCount"/>
+      </copy>
+      <copy>
+        <from expression="number(1)"/>
+        <to variable="MinRows"/>
+      </copy>
+      <copy>
+        <from variable="BatchSize"/>
+        <to variable="MaxRows"/>
+      </copy>
+      <copy>
+        <from expression="number(0)"/>
+        <to variable="LoopCounter"/>
+      </copy>
+      <copy>
+        <from expression="concat('SPWR_SupplementPaymentReversals_',xp20:format-dateTime(xp20:current-dateTime(),'[Y0001][M01][D01][H01]'),'.csv')"/>
+        <to variable="FileName"/>
+      </copy>
+    </assign>
+    <while name="While_Reversal_Records" condition="bpws:getVariableData('LoopCounter') &lt;= bpws:getVariableData('TotalRecordCount') and  bpws:getVariableData('TotalRecordCount') != number(0)" id="BpWhl0">
+      <sequence id="BpSeq2">
+        <assign name="Asg_Rows" id="BpAss3">
+          <copy>
+            <from variable="MinRows"/>
+            <to variable="Inv_SelectOSGSupplPaymntReversalsFeedFromOracle_IV" part="SelectOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns6:SelectOSGSupplPaymntReversalsFeedFromOracleInput/ns6:minrow"/>
+          </copy>
+          <copy>
+            <from variable="MaxRows"/>
+            <to variable="Inv_SelectOSGSupplPaymntReversalsFeedFromOracle_IV" part="SelectOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns6:SelectOSGSupplPaymntReversalsFeedFromOracleInput/ns6:maxrow"/>
+          </copy>
+        </assign>
+        <invoke name="Inv_SelectOSGSupplPaymntReversalsFeedFromOracle" bpelx:invokeAsDetail="no" inputVariable="Inv_SelectOSGSupplPaymntReversalsFeedFromOracle_IV" outputVariable="Inv_SelectOSGSupplPaymntReversalsFeedFromOracle_OV" partnerLink="SelectOSGSupplPaymntReversalsFeedFromOracle" portType="ns2:SelectOSGSupplPaymntReversalsFeedFromOracle_ptt" operation="SelectOSGSupplPaymntReversalsFeedFromOracle" id="BpInv3"/>
+        <assign name="Trans_SelectOSGREVFeed_WriteOSGRCPFeedLocal" id="BpAss4">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/Trans_SelectOSGSupplPaymntReversalsFeed_WriteOSGSupplPaymntReversalsFeedLocal.xsl', $Inv_SelectOSGSupplPaymntReversalsFeedFromOracle_OV.SelectOSGSupplPaymntReversalsFeedFromOracleOutputCollection)"/>
+            <to variable="Inv_WriteOSGSupplPaymntReversalsFeedToLocal_IV" part="body"/>
+          </copy>
+        </assign>
+        <switch name="Switch1" id="BpSwt0">
+          <case condition="bpws:getVariableData('LoopCounter') = number(0)">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">FileHeader</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <sequence name="Sequence2" id="BpSeq3">
+              <assign name="TransFileHeader" id="BpAss5">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransFileHeader.xsl', $inputVariable.payload)"/>
+                  <to variable="FileHeader" part="body"/>
+                </copy>
+              </assign>
+              <assign name="AsgFileHeader" id="BpAss6">
+                <bpelx:insertBefore>
+                  <bpelx:from variable="FileHeader" part="body" query="/ns11:OSGSupplPaymntReversals/ns11:OSGSupplPaymntReversalsFeed"/>
+                  <bpelx:to variable="Inv_WriteOSGSupplPaymntReversalsFeedToLocal_IV" part="body" query="/ns11:OSGSupplPaymntReversals/ns11:OSGSupplPaymntReversalsFeed[1]"/>
+                </bpelx:insertBefore>
+              </assign>
+            </sequence>
+          </case>
+        </switch>
+        <invoke name="Inv_WriteOSGSupplPaymntReversalsFeedToLocal" inputVariable="Inv_WriteOSGSupplPaymntReversalsFeedToLocal_IV" partnerLink="WriteOSGSupplPaymntReversalsFeedToLocal" portType="ns3:Write_ptt" operation="Write" bpelx:invokeAsDetail="no" id="BpInv4">
+          <bpelx:inputProperty name="jca.file.FileName" variable="FileName"/>
+        </invoke>
+        <assign name="IncLoop" id="BpAss7">
+          <copy>
+            <from expression="number(1) + bpws:getVariableData('MaxRows')"/>
+            <to variable="MinRows"/>
+          </copy>
+          <copy>
+            <from expression="number(bpws:getVariableData('BatchSize')) + bpws:getVariableData('MaxRows')"/>
+            <to variable="MaxRows"/>
+          </copy>
+          <copy>
+            <from expression="number(bpws:getVariableData('BatchSize')) + bpws:getVariableData('LoopCounter')"/>
+            <to variable="LoopCounter"/>
+          </copy>
+        </assign>
+      </sequence>
+    </while>
+    <switch name="Switch2" id="BpSwt1">
+      <case condition="bpws:getVariableData('INV_COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DB_OV','COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput','/ns5:COUNT_XXSPWR_AR_OSG_SupplPaymntReversals_OUTBOUND_DBOutput/ns5:RecordCount') =  number(0)">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">No_Records</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <empty name="No_Records" id="BpEmp0"/>
+      </case>
+      <otherwise>      
+        <sequence id="BpSeq4">
+                <bpelx:exec import="java.io.*" id="BxExe0"/>
+          <bpelx:exec name="Java_CallScript" version="1.5" language="java" id="BxExe1">
+            /*Write your java code below e.g.  
+	System.out.println("Hello, World"); 
+*/ 
+Runtime rt = Runtime.getRuntime();        
+String scriptLoc="";      
+Process proc = null;       
+try {        
+scriptLoc=(String)getVariableData("ScriptDirLoc");     
+       
+if(scriptLoc !=""){     
+addAuditTrailEntry("Calling Supplement Payment Reversal zip Script file located at "+scriptLoc.toString());     
+proc = rt.exec(scriptLoc.toString());     
+}else{     
+addAuditTrailEntry("empty directory loation specified for Supplement Payment Reversal zip Script");     
+}     
+addAuditTrailEntry("Call Completed");         
+System.out.println("&lt;&lt;&lt;=========Leaving Java Embedding for Supplement Payment Reversal zip =============>>");     
+} catch (IOException ioe) {        
+System.out.println("&lt;&lt;&lt;=========Faulted Inside Java Embedding for Supplement Payment Reversal zip =============>>");      
+ioe.printStackTrace();        
+addAuditTrailEntry(ioe);         
+}
+          </bpelx:exec>
+
+          <assign name="Asg_UpdateOSGSupplPaymntReversalsFeedFromOracle" id="BpAss8">
+            <copy>
+              <from expression="&quot;PROCESSED&quot;"/>
+              <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:SoaStatus"/>
+            </copy>
+            <copy>
+              <from expression="xp20:current-dateTime()"/>
+              <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:LastUpdateDate"/>
+            </copy>
+            <copy>
+              <from expression="'-99'"/>
+              <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:LastUpdatedBy"/>
+            </copy>
+            <copy>
+              <from expression="&quot;Successfully Processed&quot;"/>
+              <to variable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" part="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" query="/ns9:UpdateOSGSupplPaymntReversalsFeedFromOracleInput/ns9:SoaMessage"/>
+            </copy>
+          </assign>
+          <invoke name="InvUpdateOSGSupplPaymntReversalsFeedFromOracle" bpelx:invokeAsDetail="no" inputVariable="InvUpdateOSGSupplPaymntReversalsFeedFromOracle_IV" partnerLink="UpdateOSGSupplPaymntReversalsFeedFromOracle" portType="ns8:UpdateOSGSupplPaymntReversalsFeedFromOracle_ptt" operation="UpdateOSGSupplPaymntReversalsFeedFromOracle" id="BpInv5"/>
+        </sequence>
+      </otherwise>
+    </switch>
+  </sequence>
+</process>

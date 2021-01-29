@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectEmployeeCentralFromOracle" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectEmployeeCentralFromOracle" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectEmployeeCentralFromOracleInput" type="SelectEmployeeCentralFromOracleInput"/>
+   <xs:complexType name="SelectEmployeeCentralFromOracleInput">
+      <xs:sequence>
+         <xs:element name="minrow" type="xs:string" nillable="true"/>
+         <xs:element name="maxrow" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectEmployeeCentralFromOracleOutputCollection" type="SelectEmployeeCentralFromOracleOutputCollection"/>
+   <xs:complexType name="SelectEmployeeCentralFromOracleOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectEmployeeCentralFromOracleOutput" type="SelectEmployeeCentralFromOracleOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectEmployeeCentralFromOracleOutput">
+      <xs:sequence>
+         <xs:element name="TEXT" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xsd:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+        xmlns:tns="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="SFDCLoginReq" type="tns:login"/>
+  <xsd:element name="SFDCLoginResp" type="tns:loginRespType"/>
+  <xsd:complexType name="login">
+    <xsd:sequence>
+      <xsd:element name="process" type="xsd:string" minOccurs="0"
+                   maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="loginRespType">
+    <xsd:sequence>
+      <xsd:element name="metadataServerUrl" nillable="true" type="xsd:string"/>
+      <xsd:element name="passwordExpired" type="xsd:boolean"/>
+      <xsd:element name="sandbox" type="xsd:boolean"/>
+      <xsd:element name="serverUrl" nillable="true" type="xsd:string"/>
+      <xsd:element name="sessionId" nillable="true" type="xsd:string"/>
+      <xsd:element name="userId" nillable="true" type="tns:ID"/>
+      <xsd:element minOccurs="0" name="userInfo" type="tns:GetUserInfoResult"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="ID">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="18"/>
+      <xsd:pattern value="[a-zA-Z0-9]{18}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="GetUserInfoResult">
+    <xsd:sequence>
+      <xsd:element name="accessibilityMode" type="xsd:boolean"/>
+      <xsd:element name="currencySymbol" nillable="true" type="xsd:string"/>
+      <xsd:element name="orgAttachmentFileSizeLimit" type="xsd:int"/>
+      <xsd:element name="orgDefaultCurrencyIsoCode" nillable="true"
+                   type="xsd:string"/>
+      <xsd:element name="orgDisallowHtmlAttachments" type="xsd:boolean"/>
+      <xsd:element name="orgHasPersonAccounts" type="xsd:boolean"/>
+      <xsd:element name="organizationId" type="tns:ID"/>
+      <xsd:element name="organizationMultiCurrency" type="xsd:boolean"/>
+      <xsd:element name="organizationName" type="xsd:string"/>
+      <xsd:element name="profileId" type="tns:ID"/>
+      <xsd:element name="roleId" nillable="true" type="tns:ID"/>
+      <xsd:element name="sessionSecondsValid" type="xsd:int"/>
+      <xsd:element name="userDefaultCurrencyIsoCode" nillable="true"
+                   type="xsd:string"/>
+      <xsd:element name="userEmail" type="xsd:string"/>
+      <xsd:element name="userFullName" type="xsd:string"/>
+      <xsd:element name="userId" type="tns:ID"/>
+      <xsd:element name="userLanguage" type="xsd:string"/>
+      <xsd:element name="userLocale" type="xsd:string"/>
+      <xsd:element name="userName" type="xsd:string"/>
+      <xsd:element name="userTimeZone" type="xsd:string"/>
+      <xsd:element name="userType" type="xsd:string"/>
+      <xsd:element name="userUiSkin" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

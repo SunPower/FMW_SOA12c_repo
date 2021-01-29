@@ -1,0 +1,22 @@
+<?binding.jca insertEDI846ToOracle_db.jca?>
+<wsdl:definitions name="insertEDI846ToOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI846FilesToOracle/insertEDI846ToOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI846FilesToOracle/insertEDI846ToOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/insertEDI846ToOracle">
+    <plt:partnerLinkType name="insertEDI846ToOracle_plt">
+        <plt:role name="insertEDI846ToOracle_role">
+            <plt:portType name="tns:insertEDI846ToOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/insertEDI846ToOracle"
+                    schemaLocation="Schemas/insertEDI846ToOracle_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="Xxspwr3PlInvAdviceHdrCollection_msg">
+        <wsdl:part name="Xxspwr3PlInvAdviceHdrCollection" element="top:Xxspwr3PlInvAdviceHdrCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="insertEDI846ToOracle_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:Xxspwr3PlInvAdviceHdrCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

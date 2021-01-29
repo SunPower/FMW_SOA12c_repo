@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectUpdateAccountCustomer" adapter="db" wsdlLocation="WSDLs/SelectUpdateAccountCustomer.wsdl"
+                xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="SelectUpdateAccountCustomer_ptt" operation="SelectUpdateAccountCustomer">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString"
+                value="select sfdc_account_id, account_number, process_flag, error_message, creation_date, sfdc_synced, temp_cust_id,SOA_S2O_ID from XXSPWR.XXSPWR_SFORA_CUSTOMERS where ( process_flag=3 or process_flag=4 ) and sfdc_synced='N' and DATA_SOURCE = #dataSource"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+</adapter-config>

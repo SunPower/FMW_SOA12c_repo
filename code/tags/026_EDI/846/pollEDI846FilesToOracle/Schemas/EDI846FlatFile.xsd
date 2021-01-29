@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://sunpowercorp.com/846FlatFile/xsd/v1"
+            targetNamespace="http://sunpowercorp.com/846FlatFile/xsd/v1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="US-ASCII">
+  <xsd:element name="OrderDetails">
+    <xsd:complexType>
+      <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+        <xsd:element name="HEADER" nxsd:startsWith="H">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Header" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Signal_Type" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Snapshot_Date" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="warehouse_Identifier" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Warehouse_Name" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Warehouse_Code" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Address_1" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Address_2" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="City" type="xsd:string" nxsd:style="terminated"
+                           nxsd:terminatedBy="|" nxsd:quotedBy='"'/>
+              <xsd:element name="StateProvince_Code" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Postal_Code" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Country_Code" type="xsd:string"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute1" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute2" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute3" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute4" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute5" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute6" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute7" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="|"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="Attribute8" type="xsd:int"
+                           nxsd:style="terminated" nxsd:terminatedBy="${eol}"
+                           nxsd:quotedBy='"'/>
+              <xsd:element name="LinesList" minOccurs="0" maxOccurs="unbounded"
+                           nxsd:startsWith="L">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Line" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="SPWR_Item_Number" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="WH_Item_Number" type="xsd:string"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="REF_Qualifier" type="xsd:string"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Hold_Subinv_Code" type="xsd:string"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="On_Hand_Quantity" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Unit_Of_Measure" type="xsd:string"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Attribute1" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Attribute2" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Attribute3" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Attribute4" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Attribute5" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Attribute6" type="xsd:int"
+                                 nxsd:style="terminated" nxsd:terminatedBy="|"
+                                 nxsd:quotedBy='"'/>
+                    <xsd:element name="Attribute7" type="xsd:int"
+                                 nxsd:style="terminated"
+                                 nxsd:terminatedBy="${eol}" nxsd:quotedBy='"'/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+<!--NXSDWIZ:D:\ProjDocs\EDICom\846\869972034.csv:-->
+<!--USE-HEADER:false:-->

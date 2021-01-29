@@ -1,0 +1,93 @@
+2016-10-18 15:14:28.268/1.875 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/C:/Oracle/Middleware12c/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2016-10-18 15:14:28.326/1.933 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/C:/Oracle/Middleware12c/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2016-10-18 15:14:28.328/1.935 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2016-10-18 15:14:28.330/1.937 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2016-10-18 15:14:28.332/1.939 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2016-10-18 15:14:28.333/1.940 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2016-10-18 15:14:28.500/2.107 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2016-10-18 15:14:28.505/2.112 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2016-10-18 15:14:29.193/2.800 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "VA39018's cluster" has been automatically generated
+Oct 18, 2016 3:14:30 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Oct 18, 2016 3:14:30 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Oct 18, 2016 3:14:31 PM com.collaxa.cube.CubeLogger info
+INFO: validating "WarrantyORACLEToSFDCProv_BPEL.bpel" ...
+Oct 18, 2016 3:14:31 PM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+SEVERE: 
+java.io.FileNotFoundException: C:\SunPower\ANT_Script\12cMigrationScripts\12c_Ant\ant_soa\code\WarrantyORACLEToSFDCProv\xsl\TransformErrorUpdDB.xsl (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188)
+	at java.net.URL.openStream(URL.java:1038)
+	at oracle.fabric.common.metadata.MetadataManagerImpl.getInputStreamFromAbsoluteURL(MetadataManagerImpl.java:355)
+	at oracle.integration.platform.common.MDSMetadataManagerImpl.getInputStreamFromAbsoluteURL(MDSMetadataManagerImpl.java:836)
+	at oracle.fabric.common.metadata.MetadataManagerImpl.getDocumentAsInputStreamUsingUrlResolver(MetadataManagerImpl.java:217)
+	at oracle.integration.platform.common.MDSMetadataManagerImpl.getDocumentAsInputStreamUsingCustomization(MDSMetadataManagerImpl.java:553)
+	at oracle.integration.platform.common.MDSMetadataManagerImpl.getDocumentAsInputStream(MDSMetadataManagerImpl.java:535)
+	at com.collaxa.cube.lang.compiler.BPELComponentCompilationModel.openStream(BPELComponentCompilationModel.java:354)
+	at com.collaxa.cube.lang.compiler.bpel.AssignValidator.openStream(AssignValidator.java:1062)
+	at com.collaxa.cube.lang.compiler.bpel.XPathExprValidatorVisitor.openStream(XPathExprValidatorVisitor.java:1244)
+	at com.collaxa.cube.lang.compiler.bpel.XPathExprValidatorVisitor.assertDoXSLTransform(XPathExprValidatorVisitor.java:1293)
+	at com.collaxa.cube.lang.compiler.bpel.XPathExprValidatorVisitor.visit(XPathExprValidatorVisitor.java:1039)
+	at com.collaxa.cube.lang.compiler.bpel.XPathExprValidatorVisitor.visitExpr(XPathExprValidatorVisitor.java:485)
+	at com.collaxa.cube.lang.compiler.bpel.XPathExprValidatorVisitor.assertGeneralExpr(XPathExprValidatorVisitor.java:180)
+	at com.collaxa.cube.lang.compiler.bpel.BaseXPathValidator.assertGeneralExpression(BaseXPathValidator.java:219)
+	at com.collaxa.cube.lang.compiler.bpel.BaseXPathValidator.assertGeneralExpression(BaseXPathValidator.java:207)
+	at com.collaxa.cube.lang.compiler.bpel.AssignValidator.assertExpression(AssignValidator.java:415)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.validateExpression(BpelParser.java:3786)
+	at com.collaxa.cube.lang.compiler.bpel.AssignValidator.assertFrom(AssignValidator.java:261)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseFrom(BpelParser.java:3571)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseFrom(BpelParser.java:3516)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.startElement(BpelParser.java:670)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseElement(BpelParser.java:528)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseElement(BpelParser.java:535)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseElement(BpelParser.java:535)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseElement(BpelParser.java:535)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseElement(BpelParser.java:535)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseElement(BpelParser.java:535)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parseElement(BpelParser.java:535)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parse(BpelParser.java:481)
+	at com.collaxa.cube.lang.compiler.bpel.BpelParser.parse(BpelParser.java:431)
+	at com.collaxa.cube.lang.compiler.bpel.BPELValidator.step2_ParseAndValidate(BPELValidator.java:77)
+	at com.collaxa.cube.lang.compiler.bpel.BPELValidator.validate(BPELValidator.java:59)
+	at com.collaxa.cube.lang.compiler.BPEL1Processor.validate(BPEL1Processor.java:341)
+	at com.collaxa.cube.lang.compiler.BPEL1Processor.process(BPEL1Processor.java:162)
+	at oracle.fabric.bpel.bpelc.BPELComponentValidator.validate(BPELComponentValidator.java:87)
+	at oracle.soa.scac.ValidateComposite.validateComponentTypeServicesReferences(ValidateComposite.java:1161)
+	at oracle.soa.scac.ValidateComposite.doValidation0(ValidateComposite.java:598)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:577)
+	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:228)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:209)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:201)
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+INFO: Composed "WarrantyORACLEToSFDCProv_BPEL" in 117.4 milliseconds [nodes 19=0+19, 161.8 nodes/sec]
+INFO: Compiled "WarrantyORACLEToSFDCProv_BPEL" in 2.515 seconds
+INFO: Gathered 4 files in 0.7 milliseconds
+INFO: Packaged "WarrantyORACLEToSFDCProv_BPEL" in 471.0 milliseconds
+Schema validation failed with exception "null"
+oracle.xml.parser.schema.XSDException
+	at oracle.xml.parser.schema.XSDBuilder.buildSchema(XSDBuilder.java:1124)
+	at oracle.xml.parser.schema.XSDBuilder.build(XSDBuilder.java:630)
+	at oracle.soa.scac.ValidationFaultUtil.validateSourceWithSchema(ValidationFaultUtil.java:182)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:241)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:225)
+	at oracle.soa.scac.ValidateComposite.validateFaultPolicy(ValidateComposite.java:1399)
+	at oracle.soa.scac.ValidateComposite.doValidation0(ValidateComposite.java:604)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:577)
+	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:228)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:209)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:201)
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

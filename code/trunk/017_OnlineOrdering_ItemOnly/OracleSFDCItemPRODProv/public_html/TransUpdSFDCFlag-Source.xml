@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<queryResponse xmlns="urn:partner.soap.sforce.com">
+   <result>
+      <done>true</done>
+      <queryLocator>queryLocator29</queryLocator>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type30</type>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">Name31</Name>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Description__c32</Description__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">Item_ID__c33</Item_ID__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Long_Description__c34</Long_Description__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_3__c35</Item_Category_3__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_2__c36</Item_Category_2__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_1__c37</Item_Category_1__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">Product_Type__c38</Product_Type__c>
+         <OwnerId xmlns="urn:sobject.partner.soap.sforce.com">OwnerId39</OwnerId>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull40</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull41</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull42</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id4343434343434343</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type44</type>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">Name45</Name>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Description__c46</Description__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">Item_ID__c47</Item_ID__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Long_Description__c48</Long_Description__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_3__c49</Item_Category_3__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_2__c50</Item_Category_2__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_1__c51</Item_Category_1__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">Product_Type__c52</Product_Type__c>
+         <OwnerId xmlns="urn:sobject.partner.soap.sforce.com">OwnerId53</OwnerId>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull54</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull55</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull56</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id5757575757575757</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type58</type>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">Name59</Name>
+         <Active__c xmlns="urn:sobject.partner.soap.sforce.com">true</Active__c>
+         <Description__c xmlns="urn:sobject.partner.soap.sforce.com">Description__c60</Description__c>
+         <Item_ID__c xmlns="urn:sobject.partner.soap.sforce.com">Item_ID__c61</Item_ID__c>
+         <Long_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Long_Description__c62</Long_Description__c>
+         <Item_Category_3__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_3__c63</Item_Category_3__c>
+         <Item_Category_2__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_2__c64</Item_Category_2__c>
+         <Item_Category_1__c xmlns="urn:sobject.partner.soap.sforce.com">Item_Category_1__c65</Item_Category_1__c>
+         <Product_Type__c xmlns="urn:sobject.partner.soap.sforce.com">Product_Type__c66</Product_Type__c>
+         <OwnerId xmlns="urn:sobject.partner.soap.sforce.com">OwnerId67</OwnerId>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull68</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull69</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull70</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id7171717171717171</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <size>-0</size>
+   </result>
+</queryResponse>

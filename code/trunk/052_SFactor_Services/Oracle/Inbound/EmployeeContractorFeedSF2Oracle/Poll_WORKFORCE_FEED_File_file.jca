@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="Poll_WORKFORCE_FEED_File" adapter="file" wsdlLocation="WSDLs/Poll_WORKFORCE_FEED_File.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FileAdapter" UIincludeWildcard="SPWR_WORKFORCE_FEED_TO_ORACLE*.csv"/>
+  <endpoint-activation portType="Read_ptt" operation="Read">
+    <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+      <property name="DeleteFile" value="false"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="LogicalDirectory" value="PollFileLoc"/>
+      <property name="IncludeFiles" value="SPWR_WORKFORCE_FEED_TO_ORACLE.*\.csv"/>
+      <property name="UseHeaders" value="true"/>
+      <property name="MaxRaiseSize" value="1"/>      
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

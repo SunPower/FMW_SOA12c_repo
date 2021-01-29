@@ -1,0 +1,382 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jun 28 06:32:50 PDT 2012
+  Author:  vannapareddy
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="SFDCLogin_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="urn:partner.soap.sforce.com"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns2="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/SFDCLogin/InsertSFDCLoginDB"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/SFDCLogin/SelectSFDCLoginDB"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB"
+         xmlns:ns6="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectSFDCLoginDB"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns7="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+  <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[SFDCLogin_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="sfdclogin_bpel_client"
+                 partnerLinkType="client:SFDCLogin_BPEL"
+                 myRole="SFDCLogin_BPELProvider"/>
+    <partnerLink name="SFDC" partnerLinkType="ns1:Soap_PL"
+                 partnerRole="Soap_Role"/>
+    <partnerLink name="InsertSFDCLoginDB"
+                 partnerLinkType="ns3:InsertSFDCLoginDB_plt"
+                 partnerRole="InsertSFDCLoginDB_role"/>
+    <partnerLink name="SelectSFDCLoginDB"
+                 partnerLinkType="ns4:SelectSFDCLoginDB_plt"
+                 partnerRole="SelectSFDCLoginDB_role"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable"
+              messageType="client:SFDCLogin_BPELRequestMessage"/>
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable"
+              messageType="client:SFDCLogin_BPELResponseMessage"/>
+    <variable name="InvSFDCLogin_IV" messageType="ns1:loginRequest"/>
+    <variable name="InvSFDCLogin_OV" messageType="ns1:loginResponse"/>
+    <variable name="InvInsertSFDCLoginDB_IV"
+              messageType="ns3:SfdcLoginDetailsCollection_msg"/>
+    <variable name="InvSelectSFDCLoginDB_IV"
+              messageType="ns4:SelectSFDCLoginDBSelect_inputParameters"/>
+    <variable name="InvSelectSFDCLoginDB_OV"
+              messageType="ns4:SfdcLoginDetailsCollection_msg"/>
+    <variable name="InvinvalidateSessions_IV"
+              messageType="ns1:invalidateSessionsRequest"/>
+    <variable name="InvinvalidateSessions_OV"
+              messageType="ns1:invalidateSessionsResponse"/>
+ 
+    <variable name="CurrentTimestamp" type="xsd:string"/>
+    <variable name="InvInsertSFDCLoginDB_update_IV"
+              messageType="ns3:SfdcLoginDetailsCollection_msg"/>
+    <variable name="Header" messageType="ns1:Header"/>
+    <variable name="partnerReference" element="ns7:EndpointReference"/>
+    <variable name="InvUpsertSFDCLoginDB_IV"
+              messageType="ns3:SfdcLoginDetailsCollection_msg"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="i" type="xsd:int"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in SFDCLogin_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="sfdclogin_bpel_client"
+             portType="client:SFDCLogin_BPEL" operation="process"
+             variable="inputVariable" createInstance="yes"/>
+    <assign name="setTitle">
+      <copy>
+        <from expression='"SFDCLogin"'/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+      
+      <copy>
+        <from expression="1"/>
+        <to variable="i"/>
+      </copy>
+    </assign>
+    <invoke name="InvSelectSFDCLoginDB" bpelx:invokeAsDetail="no"
+            inputVariable="InvSelectSFDCLoginDB_IV"
+            outputVariable="InvSelectSFDCLoginDB_OV"
+            partnerLink="SelectSFDCLoginDB" portType="ns4:SelectSFDCLoginDB_ptt"
+            operation="SelectSFDCLoginDBSelect"/>
+    <switch name="Switch1">
+      <case condition="bpws:getVariableData('inputVariable','payload','/client:SFDCLoginReq/client:process')=&quot;SFDCLogin&quot;">
+        <sequence name="Sequence2">
+          <switch name="Switch4">
+            <case condition="ora:countNodes('InvSelectSFDCLoginDB_OV','SfdcLoginDetailsCollection','/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:status') > 0">
+              <bpelx:annotation>
+                <bpelx:general>
+                  <bpelx:property name="userLabel">RecordsAvailable</bpelx:property>
+                </bpelx:general>
+              </bpelx:annotation>
+              <sequence>
+                <scope name="Scope1">
+                  <faultHandlers>
+                    <catchAll>
+                      <empty name="continue"/>
+                    </catchAll>
+                  </faultHandlers>
+                  <sequence>
+                    <assign name="AsgnInvalidStatus">
+                      <copy>
+                        <from variable="InvSelectSFDCLoginDB_OV"
+                              part="SfdcLoginDetailsCollection"
+                              query="/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:username"/>
+                        <to variable="InvInsertSFDCLoginDB_update_IV"
+                            part="SfdcLoginDetailsCollection"
+                            query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:username"/>
+                      </copy>
+                      <copy>
+                        <from expression='"INVALID"'/>
+                        <to variable="InvInsertSFDCLoginDB_update_IV"
+                            part="SfdcLoginDetailsCollection"
+                            query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:status"/>
+                      </copy>
+                    </assign>
+                    <invoke name="InvUpdSFDCLoginDB"
+                            inputVariable="InvInsertSFDCLoginDB_update_IV"
+                            partnerLink="InsertSFDCLoginDB"
+                            portType="ns3:InsertSFDCLoginDB_ptt"
+                            operation="update" bpelx:invokeAsDetail="no"/>
+                    <assign name="AssignSessionID">
+                      <copy>
+                        <from variable="InvSelectSFDCLoginDB_OV"
+                              part="SfdcLoginDetailsCollection"
+                              query="/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:sessionid"/>
+                        <to variable="Header" part="SessionHeader"
+                            query="/ns1:SessionHeader/ns1:sessionId"/>
+                      </copy>
+                    </assign>
+                    <assign name="AssignPatnerRef">
+                      <copy>
+                        <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+                        <to variable="partnerReference"/>
+                      </copy>
+                      <copy>
+                        <from variable="InvSelectSFDCLoginDB_OV"
+                              part="SfdcLoginDetailsCollection"
+                              query="/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:serverurl"/>
+                        <to variable="partnerReference"
+                            query="/ns7:EndpointReference/ns7:Address"/>
+                      </copy>
+                      <copy>
+                        <from variable="partnerReference"/>
+                        <to partnerLink="SFDC"/>
+                      </copy>
+                      <copy>
+                        <from variable="InvSelectSFDCLoginDB_OV"
+                              part="SfdcLoginDetailsCollection"
+                              query="/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:sessionid"/>
+                        <to variable="InvinvalidateSessions_IV"
+                            part="parameters"
+                            query="/ns1:invalidateSessions/ns1:sessionIds"/>
+                      </copy>
+                    </assign>
+                    <invoke name="InvSFDCInvalidateSession" partnerLink="SFDC"
+                            portType="ns1:Soap" operation="invalidateSessions"
+                            inputVariable="InvinvalidateSessions_IV"
+                            outputVariable="InvinvalidateSessions_OV"
+                            bpelx:invokeAsDetail="no"
+                            bpelx:inputHeaderVariable="Header"/>
+                  </sequence>
+                </scope>
+              </sequence>
+            </case>
+          </switch>
+          <assign name="AsgSDFCLoginInput">
+            <copy>
+              <from expression='ora:getPreference("UserName")'/>
+              <to variable="InvSFDCLogin_IV" part="parameters"
+                  query="/ns1:login/ns1:username"/>
+            </copy>
+            <copy>
+              <from expression='ora:getPreference("Password")'/>
+              <to variable="InvSFDCLogin_IV" part="parameters"
+                  query="/ns1:login/ns1:password"/>
+            </copy>
+          </assign>
+          <invoke name="InvSFDC" inputVariable="InvSFDCLogin_IV"
+                  outputVariable="InvSFDCLogin_OV" partnerLink="SFDC"
+                  portType="ns1:Soap" operation="login"
+                  bpelx:invokeAsDetail="no"/>
+          <assign name="AsgnUpsertSFDCLoginDB">
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="parameters"
+                    query="/ns1:loginResponse/ns1:result/ns1:serverUrl"/>
+              <to variable="InvUpsertSFDCLoginDB_IV"
+                  part="SfdcLoginDetailsCollection"
+                  query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:serverurl"/>
+            </copy>
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="parameters"
+                    query="/ns1:loginResponse/ns1:result/ns1:sessionId"/>
+              <to variable="InvUpsertSFDCLoginDB_IV"
+                  part="SfdcLoginDetailsCollection"
+                  query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:sessionid"/>
+            </copy>
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="parameters"
+                    query="/ns1:loginResponse/ns1:result/ns1:userId"/>
+              <to variable="InvUpsertSFDCLoginDB_IV"
+                  part="SfdcLoginDetailsCollection"
+                  query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:userid"/>
+            </copy>
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="parameters"
+                    query="/ns1:loginResponse/ns1:result/ns1:userInfo/ns1:userName"/>
+              <to variable="InvUpsertSFDCLoginDB_IV"
+                  part="SfdcLoginDetailsCollection"
+                  query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:username"/>
+            </copy>
+            <copy>
+              <from expression='"VALID"'/>
+              <to variable="InvUpsertSFDCLoginDB_IV"
+                  part="SfdcLoginDetailsCollection"
+                  query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:status"/>
+            </copy>
+            <copy>
+              <from expression="xp20:current-dateTime()"/>
+              <to variable="InvUpsertSFDCLoginDB_IV"
+                  part="SfdcLoginDetailsCollection"
+                  query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:createtimestamp"/>
+            </copy>
+            <copy>
+              <from expression="xp20:add-dayTimeDuration-to-dateTime(xp20:current-dateTime(),ora:getPreference('ExpTimeDuration'))"/>
+              <to variable="InvUpsertSFDCLoginDB_IV"
+                  part="SfdcLoginDetailsCollection"
+                  query="/ns5:SfdcLoginDetailsCollection/ns5:SfdcLoginDetails/ns5:exptimestamp"/>
+            </copy>
+          </assign>
+          <invoke name="InvUpsertSFDCLoginDB"
+                  inputVariable="InvUpsertSFDCLoginDB_IV"
+                  partnerLink="InsertSFDCLoginDB"
+                  portType="ns3:InsertSFDCLoginDB_ptt" operation="merge"
+                  bpelx:invokeAsDetail="no"/>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence>
+          <switch name="SwitchStatus">
+            <case condition="bpws:getVariableData('InvSelectSFDCLoginDB_OV','SfdcLoginDetailsCollection','/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:status') = 'VALID'">
+              <sequence name="Sequence3">
+                <switch name="Switch3">
+                  <case condition="xp20:current-dateTime() > xp20:subtract-dayTimeDuration-from-dateTime(bpws:getVariableData('InvSelectSFDCLoginDB_OV','SfdcLoginDetailsCollection','/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:exptimestamp'),ora:getPreference('WaitBeforExp'))">
+                    <bpelx:annotation>
+                      <bpelx:general>
+                        <bpelx:property name="userLabel">ExpDateTimeReaching</bpelx:property>
+                      </bpelx:general>
+                    </bpelx:annotation>
+                    <sequence>
+                      <wait name="WaitUntilTimeExp"
+                            until="bpws:getVariableData('InvSelectSFDCLoginDB_OV','SfdcLoginDetailsCollection','/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:exptimestamp')"/>
+                      <invoke name="InvSelectSFDCLoginDB"
+                              inputVariable="InvSelectSFDCLoginDB_IV"
+                              outputVariable="InvSelectSFDCLoginDB_OV"
+                              partnerLink="SelectSFDCLoginDB"
+                              portType="ns4:SelectSFDCLoginDB_ptt"
+                              operation="SelectSFDCLoginDBSelect"
+                              bpelx:invokeAsDetail="no"/>
+                      <while name="WhileStatusActive"
+                             condition="bpws:getVariableData('InvSelectSFDCLoginDB_OV','SfdcLoginDetailsCollection','/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:status')=&quot;INVALID&quot; and $i &lt;= ora:getPreference('maxRetries')">
+                        <sequence name="Sequence4">
+                          <wait name="WaitFor30Sec" for="'PT30S'"/>
+                          <invoke name="InvSelectSFDCLoginDB"
+                                  inputVariable="InvSelectSFDCLoginDB_IV"
+                                  outputVariable="InvSelectSFDCLoginDB_OV"
+                                  partnerLink="SelectSFDCLoginDB"
+                                  portType="ns4:SelectSFDCLoginDB_ptt"
+                                  operation="SelectSFDCLoginDBSelect"
+                                  bpelx:invokeAsDetail="no"/>
+                          <assign name="AsgnCounterIncrement">
+                            <copy>
+                              <from expression="$i + 1"/>
+                              <to variable="i"/>
+                            </copy>
+                          </assign>
+                        </sequence>
+                      </while>
+                    </sequence>
+                  </case>
+                </switch>
+              </sequence>
+            </case>
+            <otherwise>
+              <while name="WhileStatusActive"
+                     condition="bpws:getVariableData('InvSelectSFDCLoginDB_OV','SfdcLoginDetailsCollection','/ns6:SfdcLoginDetailsCollection/ns6:SfdcLoginDetails/ns6:status')=&quot;INVALID&quot; and $i &lt;= ora:getPreference('maxRetries')">
+                <sequence name="Sequence5">
+            
+                  <wait name="WaitFor30Sec" for="'PT30S'"/>
+                
+                  <invoke name="InvSelectSFDCLoginDB"
+                          inputVariable="InvSelectSFDCLoginDB_IV"
+                          outputVariable="InvSelectSFDCLoginDB_OV"
+                          partnerLink="SelectSFDCLoginDB"
+                          portType="ns4:SelectSFDCLoginDB_ptt"
+                          operation="SelectSFDCLoginDBSelect"
+                          bpelx:invokeAsDetail="no"/>
+                           <assign name="AsgnCounterIncrement">
+                    <copy>
+                      <from expression="$i + 1"/>
+                      <to variable="i"/>
+                    </copy>
+                  </assign>
+                </sequence>
+              </while>
+            </otherwise>
+          </switch>
+          <assign name="TransformOutParms">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TransformOutParms.xsl', $InvSelectSFDCLoginDB_OV.SfdcLoginDetailsCollection)"/>
+              <to variable="outputVariable" part="payload"/>
+            </copy>
+          </assign>
+        </sequence>
+      </otherwise>
+    </switch>
+  
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="sfdclogin_bpel_client"
+           portType="client:SFDCLogin_BPEL" operation="process"
+           variable="outputVariable"/>
+  </sequence>
+</process>

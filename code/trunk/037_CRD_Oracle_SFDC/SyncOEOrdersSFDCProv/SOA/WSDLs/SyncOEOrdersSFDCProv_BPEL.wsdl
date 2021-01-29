@@ -1,0 +1,55 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SyncOEOrdersSFDCProv_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/SyncOEOrdersOracleToSFDC/SyncOEOrdersSFDCProv/SyncOEOrdersSFDCProv_BPEL"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSyncOEOrders/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns4="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+     xmlns:ns3="urn:partner.soap.sforce.com"
+     xmlns:client="http://www.sunpowercorp.com/SyncOEOrdersOracleToSFDC/SyncOEOrdersSFDCProv/SyncOEOrdersSFDCProv_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns5="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+    >
+    <plnk:partnerLinkType name="SyncOEOrdersSFDCProv_BPEL">
+        <plnk:role name="SyncOEOrdersSFDCProv_BPELProvider">
+            <plnk:portType name="client:SyncOEOrdersSFDCProv_BPEL"/>
+        </plnk:role>
+        <plnk:role name="SyncOEOrdersSFDCProv_BPELRequester">
+            <plnk:portType name="client:SyncOEOrdersSFDCProv_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessSyncOEOrders/V1" schemaLocation="../Schemas/CDM/BOD/Nouns/SyncOEOrders/V1/ProcessSyncOEOrders.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+                 schemaLocation="../Schemas/EmailContent.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SyncOEOrdersSFDCProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessSyncOEOrders"/>
+    </wsdl:message>
+    <wsdl:message name="SyncOEOrdersSFDCProv_BPELResponseMessage">
+        <wsdl:part name="payload" element="ns1:ProcessSyncOEOrdersResp"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncOEOrdersSFDCProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncOEOrdersSFDCProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="SyncOEOrdersSFDCProv_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:SyncOEOrdersSFDCProv_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

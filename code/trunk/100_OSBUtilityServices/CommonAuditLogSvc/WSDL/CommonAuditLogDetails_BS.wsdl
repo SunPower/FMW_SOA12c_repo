@@ -1,0 +1,17 @@
+<definitions targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSBJDEVResource/JDEVDBResources/ProcessAuditLogDetails" name="ProcessAuditLogDetails-concrete" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OSBJDEVResource/JDEVDBResources/ProcessAuditLogDetails" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSBJDEVResource/JDEVDBResources/ProcessAuditLogDetails" location="../JCAResources/ProcessAuditLogDetails.wsdl"/>
+  <binding name="ProcessAuditLogDetails_ptt-binding" type="tns:ProcessAuditLogDetails_ptt">
+    <soap:binding style="document" transport="http://www.bea.com/wli/sb/transports/jca"/>
+    <operation name="merge">
+      <soap:operation soapAction="merge"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+    </operation>
+  </binding>
+  <service name="ProcessAuditLogDetails-service">
+    <port name="ProcessAuditLogDetails-port" binding="tns:ProcessAuditLogDetails_ptt-binding">
+      <soap:address location="jca://eis/DB/SOACustom"/>
+    </port>
+  </service>
+</definitions>

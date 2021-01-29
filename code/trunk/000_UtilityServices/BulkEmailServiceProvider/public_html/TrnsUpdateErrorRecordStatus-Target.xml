@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:MiddlewareErrorLogCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/selectErrorRecordsFromDB">
+   <top:MiddlewareErrorLog>
+      <top:interfacenumber>interfaceNo66</top:interfacenumber>
+      <top:instancenumber>13</top:instancenumber>
+      <top:status>Y</top:status>
+      <top:uniqueIdentifier>string20</top:uniqueIdentifier>
+   </top:MiddlewareErrorLog>
+   <top:MiddlewareErrorLog>
+      <top:interfacenumber>interfaceNo66</top:interfacenumber>
+      <top:instancenumber>34</top:instancenumber>
+      <top:status>Y</top:status>
+      <top:uniqueIdentifier>string41</top:uniqueIdentifier>
+   </top:MiddlewareErrorLog>
+   <top:MiddlewareErrorLog>
+      <top:interfacenumber>interfaceNo66</top:interfacenumber>
+      <top:instancenumber>55</top:instancenumber>
+      <top:status>Y</top:status>
+      <top:uniqueIdentifier>string62</top:uniqueIdentifier>
+   </top:MiddlewareErrorLog>
+</top:MiddlewareErrorLogCollection>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.sunpowercorp.com/MergeLmsRows"
+            xmlns:tns="http://www.sunpowercorp.com/MergeLmsRows"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            xmlns="http://www.w3.org/2001/XMLSchema">
+ <xsd:element name="MergeLmsRowsCollection">
+  <xsd:complexType>
+   <xsd:sequence>
+    <xsd:element name="MergeLmsRowsItems"
+                 maxOccurs="unbounded" minOccurs="0">
+     <xsd:complexType>
+      <xsd:sequence>
+       <xsd:element name="not_active" type="string"/>
+       <xsd:element name="user_id" type="string"/>
+       <xsd:element name="first_name" type="string"/>
+       <xsd:element name="last_name" type="string"/>
+       <xsd:element name="middle_initial" type="string"/>
+       <xsd:element name="gender" type="string"/>
+       <xsd:element name="job_position_id" type="string"/>
+       <xsd:element name="job_position_description" type="string"/>
+       <xsd:element name="job_title" type="string"/>
+       <xsd:element name="role" type="string"/>
+       <xsd:element name="job_location_id" type="string"/>
+       <xsd:element name="job_location_description" type="string"/>
+       <xsd:element name="domain_id" type="string"/>
+       <xsd:element name="organization_id" type="string"/>
+       <xsd:element name="organization_description" type="string"/>
+       <xsd:element name="employee_type_id" type="string"/>
+       <xsd:element name="employee_type_description" type="string"/>
+       <xsd:element name="employee_status_id" type="string"/>
+       <xsd:element name="employee_status_description" type="string"/>
+       <xsd:element name="main_address" type="string"/>
+       <xsd:element name="city" type="string"/>
+       <xsd:element name="state" type="string"/>
+       <xsd:element name="postal_code" type="string"/>
+       <xsd:element name="country" type="string"/>
+       <xsd:element name="region_id" type="string"/>
+       <xsd:element name="region_description" type="string"/>
+       <xsd:element name="email_address" type="string"/>
+       <xsd:element name="hired_date" type="string"/>
+       <xsd:element name="terminated_date" type="string"/>
+       <xsd:element name="supervisor" type="string"/>
+       <xsd:element name="resume" type="string"/>
+       <xsd:element name="comments" type="string"/>
+       <xsd:element name="account_code" type="string"/>
+       <xsd:element name="account_code_description" type="string"/>
+       <xsd:element name="phone_number_i" type="string"/>
+       <xsd:element name="phone_number_description_i" type="string"/>
+       <xsd:element name="phone_number_ii" type="string"/>
+       <xsd:element name="phone_number_description_ii" type="string"/>
+       <xsd:element name="phone_number_iii" type="string"/>
+       <xsd:element name="phone_number_description_iii" type="string"/>
+       <xsd:element name="alternate_job_position_id" type="string"/>
+       <xsd:element name="shopping_account_type" type="string"/>
+       <xsd:element name="enable_shopping_account" type="string"/>
+       <xsd:element name="custom_column_100" type="string"/>
+       <xsd:element name="custom_column_110" type="string"/>
+       <xsd:element name="custom_column_120" type="string"/>
+       <xsd:element name="custom_column_130" type="string"/>
+       <xsd:element name="custom_column_140" type="string"/>
+       <xsd:element name="custom_column_150" type="string"/>
+       <xsd:element name="custom_column_160" type="string"/>
+       <xsd:element name="custom_column_170" type="string"/>
+       <xsd:element name="custom_column_180" type="string"/>
+       <xsd:element name="custom_column_190" type="string"/>
+       <xsd:element name="timezone" type="string"/>
+       <xsd:element name="language_id" type="string"/>
+       <xsd:element name="Organization_Account_Code" type="string"/>
+       <xsd:element name="currency_id" type="string"/>
+       <xsd:element name="alt_job_position_id2" type="string"/>
+       <xsd:element name="alt_job_position_id3" type="string"/>
+       <xsd:element name="alt_job_position_id4" type="string"/>
+       <xsd:element name="alt_job_position_id5" type="string"/>
+       <xsd:element name="alt_job_position_id6" type="string"/>
+       <xsd:element name="end_of_row" type="string"/>
+      </xsd:sequence>
+     </xsd:complexType>
+    </xsd:element>
+   </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>
+</xsd:schema>

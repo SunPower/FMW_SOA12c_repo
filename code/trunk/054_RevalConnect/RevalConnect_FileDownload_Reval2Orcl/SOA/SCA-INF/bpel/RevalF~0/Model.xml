@@ -1,0 +1,1055 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Mar 24 01:59:53 IST 2017
+  Author:  RD42768
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="RevalFileDownload_Reval2Orcl_BPEL" targetNamespace="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://com.reval.webservices/" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns2="http://com.reval.webservices/params" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/file/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/WriteRevalConnect" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:ns5="http://TargetNamespace.com/ServiceName" xmlns:ns6="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns7="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns8="http://com.reval.webservices/SeqIdList" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        ../WSDLs/RevalFileDownload_Reval2Orcl_BPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="revalfiledownload_reval2orcl_bpel_client" partnerLinkType="client:RevalFileDownload_Reval2Orcl_BPEL" myRole="RevalFileDownload_Reval2Orcl_BPELProvider"/>
+    <partnerLink name="RevalConnect_Webservice" partnerLinkType="ns1:RevalConnect_Webservice" partnerRole="ProcessServerSoap"/>
+    <partnerLink name="WriteRevalConnect" partnerLinkType="ns3:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns6:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:RevalFileDownload_Reval2Orcl_BPELRequestMessage"/>
+    <variable name="Inv_RevalConnect_Webservice_IV" messageType="ns1:LoginSoapIn"/>
+    <variable name="Inv_RevalConnect_Webservice_OV" messageType="ns1:LoginSoapOut"/>
+    <variable name="RevalParams" element="ns2:RevalParams"/>
+    <variable name="Temp" type="xsd:string"/>
+    <variable name="Inv_RevalConnect_Process_IV" messageType="ns1:ProcessSoapIn"/>
+    <variable name="Inv_RevalConnect_Process_OV" messageType="ns1:ProcessSoapOut"/>
+    <variable name="SessionID" type="xsd:string"/>
+    <variable name="QJobSysId" type="xsd:string"/>
+    <variable name="Wait_Counter" type="xsd:int"/>
+    <variable name="BinData" type="xsd:base64Binary"/>
+    <variable name="Inv_WriteRevalConnect_IN" messageType="ns3:Write_msg"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="FileLoc" type="xsd:string"/>
+    <variable name="FileDateTime" type="xsd:string"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns6:requestMessage"/>
+    <variable name="AsyncRepSysId" type="xsd:string"/>
+    <variable name="Seq_Counter" type="xsd:int"/>
+    <variable name="TotalSeqIdCount" type="xsd:int"/>
+    <variable name="SeqIdList" element="ns8:SeqIdList"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence4" id="BpSeq0">
+        <assign name="AsgCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getFlowId()"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="&quot;RevalConnect_FileDownload&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;RevalConnect_FileDownload&quot;"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference('FaultCode')"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" portType="ns6:execute_ptt" operation="execute" id="BpInv0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in RevalFileDownload_Reval2Orcl_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="revalfiledownload_reval2orcl_bpel_client" portType="client:RevalFileDownload_Reval2Orcl_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="Asg_Instance_Title" id="BpAss1">
+      <copy>
+        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="inputVariable" part="payload" query="/client:process/client:ExtractType"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Temp"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(bpws:getVariableData('Temp'))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Temp"/>
+      </copy>
+    </assign>
+    <assign name="Asg_LoginDetails" id="BpAss2">
+      <copy>
+        <from expression="ora:getPreference(&quot;RevalUsername&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Webservice_IV" part="parameters" query="/ns1:Login/ns1:userid"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;RevalPassword&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Webservice_IV" part="parameters" query="/ns1:Login/ns1:password"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_RevalConnect_Webservice" partnerLink="RevalConnect_Webservice" inputVariable="Inv_RevalConnect_Webservice_IV" outputVariable="Inv_RevalConnect_Webservice_OV" portType="ns1:ProcessServerSoap" operation="Login" id="BpInv1"/>
+    <assign name="ParseLoginResponse" id="BpAss3">
+      <copy>
+        <from expression="concat(&quot;&lt;Data xmlns='http://com.reval.webservices/params'>&quot;,substring-after(bpws:getVariableData('Inv_RevalConnect_Webservice_OV','parameters','/ns1:LoginResponse/ns1:LoginResult'),&quot;&lt;Data>&quot;))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:LoginResult"/>
+      </copy>
+      <copy>
+        <from expression="ora:parseEscapedXML(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:LoginResult'))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data"/>
+      </copy>
+    </assign>
+    <switch name="Switch4" id="BpSwt0">
+      <case condition="string-length(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:Error'))> number(0)">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">
+              Login_Error
+            </bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence name="Sequence14" id="BpSeq2">
+        <assign name="Asg_Error" id="BpAss4">
+            <copy>
+              <from expression="ora:getFlowId()"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+            </copy>
+            <copy>
+              <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+            </copy>
+            <copy>
+              <from expression="&quot;RevalConnect_FileDownload&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+            </copy>
+            <copy>
+              <from expression="&quot;RevalConnect_FileDownload&quot;"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference('FaultCode')"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+            </copy>
+            <copy>
+              <from expression="xp20:current-dateTime()"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+            </copy>
+            <copy>
+              <from expression="&quot;Error&quot;"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+            </copy>
+            <copy>
+              <from expression="&quot;Login Failed.... Please contact SOA Support Team to identify the issue&quot;"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+            </copy>
+            <copy>
+              <from expression="'E'"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+            </copy>
+            <copy>
+              <from expression="xp20:current-dateTime()"/>
+              <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+            </copy>
+          </assign>
+              <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" portType="ns6:execute_ptt" operation="execute" id="BpInv2"/>
+          <terminate name="Terminate1" id="BpTer0"/>
+        </sequence>
+      </case>
+      <otherwise>
+        <assign name="Get_SessionID" id="BpAss5">
+          <copy>
+            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:SessionId"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SessionID"/>
+          </copy>
+        </assign>
+      </otherwise>
+    </switch>
+    <assign name="Prepare_Request" id="BpAss6">
+      <copy>
+        <from expression="&quot;ReportFavorite&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/@ProcessName"/>
+      </copy>
+      <copy>
+        <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;RepFavoriteName&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:RepFavoriteName"/>
+      </copy>
+      <copy>
+        <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileFormat&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:FileFormat"/>
+      </copy>
+    </assign>
+    <assign name="Asg_Request" id="BpAss7">
+      <copy>
+        <from expression="ora:getContentAsString(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Param'))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:ParamXML"/>
+      </copy>
+      <copy>
+        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SessionID"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:SessionId"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_RevalConnect_Process" partnerLink="RevalConnect_Webservice" inputVariable="Inv_RevalConnect_Process_IV" outputVariable="Inv_RevalConnect_Process_OV" portType="ns1:ProcessServerSoap" operation="Process" id="BpInv3"/>
+    <assign name="Parse_Report_Resp" id="BpAss8">
+      <copy>
+        <from expression="ora:parseEscapedXML(concat('&lt;Data xmlns=&quot;http://com.reval.webservices/params&quot; ',substring-after(bpws:getVariableData('Inv_RevalConnect_Process_OV','parameters','/ns1:ProcessResponse/ns1:ProcessResult'),'&lt;Data')))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data"/>
+      </copy>
+      <copy>
+        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:QJobSysId"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+      </copy>
+      <copy>
+        <from expression="number(0)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Wait_Counter"/>
+      </copy>
+    </assign>
+    <assign name="Prepare_Param_Variable" id="BpAss9">
+          <bpelx:remove>
+            <bpelx:target bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:RepFavoriteName"/>
+          </bpelx:remove>
+          <bpelx:remove>
+            <bpelx:target bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:FileFormat"/>
+          </bpelx:remove>
+        </assign>
+    <while name="While_WaitCounter_1" condition="bpws:getVariableData('Wait_Counter') =  number(0)" id="BpWhl0">
+      <sequence name="Sequence2" id="BpSeq3">
+        <wait name="Wait_For_5_Mins" for="'PT5M'" id="BpWai0"/>
+        <assign name="Prepare_Request" id="BpAss10">
+          <copy>
+            <from expression="'JobStatus'" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/@ProcessName"/>
+          </copy>
+          <copy>
+            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:QJobSysId"/>
+          </copy>          
+        </assign>
+        <assign name="Asg_Request" id="BpAss11">
+          <copy>
+            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SessionID"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:SessionId"/>
+          </copy>
+          <copy>
+            <from expression="ora:getContentAsString(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Param'))"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:ParamXML"/>
+          </copy>
+        </assign>
+        <invoke name="Inv_RevalCon_Process" partnerLink="RevalConnect_Webservice" inputVariable="Inv_RevalConnect_Process_IV" outputVariable="Inv_RevalConnect_Process_OV" portType="ns1:ProcessServerSoap" operation="Process" id="BpInv4"/>
+        <assign name="Parse_Report_Resp" id="BpAss12">
+          <copy>
+            <from expression="ora:parseEscapedXML(concat('&lt;Data xmlns=&quot;http://com.reval.webservices/params&quot; ',substring-after(bpws:getVariableData('Inv_RevalConnect_Process_OV','parameters','/ns1:ProcessResponse/ns1:ProcessResult'),'&lt;Data')))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data"/>
+          </copy>
+        </assign>
+        <switch name="Switch1" id="BpSwt1">
+          <case condition="string-length(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:Error'))> number(0)">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">
+                  Request_Error
+                </bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <sequence name="Sequence6" id="BpSeq4">
+              <assign name="Asg_Error" id="BpAss13">
+                <copy>
+                  <from expression="ora:getFlowId()"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;RevalConnect_FileDownload&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;RevalConnect_FileDownload&quot;"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference('FaultCode')"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+                </copy>
+                <copy>
+                  <from expression="xp20:current-dateTime()"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;Error&quot;"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:Error"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+                </copy>
+                <copy>
+                  <from expression="'E'"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+                </copy>
+                <copy>
+                  <from expression="xp20:current-dateTime()"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+                </copy>
+              </assign>
+              <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" portType="ns6:execute_ptt" operation="execute" id="BpInv5"/>
+              <assign name="BreakLoop" id="BpAss14">
+                <copy>
+                  <from expression="number(1)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Wait_Counter"/>
+                </copy>
+              </assign>
+            </sequence>
+          </case>
+          <case condition="bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:QJobStatus/ns2:QJobStatusCode') = number(6)">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">
+                  Request_Failed
+                </bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <sequence name="Sequence5" id="BpSeq5">
+              <assign name="Asg_FailedRequest" id="BpAss15">
+                <copy>
+                  <from expression="ora:getFlowId()"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;RevalConnect_FileDownload&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;RevalConnect_FileDownload&quot;"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference('FaultCode')"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+                </copy>
+                <copy>
+                  <from expression="xp20:current-dateTime()"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:QJobStatus/ns2:QJobStatusText"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:QJobStatus/ns2:QJobErrDescr"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+                </copy>
+                <copy>
+                  <from expression="'E'"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+                </copy>
+                <copy>
+                  <from expression="xp20:current-dateTime()"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+                </copy>
+              </assign>
+              <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" portType="ns6:execute_ptt" operation="execute" id="BpInv6"/>
+              <assign name="BreakLoop" id="BpAss16">
+                <copy>
+                  <from expression="number(1)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Wait_Counter"/>
+                </copy>
+              </assign>
+            </sequence>
+          </case>
+          <case condition="bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:QJobStatus/ns2:QJobStatusCode') = number(4) and dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileFormat&quot;,&quot;NA&quot;) = 'CSV'">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">
+                  CSV_Request_Completed_CSV
+                </bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <sequence name="Sequence3" id="BpSeq6">
+              <assign name="Prepare_Request" id="BpAss17">
+                <copy>
+                  <from><RevalParams xmlns="http://com.reval.webservices/params">
+<Param ProcessName="RetrieveAsyncRpt">
+<RepFavoriteName/>
+<FileFormat/>
+<QJobSysId/>
+</Param>
+</RevalParams></from>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:QJobSysId"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;RetrieveAsyncRpt&quot;"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/@ProcessName"/>
+                </copy>
+                <copy>
+                  <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;RepFavoriteName&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:RepFavoriteName"/>
+                </copy>
+                <copy>
+                  <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileFormat&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:FileFormat"/>
+                </copy>
+              </assign>
+              <assign name="Asg_Request" id="BpAss18">
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SessionID"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:SessionId"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getContentAsString(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Param'))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:ParamXML"/>
+                </copy>
+              </assign>
+              <invoke name="Inv_RevalConnect_Process" partnerLink="RevalConnect_Webservice" inputVariable="Inv_RevalConnect_Process_IV" outputVariable="Inv_RevalConnect_Process_OV" portType="ns1:ProcessServerSoap" operation="Process" id="BpInv7"/>
+              <assign name="Parse_Report_Resp" id="BpAss19">
+                <copy>
+                  <from><RevalParams xmlns="http://com.reval.webservices/params">
+<Data DataNodeName="CData" DataType="Text">
+<CData/>
+<Error/>
+</Data>
+</RevalParams></from>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams"/>
+                </copy>
+                <copy>
+                  <from expression="ora:parseEscapedXML(concat('&lt;Data xmlns=&quot;http://com.reval.webservices/params&quot; ',substring-after(bpws:getVariableData('Inv_RevalConnect_Process_OV','parameters','/ns1:ProcessResponse/ns1:ProcessResult'),'&lt;Data')))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data"/>
+                </copy>                
+              </assign>
+              <switch name="Switch2" id="BpSwt2">
+                <case condition="string-length(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:Error'))> number(0)">
+                  <bpelx:annotation>
+                    <bpelx:general>
+                      <bpelx:property name="userLabel">
+                        Request_Error
+                      </bpelx:property>
+                    </bpelx:general>
+                  </bpelx:annotation>
+                  <sequence name="Sequence7" id="BpSeq7">
+                    <assign name="Asg_Error" id="BpAss20">
+                      <copy>
+                        <from expression="ora:getFlowId()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+                      </copy>
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;RevalConnect_FileDownload&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;RevalConnect_FileDownload&quot;"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference('FaultCode')"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+                      </copy>
+                      <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;Error&quot;"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+                      </copy>
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:Error"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+                      </copy>
+                      <copy>
+                        <from expression="'E'"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+                      </copy>
+                      <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+                      </copy>
+                    </assign>
+              <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" portType="ns6:execute_ptt" operation="execute" id="BpInv8"/>
+                  </sequence>
+                </case>
+                <otherwise>
+                  <sequence id="BpSeq8">
+                    <assign name="Asg_Data" id="BpAss21">
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:CData"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_WriteRevalConnect_IN" part="body" query="/ns5:RevalData/ns5:Data"/>
+                      </copy>
+                    </assign>
+                    <assign name="Asg_FileName_Loc" id="BpAss22">
+                      <copy>
+                        <from expression="translate(substring-before(xp20:current-dateTime(),'.'),'-T:','')" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileDateTime"/>
+                      </copy>
+                      <copy>
+                        <from expression="concat(dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileName&quot;,&quot;NA&quot;),bpws:getVariableData('FileDateTime'),'.dat')" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileName"/>
+                      </copy>
+                      <copy>
+                        <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileLocation&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileLoc"/>
+                      </copy>
+                    </assign>
+                    <invoke name="Inv_WriteRevalConnect" partnerLink="WriteRevalConnect" portType="ns3:Write_ptt" operation="Write" inputVariable="Inv_WriteRevalConnect_IN" id="BpInv9">
+                      <bpelx:inputProperty name="jca.file.FileName" variable="FileName"/>
+                      <bpelx:inputProperty name="jca.file.Directory" variable="FileLoc"/>
+                    </invoke>
+                  </sequence>
+                </otherwise>
+              </switch>
+              <assign name="BreakLoop" id="BpAss23">
+                <copy>
+                  <from expression="number(1)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Wait_Counter"/>
+                </copy>
+              </assign>
+            </sequence>
+          </case>
+          
+          
+          <case condition="bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:QJobStatus/ns2:QJobStatusCode') = number(4) and dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileFormat&quot;,&quot;NA&quot;) = 'TEXT'">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">
+                  XML_Request_Completed_TEXT
+                </bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <sequence name="Sequence10" id="BpSeq9">
+              <assign name="Prepare_Request" id="BpAss24">
+                <copy>
+                  <from><RevalParams xmlns="http://com.reval.webservices/params">
+<Param ProcessName="RetrieveAsyncRpt">
+<RepFavoriteName/>
+<FileFormat/>
+<QJobSysId/>
+</Param>
+</RevalParams></from>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams"/>
+                </copy>
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:QJobSysId"/>
+                </copy>
+                <copy>
+                  <from expression="&quot;RetrieveAsyncRpt&quot;"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/@ProcessName"/>
+                </copy>
+                <copy>
+                  <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;RepFavoriteName&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:RepFavoriteName"/>
+                </copy>
+                <copy>
+                  <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileFormat&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:FileFormat"/>
+                </copy>
+              </assign>
+              <assign name="Asg_Request" id="BpAss25">
+                <copy>
+                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SessionID"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:SessionId"/>
+                </copy>
+                <copy>
+                  <from expression="ora:getContentAsString(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Param'))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:ParamXML"/>
+                </copy>
+              </assign>
+              <invoke name="Inv_RevalConnect_Process" partnerLink="RevalConnect_Webservice" inputVariable="Inv_RevalConnect_Process_IV" outputVariable="Inv_RevalConnect_Process_OV" portType="ns1:ProcessServerSoap" operation="Process" id="BpInv10"/>
+              <assign name="Parse_Report_Resp" id="BpAss26">
+                <copy>
+                  <from><RevalParams xmlns="http://com.reval.webservices/params">
+<Data DataNodeName="CData" DataType="Text">
+<CData SeqId="0000000001.0000000001"/>
+<Error/>
+</Data>
+</RevalParams></from>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams"/>
+                </copy>
+                <copy>
+                  <from expression="ora:parseEscapedXML(concat('&lt;Data xmlns=&quot;http://com.reval.webservices/params&quot; ',substring-after(bpws:getVariableData('Inv_RevalConnect_Process_OV','parameters','/ns1:ProcessResponse/ns1:ProcessResult'),'&lt;Data')))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data"/>
+                </copy>
+              </assign>
+              <switch name="Switch2" id="BpSwt3">
+                <case condition="string-length(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:Error'))> number(0)">
+                  <bpelx:annotation>
+                    <bpelx:general>
+                      <bpelx:property name="userLabel">
+                        Request_Error
+                      </bpelx:property>
+                    </bpelx:general>
+                  </bpelx:annotation>
+                  <sequence name="Sequence11" id="BpSeq10">
+                    <assign name="Asg_Error" id="BpAss27">
+                      <copy>
+                        <from expression="ora:getFlowId()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+                      </copy>
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;RevalConnect_FileDownload&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;RevalConnect_FileDownload&quot;"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference('FaultCode')"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+                      </copy>
+                      <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;Error&quot;"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+                      </copy>
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:Error"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+                      </copy>
+                      <copy>
+                        <from expression="'E'"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+                      </copy>
+                      <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+                      </copy>
+                    </assign>
+              <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" portType="ns6:execute_ptt" operation="execute" id="BpInv11"/>
+                  </sequence>
+                </case>
+                <otherwise>
+                  <sequence id="BpSeq11">
+                    <assign name="Asg_Get_Params" id="BpAss28">
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/@AsyncRepSysId"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="AsyncRepSysId"/>
+                      </copy>
+                      <copy>
+                        <from expression="count(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:CData'))"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="TotalSeqIdCount"/>
+                      </copy>
+                      <copy>
+                        <from expression="number(1)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Seq_Counter"/>
+                      </copy>
+                      
+                    </assign>
+                    <assign name="Asg_FileName_Loc" id="BpAss29">
+                      <copy>
+                        <from expression="translate(substring-before(xp20:current-dateTime(),'.'),'-T:','')" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileDateTime"/>
+                      </copy>
+                      <copy>
+                        <from expression="concat(dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileName&quot;,&quot;NA&quot;),bpws:getVariableData('FileDateTime'),'.dat')" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileName"/>
+                      </copy>
+                      <copy>
+                        <from expression="dvm:lookupValue(&quot;DVM/RevalConnect_Documents.dvm&quot;,&quot;ExtractType&quot;,bpws:getVariableData('inputVariable','payload','/client:process/client:ExtractType'),&quot;FileLocation&quot;,&quot;NA&quot;)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="FileLoc"/>
+                      </copy>
+                    </assign>
+                    <assign name="Trans_SeqIds" id="BpAss30">
+                      <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                      </bpelx:annotation>
+                      <copy>
+                        <from expression="ora:doXSLTransformForDoc('../Transformations/Trans_SeqIds.xsl', $RevalParams)"/>
+                        <to variable="SeqIdList"/>
+                      </copy>
+                    </assign>
+                    <while name="While_Pages_Chunks" condition="bpws:getVariableData('Seq_Counter') &lt;= number(bpws:getVariableData('TotalSeqIdCount'))" id="BpWhl1">
+                      <sequence id="BpSeq12">
+                        <assign name="Prepare_Request" id="BpAss31">
+                          <copy>
+                            <from><RevalParams xmlns="http://com.reval.webservices/params">
+<Param ProcessName="RetrieveCDataSeq">
+<AsyncRepSysId/>
+<SeqId/>
+</Param>
+</RevalParams></from>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams"/>
+                          </copy>
+                          <copy>
+                            <from expression="&quot;RetrieveCDataSeq&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/@ProcessName"/>
+                          </copy>
+                          <copy>
+                            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="AsyncRepSysId"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:AsyncRepSysId"/>
+                          </copy>
+                          <copy>
+                            <from expression="bpws:getVariableData('SeqIdList','/ns8:SeqIdList/ns8:SeqId[bpws:getVariableData(&quot;Seq_Counter&quot;)]')"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Param/ns2:SeqId"/>
+                          </copy>
+                        </assign>
+                        <assign name="Asg_Request" id="BpAss32">
+                          <copy>
+                            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SessionID"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:SessionId"/>
+                          </copy>
+                          <copy>
+                            <from expression="ora:getContentAsString(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Param'))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_RevalConnect_Process_IV" part="parameters" query="/ns1:Process/ns1:ParamXML"/>
+                          </copy>
+                        </assign>
+                        <invoke name="Inv_RevalConnect_Process" partnerLink="RevalConnect_Webservice" inputVariable="Inv_RevalConnect_Process_IV" outputVariable="Inv_RevalConnect_Process_OV" portType="ns1:ProcessServerSoap" operation="Process" id="BpInv12"/>
+                        <assign name="Parse_Report_Resp" id="BpAss33">
+                          <copy>
+                            <from><RevalParams xmlns="http://com.reval.webservices/params">
+<Data DataNodeName="CData" DataType="Text">
+<CData/>
+<Error/>
+</Data>
+</RevalParams></from>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams"/>
+                          </copy>
+                          <copy>
+                            <from expression="ora:parseEscapedXML(concat('&lt;Data xmlns=&quot;http://com.reval.webservices/params&quot; ',substring-after(bpws:getVariableData('Inv_RevalConnect_Process_OV','parameters','/ns1:ProcessResponse/ns1:ProcessResult'),'&lt;Data')))" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data"/>
+                          </copy>
+                        </assign>
+                        <switch name="Switch3" id="BpSwt4">
+                          
+                          <case condition="string-length(bpws:getVariableData('RevalParams','/ns2:RevalParams/ns2:Data/ns2:Error'))> number(0)">
+                            <bpelx:annotation>
+                              <bpelx:general>
+                                <bpelx:property name="userLabel">
+                                  Request_Error
+                                </bpelx:property>
+                              </bpelx:general>
+                            </bpelx:annotation>
+                            <sequence name="Sequence13" id="BpSeq13">
+                    <assign name="Asg_Error" id="BpAss34">
+                      <copy>
+                        <from expression="ora:getFlowId()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+                      </copy>
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="QJobSysId"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;RevalConnect_FileDownload&quot;" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;RevalConnect_FileDownload&quot;"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference('FaultCode')"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+                      </copy>
+                      <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+                      </copy>
+                      <copy>
+                        <from expression="&quot;Error&quot;"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+                      </copy>
+                      <copy>
+                        <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:Error"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+                      </copy>
+                      <copy>
+                        <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+                      </copy>
+                      <copy>
+                        <from expression="'E'"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+                      </copy>
+                      <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+                      </copy>
+                    </assign>
+              <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" portType="ns6:execute_ptt" operation="execute" id="BpInv13"/>
+                              <assign name="Inc_SeqCounter" id="BpAss35">
+                                <copy>
+                                  <from expression="number(bpws:getVariableData('Seq_Counter')) + number(1)"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Seq_Counter"/>
+                                </copy>
+                              </assign>
+                            </sequence>
+                          </case>
+                          <otherwise>
+                            <sequence id="BpSeq14">
+                              <assign name="Asg_Data" id="BpAss36">
+                                <copy>
+                                  <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="RevalParams" query="/ns2:RevalParams/ns2:Data/ns2:CData"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_WriteRevalConnect_IN" part="body" query="/ns5:RevalData/ns5:Data"/>
+                                </copy>
+                              </assign>
+                              <invoke name="Inv_WriteRevalConnect" partnerLink="WriteRevalConnect" portType="ns3:Write_ptt" operation="Write" inputVariable="Inv_WriteRevalConnect_IN" id="BpInv14">
+                                <bpelx:inputProperty name="jca.file.FileName" variable="FileName"/>
+                                <bpelx:inputProperty name="jca.file.Directory" variable="FileLoc"/>
+                              </invoke>
+                              <assign name="Inc_SeqCounter" id="BpAss37">
+                                <copy>
+                                  <from expression="number(bpws:getVariableData('Seq_Counter')) + number(1)" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+                                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Seq_Counter"/>
+                                </copy>
+                              </assign>
+                            </sequence>
+                          </otherwise>
+                        </switch>
+                      </sequence>
+                    </while>
+                  </sequence>
+                </otherwise>
+              </switch>
+              <assign name="BreakLoop" id="BpAss38">
+                <copy>
+                  <from expression="number(1)"/>
+                  <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Wait_Counter"/>
+                </copy>
+              </assign>
+            </sequence>
+          </case>
+          
+          <otherwise>
+            <empty name="Rerun_the_loop" id="BpEmp0"/>
+          </otherwise>
+        </switch>
+      </sequence>
+    </while>
+  </sequence>
+</process>

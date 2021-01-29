@@ -1,0 +1,23 @@
+Oct 11, 2016 3:41:59 PM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Oct 11, 2016 3:42:03 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Oct 11, 2016 3:42:06 PM com.collaxa.cube.CubeLogger info
+INFO: validating "SyncOEOrdersOracleReq_BPEL.bpel" ...
+Oct 11, 2016 3:42:06 PM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+Oct 11, 2016 3:42:06 PM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSequenceBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSwitchBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchAllBlock
+Oct 11, 2016 3:42:22 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "SyncOEOrdersOracleReq_BPEL" in 38.4 milliseconds [nodes 22=0+22, 572.5 nodes/sec]
+Oct 11, 2016 3:42:23 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "SyncOEOrdersOracleReq_BPEL" in 1.310 seconds
+Oct 11, 2016 3:42:23 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0.6 milliseconds
+
+Oct 11, 2016 3:42:23 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "SyncOEOrdersOracleReq_BPEL" in 36.1 milliseconds
+

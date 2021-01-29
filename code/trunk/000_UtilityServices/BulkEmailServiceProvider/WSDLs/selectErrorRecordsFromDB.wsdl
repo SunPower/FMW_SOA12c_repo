@@ -1,0 +1,29 @@
+<?binding.jca selectErrorRecordsFromDB_db.jca?>
+<wsdl:definitions name="selectErrorRecordsFromDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/selectErrorRecordsFromDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/selectErrorRecordsFromDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/selectErrorRecordsFromDB">
+    <plt:partnerLinkType name="selectErrorRecordsFromDB_plt">
+        <plt:role name="selectErrorRecordsFromDB_role">
+            <plt:portType name="tns:selectErrorRecordsFromDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/selectErrorRecordsFromDB"
+                    schemaLocation="../Schemas/selectErrorRecordsFromDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="MiddlewareErrorLogCollection_msg">
+        <wsdl:part name="MiddlewareErrorLogCollection" element="top:MiddlewareErrorLogCollection"/>
+    </wsdl:message>
+    <wsdl:message name="selectErrorRecordsFromDBSelect_inputParameters">
+        <wsdl:part name="selectErrorRecordsFromDBSelect_inputParameters" element="top:selectErrorRecordsFromDBSelect_interfaceNoInputParameters"/>
+    </wsdl:message>
+    <wsdl:portType name="selectErrorRecordsFromDB_ptt">
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:MiddlewareErrorLogCollection_msg"/>
+        </wsdl:operation>
+        <wsdl:operation name="selectErrorRecordsFromDBSelect">
+            <wsdl:input message="tns:selectErrorRecordsFromDBSelect_inputParameters"/>
+            <wsdl:output message="tns:MiddlewareErrorLogCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

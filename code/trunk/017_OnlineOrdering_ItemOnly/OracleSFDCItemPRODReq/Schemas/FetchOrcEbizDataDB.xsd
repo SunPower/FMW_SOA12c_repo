@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchOrcEbizDataDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/FetchOrcEbizDataDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="FetchOrcEbizDataDBInput" type="FetchOrcEbizDataDBInput"/>
+   <xs:complexType name="FetchOrcEbizDataDBInput">
+      <xs:sequence>
+         <xs:element name="noOfdays" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="FetchOrcEbizDataDBOutputCollection" type="FetchOrcEbizDataDBOutputCollection"/>
+   <xs:complexType name="FetchOrcEbizDataDBOutputCollection">
+      <xs:sequence>
+         <xs:element name="FetchOrcEbizDataDBOutput" type="FetchOrcEbizDataDBOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="FetchOrcEbizDataDBOutput">
+      <xs:sequence>
+         <xs:element name="ITEM_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="DESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="LONG_DESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="INVENTORY_ITEM_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="ITEM_STATUS_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="Item_category1" type="xs:string" nillable="true"/>
+         <xs:element name="Item_category2" type="xs:string" nillable="true"/>
+         <xs:element name="Item_Category3" type="xs:string" nillable="true"/>
+         <xs:element name="PROD_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="LAST_UPDATE_DATE" type="xs:dateTime" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

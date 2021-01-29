@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.sunpowercorp.com/MergedOracleAttachmentSFDC"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="MergedOracleAttachmentSFDCRows">
+    <complexType>
+      <sequence>
+        <element name="row" maxOccurs="unbounded" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="TRX_NUMBER" type="string"/>
+              <element name="BILL_TO_CUSTOMER_ID" type="int"/>
+              <element name="CUSOMER_NAME" type="string"/>
+              <element name="CUSOMER_NUMBER" type="string"/>
+              <element name="TRX_STATUS" type="string"/>
+              <element name="TRX_DATE" type="xsd:dateTime"/>
+              <element name="TRX_CREATION_DATE" type="xsd:dateTime"/>
+              <element name="TRX_TYPE" type="string"/>
+              <element name="TRX_TYPE_NAME" type="string"/>
+              <element name="TRX_TYPE_DESC" type="string"/>
+              <element name="OPERATING_UNIT_NAME" type="string"/>
+              <element name="CURRENCY_CODE" type="string"/>
+              <element name="TRANSACTION_CURRENCY_CODE" type="string"/>
+              <element name="LAST_UPDATE_DATE" type="xsd:dateTime"/>
+              <element name="CREATED_BY" type="xsd:decimal"/>
+              <element name="LAST_UPDATED_BY" type="xsd:decimal"/>
+              <element name="LAST_UPDATED_LOGIN" type="xsd:decimal"/>
+              <element name="RECORD_STATUS" type="string"/>
+              <element name="RECORD_ID" type="xsd:decimal"/>
+              <element name="ERROR_MESSAGE" type="string"/>
+              <element name="PDF_FILE_NAME" type="string"/>
+              <element name="TRX_LAST_UPDATED_DATE" type="xsd:dateTime"/>
+              <element name="T_CREATION_DATE" type="string"/>
+              <element name="SFDC_ACCOUNT_ID" type="string"/>
+              <element name="SFDC_ACCOUNT_NAME" type="string"/>
+              <element name="SFDC_USER_ID" type="string"/>
+              <element name="SFDC_ATTACHMENT_ID" type="string"/>
+              <element name="TRX_TYPE_MEANING" type="string"/>
+              <element name="ORG_ID" type="xsd:decimal"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

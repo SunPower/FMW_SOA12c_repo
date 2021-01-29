@@ -1,0 +1,58 @@
+<wsdl:definitions name="SOAPDFMETASyncProv_BPEL" targetNamespace="http://www.sunpowercorp.com/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/SOAPDFMETASyncProv_BPEL" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://www.sunpowercorp.com/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/SOAPDFMETASyncProv_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+	<plnk:partnerLinkType name="SOAPDFMETASyncProv_BPEL">
+		<plnk:role name="SOAPDFMETASyncProv_BPELRequester">
+			<plnk:portType name="client:SOAPDFMETASyncProv_BPELCallback"/>
+		</plnk:role>
+		<plnk:role name="SOAPDFMETASyncProv_BPELProvider">
+			<plnk:portType name="client:SOAPDFMETASyncProv_BPEL"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.sunpowercorp.com/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/SOAPDFMETASyncProv_BPEL" schemaLocation="../XSD/SOAPDFMETASyncProv_BPEL.xsd"/>
+		</schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" schemaLocation="../XSD/CDM/BOD/Nouns/PDFFTPSalesForce/V1/ProcessPDFFTPSalesForce.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="SOAPDFMETASyncProv_BPELResponseMessage">
+		<wsdl:part name="payload" element="client:processResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SOAPDFMETASyncProv_BPELRequestMessage">
+		<wsdl:part name="payload" element="ns1:ProcessPDFFTPSalesForce"/>
+	</wsdl:message>
+	<wsdl:portType name="SOAPDFMETASyncProv_BPELCallback">
+		<wsdl:operation name="processResponse">
+			<wsdl:input message="client:SOAPDFMETASyncProv_BPELResponseMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:portType name="SOAPDFMETASyncProv_BPEL">
+		<wsdl:operation name="process">
+			<wsdl:input message="client:SOAPDFMETASyncProv_BPELRequestMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SOAPDFMETASyncProv_BPELCallbackBinding" type="client:SOAPDFMETASyncProv_BPELCallback">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="processResponse">
+			<soap:operation style="document" soapAction="processResponse"/>
+			<wsdl:input>
+				<soap:body use="literal" namespace="http://www.sunpowercorp.com/PDFFTPSalesforceT0042/SOAPDFMETASyncProv/SOAPDFMETASyncProv_BPEL"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="SOAPDFMETASyncProv_BPELBinding" type="client:SOAPDFMETASyncProv_BPEL">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+				<wsdl:operation name="process">
+			<soap:operation style="document" soapAction="process"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="soapdfmetasyncprov_bpel_client_ep">
+		<wsdl:port name="SOAPDFMETASyncProv_BPEL_pt" binding="client:SOAPDFMETASyncProv_BPELBinding">
+			<soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/SOAPDFMETASyncProv/soapdfmetasyncprov_bpel_client_ep"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

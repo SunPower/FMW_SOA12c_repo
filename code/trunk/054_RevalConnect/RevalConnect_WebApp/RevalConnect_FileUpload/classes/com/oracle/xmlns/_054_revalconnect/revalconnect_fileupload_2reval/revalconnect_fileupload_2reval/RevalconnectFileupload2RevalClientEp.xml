@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns0="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname namespaceURI="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"
+                     localpart="revalconnect_fileupload_2reval_client_ep"/>
+      <port-info>
+         <wsdl-port namespaceURI="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"
+                    localpart="RevalConnect_FileUpload_2Reval_pt"/>
+         <runtime/>
+         <operations>
+            <operation name="process"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>

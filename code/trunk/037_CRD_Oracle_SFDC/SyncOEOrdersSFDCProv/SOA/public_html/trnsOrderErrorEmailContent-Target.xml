@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns5:EmailContent xmlns:ns5="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1">
+   <ns5:To/>
+   <ns5:Subject/>
+   <ns5:body>&lt;table border='1'>&lt;tr>&lt;th bgcolor='#C0C0C0'>&lt;b>Header ID&lt;/b>&lt;/th> &lt;th bgcolor='#C0C0C0'>&lt;b>Fault Message&lt;/b>&lt;/th> &lt;/tr> &lt;tr>&lt;td>34&lt;/td>&lt;td>string37&lt;/td>&lt;/tr>&lt;tr>&lt;td>41&lt;/td>&lt;td>string44&lt;/td>&lt;/tr>&lt;/table> &lt;br/> &lt;i> Note: This message was automatically generated, please do not reply to it &lt;/i> &lt;br/>&lt;br/>&lt;b>Thanks &amp; Regards&lt;/b>&lt;br/>System Admin</ns5:body>
+</ns5:EmailContent>

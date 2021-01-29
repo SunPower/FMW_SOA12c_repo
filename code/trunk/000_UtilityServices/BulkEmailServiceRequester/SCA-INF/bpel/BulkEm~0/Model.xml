@@ -1,0 +1,120 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Dec 05 14:16:10 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="BulkEmailServiceRequesterBPEL" targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceRequester/BulkEmailServiceRequesterBPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceRequester/BulkEmailServiceRequesterBPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceRequester/selectInterfaceIDsfromDB" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/selectInterfaceIDsfromDB" xmlns:ns3="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        BulkEmailServiceRequesterBPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="bulkemailservicerequesterbpel_client" partnerLinkType="client:BulkEmailServiceRequesterBPEL" myRole="BulkEmailServiceRequesterBPELProvider"/>
+    <partnerLink name="selectInterfaceIDsfromDB" partnerLinkType="ns1:selectInterfaceIDsfromDB_plt" partnerRole="selectInterfaceIDsfromDB_role"/>
+    <partnerLink name="BulkEmailServiceProvider" partnerLinkType="ns3:BulkEmailServiceProviderBPEL" partnerRole="BulkEmailServiceProviderBPELProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:BulkEmailServiceRequesterBPELRequestMessage"/>
+    <variable name="InvSelectInterfaceIDsfromDB_IV" messageType="ns1:selectInterfaceIDsfromDBInput_msg"/>
+    <variable name="InvSelectInterfaceIDsfromDB_OV" messageType="ns1:selectInterfaceIDsfromDBOutputCollection_msg"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="interfaceCount" type="xsd:int"/>
+    <variable name="i" type="xsd:int"/>
+    <variable name="InvBulkEmailServiceProvider_IV" messageType="ns3:BulkEmailServiceProviderBPELRequestMessage"/>
+    <variable name="InterfaceNumber" type="xsd:string"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq0">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in BulkEmailServiceRequesterBPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="bulkemailservicerequesterbpel_client" portType="client:BulkEmailServiceRequesterBPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="SetTitle" id="BpAss0">
+      <copy>
+        <from expression="&quot;BulkEmailServiceRequester&quot;"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <invoke name="InvSelectInterfaceIDsfromDB" inputVariable="InvSelectInterfaceIDsfromDB_IV" outputVariable="InvSelectInterfaceIDsfromDB_OV" partnerLink="selectInterfaceIDsfromDB" portType="ns1:selectInterfaceIDsfromDB_ptt" operation="selectInterfaceIDsfromDB" bpelx:invokeAsDetail="no" id="BpInv0"/>
+    <assign name="IntialiseLoopParams" id="BpAss1">
+      <copy>
+        <from expression="ora:countNodes('InvSelectInterfaceIDsfromDB_OV','selectInterfaceIDsfromDBOutputCollection','/ns2:selectInterfaceIDsfromDBOutputCollection/ns2:selectInterfaceIDsfromDBOutput')"/>
+        <to variable="interfaceCount"/>
+      </copy>
+      <copy>
+        <from expression="1"/>
+        <to variable="i"/>
+      </copy>
+    </assign>
+    <while name="WhileForAllInterfaces" condition="$interfaceCount >= $i" id="BpWhl0">
+      <sequence name="Sequence1" id="BpSeq1">
+        <assign name="AsgnInterfaceNumber" id="BpAss2">
+          <copy>
+            <from variable="InvSelectInterfaceIDsfromDB_OV" part="selectInterfaceIDsfromDBOutputCollection" query="/ns2:selectInterfaceIDsfromDBOutputCollection/ns2:selectInterfaceIDsfromDBOutput[$i]/ns2:INTERFACENUMBER"/>
+            <to variable="InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="$i + 1"/>
+            <to variable="i"/>
+          </copy>
+        </assign>
+        <switch name="SwitchIntfceNOnotNull" id="BpSwt0">
+          <case condition="($InterfaceNumber !='') and ($InterfaceNumber !=' ')">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">InterfaceNumberNotEmpty</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <sequence name="Sequence2" id="BpSeq2">
+              <assign name="AsgnBulkEmailServiceProvider" id="BpAss3">
+                <copy>
+                  <from variable="InterfaceNumber"/>
+                  <to variable="InvBulkEmailServiceProvider_IV" part="payload" query="/ns3:BulkEmailServiceProviderInput/ns3:interfaceNumber"/>
+                </copy>
+              </assign>
+              <invoke name="InvBulkEmailServiceProvider" inputVariable="InvBulkEmailServiceProvider_IV" partnerLink="BulkEmailServiceProvider" portType="ns3:BulkEmailServiceProviderBPEL" operation="process" bpelx:invokeAsDetail="no" id="BpInv1"/>
+            </sequence>
+          </case>
+        </switch>
+      </sequence>
+    </while>
+  </sequence>
+</process>

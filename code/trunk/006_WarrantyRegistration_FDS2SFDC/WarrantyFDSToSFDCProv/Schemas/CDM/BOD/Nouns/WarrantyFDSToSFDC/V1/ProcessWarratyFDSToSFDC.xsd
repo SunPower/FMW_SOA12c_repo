@@ -1,0 +1,37 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<!--
+    Name: ProcessLease2Outbound.xsd
+    Change history
+
+    Author      date        purpose
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1"
+            targetNamespace="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1"
+            xmlns:wfs="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"
+            xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"
+                schemaLocation="WarrantyFDSToSFDC.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+                schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessWarrantyFDSToSFDC" type="ProcessWarrantyFDSToSFDType"/>
+    <xsd:complexType name="ProcessWarrantyFDSToSFDType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea"
+                                 type="WarrantyFDSToSFDCDataAreaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WarrantyFDSToSFDCDataAreaType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="wfs:WRFDS2SFDC" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

@@ -1,0 +1,284 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Feb 06 18:42:42 IST 2013
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="SyncOEOrdersOracleReq_BPEL"
+               targetNamespace="http://www.sunpowercorp.com/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/SyncOEOrdersOracleReq_BPEL"
+               xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+               xmlns:client="http://www.sunpowercorp.com/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/SyncOEOrdersOracleReq_BPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/pollOEOrderHeaderFromOracle"
+         xmlns:ns2="http://www.sunpowercorp.com/SyncOEOrdersOracleToSFDC/SyncOEOrdersSFDCProv/SyncOEOrdersSFDCProv_BPEL"
+         xmlns:ns3="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/pollOracleOrderHeadres"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/fetchOracleOraderLines"
+         xmlns:ns6="http://www.sunpowercorp.com/utilities/ID/xsd/v1"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/db/fetchOracleOraderLines"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/top/pollOracleOrderHeadres"
+         xmlns:ns9="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/updateHeaderStatusToDB"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[http://soaappdca01.sunpowercorp.com:7003/soa-infra/services/online/SyncOEOrdersSFDCProv/SyncOEOrdersSFDCProv_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="SyncOEOrdersSFDCProv"
+                 partnerLinkType="ns2:SyncOEOrdersSFDCProv_BPEL"
+                 partnerRole="SyncOEOrdersSFDCProv_BPELProvider"
+                 myRole="SyncOEOrdersSFDCProv_BPELRequester"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns3:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="pollOracleOrderHeadres"
+                 partnerLinkType="ns4:pollOracleOrderHeadres_plt"
+                 myRole="pollOracleOrderHeadres_role"/>
+    <partnerLink name="fetchOracleOraderLines"
+                 partnerLinkType="ns5:fetchOracleOraderLines_plt"
+                 partnerRole="fetchOracleOraderLines_role"/>
+    <partnerLink name="updateHeaderStatusToDB"
+                 partnerLinkType="ns10:updateHeaderStatusToDB_plt"
+                 partnerRole="updateHeaderStatusToDB_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="inputVariable"
+              messageType="ns4:XxspwrOmHeaderSyncCollection_msg"/>
+    <variable name="InvSyncOEOrdersSFDCProv_Header_IV"
+              messageType="ns2:SyncOEOrdersSFDCProv_BPELRequestMessage"/>
+    <variable name="InvSyncOEOrdersSFDCProv_Lines_IV"
+              messageType="ns2:SyncOEOrdersSFDCProv_BPELRequestMessage"/>
+    <variable name="InvCommonSFDCErrorLogService_IV"
+              messageType="ns3:requestMessage"/>
+    <variable name="InvFetchOracleOraderLines_IV"
+              messageType="ns5:fetchOracleOraderLinesInput_msg"/>
+    <variable name="InvFetchOracleOraderLines_OV"
+              messageType="ns5:fetchOracleOraderLinesOutputCollection_msg"/>
+    <variable name="InvUpdateHeaderStatusToDB_IV"
+              messageType="ns10:XxspwrOmHeaderSyncCollection_msg"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="SyncOEOrdersSFDCProv_OV"
+              messageType="ns2:SyncOEOrdersSFDCProv_BPELResponseMessage"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="SeqCatchAll">
+        <assign name="trnsUpdateHeaderStatusToDB">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/trnsUpdateHeaderStatusToDB.xsl', $inputVariable.XxspwrOmHeaderSyncCollection)"/>
+            <to variable="InvUpdateHeaderStatusToDB_IV"
+                part="XxspwrOmHeaderSyncCollection"/>
+          </copy>
+        </assign>
+        <invoke name="InvUpdateHeaderStatusToDB"
+                inputVariable="InvUpdateHeaderStatusToDB_IV"
+                partnerLink="updateHeaderStatusToDB"
+                portType="ns10:updateHeaderStatusToDB_ptt" operation="update"
+                bpelx:invokeAsDetail="no"/>
+        <assign name="AsgnCommonSFDCErrorLogService">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("InterfaceNumber")'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression='"SyncOEOrdersOracleReq"'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression='"SyncOEOrdersOracleReq_BPEL"'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("Severity")'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultCode")'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultTime"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("FaultSystemName")'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("bOpenServiceTicket")'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("CorrectiveAction")'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:CorrectiveAction"/>
+                    </copy>
+                    <copy>
+                        <from expression='ora:getPreference("SendEmail")'/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:SendEmail"/>
+                    </copy>
+                    <copy>
+                        <from expression="'E'"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:status"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV"
+                            part="request"
+                            query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:createddatetime"/>
+                    </copy>
+                </assign>
+        <invoke name="InvCommonSFDCErrorLogService"
+                inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns3:execute_ptt" operation="execute"
+                bpelx:invokeAsDetail="no"/>
+        <terminate name="Terminate"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main">
+    <receive name="RecOracleOrderHeadres" createInstance="yes"
+             variable="inputVariable" partnerLink="pollOracleOrderHeadres"
+             portType="ns4:pollOracleOrderHeadres_ptt" operation="receive"/>
+    <assign name="SetTitle">
+      <copy>
+        <from expression='oraext:setFlowInstanceTitle("SyncOEOrdersOracleReq")'/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <assign name="TrnsSyncOEOrdersSFDCProv_Header">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransSyncOEOrdersSFDCProv_Header.xsl', $inputVariable.XxspwrOmHeaderSyncCollection)"/>
+        <to variable="InvSyncOEOrdersSFDCProv_Header_IV" part="payload"/>
+      </copy>
+    </assign>
+    <invoke name="InvSyncOEOrdersSFDCProv_Header"
+            inputVariable="InvSyncOEOrdersSFDCProv_Header_IV"
+            partnerLink="SyncOEOrdersSFDCProv"
+            portType="ns2:SyncOEOrdersSFDCProv_BPEL" operation="process"
+            bpelx:invokeAsDetail="no"/>
+    <receive name="RecSyncOEOrdersSFDCProv" createInstance="no"
+             partnerLink="SyncOEOrdersSFDCProv"
+             portType="ns2:SyncOEOrdersSFDCProv_BPELCallback"
+             operation="processResponse" variable="SyncOEOrdersSFDCProv_OV"/>
+    <assign name="TrnsFetchOracleOrderLines">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/trnsFetchOracleOrderLines_IV.xsl', $inputVariable.XxspwrOmHeaderSyncCollection)"/>
+        <to variable="InvFetchOracleOraderLines_IV"
+            part="fetchOracleOraderLinesInput_msg"/>
+      </copy>
+    </assign>
+    <invoke name="InvFetchOracleOraderLines"
+            inputVariable="InvFetchOracleOraderLines_IV"
+            outputVariable="InvFetchOracleOraderLines_OV"
+            partnerLink="fetchOracleOraderLines"
+            portType="ns5:fetchOracleOraderLines_ptt"
+            operation="fetchOracleOraderLines" bpelx:invokeAsDetail="no"/>
+             
+    <switch name="SwitchOrderLines">
+      <case condition="ora:countNodes('InvFetchOracleOraderLines_OV','fetchOracleOraderLinesOutputCollection','/ns7:fetchOracleOraderLinesOutputCollection/ns7:fetchOracleOraderLinesOutput') > 0">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">OrderLinesAvailable</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence>
+          <assign name="TrnsSyncOEOrdersSFDCProv_Lines">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TrnsSyncOEOrdersSFDCProv_Lines.xsl', $InvFetchOracleOraderLines_OV.fetchOracleOraderLinesOutputCollection)"/>
+              <to variable="InvSyncOEOrdersSFDCProv_Lines_IV" part="payload"/>
+            </copy>
+          </assign>
+          <invoke name="InvSyncOEOrdersSFDCProv_Lines"
+                  inputVariable="InvSyncOEOrdersSFDCProv_Lines_IV"
+                  partnerLink="SyncOEOrdersSFDCProv"
+                  portType="ns2:SyncOEOrdersSFDCProv_BPEL" operation="process"
+                  bpelx:invokeAsDetail="no"/>
+        </sequence>
+      </case>
+    </switch>
+  </sequence>
+</process>

@@ -1,0 +1,29 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Noun/ACBApproverToSFDC/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Noun/ACBApproverToSFDC/V1" xmlns:Os="http://www.sunpowercorp.com/Common/ACBApproverToSFDCCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/ACBApproverToSFDCCommonTypes/V1" schemaLocation="ACBApproverToSFDCCommonTypes.xsd"/>
+    <xsd:element name="ACBApproverToSFDC" type="ACBApproverToSFDCType"/>
+    <xsd:complexType name="ACBApproverToSFDCType">
+        <xsd:sequence>
+            <xsd:element ref="ACBApproverToSFDCDetails" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="ACBApproverToSFDCDetails" type="ACBApproverToSFDCDetailsType"/>
+    <xsd:complexType name="ACBApproverToSFDCDetailsType">
+        <xsd:sequence>
+            <xsd:element ref="Os:Id"/>
+            <xsd:element ref="Os:Account__c"/>
+            <xsd:element ref="Os:Promotion__c" minOccurs="0"/>
+            <xsd:element ref="Os:Promotion_Description__c" minOccurs="0"/>
+            <xsd:element ref="Os:Promotion_Year__c" minOccurs="0"/>
+            <xsd:element ref="Os:Appr_Num__c" minOccurs="0"/>
+            <xsd:element ref="Os:Date_From__c" minOccurs="0"/>
+            <xsd:element ref="Os:Date_To__c" minOccurs="0"/>
+            <xsd:element ref="Os:Media__c" minOccurs="0"/>
+            <xsd:element ref="Os:Media_Description__c" minOccurs="0"/>
+            <xsd:element ref="Os:Estimated_cost__c" minOccurs="0"/>
+            <xsd:element ref="Os:Balance" minOccurs="0"/>
+            <xsd:element ref="Os:Expired_date__c" minOccurs="0"/>
+            <xsd:element ref="Os:ACBParanetID__c" minOccurs="0"/>
+            <xsd:element ref="Os:Open_Amount__c" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

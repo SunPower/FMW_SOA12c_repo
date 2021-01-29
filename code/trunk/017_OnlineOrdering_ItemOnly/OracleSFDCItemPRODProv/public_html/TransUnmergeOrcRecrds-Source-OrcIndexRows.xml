@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OracleIndexRows xmlns="http://www.sunpowercorp.com/OracleIndexItems">
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C165166, WHITE A, MASTER BIN</Description__c>
+    <Item_ID__c>100995</Item_ID__c>
+    <Long_Description__c>CELL, C165166, WHITE A, MASTER BIN</Long_Description__c>
+    <Item_Category_3__c>WHITE A STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN C165</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>HYDROCHLORIC ACID 37%</Description__c>
+    <Item_ID__c>101009</Item_ID__c>
+    <Long_Description__c>HYDROCHLORIC ACID 37%,(GALLON)</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>CHE</Item_Category_2__c>
+    <Item_Category_1__c>PRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>ATOCK ABSORBER MAC20-16,AL-TECH ME-300-2004618</Description__c>
+    <Item_ID__c>100671</Item_ID__c>
+    <Long_Description__c>ATOCK ABSORBER MAC20-16,AL-TECH ME-300-2004618</Long_Description__c>
+    <Item_Category_3__c>EDGECOAT</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BELT,M#P01-3,0x55-EPDM,ROUND EPDM 3,0x55mm</Description__c>
+    <Item_ID__c>100697</Item_ID__c>
+    <Long_Description__c>BELT,M#P01-3,0x55-EPDM,ROUND EPDM 3,0x55mm</Long_Description__c>
+    <Item_Category_3__c>S-THERM</Item_Category_3__c>
+    <Item_Category_2__c>CONSUMABLE</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BUTTON,M#E37,ILLUMINATET RED</Description__c>
+    <Item_ID__c>100700</Item_ID__c>
+    <Long_Description__c>BUTTON,M#E37,ILLUMINATET RED</Long_Description__c>
+    <Item_Category_3__c>ASTEC</Item_Category_3__c>
+    <Item_Category_2__c>CONSUMABLE</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BEARING, M#P01-61800-ZZ,61800-ZZ</Description__c>
+    <Item_ID__c>100702</Item_ID__c>
+    <Long_Description__c>BEARING, M#P01-61800-ZZ,61800-ZZ</Long_Description__c>
+    <Item_Category_3__c>AMB</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CABLE,M#E37-DSL-0803-G0M,6C, SENSOR 60cm</Description__c>
+    <Item_ID__c>100704</Item_ID__c>
+    <Long_Description__c>CABLE,M#E37-DSL-0803-G0M,6C, SENSOR 60cm</Long_Description__c>
+    <Item_Category_3__c>AMB</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CABLE,M#E37-DSL-0803-G0,1MC, SENSOR 100cm</Description__c>
+    <Item_ID__c>100705</Item_ID__c>
+    <Long_Description__c>CABLE,M#E37-DSL-0803-G0,1MC, SENSOR 100cm</Long_Description__c>
+    <Item_Category_3__c>AMB</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>MOTOR,M#P01-ST5709L4008,-A GR.56</Description__c>
+    <Item_ID__c>100723</Item_ID__c>
+    <Long_Description__c>MOTOR,M#P01-ST5709L4008,-A GR.56</Long_Description__c>
+    <Item_Category_3__c>AMB</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>MOTOR,ST4018-K2V00287,STEPPER GR.42 ENCODER</Description__c>
+    <Item_ID__c>100725</Item_ID__c>
+    <Long_Description__c>MOTOR,ST4018-K2V00287,STEPPER GR.42 ENCODER</Long_Description__c>
+    <Item_Category_3__c>ASTEC</Item_Category_3__c>
+    <Item_Category_2__c>CONSUMABLE</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>PLC S7-317-2 DP</Description__c>
+    <Item_ID__c>100726</Item_ID__c>
+    <Long_Description__c>PLC S7-317-2 DP</Long_Description__c>
+    <Item_Category_3__c>AMB</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>SENSOR, M# E37-OH5013</Description__c>
+    <Item_ID__c>100740</Item_ID__c>
+    <Long_Description__c>SENSOR, M# E37-OH5013</Long_Description__c>
+    <Item_Category_3__c>S-THERM</Item_Category_3__c>
+    <Item_Category_2__c>CONSUMABLE</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Sealant, jbox, RTV White PV804, pail</Description__c>
+    <Item_ID__c>100221</Item_ID__c>
+    <Long_Description__c>Sealant, jbox, RTV White PV804, pail</Long_Description__c>
+    <Item_Category_3__c>MODULE</Item_Category_3__c>
+    <Item_Category_2__c>SEALANT</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Screw, DIN 7982 3.5x19mm, black</Description__c>
+    <Item_ID__c>100228</Item_ID__c>
+    <Long_Description__c>Screw, DIN 7982 3.5x19mm, black</Long_Description__c>
+    <Item_Category_3__c>MODULE</Item_Category_3__c>
+    <Item_Category_2__c>DAS</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>SCREW, SM, ST, PH, TX, #10 X .375, 18-8SS, THNLOK, BLK OX
+                    (1505-125)</Description__c>
+    <Item_ID__c>100233</Item_ID__c>
+    <Long_Description__c>SCREW, SM, ST, PH, TX, #10 X .375, 18-8SS, THNLOK, BLK
+                         OX</Long_Description__c>
+    <Item_Category_3__c>SUNTILE</Item_Category_3__c>
+    <Item_Category_2__c>DAS</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Suntile Carton Box</Description__c>
+    <Item_ID__c>100244</Item_ID__c>
+    <Long_Description__c>Suntile Carton Box</Long_Description__c>
+    <Item_Category_3__c>MODULE</Item_Category_3__c>
+    <Item_Category_2__c>BOX</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C150145, BLACK, BIN J</Description__c>
+    <Item_ID__c>100012</Item_ID__c>
+    <Long_Description__c>CELL, C150145, BLACK, BIN J</Long_Description__c>
+    <Item_Category_3__c>BLACK STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN C150</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>ISO Oil 217-374</Description__c>
+    <Item_ID__c>109688</Item_ID__c>
+    <Long_Description__c/>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>GENERAL</Item_Category_2__c>
+    <Item_Category_1__c>MRO MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C165145, BLACK, BIN K</Description__c>
+    <Item_ID__c>100015</Item_ID__c>
+    <Long_Description__c>CELL, C165145, BLACK, BIN K</Long_Description__c>
+    <Item_Category_3__c>BLACK STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN C165</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, B150145, WHITE B, BIN F</Description__c>
+    <Item_ID__c>100029</Item_ID__c>
+    <Long_Description__c>CELL, B150145, WHITE B, BIN F</Long_Description__c>
+    <Item_Category_3__c>WHITE B STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN B150</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, B150145, WHITE B, BIN G, NON-SLIM TAB</Description__c>
+    <Item_ID__c>100030</Item_ID__c>
+    <Long_Description__c>CELL, B150145, WHITE B, BIN G, NON-SLIM TAB</Long_Description__c>
+    <Item_Category_3__c>WHITE B STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN B150</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C165145, WHITE B, BIN I</Description__c>
+    <Item_ID__c>100039</Item_ID__c>
+    <Long_Description__c>CELL, C165145, WHITE B, BIN I</Long_Description__c>
+    <Item_Category_3__c>WHITE B STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN C165</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C150166, BLACK, BIN D</Description__c>
+    <Item_ID__c>100058</Item_ID__c>
+    <Long_Description__c>CELL, C150166, BLACK, BIN D</Long_Description__c>
+    <Item_Category_3__c>DE</Item_Category_3__c>
+    <Item_Category_2__c>GEN C150</Item_Category_2__c>
+    <Item_Category_1__c>FG OFFS</Item_Category_1__c>
+    <Product_Type__c>FG OFFS</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C150166, BLACK, BIN G</Description__c>
+    <Item_ID__c>100061</Item_ID__c>
+    <Long_Description__c>CELL, C150166, BLACK, BIN G</Long_Description__c>
+    <Item_Category_3__c>BLACK STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN C150</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C150166, WHITE B, BIN D</Description__c>
+    <Item_ID__c>100066</Item_ID__c>
+    <Long_Description__c>CELL, C150166, WHITE B, BIN D</Long_Description__c>
+    <Item_Category_3__c>DE</Item_Category_3__c>
+    <Item_Category_2__c>GEN C150</Item_Category_2__c>
+    <Item_Category_1__c>FG OFFS</Item_Category_1__c>
+    <Product_Type__c>FG OFFS</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, B165166, WHITE A, BIN D</Description__c>
+    <Item_ID__c>100074</Item_ID__c>
+    <Long_Description__c>CELL, B165166, WHITE A, BIN D</Long_Description__c>
+    <Item_Category_3__c>DLL</Item_Category_3__c>
+    <Item_Category_2__c>GEN B165</Item_Category_2__c>
+    <Item_Category_1__c>FG OFFS</Item_Category_1__c>
+    <Product_Type__c>FG OFFS</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, B165166, WHITE A, BIN F</Description__c>
+    <Item_ID__c>100080</Item_ID__c>
+    <Long_Description__c>CELL, B165166, WHITE A, BIN F</Long_Description__c>
+    <Item_Category_3__c>EF</Item_Category_3__c>
+    <Item_Category_2__c>GEN B165</Item_Category_2__c>
+    <Item_Category_1__c>FG OFFS</Item_Category_1__c>
+    <Product_Type__c>FG OFFS</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Stamped Bus, Center Tap</Description__c>
+    <Item_ID__c>100088</Item_ID__c>
+    <Long_Description__c>Stamped Bus, Center Tap</Long_Description__c>
+    <Item_Category_3__c>STAMP</Item_Category_3__c>
+    <Item_Category_2__c>BUS BAR</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Stamped Bus, String to J-Box Lead</Description__c>
+    <Item_ID__c>100090</Item_ID__c>
+    <Long_Description__c>Stamped Bus, String to J-Box Lead</Long_Description__c>
+    <Item_Category_3__c>STAMP</Item_Category_3__c>
+    <Item_Category_2__c>BUS BAR</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Shield Tape, Interconnect, White, 6.1mm x 72 yards</Description__c>
+    <Item_ID__c>100095</Item_ID__c>
+    <Long_Description__c>Shield, Interconn., White 3M 8006W 1 roll = 72 yards
+                         (216 ft / 2952 in)</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>INTERCON</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>EPE Insulator, Pre-cut, Bottom Busbar, White</Description__c>
+    <Item_ID__c>100099</Item_ID__c>
+    <Long_Description__c>EPE Insulator, Pre-cut, Bottom Busbar, White</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>INSULATOR</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>EVA sheet, 1060mm</Description__c>
+    <Item_ID__c>100110</Item_ID__c>
+    <Long_Description__c>EVA sheet, 1060mm</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>EVA</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Backsheet, Black, Madico TPE HD, 830mm</Description__c>
+    <Item_ID__c>100113</Item_ID__c>
+    <Long_Description__c>Backsheet, Black, Madico TPE HD, 830mm</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>BACKSHT</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Backsheet, White, Madico TPE HD, 1070mm</Description__c>
+    <Item_ID__c>100116</Item_ID__c>
+    <Long_Description__c>Backsheet, White, Madico TPE HD, 1070mm</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>BACKSHT</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Backsheet, White, Madico TPE 2111 HD, 1070 mm</Description__c>
+    <Item_ID__c>100124</Item_ID__c>
+    <Long_Description__c>Backsheet, White, Madico TPE 2111 HD, 1070 mm</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>BACKSHT</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Backsheet, White, Madico PROTEKT HD, 1070 mm</Description__c>
+    <Item_ID__c>100128</Item_ID__c>
+    <Long_Description__c>Backsheet, White, Madico PROTEKT HD, 1070 mm</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>BACKSHT</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>Tape, Frame, 5/8 inch, Duplomont 9192</Description__c>
+    <Item_ID__c>100132</Item_ID__c>
+    <Long_Description__c>Tape, Frame, 5/8 inch, Duplomont 9192</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>TAPE</Item_Category_2__c>
+    <Item_Category_1__c>RM MOD</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, B150255, WHITE B, BIN J</Description__c>
+    <Item_ID__c>100151</Item_ID__c>
+    <Long_Description__c>CELL, B150255, WHITE B, BIN J</Long_Description__c>
+    <Item_Category_3__c>WHITE B STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN B150</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, C150145, WHITE A, BIN E</Description__c>
+    <Item_ID__c>100168</Item_ID__c>
+    <Long_Description__c>CELL, C150145, WHITE A, BIN E</Long_Description__c>
+    <Item_Category_3__c>DE</Item_Category_3__c>
+    <Item_Category_2__c>GEN C150</Item_Category_2__c>
+    <Item_Category_1__c>FG OFFS</Item_Category_1__c>
+    <Product_Type__c>FG OFFS</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, B150145, BLACK, BIN D, NON-SLIM TAB</Description__c>
+    <Item_ID__c>100194</Item_ID__c>
+    <Long_Description__c>CELL, B150145, BLACK, BIN D, NON-SLIM TAB</Long_Description__c>
+    <Item_Category_3__c>DLL</Item_Category_3__c>
+    <Item_Category_2__c>GEN B150</Item_Category_2__c>
+    <Item_Category_1__c>FG OFFS</Item_Category_1__c>
+    <Product_Type__c>FG OFFS</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>CELL, B150145, BLACK, BIN E</Description__c>
+    <Item_ID__c>100201</Item_ID__c>
+    <Long_Description__c>CELL, B150145, BLACK, BIN E</Long_Description__c>
+    <Item_Category_3__c>BLACK STD</Item_Category_3__c>
+    <Item_Category_2__c>GEN B150</Item_Category_2__c>
+    <Item_Category_1__c>FG CELL</Item_Category_1__c>
+    <Product_Type__c>FG CELL</Product_Type__c>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>VALVE,M# 821480 2,GAS</Description__c>
+    <Item_ID__c>100587</Item_ID__c>
+    <Long_Description__c>VALVE,M# 821480 2,GAS</Long_Description__c>
+    <Item_Category_3__c>FAC</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>TRANSMITTER,TEMPERATURE,M#El1504117/PR-12-2-100-</Description__c>
+    <Item_ID__c>100592</Item_ID__c>
+    <Long_Description__c>TRANSMITTER,TEMPERATURE,M#El1504117/PR-12-2-100-</Long_Description__c>
+    <Item_Category_3__c>FAC</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BUNNY SUITS XXL</Description__c>
+    <Item_ID__c>100595</Item_ID__c>
+    <Long_Description__c>BUNNY SUITS XXL</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>APPAREL</Item_Category_2__c>
+    <Item_Category_1__c>PRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BUNNY SUITS 3XL</Description__c>
+    <Item_ID__c>100596</Item_ID__c>
+    <Long_Description__c>BUNNY SUITS 3XL</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>APPAREL</Item_Category_2__c>
+    <Item_Category_1__c>PRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BUNNY SUITS 10 XL</Description__c>
+    <Item_ID__c>100601</Item_ID__c>
+    <Long_Description__c>BUNNY SUITS 10 XL</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>APPAREL</Item_Category_2__c>
+    <Item_Category_1__c>PRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>(DUP-Do Not Use) 58141001164 ELMO DRIVER MOD.COR,A9/230
+                    art.1164</Description__c>
+    <Item_ID__c>100619</Item_ID__c>
+    <Long_Description__c>(DUP-Do Not Use) 58141001164 ELMO DRIVER MOD.COR,A9/230
+                         art.1164</Long_Description__c>
+    <Item_Category_3__c>BACCINI</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>KEITHLEY DAQ BOARD KPCI-3116A</Description__c>
+    <Item_ID__c>100624</Item_ID__c>
+    <Long_Description__c>KEITHLEY DAQ BOARD KPCI-3116A</Long_Description__c>
+    <Item_Category_3__c>NPC</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BOARD,S#EET-100-SPAST3,ET SLAVE AST-503</Description__c>
+    <Item_ID__c>100634</Item_ID__c>
+    <Long_Description__c>BOARD,S#EET-100-SPAST3,ET SLAVE AST-503</Long_Description__c>
+    <Item_Category_3__c>MGI</Item_Category_3__c>
+    <Item_Category_2__c>BACK-UP</Item_Category_2__c>
+    <Item_Category_1__c>MRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+  <Item__c>
+    <Id/>
+    <Name/>
+    <Active__c>1</Active__c>
+    <Description__c>BOOK REFILL CLEAR A4,3 HOLE</Description__c>
+    <Item_ID__c>100637</Item_ID__c>
+    <Long_Description__c>BOOK REFILL CLEAR A4,3 HOLE</Long_Description__c>
+    <Item_Category_3__c>DEFAULT</Item_Category_3__c>
+    <Item_Category_2__c>APPAREL</Item_Category_2__c>
+    <Item_Category_1__c>PRO CELL</Item_Category_1__c>
+    <Product_Type__c/>
+  </Item__c>
+</OracleIndexRows>

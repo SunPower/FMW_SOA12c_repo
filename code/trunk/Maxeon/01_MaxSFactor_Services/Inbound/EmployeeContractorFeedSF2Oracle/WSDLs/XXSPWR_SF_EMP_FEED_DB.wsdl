@@ -1,0 +1,27 @@
+<wsdl:definitions
+     name="XXSPWR_SF_EMP_FEED_DB"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SFEC/EmployeeContractorFeedSF2Oracle/XXSPWR_SF_EMP_FEED_DB"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SFEC/EmployeeContractorFeedSF2Oracle/XXSPWR_SF_EMP_FEED_DB"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB"
+    >
+  <plt:partnerLinkType name="XXSPWR_SF_EMP_FEED_DB_plt" >
+    <plt:role name="XXSPWR_SF_EMP_FEED_DB_role" >
+      <plt:portType name="tns:XXSPWR_SF_EMP_FEED_DB_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB" schemaLocation="../Schemas/XXSPWR_SF_EMP_FEED_DB_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrMaxnSfEmpFeedCollection_msg">
+        <wsdl:part name="XxspwrMaxnSfEmpFeedCollection" element="top:XxspwrMaxnSfEmpFeedCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="XXSPWR_SF_EMP_FEED_DB_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:XxspwrMaxnSfEmpFeedCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

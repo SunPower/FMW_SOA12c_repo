@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<inp1:CommonSFDCErrorLog xmlns:inp1="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL">
+   <inp1:CommonErrorHandlerInputDetails>
+      <inp1:InstanceNumber>InstanceNumber402</inp1:InstanceNumber>
+      <inp1:InterfaceNumber>InterfaceNumber403</inp1:InterfaceNumber>
+      <inp1:InterfaceName>InterfaceName404</inp1:InterfaceName>
+      <inp1:ProcessName>ProcessName405</inp1:ProcessName>
+      <inp1:Severity>Severity406</inp1:Severity>
+      <inp1:Fault>
+         <inp1:FaultCode>FaultCode407</inp1:FaultCode>
+         <inp1:FaultDescription>FaultDescription408</inp1:FaultDescription>
+         <inp1:FaultMessage>string390SO NUMBER:387</inp1:FaultMessage>
+         <inp1:FaultTime>FaultTime410</inp1:FaultTime>
+      </inp1:Fault>
+      <inp1:FaultSystemName>FaultSystemName411</inp1:FaultSystemName>
+      <inp1:bOpenServiceTicket>bOpenServiceTicket412</inp1:bOpenServiceTicket>
+      <inp1:CorrectiveAction>CorrectiveAction413</inp1:CorrectiveAction>
+      <inp1:UniqueIdentNum>
+         <inp1:UniqueIdentifier>387</inp1:UniqueIdentifier>
+      </inp1:UniqueIdentNum>
+      <inp1:SendEmail>SendEmail417</inp1:SendEmail>
+      <inp1:status>ERROR</inp1:status>
+      <inp1:createddatetime>2013-11-23T00:22:29.894</inp1:createddatetime>
+   </inp1:CommonErrorHandlerInputDetails>
+   <inp1:CommonErrorHandlerInputDetails>
+      <inp1:InstanceNumber>InstanceNumber402</inp1:InstanceNumber>
+      <inp1:InterfaceNumber>InterfaceNumber403</inp1:InterfaceNumber>
+      <inp1:InterfaceName>InterfaceName404</inp1:InterfaceName>
+      <inp1:ProcessName>ProcessName405</inp1:ProcessName>
+      <inp1:Severity>Severity406</inp1:Severity>
+      <inp1:Fault>
+         <inp1:FaultCode>FaultCode407</inp1:FaultCode>
+         <inp1:FaultDescription>FaultDescription408</inp1:FaultDescription>
+         <inp1:FaultMessage>string400SO NUMBER:397</inp1:FaultMessage>
+         <inp1:FaultTime>FaultTime410</inp1:FaultTime>
+      </inp1:Fault>
+      <inp1:FaultSystemName>FaultSystemName411</inp1:FaultSystemName>
+      <inp1:bOpenServiceTicket>bOpenServiceTicket412</inp1:bOpenServiceTicket>
+      <inp1:CorrectiveAction>CorrectiveAction413</inp1:CorrectiveAction>
+      <inp1:UniqueIdentNum>
+         <inp1:UniqueIdentifier>397</inp1:UniqueIdentifier>
+      </inp1:UniqueIdentNum>
+      <inp1:SendEmail>SendEmail417</inp1:SendEmail>
+      <inp1:status>ERROR</inp1:status>
+      <inp1:createddatetime>2013-11-23T00:22:29.894</inp1:createddatetime>
+   </inp1:CommonErrorHandlerInputDetails>
+</inp1:CommonSFDCErrorLog>

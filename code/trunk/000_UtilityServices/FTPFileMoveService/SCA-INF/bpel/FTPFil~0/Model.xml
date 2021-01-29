@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Jul 30 19:54:23 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="FTPFileMoveService" targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/FTPFileMoveService/FTPFileMoveService" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/FTPFileMoveService/FTPFileMoveService" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/SOAUtilityServices/FTPFileMoveService/FTPFileMove" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/FTPFileMoveService/v1/xsd" id="BpPrc0">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        FTPFileMoveService.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="ftpfilemoveservice_client" partnerLinkType="client:FTPFileMoveService" myRole="FTPFileMoveServiceProvider"/>
+    <partnerLink name="FTPFileMove" partnerLinkType="ns1:FTPMove_plt" partnerRole="FTPMove_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:FTPFileMoveServiceRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:FTPFileMoveServiceResponseMessage"/>
+        <variable name="sourceDirectory" type="xsd:string"/>
+    <variable name="sourceFileName" type="xsd:string"/>
+    <variable name="targetDirectory" type="xsd:string"/>
+    <variable name="targetFileName" type="xsd:string"/>
+    <variable name="InvFTPFileMove_IV" messageType="ns1:Empty_msg"/>
+    <variable name="InvFTPFileMove_OV" messageType="ns1:FTPMove_msg"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="AsgnFailure" id="BpAss0">
+          <copy>
+            <from expression="&quot;failed&quot;"/>
+            <to variable="outputVariable" part="payload" query="/ns2:FileMoveResp/ns2:Status"/>
+          </copy>
+        </assign>
+        <reply name="ReplyFailureStatus" variable="outputVariable" partnerLink="ftpfilemoveservice_client" portType="client:FTPFileMoveService" operation="process" id="BpRpl0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in FTPFileMoveService.wsdl) -->
+    <receive name="receiveInput" partnerLink="ftpfilemoveservice_client" portType="client:FTPFileMoveService" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+   <assign name="AsgnFileInvokeParams" id="BpAss1">
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns2:FileMoveReq/ns2:SourcePhysicalDirectory"/>
+        <to variable="sourceDirectory"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns2:FileMoveReq/ns2:SourceFileName"/>
+        <to variable="sourceFileName"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns2:FileMoveReq/ns2:TargetPhysicalDirectory"/>
+        <to variable="targetDirectory"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns2:FileMoveReq/ns2:TargetFileName"/>
+        <to variable="targetFileName"/>
+      </copy>
+    </assign>
+    <invoke name="InvFTPFileMove" inputVariable="InvFTPFileMove_IV" outputVariable="InvFTPFileMove_OV" partnerLink="FTPFileMove" portType="ns1:FTPMove_ptt" operation="FTPMove" bpelx:invokeAsDetail="no" id="BpInv0">
+            
+             <bpelx:inputProperty name="jca.file.SourceDirectory" variable="sourceDirectory"/>
+      <bpelx:inputProperty name="jca.file.SourceFileName" variable="sourceFileName"/>
+      <bpelx:inputProperty name="jca.file.TargetDirectory" variable="targetDirectory"/>
+      <bpelx:inputProperty name="jca.file.TargetFileName" variable="targetFileName"/>
+                           </invoke>
+    <assign name="AsgnSuccess" id="BpAss2">
+      <copy>
+        <from expression="&quot;success&quot;"/>
+        <to variable="outputVariable" part="payload" query="/ns2:FileMoveResp/ns2:Status"/>
+      </copy>
+    </assign>
+   
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="ftpfilemoveservice_client" portType="client:FTPFileMoveService" operation="process" variable="outputVariable" id="BpRpl1"/>
+  </sequence>
+</process>

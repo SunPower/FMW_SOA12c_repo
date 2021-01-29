@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<tns:delete xmlns:tns="urn:partner.soap.sforce.com">
+   <tns:ids>Id2323232323232323</tns:ids>
+   <tns:ids>Id4343434343434343</tns:ids>
+   <tns:ids>Id6363636363636363</tns:ids>
+</tns:delete>

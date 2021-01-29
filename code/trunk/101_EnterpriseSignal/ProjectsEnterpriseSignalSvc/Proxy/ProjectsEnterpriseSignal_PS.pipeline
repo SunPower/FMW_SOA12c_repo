@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oper="http://xmlns.oracle.com/servicebus/pipeline/operations">
+    <con:coreEntry>
+        <con:description/>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="ProjectsEnterpriseSignalSvc/wsdl/ProjectsEnterpriseSignal"/>
+            <con:binding>
+                <con:name>GenericWSSoap11Binding</con:name>
+                <con:namespace>http://webservice.es.com</con:namespace>
+            </con:binding>
+        </con:binding>
+        <oper:operations>
+            <oper:monitoring enabled="false" aggregationInterval="10" level="pipeline"/>
+            <oper:tracingEnabled>true</oper:tracingEnabled>
+            <oper:reporting>true</oper:reporting>
+            <oper:logging enabled="true" level="debug"/>
+            <oper:sla-alerting enabled="true" level="normal"/>
+            <oper:pipeline-alerting enabled="true" level="normal"/>
+        </oper:operations>
+        <con:pageAttachments isEnabled="false"/>
+        <con:transactions isRequired="false" sameTxForResponse="false"/>
+    </con:coreEntry>
+    <con:router errorHandler="_onErrorHandler-8853654057762495602--70247e45.1485f787e23.-8000" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config">
+        <con:pipeline type="error" name="_onErrorHandler-8853654057762495602--70247e45.1485f787e23.-8000">
+            <con:stage name="PublishToErrorHandler">
+                <con:context>
+                    <con1:varNsDecl prefix="web" namespace="http://webservice.es.com"/>
+                </con:context>
+                <con:actions>
+                    <con5:assign varName="faultDescription" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:con2="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con5="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con1:id>_ActionId-8853654057762495602--70247e45.1485f787e23.-7f2f</con1:id>
+                        <con5:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat("Fault occurred at ",$fault/ctx:location/ctx:node," Details:",fn:substring($fault/ctx:details/*,1,2000))</con:xqueryText>
+                        </con5:expr>
+                    </con5:assign>
+                    <con2:assign varName="faultMessage">
+                        <con1:id>_ActionId-3196419359632084882-755eb7d0.14a0f715d4b.-7fce</con1:id>
+                        <con2:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat($fault/ctx:errorCode,"  Reason:",fn:substring($fault/ctx:reason,1,2000))</con:xqueryText>
+                        </con2:expr>
+                    </con2:assign>
+                    <con3:route xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                        <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-8853654057762495602--70247e45.1485f787e23.-7f8d</con4:id>
+                        <con3:service ref="CommonComponents/BusinessService/PublishToErrorHandlerQueue" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:outboundTransform>
+                            <con5:replace varName="body" contents-only="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:con2="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con5="http://www.bea.com/wli/sb/stages/transform/config">
+                                <con1:id>_ActionId-8853654057762495602--70247e45.1485f787e23.-7f4c</con1:id>
+                                <con5:location>
+                                    <con1:xpathText>.</con1:xpathText>
+                                </con5:location>
+                                <con5:expr>
+                                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<v1:CommonErrorHandlerInput xmlns:v1="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1">
+    <v1:InstanceNumber>{fn-bea:inlinedXML($instanceID)}</v1:InstanceNumber>
+    <v1:InterfaceNumber>PES100</v1:InterfaceNumber>
+    <v1:InterfaceName>ProjectsEnterpriseSignalSvc</v1:InterfaceName>
+    <v1:ComponentName>ProjectsEnterpriseSignal_PS</v1:ComponentName>
+    <v1:Severity>LOW</v1:Severity>
+    <v1:Fault>
+        <v1:FaultCode>PES100</v1:FaultCode>
+        <v1:FaultDescription>{$faultDescription}</v1:FaultDescription>
+        <v1:FaultMessage>{$faultMessage}</v1:FaultMessage>
+        <v1:FaultTime>{fn:current-dateTime()}</v1:FaultTime>
+    </v1:Fault>
+    <v1:FaultSystemName>Oracle</v1:FaultSystemName>
+    <v1:CorrectiveAction>Please check the log file at  /soalog/logs/EnterpriseSignal on SOA server</v1:CorrectiveAction>
+    <v1:UniqueIdentifier>{$uniqIndentifier}</v1:UniqueIdentifier>
+    <v1:SendEmail>Y</v1:SendEmail>
+</v1:CommonErrorHandlerInput>]]></con:xqueryText>
+                                </con5:expr>
+                            </con5:replace>
+                        </con3:outboundTransform>
+                    </con3:route>
+                </con:actions>
+            </con:stage>
+            <con:stage name="PublishToAuditLog_ERROR">
+                <con:context/>
+                <con:actions>
+                    <con3:route xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                        <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-8853654057762495602--70247e45.1485f787e23.-7ddb</con4:id>
+                        <con3:service ref="CommonComponents/BusinessService/PublishToAuditHeaderUpdateQueue" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:outboundTransform>
+                            <con1:replace contents-only="true" varName="body" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                <con2:id>_ActionId-8853654057762495602--70247e45.1485f787e23.-7dda</con2:id>
+                                <con1:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con1:location>
+                                <con1:expr>
+                                    <con2:xqueryText><![CDATA[<v1:OsbAuditLogHeaderCollection xmlns:v1="http://xmlns.sunpowercorp.com/CommonAuditLogSvc/UpdateAuditLogHeaders/xsd/v1">
+    <!--Zero or more repetitions:-->
+    <v1:OsbAuditLogHeader>
+        <v1:instanceId>{fn-bea:inlinedXML($instanceID)}</v1:instanceId>        
+        <v1:processStatus>ERROR</v1:processStatus>        
+        <v1:lastUpdateDate>{ fn:current-dateTime() }</v1:lastUpdateDate>
+    </v1:OsbAuditLogHeader>
+</v1:OsbAuditLogHeaderCollection>]]></con2:xqueryText>
+                                </con1:expr>
+                            </con1:replace>
+                            <con2:routing-options>
+                                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-8853654057762495602--70247e45.1485f787e23.-7dd9</con4:id>
+                                <con2:qualityOfService>exactly-once</con2:qualityOfService>
+                            </con2:routing-options>
+                        </con3:outboundTransform>
+                    </con3:route>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="request" name="PipelinePairNode1_request">
+            <con:stage name="PublishToAuditLog">
+                <con:context>
+                    <con1:varNsDecl namespace="http://webservice.es.com" prefix="web"/>
+                </con:context>
+                <con:actions>
+                    <con2:assign varName="input">
+                        <con1:id>_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7f49</con1:id>
+                        <con2:expr>
+                            <con1:xqueryText>$body</con1:xqueryText>
+                        </con2:expr>
+                    </con2:assign>
+                    <con1:assign varName="instanceID" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7f4b</con4:id>
+                        <con1:expr>
+                            <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">fn-bea:execute-sql('jdbc/SOACustomDataSource', 'InstanceID', "select OSB_AUDIT_LOG_SEQ.nextval from dual")</con4:xqueryText>
+                        </con1:expr>
+                    </con1:assign>
+                    <con2:ifThenElse>
+                        <con1:id>_ActionId-5781189780763192019--21987cb8.1488312fc2a.-7db1</con1:id>
+                        <con2:case>
+                            <con2:condition>
+                                <con1:xqueryText>$operation="getData"</con1:xqueryText>
+                            </con2:condition>
+                            <con2:actions>
+                                <con2:assign varName="uniqIndentifier">
+                                    <con1:id>_ActionId-5781189780763192019--21987cb8.1488312fc2a.-7d96</con1:id>
+                                    <con2:expr>
+                                        <con1:xqueryText>$body/web:getData/entityName</con1:xqueryText>
+                                    </con2:expr>
+                                </con2:assign>
+                            </con2:actions>
+                        </con2:case>
+                        <con2:case>
+                            <con2:condition>
+                                <con1:xqueryText>$operation="postData"</con1:xqueryText>
+                            </con2:condition>
+                            <con2:actions>
+                                <con2:assign varName="uniqIndentifier">
+                                    <con1:id>_ActionId-5781189780763192019--21987cb8.1488312fc2a.-7d81</con1:id>
+                                    <con2:expr>
+                                        <con1:xqueryText>$body/web:postData/entityName</con1:xqueryText>
+                                    </con2:expr>
+                                </con2:assign>
+                            </con2:actions>
+                        </con2:case>
+                        <con2:default>
+                            <con2:assign varName="uniqIndentifier">
+                                <con1:id>_ActionId-5781189780763192019--21987cb8.1488312fc2a.-7d5f</con1:id>
+                                <con2:expr>
+                                    <con1:xqueryText>$body/web:authenticate/username</con1:xqueryText>
+                                </con2:expr>
+                            </con2:assign>
+                        </con2:default>
+                    </con2:ifThenElse>
+                    <con3:route xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                        <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7fdb</con4:id>
+                        <con3:service ref="CommonComponents/BusinessService/PublishToAuditHeaderQueue" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:outboundTransform>
+                            <con1:replace contents-only="true" varName="body" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                <con2:id>_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7ef5</con2:id>
+                                <con1:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con1:location>
+                                <con1:expr>
+                                    <con2:xqueryText><![CDATA[<v1:OsbAuditLogHeaderCollection xmlns:v1="http://xmlns.sunpowercorp.com/CommonAuditLogSvc/AuditLogHeaders/xsd/v1">
+    <v1:OsbAuditLogHeader>
+        <v1:instanceId>{fn-bea:inlinedXML($instanceID)}</v1:instanceId>
+        <v1:interfaceNumber>PES100</v1:interfaceNumber>
+        <v1:processName>ProjectsEnterpriseSignalSvc</v1:processName>
+       <v1:title>{$operation}</v1:title>       
+        <v1:uniqIdentifier>{$uniqIndentifier}</v1:uniqIdentifier>       
+        <v1:componentName>ProjectsEnterpriseSignal_PS</v1:componentName>        
+        <v1:processStatus>Started</v1:processStatus>       
+        <v1:payload>{fn-bea:serialize($input/*)}</v1:payload>        
+        <v1:createdDate>{ fn:current-dateTime() }</v1:createdDate>      
+        <v1:lastUpdateDate>{ fn:current-dateTime() }</v1:lastUpdateDate>
+    </v1:OsbAuditLogHeader>
+</v1:OsbAuditLogHeaderCollection>]]></con2:xqueryText>
+                                </con1:expr>
+                            </con1:replace>
+                            <con2:routing-options>
+                                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7fda</con4:id>
+                                <con2:qualityOfService>exactly-once</con2:qualityOfService>
+                            </con2:routing-options>
+                        </con3:outboundTransform>
+                    </con3:route>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="PipelinePairNode1_response">
+            <con:stage name="PublishToAuditLogCompleted">
+                <con:context/>
+                <con:actions>
+                    <con3:route xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                        <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7dba</con4:id>
+                        <con3:service ref="CommonComponents/BusinessService/PublishToAuditHeaderUpdateQueue" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:outboundTransform>
+                            <con1:replace contents-only="true" varName="body" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                <con2:id>_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7db9</con2:id>
+                                <con1:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con1:location>
+                                <con1:expr>
+                                    <con2:xqueryText><![CDATA[<v1:OsbAuditLogHeaderCollection xmlns:v1="http://xmlns.sunpowercorp.com/CommonAuditLogSvc/UpdateAuditLogHeaders/xsd/v1">
+ <!--Zero or more repetitions:-->
+    <v1:OsbAuditLogHeader>
+        <v1:instanceId>{fn-bea:inlinedXML($instanceID)}</v1:instanceId>        
+        <v1:processStatus>Completed</v1:processStatus>        
+        <v1:lastUpdateDate>{ fn:current-dateTime() }</v1:lastUpdateDate>
+    </v1:OsbAuditLogHeader>
+</v1:OsbAuditLogHeaderCollection>]]></con2:xqueryText>
+                                </con1:expr>
+                            </con1:replace>
+                            <con2:routing-options>
+                                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7db8</con4:id>
+                                <con2:qualityOfService>exactly-once</con2:qualityOfService>
+                            </con2:routing-options>
+                        </con3:outboundTransform>
+                    </con3:route>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:pipeline-node name="PipelinePairNode1">
+                <con:request>PipelinePairNode1_request</con:request>
+                <con:response>PipelinePairNode1_response</con:response>
+            </con:pipeline-node>
+            <con:route-node name="RouteTo_ESWSGenericWS_BS">
+                <con:context/>
+                <con:actions>
+                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                        <conid1:id xmlns:conid1="http://www.bea.com/wli/sb/stages/config">_ActionId-5844523502272523717-646867c5.1483caa30b9.-7ffa</conid1:id>
+                        <con1:service ref="ProjectsEnterpriseSignalSvc/Business/ProjectsEnterpriseSignal_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation passThrough="true"/>
+                        <con1:outboundTransform>
+                            <con1:replace contents-only="false" varName="body" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                <con2:id>_ActionId-4487370152480372938--1cbab0ad.14855c0897b.-7e66</con2:id>
+                                <con1:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con1:location>
+                                <con1:expr>
+                                    <con2:xqueryText>$input</con2:xqueryText>
+                                </con1:expr>
+                            </con1:replace>
+                        </con1:outboundTransform>
+                        <con1:responseTransform/>
+                    </con1:route>
+                </con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

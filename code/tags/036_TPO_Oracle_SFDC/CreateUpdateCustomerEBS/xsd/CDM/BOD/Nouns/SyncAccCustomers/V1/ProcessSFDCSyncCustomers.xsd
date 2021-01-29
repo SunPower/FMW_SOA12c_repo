@@ -1,0 +1,45 @@
+<!--
+    Name: ProcessSyncAccCustomers.xsd
+    Change history
+
+    Author      date        purpose
+
+--><xsd:schema targetNamespace="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" xmlns:ac="http://www.sunpowercorp.com/Noun/SyncAccCustomers/V1" xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/SyncAccCustomers/V1" schemaLocation="SyncAccCustomers.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessSFDCSyncCust" type="ProcessSFDCSyncCustType"/>
+    <xsd:complexType name="ProcessSFDCSyncCustType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="SFDCSyncCustDataAreaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SFDCSyncCustDataAreaType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="v:callService"/>
+            <xsd:element ref="ac:SyncAccCustomers" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+     <xsd:element name="ProcessSFDCSyncCustResp" type="ProcessSFDCSyncCustRespType"/>
+    <xsd:complexType name="ProcessSFDCSyncCustRespType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="SFDCSyncCustDataAreaRespType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SFDCSyncCustDataAreaRespType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="v:callService"/>
+            <xsd:element ref="ac:SyncAccCustomersResp" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

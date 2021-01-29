@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="InsertJobFeedSF2Oracle" adapter="db" wsdlLocation="WSDLs/InsertJobFeedSF2Oracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_HRREADONLY" UIConnectionName="hreadonly_DEV" adapterRef=""/>
+  <endpoint-interaction portType="InsertJobFeedSF2Oracle_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="InsertJobFeedSF2Oracle.XxspwrSfJobFeed"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="InsertJobFeedSF2Oracle-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

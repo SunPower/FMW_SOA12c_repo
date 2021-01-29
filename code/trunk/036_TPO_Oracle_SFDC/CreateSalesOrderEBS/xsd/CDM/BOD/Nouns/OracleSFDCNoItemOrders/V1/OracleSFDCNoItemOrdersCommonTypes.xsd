@@ -1,0 +1,100 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/OracleSFDCNoItemOrdersCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/OracleSFDCNoItemOrdersCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="FANANCIER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SFDC_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ORDER_STATUS" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SHIP_TO_SITE_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="INTERFACE_MESSAGE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ORDER_NUMBER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CREATION_DATE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="LAST_UPDATE_DATE" type="cdt:String1000" nillable="true"/>
+    <!-- SO Header data Types-->
+    <xsd:element name="DSR_ORACLE_USER_ID" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="ORG_ID" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="SHIP_FROM_ORG_ID" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="BILL_TO_SITE_ID" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="SHIP_TO_CONTACT_ID" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="ADJUSTED_AMOUNT" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="CREATED_BY" type="cdt:Long" nillable="true"/>
+    <xsd:element name="LEASE_VALUE" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="EFFECTIVE_GOODS_PRICE" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="DSR_EMAIL_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CUST_ACCT_NUMBER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CUST_PO_NUMBER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ADDRESS_LINE_1" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ADDRESS_LINE_2" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ADDRESS_LINE_3" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CITY" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="STATE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="COUNTRY" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="POSTAL_CODE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="STATUS" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CONTACT_PHONE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CONTACT_PHONE1" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CONTACT_PHONE2" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CONTACT_PERSON_NAME" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CONTACT_EMAIL" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CONTACT_FAX" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SHIPPING_METHOD" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SPECIAL_INSTRUCTIONS" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="TAX_FLAG" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ORDER_CURRENCY_CODE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="REQUESTED_DELIVERY_DATE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SMARTPACK_FLAG" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="INTERFACE_STATUS" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="NEW_ORDER_CLASS" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="INVERTER_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ORDER_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="OPERATING_UNIT" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="VENDOR_NUMBER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="VENDOR_SITE_CODE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="PARTNER_NAME" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="LEASE_FLAG" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="LEASE_NUMBER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="FINANCIER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="PARTNER_ACC_NUMBER" type="cdt:String1000" nillable="true"/>
+<xsd:element name="TAX_IDENTIFIER" type="cdt:String1000" nillable="true"/>
+<xsd:element name="OK_TO_SHIP_FLAG" type="cdt:String1000" nillable="true"/>
+<xsd:element name="SYSTEM_COUNT" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="RACKING_INCLUDED" type="cdt:String1000" nillable="true"/>
+  <xsd:element name="MONITORING_SYSTEM_OPT_OUT" type="cdt:String1000" nillable="true"/>
+    <!--SO Header data Types-->
+    <!--SO Lines data Types-->
+    <xsd:element name="SFDC_ORDER_LINE_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="LINE_NUMBER" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="INVENTORY_ITEM_ID" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="REQUESTED_QTY" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="UOM" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="UNIT_PRICE" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="ORDER_LINE_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="PRODUCT_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ITEM_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="LINE_REQUEST_DATE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="VENDORNUMBER" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="VENDORSITECODE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ATTRIBUTE1" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ATTRIBUTE2" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ATTRIBUTE3" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ATTRIBUTE4" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="ATTRIBUTE5" type="cdt:String1000" nillable="true"/>
+
+    <!-- SO Lines data Types-->
+    <xsd:element name="SFDC_ACCOUNT_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CUSTOMER_SYNC" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SALES_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CUSTOMER_ORDER_LINK_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="TRANSACTION_STATUS" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="CHANNEL_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="PAYMENT_TYPE" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SFDC_SHIPTO" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SFDC_BILLTO" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SFDC_SHIPTO_CONTACT_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="SFDC_BILLTO_CONTACT_ID" type="cdt:String1000" nillable="true"/>
+     <xsd:element name="SFDC_PARTNER_ID" type="cdt:String1000" nillable="true"/>
+     <xsd:element name="SFDC_HOMEOWNER_ID" type="cdt:String1000" nillable="true"/>
+     <xsd:element name="SFDC_TPO_ID" type="cdt:String1000" nillable="true"/>
+    <xsd:element name="POSITION" type="cdt:Decimal" nillable="true"/>
+    <xsd:element name="VENDOR_TYPE" type="cdt:String1000" nillable="true"/>
+    
+    
+</xsd:schema>

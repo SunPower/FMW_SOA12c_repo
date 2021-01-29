@@ -1,0 +1,30 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ACBGetAllActivitesmergeReq_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllActivitesmergeReq/ACBGetAllActivitesmergeReq_BPEL"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllActivitesmergeReq/ACBGetAllActivitesmergeReq_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="ACBGetAllActivitesmergeReq_BPEL">
+        <plnk:role name="ACBGetAllActivitesmergeReq_BPELProvider">
+            <plnk:portType name="client:ACBGetAllActivitesmergeReq_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllActivitesmergeReq/ACBGetAllActivitesmergeReq_BPEL"
+                 schemaLocation="../Schemas/ACBGetAllActivitesmergeReq_BPEL.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="ACBGetAllActivitesmergeReq_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="ACBGetAllActivitesmergeReq_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ACBGetAllActivitesmergeReq_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

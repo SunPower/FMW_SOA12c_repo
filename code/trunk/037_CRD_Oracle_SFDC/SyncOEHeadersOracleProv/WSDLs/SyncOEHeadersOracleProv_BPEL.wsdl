@@ -1,0 +1,56 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SyncOEHeadersOracleProv_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersOracleProv/SyncOEHeadersOracleProv_BPEL"
+     xmlns:ns2="http://schemas.oracle.com/bpel/extension"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSyncOEOrders/V1"
+     xmlns:ns4="http://www.sunpowercorp.com/CRD/SyncOEHeadersOracleProv/xsd/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+     xmlns:client="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersOracleProv/SyncOEHeadersOracleProv_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SyncOEHeadersOracleProv_BPEL">
+        <plnk:role name="SyncOEHeadersOracleProv_BPELProvider">
+            <plnk:portType name="client:SyncOEHeadersOracleProv_BPEL"/>
+        </plnk:role>
+        <plnk:role name="SyncOEHeadersOracleProv_BPELRequester">
+            <plnk:portType name="client:SyncOEHeadersOracleProv_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersOracleProv/SyncOEHeadersOracleProv_BPEL"
+                 schemaLocation="../Schemas/SyncOEHeadersOracleProv_BPEL.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessSyncOEOrders/V1"
+                    schemaLocation="../Schemas/CDM/BOD/Nouns/SyncOEOrders/V1/ProcessSyncOEOrders.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+                 schemaLocation="../Schemas/EmailContent.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/CRD/SyncOEHeadersOracleProv/xsd/V1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SyncOEHeadersOracleProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessSyncOEOrders"/>
+    </wsdl:message>
+    <wsdl:message name="SyncOEHeadersOracleProv_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncOEHeadersOracleProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncOEHeadersOracleProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="SyncOEHeadersOracleProv_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:SyncOEHeadersOracleProv_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

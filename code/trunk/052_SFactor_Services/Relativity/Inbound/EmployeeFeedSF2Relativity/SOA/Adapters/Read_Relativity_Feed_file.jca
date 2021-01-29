@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config name="Read_Relativity_Feed" adapter="file" wsdlLocation="../WSDLs/Read_Relativity_Feed.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory UIincludeWildcard="relativity_*.csv" location="eis/FileAdapter"/>
+   <endpoint-activation portType="Read_ptt" operation="Read">
+      <activation-spec className="oracle.tip.adapter.file.inbound.FileActivationSpec">
+         <property name="LogicalArchiveDirectory" value="RelativityArchLoc"/>
+         <property name="LogicalDirectory" value="RelativityReadLoc"/>
+         <property name="UseHeaders" value="true"/>
+         <property name="MinimumAge" value="60"/>
+         <property name="Recursive" value="false"/>
+         <property name="PollingFrequency" value="60"/>
+         <property name="DeleteFile" value="false"/>
+         <property name="IncludeFiles" value="relativity_.*\.csv"/>
+      </activation-spec>
+   </endpoint-activation>
+</adapter-config>

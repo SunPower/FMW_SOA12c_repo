@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='DeleteSFDCRecordService']</loc>
+      <line>159</line>
+      <col>17</col>
+      <file>E:\JDeveloper1221\mywork\MDTF_ACB_Claims\023_MDTF_ACB_Claims\ACBGetAllClaimsmergeReq\composite.xml</file>
+      <name>E:\JDeveloper1221\mywork\MDTF_ACB_Claims\023_MDTF_ACB_Claims\ACBGetAllClaimsmergeReq\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectOSGSupplPaymntReversalsFeedFromOracle" adapter="db"
+                wsdlLocation="WSDLs/SelectOSGSupplPaymntReversalsFeedFromOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS_XXSPWRSOA" adapterRef=""/>
+  <endpoint-interaction portType="SelectOSGSupplPaymntReversalsFeedFromOracle_ptt" operation="SelectOSGSupplPaymntReversalsFeedFromOracle">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select ACCOUNT_NUMBER,TRX_NUMBER,RECEIPT_AMOUNT,REVERSAL_DATE from (Select rownum rn, a.* from XXSPWR.XXSPWR_AR_OSG_REV_OUTBOUND  a where STATUS='NEW' and SOA_STATUS is null) where rn >= #minrow and rn &lt;= #maxrow"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

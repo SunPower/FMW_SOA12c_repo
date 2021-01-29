@@ -1,0 +1,521 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Sep 27 17:27:18 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="ACBGetAllClaimsmergeProv_BPEL" targetNamespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllClaimsmergeProv/ACBGetAllClaimsmergeProv_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllClaimsmergeProv/ACBGetAllClaimsmergeProv_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessACBClaimToSFDC/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:ns3="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns4="urn:partner.soap.sforce.com" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://www.sunpowercorp.com/ACBClaimToSFDCDetails" xmlns:ns6="http://www.sunpowercorp.com/ACBClaimToSFDCMergeDetails" xmlns:ns7="http://www.sunpowercorp.com/ACBAccountClaimToSFDCDetails" xmlns:ns8="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns9="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:ns10="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1" xmlns:ns11="urn:sobject.partner.soap.sforce.com" xmlns:ns12="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL" xmlns:ns14="http://www.sunpowercorp.com/Noun/ACBClaimToSFDC/V1" xmlns:ns15="http://www.sunpowercorp.com/Common/ACBClaimToSFDCCommonTypes/V1" xmlns:ns13="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" id="BpPrc0">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        ACBGetAllClaimsmergeProv_BPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="acbgetallclaimsmergeprov_bpel_client" partnerLinkType="client:ACBGetAllClaimsmergeProv_BPEL" myRole="ACBGetAllClaimsmergeProv_BPELProvider"/>
+    <partnerLink name="SFDCLogin" partnerLinkType="ns3:SFDCLogin_BPEL" partnerRole="SFDCLogin_BPELProvider"/>
+    <partnerLink name="SFDCService" partnerLinkType="ns4:Soap_PL" partnerRole="Soap_Role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns8:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:ACBGetAllClaimsmergeProv_BPELRequestMessage"/>
+    <variable name="partnerReference" element="ns2:EndpointReference"/>
+    <variable name="InvSFDCLogin_IV" messageType="ns3:SFDCLogin_BPELRequestMessage"/>
+    <variable name="InvSFDCLogin_OV" messageType="ns3:SFDCLogin_BPELResponseMessage"/>
+    <variable name="InvSFDCServiceQuery_IV" messageType="ns4:queryRequest"/>
+    <variable name="InvSFDCServiceQuery_OV" messageType="ns4:queryResponse"/>
+    <variable name="Header" messageType="ns4:Header"/>
+    <variable name="InvSFDCServiceDelete_IV" messageType="ns4:deleteRequest"/>
+    <variable name="InvSFDCServiceDelete_OV" messageType="ns4:deleteResponse"/>
+    <variable name="InvSFDCServiceUpsert_IV" messageType="ns4:upsertRequest"/>
+    <variable name="InvSFDCServiceUpsert_OV" messageType="ns4:upsertResponse"/>
+    <variable name="ACBClaimData" element="ns5:ACBClaimToSFDCRows"/>
+    <variable name="ACBMergeClaim" element="ns6:ACBClaimToSFDCMergeRows"/>
+    <variable name="ACBAccountClaim" element="ns7:ACBAccountClaimToSFDCRows"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns8:requestMessage"/>
+    <variable name="CommErr" messageType="ns8:requestMessage"/>
+    <variable name="recordsProcessed" type="xsd:integer"/>
+    <variable name="totalRecords" type="xsd:integer"/>
+    <variable name="noOfIterations" type="xsd:integer"/>
+    <variable name="sizeofBunch" type="xsd:integer"/>
+    <variable name="recordsLeft" type="xsd:integer"/>
+    <variable name="initParams" element="ns10:InitParams"/>
+    <variable name="SetTitle" type="xsd:string"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="AsgnCommonErrorHandler" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="CommErr" part="request" query="/ns9:CommonSFDCErrorLog/ns9:CommonErrorHandlerInputDetails/ns9:SendEmail"/>
+          </copy>
+        </assign>
+        <assign name="TransformErrLogs" id="BpAss1">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TransformErrLogParms.xsl', $CommErr.request, 'InvSFDCServiceQuery_OV.parameters', $InvSFDCServiceQuery_OV.parameters)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" bpelx:invokeAsDetail="no" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns8:execute_ptt" operation="execute" id="BpInv0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in ACBGetAllClaimsmergeProv_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="acbgetallclaimsmergeprov_bpel_client" portType="client:ACBGetAllClaimsmergeProv_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <assign name="AssignSetTitle" id="BpAss2">
+      <copy>
+        <from expression="&quot;ACBGetAllClaimsMerge&quot;"/>
+        <to variable="SetTitle"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(concat('Prov:',bpws:getVariableData('SetTitle')))"/>
+        <to variable="SetTitle"/>
+      </copy>
+    </assign>
+    
+    <!--
+    <invoke name="InvSFDCLogin" bpelx:invokeAsDetail="no"
+            inputVariable="InvSFDCLogin_IV" outputVariable="InvSFDCLogin_OV"
+            partnerLink="SFDCLogin" portType="ns3:SFDCLogin_BPEL"
+            operation="process"/>
+    <assign name="AssignSessionHeaderID">
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload"
+              query="/ns3:SFDCLoginResp/ns3:sessionId"/>
+        <to variable="Header" part="SessionHeader"
+            query="/ns4:SessionHeader/ns4:sessionId"/>
+      </copy>
+          <copy>
+        <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+        <to variable="partnerReference"/>
+      </copy>
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload"
+              query="/ns3:SFDCLoginResp/ns3:serverUrl"/>
+        <to variable="partnerReference"
+            query="/ns2:EndpointReference/ns2:Address"/>
+      </copy>
+      <copy>
+        <from variable="partnerReference"/>
+        <to partnerLink="SFDCService"/>
+      </copy>
+    </assign>
+    
+    -->
+    
+     <assign name="AssignSessionHeaderID" id="BpAss3">
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns1:ProcessACBClaimToSFDC/ns13:ApplicationArea/ns13:Sender/ns13:LogicalId"/>
+        <to variable="Header" part="SessionHeader" query="/ns4:SessionHeader/ns4:sessionId"/>
+      </copy>
+      <copy>
+        <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+        <to variable="partnerReference"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns1:ProcessACBClaimToSFDC/ns13:ApplicationArea/ns13:Sender/ns13:ComponentId"/>
+        <to variable="partnerReference" query="/ns2:EndpointReference/ns2:Address"/>
+      </copy>
+      <copy>
+        <from variable="partnerReference"/>
+        <to partnerLink="SFDCService"/>
+      </copy>
+    </assign>
+    
+    <!--
+    <assign name="AsgnDeleteSFDCRecordService">
+      <copy>
+        <from expression='"select id, Name from MDTF_Claim__c"'/>
+        <to variable="InvDeleteSFDCRecordService_IV" part="payload"
+            query="/ns12:process/ns12:deleteQuery"/>
+      </copy>
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload"
+              query="/ns3:SFDCLoginResp/ns3:serverUrl"/>
+        <to variable="InvDeleteSFDCRecordService_IV" part="payload"
+            query="/ns12:process/ns12:URL"/>
+      </copy>
+      <copy>
+        <from variable="InvSFDCLogin_OV" part="payload"
+              query="/ns3:SFDCLoginResp/ns3:sessionId"/>
+        <to variable="InvDeleteSFDCRecordService_IV" part="payload"
+            query="/ns12:process/ns12:SFDCSessionID"/>
+      </copy>
+    </assign>
+    <invoke name="InvDeleteSFDCRecordService"
+            inputVariable="InvDeleteSFDCRecordService_IV"
+            partnerLink="DeleteSFDCRecordService"
+            portType="ns12:DeleteSFDCRecordService_BPEL" operation="process"
+            bpelx:invokeAsDetail="no"/>
+    <receive name="RecDeleteSFDCRecordService" createInstance="no"
+             variable="RecDeleteSFDCRecordService_IV"
+             partnerLink="DeleteSFDCRecordService"
+             portType="ns12:DeleteSFDCRecordService_BPELCallback"
+             operation="processResponse"/>
+             
+             -->
+    <assign name="TransformClaimData" id="BpAss4">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransformClaimData.xsl', $inputVariable.payload)"/>
+        <to variable="ACBClaimData"/>
+      </copy>
+    </assign>
+    <!--
+    <assign name="AssignOldSFDC">
+      <copy>
+        <from expression='"select id, Name from MDTF_Claim__c"'/>
+        <to variable="InvSFDCServiceQuery_IV" part="parameters"
+            query="/ns4:query/ns4:queryString"/>
+      </copy>
+    </assign>
+    <invoke name="InvOldSFDCQueryService" inputVariable="InvSFDCServiceQuery_IV"
+            outputVariable="InvSFDCServiceQuery_OV" partnerLink="SFDCService"
+            portType="ns4:Soap" operation="query" bpelx:invokeAsDetail="no"
+            bpelx:inputHeaderVariable="Header"/>
+    <switch name="Switch1">
+      <case condition="count(bpws:getVariableData('InvSFDCServiceQuery_OV','parameters','/ns4:queryResponse/ns4:result/ns4:records')) > 200">
+        <sequence name="Sequence4">
+          <assign name="InitializeParms">
+            <copy>
+              <from expression="count(bpws:getVariableData('InvSFDCServiceQuery_OV','parameters','/ns4:queryResponse/ns4:result/ns4:records'))"/>
+              <to variable="totalRecords"/>
+            </copy>
+            <copy>
+              <from expression="1"/>
+              <to variable="initParams"
+                  query="/ns10:InitParams/ns10:startIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="initParams" query="/ns10:InitParams/ns10:endIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="recordsProcessed"/>
+            </copy>
+            <copy>
+              <from expression='ora:getPreference("sizeOfBunch")'/>
+              <to variable="sizeofBunch"/>
+            </copy>
+            <copy>
+              <from expression="ceiling($totalRecords div $sizeofBunch)"/>
+              <to variable="noOfIterations"/>
+            </copy>
+          </assign>
+          <while name="WhileMoreRecrds" condition="$noOfIterations > 0">
+            <sequence name="Sequence3">
+              <assign name="AssignParmValues">
+                <copy>
+                  <from expression="$totalRecords - $recordsProcessed"/>
+                  <to variable="recordsLeft"/>
+                </copy>
+                <copy>
+                  <from expression="$recordsProcessed + 1"/>
+                  <to variable="initParams"
+                      query="/ns10:InitParams/ns10:startIndex"/>
+                </copy>
+              </assign>
+              <switch name="Switch2">
+                <case condition="($recordsLeft div $sizeofBunch) >= 1">
+                  <assign name="updateEndIndex">
+                    <copy>
+                      <from expression="$recordsProcessed + $sizeofBunch"/>
+                      <to variable="initParams"
+                          query="/ns10:InitParams/ns10:endIndex"/>
+                    </copy>
+                  </assign>
+                </case>
+                <otherwise>
+                  <assign name="updateEndIndex">
+                    <copy>
+                      <from variable="totalRecords"/>
+                      <to variable="initParams"
+                          query="/ns10:InitParams/ns10:endIndex"/>
+                    </copy>
+                  </assign>
+                </otherwise>
+              </switch>
+              <assign name="TransformIndexDelSFDC">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('xsl/TransIndexDeleteSFDC.xsl', $initParams, 'InvSFDCServiceQuery_OV.parameters', $InvSFDCServiceQuery_OV.parameters)"/>
+                  <to variable="InvSFDCServiceDelete_IV" part="parameters"/>
+                </copy>
+              </assign>
+              <invoke name="InvDeleteSFDCService"
+                  inputVariable="InvSFDCServiceDelete_IV"
+                  outputVariable="InvSFDCServiceDelete_OV"
+                  partnerLink="SFDCService" portType="ns4:Soap"
+                  operation="delete" bpelx:invokeAsDetail="no"
+                  bpelx:inputHeaderVariable="Header"/>
+              <assign name="updateRecordProcessed">
+                <copy>
+                  <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns10:InitParams/ns10:endIndex')) - bpws:getVariableData('initParams','/ns10:InitParams/ns10:startIndex') ) + 1"/>
+                  <to variable="recordsProcessed"/>
+                </copy>
+                <copy>
+                  <from expression="$noOfIterations -1"/>
+                  <to variable="noOfIterations"/>
+                </copy>
+              </assign>
+            </sequence>
+          </while>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence>
+          <assign name="TransformDeleteParms">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('xsl/TransformDeleteSFDC.xsl', $InvSFDCServiceQuery_OV.parameters)"/>
+              <to variable="InvSFDCServiceDelete_IV" part="parameters"/>
+            </copy>
+          </assign>
+          <invoke name="InvDeleteSFDCService"
+                  inputVariable="InvSFDCServiceDelete_IV"
+                  outputVariable="InvSFDCServiceDelete_OV"
+                  partnerLink="SFDCService" portType="ns4:Soap"
+                  operation="delete" bpelx:invokeAsDetail="no"
+                  bpelx:inputHeaderVariable="Header"/>
+        </sequence>
+      </otherwise>
+    </switch>
+    
+    -->
+    <switch name="SwitchRecrodsFromInput" id="BpSwt0">
+      <case condition="count(bpws:getVariableData('ACBClaimData','/ns5:ACBClaimToSFDCRows/ns5:row')) > 200">
+        <sequence name="Sequence5" id="BpSeq2">
+          <assign name="InitializeParms" id="BpAss5">
+            <copy>
+              <from expression="count(bpws:getVariableData('ACBClaimData','/ns5:ACBClaimToSFDCRows/ns5:row'))"/>
+              <to variable="totalRecords"/>
+            </copy>
+            <copy>
+              <from expression="1"/>
+              <to variable="initParams" query="/ns10:InitParams/ns10:startIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="initParams" query="/ns10:InitParams/ns10:endIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="recordsProcessed"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;sizeOfBunch&quot;)"/>
+              <to variable="sizeofBunch"/>
+            </copy>
+            <copy>
+              <from expression="ceiling($totalRecords div $sizeofBunch)"/>
+              <to variable="noOfIterations"/>
+            </copy>
+          </assign>
+          <while name="WhileMoreRecrds" condition="$noOfIterations > 0" id="BpWhl0">
+            <sequence name="Sequence3" id="BpSeq3">
+              <assign name="AssignParmValues" id="BpAss6">
+                <copy>
+                  <from expression="$totalRecords - $recordsProcessed"/>
+                  <to variable="recordsLeft"/>
+                </copy>
+                <copy>
+                  <from expression="$recordsProcessed + 1"/>
+                  <to variable="initParams" query="/ns10:InitParams/ns10:startIndex"/>
+                </copy>
+              </assign>
+              <switch name="Switch2" id="BpSwt1">
+                <case condition="($recordsLeft div $sizeofBunch) >= 1">
+                  <assign name="updateEndIndex" id="BpAss7">
+                    <copy>
+                      <from expression="$recordsProcessed + $sizeofBunch"/>
+                      <to variable="initParams" query="/ns10:InitParams/ns10:endIndex"/>
+                    </copy>
+                  </assign>
+                </case>
+                <otherwise>
+                  <assign name="updateEndIndex" id="BpAss8">
+                    <copy>
+                      <from variable="totalRecords"/>
+                      <to variable="initParams" query="/ns10:InitParams/ns10:endIndex"/>
+                    </copy>
+                  </assign>
+                </otherwise>
+              </switch>
+              <assign name="TransformIndexClaimData" id="BpAss9">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/XformclaimMergeParms.xsl', $ACBClaimData, 'initParams', $initParams)"/>
+                  <to variable="ACBAccountClaim"/>
+                </copy>
+              </assign>
+              <assign name="TransformAcctData" id="BpAss10">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransAccMergeClaimParms.xsl', $ACBAccountClaim)"/>
+                  <to variable="ACBMergeClaim"/>
+                </copy>
+              </assign>
+              <assign name="AssignSFDCQuery" id="BpAss11">
+                <copy>
+                  <from expression="concat(&quot;Select a.Id, a.ACBParanet_ID__c From Account a where a.ACBParanet_ID__c  != null and a.ACBParanet_ID__c in (&quot;,substring(bpws:getVariableData('ACBMergeClaim','/ns6:ACBClaimToSFDCMergeRows/ns6:row/ns6:ACB_Paranet_ID__c'),1,string-length(bpws:getVariableData('ACBMergeClaim','/ns6:ACBClaimToSFDCMergeRows/ns6:row/ns6:ACB_Paranet_ID__c')) -1),&quot;)&quot;)"/>
+                  <to variable="InvSFDCServiceQuery_IV" part="parameters" query="/ns4:query/ns4:queryString"/>
+                </copy>
+              </assign>
+              <invoke name="InvSFDCService" inputVariable="InvSFDCServiceQuery_IV" outputVariable="InvSFDCServiceQuery_OV" partnerLink="SFDCService" portType="ns4:Soap" operation="query" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header" id="BpInv1"/>
+              <assign name="TransformIndexUpsertSFDC" id="BpAss12">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransAccQueryUpsertSFDC.xsl', $InvSFDCServiceQuery_OV.parameters, 'ACBAccountClaim', $ACBAccountClaim)"/>
+                  <to variable="InvSFDCServiceUpsert_IV" part="parameters"/>
+                </copy>
+              </assign>
+              <invoke name="InvUpsertSFDCService" inputVariable="InvSFDCServiceUpsert_IV" outputVariable="InvSFDCServiceUpsert_OV" partnerLink="SFDCService" portType="ns4:Soap" operation="upsert" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header" id="BpInv2"/>
+              <assign name="updateRecordProcessed" id="BpAss13">
+                <copy>
+                  <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns10:InitParams/ns10:endIndex')) - bpws:getVariableData('initParams','/ns10:InitParams/ns10:startIndex') ) + 1"/>
+                  <to variable="recordsProcessed"/>
+                </copy>
+                <copy>
+                  <from expression="$noOfIterations -1"/>
+                  <to variable="noOfIterations"/>
+                </copy>
+              </assign>
+            </sequence>
+          </while>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence id="BpSeq4">
+          <assign name="TransformClaimToAcct" id="BpAss14">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TransClaimToAccnt.xsl', $ACBClaimData)"/>
+              <to variable="ACBAccountClaim"/>
+            </copy>
+          </assign>
+          <assign name="TransformAcctData" id="BpAss15">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TransAccMergeClaimParms.xsl', $ACBAccountClaim)"/>
+              <to variable="ACBMergeClaim"/>
+            </copy>
+          </assign>
+          <assign name="AssignSFDCQuery" id="BpAss16">
+            <copy>
+              <from expression="concat(&quot;Select a.Id, a.ACBParanet_ID__c From Account a where a.ACBParanet_ID__c  != null and a.ACBParanet_ID__c in (&quot;,substring(bpws:getVariableData('ACBMergeClaim','/ns6:ACBClaimToSFDCMergeRows/ns6:row/ns6:ACB_Paranet_ID__c'),1,string-length(bpws:getVariableData('ACBMergeClaim','/ns6:ACBClaimToSFDCMergeRows/ns6:row/ns6:ACB_Paranet_ID__c')) -1),&quot;)&quot;)"/>
+              <to variable="InvSFDCServiceQuery_IV" part="parameters" query="/ns4:query/ns4:queryString"/>
+            </copy>
+          </assign>
+          <invoke name="InvSFDCService" inputVariable="InvSFDCServiceQuery_IV" outputVariable="InvSFDCServiceQuery_OV" partnerLink="SFDCService" portType="ns4:Soap" operation="query" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header" id="BpInv3"/>
+          <assign name="TransformIndexUpsertSFDC" id="BpAss17">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TransAccQueryUpsertSFDC.xsl', $InvSFDCServiceQuery_OV.parameters, 'ACBAccountClaim', $ACBAccountClaim)"/>
+              <to variable="InvSFDCServiceUpsert_IV" part="parameters"/>
+            </copy>
+          </assign>
+          <invoke name="InvUpsertSFDCService" inputVariable="InvSFDCServiceUpsert_IV" outputVariable="InvSFDCServiceUpsert_OV" partnerLink="SFDCService" portType="ns4:Soap" operation="upsert" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header" id="BpInv4"/>
+        </sequence>
+      </otherwise>
+    </switch>
+  </sequence>
+</process>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        targetNamespace="http://xmlns.oracle.com/Sample/TempSOA/BPELProcess2"
+        xmlns:tns="http://xmlns.oracle.com/Sample/TempSOA/BPELProcess2"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+ <element name="process">
+  <complexType>
+   <sequence>
+    <element name="CustAccNumber" type="string" nillable="true"/>
+    <element name="OrderNumber" type="string" nillable="true"/>
+    <element name="PurchaseOrder" type="string" nillable="true"/>
+    <element name="StartOrderDate" type="string" nillable="true"/>
+    <element name="EndOrderDate" type="string" nillable="true"/>
+    <element name="StartReqShipDate" type="string" nillable="true"/>
+    <element name="EndReqShipDate" type="string" nillable="true"/>
+    <element name="Status" type="string" nillable="true"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="processResponse">
+  <complexType>
+   <sequence>
+    <element name="Resp" maxOccurs="unbounded" type="tns:abcd"/>
+    
+   </sequence>
+  </complexType>
+ </element>
+ <complexType name="abcd">
+ <sequence>
+         <element name="ROW_NUM" type="decimal" nillable="true"/>
+         <element name="HEADER_ID" type="decimal" nillable="true"/>
+         <element name="PURCHASE_ORDER" type="string" nillable="true"/>
+         <element name="ORDER_NUMBER" type="decimal" nillable="true"/>
+         <element name="CUST_ACCOUNT_ID" type="decimal" nillable="true"/>
+         <element name="CUST_ACC_NUMBER" type="string" nillable="true"/>
+         <element name="CATEGORY_CODE" type="string" nillable="true"/>
+         <element name="ORDER_CATEGORY" type="string" nillable="true"/>
+         <element name="DATE_ORDERED" type="dateTime" nillable="true"/>
+         <element name="REQUESTED_SHIP_DATE" type="dateTime" nillable="true"/>
+         <element name="FLOW_STATUS_CODE" type="string" nillable="true"/>
+         <element name="STATUS" type="string" nillable="true"/>
+         <element name="TOTAL" type="decimal" nillable="true"/>
+         <element name="ORG_ID" type="decimal" nillable="true"/>
+         <element name="CUSTOMER_ID" type="decimal" nillable="true"/>
+         <element name="ORDER_TYPE" type="string" nillable="true"/>
+         <element name="CUSTOMER_NAME" type="string" nillable="true"/>
+         <element name="CUSTOMER_NUMBER" type="string" nillable="true"/>
+         <element name="INVOICE_TO_ORG_ID" type="decimal" nillable="true"/>
+         <element name="SHIP_TO_ORG_ID" type="decimal" nillable="true"/>
+         <element name="OPEN_FLAG" type="string" nillable="true"/>
+         <element name="TRANSACTION_PHASE_CODE" type="string" nillable="true"/>
+         <element name="OPERATING_UNIT" type="string" nillable="true"/>
+         <element name="SOURCE_DOCUMENT_TYPE_ID" type="decimal" nillable="true"/>
+         <element name="ORIG_SYS_DOCUMENT_REF" type="string" nillable="true"/>
+         <element name="PARTNER_NAME" type="string" nillable="true"/>
+         <element name="SALES_CHANNEL_CODE" type="string" nillable="true"/>
+         <element name="SHIP_TO_ADDRESS" type="string" nillable="true"/>
+         </sequence>
+ </complexType>
+ 
+</schema>

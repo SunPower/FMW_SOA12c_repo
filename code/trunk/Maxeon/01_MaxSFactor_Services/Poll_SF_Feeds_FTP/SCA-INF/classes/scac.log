@@ -1,0 +1,29 @@
+2020-12-15 22:42:01.938/1.697 Oracle Coherence 12.2.1.3.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/D:/SOA/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2020-12-15 22:42:01.958/1.717 Oracle Coherence 12.2.1.3.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/D:/SOA/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2020-12-15 22:42:01.959/1.718 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2020-12-15 22:42:01.961/1.720 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2020-12-15 22:42:01.961/1.720 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2020-12-15 22:42:01.962/1.721 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.3.0 Build 68243
+ Grid Edition: Development mode
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+2020-12-15 22:42:02.705/2.465 Oracle Coherence GE 12.2.1.3.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.ExtensibleConfigurableCacheFactory
+2020-12-15 22:42:02.810/2.569 Oracle Coherence GE 12.2.1.3.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "sn38854's cluster" has been automatically generated
+Dec 15, 2020 10:42:05 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Dec 15, 2020 10:42:06 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Dec 15, 2020 10:42:07 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Poll_SF_Feeds_FTP_BPEL.bpel" ...
+Dec 15, 2020 10:42:09 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Poll_SF_Feeds_FTP_BPEL" in 55.9 milliseconds [nodes 27=0+27, 483.1 nodes/sec]
+Dec 15, 2020 10:42:10 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Poll_SF_Feeds_FTP_BPEL" in 1.318 seconds
+Dec 15, 2020 10:42:10 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0.6 milliseconds
+Dec 15, 2020 10:42:10 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Poll_SF_Feeds_FTP_BPEL" in 36.8 milliseconds
+Java HotSpot(TM) Client VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) Client VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

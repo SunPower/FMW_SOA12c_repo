@@ -1,0 +1,22 @@
+Mar 10, 2015 4:53:50 PM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Mar 10, 2015 4:53:50 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Mar 10, 2015 4:53:50 PM com.collaxa.cube.CubeLogger info
+INFO: validating "BPELProcess2.bpel" ...
+Mar 10, 2015 4:53:50 PM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+Mar 10, 2015 4:53:50 PM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSequenceBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchAllBlock
+Mar 10, 2015 4:53:51 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "BPELProcess2" in 59.8 milliseconds [nodes 10=0+10, 167.2 nodes/sec]
+Mar 10, 2015 4:53:53 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "BPELProcess2" in 1.967 seconds
+Mar 10, 2015 4:53:53 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0.7 milliseconds
+
+Mar 10, 2015 4:53:53 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "BPELProcess2" in 86.2 milliseconds
+

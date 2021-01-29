@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ser:proxyServiceEntry xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:oper="http://xmlns.oracle.com/servicebus/proxy/operations" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ser:coreEntry isAutoPublish="false">
+        <ser:description/>
+        <ser:binding type="Mixed" xsi:type="con1:MixedBindingType" xmlns:con1="http://www.bea.com/wli/sb/services/bindings/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+            <con1:request type="XML">
+                <con5:schema ref="CommonComponents/XSD/AuditLogDetails" element="OsbAuditLogDetailsCollection" xmlns:con5="http://www.bea.com/wli/sb/typesystem/config"/>
+            </con1:request>
+        </ser:binding>
+        <oper:operations enabled="true">
+            <oper:monitoring enabled="false" aggregationInterval="10"/>
+            <oper:sla-alerting enabled="true" level="normal"/>
+        </oper:operations>
+        <ser:invoke ref="CommonAuditLogSvc/ProxyService/CommonAuditLogDetails_PS" xsi:type="con:PipelineRef" xmlns:con="http://www.bea.com/wli/sb/pipeline/config"/>
+    </ser:coreEntry>
+    <ser:endpointConfig xmlns:con1="http://www.bea.com/wli/sb/typesystem/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+        <tran:provider-id>jms</tran:provider-id>
+        <tran:inbound>true</tran:inbound>
+        <tran:URI>
+            <env:value>jms://dev-fusappdca02:7004/jms.OSBConnectionFact/jms.AuditDetailLogQueue</env:value>
+        </tran:URI>
+        <tran:inbound-properties/>
+        <tran:all-headers>false</tran:all-headers>
+        <tran:provider-specific>
+            <jms:is-queue>true</jms:is-queue>
+            <jms:is-secure>false</jms:is-secure>
+            <jms:inbound-properties>
+                <jms:response-required>false</jms:response-required>
+                <jms:XA-required>false</jms:XA-required>
+            </jms:inbound-properties>
+            <jms:request-encoding>UTF-8</jms:request-encoding>
+            <jms:jndi-timeout>0</jms:jndi-timeout>
+        </tran:provider-specific>
+    </ser:endpointConfig>
+</ser:proxyServiceEntry>

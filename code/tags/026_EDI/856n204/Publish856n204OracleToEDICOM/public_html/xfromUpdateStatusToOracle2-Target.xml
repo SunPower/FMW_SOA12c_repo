@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrEdicom856N204OutboundCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToOracle">
+   <top:XxspwrEdicom856N204Outbound>
+      <top:comnDeliveryNumber>-0</top:comnDeliveryNumber>
+      <top:statusCode>Sent to EDICOM</top:statusCode>
+      <top:soaLastUpdateDate>2014-03-19T22:38:18.803+05:30</top:soaLastUpdateDate>
+      <top:soaInstanceId>endIndex596</top:soaInstanceId>
+   </top:XxspwrEdicom856N204Outbound>
+   <top:XxspwrEdicom856N204Outbound>
+      <top:comnDeliveryNumber>-0</top:comnDeliveryNumber>
+      <top:statusCode>Sent to EDICOM</top:statusCode>
+      <top:soaLastUpdateDate>2014-03-19T22:38:18.803+05:30</top:soaLastUpdateDate>
+      <top:soaInstanceId>endIndex596</top:soaInstanceId>
+   </top:XxspwrEdicom856N204Outbound>
+   <top:XxspwrEdicom856N204Outbound>
+      <top:comnDeliveryNumber>-0</top:comnDeliveryNumber>
+      <top:statusCode>Sent to EDICOM</top:statusCode>
+      <top:soaLastUpdateDate>2014-03-19T22:38:18.803+05:30</top:soaLastUpdateDate>
+      <top:soaInstanceId>endIndex596</top:soaInstanceId>
+   </top:XxspwrEdicom856N204Outbound>
+</top:XxspwrEdicom856N204OutboundCollection>

@@ -1,0 +1,30 @@
+<wsdl:definitions name="UpdateCustomerSFDCProv" targetNamespace="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerSFDCProv/UpdateCustomerSFDCProv" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerSFDCProv/UpdateCustomerSFDCProv" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1" schemaLocation="../xsd/CDM/BOD/Nouns/SyncAccCustomers/V1/ProcessSFDCSyncCustomers.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="UpdateCustomerSFDCProvRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessSFDCSyncCustResp"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateCustomerSFDCProv">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:UpdateCustomerSFDCProvRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="UpdateCustomerSFDCProvBinding" type="client:UpdateCustomerSFDCProv">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="updatecustomersfdcprov_client_ep">
+        <wsdl:port name="UpdateCustomerSFDCProv_pt" binding="client:UpdateCustomerSFDCProvBinding">
+            <soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/online/UpdateCustomerSFDCProv/updatecustomersfdcprov_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:SeqIdList xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileDownload_Reval2Orcl/RevalFileDownload_Reval2Orcl_BPEL" xmlns:tns="http://com.reval.webservices/SeqIdList">
+   <tns:SeqId>SeqId12</tns:SeqId>
+   <tns:SeqId>SeqId13</tns:SeqId>
+   <tns:SeqId>SeqId14</tns:SeqId>
+</tns:SeqIdList>

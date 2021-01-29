@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrLease2OutboundDetailsCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateStatusToEBS">
+   <top:XxspwrLease2OutboundDetails>
+      <top:soNumber/>
+      <top:soaStatus>ERROR</top:soaStatus>
+      <top:errorMessage>ERROR::Multiple Record Ids returned from SFDC for Lease Number--123</top:errorMessage>
+   </top:XxspwrLease2OutboundDetails>
+   <top:XxspwrLease2OutboundDetails>
+      <top:soNumber/>
+      <top:soaStatus>ERROR</top:soaStatus>
+      <top:errorMessage>ERROR::Multiple Record Ids returned from SFDC for Lease Number--123</top:errorMessage>
+   </top:XxspwrLease2OutboundDetails>
+   <top:XxspwrLease2OutboundDetails>
+      <top:soNumber/>
+      <top:soaStatus>ERROR</top:soaStatus>
+      <top:errorMessage>ERROR::Empty Record Id returned from SFDC for Lease Number--125</top:errorMessage>
+   </top:XxspwrLease2OutboundDetails>
+</top:XxspwrLease2OutboundDetailsCollection>

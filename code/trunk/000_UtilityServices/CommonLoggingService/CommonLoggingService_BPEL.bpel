@@ -1,0 +1,99 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Aug 06 14:42:06 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="CommonLoggingService_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/CommonLoggingService/InsertLoggingDataDB"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/CommonLoggingService/InsertCommLogDataDB"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/CommonLoggingService/InsertCommonLogDataDB">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                <![CDATA[CommonLoggingService_BPEL.wsdl]]>
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="commonloggingservice_bpel_client" partnerLinkType="client:CommonLoggingService_BPEL" myRole="CommonLoggingService_BPELProvider" partnerRole="CommonLoggingService_BPELRequester"/>
+        <partnerLink name="InsertCommonLogDataDB"
+                     partnerLinkType="ns3:InsertCommonLogDataDB_plt"
+                     partnerRole="InsertCommonLogDataDB_role"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:CommonLoggingService_BPELRequestMessage"/>
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+   
+       
+        <variable name="InvokeCommonLogDB_IV"
+                  messageType="ns3:MiddlewareErrorLogCollection_msg"/>
+    </variables>
+    <faultHandlers>
+        <catchAll>
+            <terminate name="Terminate"/>
+        </catchAll>
+    </faultHandlers>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in CommonLoggingService_BPEL.wsdl) -->
+        <receive name="receiveInput" partnerLink="commonloggingservice_bpel_client" portType="client:CommonLoggingService_BPEL" operation="process" variable="inputVariable" createInstance="yes"/>
+        <assign name="TransformLoggDB">
+            <bpelx:annotation>
+                <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+                <from expression="ora:doXSLTransformForDoc('Transformations/TransformCommonLogParms.xsl', $inputVariable.payload)"/>
+                <to variable="InvokeCommonLogDB_IV"
+                    part="MiddlewareErrorLogCollection"/>
+            </copy>
+        </assign>
+        <invoke name="InvokeCommLogDB"
+                inputVariable="InvokeCommonLogDB_IV"
+                partnerLink="InsertCommonLogDataDB"
+                portType="ns3:InsertCommonLogDataDB_ptt" operation="insert"
+                bpelx:invokeAsDetail="no"/>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+    </sequence>
+</process>

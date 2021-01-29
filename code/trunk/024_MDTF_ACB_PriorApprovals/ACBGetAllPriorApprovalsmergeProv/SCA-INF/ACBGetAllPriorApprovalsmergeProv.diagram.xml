@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="acbgetallpriorapprovalsmergeprov_bpel_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="246" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="239" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="acbgetallpriorapprovalsmergeprov_bpel_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllPriorApprovalsmergeProv/ACBGetAllPriorApprovalsmergeProv_BPEL#wsdl.interface(ACBGetAllPriorApprovalsmergeProv_BPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="SFDCLogin">
+        <dgm:body borderWidth="2" arcRad="20" X="946" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="936" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SFDCLogin" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL#wsdl.interface(SFDCLogin_BPEL)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="SFDCService">
+        <dgm:body borderWidth="2" arcRad="20" X="946" Y="144" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="936" Y="137" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SFDCService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="urn:partner.soap.sforce.com#wsdl.interface(Soap)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>login</dgm:item>
+            <dgm:item>describeSObject</dgm:item>
+            <dgm:item>describeSObjects</dgm:item>
+            <dgm:item>describeGlobal</dgm:item>
+            <dgm:item>describeDataCategoryGroups</dgm:item>
+            <dgm:item>describeDataCategoryGroupStructures</dgm:item>
+            <dgm:item>describeLayout</dgm:item>
+            <dgm:item>describeSoftphoneLayout</dgm:item>
+            <dgm:item>describeTabs</dgm:item>
+            <dgm:item>create</dgm:item>
+            <dgm:item>update</dgm:item>
+            <dgm:item>upsert</dgm:item>
+            <dgm:item>merge</dgm:item>
+            <dgm:item>delete</dgm:item>
+            <dgm:item>undelete</dgm:item>
+            <dgm:item>emptyRecycleBin</dgm:item>
+            <dgm:item>retrieve</dgm:item>
+            <dgm:item>process</dgm:item>
+            <dgm:item>convertLead</dgm:item>
+            <dgm:item>logout</dgm:item>
+            <dgm:item>invalidateSessions</dgm:item>
+            <dgm:item>getDeleted</dgm:item>
+            <dgm:item>getUpdated</dgm:item>
+            <dgm:item>query</dgm:item>
+            <dgm:item>queryAll</dgm:item>
+            <dgm:item>queryMore</dgm:item>
+            <dgm:item>search</dgm:item>
+            <dgm:item>getServerTimestamp</dgm:item>
+            <dgm:item>setPassword</dgm:item>
+            <dgm:item>resetPassword</dgm:item>
+            <dgm:item>getUserInfo</dgm:item>
+            <dgm:item>sendEmail</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CommonSFDCErrorLogService">
+        <dgm:body borderWidth="2" arcRad="20" X="946" Y="346" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="936" Y="339" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonSFDCErrorLogService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="DeleteSFDCRecordService">
+        <dgm:body borderWidth="2" arcRad="20" X="946" Y="464" width="136" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="936" Y="457" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="DeleteSFDCRecordService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPEL)" callbackInterface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPELCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+            <dgm:item>processResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="ACBGetAllPriorApprovalsmergeProv_BPEL">
+        <dgm:body borderWidth="2" arcRad="20" X="487" Y="231" width="130" height="136">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="477" Y="224" width="150" height="152">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="acbgetallpriorapprovalsmergeprov_bpel_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllPriorApprovalsmergeProv/ACBGetAllPriorApprovalsmergeProv_BPEL#wsdl.interface(ACBGetAllPriorApprovalsmergeProv_BPEL)"/>
+        <dgm:outputPort name="SFDCLogin" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL#wsdl.interface(SFDCLogin_BPEL)"/>
+        <dgm:outputPort name="SFDCService" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="urn:partner.soap.sforce.com#wsdl.interface(Soap)"/>
+        <dgm:outputPort name="CommonSFDCErrorLogService" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:outputPort name="DeleteSFDCRecordService" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPEL)" callbackInterface="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL#wsdl.interface(DeleteSFDCRecordService_BPELCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="acbgetallpriorapprovalsmergeprov_bpel_client_ep" target="ACBGetAllPriorApprovalsmergeProv_BPEL/acbgetallpriorapprovalsmergeprov_bpel_client" width="2">
+        <dgm:gSegment X1="168" Y1="256" X2="477" Y2="256"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ACBGetAllPriorApprovalsmergeProv_BPEL/SFDCLogin" target="SFDCLogin" width="2">
+        <dgm:gSegment X1="627" Y1="256" X2="651" Y2="256"/>
+        <dgm:gSegment X1="651" Y1="256" X2="651" Y2="36"/>
+        <dgm:gSegment X1="651" Y1="36" X2="936" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ACBGetAllPriorApprovalsmergeProv_BPEL/SFDCService" target="SFDCService" width="2">
+        <dgm:gSegment X1="627" Y1="281" X2="666" Y2="281"/>
+        <dgm:gSegment X1="666" Y1="281" X2="666" Y2="154"/>
+        <dgm:gSegment X1="666" Y1="154" X2="936" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ACBGetAllPriorApprovalsmergeProv_BPEL/CommonSFDCErrorLogService" target="CommonSFDCErrorLogService" width="2">
+        <dgm:gSegment X1="627" Y1="306" X2="666" Y2="306"/>
+        <dgm:gSegment X1="666" Y1="306" X2="666" Y2="356"/>
+        <dgm:gSegment X1="666" Y1="356" X2="936" Y2="356"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ACBGetAllPriorApprovalsmergeProv_BPEL/DeleteSFDCRecordService" target="DeleteSFDCRecordService" width="2">
+        <dgm:gSegment X1="627" Y1="331" X2="651" Y2="331"/>
+        <dgm:gSegment X1="651" Y1="331" X2="651" Y2="474"/>
+        <dgm:gSegment X1="651" Y1="474" X2="936" Y2="474"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

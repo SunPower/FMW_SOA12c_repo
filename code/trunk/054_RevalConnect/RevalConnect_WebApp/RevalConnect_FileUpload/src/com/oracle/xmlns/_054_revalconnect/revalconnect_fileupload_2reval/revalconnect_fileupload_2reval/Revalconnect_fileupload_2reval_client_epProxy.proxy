@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="RevalconnectFileupload2RevalClientEp.xml"/>
+      <url path="../../../../../../webservices/reval/com/params/Datatype.java"/>
+      <url path="RevalConnect_FileUpload_2Reval_ptClient.java"/>
+      <url path="ProcessResponse.java"/>
+      <url path="package-info.java"/>
+      <url path="RevalConnect_FileUpload_2RevalCallbackImpl.java"/>
+      <url path="../../../../../../webservices/reval/com/params/RevalParams.java"/>
+      <url path="../../../../../../webservices/reval/com/params/Paramtype.java"/>
+      <url path="../../../../../../webservices/reval/com/params/package-info.java"/>
+      <url path="RevalConnectFileUpload2Reval.java"/>
+      <url path="../../../../../../webservices/reval/com/params/Csvdatatype.java"/>
+      <url path="RevalconnectFileupload2RevalClientEp.java"/>
+      <url path="ObjectFactory.java"/>
+      <url path="../../../../../../webservices/reval/com/params/ObjectFactory.java"/>
+      <url path="../../../../../../webservices/reval/com/params/Uidatatype.java"/>
+      <url path="../../../../../../webservices/reval/com/params/Qjobstatustype.java"/>
+      <url path="Process.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MIME"/>
+      <value n="FIXED_WSDL" v="false"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="RevalconnectFileupload2RevalClientEp.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_ENABLED"/>
+      <list n="PROXY_CLIENTS">
+         <url path="RevalConnect_FileUpload_2Reval_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="RevalConnect_FileUpload_2Reval_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="com.oracle.xmlns._054_revalconnect.revalconnect_fileupload_2reval.revalconnect_fileupload_2reval.RevalConnectFileUpload2Reval"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="RevalConnect_FileUpload_2Reval_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="process">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_POLICY">
+                  <value n="addressing"/>
+                  <hash n="GLOBAL_CONFIG_PROPERTIES"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <list n="wsconfig"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="dev-fusappdca02" port="7003" path="/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep"/>
+            <url n="PROXY_PORT_ENDPOINT" protocol="http" host="dev-fusappdca02" port="7003" path="/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="revalconnect_fileupload_2reval_client_ep"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../RevalConnect_FileUpload.jpr"/>
+      <url n="PROXY_WSDL_URL" protocol="http" host="dev-fusappdca02" port="7003" path="/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep" query="WSDL"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval}RevalConnect_FileUpload_2Reval"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval}RevalConnect_FileUpload_2RevalBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BOUND_OPERATION" v="void.process.java.lang.String.java.lang.String"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="ef622426-015b-1000-8015-0a000746dcbe"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="RevalConnect_FileUpload_2Reval_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval}RevalConnect_FileUpload_2RevalBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="void.process.java.lang.String.java.lang.String"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="dev-fusappdca02" port="7003" path="/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval}RevalConnect_FileUpload_2Reval"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="com.oracle.xmlns._054_revalconnect.revalconnect_fileupload_2reval.revalconnect_fileupload_2reval.RevalConnectFileUpload2RevalImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="com.oracle.xmlns._054_revalconnect.revalconnect_fileupload_2reval.revalconnect_fileupload_2reval.RevalConnectFileUpload2Reval"/>
+               <value n="PT_TOP_DOWN_GENERATED_SEI_NAME" v="com.oracle.xmlns._054_revalconnect.revalconnect_fileupload_2reval.revalconnect_fileupload_2reval.RevalConnectFileUpload2Reval"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../RevalConnect_FileUpload.jpr"/>
+         <value n="WS_CREATE_ONEWAY_OPERATIONS" v="true"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.oracle.com/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalConnect_FileUpload_2Reval"/>
+         <value n="WS_URI" v="revalconnect_fileupload_2reval_client_ep"/>
+         <url n="WS_WSDL_FILE" protocol="http" host="dev-fusappdca02" port="7003" path="/soa-infra/services/finance/RevalConnect_FileUpload_2Reval/revalconnect_fileupload_2reval_client_ep" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="true"/>
+      <value n="SERVICE_ASYNC_FEATURES" v="true"/>
+      <value n="USE_WSDL_LOCATION" v="true"/>
+      <value n="WSDL_IS_LOCAL_COPY" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

@@ -1,0 +1,44 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SyncCreditHoldOracleReq"
+     targetNamespace="http://www.sunpowercorp.com/DealerPartnerCreditDetalis/SyncCreditHoldOracleReq/SyncCreditHoldOracleReq"
+     xmlns:ns1="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/DealerPartnerCreditDetalis/SyncCreditHoldOracleReq/SyncCreditHoldOracleReq"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SyncCreditHoldOracleReq">
+        <plnk:role name="SyncCreditHoldOracleReqProvider">
+            <plnk:portType name="client:SyncCreditHoldOracleReq"/>
+        </plnk:role>
+        <plnk:role name="SyncCreditHoldOracleReqRequester">
+            <plnk:portType name="client:SyncCreditHoldOracleReqCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/DealerPartnerCreditDetalis/SyncCreditHoldOracleReq/SyncCreditHoldOracleReq"
+                 schemaLocation="../Schemas/SyncCreditHoldOracleReq.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SyncCreditHoldOracleReqResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SyncCreditHoldOracleReqRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="SyncCreditHoldOracleReqCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:SyncCreditHoldOracleReqResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="SyncCreditHoldOracleReq">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SyncCreditHoldOracleReqRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

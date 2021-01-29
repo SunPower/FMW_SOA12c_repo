@@ -1,0 +1,55 @@
+2016-11-17 17:40:31.698/2.855 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2016-11-17 17:40:31.792/2.949 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2016-11-17 17:40:31.795/2.952 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2016-11-17 17:40:31.799/2.956 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2016-11-17 17:40:31.801/2.958 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2016-11-17 17:40:31.803/2.960 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2016-11-17 17:40:31.993/3.150 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2016-11-17 17:40:32.000/3.157 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2016-11-17 17:40:32.546/3.703 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "sn38854's cluster" has been automatically generated
+Nov 17, 2016 5:40:37 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Nov 17, 2016 5:40:42 PM oracle.fabric.common.wsdl.SchemaBuilder resolveWorkFlowSchemas
+WARNING: Ignoring composite local workflow schema of file:/D:/12c_Ant/ant_soa/code/SyncOEHeadersOracleProv/Schemas/NotificationService.xsd as there is a MDS shared version of the schema used by workflow engine oramds:/soa/shared/workflow/NotificationService.xsd
+Nov 17, 2016 5:40:43 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Nov 17, 2016 5:40:45 PM com.collaxa.cube.CubeLogger info
+INFO: validating "SyncOEHeadersOracleProv_BPEL.bpel" ...
+Nov 17, 2016 5:40:45 PM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+Nov 17, 2016 5:40:50 PM oracle.fabric.common.wsdl.SchemaBuilder resolveWorkFlowSchemas
+WARNING: Ignoring composite local workflow schema of file:/D:/12c_Ant/ant_soa/code/SyncOEHeadersOracleProv/Schemas/NotificationService.xsd as there is a MDS shared version of the schema used by workflow engine oramds:/soa/shared/workflow/NotificationService.xsd
+Nov 17, 2016 5:40:54 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Nov 17, 2016 5:40:54 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Nov 17, 2016 5:40:54 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Nov 17, 2016 5:40:54 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "SyncOEHeadersOracleProv_BPEL" in 353.1 milliseconds [nodes 64=2+62, 181.2 nodes/sec]
+Nov 17, 2016 5:40:57 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "SyncOEHeadersOracleProv_BPEL" in 3.254 seconds
+Nov 17, 2016 5:40:57 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 9 files in 2.4 milliseconds
+Nov 17, 2016 5:40:58 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "SyncOEHeadersOracleProv_BPEL" in 287.2 milliseconds
+Schema validation failed with exception "null"
+oracle.xml.parser.schema.XSDException
+	at oracle.xml.parser.schema.XSDBuilder.buildSchema(XSDBuilder.java:1124)
+	at oracle.xml.parser.schema.XSDBuilder.build(XSDBuilder.java:630)
+	at oracle.soa.scac.ValidationFaultUtil.validateSourceWithSchema(ValidationFaultUtil.java:182)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:241)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:225)
+	at oracle.soa.scac.ValidateComposite.validateFaultPolicy(ValidateComposite.java:1399)
+	at oracle.soa.scac.ValidateComposite.doValidation0(ValidateComposite.java:604)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:577)
+	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:228)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:209)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:201)
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

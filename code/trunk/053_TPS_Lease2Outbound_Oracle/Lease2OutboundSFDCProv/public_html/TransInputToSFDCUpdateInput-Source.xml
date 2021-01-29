@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ProcessLease2Outbound xmlns="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1">
+   <ApplicationArea xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+      <CreationDateTime>2013-11-20T22:55:54.568</CreationDateTime>
+      <Signature>Signature210</Signature>
+      <BODID>BODID211</BODID>
+      <UserArea/>
+      <Sender/>
+   </ApplicationArea>
+   <DataArea>
+      <process xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">process212</process>
+      <LeaseOrder xmlns="http://www.sunpowercorp.com/Noun/Lease2Outbound/V1"/>
+      <LeaseOrder xmlns="http://www.sunpowercorp.com/Noun/Lease2Outbound/V1"/>
+      <LeaseOrder xmlns="http://www.sunpowercorp.com/Noun/Lease2Outbound/V1"/>
+   </DataArea>
+</ProcessLease2Outbound>

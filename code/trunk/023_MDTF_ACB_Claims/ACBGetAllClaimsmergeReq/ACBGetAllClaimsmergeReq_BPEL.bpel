@@ -1,0 +1,385 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Sep 27 17:24:33 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="ACBGetAllClaimsmergeReq_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllClaimsmergeReq/ACBGetAllClaimsmergeReq_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllClaimsmergeReq/ACBGetAllClaimsmergeReq_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://www.acbcoop.com/"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns2="http://www.sunpowercorp.com/ACBClaimAll/"
+         xmlns:ns3="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns4="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns5="http://CustFault/Fault/Business"
+         xmlns:ns6="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+         xmlns:ns7="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL"
+         xmlns:ns10="http://www.sunpowercorp.com/Noun/ACBClaimToSFDC/V1"
+         xmlns:ns11="http://www.sunpowercorp.com/Common/ACBClaimToSFDCCommonTypes/V1"
+         xmlns:ns9="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+         xmlns:ns8="http://www.sunpowercorp.com/BOD/ProcessACBClaimToSFDC/V1"
+         xmlns:ns12="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[ACBGetAllClaimsmergeReq_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="acbgetallclaimsmergereq_bpel_client"
+                 partnerLinkType="client:ACBGetAllClaimsmergeReq_BPEL"
+                 myRole="ACBGetAllClaimsmergeReq_BPELProvider"/>
+    <partnerLink name="GetAllClaimsService"
+                 partnerLinkType="ns1:GetAllClaimsService"
+                 partnerRole="DataStoreSoap"/>
+    <partnerLink name="ACBGetAllClaimsmergeOSBSvc"
+                 partnerLinkType="ns2:ACBGetAllClaimsmergeOSBSvc"
+                 partnerRole="ACBClaimAll"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns3:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="SFDCLogin" partnerLinkType="ns6:SFDCLogin_BPEL"
+                 partnerRole="SFDCLogin_BPELProvider"/>
+    <partnerLink name="DeleteSFDCRecordService"
+                 partnerLinkType="ns7:DeleteSFDCRecordService_BPEL"
+                 partnerRole="DeleteSFDCRecordService_BPELProvider"
+                 myRole="DeleteSFDCRecordService_BPELRequester"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable"
+              messageType="client:ACBGetAllClaimsmergeReq_BPELRequestMessage"/>
+    <variable name="InvGetAllClaimsService_IV"
+              messageType="ns1:GetAllClaimsSoapIn"/>
+    <variable name="InvGetAllClaimsService_OV"
+              messageType="ns1:GetAllClaimsSoapOut"/>
+    <variable name="InvACBGetAllClaimsmergeOSB_IV"
+              messageType="ns2:ACBClaimAllRequest"/>
+    <variable name="InvACBGetAllClaimsmergeOSB_OV"
+              messageType="ns2:ACBClaimAllResponse"/>
+    <variable name="InvCommonSFDCErrorLogService_IV"
+              messageType="ns3:requestMessage"/>
+    <variable name="CommErr" messageType="ns3:requestMessage"/>
+    <variable name="SetTitle" type="xsd:string"/>
+    <variable messageType="bpelx:RuntimeFaultMessage" name="CustomFault"/>
+    <variable name="InvDeleteSFDCRecordService_IV"
+              messageType="ns7:DeleteSFDCRecordService_BPELRequestMessage"/>
+    <variable name="InvSFDCLogin_IV"
+              messageType="ns6:SFDCLogin_BPELRequestMessage"/>
+    <variable name="InvSFDCLogin_OV"
+              messageType="ns6:SFDCLogin_BPELResponseMessage"/>
+    <variable name="RecDeleteSFDCRecordServiceResp"
+              messageType="ns7:DeleteSFDCRecordService_BPELResponseMessage"/>
+    <variable name="recordsProcessed" type="xsd:integer"/>
+    <variable name="totalRecords" type="xsd:integer"/>
+    <variable name="noOfIterations" type="xsd:integer"/>
+    <variable name="sizeofBunch" type="xsd:integer"/>
+    <variable name="recordsLeft" type="xsd:integer"/>
+    <variable name="initParams" element="ns12:InitParams"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence1">
+        <assign name="AsgnCommonErrorHandler">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Severity"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultCode")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="CommErr" part="request"
+                query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:SendEmail"/>
+          </copy>
+        </assign>
+        <assign name="TransformErrLog">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TransformErrLogParms.xsl', $CommErr.request, 'InvGetAllClaimsService_OV.parameters', $InvGetAllClaimsService_OV.parameters)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" bpelx:invokeAsDetail="no"
+                inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns3:execute_ptt" operation="execute"/>
+        <terminate name="Terminate"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in ACBGetAllClaimsmergeReq_BPEL.wsdl) -->
+    <receive name="receiveInput"
+             partnerLink="acbgetallclaimsmergereq_bpel_client"
+             portType="client:ACBGetAllClaimsmergeReq_BPEL" operation="process"
+             variable="inputVariable" createInstance="yes"/>
+    <assign name="AssignSetTitle">
+      <copy>
+        <from expression='"ACBGetAllClaimsMerge"'/>
+        <to variable="SetTitle"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(concat('Req:',bpws:getVariableData('SetTitle')))"/>
+        <to variable="SetTitle"/>
+      </copy>
+    </assign>
+    <invoke name="InvGetAllClaimsService" bpelx:invokeAsDetail="no"
+            inputVariable="InvGetAllClaimsService_IV"
+            outputVariable="InvGetAllClaimsService_OV"
+            partnerLink="GetAllClaimsService" portType="ns1:DataStoreSoap"
+            operation="GetAllClaims"/>
+    <switch name="SwitchRecFound">
+      <case condition="count(bpws:getVariableData('InvGetAllClaimsService_OV','parameters','/ns1:GetAllClaimsResponse/ns1:GetAllClaimsResult/ns1:WebServiceClaims')) > 0 ">
+        <sequence>
+          <invoke name="InvSFDCLogin" inputVariable="InvSFDCLogin_IV"
+                  outputVariable="InvSFDCLogin_OV" partnerLink="SFDCLogin"
+                  portType="ns6:SFDCLogin_BPEL" operation="process"
+                  bpelx:invokeAsDetail="no"/>
+          <assign name="AsgnDeleteSFDCRecordService">
+            <copy>
+              <from expression='"select id, Name from MDTF_Claim__c"'/>
+              <to variable="InvDeleteSFDCRecordService_IV" part="payload"
+                  query="/ns7:process/ns7:deleteQuery"/>
+            </copy>
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="payload"
+                    query="/ns6:SFDCLoginResp/ns6:serverUrl"/>
+              <to variable="InvDeleteSFDCRecordService_IV" part="payload"
+                  query="/ns7:process/ns7:URL"/>
+            </copy>
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="payload"
+                    query="/ns6:SFDCLoginResp/ns6:sessionId"/>
+              <to variable="InvDeleteSFDCRecordService_IV" part="payload"
+                  query="/ns7:process/ns7:SFDCSessionID"/>
+            </copy>
+          </assign>
+          <invoke name="InvDeleteSFDCRecordService"
+                  inputVariable="InvDeleteSFDCRecordService_IV"
+                  partnerLink="DeleteSFDCRecordService"
+                  portType="ns7:DeleteSFDCRecordService_BPEL"
+                  operation="process" bpelx:invokeAsDetail="no"/>
+          <receive name="RecDeleteSFDCRecordServiceResp" createInstance="no"
+                   variable="RecDeleteSFDCRecordServiceResp"
+                   partnerLink="DeleteSFDCRecordService"
+                   portType="ns7:DeleteSFDCRecordService_BPELCallback"
+                   operation="processResponse"/>
+          <assign name="InitializeParms">
+            <copy>
+              <from expression="ora:countNodes('InvGetAllClaimsService_OV','parameters','/ns1:GetAllClaimsResponse/ns1:GetAllClaimsResult/ns1:WebServiceClaims')"/>
+              <to variable="totalRecords"/>
+            </copy>
+            <copy>
+              <from expression="1"/>
+              <to variable="initParams"
+                  query="/ns12:InitParams/ns12:startIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="initParams" query="/ns12:InitParams/ns12:endIndex"/>
+            </copy>
+            <copy>
+              <from expression="0"/>
+              <to variable="recordsProcessed"/>
+            </copy>
+            <copy>
+              <from expression='ora:getPreference("sizeOfBunch")'/>
+              <to variable="sizeofBunch"/>
+            </copy>
+            <copy>
+              <from expression="ceiling($totalRecords div $sizeofBunch)"/>
+              <to variable="noOfIterations"/>
+            </copy>
+          </assign>
+          <while name="WhileMoreRecrds" condition="$noOfIterations > 0">
+            <sequence name="Sequence3">
+              <assign name="AssignParmValues">
+                <copy>
+                  <from expression="$totalRecords - $recordsProcessed"/>
+                  <to variable="recordsLeft"/>
+                </copy>
+                <copy>
+                  <from expression="$recordsProcessed + 1"/>
+                  <to variable="initParams"
+                      query="/ns12:InitParams/ns12:startIndex"/>
+                </copy>
+              </assign>
+              <switch name="Switch2">
+                <case condition="($recordsLeft div $sizeofBunch) >= 1">
+                  <assign name="updateEndIndex">
+                    <copy>
+                      <from expression="$recordsProcessed + $sizeofBunch"/>
+                      <to variable="initParams"
+                          query="/ns12:InitParams/ns12:endIndex"/>
+                    </copy>
+                  </assign>
+                </case>
+                <otherwise>
+                  <assign name="updateEndIndex">
+                    <copy>
+                      <from variable="totalRecords"/>
+                      <to variable="initParams"
+                          query="/ns12:InitParams/ns12:endIndex"/>
+                    </copy>
+                  </assign>
+                </otherwise>
+              </switch>
+              <assign name="TransformOSBParms">
+                <bpelx:annotation>
+                  <bpelx:pattern>transformation</bpelx:pattern>
+                </bpelx:annotation>
+                <copy>
+                  <from expression="ora:doXSLTransformForDoc('Transformations/TransformOSBParms2.xsl', $InvGetAllClaimsService_OV.parameters, 'initParams', $initParams)"/>
+                  <to variable="InvACBGetAllClaimsmergeOSB_IV" part="payload"/>
+                </copy>
+              </assign>
+              <assign name="asgnSessionID">
+                <copy>
+                  <from variable="InvSFDCLogin_OV" part="payload"
+                        query="/ns6:SFDCLoginResp/ns6:sessionId"/>
+                  <to variable="InvACBGetAllClaimsmergeOSB_IV" part="payload"
+                      query="/ns8:ProcessACBClaimToSFDC/ns9:ApplicationArea/ns9:Sender/ns9:LogicalId"/>
+                </copy>
+                <copy>
+                  <from variable="InvSFDCLogin_OV" part="payload"
+                        query="/ns6:SFDCLoginResp/ns6:serverUrl"/>
+                  <to variable="InvACBGetAllClaimsmergeOSB_IV" part="payload"
+                      query="/ns8:ProcessACBClaimToSFDC/ns9:ApplicationArea/ns9:Sender/ns9:ComponentId"/>
+                </copy>
+              </assign>
+              <invoke name="InvACBGetAllClaimsmergeOSBSvc"
+                      inputVariable="InvACBGetAllClaimsmergeOSB_IV"
+                      outputVariable="InvACBGetAllClaimsmergeOSB_OV"
+                      partnerLink="ACBGetAllClaimsmergeOSBSvc"
+                      portType="ns2:ACBClaimAll" operation="ACBClaimAll"
+                      bpelx:invokeAsDetail="no"/>
+              <assign name="updateRecordProcessed">
+                <copy>
+                  <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns12:InitParams/ns12:endIndex')) - bpws:getVariableData('initParams','/ns12:InitParams/ns12:startIndex') ) + 1"/>
+                  <to variable="recordsProcessed"/>
+                </copy>
+                <copy>
+                  <from expression="$noOfIterations -1"/>
+                  <to variable="noOfIterations"/>
+                </copy>
+              </assign>
+            </sequence>
+          </while>
+        </sequence>
+      </case>
+      <otherwise>
+        <sequence name="Sequence3">
+          <assign name="AssignFault">
+            <copy>
+              <from expression="'MDTF102RL'"/>
+              <to variable="CustomFault" part="code"/>
+            </copy>
+            <copy>
+              <from expression='"No Records Found"'/>
+              <to variable="CustomFault" part="summary"/>
+            </copy>
+            <copy>
+              <from expression='"ACBMergeClaimsBusinessFault"'/>
+              <to variable="CustomFault" part="detail"/>
+            </copy>
+          </assign>
+          <throw name="ThrowNoRcrdsBF" faultName="ns5:BusinessFault"
+                 faultVariable="CustomFault"/>
+        </sequence>
+      </otherwise>
+    </switch>
+  </sequence>
+</process>

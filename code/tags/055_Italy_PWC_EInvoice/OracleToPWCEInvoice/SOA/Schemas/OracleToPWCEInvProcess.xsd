@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        targetNamespace="http://xmlns.oracle.com/SPWRSOAApp/OracleToPWCEInvoice/OracleToPWCEInvProcess"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+         xmlns:fe="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+        >
+  <import namespace="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" schemaLocation="Schema_VFPR12.xsd"/>
+  <element name="process">
+    <complexType>
+      <sequence>
+        <element name="FileName" type="string"/>
+        <element name="FatturaElettronica" type="fe:FatturaElettronicaType"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="RestFault">
+    <complexType>
+      <sequence>
+        <element name="code" type="string"/>
+        <element name="detail" type="string"/>
+        <element name="description" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

@@ -1,0 +1,67 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="WarrantyORACLEToSFDCProv_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/WarrantyORACLEToSFDCProv_BPEL"
+     xmlns:ns2="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessWarratyFDS2SFDC/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns4="urn:partner.soap.sforce.com"
+     xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:client="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/WarrantyORACLEToSFDCProv_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns5="http://schemas.oracle.com/bpel/extension"
+    >
+    <plnk:partnerLinkType name="WarrantyORACLEToSFDCProv_BPEL">
+        <plnk:role name="WarrantyORACLEToSFDCProv_BPELProvider">
+            <plnk:portType name="client:WarrantyORACLEToSFDCProv_BPEL"/>
+        </plnk:role>
+        <plnk:role name="WarrantyORACLEToSFDCProv_BPELRequester">
+            <plnk:portType name="client:WarrantyORACLEToSFDCProv_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessWarratyFDS2SFDC/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/WarrantyORACLEToSFDCProv_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/WarrantyORACLEToSFDCProv_BPEL"
+                 schemaLocation="Schemas/WarrantyORACLEToSFDCProv_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessWarratyFDS2SFDC/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/WarrantyORACLEToSFDCProv_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1"
+                 schemaLocation="Schemas/CDM/BOD/Nouns/WarrantyOracleToSFDC/V1/ProcessWarrantyOracleToSFDC.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1"
+             xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessWarratyFDS2SFDC/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://www.sunpowercorp.com/WarrantyRegistrationOracleToSFDC/WarrantyORACLEToSFDCProv/WarrantyORACLEToSFDCProv_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1"
+                 schemaLocation="Schemas/CDM/BOD/Nouns/WarrantyOracleToSFDC/V1/ProcessWarrantyOracleToSFDC.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="WarrantyORACLEToSFDCProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns2:ProcessWarrantyOracleToSFDC"/>
+    </wsdl:message>
+    <wsdl:message name="WarrantyORACLEToSFDCProv_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="WarrantyORACLEToSFDCProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:WarrantyORACLEToSFDCProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="WarrantyORACLEToSFDCProv_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:WarrantyORACLEToSFDCProv_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

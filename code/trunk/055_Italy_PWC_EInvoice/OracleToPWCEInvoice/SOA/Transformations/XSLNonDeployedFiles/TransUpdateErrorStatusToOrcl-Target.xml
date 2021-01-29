@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:UpdateOracleAppsInput xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/SOAAppDemo/OracleToPWCEInvoice/EInvoiceRead" xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/SPWRSOAApp/OracleToPWCEInvoice/UpdateOracleApps" xmlns:ns3="http://www.w3.org/2000/09/xmldsig#" xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOracleApps">
+   <tns:Attribute8>115</tns:Attribute8>
+   <tns:operating_units_name>SunPower Italia Srl</tns:operating_units_name>
+   <tns:trx_number>201405651</tns:trx_number>
+   <tns:trx_date>2018-12-07</tns:trx_date>
+   <tns:party_name>Comoli Ferrari &amp; c. spa</tns:party_name>
+</tns:UpdateOracleAppsInput>

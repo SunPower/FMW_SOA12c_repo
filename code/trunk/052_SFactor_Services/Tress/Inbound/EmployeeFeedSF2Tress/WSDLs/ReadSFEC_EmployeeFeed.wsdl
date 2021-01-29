@@ -1,0 +1,31 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ReadSFEC_EmployeeFeed"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeFeedSF2Tress/ReadSFEC_EmployeeFeed"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"     
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeFeedSF2Tress/ReadSFEC_EmployeeFeed"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:imp1="http://TargetNamespace.com/ReadSFEC_EmployeeFeed"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+    <plt:partnerLinkType name="Read_plt">
+        <plt:role name="Read_role">
+            <plt:portType name="tns:Read_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://TargetNamespace.com/ReadSFEC_EmployeeFeed"
+                    schemaLocation="../Schemas/SPWR_TRESS_DAILY_FEED.xsd"/>
+        </schema>        
+    </wsdl:types>
+    <wsdl:message name="Read_msg">
+        <wsdl:part name="body" element="imp1:SFECFeeds"/>
+    </wsdl:message>
+    <wsdl:portType name="Read_ptt">
+        <wsdl:operation name="Read">
+            <wsdl:input message="tns:Read_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOperatingUnit/V1" targetNamespace="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOperatingUnit/V1" xmlns:noItem="http://www.sunpowercorp.com/Noun/OracleSFDCNoItemOperatingUnit/V1" xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+   <xsd:import namespace="http://www.sunpowercorp.com/Noun/OracleSFDCNoItemOperatingUnit/V1"
+               schemaLocation="../../../../../../Schemas/CDM/BOD/Nouns/OracleSFDCNoItemOperatingUnit/V1/OracleSFDCNoItemOperatingUnit.xsd"/>
+   <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+               schemaLocation="../../../../../../Schemas/CDM/Common/V1/VerbCommonType.xsd"/>
+   <xsd:element name="ProcessOracleSFDCNoItemOperatingUnit" type="ProcessOracleSFDCNoItemOperatingUnitType"/>
+   <xsd:complexType name="ProcessOracleSFDCNoItemOperatingUnitType">
+      <xsd:complexContent>
+         <xsd:extension base="v:BusinessObjectDocumentType">
+            <xsd:sequence>
+               <xsd:element name="DataArea" type="OnlineOrderingNoItemOracleToSFDCType"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="OnlineOrderingNoItemOracleToSFDCType">
+      <xsd:sequence>
+         <xsd:element ref="v:process"/>
+         <xsd:element ref="noItem:OracleSFDCNoItemOperatingUnit"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

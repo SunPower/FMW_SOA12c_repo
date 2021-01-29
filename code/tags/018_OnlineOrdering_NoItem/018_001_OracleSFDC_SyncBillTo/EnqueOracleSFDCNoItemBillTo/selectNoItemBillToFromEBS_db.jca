@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="selectNoItemBillToFromEBS" adapter="db" wsdlLocation="selectNoItemBillToFromEBS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+   <endpoint-interaction portType="selectNoItemBillToFromEBS_ptt" operation="selectNoItemBillToFromEBS">
+      <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+         <property name="SqlString" value="select ACCOUNT_NAME,ACCOUNT_NUMBER,CUST_ACCT_SITE_ID,ADDRESS1,ADDRESS2,ADDRESS3,CITY,POSTAL_CODE,STATE,COUNTRY,PRIMARY_FLAG,OU_SHORT_CODE from APPS.XXSPWR_DSR_CUST_SITES_V where SITE_USE_CODE = 'BILL_TO' and PRIMARY_FLAG='Y'"/>
+         <property name="GetActiveUnitOfWork" value="false"/>
+      </interaction-spec>
+      <input/>
+      <output/>
+   </endpoint-interaction>
+</adapter-config>

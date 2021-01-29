@@ -1,0 +1,24 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/VertexDataFeedDetailsCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/VertexDataFeedDetailsCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="occurrence" type="cdt:Decimal11_38" nillable="true"/>
+    <xsd:element name="GeoGRAPHY_ID" type="cdt:String100" nillable="true"/>
+    <xsd:element name="COUNTRY" type="cdt:String50" nillable="true"/>
+    <xsd:element name="COUNTRY_CODE" type="cdt:String100" nillable="true"/>
+    <xsd:element name="CITY" type="cdt:String320" nillable="true"/>
+    <xsd:element name="COUNTY" type="cdt:String320" nillable="true"/>
+    <xsd:element name="STATE" type="cdt:String240" nillable="true"/>
+    <xsd:element name="POSTAL_CODE" type="cdt:String240" nillable="true"/>
+    <xsd:element name="INTERFACE_STATUS" type="cdt:String320" nillable="true"/>
+    <xsd:element name="ERROR_MESSAGE" type="cdt:String480" nillable="true"/>
+    <xsd:element name="TRANSACTION_DATE" type="xsd:dateTime" nillable="true"/>
+    <xsd:element name="REQUEST_ID" type="cdt:Decimal11_38" nillable="true"/>
+    <xsd:element name="GEO_CREATED_BY" type="cdt:Decimal11_38" nillable="true"/>
+    <xsd:element name="GEO_CREATION_DATE" type="xsd:dateTime" nillable="true"/>
+    <xsd:element name="GEO_LAST_UPDATED_BY" type="cdt:Decimal11_38" nillable="true"/>
+    <xsd:element name="GEO_LAST_UPDATE_DATE" type="xsd:dateTime" nillable="true"/>
+    <xsd:element name="CREATED_BY" type="cdt:Decimal11_38" nillable="true"/>
+    <xsd:element name="CREATION_DATE" type="xsd:dateTime" nillable="true"/>
+    <xsd:element name="LAST_UPDATED_BY" type="cdt:Decimal11_38" nillable="true"/>
+    <xsd:element name="LAST_UPDATED_DATE" type="xsd:dateTime" nillable="true"/>
+    <xsd:element name="Execute_2nd_Workflow__c" type="xsd:boolean" nillable="true"/>
+</xsd:schema>

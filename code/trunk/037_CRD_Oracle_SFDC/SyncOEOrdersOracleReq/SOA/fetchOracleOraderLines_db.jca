@@ -1,0 +1,13 @@
+<adapter-config name="fetchOracleOraderLines" adapter="db" wsdlLocation="WSDLs/fetchOracleOraderLines.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="fetchOracleOraderLines_ptt" operation="fetchOracleOraderLines">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="SELECT b.SFDC_ID,c.SFDC_ID, c.LINE_NUMBER,  c.ORACLE_REQUEST_ID,  c.SFDC_REQUEST_ID,  c.SFDC_REQUEST_STATUS,  c.HEADER_ID,   c.LINE_ID,  c.INVENTORY_ITEM_ID,  c.ITEM_NUMBER,  c.ITEM_DESCRIPTION,  c.REQUESTED_QTY,  c.UOM,  c.UNIT_PRICE,  c.ORDER_LINE_TYPE,  c.LINE_STATUS,  c.PACKING_SLIP_NUMBER,   c.PRODUCT_TYPE,  c.WATTAGE_TYPE,  c.ITEM_TYPE,  c.LINE_REQUEST_DATE,  c.LINE_SCH_SHIP_DATE,  c.SCHEDULED_ARRIVAL_DATE,  c.PROMISED_DATE,   c.SHIP_FROM_ORG_ID,  c.BILL_TO_SITE_ID,  c.BILL_ADDRESS_LINE_1,  c.BILL_ADDRESS_LINE_2,  c.BILL_ADDRESS_LINE_3,  c.BILL_CITY,  c.BILL_STATE,   c.BILL_COUNTRY,  c.BILL_POSTAL_CODE,  c.DELIVER_TO_ORG_ID,  c.DELIVER_ADDRESS_LINE_1,  c.DELIVER_ADDRESS_LINE_2,  c.DELIVER_ADDRESS_LINE_3,   c.DELIVER_CITY,  c.DELIVER_STATE,  c.DELIVER_COUNTRY,  c.DELIVER_POSTAL_CODE,  c.SHIP_TO_SITE_ID,  c.ADDRESS_LINE_1,  c.ADDRESS_LINE_2,  c.ADDRESS_LINE_3,  c.CITY,   c.STATE,  c.COUNTRY,  c.POSTAL_CODE,  c.CONTACT_PHONE1,  c.CONTACT_PHONE2,  c.CONTACT_PERSON_NAME,  c.CONTACT_EMAIL,  c.CONTACT_FAX,  c.SHIP_TO_CONTACT_ID,  c.SHIPPING_METHOD,   c.SPECIAL_INSTRUCTIONS,  c.SHIPPING_INSTRUCTIONS,  c.PACKING_INSTRUCTIONS,  c.TAX_FLAG,  c.REQUESTED_DELIVERY_DATE,  c.DATE_DELIVERED, c.PROCESS_FLAG,  c.PROCESS_MESSAGE, c.OPEN_QTY,c.INVOICE_REFERENCE,c.CREATION_DATE,c.LAST_UPDATE_DATE,c.INVENTORY_FLAG,b.CURRENCY_CODE  FROM xxspwr.XXSPWR_OM_LINE_SYNC c, xxspwr.XXSPWR_OM_HEADER_SYNC b WHERE c.SOA_FLAG ='Y' AND c.HEADER_ID = b.header_id AND b.soa_flag='S' AND c.HEADER_ID IN (WITH VALUE_LIST AS (SELECT ? val FROM dual) SELECT SUBSTR(val, (decode(LEVEL, 1, 0, instr(val, ':', 1, LEVEL -1)) + 1), (decode(instr(val, ':', 1, LEVEL) -1, -1, LENGTH(val), instr(val, ':', 1, LEVEL) -1)) -(decode(LEVEL, 1, 0, instr(val, ':', 1, LEVEL -1)) + 1) + 1) a FROM VALUE_LIST CONNECT BY LEVEL &lt;= (SELECT(LENGTH(val) -LENGTH(REPLACE(val, ':', NULL))) FROM VALUE_LIST) + 1)"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

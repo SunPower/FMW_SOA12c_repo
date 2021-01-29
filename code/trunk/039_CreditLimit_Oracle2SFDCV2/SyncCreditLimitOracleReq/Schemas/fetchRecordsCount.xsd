@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/fetchRecordsCount" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/fetchRecordsCount" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="fetchRecordsCountInput" type="fetchRecordsCountInput"/>
+   <xs:complexType name="fetchRecordsCountInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="fetchRecordsCountOutput" type="fetchRecordsCountOutput"/>
+   <xs:complexType name="fetchRecordsCountOutput">
+      <xs:sequence>
+         <xs:element name="COUNT" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

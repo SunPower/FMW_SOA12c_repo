@@ -1,0 +1,45 @@
+2016-10-07 18:12:50.538/5.287 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/E:/Jdev1221/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2016-10-07 18:12:50.705/5.454 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/E:/Jdev1221/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2016-10-07 18:12:50.707/5.456 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2016-10-07 18:12:50.723/5.472 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2016-10-07 18:12:50.749/5.498 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2016-10-07 18:12:50.753/5.502 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2016-10-07 18:12:53.240/7.989 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2016-10-07 18:12:53.248/7.998 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2016-10-07 18:13:02.777/17.527 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "RD42768's cluster" has been automatically generated
+Oct 07, 2016 6:13:23 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Oct 07, 2016 6:13:29 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Oct 07, 2016 6:13:33 PM com.collaxa.cube.CubeLogger info
+INFO: validating "ACBGetAllPriorApprovalsmergeProv_BPEL.bpel" ...
+Oct 07, 2016 6:13:33 PM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+Oct 07, 2016 6:13:48 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "ACBGetAllPriorApprovalsmergeProv_BPEL" in 227.1 milliseconds [nodes 43=0+43, 189.4 nodes/sec]
+Oct 07, 2016 6:13:52 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "ACBGetAllPriorApprovalsmergeProv_BPEL" in 4.498 seconds
+Oct 07, 2016 6:13:52 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 5 files in 1.6 milliseconds
+Oct 07, 2016 6:13:53 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "ACBGetAllPriorApprovalsmergeProv_BPEL" in 208.9 milliseconds
+Schema validation failed with exception "null"
+oracle.xml.parser.schema.XSDException
+	at oracle.xml.parser.schema.XSDBuilder.buildSchema(XSDBuilder.java:1124)
+	at oracle.xml.parser.schema.XSDBuilder.build(XSDBuilder.java:630)
+	at oracle.soa.scac.ValidationFaultUtil.validateSourceWithSchema(ValidationFaultUtil.java:182)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:241)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:225)
+	at oracle.soa.scac.ValidateComposite.validateFaultPolicy(ValidateComposite.java:1399)
+	at oracle.soa.scac.ValidateComposite.doValidation0(ValidateComposite.java:604)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:577)
+	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:228)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:209)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:201)
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

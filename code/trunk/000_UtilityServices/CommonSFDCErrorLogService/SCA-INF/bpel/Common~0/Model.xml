@@ -1,0 +1,272 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Oct 03 17:36:59 IST 2012
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="CommonSFDCErrorLogService_BPEL" targetNamespace="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns1="http://xmlns.oracle.com/ias/pcbpel/NotificationService" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/CommonSFDCErrorLogService/InsertLoggingDB" xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:ns4="urn:partner.soap.sforce.com" xmlns:ns5="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        CommonSFDCErrorLogService_BPEL.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="commonsfdcerrorlogservice_bpel_client" partnerLinkType="client:CommonSFDCErrorLogService_BPEL" myRole="CommonSFDCErrorLogService_BPELProvider"/>
+    <partnerLink name="NotificationService1" partnerLinkType="ns1:NotificationServiceLink" partnerRole="NotificationServiceProvider"/>
+    <partnerLink name="NotificationService2" partnerLinkType="ns1:NotificationServiceLink" partnerRole="NotificationServiceProvider"/>
+    <partnerLink name="InsertLoggingDB" partnerLinkType="ns2:InsertLoggingDB_plt" partnerRole="InsertLoggingDB_role"/>
+    <partnerLink name="SFDCService" partnerLinkType="ns4:Soap_PL" partnerRole="Soap_Role"/>
+    <partnerLink name="SFDCLogin" partnerLinkType="ns5:SFDCLogin_BPEL" partnerRole="SFDCLogin_BPELProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:CommonSFDCErrorLogService_BPELRequestMessage"/>
+    <variable name="emailNotificationIDs" type="xsd:string"/>
+    <variable name="emailBody" type="xsd:string"/>
+    <variable name="InvInsertLoggingDB_IV" messageType="ns2:MiddlewareErrorLogCollection_msg"/>
+    <variable name="partnerReference" element="ns3:EndpointReference"/>
+    <variable name="InvSFDCLogin_IV" messageType="ns5:SFDCLogin_BPELRequestMessage"/>
+    <variable name="InvSFDCLogin_OV" messageType="ns5:SFDCLogin_BPELResponseMessage"/>
+    <variable name="Header" messageType="ns4:Header"/>
+    <variable name="InvSFDCServiceCreate_IV" messageType="ns4:createRequest"/>
+    <variable name="InvSFDCServiceCreate_OV" messageType="ns4:createResponse"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <terminate name="Terminate" id="BpTer0"/>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq0">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in CommonSFDCErrorLogService_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="commonsfdcerrorlogservice_bpel_client" portType="client:CommonSFDCErrorLogService_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+    <switch name="Switch4" id="BpSwt0">
+      <case condition="bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:SendEmail')='Y'">
+        <sequence id="BpSeq1">
+          <assign name="AsgnEmailBodyErrorContent" id="BpAss0">
+            <copy>
+              <from expression="dvm:lookupValue(&quot;EmailDistributionList.dvm&quot;,&quot;InterfaceNumber&quot;,bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:InterfaceNumber'),&quot;emailDistrubtionList&quot;,&quot;&quot;)"/>
+              <to variable="emailNotificationIDs"/>
+            </copy>
+            <copy>
+              <from expression="concat(&quot;Dear Admin&quot;,string(&quot;&lt;br>&lt;br>The following error occurred For service &lt;b>&quot;), bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:InterfaceName'),string(&quot;&lt;/b> in the BPEL Process Component&lt;b> &quot;),bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:ProcessName'),string(&quot; &lt;/b> with instance Id &lt;b>&quot;),bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:InstanceNumber'),string(&quot;&lt;/b>&lt;br>&lt;br>&lt;b>Fault Details:&lt;/b> &lt;br>Fault Code: &quot;),bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:Fault/client:FaultCode'),string(&quot;&lt;br>Fault Message: &quot;),bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:Fault/client:FaultMessage'),string(&quot;&lt;br>Fault Description: &quot;),bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:Fault/client:FaultDescription'),string(&quot;&lt;br>&lt;br>&lt;b>UniqueIdentifier:&lt;/b> &quot;),string(ora:getNodes('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:UniqueIdentNum/client:UniqueIdentifier/text()')))"/>
+              <to variable="emailBody"/>
+            </copy>
+          </assign>
+          <switch name="Switch1" id="BpSwt1">
+            <case condition="ora:getNodes('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:CorrectiveAction/text()')!=''">
+              <assign name="AsgnEmailBodyCorrectiveActionContent" id="BpAss1">
+                <copy>
+                  <from expression="concat(bpws:getVariableData('emailBody'),string('&lt;br>&lt;br>&lt;b>Corrective Action:&lt;/b>   '),bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:CorrectiveAction'))"/>
+                  <to variable="emailBody"/>
+                </copy>
+              </assign>
+            </case>
+            <otherwise>
+              <assign name="AsgnEmailBodyCorrectiveActionContent" id="BpAss2">
+                <copy>
+                  <from expression="concat(bpws:getVariableData('emailBody'),string('&lt;br>&lt;br>For more details about the issue,please login into &lt;a href=&quot;http://10.0.100.142:7001/em&quot;> SOA EM Console&lt;/a>') )"/>
+                  <to variable="emailBody"/>
+                </copy>
+              </assign>
+            </otherwise>
+          </switch>
+          <assign name="AsgnEmailBodyFooterContent" id="BpAss3">
+            <copy>
+              <from expression="concat(bpws:getVariableData('emailBody'),string('&lt;br>&lt;br>&lt;i>Note: This message was automatically generated, please do not reply to it&lt;/i> &lt;br>&lt;b>Regards&lt;/b>&lt;br>System Admin'))"/>
+              <to variable="emailBody"/>
+            </copy>
+          </assign>
+          <scope name="Email1" id="BpScp0">
+            <bpelx:annotation>
+              <bpelx:pattern patternName="bpelx:email"/>
+              <bpelx:general>
+                <bpelx:property name="userLabel">SendEmailNotification</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <variables>
+              <variable name="varNotificationReq" messageType="ns1:EmailNotificationRequest"/>
+              <variable name="varNotificationResponse" messageType="ns1:ArrayOfResponse"/>
+              <variable name="NotificationServiceFaultVariable" messageType="ns1:NotificationServiceErrorMessage"/>
+            </variables>
+            <sequence name="Sequence1" id="BpSeq2">
+              <assign name="EmailParamsAssign" id="BpAss4">
+                <copy>
+                  <from expression="string('Default')"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:FromAccountName"/>
+                </copy>
+                <copy>
+                  <from expression="string('')"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Bcc"/>
+                </copy>
+                <copy>
+                  <from expression="string('')"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Cc"/>
+                </copy>
+                <copy>
+                  <from expression="string('')"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:ReplyToAddress"/>
+                </copy>
+                <copy>
+                  <from expression="concat(&quot;Exception Raised While Processing&quot;, bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:ProcessName'), &quot;-&quot;, bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:InstanceNumber'))"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Subject"/>
+                </copy>
+                <copy>
+                  <from expression="bpws:getVariableData('emailNotificationIDs')"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:To"/>
+                </copy>
+                <copy>
+                  <from expression="bpws:getVariableData('emailBody')"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Content/ns1:ContentBody"/>
+                </copy>
+                <copy>
+                  <from expression="string('text/html; charset=UTF-8')"/>
+                  <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Content/ns1:MimeType"/>
+                </copy>
+              </assign>
+              <invoke name="InvokeNotificationService" portType="ns1:NotificationService" partnerLink="NotificationService1" inputVariable="varNotificationReq" outputVariable="varNotificationResponse" operation="sendEmailNotification" id="BpInv0"/>
+            </sequence>
+          </scope>
+          <switch name="Switch2" id="BpSwt2">
+            <case condition="bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:bOpenServiceTicket')='Y'">
+              <scope name="Email2" id="BpScp1">
+                <bpelx:annotation>
+                  <bpelx:pattern patternName="bpelx:email"/>
+                  <bpelx:general>
+                    <bpelx:property name="userLabel">GenerateGlobalHelpDeskEmail</bpelx:property>
+                  </bpelx:general>
+                </bpelx:annotation>
+                <variables>
+                  <variable name="varNotificationReq" messageType="ns1:EmailNotificationRequest"/>
+                  <variable name="varNotificationResponse" messageType="ns1:ArrayOfResponse"/>
+                  <variable name="NotificationServiceFaultVariable" messageType="ns1:NotificationServiceErrorMessage"/>
+                </variables>
+                <sequence name="Sequence2" id="BpSeq3">
+                  <assign name="EmailParamsAssign" id="BpAss5">
+                    <copy>
+                      <from expression="string('Default')"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:FromAccountName"/>
+                    </copy>
+                    <copy>
+                      <from expression="string('')"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Bcc"/>
+                    </copy>
+                    <copy>
+                      <from expression="string('')"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Cc"/>
+                    </copy>
+                    <copy>
+                      <from expression="string('')"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:ReplyToAddress"/>
+                    </copy>
+                    <copy>
+                      <from expression="concat(&quot;Exception Raised While Processing&quot;, bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:ProcessName'), &quot;-&quot;, bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:InstanceNumber'))"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Subject"/>
+                    </copy>
+                    <copy>
+                      <from expression="ora:getPreference(&quot;GlobalHelpDeskEmail&quot;)"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:To"/>
+                    </copy>
+                    <copy>
+                      <from expression="bpws:getVariableData('emailBody')"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Content/ns1:ContentBody"/>
+                    </copy>
+                    <copy>
+                      <from expression="string('text/html; charset=UTF-8')"/>
+                      <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Content/ns1:MimeType"/>
+                    </copy>
+                  </assign>
+                  <invoke name="InvokeNotificationService" portType="ns1:NotificationService" partnerLink="NotificationService2" inputVariable="varNotificationReq" outputVariable="varNotificationResponse" operation="sendEmailNotification" id="BpInv1"/>
+                </sequence>
+              </scope>
+            </case>
+          </switch>
+        </sequence>
+      </case>
+    </switch>
+    <assign name="TransformLogParms" id="BpAss6">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransformLoggingParms.xsl', $inputVariable.payload)"/>
+        <to variable="InvInsertLoggingDB_IV" part="MiddlewareErrorLogCollection"/>
+      </copy>
+    </assign>
+    <invoke name="InvInsertLoggingDB" bpelx:invokeAsDetail="no" inputVariable="InvInsertLoggingDB_IV" partnerLink="InsertLoggingDB" portType="ns2:InsertLoggingDB_ptt" operation="insert" id="BpInv2"/>
+    <switch name="Switch3" id="BpSwt3">
+      <case condition="bpws:getVariableData('inputVariable','payload','/client:CommonSFDCErrorLog/client:CommonErrorHandlerInputDetails/client:SFDCErrObj') ='Y'">
+        <sequence id="BpSeq4">
+          <invoke name="InvSFDCLogin" bpelx:invokeAsDetail="no" inputVariable="InvSFDCLogin_IV" outputVariable="InvSFDCLogin_OV" partnerLink="SFDCLogin" portType="ns5:SFDCLogin_BPEL" operation="process" id="BpInv3"/>
+          <assign name="AssignSessionID" id="BpAss7">
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="payload" query="/ns5:SFDCLoginResp/ns5:sessionId"/>
+              <to variable="Header" part="SessionHeader" query="/ns4:SessionHeader/ns4:sessionId"/>
+            </copy>
+          </assign>
+          <assign name="AsgnPartnerReference" id="BpAss8">
+            <copy>
+              <from><EndpointReference xmlns="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+                        <Address/>
+                    </EndpointReference></from>
+              <to variable="partnerReference"/>
+            </copy>
+            <copy>
+              <from variable="InvSFDCLogin_OV" part="payload" query="/ns5:SFDCLoginResp/ns5:serverUrl"/>
+              <to variable="partnerReference" query="/ns3:EndpointReference/ns3:Address"/>
+            </copy>
+            <copy>
+              <from variable="partnerReference"/>
+              <to partnerLink="SFDCService"/>
+            </copy>
+          </assign>
+          <assign name="TransformCreateSFDC" id="BpAss9">
+            <bpelx:annotation>
+              <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+              <from expression="ora:doXSLTransformForDoc('Transformations/TransformCreateSFDC.xsl', $inputVariable.payload)"/>
+              <to variable="InvSFDCServiceCreate_IV" part="parameters"/>
+            </copy>
+          </assign>
+          <invoke name="InvSFDCService" partnerLink="SFDCService" portType="ns4:Soap" operation="create" inputVariable="InvSFDCServiceCreate_IV" outputVariable="InvSFDCServiceCreate_OV" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="Header" id="BpInv4"/>
+        </sequence>
+      </case>
+      <otherwise>
+        <empty name="Continue" id="BpEmp0"/>
+      </otherwise>
+    </switch>
+  </sequence>
+</process>

@@ -1,0 +1,26 @@
+<?binding.jca SelectCreditHoldInfo_db.jca?>
+<wsdl:definitions name="SelectCreditHoldInfo" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/DealerPartnerCreditDetalis/SyncCreditHoldOracleReq/SelectCreditHoldInfo" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCreditHoldInfo" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/DealerPartnerCreditDetalis/SyncCreditHoldOracleReq/SelectCreditHoldInfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectCreditHoldInfo_plt">
+        <plt:role name="SelectCreditHoldInfo_role">
+            <plt:portType name="tns:SelectCreditHoldInfo_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCreditHoldInfo"
+                    schemaLocation="../Schemas/SelectCreditHoldInfo.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectCreditHoldInfoInput_msg">
+        <wsdl:part name="SelectCreditHoldInfoInput_msg" element="db:SelectCreditHoldInfoInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectCreditHoldInfoOutputCollection_msg">
+        <wsdl:part name="SelectCreditHoldInfoOutputCollection" element="db:SelectCreditHoldInfoOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectCreditHoldInfo_ptt">
+        <wsdl:operation name="SelectCreditHoldInfo">
+            <wsdl:input message="tns:SelectCreditHoldInfoInput_msg"/>
+            <wsdl:output message="tns:SelectCreditHoldInfoOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

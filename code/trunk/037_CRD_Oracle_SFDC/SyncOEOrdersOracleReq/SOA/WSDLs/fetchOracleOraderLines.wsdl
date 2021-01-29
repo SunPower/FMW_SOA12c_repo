@@ -1,0 +1,26 @@
+<?binding.jca fetchOracleOraderLines_db.jca?>
+<wsdl:definitions name="fetchOracleOraderLines" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/fetchOracleOraderLines" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/fetchOracleOraderLines" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/fetchOracleOraderLines" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="fetchOracleOraderLines_plt">
+        <plt:role name="fetchOracleOraderLines_role">
+            <plt:portType name="tns:fetchOracleOraderLines_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/fetchOracleOraderLines"
+                    schemaLocation="../Schemas/fetchOracleOraderLines.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="fetchOracleOraderLinesInput_msg">
+        <wsdl:part name="fetchOracleOraderLinesInput_msg" element="db:fetchOracleOraderLinesInput"/>
+    </wsdl:message>
+    <wsdl:message name="fetchOracleOraderLinesOutputCollection_msg">
+        <wsdl:part name="fetchOracleOraderLinesOutputCollection" element="db:fetchOracleOraderLinesOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="fetchOracleOraderLines_ptt">
+        <wsdl:operation name="fetchOracleOraderLines">
+            <wsdl:input message="tns:fetchOracleOraderLinesInput_msg"/>
+            <wsdl:output message="tns:fetchOracleOraderLinesOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

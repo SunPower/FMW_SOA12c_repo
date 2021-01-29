@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ProcessWarrantyFDSToSFDC xmlns="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1">
+   <ApplicationArea xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+      <CreationDateTime>2012-08-13T05:06:54.012</CreationDateTime>
+      <Signature>Signature1</Signature>
+      <BODID>BODID2</BODID>
+      <UserArea/>
+      <Sender/>
+   </ApplicationArea>
+   <DataArea>
+      <process xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">process3</process>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1">
+         <WRFDSToSFDCDetails xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1">
+            <ns2:manufacturer xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">SPWR-JABIL
+                                                                                                             KWI</ns2:manufacturer>
+            <ns2:product_type xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">SPR-225E-BLK-D</ns2:product_type>
+            <ns2:serial_number xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">G44W01141968</ns2:serial_number>
+            <ns2:packing_list_no xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">13105193</ns2:packing_list_no>
+            <ns2:trad_ship_date xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">2011-01-25T00:00:00.000-08:00</ns2:trad_ship_date>
+            <ns2:dealer_name xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">SUN
+                                                                                                            VALLEY
+                                                                                                            SOLAR
+                                                                                                            SOLUTIONS</ns2:dealer_name>
+            <ns2:third_party_logistics_name xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">LSE</ns2:third_party_logistics_name>
+            <ns2:product_group xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">MODULE</ns2:product_group>
+            <ns2:last_updated_stamp xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">2011-03-09T23:43:38.16-08:00</ns2:last_updated_stamp>
+            <ns2:ID xmlns:ns2="http://www.sunpowercorp.com/Common/WarrantyFDSToSFDCCommonTypes/V1">12</ns2:ID>
+         </WRFDSToSFDCDetails>
+      </WRFDS2SFDC>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"/>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"/>
+   </DataArea>
+</ProcessWarrantyFDSToSFDC>

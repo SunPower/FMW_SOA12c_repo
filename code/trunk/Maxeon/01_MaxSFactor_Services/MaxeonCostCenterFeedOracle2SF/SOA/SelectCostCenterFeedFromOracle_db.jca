@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config name="SelectCostCenterFeedFromOracle" adapter="db" wsdlLocation="WSDLs/SelectCostCenterFeedFromOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+   <endpoint-interaction portType="SelectCostCenterFeedFromOracle_ptt" operation="SelectCostCenterFeedFromOracle">
+      <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+         <property name="SqlString" value="select TEXT from (select rownum rn, a.* from apps.XXSPWR_ORACLE_EC_COSTCENTER_V a) where rn >= #minrow and rn &lt;= #maxrow"/>
+         <property name="GetActiveUnitOfWork" value="false"/>
+      </interaction-spec>
+   </endpoint-interaction>
+</adapter-config>

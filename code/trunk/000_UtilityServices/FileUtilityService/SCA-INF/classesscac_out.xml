@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/pick/onMessage/sequence/scope/faultHandlers/catchAll/sequence/assign[2]/copy[14]</loc>
+      <line>276</line>
+      <col/>
+      <file>FileUtilityService_BPEL.bpel</file>
+      <name>FileUtilityService_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}dateTime"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/pick/onMessage[2]/scope/faultHandlers/catchAll/sequence/assign[2]/copy[13]</loc>
+      <line>519</line>
+      <col/>
+      <file>FileUtilityService_BPEL.bpel</file>
+      <name>FileUtilityService_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}dateTime"</msg>
+   </Fault>
+</Faults>

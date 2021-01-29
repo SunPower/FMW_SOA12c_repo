@@ -1,0 +1,22 @@
+Dec 13, 2012 6:56:43 PM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Dec 13, 2012 6:56:51 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Dec 13, 2012 6:56:55 PM com.collaxa.cube.CubeLogger info
+INFO: validating "WarrantyFDSToSFDCProv_BPEL.bpel" ...
+Dec 13, 2012 6:56:55 PM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+Dec 13, 2012 6:56:55 PM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSequenceBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchAllBlock
+Dec 13, 2012 6:57:03 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "WarrantyFDSToSFDCProv_BPEL" in 78.9 milliseconds [nodes 21=0+21, 266.2 nodes/sec]
+Dec 13, 2012 6:57:05 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "WarrantyFDSToSFDCProv_BPEL" in 1.669 seconds
+Dec 13, 2012 6:57:05 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0.9 milliseconds
+
+Dec 13, 2012 6:57:05 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "WarrantyFDSToSFDCProv_BPEL" in 28.7 milliseconds
+

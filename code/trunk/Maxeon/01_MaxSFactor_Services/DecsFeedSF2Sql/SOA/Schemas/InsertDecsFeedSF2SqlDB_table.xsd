@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertDecsFeedSF2SqlDB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertDecsFeedSF2SqlDB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="EmployeesCollection" type="EmployeesCollection"/>
+   <xs:complexType name="EmployeesCollection">
+      <xs:sequence>
+         <xs:element name="Employees" type="Employees" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Employees">
+      <xs:sequence>
+         <xs:element name="empnum" type="string10"/>
+         <xs:element name="empname" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="lastname" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="firstname" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="gender" type="string1" minOccurs="0" nillable="true"/>
+         <xs:element name="middlename" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="deptcode" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="deptname" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="shiftcode" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="oldShiftcode" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="shiftReason" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="effectivityDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="emptype" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="empclass" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="paygrade" type="xs:int" minOccurs="0" nillable="true"/>
+         <xs:element name="amt" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="jobcode" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="jobTitle" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="businessTitle" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="employeeClass" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="companyCode" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="appvr1" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="appvr2" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="appvr3" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="location" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="createdby" type="string10" minOccurs="0"/>
+         <xs:element name="createdon" type="xs:dateTime" minOccurs="0"/>
+         <xs:element name="changedby" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="changedon" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="empid" type="xs:integer" minOccurs="0"/>
+         <xs:element name="payroll" type="string10" minOccurs="0" nillable="true"/>
+         <xs:element name="exemptApprv" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="soaUpdate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string10">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="10"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string100">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="100"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string50">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="50"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string1">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="1"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

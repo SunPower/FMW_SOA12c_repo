@@ -1,0 +1,35 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="JobConnectorSFDCtoLMS"
+     targetNamespace="http://www.sunpowercorp.com/LMS/JobConnectorSFDCtoLMS/JobConnectorSFDCtoLMS"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="urn:partner.soap.sforce.com"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/LMS/JobConnectorSFDCtoLMS/JobConnectorSFDCtoLMS"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="JobConnectorSFDCtoLMS">
+        <plnk:role name="JobConnectorSFDCtoLMSProvider">
+            <plnk:portType name="client:JobConnectorSFDCtoLMS"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/LMS/JobConnectorSFDCtoLMS/JobConnectorSFDCtoLMS"
+                 schemaLocation="../Schemas/JobConnectorSFDCtoLMS.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="JobConnectorSFDCtoLMSRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="JobConnectorSFDCtoLMS">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:JobConnectorSFDCtoLMSRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

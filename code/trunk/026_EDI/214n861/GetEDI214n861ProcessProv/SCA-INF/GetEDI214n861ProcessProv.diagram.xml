@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="getedi214n861processprov_bpel_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="215" width="137" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="208" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="getedi214n861processprov_bpel_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/EDICom/GetEDI214n861ProcessProv/GetEDI214n861ProcessProv_BPEL#wsdl.interface(GetEDI214n861ProcessProv_BPEL)" callbackInterface="http://xmlns.oracle.com/EDICom/GetEDI214n861ProcessProv/GetEDI214n861ProcessProv_BPEL#wsdl.interface(GetEDI214n861ProcessProv_BPELCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+            <dgm:item>processResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="EBIBrokerWebServiceV2">
+        <dgm:body borderWidth="2" arcRad="20" X="722" Y="26" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="712" Y="19" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="EBIBrokerWebServiceV2" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://com.edicom.broker.adapter.services#wsdl.interface(EBIBrokerWebServiceV2)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>messageReference</dgm:item>
+            <dgm:item>updateTimeStamp</dgm:item>
+            <dgm:item>beginTrans</dgm:item>
+            <dgm:item>notifiedPublication</dgm:item>
+            <dgm:item>getMessage</dgm:item>
+            <dgm:item>remoteSQL</dgm:item>
+            <dgm:item>release</dgm:item>
+            <dgm:item>processExecuted</dgm:item>
+            <dgm:item>confirmSubscriptionWS</dgm:item>
+            <dgm:item>updateAcquireApplication</dgm:item>
+            <dgm:item>getRepositoryItem</dgm:item>
+            <dgm:item>executeTemplate</dgm:item>
+            <dgm:item>confirmSubscriptionEx</dgm:item>
+            <dgm:item>confirmedPublications</dgm:item>
+            <dgm:item>publish</dgm:item>
+            <dgm:item>subscription</dgm:item>
+            <dgm:item>fileFound</dgm:item>
+            <dgm:item>rejectedPublications</dgm:item>
+            <dgm:item>transformAndPublishWS</dgm:item>
+            <dgm:item>registerSession</dgm:item>
+            <dgm:item>releaseApplication</dgm:item>
+            <dgm:item>subscriptionsPending</dgm:item>
+            <dgm:item>isAlive</dgm:item>
+            <dgm:item>endSession</dgm:item>
+            <dgm:item>messageByReference</dgm:item>
+            <dgm:item>getScript</dgm:item>
+            <dgm:item>setDocumentProperty</dgm:item>
+            <dgm:item>notifiedRejectedPublication</dgm:item>
+            <dgm:item>executeScript</dgm:item>
+            <dgm:item>acquireApplication</dgm:item>
+            <dgm:item>subscriptionsList</dgm:item>
+            <dgm:item>schemaFiles</dgm:item>
+            <dgm:item>confirmSubscription</dgm:item>
+            <dgm:item>transformAndPublish</dgm:item>
+            <dgm:item>publishWS</dgm:item>
+            <dgm:item>transformation</dgm:item>
+            <dgm:item>rejectSubscription</dgm:item>
+            <dgm:item>subsAndTransform</dgm:item>
+            <dgm:item>getConfigApplication</dgm:item>
+            <dgm:item>commitTrans</dgm:item>
+            <dgm:item>getSchema</dgm:item>
+            <dgm:item>remoteAdpterSQLResult</dgm:item>
+            <dgm:item>applicationList</dgm:item>
+            <dgm:item>activeProcess</dgm:item>
+            <dgm:item>processShouldExecuted</dgm:item>
+            <dgm:item>getBrokerSources</dgm:item>
+            <dgm:item>documentList</dgm:item>
+            <dgm:item>documentDeleteOld</dgm:item>
+            <dgm:item>subscriptionWS</dgm:item>
+            <dgm:item>updateTimeStampTimeOut</dgm:item>
+            <dgm:item>rollbackTrans</dgm:item>
+            <dgm:item>acquire</dgm:item>
+            <dgm:item>setDocumentState</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="CommonSFDCErrorLogService">
+        <dgm:body borderWidth="2" arcRad="20" X="722" Y="346" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="712" Y="339" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonSFDCErrorLogService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="writeEDIFilesToLocal">
+        <dgm:body borderWidth="2" arcRad="20" X="722" Y="228" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="712" Y="221" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="writeEDIFilesToLocal" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/GetEDI214n861ProcessProv/writeEDIFilesToLocal#wsdl.interface(Write_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/file_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Write</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="GetEDI214n861ProcessProv_BPEL">
+        <dgm:body borderWidth="2" arcRad="20" X="375" Y="200" width="130" height="111">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="365" Y="193" width="150" height="127">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="getedi214n861processprov_bpel_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/EDICom/GetEDI214n861ProcessProv/GetEDI214n861ProcessProv_BPEL#wsdl.interface(GetEDI214n861ProcessProv_BPEL)" callbackInterface="http://xmlns.oracle.com/EDICom/GetEDI214n861ProcessProv/GetEDI214n861ProcessProv_BPEL#wsdl.interface(GetEDI214n861ProcessProv_BPELCallback)"/>
+        <dgm:outputPort name="EBIBrokerWebServiceV2" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://com.edicom.broker.adapter.services#wsdl.interface(EBIBrokerWebServiceV2)"/>
+        <dgm:outputPort name="writeEDIFilesToLocal" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/GetEDI214n861ProcessProv/writeEDIFilesToLocal#wsdl.interface(Write_ptt)"/>
+        <dgm:outputPort name="CommonSFDCErrorLogService" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="getedi214n861processprov_bpel_client_ep" target="GetEDI214n861ProcessProv_BPEL/getedi214n861processprov_bpel_client" width="2">
+        <dgm:gSegment X1="168" Y1="225" X2="365" Y2="225"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="GetEDI214n861ProcessProv_BPEL/CommonSFDCErrorLogService" target="CommonSFDCErrorLogService" width="2">
+        <dgm:gSegment X1="515" Y1="275" X2="539" Y2="275"/>
+        <dgm:gSegment X1="539" Y1="275" X2="539" Y2="356"/>
+        <dgm:gSegment X1="539" Y1="356" X2="712" Y2="356"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="GetEDI214n861ProcessProv_BPEL/writeEDIFilesToLocal" target="writeEDIFilesToLocal" width="2">
+        <dgm:gSegment X1="515" Y1="250" X2="554" Y2="250"/>
+        <dgm:gSegment X1="554" Y1="250" X2="554" Y2="238"/>
+        <dgm:gSegment X1="554" Y1="238" X2="712" Y2="238"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="GetEDI214n861ProcessProv_BPEL/EBIBrokerWebServiceV2" target="EBIBrokerWebServiceV2" width="2">
+        <dgm:gSegment X1="515" Y1="225" X2="539" Y2="225"/>
+        <dgm:gSegment X1="539" Y1="225" X2="539" Y2="36"/>
+        <dgm:gSegment X1="539" Y1="36" X2="712" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

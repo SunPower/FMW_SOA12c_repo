@@ -1,0 +1,25 @@
+<?binding.jca InsertSFDCLoginDB_db.jca?>
+<wsdl:definitions name="InsertSFDCLoginDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/SFDCLogin/InsertSFDCLoginDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/SFDCLogin/InsertSFDCLoginDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB">
+    <plt:partnerLinkType name="InsertSFDCLoginDB_plt">
+        <plt:role name="InsertSFDCLoginDB_role">
+            <plt:portType name="tns:InsertSFDCLoginDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB"
+                    schemaLocation="../Schemas/InsertSFDCLoginDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SfdcLoginDetailsCollection_msg">
+        <wsdl:part name="SfdcLoginDetailsCollection" element="top:SfdcLoginDetailsCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="InsertSFDCLoginDB_ptt">
+        <wsdl:operation name="merge">
+            <wsdl:input message="tns:SfdcLoginDetailsCollection_msg"/>
+        </wsdl:operation>
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:SfdcLoginDetailsCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

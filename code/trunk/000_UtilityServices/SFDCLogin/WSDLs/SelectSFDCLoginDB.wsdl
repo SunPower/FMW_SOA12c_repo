@@ -1,0 +1,26 @@
+<?binding.jca SelectSFDCLoginDB_db.jca?>
+<wsdl:definitions name="SelectSFDCLoginDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/SFDCLogin/SelectSFDCLoginDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/SFDCLogin/SelectSFDCLoginDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectSFDCLoginDB">
+    <plt:partnerLinkType name="SelectSFDCLoginDB_plt">
+        <plt:role name="SelectSFDCLoginDB_role">
+            <plt:portType name="tns:SelectSFDCLoginDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectSFDCLoginDB"
+                    schemaLocation="../Schemas/SelectSFDCLoginDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectSFDCLoginDBSelect_inputParameters">
+        <wsdl:part name="SelectSFDCLoginDBSelect_inputParameters" element="top:SelectSFDCLoginDBSelectInputParameters"/>
+    </wsdl:message>
+    <wsdl:message name="SfdcLoginDetailsCollection_msg">
+        <wsdl:part name="SfdcLoginDetailsCollection" element="top:SfdcLoginDetailsCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectSFDCLoginDB_ptt">
+        <wsdl:operation name="SelectSFDCLoginDBSelect">
+            <wsdl:input message="tns:SelectSFDCLoginDBSelect_inputParameters"/>
+            <wsdl:output message="tns:SfdcLoginDetailsCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

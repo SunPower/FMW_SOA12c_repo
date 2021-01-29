@@ -1,0 +1,57 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<!--
+    Name: ProcessSyncAccCustomers.xsd
+    Change history
+
+    Author      date        purpose
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/BOD/ProcessSyncAccCustomers/V1"
+            targetNamespace="http://www.sunpowercorp.com/BOD/ProcessSyncAccCustomers/V1"
+            xmlns:ac="http://www.sunpowercorp.com/Noun/SyncAccCustomers/V1"
+            xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/SyncAccCustomers/V1"
+                schemaLocation="SyncAccCustomers.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1"
+                schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessSyncAccCustomers" type="ProcessSyncAccCustomersType"/>
+    <xsd:complexType name="ProcessSyncAccCustomersType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea"
+                                 type="SyncAccCustomersDataAreaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SyncAccCustomersDataAreaType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="v:callService"/>
+            <xsd:element ref="ac:SyncAccCustomers" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+     <xsd:element name="ProcessSyncAccCustomersResp" type="ProcessSyncAccCustomersRespType"/>
+    <xsd:complexType name="ProcessSyncAccCustomersRespType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea"
+                                 type="SyncAccCustomersDataAreaRespType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SyncAccCustomersDataAreaRespType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="v:callService"/>
+            <xsd:element ref="ac:SyncAccCustomersResp" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+

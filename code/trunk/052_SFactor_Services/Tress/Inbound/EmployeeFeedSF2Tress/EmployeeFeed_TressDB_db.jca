@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="EmployeeFeed_TressDB" adapter="db" wsdlLocation="WSDLs/EmployeeFeed_TressDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/TRESSConn" UIConnectionName="Tress_Prueba_DEV" adapterRef=""/>
+  <endpoint-interaction portType="EmployeeFeed_TressDB_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="EmployeeFeed_TressDB.Hire"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="EmployeeFeed_TressDB-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

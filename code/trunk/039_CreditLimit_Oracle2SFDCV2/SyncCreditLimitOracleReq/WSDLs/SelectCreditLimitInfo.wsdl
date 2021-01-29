@@ -1,0 +1,26 @@
+<?binding.jca SelectCreditLimitInfo_db.jca?>
+<wsdl:definitions name="SelectCreditLimitInfo" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/DealerPartnerCreditDetalis/SyncCreditLimitOracleReq/SelectCreditLimitInfo" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCreditLimitInfo" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/DealerPartnerCreditDetalis/SyncCreditLimitOracleReq/SelectCreditLimitInfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectCreditLimitInfo_plt">
+        <plt:role name="SelectCreditLimitInfo_role">
+            <plt:portType name="tns:SelectCreditLimitInfo_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectCreditLimitInfo"
+                    schemaLocation="../Schemas/SelectCreditLimitInfo.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectCreditLimitInfoInput_msg">
+        <wsdl:part name="SelectCreditLimitInfoInput_msg" element="db:SelectCreditLimitInfoInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectCreditLimitInfoOutputCollection_msg">
+        <wsdl:part name="SelectCreditLimitInfoOutputCollection" element="db:SelectCreditLimitInfoOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectCreditLimitInfo_ptt">
+        <wsdl:operation name="SelectCreditLimitInfo">
+            <wsdl:input message="tns:SelectCreditLimitInfoInput_msg"/>
+            <wsdl:output message="tns:SelectCreditLimitInfoOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

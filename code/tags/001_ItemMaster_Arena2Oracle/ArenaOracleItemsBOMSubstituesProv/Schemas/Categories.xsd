@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/Categories/V1"
+            targetNamespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/Categories/V1"
+            elementFormDefault="qualified">
+  <xsd:element name="Categories">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+      <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Category" type="CategoryType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        </xsd:complexType>     
+  </xsd:element>
+  
+  <xsd:complexType name="CategoryType">
+      <xsd:sequence>
+        <xsd:element name="Category_SetName" type="xsd:string"/>
+        <xsd:element name="Category_Name" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

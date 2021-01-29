@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="DeleteToDSRSOLinesEBS" adapter="db" wsdlLocation="DeleteToDSRSOLinesEBS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="DeleteToDSRSOLinesEBS_ptt" operation="DeleteToDSRSOLinesEBS">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="delete from XXSPWR.XXSPWR_DSR_SO_LINES where SFDC_ID=#OrderId"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+  </endpoint-interaction>
+
+</adapter-config>

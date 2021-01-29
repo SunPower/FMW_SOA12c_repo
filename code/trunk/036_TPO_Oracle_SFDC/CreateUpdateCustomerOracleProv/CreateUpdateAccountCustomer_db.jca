@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="CreateUpdateAccountCustomer" adapter="db" wsdlLocation="WSDLs/CreateUpdateAccountCustomer.wsdl"
+                xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="CreateUpdateAccountCustomer_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="CreateUpdateAccountCustomer.XxspwrSforaCustomers"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="CreateUpdateAccountCustomer-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

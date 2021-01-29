@@ -1,0 +1,16 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Common/OnlineOrderingNoItemOracleToSFDCCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://www.sunpowercorp.com/Common/OnlineOrderingNoItemOracleToSFDCCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cdt="http://www.sunpowercorp.com/Common/CommonDataTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/CommonDataTypes/V1" schemaLocation="../../../../Common/V1/CommonDataTypes.xsd"/>
+    <xsd:element name="ACCOUNT_NAME" type="cdt:String1000"/>
+    <xsd:element name="ACCOUNT_NUMBER" type="cdt:String1000"/>
+    <xsd:element name="CUST_ACCT_SITE_ID" type="cdt:String1000"/>
+    <xsd:element name="ADDRESS1" type="cdt:String1000"/>
+    <xsd:element name="ADDRESS2" type="cdt:String1000"/>
+    <xsd:element name="ADDRESS3" type="cdt:String1000"/>
+    <xsd:element name="ADDRESS4" type="cdt:String1000"/>
+    <xsd:element name="CITY" type="cdt:Int15"/>
+    <xsd:element name="POSTAL_CODE" type="cdt:String1000"/>
+    <xsd:element name="STATE" type="cdt:String1000"/>
+    <xsd:element name="COUNTRY" type="cdt:String1000"/>
+    <xsd:element name="PRIMARY_FLAG" type="cdt:String1000"/>
+<xsd:element name="OU_SHORT_CODE" type="cdt:String1000"/>
+</xsd:schema>

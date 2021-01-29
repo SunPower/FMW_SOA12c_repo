@@ -1,0 +1,767 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Feb 07 18:21:49 IST 2013
+  Author:  kj38273
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="SyncOEHeadersOracleProv_BPEL" targetNamespace="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersOracleProv/SyncOEHeadersOracleProv_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://www.sunpowercorp.com/CRDSFDCToOracle/SyncOEHeadersOracleProv/SyncOEHeadersOracleProv_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/CRDSFDCToOracle/SyncOEHeadersOracleProv/UpdateEBS" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns2="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns3="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns4="http://xmlns.oracle.com/SOAUtilityServices/FusionLastRunUtilityService/FusionLastRunUtilityService" xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/FusionLastRunUtilityService/xsd/v1" xmlns:ns6="http://www.sunpowercorp.com/BOD/ProcessSyncOEOrders/V1" xmlns:ns7="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" xmlns:ns8="http://www.sunpowercorp.com/Noun/SyncOEOrders/V1" xmlns:ns9="http://www.sunpowercorp.com/Common/SyncOEOrdersCommonTypes/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEHeadersOracleProv/selectRecFromErrorLogTab" xmlns:ns11="http://xmlns.oracle.com/pcbpel/adapter/db/selectRecFromErrorLogTab" xmlns:ns12="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1" xmlns:ns13="http://xmlns.oracle.com/ias/pcbpel/NotificationService" xmlns:ns14="http://www.sunpowercorp.com/CRD/SyncOEHeadersOracleProv/xsd/V1" xmlns:ns15="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEHeadersOracleProv/InsertCRD_Audit_LOG" xmlns:ns16="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertCRD_Audit_LOG" id="BpPrc0">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                SyncOEHeadersOracleProv_BPEL.wsdl
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="syncoeheadersoracleprov_bpel_client" partnerLinkType="client:SyncOEHeadersOracleProv_BPEL" myRole="SyncOEHeadersOracleProv_BPELProvider" partnerRole="SyncOEHeadersOracleProv_BPELRequester"/>
+        <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns2:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+        <partnerLink name="FusionLastRunUtilityService" partnerLinkType="ns4:FusionLastRunUtilityService" partnerRole="FusionLastRunUtilityServiceProvider"/>
+        <partnerLink name="UpdateEBS" partnerLinkType="ns1:UpdateEBS_plt" partnerRole="UpdateEBS_role"/>
+        <partnerLink name="selectRecFromErrorLogTab" partnerLinkType="ns10:selectRecFromErrorLogTab_plt" partnerRole="selectRecFromErrorLogTab_role"/>
+        <partnerLink name="NotificationService1" partnerLinkType="ns13:NotificationServiceLink" partnerRole="NotificationServiceProvider"/>
+        <partnerLink name="InsertCRD_Audit_LOG" partnerLinkType="ns15:InsertCRD_Audit_LOG_plt" partnerRole="InsertCRD_Audit_LOG_role"/>
+    </partnerLinks>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:SyncOEHeadersOracleProv_BPELRequestMessage"/>
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable" messageType="client:SyncOEHeadersOracleProv_BPELResponseMessage"/>
+        <variable name="InvUpdateEBSmerge_IV" messageType="ns1:XxspwrOmHeaderSyncCollection_msg"/>
+        <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns2:requestMessage"/>
+        <variable name="InvFusionLastRunUtilityService_IV" messageType="ns4:FusionLastRunUtilityServiceRequestMessage"/>
+        <variable name="InvFusionLastRunUtilityService_OV" messageType="ns4:FusionLastRunUtilityServiceResponseMessage"/>
+        <variable name="title" type="xsd:string"/>
+        <variable name="i" type="xsd:int"/>
+        <variable name="noOfRecords" type="xsd:int"/>
+        <variable messageType="bpelx:RuntimeFaultMessage" name="FaultVar"/>
+        <variable name="faultOccured" type="xsd:boolean"/>
+        <variable name="InvSelectRecFromErrorLogTab_IV" messageType="ns10:selectRecFromErrorLogTabInput_msg"/>
+        <variable name="InvSelectRecFromErrorLogTab_OV" messageType="ns10:selectRecFromErrorLogTabOutputCollection_msg"/>
+        <variable name="EmailContent" element="ns12:EmailContent"/>
+        <variable name="inputParams" element="ns14:inputParams"/>
+        <variable name="InvInsertCRD_Audit_LOG_Input" messageType="ns15:CrdAuditLogCollection_msg"/>
+    </variables>
+    <faultHandlers id="BpFhs0">
+        <catchAll id="BpCAl0">
+            <sequence name="SeqCatchAll" id="BpSeq0">
+                <assign name="AsgnCommonSFDCErrorLogService" id="BpAss0">
+                    <copy>
+                        <from expression="ora:getCompositeInstanceId()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InstanceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;InterfaceNumber&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InterfaceNumber"/>
+                    </copy>
+                    <copy>
+                        <from expression="&quot;SyncOEOrdersSFDCToOracle&quot;"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InterfaceName"/>
+                    </copy>
+                    <copy>
+                        <from expression="&quot;SyncOEHeadersOracleProv&quot;"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:ProcessName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Severity"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultName()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultDescription"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getFaultAsString()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultMessage"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultTime"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:FaultSystemName"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:bOpenServiceTicket"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:CorrectiveAction"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:SendEmail"/>
+                    </copy>
+                    <copy>
+                        <from expression="'E'"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:status"/>
+                    </copy>
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:createddatetime"/>
+                    </copy>
+                </assign>
+                <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns2:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+                <terminate name="Terminate" id="BpTer0"/>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main" id="BpSeq1">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in SyncOEHeadersOracleProv_BPEL.wsdl) -->
+        <receive name="receiveInput" partnerLink="syncoeheadersoracleprov_bpel_client" portType="client:SyncOEHeadersOracleProv_BPEL" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+        <assign name="SetTile" id="BpAss1">
+            <copy>
+                <from expression="oraext:setFlowInstanceTitle(&quot;SyncOEHeadersOracleProv&quot;)"/>
+                <to variable="title"/>
+            </copy>
+        </assign>
+        <assign name="intialiseDefaultValues" id="BpAss2">
+            <copy>
+                <from expression="1"/>
+                <to variable="i"/>
+            </copy>
+            <copy>
+                <from expression="false()"/>
+                <to variable="faultOccured"/>
+            </copy>
+            <copy>
+                <from expression="ora:countNodes('inputVariable','payload','/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails')"/>
+                <to variable="noOfRecords"/>
+            </copy>
+        </assign>
+        <while name="WhileForAllRecords" condition="$i &lt;= $noOfRecords" id="BpWhl0">
+            <sequence name="SeqProcessOrdersToOracle" id="BpSeq2">
+                <scope name="ScopeProcessOrdersToOracle" variableAccessSerializable="no" id="BpScp0">
+                    <faultHandlers id="BpFhs1">
+                        <catch faultName="bpelx:remoteFault" faultVariable="FaultVar" id="BpCFt0">
+                            <sequence name="SeqRemoteFault" id="BpSeq3">
+                                <assign name="AsgnCommonSFDCErrorLogService" id="BpAss3">
+                                    <copy>
+                                        <from expression="ora:getCompositeInstanceId()"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InstanceNumber"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getCompositeInstanceId()"/>
+                                        <to variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns7:ApplicationArea/ns7:BODID"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;BusinessInterfaceNumber&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InterfaceNumber"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SyncOEOrdersSFDCToOracle&quot;"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InterfaceName"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SyncOEHeadersOracleProv&quot;"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:ProcessName"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Severity"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="xp20:current-dateTime()"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultTime"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="FaultVar" part="summary"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultDescription"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultCode"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="FaultVar" part="detail"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultMessage"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:FaultSystemName"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:bOpenServiceTicket"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:CorrectiveAction"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;SendEmailInLoop&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:SendEmail"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="'E'"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:status"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="xp20:current-dateTime()"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:createddatetime"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="concat(ora:getNodes('inputVariable','payload','/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:ORDER_NUMBER'),'#',ora:getNodes('inputVariable','payload','/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:LastModifiedDate'))"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:UniqueIdentNum/ns3:UniqueIdentifier"/>
+                                    </copy>
+                                </assign>
+                                <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns2:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv1"/>
+                                <assign name="asgnInputParams" id="BpAss4">
+                                    <copy>
+                                        <from expression="ora:getCompositeInstanceId()"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Instance_ID"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:PSR_EMAIL"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:To"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="FaultVar" part="detail"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Fault_Message"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:PARTNER_NAME"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:PARTNER_NAME"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:PSR_NAME"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:PSR_NAME"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:LastModifiedDate"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:LastModifiedDate"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SyncOEHeadersOracleProv&quot;"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Process_Name"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:ORDER_NUMBER"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:ORDER_NUMBER"/>
+                                    </copy>
+                                </assign>
+                                <assign name="xfromEmailContent" id="BpAss5">
+                                    <bpelx:annotation>
+                                        <bpelx:pattern>transformation</bpelx:pattern>
+                                    </bpelx:annotation>
+                                    <copy>
+                                        <from expression="ora:doXSLTransformForDoc('Transformations/xfromEmailContent.xsl', $inputParams)"/>
+                                        <to variable="EmailContent"/>
+                                    </copy>
+                                </assign>
+                                <scope name="Email1" id="BpScp1">
+                                    <bpelx:annotation>
+                                        <bpelx:pattern patternName="bpelx:email"/>
+                                        <bpelx:general>
+                                            <bpelx:property name="userLabel">sendEmail</bpelx:property>
+                                        </bpelx:general>
+                                    </bpelx:annotation>
+                                    <variables>
+                                        <variable name="varNotificationReq" messageType="ns13:EmailNotificationRequest"/>
+                                        <variable name="varNotificationResponse" messageType="ns13:ArrayOfResponse"/>
+                                        <variable name="NotificationServiceFaultVariable" messageType="ns13:NotificationServiceErrorMessage"/>
+                                    </variables>
+                                    <sequence name="SeqEmail" id="BpSeq4">
+                                        <assign name="EmailParamsAssign" id="BpAss6">
+                                            <copy>
+                                                <from expression="string('Default')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:FromAccountName"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="string('')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Bcc"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="dvm:lookupValue(&quot;oramds:/deployed-composites/default/CommonSFDCErrorLogService_rev1.0/EmailDistributionList.dvm&quot;,&quot;InterfaceNumber&quot;,ora:getPreference(&quot;BusinessInterfaceNumber&quot;),&quot;emailDistrubtionList&quot;,&quot;&quot;)"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Cc"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="string('')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:ReplyToAddress"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="bpws:getVariableData('EmailContent','/ns12:EmailContent/ns12:Subject')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Subject"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="bpws:getVariableData('EmailContent','/ns12:EmailContent/ns12:To')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:To"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="bpws:getVariableData('EmailContent','/ns12:EmailContent/ns12:body')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Content/ns13:ContentBody"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="string('text/html; charset=UTF-8')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Content/ns13:MimeType"/>
+                                            </copy>
+                                        </assign>
+                                        <invoke name="InvokeNotificationService" portType="ns13:NotificationService" partnerLink="NotificationService1" inputVariable="varNotificationReq" outputVariable="varNotificationResponse" operation="sendEmailNotification" id="BpInv2"/>
+                                    </sequence>
+                                </scope>
+                                 <assign name="asgnInvInsertCRD_Audit_LOG" id="BpAss7">
+                                    <copy>
+                                        <from expression="ora:getCompositeInstanceId()"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:instanceId"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Fault_Message"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:message"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;ERROR&quot;"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:status"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="xp20:current-dateTime()"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:creationDate"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SFDC&quot;"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:source"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:HEADER_ID"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:headerId"/>
+                                    </copy>
+                                </assign>
+                        <invoke name="InvInsertCRD_Audit_LOG" inputVariable="InvInsertCRD_Audit_LOG_Input" partnerLink="InsertCRD_Audit_LOG" portType="ns15:InsertCRD_Audit_LOG_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv3"/>
+                                <assign name="incrementIvalue" id="BpAss8">
+                                    <copy>
+                                        <from expression="$i +1"/>
+                                        <to variable="i"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="true()"/>
+                                        <to variable="faultOccured"/>
+                                    </copy>
+                                </assign>
+                            </sequence>
+                        </catch>
+                        <catch faultName="bpelx:bindingFault" faultVariable="FaultVar" id="BpCFt1">
+                            <sequence name="SeqBindingFault" id="BpSeq5">
+                                <assign name="AsgnCommonSFDCErrorLogService" id="BpAss9">
+                                    <copy>
+                                        <from expression="ora:getCompositeInstanceId()"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InstanceNumber"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;BusinessInterfaceNumber&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InterfaceNumber"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SyncOEOrdersSFDCToOracle&quot;"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InterfaceName"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SyncOEHeadersOracleProv&quot;"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:ProcessName"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Severity"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="xp20:current-dateTime()"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultTime"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="FaultVar" part="summary"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultDescription"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultCode"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="FaultVar" part="detail"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:Fault/ns3:FaultMessage"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:FaultSystemName"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:bOpenServiceTicket"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:CorrectiveAction"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="ora:getPreference(&quot;SendEmailInLoop&quot;)"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:SendEmail"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="'E'"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:status"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="xp20:current-dateTime()"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:createddatetime"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="concat(ora:getNodes('inputVariable','payload','/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:ORDER_NUMBER'),'#',ora:getNodes('inputVariable','payload','/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:LastModifiedDate'))"/>
+                                        <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:UniqueIdentNum/ns3:UniqueIdentifier"/>
+                                    </copy>
+                                </assign>
+                                <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns2:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv4"/>
+                             <assign name="asgnInputParams" id="BpAss10">
+                                    <copy>
+                                        <from expression="ora:getCompositeInstanceId()"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Instance_ID"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:PSR_EMAIL"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:To"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="FaultVar" part="detail"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Fault_Message"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:PARTNER_NAME"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:PARTNER_NAME"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:PSR_NAME"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:PSR_NAME"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:LastModifiedDate"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:LastModifiedDate"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SyncOEHeadersOracleProv&quot;"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Process_Name"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:ORDER_NUMBER"/>
+                                        <to variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:ORDER_NUMBER"/>
+                                    </copy>
+                                </assign>
+                                <assign name="xfromEmailContent" id="BpAss11">
+                                    <bpelx:annotation>
+                                        <bpelx:pattern>transformation</bpelx:pattern>
+                                    </bpelx:annotation>
+                                    <copy>
+                                        <from expression="ora:doXSLTransformForDoc('Transformations/xfromEmailContent.xsl', $inputParams)"/>
+                                        <to variable="EmailContent"/>
+                                    </copy>
+                                </assign>
+                                <scope name="Email1" id="BpScp2">
+                                    <bpelx:annotation>
+                                        <bpelx:pattern patternName="bpelx:email"/>
+                                        <bpelx:general>
+                                            <bpelx:property name="userLabel">sendEmail</bpelx:property>
+                                        </bpelx:general>
+                                    </bpelx:annotation>
+                                    <variables>
+                                        <variable name="varNotificationReq" messageType="ns13:EmailNotificationRequest"/>
+                                        <variable name="varNotificationResponse" messageType="ns13:ArrayOfResponse"/>
+                                        <variable name="NotificationServiceFaultVariable" messageType="ns13:NotificationServiceErrorMessage"/>
+                                    </variables>
+                                    <sequence name="SeqEmail" id="BpSeq6">
+                                        <assign name="EmailParamsAssign" id="BpAss12">
+                                            <copy>
+                                                <from expression="string('Default')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:FromAccountName"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="string('')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Bcc"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="dvm:lookupValue(&quot;oramds:/deployed-composites/default/CommonSFDCErrorLogService_rev1.0/EmailDistributionList.dvm&quot;,&quot;InterfaceNumber&quot;,ora:getPreference(&quot;BusinessInterfaceNumber&quot;),&quot;emailDistrubtionList&quot;,&quot;&quot;)"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Cc"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="string('')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:ReplyToAddress"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="bpws:getVariableData('EmailContent','/ns12:EmailContent/ns12:Subject')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Subject"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="bpws:getVariableData('EmailContent','/ns12:EmailContent/ns12:To')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:To"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="bpws:getVariableData('EmailContent','/ns12:EmailContent/ns12:body')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Content/ns13:ContentBody"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="string('text/html; charset=UTF-8')"/>
+                                                <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns13:Content/ns13:MimeType"/>
+                                            </copy>
+                                        </assign>
+                                        <invoke name="InvokeNotificationService" portType="ns13:NotificationService" partnerLink="NotificationService1" inputVariable="varNotificationReq" outputVariable="varNotificationResponse" operation="sendEmailNotification" id="BpInv5"/>
+                                     
+                                    </sequence>
+                                </scope>
+                                <assign name="asgnInvInsertCRD_Audit_LOG" id="BpAss13">
+                                    <copy>
+                                        <from expression="ora:getCompositeInstanceId()"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:instanceId"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputParams" query="/ns14:inputParams/ns14:params/ns14:Fault_Message"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:message"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;ERROR&quot;"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:status"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="xp20:current-dateTime()"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:creationDate"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="&quot;SFDC&quot;"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:source"/>
+                                    </copy>
+                                    <copy>
+                                        <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:HEADER_ID"/>
+                                        <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:headerId"/>
+                                    </copy>
+                                </assign>
+                        <invoke name="InvInsertCRD_Audit_LOG" inputVariable="InvInsertCRD_Audit_LOG_Input" partnerLink="InsertCRD_Audit_LOG" portType="ns15:InsertCRD_Audit_LOG_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv6"/>
+                                <assign name="incrementIvalue" id="BpAss14">
+                                    <copy>
+                                        <from expression="$i +1"/>
+                                        <to variable="i"/>
+                                    </copy>
+                                    <copy>
+                                        <from expression="true()"/>
+                                        <to variable="faultOccured"/>
+                                    </copy>
+                                </assign>
+                            </sequence>
+                        </catch>
+                    </faultHandlers>
+                    <sequence id="BpSeq7">
+                        <assign name="Asgn_iValueToInput" id="BpAss15">
+                            <copy>
+                                <from variable="i"/>
+                                <to variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns7:process"/>
+                            </copy>
+                        </assign>
+                        <assign name="TrnsMergeEBS" id="BpAss16">
+                            <bpelx:annotation>
+                                <bpelx:pattern>transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy>
+                                <from expression="ora:doXSLTransformForDoc('Transformations/TransSFDCToEBS.xsl', $inputVariable.payload)"/>
+                                <to variable="InvUpdateEBSmerge_IV" part="XxspwrOmHeaderSyncCollection"/>
+                            </copy>
+                        </assign>
+                        <invoke name="InvMergeEBS" inputVariable="InvUpdateEBSmerge_IV" partnerLink="UpdateEBS" portType="ns1:UpdateEBS_ptt" operation="merge" bpelx:invokeAsDetail="no" id="BpInv7"/>
+                        <assign name="asgnInvInsertCRD_Audit_LOG" id="BpAss17">
+                            <copy>
+                                <from expression="ora:getCompositeInstanceId()"/>
+                                <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:instanceId"/>
+                            </copy>
+                            <copy>
+                                <from expression="&quot;SUCCESS&quot;"/>
+                                <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:status"/>
+                            </copy>
+                            <copy>
+                                <from expression="xp20:current-dateTime()"/>
+                                <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:creationDate"/>
+                            </copy>
+                            <copy>
+                                <from expression="&quot;SFDC&quot;"/>
+                                <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:source"/>
+                            </copy>
+                            <copy>
+                                <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns6:DataArea/ns8:SyncOEOrders/ns8:SyncOEOrderHeaderDetails[$i]/ns9:HEADER_ID"/>
+                                <to variable="InvInsertCRD_Audit_LOG_Input" part="CrdAuditLogCollection" query="/ns16:CrdAuditLogCollection/ns16:CrdAuditLog/ns16:headerId"/>
+                            </copy>
+                        </assign>
+                        <invoke name="InvInsertCRD_Audit_LOG" inputVariable="InvInsertCRD_Audit_LOG_Input" partnerLink="InsertCRD_Audit_LOG" portType="ns15:InsertCRD_Audit_LOG_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv8"/>
+                        <assign name="incrementIvalue" id="BpAss18">
+                            <copy>
+                                <from expression="$i +1"/>
+                                <to variable="i"/>
+                            </copy>
+                        </assign>
+                    </sequence>
+                </scope>
+            </sequence>
+        </while>
+        <assign name="AsgnFusionLastRunUtilityService" id="BpAss19">
+            <copy>
+                <from expression="ora:getPreference(&quot;OrchestrationName&quot;)"/>
+                <to variable="InvFusionLastRunUtilityService_IV" part="payload" query="/ns5:InputParameters/ns5:IN_ORCHESTRATION_NAME"/>
+            </copy>
+            <copy>
+                <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns7:ApplicationArea/ns7:SFDCTimeStamp"/>
+                <to variable="InvFusionLastRunUtilityService_IV" part="payload" query="/ns5:InputParameters/ns5:IN_LAST_RUN"/>
+            </copy>
+            <copy>
+                <from variable="inputVariable" part="payload" query="/ns6:ProcessSyncOEOrders/ns7:ApplicationArea/ns7:SFDCTimeStamp"/>
+                <to variable="InvFusionLastRunUtilityService_IV" part="payload" query="/ns5:InputParameters/ns5:IN_LAST_SUCCESSFUL_RUN"/>
+            </copy>
+            <copy>
+                <from expression="ora:getPreference(&quot;InMode&quot;)"/>
+                <to variable="InvFusionLastRunUtilityService_IV" part="payload" query="/ns5:InputParameters/ns5:IN_MODE"/>
+            </copy>
+        </assign>
+        <invoke name="InvFusionLastRunUtilityService" bpelx:invokeAsDetail="no" inputVariable="InvFusionLastRunUtilityService_IV" outputVariable="InvFusionLastRunUtilityService_OV" partnerLink="FusionLastRunUtilityService" portType="ns4:FusionLastRunUtilityService" operation="process" id="BpInv9"/>
+        <switch name="SwitchFaultOccured" id="BpSwt0">
+            <case condition="bpws:getVariableData('faultOccured')">
+                <bpelx:annotation>
+                    <bpelx:general>
+                        <bpelx:property name="userLabel">faultOccured</bpelx:property>
+                    </bpelx:general>
+                </bpelx:annotation>
+                <sequence name="SeqFaultOccured" id="BpSeq8">
+                    <!--
+                    <wait name="WaitFor10sec" for="'PT10S'"/>
+                    <assign name="asgnSelectRecFromErrorLogTab">
+                        <copy>
+                            <from variable="InvCommonSFDCErrorLogService_IV"
+                                  part="request"
+                                  query="/ns3:CommonSFDCErrorLog/ns3:CommonErrorHandlerInputDetails/ns3:InstanceNumber"/>
+                            <to variable="InvSelectRecFromErrorLogTab_IV"
+                                part="selectRecFromErrorLogTabInput_msg"
+                                query="/ns11:selectRecFromErrorLogTabInput/ns11:instanceNo"/>
+                        </copy>
+                    </assign>
+                    <invoke name="InvSelectRecFromErrorLogTab"
+                            inputVariable="InvSelectRecFromErrorLogTab_IV"
+                            outputVariable="InvSelectRecFromErrorLogTab_OV"
+                            partnerLink="selectRecFromErrorLogTab"
+                            portType="ns10:selectRecFromErrorLogTab_ptt"
+                            operation="selectRecFromErrorLogTab"
+                            bpelx:invokeAsDetail="no"/>
+                    <assign name="xfromEmailContent">
+                        <bpelx:annotation>
+                            <bpelx:pattern>transformation</bpelx:pattern>
+                        </bpelx:annotation>
+                        <copy>
+                            <from expression="ora:doXSLTransformForDoc('xsl/xfromEmailContent.xsl', $InvSelectRecFromErrorLogTab_OV.selectRecFromErrorLogTabOutputCollection)"/>
+                            <to variable="EmailContent"/>
+                        </copy>
+                    </assign>
+                    <scope name="Email1">
+                        <bpelx:annotation>
+                            <bpelx:pattern patternName="bpelx:email"></bpelx:pattern>
+                            <bpelx:general>
+                                <bpelx:property name="userLabel">sendEmail</bpelx:property>
+                            </bpelx:general>
+                        </bpelx:annotation>
+                        <variables>
+                            <variable name="varNotificationReq"
+                                      messageType="ns13:EmailNotificationRequest"/>
+                            <variable name="varNotificationResponse"
+                                      messageType="ns13:ArrayOfResponse"/>
+                            <variable name="NotificationServiceFaultVariable"
+                                      messageType="ns13:NotificationServiceErrorMessage"/>
+                        </variables>
+                        <sequence name="SeqEmail">
+                            <assign name="EmailParamsAssign">
+                                <copy>
+                                    <from expression="string('Default')"/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:FromAccountName"/>
+                                </copy>
+                                <copy>
+                                    <from expression="string('')"/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:Bcc"/>
+                                </copy>
+                                <copy>
+                                    <from expression="string('')"/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:Cc"/>
+                                </copy>
+                                <copy>
+                                    <from expression="string('')"/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:ReplyToAddress"/>
+                                </copy>
+                                <copy>
+                                    <from expression='"ACTION REQUIRED - SFDC CRD Changes not sent to Oracle."'/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:Subject"/>
+                                </copy>
+                                <copy>
+                                    <from expression='dvm:lookupValue("oramds:/deployed-composites/default/CommonSFDCErrorLogService_rev1.0/EmailDistributionList.dvm","InterfaceNumber",ora:getPreference("BusinessInterfaceNumber"),"emailDistrubtionList","")'/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:To"/>
+                                </copy>
+                                <copy>
+                                    <from expression="bpws:getVariableData('EmailContent','/ns12:EmailContent/ns12:body')"/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:Content/ns13:ContentBody"/>
+                                </copy>
+                                <copy>
+                                    <from expression="string('text/html; charset=UTF-8')"/>
+                                    <to variable="varNotificationReq"
+                                        part="EmailPayload"
+                                        query="/EmailPayload/ns13:Content/ns13:MimeType"/>
+                                </copy>
+                            </assign>
+                            <invoke name="InvokeNotificationService"
+                                    portType="ns13:NotificationService"
+                                    partnerLink="NotificationService1"
+                                    inputVariable="varNotificationReq"
+                                    outputVariable="varNotificationResponse"
+                                    operation="sendEmailNotification"/>
+                        </sequence>
+                    </scope>
+                    
+                    -->
+                    <terminate name="Terminate" id="BpTer1"/>
+                </sequence>
+            </case>
+        </switch>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="callbackClient" partnerLink="syncoeheadersoracleprov_bpel_client" portType="client:SyncOEHeadersOracleProv_BPELCallback" operation="processResponse" inputVariable="outputVariable" id="BpInv10"/>
+    </sequence>
+</process>

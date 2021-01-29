@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="updateEmailStatusToDB" adapter="db" wsdlLocation="WSDLs/updateEmailStatusToDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOACustom" UIConnectionName="SOA_CUSTOM" adapterRef=""/>
+  <endpoint-interaction portType="updateEmailStatusToDB_ptt" operation="update">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="updateEmailStatusToDB.MiddlewareErrorLog"/>
+      <property name="DmlType" value="update"/>
+      <property name="MappingsMetaDataURL" value="updateEmailStatusToDB-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

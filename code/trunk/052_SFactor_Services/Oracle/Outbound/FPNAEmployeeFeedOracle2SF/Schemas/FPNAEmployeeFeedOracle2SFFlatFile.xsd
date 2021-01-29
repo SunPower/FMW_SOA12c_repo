@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/WriteFPNAEmployeeFeedToLocal"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://www.sunpowercorp.com/WriteFPNAEmployeeFeedToLocal"
+            targetNamespace="http://www.sunpowercorp.com/WriteFPNAEmployeeFeedToLocal"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="UTF-8"
+            nxsd:hasHeader="true" nxsd:headerLines="1"
+            nxsd:headerLinesTerminatedBy="${eol}">
+ <xsd:element name="FPNAEmployeeFeedSF">
+  <xsd:complexType>
+   <xsd:sequence>
+    <xsd:element name="FPNAEmployeeFeed_TEXT" minOccurs="1"
+                 maxOccurs="unbounded" type="xsd:string" nxsd:style="terminated"
+                 nxsd:terminatedBy="${eol}" nxsd:quotedBy='"'></xsd:element>
+   </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>
+</xsd:schema>

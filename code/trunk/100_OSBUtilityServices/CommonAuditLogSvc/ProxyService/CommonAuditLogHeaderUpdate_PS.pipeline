@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oper="http://xmlns.oracle.com/servicebus/pipeline/operations">
+    <con:coreEntry>
+        <con:description/>
+        <con:binding type="Mixed" xsi:type="con:MixedBindingType">
+            <con:request type="XML">
+                <con2:schema ref="CommonComponents/XSD/AuditLogHeadersUpdate" element="OsbAuditLogHeaderCollection" xmlns:con2="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/services/bindings/config" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:env="http://www.bea.com/wli/config/env" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config"/>
+            </con:request>
+        </con:binding>
+        <oper:operations>
+            <oper:monitoring enabled="false" aggregationInterval="10" level="pipeline"/>
+            <oper:tracingEnabled>false</oper:tracingEnabled>
+            <oper:reporting>true</oper:reporting>
+            <oper:logging enabled="true" level="debug"/>
+            <oper:sla-alerting enabled="true" level="normal"/>
+            <oper:pipeline-alerting enabled="true" level="normal"/>
+        </oper:operations>
+    </con:coreEntry>
+    <con:router>
+        <con:flow xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con1="http://www.bea.com/wli/sb/typesystem/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config">
+            <con:route-node name="RouteTo_UpdateAuditLogHeaders_BS">
+                <con:context>
+                    <con2:varNsDecl namespace="http://xmlns.sunpowercorp.com/CommonAuditLogSvc/UpdateAuditLogHeaders/xsd/v1" prefix="v1"/>
+                </con:context>
+                <con:actions>
+                    <con3:route>
+                        <con2:id>_ActionId-5781189780763192019--21987cb8.1488312fc2a.-7f6e</con2:id>
+                        <con3:service ref="CommonAuditLogSvc/BusinessService/CommonAuditLogHeaderUpdate_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con3:operation>update</con3:operation>
+                        <con3:outboundTransform>
+                            <con4:replace contents-only="true" varName="body" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                                <con2:id>_ActionId-5781189780763192019--21987cb8.1488312fc2a.-7f36</con2:id>
+                                <con4:location>
+                                    <con2:xpathText>.</con2:xpathText>
+                                </con4:location>
+                                <con4:expr>
+                                    <con2:xqueryTransform>
+                                        <con2:resource ref="CommonAuditLogSvc/XQuery/mapHeadeLogupdate_XQ"/>
+                                        <con2:param name="osbAuditLogHeaderCollection1">
+                                            <con2:path>$body/v1:OsbAuditLogHeaderCollection</con2:path>
+                                        </con2:param>
+                                    </con2:xqueryTransform>
+                                </con4:expr>
+                            </con4:replace>
+                        </con3:outboundTransform>
+                        <con3:responseTransform/>
+                    </con3:route>
+                </con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

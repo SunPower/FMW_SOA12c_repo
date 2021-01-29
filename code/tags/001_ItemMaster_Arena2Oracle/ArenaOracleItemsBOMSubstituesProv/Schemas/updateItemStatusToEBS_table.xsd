@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateItemStatusToEBS" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateItemStatusToEBS" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxspwrArenaItemsCollection" type="XxspwrArenaItemsCollection"/>
+   <xs:complexType name="XxspwrArenaItemsCollection">
+      <xs:sequence>
+         <xs:element name="XxspwrArenaItems" type="XxspwrArenaItems" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrArenaItems">
+      <xs:sequence>
+         <xs:element name="itemId" type="xs:decimal"/>
+         <xs:element name="planningMakeBuyCode" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="processFlag" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="itemNumber" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="700"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="setProcessId" type="xs:decimal" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

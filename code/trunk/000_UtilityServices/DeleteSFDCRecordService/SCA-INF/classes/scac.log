@@ -1,0 +1,24 @@
+Jan 9, 2013 5:58:28 PM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Jan 9, 2013 5:58:36 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Jan 9, 2013 5:58:37 PM com.collaxa.cube.CubeLogger info
+INFO: validating "DeleteSFDCRecordService_BPEL.bpel" ...
+Jan 9, 2013 5:58:37 PM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+Jan 9, 2013 5:58:37 PM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSequenceBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSwitchBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELWhileBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchAllBlock
+Jan 9, 2013 5:58:43 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "DeleteSFDCRecordService_BPEL" in 48.7 milliseconds [nodes 55=0+55, 1,128.5 nodes/sec]
+Jan 9, 2013 5:58:45 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "DeleteSFDCRecordService_BPEL" in 1.584 seconds
+Jan 9, 2013 5:58:45 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0.4 milliseconds
+
+Jan 9, 2013 5:58:45 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "DeleteSFDCRecordService_BPEL" in 25.7 milliseconds
+

@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" version="Eclipse Persistence Services - 2.6.1.v20150916-55dc7c3">
+   <name>UpdateStatusToEBS-OR</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="object-relational-class-mapping-descriptor">
+         <class>UpdateStatusToEBS.XxspwrLease2OutboundDetails</class>
+         <alias>XXSPWR.XXSPWR_LEASE2_OUTBOUND_DETAILS</alias>
+         <primary-key>
+            <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SO_NUMBER" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="UpdateStatusToEBSSelect" xsi:type="read-all-query">
+                  <reference-class>UpdateStatusToEBS.XxspwrLease2OutboundDetails</reference-class>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>java.util.Vector</collection-type>
+                  </container>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseNumber</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LEASE_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soNumber</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SO_NUMBER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soHeaderId</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SO_HEADER_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>schDelivDatePv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SCH_DELIV_DATE_PV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>schDelivDateInv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SCH_DELIV_DATE_INV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>schDelivDateMount</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SCH_DELIV_DATE_MOUNT" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>delivDatePv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="DELIV_DATE_PV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>delivDateInv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="DELIV_DATE_INV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>delivDateMount</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="DELIV_DATE_MOUNT" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poNumberOrig</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_NUMBER_ORIG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poNumberInstall</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_NUMBER_INSTALL" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poNumberInter</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_NUMBER_INTER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poCreationDateOrig</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_CREATION_DATE_ORIG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poCreationDateInstall</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_CREATION_DATE_INSTALL" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poCreationDateInter</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_CREATION_DATE_INTER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poAmountOrig</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_AMOUNT_ORIG" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poAmountInstall</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_AMOUNT_INSTALL" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poAmountInter</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_AMOUNT_INTER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poReceiptDateOrigination</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_RECEIPT_DATE_ORIGINATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poReceiptDateInstallation</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_RECEIPT_DATE_INSTALLATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>poReceiptDateInterconnect</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PO_RECEIPT_DATE_INTERCONNECT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>supInvNumOrigination</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SUP_INV_NUM_ORIGINATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>supInvNumInstallation</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SUP_INV_NUM_INSTALLATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>supInvNumInterconnect</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SUP_INV_NUM_INTERCONNECT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>supInvAmtOrigination</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SUP_INV_AMT_ORIGINATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>supInvAmtInstallation</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SUP_INV_AMT_INSTALLATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>supInvAmtInterconnect</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SUP_INV_AMT_INTERCONNECT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentAmtOrigination</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PAYMENT_AMT_ORIGINATION" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentAmtInstallation</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PAYMENT_AMT_INSTALLATION" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentAmtInterconnect</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PAYMENT_AMT_INTERCONNECT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentDateOrigination</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PAYMENT_DATE_ORIGINATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentDateInstallation</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PAYMENT_DATE_INSTALLATION" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>paymentDateInterconnect</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PAYMENT_DATE_INTERCONNECT" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>schedulePayDateOrig</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SCHEDULE_PAY_DATE_ORIG" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>schedulePayDateInstall</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SCHEDULE_PAY_DATE_INSTALL" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>schedulePayDateInter</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SCHEDULE_PAY_DATE_INTER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custReqDatePv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CUST_REQ_DATE_PV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custReqDateInv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CUST_REQ_DATE_INV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custReqDateMount</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CUST_REQ_DATE_MOUNT" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custPromiseDatePv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CUST_PROMISE_DATE_PV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custPromiseDateInv</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CUST_PROMISE_DATE_INV" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>custPromiseDateMount</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CUST_PROMISE_DATE_MOUNT" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute1</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE1" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute2</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE2" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute3</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE3" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute4</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE4" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute5</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE5" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute6</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE6" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute7</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE7" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute8</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE8" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute9</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE9" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>attribute10</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ATTRIBUTE10" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>soaStatus</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SOA_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LEASE_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseCloseStatus</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LEASE_CLOSE_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseCloseDate</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LEASE_CLOSE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseCloseReqId</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LEASE_CLOSE_REQ_ID" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>createdBy</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CREATED_BY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>creationDate</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CREATION_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdatedBy</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LAST_UPDATED_BY" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastUpdateDate</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LAST_UPDATE_DATE" xsi:type="column"/>
+               <attribute-classification>java.sql.Timestamp</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>stateTaxRate</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="STATE_TAX_RATE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>countyTaxRate</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="COUNTY_TAX_RATE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>cityTaxRate</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="CITY_TAX_RATE" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>countyName</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="COUNTY_NAME" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>spwrSupMtlTaxAmount</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SPWR_SUP_MTL_TAX_AMOUNT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>pvCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="PV_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>inverterCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="INVERTER_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>monitoringCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="MONITORING_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>bosCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="BOS_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>rackingCostInternal</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="RACKING_COST_INTERNAL" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>miscCostInternal</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="MISC_COST_INTERNAL" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>rackingCostInstaller</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="RACKING_COST_INSTALLER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>miscCostInstaller</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="MISC_COST_INSTALLER" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>totalSpwrSuppMaterial</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="TOTAL_SPWR_SUPP_MATERIAL" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>totalDealerSuppMaterial</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="TOTAL_DEALER_SUPP_MATERIAL" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>totalMaterialCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="TOTAL_MATERIAL_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>totalServiceCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="TOTAL_SERVICE_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>taxAmount</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="TAX_AMOUNT" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>netDealerServiceCost</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="NET_DEALER_SERVICE_COST" xsi:type="column"/>
+               <attribute-classification>java.math.BigDecimal</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>orderStatus</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ORDER_STATUS" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>errorMessage</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="ERROR_MESSAGE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>taxIdentifier</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="TAX_IDENTIFIER" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>leaseType</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="LEASE_TYPE" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sfdcId</attribute-name>
+               <field table="XXSPWR_LEASE2_OUTBOUND_DETAILS" name="SFDC_ID" xsi:type="column"/>
+               <attribute-classification>java.lang.String</attribute-classification>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+            <always-refresh>true</always-refresh>
+         </caching>
+         <remote-caching>
+            <cache-type>weak-reference</cache-type>
+            <cache-size>-1</cache-size>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="XXSPWR.XXSPWR_LEASE2_OUTBOUND_DETAILS"/>
+         </tables>
+         <structure>structureName</structure>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.oracle.Oracle9Platform</platform-class>
+      <connection-url></connection-url>
+   </login>
+</object-persistence>

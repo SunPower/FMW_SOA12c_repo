@@ -1,0 +1,62 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="OracleSFDCItemPRODProv_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODProv/OracleSFDCItemPRODProv_BPEL"
+     xmlns:client="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODProv/OracleSFDCItemPRODProv_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns9="http://schemas.oracle.com/bpel/extension"
+     xmlns:ns12="http://www.sunpowercorp.com/online/OracleSFDCItemProd/xsd/v1"
+     xmlns:ns5="http://www.sunpowercorp.com/MergedItems"
+     xmlns:ns6="http://www.sunpowercorp.com/OracleItems"
+     xmlns:ns7="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+     xmlns:ns10="http://www.sunpowercorp.com/OracleIndexItems"
+     xmlns:ns11="http://www.sunpowercorp.com/SunPowerDevelopment/utility/EmailContent/xsd/V1"
+     xmlns:ns8="http://www.sunpowercorp.com/SFDCItems"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCItem/V1"
+     xmlns:ns4="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="urn:partner.soap.sforce.com"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+    <plnk:partnerLinkType name="OracleSFDCItemPRODProv_BPEL">
+        <plnk:role name="OracleSFDCItemPRODProv_BPELProvider">
+            <plnk:portType name="client:OracleSFDCItemPRODProv_BPEL"/>
+        </plnk:role>
+        <plnk:role name="OracleSFDCItemPRODProv_BPELRequester">
+            <plnk:portType name="client:OracleSFDCItemPRODProv_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODProv/OracleSFDCItemPRODProv_BPEL"
+                 schemaLocation="../Schemas/OracleSFDCItemPRODProv_BPEL.xsd"/>
+        </xsd:schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCItem/V1"
+                    schemaLocation="../Schemas/CDM/BOD/Nouns/OracleSFDCItem/V1/ProcessOracleSFDCItem.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/EmailContent/xsd/V1"
+                 schemaLocation="../Schemas/EmailContent.xsd"/>
+        </xsd:schema>
+       
+    </wsdl:types>
+    <wsdl:message name="OracleSFDCItemPRODProv_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:message name="OracleSFDCItemPRODProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessOracleSFDCItem"/>
+    </wsdl:message>
+    <wsdl:portType name="OracleSFDCItemPRODProv_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:OracleSFDCItemPRODProv_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="OracleSFDCItemPRODProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:OracleSFDCItemPRODProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

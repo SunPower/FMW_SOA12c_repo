@@ -1,0 +1,22 @@
+<?binding.jca updateEmailStatusToDB_db.jca?>
+<wsdl:definitions name="updateEmailStatusToDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/updateEmailStatusToDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/updateEmailStatusToDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateEmailStatusToDB">
+    <plt:partnerLinkType name="updateEmailStatusToDB_plt">
+        <plt:role name="updateEmailStatusToDB_role">
+            <plt:portType name="tns:updateEmailStatusToDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateEmailStatusToDB"
+                    schemaLocation="../Schemas/updateEmailStatusToDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="MiddlewareErrorLogCollection_msg">
+        <wsdl:part name="MiddlewareErrorLogCollection" element="top:MiddlewareErrorLogCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="updateEmailStatusToDB_ptt">
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:MiddlewareErrorLogCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

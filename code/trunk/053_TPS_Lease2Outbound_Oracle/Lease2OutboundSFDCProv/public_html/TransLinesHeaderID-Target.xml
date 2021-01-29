@@ -1,0 +1,5 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<db:XXSPWR_OM_LEASE_PAYMENT_DTLS_DBInput xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/XXSPWR_OM_LEASE_PAYMENT_DTLS_DB">
+   <db:Lease_Type/>
+   <db:Line_Header_ID/>
+</db:XXSPWR_OM_LEASE_PAYMENT_DTLS_DBInput>

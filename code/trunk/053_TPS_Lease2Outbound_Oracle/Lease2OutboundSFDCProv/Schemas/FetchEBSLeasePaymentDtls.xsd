@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="FetchEBSLeasePaymentDtlsInput" type="FetchEBSLeasePaymentDtlsInput"/>
+   <xs:complexType name="FetchEBSLeasePaymentDtlsInput">
+      <xs:sequence>
+         <xs:element name="HeaderId" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="FetchEBSLeasePaymentDtlsOutputCollection" type="FetchEBSLeasePaymentDtlsOutputCollection"/>
+   <xs:complexType name="FetchEBSLeasePaymentDtlsOutputCollection">
+      <xs:sequence>
+         <xs:element name="FetchEBSLeasePaymentDtlsOutput" type="FetchEBSLeasePaymentDtlsOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="FetchEBSLeasePaymentDtlsOutput">
+      <xs:sequence>
+         <xs:element name="h_SFDC_ID" type="xs:string" nillable="true"/>
+         <xs:element name="l_SFDC_ID" type="xs:string" nillable="true"/>
+         <xs:element name="l_LEASE_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_LINE_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_ORDER_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_HEADER_ID" type="xs:string" nillable="true"/>
+         <xs:element name="l_LINE_ID" type="xs:string" nillable="true"/>
+         <xs:element name="l_VENDOR_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="l_VENDOR_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="l_ITEM_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_ITEM_DESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="l_PO_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_PO_CREATION_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="l_PO_AMOUNT" type="xs:string" nillable="true"/>
+         <xs:element name="l_PO_RECEIPT_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="l_SUPPLIER_INVOICE_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_SUPPLIER_INVOICE_AMOUNT" type="xs:string" nillable="true"/>
+         <xs:element name="l_PAYMENT_AMOUNT" type="xs:string" nillable="true"/>
+         <xs:element name="l_PAYMENT_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="l_SCHEDULE_PAYMENT_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="l_LPD_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="l_PO_RECEIPT_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_INVOICE_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="l_INVOICE_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="l_PAYMENT_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="l_PO_DESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="l_PAYMENT_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="l_PO_LINE_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="l_SO_LINE_STATUS" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,56 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ArenaOracleItemsBOMSubstituesProv_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesProv/ArenaOracleItemsBOMSubstituesProv_BPEL"
+     xmlns:ns2="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/defaultParams/V1"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1"
+     xmlns:ns4="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/ListOfVendorsArenaAsls/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/OrgAssignments/V1"
+     xmlns:client="http://www.sunpowercorp.com/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesProv/ArenaOracleItemsBOMSubstituesProv_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns5="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/Categories/V1"
+     xmlns:ns6="http://schemas.oracle.com/bpel/extension"
+    >
+    <plnk:partnerLinkType name="ArenaOracleItemsBOMSubstituesProv_BPEL">
+        <plnk:role name="ArenaOracleItemsBOMSubstituesProv_BPELProvider">
+            <plnk:portType name="client:ArenaOracleItemsBOMSubstituesProv_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://www.sunpowercorp.com/SunPowerDevelopment/ArenaOracleItemsBOMSubstituesProv/ArenaOracleItemsBOMSubstituesProv_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1"
+                    schemaLocation="Schemas/ArenaOracleItemsBOMSubstituesProv.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/defaultParams/V1"
+                 schemaLocation="Schemas/defaultParams.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/OrgAssignments/V1"
+                 schemaLocation="Schemas/intializeParams.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/ListOfVendorsArenaAsls/V1"
+                 schemaLocation="Schemas/ListOfVendorsArenaAsls.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/ArenaOracleItemsBOMSubstituesProv/xsd/Categories/V1"
+                 schemaLocation="Schemas/Categories.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ArenaOracleItemsBOMSubstituesProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessArenaOracleDataFeed"/>
+    </wsdl:message>
+    <wsdl:message name="Item">
+        <wsdl:part name="ItemDetails" element="ns1:Item"/>
+    </wsdl:message>
+    <wsdl:portType name="ArenaOracleItemsBOMSubstituesProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ArenaOracleItemsBOMSubstituesProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

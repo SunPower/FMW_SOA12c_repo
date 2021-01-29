@@ -1,0 +1,217 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Oct 03 16:28:42 IST 2012
+  Author:  kj38273
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="OracleSFDCVertexDataLoadReq_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadReq/OracleSFDCVertexDataLoadReq_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadReq/OracleSFDCVertexDataLoadReq_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/OracleSFDC_VertexDataLoad/OracleSFDCVertexDataLoadReq/PollVertexDataDetails"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns2="http://www.sunpowercorp.com/OracleSFDCVertexDataLoadCanonical/"
+         xmlns:ns3="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ns4="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns5="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+         xmlns:ns6="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns7="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/top/PollVertexDataDetails">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[PollVertexDataDetails.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="PollVertexDataDetails"
+                 partnerLinkType="ns1:PollVertexDataDetails_plt"
+                 myRole="PollVertexDataDetails_role"/>
+    <partnerLink name="OracleSFDCVertexDataLoadSvc"
+                 partnerLinkType="ns2:OracleSFDCVertexDataLoadSvc"
+                 partnerRole="OracleSFDCVertexDataLoadCanonical"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns6:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+  </partnerLinks>
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable"
+              messageType="ns1:XxspwrGeoVertexStgCollection_msg"/>
+    <variable name="InvOracleSFDCVertexDataLoadSvc_IV"
+              messageType="ns2:VertexDataLoadRequest"/>
+    <variable name="InvCommonSFDCErrorLogService_IV"
+              messageType="ns6:requestMessage"/>
+    <variable name="CommErrParm" messageType="ns6:requestMessage"/>
+    <variable name="title" type="xsd:string"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="SeqCatchAll">
+        <assign name="AsgnCommonErrorHandler">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Severity"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultCode")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:Fault/ns7:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("CorrectiveAction")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from variable="inputVariable" part="XxspwrGeoVertexStgCollection"
+                  query="/ns8:XxspwrGeoVertexStgCollection/ns8:XxspwrGeoVertexStg/ns8:geographyId"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:UniqueIdentNum/ns7:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:createddatetime"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SFDCErrObj")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:SFDCErrObj"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="CommErrParm" part="request"
+                query="/ns7:CommonSFDCErrorLog/ns7:CommonErrorHandlerInputDetails/ns7:bOpenServiceTicket"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService"
+                inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns6:execute_ptt" operation="execute"
+                bpelx:invokeAsDetail="no"/>
+        <terminate name="Terminate"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in OracleSFDCVertexDataLoadReq_BPEL.wsdl) -->
+    <receive name="receiveInput" partnerLink="PollVertexDataDetails"
+             portType="ns1:PollVertexDataDetails_ptt" operation="receive"
+             variable="inputVariable" createInstance="yes"/>
+    <assign name="SetTitle">
+      <copy>
+        <from expression='"OracleSFDCVertexDataLoadReq"'/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <assign name="TrnsOracleSFDCVertexDataLoadSvc">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TrnsOracleSFDCVertexDataLoadSvc.xsl', $inputVariable.XxspwrGeoVertexStgCollection)"/>
+        <to variable="InvOracleSFDCVertexDataLoadSvc_IV" part="parameters"/>
+      </copy>
+    </assign>
+    <invoke name="InvOracleSFDCVertexDataLoadSvc"
+            inputVariable="InvOracleSFDCVertexDataLoadSvc_IV"
+            partnerLink="OracleSFDCVertexDataLoadSvc"
+            portType="ns2:OracleSFDCVertexDataLoadCanonical"
+            operation="OracleSFDCVertexDataLoadSvc" bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

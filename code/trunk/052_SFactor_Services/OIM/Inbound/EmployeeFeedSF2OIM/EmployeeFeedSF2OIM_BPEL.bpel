@@ -1,0 +1,311 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Feb 10 19:44:00 IST 2016
+  Author:  RD42768
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="EmployeeFeedSF2OIM_BPEL"
+               targetNamespace="http://xmlns.oracle.com/SFEC/EmployeeFeedSF2OIM/EmployeeFeedSF2OIM_BPEL"
+               xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+               xmlns:client="http://xmlns.oracle.com/SFEC/EmployeeFeedSF2OIM/EmployeeFeedSF2OIM_BPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeFeedSF2OIM/ReadOIMFeed"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeFeedSF2OIM/WriteOIMTrg"
+         xmlns:ns3="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL"
+         xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns6="http://www.sunpowercorp.com/SOAUtilityServices/FileToFTPMoveUtilityService/xsd/v1"
+         xmlns:ns7="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns:ns8="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[WSDLs/ReadOIMFeed.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="ReadOIMFeed" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="WriteOIMTrg" partnerLinkType="ns2:Write_plt"
+                 partnerRole="Write_role"/>
+    <partnerLink name="FileToFTPMoveUtilitySerivce"
+                 partnerLinkType="ns3:FileToFTPMoveUtilitySerivce_BPEL"
+                 partnerRole="FileToFTPMoveUtilitySerivce_BPELProvider"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns4:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="FileUtilityService"
+                 partnerLinkType="ns7:FileUtilityService_BPEL"
+                 partnerRole="FileUtilityService_BPELProvider"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Rcv_ReadOIMFeed_IV" messageType="ns1:Read_msg"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="Inv_WriteOIMTrg_IV" messageType="ns2:Write_msg"/>
+    <variable name="TrgFileName" type="xsd:string"/>
+    <variable name="Inv_FileToFTPMoveUtilitySerivce_IV"
+              messageType="ns3:FileToFTPMoveUtilitySerivce_BPELRequestMessage"/>
+    <variable name="Inv_FileToFTPMoveUtilitySerivce_OV"
+              messageType="ns3:FileToFTPMoveUtilitySerivce_BPELResponseMessage"/>
+    <variable name="Inv_CommonSFDCErrorLogService_IV"
+              messageType="ns4:requestMessage"/>
+    <variable name="Inv_FileUtilityService_IV"
+              messageType="ns7:FileUtilityService_BPELRequestMessage"/>
+    <variable name="Inv_FileUtilityService_OV"
+              messageType="ns7:FileUtilityService_BPELResponseMessage"/>
+    <variable name="Inv_FileUtilityService_Delete_IV"
+              messageType="ns7:FileDeleteService_BPELRequestMessage"/>
+    <variable name="Inv_FileUtilityService_Delete_OV"
+              messageType="ns7:FileUtilityService_BPELResponseMessage"/>
+    <variable name="InstanceTitle" type="xsd:string"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence1">
+        <assign name="Asg_CommonSFDCErrorLogService">          
+          <copy>
+            <from expression="ora:getComponentInstanceId()"/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceName")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("ProcessName")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Severity"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultCode")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:UniqueIdentNum/ns5:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression='"E"'/>
+            <to variable="Inv_CommonSFDCErrorLogService_IV" part="request"
+                query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:status"/>
+          </copy>
+        </assign>
+        <invoke name="Inv_CommonSFDCErrorLogService" bpelx:invokeAsDetail="no"
+                inputVariable="Inv_CommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns4:execute_ptt" operation="execute"/>
+        <terminate name="Terminate"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main">
+    <receive name="Rcv_ReadOIMFeed" createInstance="yes"
+             variable="Rcv_ReadOIMFeed_IV" partnerLink="ReadOIMFeed"
+             portType="ns1:Read_ptt" operation="Read">
+      <bpelx:property name="jca.file.FileName" variable="FileName"/>
+    </receive>
+    <assign name="Asg_TrgFileName">
+      <copy>
+        <from expression="concat(substring-before(bpws:getVariableData('FileName'),'.csv'),'.trg')"/>
+        <to variable="TrgFileName"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(bpws:getVariableData('FileName'))"/>
+        <to variable="InstanceTitle"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_WriteOIMTrg"
+            inputVariable="Inv_WriteOIMTrg_IV"
+            partnerLink="WriteOIMTrg" portType="ns2:Write_ptt"
+            operation="Write" bpelx:invokeAsDetail="no">
+      <bpelx:inputProperty name="jca.file.FileName" variable="TrgFileName"/>
+    </invoke>
+    <assign name="Asg_MoveFeedFile">      
+       <copy>
+        <from variable="FileName"/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:SourceFileName"/>
+      </copy>
+      <copy>
+        <from variable="FileName"/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:TargetFileName"/>
+      </copy>
+      <copy>
+        <from expression='"COPY"'/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:Action"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("LocalFileDir")'/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:SourceDirectory"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("FileToken")'/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:FileToken"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_FileToFTPMoveUtilitySerivce" bpelx:invokeAsDetail="no"
+            inputVariable="Inv_FileToFTPMoveUtilitySerivce_IV"
+            outputVariable="Inv_FileToFTPMoveUtilitySerivce_OV"
+            partnerLink="FileToFTPMoveUtilitySerivce"
+            portType="ns3:FileToFTPMoveUtilitySerivce_BPEL"
+            operation="process"/>
+    <assign name="Asg_TrgFile">
+    <copy>
+        <from variable="TrgFileName"/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:SourceFileName"/>
+      </copy>
+      <copy>
+        <from variable="TrgFileName"/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:TargetFileName"/>
+      </copy>
+      <copy>
+        <from expression='"COPY"'/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:Action"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("LocalFileDir")'/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:SourceDirectory"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("FileToken")'/>
+        <to variable="Inv_FileToFTPMoveUtilitySerivce_IV" part="payload"
+            query="/ns6:input/ns6:FileToken"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_FileToFTPMoveUtilitySerivce" bpelx:invokeAsDetail="no"
+            inputVariable="Inv_FileToFTPMoveUtilitySerivce_IV"
+            outputVariable="Inv_FileToFTPMoveUtilitySerivce_OV"
+            partnerLink="FileToFTPMoveUtilitySerivce"
+            portType="ns3:FileToFTPMoveUtilitySerivce_BPEL"
+            operation="process"/>
+    <assign name="Asg_FileArchive">
+      <copy>
+        <from variable="FileName"/>
+        <to variable="Inv_FileUtilityService_IV" part="payload"
+            query="/ns8:FileUtilityReq/ns8:SourceFileName"/>
+      </copy>
+      <copy>
+        <from variable="FileName"/>
+        <to variable="Inv_FileUtilityService_IV" part="payload"
+            query="/ns8:FileUtilityReq/ns8:TargetFileName"/>
+      </copy>      
+      <copy>
+        <from expression='ora:getPreference("LocalFileDir")'/>
+        <to variable="Inv_FileUtilityService_IV" part="payload"
+            query="/ns8:FileUtilityReq/ns8:SourcePhysicalDirectory"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("ArchiveDir")'/>
+        <to variable="Inv_FileUtilityService_IV" part="payload"
+            query="/ns8:FileUtilityReq/ns8:TargetPhysicalDirectory"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_FileUtilityService" bpelx:invokeAsDetail="no"
+            inputVariable="Inv_FileUtilityService_IV"
+            outputVariable="Inv_FileUtilityService_OV"
+            partnerLink="FileUtilityService"
+            portType="ns7:FileUtilityService_BPEL" operation="Move"/>
+    <assign name="Asg_DeleteTrgFile">
+      <copy>
+        <from variable="TrgFileName"/>
+        <to variable="Inv_FileUtilityService_Delete_IV" part="payload"
+            query="/ns8:FileDeleteReq/ns8:TargetFileName"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("LocalFileDir")'/>
+        <to variable="Inv_FileUtilityService_Delete_IV" part="payload"
+            query="/ns8:FileDeleteReq/ns8:TargetPhysicalDirectory"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_FileUtilityService_Delete" bpelx:invokeAsDetail="no"
+            inputVariable="Inv_FileUtilityService_Delete_IV"
+            outputVariable="Inv_FileUtilityService_Delete_OV"
+            partnerLink="FileUtilityService"
+            portType="ns7:FileUtilityService_BPEL" operation="Delete"/>
+  </sequence>
+</process>

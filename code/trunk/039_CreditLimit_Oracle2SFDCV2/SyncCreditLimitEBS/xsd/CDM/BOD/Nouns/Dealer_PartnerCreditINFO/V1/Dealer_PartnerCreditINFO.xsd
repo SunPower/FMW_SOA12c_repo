@@ -1,0 +1,28 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Noun/Dealer_PartnerCreditINFO/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Noun/Dealer_PartnerCreditINFO/V1" xmlns:dc="http://www.sunpowercorp.com/Common/Dealer_PartnerCreditINFOTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/Dealer_PartnerCreditINFOTypes/V1" schemaLocation="Dealer_PartnerCreditINFOCommonTypes.xsd"/>
+    <xsd:element name="CreditLimit" type="CreditLimitType"/>
+       <xsd:complexType name="CreditLimitType">
+        <xsd:sequence>
+            <xsd:element ref="CreditLimitDetails" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="CreditLimitDetails" type="CreditLimitDetailsType"/>
+    <xsd:complexType name="CreditLimitDetailsType">
+        <xsd:sequence>
+            <xsd:element ref="dc:AccountNumber" minOccurs="0"/>
+            <xsd:element ref="dc:AccountName" minOccurs="0"/>
+            <xsd:element ref="dc:CustAccountId" minOccurs="0"/>
+            <xsd:element ref="dc:OverallCreditLimit" minOccurs="0"/>
+            <xsd:element ref="dc:LastUpdateDate" minOccurs="0"/>
+            <xsd:element ref="dc:AvailableCreditLimit" minOccurs="0"/>
+            <xsd:element ref="dc:AmountPastDue" minOccurs="0"/>
+            <xsd:element ref="dc:CreditHold" minOccurs="0"/>
+            <xsd:element ref="dc:CreditCheck" minOccurs="0"/>
+            <xsd:element ref="dc:Netterm" minOccurs="0"/>
+            <xsd:element ref="dc:Id" minOccurs="0"/>
+            <xsd:element ref="dc:OracleAccountNumber" minOccurs="0"/>
+            <xsd:element ref="dc:CreditLimitDate" minOccurs="0"/>
+            <xsd:element ref="dc:CreditLimitC" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+   </xsd:schema>

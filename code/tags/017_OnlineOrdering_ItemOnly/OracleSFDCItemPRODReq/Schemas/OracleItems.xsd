@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="OracleRows">
+    <complexType>
+      <sequence>
+        <element name="Item__c" maxOccurs="unbounded" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="Id" type="string"/>
+              <element name="Name" type="string"/>
+              <element name="Active__c" type="xsd:boolean"/>
+              <element name="Description__c" type="string"/>
+              <element name="Item_ID__c" type="string"/>
+              <element name="Long_Description__c" type="string"/>
+              <element name="Item_Category_3__c" type="string"/>
+              <element name="Item_Category_2__c" type="string"/>
+              <element name="Item_Category_1__c" type="string"/>
+              <element name="Product_Type__c" type="string"/>            
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>  
+</schema>

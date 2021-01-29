@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="TruncateDeptHyperionFeed" adapter="db" wsdlLocation="TruncateDeptHyperionFeed.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_HRREADONLY" UIConnectionName="hreadonly_DEV" adapterRef=""/>
+  <endpoint-interaction portType="TruncateDeptHyperionFeed_ptt" operation="TruncateDeptHyperionFeed">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="delete from XXSPWR.XXSPWR_HYP_DEPT_BU_MAP_TAB"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+  </endpoint-interaction>
+
+</adapter-config>

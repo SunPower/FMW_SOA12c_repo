@@ -1,0 +1,195 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer
+
+  Created: Wed Feb 14 15:41:54 IST 2018
+  Author:  RR46183
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="EmployeeFeedSF2Relativity"
+               targetNamespace="http://xmlns.oracle.com/SOAApp/EmployeeFeedSF2Relativity/EmployeeFeedSF2Relativity"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/SOAApp/EmployeeFeedSF2Relativity/EmployeeFeedSF2Relativity"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SOAApp/EmployeeFeedSF2Relativity/Read_Relativity_Feed"
+         xmlns:ns2="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns:ns3="http://xmlns.oracle.com/SOAUtilityServices/FTPFileMoveService/FTPFileMoveService"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns4="http://www.sunpowercorp.com/SunPowerDevelopment/FTPFileMoveService/v1/xsd"
+         xmlns:ns5="http://xmlns.oracle.com/SOAUtilityServices/FileToFTPMoveUtilitySerivce/FileToFTPMoveUtilitySerivce_BPEL"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:ns6="http://www.sunpowercorp.com/SOAUtilityServices/FileToFTPMoveUtilityService/xsd/v1"
+         xmlns:ns7="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd"
+         xmlns:ns8="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns9="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC
+     Set of activities coordinating the flow of messages across the
+     services integrated within this business process
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/SOAApp/EmployeeFeedSF2Relativity/Read_Relativity_Feed"
+          location="../WSDLs/Read_Relativity_Feed.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"
+          ui:processWSDL="true"/>
+  <partnerLinks>
+    <partnerLink name="Read_Relativity_Feed" partnerLinkType="ns1:Read_plt" myRole="Read_role"/>
+    <partnerLink name="FileUtilityService" partnerLinkType="ns2:FileUtilityService_BPEL"
+                 partnerRole="FileUtilityService_BPELProvider"/>
+    <partnerLink name="FileToFTPMoveUtilitySerivce" partnerLinkType="ns5:FileToFTPMoveUtilitySerivce_BPEL"
+                 partnerRole="FileToFTPMoveUtilitySerivce_BPELProvider"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns8:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Rcv_ReadRelativityFeed_IV" messageType="ns1:Read_msg"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="InstanceTitile" type="xsd:string"/>
+    <variable name="Inv_FileToFTPMoveUtilitySerivce_IV"
+              messageType="ns5:FileToFTPMoveUtilitySerivce_BPELRequestMessage"/>
+    <variable name="Inv_FileToFTPMoveUtilitySerivce_OV"
+              messageType="ns5:FileToFTPMoveUtilitySerivce_BPELResponseMessage"/>
+    <variable name="Inv_FileUtilityService_IV" messageType="ns2:FileUtilityService_BPELRequestMessage"/>
+    <variable name="Inv_FileUtilityService_Move_OV" messageType="ns2:FileUtilityService_BPELResponseMessage"/>
+    <variable name="Inv_CommonSFDCErrorLogService_IV" messageType="ns8:requestMessage"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence1">
+        <assign name="Asg_CommonSFDCErrorLogService">
+          <copy>
+            <from>ora:getPreference("InterfaceName")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceName</to>
+          </copy>
+          <copy>
+            <from>ora:getFlowId()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:InstanceNumber</to>
+          </copy>
+          <copy>
+            <from>'REmpFeed20'</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:InterfaceNumber</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("ProcessName")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:ProcessName</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("Severity")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:Severity</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("FaultCode")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultCode</to>
+          </copy>
+          <copy>
+            <from>ora:getFaultName()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultDescription</to>
+          </copy>
+          <copy>
+            <from>ora:getFaultAsString()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultMessage</to>
+          </copy>
+          <copy>
+            <from>xp20:current-dateTime()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:Fault/ns9:FaultTime</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("FaultSystemName")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:FaultSystemName</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("bOpenServiceTicket")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:bOpenServiceTicket</to>
+          </copy>
+          <copy>
+            <from>$FileName</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:UniqueIdentNum/ns9:UniqueIdentifier</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("SendEmail")</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:SendEmail</to>
+          </copy>
+          <copy>
+            <from>"E"</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_CommonSFDCErrorLogService_IV.request/ns9:CommonErrorHandlerInputDetails/ns9:status</to>
+          </copy>
+        </assign>
+        <invoke name="Inv_CommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" portType="ns8:execute_ptt"
+                operation="execute" inputVariable="Inv_CommonSFDCErrorLogService_IV" bpelx:invokeAsDetail="no"/>
+        <exit name="Exit"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main">
+    <receive name="Rcv_ReadRelativityFeed" partnerLink="Read_Relativity_Feed" portType="ns1:Read_ptt" operation="Read"
+             variable="Rcv_ReadRelativityFeed_IV" createInstance="yes">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.file.FileName" variable="FileName"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="Asg_CopyFeedFile">
+      <copy>
+        <from>$FileName</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileToFTPMoveUtilitySerivce_IV.payload/ns6:SourceFileName</to>
+      </copy>
+      <copy>
+        <from>$FileName</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileToFTPMoveUtilitySerivce_IV.payload/ns6:TargetFileName</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference("FileToken")</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileToFTPMoveUtilitySerivce_IV.payload/ns6:FileToken</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference("LocalFileDir")</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileToFTPMoveUtilitySerivce_IV.payload/ns6:SourceDirectory</to>
+      </copy>
+      <copy>
+        <from>'COPY'</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileToFTPMoveUtilitySerivce_IV.payload/ns6:Action</to>
+      </copy>
+    </assign>
+    <invoke name="Inv_FileToFTPMoveUtilitySerivce" partnerLink="FileToFTPMoveUtilitySerivce"
+            portType="ns5:FileToFTPMoveUtilitySerivce_BPEL" operation="process"
+            inputVariable="Inv_FileToFTPMoveUtilitySerivce_IV" outputVariable="Inv_FileToFTPMoveUtilitySerivce_OV"
+            bpelx:invokeAsDetail="no"/>
+    <assign name="Asg_MoveFeedFile">
+      <copy>
+        <from>$FileName</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileUtilityService_IV.payload/ns7:SourceFileName</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference("ArchiveDir")</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileUtilityService_IV.payload/ns7:TargetPhysicalDirectory</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference("LocalFileDir")</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileUtilityService_IV.payload/ns7:SourcePhysicalDirectory</to>
+      </copy>
+      <copy>
+        <from>$FileName</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Inv_FileUtilityService_IV.payload/ns7:TargetFileName</to>
+      </copy>
+    </assign>
+    <invoke name="Inv_FileUtilityService" partnerLink="FileUtilityService"
+            portType="ns2:FileUtilityService_BPEL" operation="Move" inputVariable="Inv_FileUtilityService_IV" outputVariable="Inv_FileUtilityService_Move_OV"
+            bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

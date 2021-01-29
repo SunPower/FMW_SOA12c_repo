@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/assign/copy[5]</loc>
+      <line>263</line>
+      <col/>
+      <file>PublishARSupplementPaymentsOracleToOSG_BPEL.bpel</file>
+      <name>PublishARSupplementPaymentsOracleToOSG_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}decimal" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}int"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/while/sequence/assign/copy</loc>
+      <line>290</line>
+      <col/>
+      <file>PublishARSupplementPaymentsOracleToOSG_BPEL.bpel</file>
+      <name>PublishARSupplementPaymentsOracleToOSG_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}int" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}string"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/while/sequence/assign/copy[2]</loc>
+      <line>296</line>
+      <col/>
+      <file>PublishARSupplementPaymentsOracleToOSG_BPEL.bpel</file>
+      <name>PublishARSupplementPaymentsOracleToOSG_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}int" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}string"</msg>
+   </Fault>
+</Faults>

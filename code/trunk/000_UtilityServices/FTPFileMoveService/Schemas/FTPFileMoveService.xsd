@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/SunPowerDevelopment/FTPFileMoveService/v1/xsd"
+            targetNamespace="http://www.sunpowercorp.com/SunPowerDevelopment/FTPFileMoveService/v1/xsd"
+            elementFormDefault="qualified">
+  <xsd:element name="FileMoveReq">
+    <xsd:annotation>
+      <xsd:documentation>This XSD used to sprcify the input data structure for FileMove utility service </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SourcePhysicalDirectory" type="xsd:string"/>
+        <xsd:element name="SourceFileName" type="xsd:string"/>
+        <xsd:element name="TargetPhysicalDirectory" type="xsd:string"/>
+        <xsd:element name="TargetFileName" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FileMoveResp">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Status" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

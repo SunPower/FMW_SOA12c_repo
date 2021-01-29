@@ -1,0 +1,51 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="CreateSalesOrderSFDCReq"
+     targetNamespace="http://xmlns.oracle.com/OnLineSalesOrder/CreateSalesOrderSFDCReq/CreateSalesOrderSFDCReq"
+     xmlns:ns2="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+     xmlns:ns1="http://soap.sforce.com/schemas/class/OrderIntegrationService"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:client="http://xmlns.oracle.com/OnLineSalesOrder/CreateSalesOrderSFDCReq/CreateSalesOrderSFDCReq"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="CreateSalesOrderSFDCReq">
+        <plnk:role name="CreateSalesOrderSFDCReqProvider">
+            <plnk:portType name="client:CreateSalesOrderSFDCReq"/>
+        </plnk:role>
+        <plnk:role name="CreateSalesOrderSFDCReqRequester">
+            <plnk:portType name="client:CreateSalesOrderSFDCReqCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://soap.sforce.com/schemas/class/OrderIntegrationService" location="GetNewOrder.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/OnLineSalesOrder/CreateSalesOrderSFDCReq/CreateSalesOrderSFDCReq"
+                 schemaLocation="../Schemas/CreateSalesOrderSFDCReq.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1"
+                        schemaLocation="../Schemas/inputparams.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CreateSalesOrderSFDCReqRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="CreateSalesOrderSFDCReqResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CreateSalesOrderSFDCReq">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:CreateSalesOrderSFDCReqRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="CreateSalesOrderSFDCReqCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:CreateSalesOrderSFDCReqResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

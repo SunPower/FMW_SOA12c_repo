@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectUpdateCustSiteCustomer" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectUpdateCustSiteCustomer" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectUpdateCustSiteCustomerInput" type="SelectUpdateCustSiteCustomerInput"/>
+   <xs:complexType name="SelectUpdateCustSiteCustomerInput">
+      <xs:sequence>
+         <xs:element name="dataSource" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectUpdateCustSiteCustomerOutputCollection" type="SelectUpdateCustSiteCustomerOutputCollection"/>
+   <xs:complexType name="SelectUpdateCustSiteCustomerOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectUpdateCustSiteCustomerOutput" type="SelectUpdateCustSiteCustomerOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectUpdateCustSiteCustomerOutput">
+      <xs:sequence>
+         <xs:element name="temp_cust_site_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="creation_date" type="xs:dateTime" nillable="true"/>
+         <xs:element name="process_flag" type="xs:decimal" nillable="true"/>
+         <xs:element name="error_message" type="xs:string" nillable="true"/>
+         <xs:element name="cust_acct_site_id" type="xs:decimal" nillable="true"/>
+         <xs:element name="site_usage" type="xs:string" nillable="true"/>
+         <xs:element name="location" type="xs:string" nillable="true"/>
+         <xs:element name="sfdc_billto_site_ID" type="xs:string" nillable="true"/>
+         <xs:element name="sfdc_shipto_site_id" type="xs:string" nillable="true"/>
+         <xs:element name="SOA_S2O_ID" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

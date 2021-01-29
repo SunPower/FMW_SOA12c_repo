@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/selecteNoItemOperatingUnitFromEBS" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/selecteNoItemOperatingUnitFromEBS" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="selecteNoItemOperatingUnitFromEBSInput" type="selecteNoItemOperatingUnitFromEBSInput"/>
+   <xs:complexType name="selecteNoItemOperatingUnitFromEBSInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="selecteNoItemOperatingUnitFromEBSOutputCollection" type="selecteNoItemOperatingUnitFromEBSOutputCollection"/>
+   <xs:complexType name="selecteNoItemOperatingUnitFromEBSOutputCollection">
+      <xs:sequence>
+         <xs:element name="selecteNoItemOperatingUnitFromEBSOutput" type="selecteNoItemOperatingUnitFromEBSOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="selecteNoItemOperatingUnitFromEBSOutput">
+      <xs:sequence>
+         <xs:element name="ACCOUNT_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="OU_SHORT_CODE" type="xs:string" nillable="true"/>
+          <xs:element name="DESIGN_SPOT_CHECK_REVIEW_FLAG" type="xs:string" nillable="true"/>
+            <xs:element name="LOYALTY_PARTNER" type="xs:string" nillable="true"/>
+              <xs:element name="MW_COMMITTED" type="xs:string" nillable="true"/>
+               <xs:element name="CUSTOMER_GROUP" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

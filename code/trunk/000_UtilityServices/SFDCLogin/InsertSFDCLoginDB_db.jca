@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="InsertSFDCLoginDB" adapter="db" wsdlLocation="WSDLs/InsertSFDCLoginDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOACustom" UIConnectionName="SOA_Custom" adapterRef=""/>
+  <endpoint-interaction portType="InsertSFDCLoginDB_ptt" operation="merge">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="InsertSFDCLoginDB.SfdcLoginDetails"/>
+      <property name="DmlType" value="merge"/>
+      <property name="MappingsMetaDataURL" value="InsertSFDCLoginDB-or-mappings.xml"/>
+      <property name="OptimizeMerge" value="true"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+  <endpoint-interaction portType="InsertSFDCLoginDB_ptt" operation="update">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="InsertSFDCLoginDB.SfdcLoginDetails"/>
+      <property name="DmlType" value="update"/>
+      <property name="MappingsMetaDataURL" value="InsertSFDCLoginDB-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+      <property name="OptimizeMerge" value="true"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

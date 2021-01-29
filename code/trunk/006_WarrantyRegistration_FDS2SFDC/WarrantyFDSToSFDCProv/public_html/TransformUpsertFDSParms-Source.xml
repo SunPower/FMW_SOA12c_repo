@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ProcessWarrantyFDSToSFDC xmlns="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1">
+   <ApplicationArea xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+      <CreationDateTime>2012-09-21T18:02:25.344</CreationDateTime>
+      <Signature>Signature4</Signature>
+      <BODID>BODID5</BODID>
+      <UserArea/>
+      <Sender/>
+   </ApplicationArea>
+   <DataArea>
+      <process xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">process6</process>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1">
+         <WRFDSToSFDCDetails xmlns:ns5="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+            <ns5:ID>4496465</ns5:ID>
+            <manufacturer>SUNPOWER-SE</manufacturer>
+            <product_type>SPR-225E-BLK-D</product_type>
+            <serial_number>H14J01152775</serial_number>
+            <packing_list_no>PL-13075466</packing_list_no>
+            <trad_ship_date>2011-05-25T00:00:00.000-07:00</trad_ship_date>
+            <dealer_name>THE SOLAR COMPANY</dealer_name>
+            <third_party_logistics_name>W02 NA MCC</third_party_logistics_name>
+            <product_group>MODULE</product_group>
+            <last_updated_stamp>2011-10-25T22:40:27.64-07:00</last_updated_stamp>
+         </WRFDSToSFDCDetails>
+      </WRFDS2SFDC>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"/>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"/>
+   </DataArea>
+</ProcessWarrantyFDSToSFDC>

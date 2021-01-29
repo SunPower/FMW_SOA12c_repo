@@ -1,0 +1,75 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SFDCLMSUsersDataLoadInterface_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SFDCLMSUsersDataLoadInterface_BPEL"
+     xmlns:client="http://www.sunpowercorp.com/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SFDCLMSUsersDataLoadInterface_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns9="http://www.sunpowercorp.com/MergeLmsRows"
+     xmlns:ns5="http://www.sunpowercorp.com/MergedRows"
+     xmlns:ns6="http://TargetNamespace.com/SFDCLMSFlatFile"
+     xmlns:ns7="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+     xmlns:ns10="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+     xmlns:ns8="http://schemas.oracle.com/bpel/extension"
+     xmlns:ns2="urn:partner.soap.sforce.com"
+     xmlns:ns1="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns4="http://www.sunpowercorp.com/PlateauHRConectorFFAccountData"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns3="http://www.sunpowercorp.com/PlateauHRConectorFFData"
+    >
+    <plnk:partnerLinkType name="SFDCLMSUsersDataLoadInterface_BPEL">
+        <plnk:role name="SFDCLMSUsersDataLoadInterface_BPELProvider">
+            <plnk:portType name="client:SFDCLMSUsersDataLoadInterface_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/WSDLs/CallCommSFDCErrMediator.wsdl"/>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:partner.soap.sforce.com"
+             xmlns:ns1="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://www.sunpowercorp.com/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SFDCLMSUsersDataLoadInterface_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://www.sunpowercorp.com/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SFDCLMSUsersDataLoadInterface_BPEL"
+                 schemaLocation="../Schemas/SFDCLMSUsersDataLoadInterface_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="urn:partner.soap.sforce.com"
+             xmlns:ns1="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://www.sunpowercorp.com/UserFeedOracleSFDCToLMS/SFDCLMSUsersDataLoadInterface/SFDCLMSUsersDataLoadInterface_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/PlateauHRConectorFFData"
+                        schemaLocation="../Schemas/PlateauHRConectorFFData.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/PlateauHRConectorFFAccountData"
+                        schemaLocation="../Schemas/PlateauHRConectorFFAccountData.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/MergedRows" schemaLocation="../Schemas/MergedRows.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/SFDCLMSFlatFile"
+                        schemaLocation="../Schemas/SFDCLMSFlatFile.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/MergeLmsRows"
+                        schemaLocation="../Schemas/MergedLMSData.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SFDCLMSUsersDataLoadInterface_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="SFDCLMSUsersDataLoadInterface_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SFDCLMSUsersDataLoadInterface_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

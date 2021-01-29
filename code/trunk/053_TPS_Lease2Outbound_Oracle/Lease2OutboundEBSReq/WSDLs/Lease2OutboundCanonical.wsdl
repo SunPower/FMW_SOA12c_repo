@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<n0:definitions name="Lease2OutboundCanonical" targetNamespace="http://www.sunpowercorp.com/Lease2OutboundCanonical/" xmlns:n0="http://schemas.xmlsoap.org/wsdl/" xmlns:n1="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1" xmlns:n2="http://www.sunpowercorp.com/Lease2OutboundCanonical/" xmlns:n3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <n0:types>
+    <xsd:schema xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.sunpowercorp.com/Lease2OutboundCanonical/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1"
+                  schemaLocation="../Schemas/CDM/BOD/Nouns/Lease2Outbound/V1/ProcessLease2Outbound.xsd"/>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://www.sunpowercorp.com/Lease2OutboundCanonical/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.sunpowercorp.com/Lease2OutboundCanonical/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="Lease2OutboundResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </n0:types>
+  <n0:message name="Lease2OutboundRequest">
+    <n0:part element="n1:ProcessLease2Outbound" name="parameters"/>
+  </n0:message>
+  <n0:message name="Lease2OutboundResponse">
+    <n0:part element="n2:Lease2OutboundResponse" name="parameters"/>
+  </n0:message>
+  <n0:portType name="Lease2OutboundCanonical">
+    <n0:operation name="Lease2Outbound">
+      <n0:input message="n2:Lease2OutboundRequest"/>
+      <n0:output message="n2:Lease2OutboundResponse"/>
+    </n0:operation>
+  </n0:portType>
+  <n0:binding name="Lease2OutboundCanonicalSOAP" type="n2:Lease2OutboundCanonical">
+    <n3:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <n0:operation name="Lease2Outbound">
+      <n3:operation soapAction="http://www.sunpowercorp.com/Lease2OutboundCanonical/Lease2Outbound"/>
+      <n0:input>
+        <n3:body use="literal"/>
+      </n0:input>
+      <n0:output>
+        <n3:body use="literal"/>
+      </n0:output>
+    </n0:operation>
+  </n0:binding>
+  <n0:service name="Lease2OutboundCanonical">
+    <n0:port binding="n2:Lease2OutboundCanonicalSOAP" name="Lease2OutboundCanonicalSOAP">
+      <n3:address location="http://dev-fusappdca02.sunpowercorp.com:7004/Lease2OutboundSvc/Proxy/Lease2OutboundPS"/>
+    </n0:port>
+  </n0:service>
+</n0:definitions>

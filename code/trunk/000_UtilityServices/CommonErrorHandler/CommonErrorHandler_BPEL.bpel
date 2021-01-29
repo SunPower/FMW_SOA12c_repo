@@ -1,0 +1,185 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Jul 02 03:25:15 PDT 2012
+  Author:  vannapareddy
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="CommonErrorHandler_BPEL"
+         targetNamespace="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ns1="http://www.sunpowercorp.com/ErrorEmailHandler/xsd/V1"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns2="http://xmlns.oracle.com/ias/pcbpel/NotificationService"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns3="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1"
+         xmlns:ns4="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[CommonErrorHandler_BPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="CommonErrorHandler_bpel_client"
+                 partnerLinkType="client:CommonErrorHandler_BPEL"
+                 myRole="CommonErrorHandler_BPELProvider"/>
+    <partnerLink name="NotificationService_Support"
+                 partnerLinkType="ns2:NotificationServiceLink"
+                 partnerRole="NotificationServiceProvider"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable"
+              messageType="client:CommonErrorHandler_BPELRequestMessage"/>
+    <variable name="emailBody" type="xsd:string"/>
+    <variable name="emailNotificationIDs" type="xsd:string"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in CommonErrorHandler_BPEL.wsdl) -->
+    <receive name="receiveInput"
+             partnerLink="CommonErrorHandler_bpel_client"
+             portType="client:CommonErrorHandler_BPEL" operation="process"
+             variable="inputVariable" createInstance="yes"/>
+        <assign name="AsgnEmailBodyErrorContent">
+      <copy>
+        <from expression="dvm:lookupValue(&quot;EmailDistributionList.dvm&quot;,&quot;InterfaceNumber&quot;,bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:InterfaceNumber'),&quot;emailDistrubtionList&quot;,&quot;&quot;)"/>
+        <to variable="emailNotificationIDs"/>
+      </copy>
+      <copy>
+        <from expression="concat(&quot;Dear Admin&quot;,string(&quot;&lt;br>&lt;br>The following error occurred For service &lt;b>&quot;), bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:InterfaceName'),string(&quot;&lt;/b> in the BPEL Process Component&lt;b> &quot;), bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:ProcessName'),string(&quot; &lt;/b> with instance Id &lt;b>&quot;),bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:InstanceNumber'),string(&quot;&lt;/b>&lt;br>&lt;br>&lt;b>Fault Details:&lt;/b> &lt;br>Fault Code: &quot;),bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:Fault/ns3:FaultCode'),string(&quot;&lt;br>Fault Message: &quot;),bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:Fault/ns3:FaultMessage'),string(&quot;&lt;br>Fault Description: &quot;),bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:Fault/ns3:FaultDescription'))"/>
+        <to variable="emailBody"/>
+      </copy>
+    </assign>
+    <switch name="Switc_AppendCorrectiveAction">
+      <case condition="ora:getNodes('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:CorrectiveAction/text()')!=''">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">CorrectiveAction Available</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <assign name="AsgnEmailBodyCorrectiveActionContent">
+          <copy>
+            <from expression="concat(bpws:getVariableData('emailBody'),string('&lt;br>&lt;br>&lt;b>Corrective Action:&lt;/b>   '),bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:CorrectiveAction'))"/>
+            <to variable="emailBody"/>
+          </copy>
+        </assign>
+      </case>
+      <otherwise>
+        <assign name="AsgnEmailBodyCorrectiveActionContent">
+          <copy>
+            <from expression="concat(bpws:getVariableData('emailBody'),string('&lt;br>&lt;br>For more details about the issue,please login into &lt;a href=&quot;http://10.0.100.142:7001/em&quot;> SOA EM Console&lt;/a>'))"/>
+            <to variable="emailBody"/>
+          </copy>
+        </assign>
+      </otherwise>
+    </switch>
+    <assign name="AsgnEmailBodyFooterContent">
+      <copy>
+        <from expression="concat(bpws:getVariableData('emailBody'),string('&lt;br>&lt;br>&lt;i>Note: This message was automatically generated, please do not reply to it&lt;/i> &lt;br>&lt;b>Regards&lt;/b>&lt;br>System Admin'))"/>
+        <to variable="emailBody"/>
+      </copy>
+    </assign>
+    <scope name="Email1">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:email"></bpelx:pattern>
+        <bpelx:general>
+          <bpelx:property name="userLabel">SendEmailNotification</bpelx:property>
+        </bpelx:general>
+      </bpelx:annotation>
+      <variables>
+        <variable name="varNotificationReq"
+                  messageType="ns2:EmailNotificationRequest"/>
+        <variable name="varNotificationResponse"
+                  messageType="ns2:ArrayOfResponse"/>
+        <variable name="NotificationServiceFaultVariable"
+                  messageType="ns2:NotificationServiceErrorMessage"/>
+      </variables>
+      <sequence name="EmailParamsAssign">
+        <assign name="EmailParamsAssign">
+          <copy>
+            <from expression="string('Default')"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:FromAccountName"/>
+          </copy>
+          <copy>
+            <from expression="string('')"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:Bcc"/>
+          </copy>
+          <copy>
+            <from expression="string('')"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:Cc"/>
+          </copy>
+          <copy>
+            <from expression="string('')"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:ReplyToAddress"/>
+          </copy>
+          <copy>
+            <from expression="concat(&quot;Exception Raised While Processing&quot;, bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:ProcessName'), &quot;-&quot;, bpws:getVariableData('inputVariable','payload','/ns3:CommonErrorHandlerInput/ns3:InstanceNumber'))"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:Subject"/>
+          </copy>
+          <copy>
+            <from expression="bpws:getVariableData('emailNotificationIDs')"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:To"/>
+          </copy>
+          <copy>
+            <from expression="bpws:getVariableData('emailBody')"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:Content/ns2:ContentBody"/>
+          </copy>
+          <copy>
+            <from expression="string('text/html; charset=UTF-8')"/>
+            <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns2:Content/ns2:MimeType"/>
+          </copy>
+        </assign>
+        <invoke name="InvokeNotificationService"
+                portType="ns2:NotificationService"
+                partnerLink="NotificationService_Support"
+                inputVariable="varNotificationReq"
+                outputVariable="varNotificationResponse"
+                operation="sendEmailNotification"/>
+      </sequence>
+    </scope>
+  </sequence>
+</process>

@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jun 25 11:07:29 IST 2015
+  Author:  sn38854
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="ProcessARReceiptReversalOSGToOracleBPEL" targetNamespace="http://xmlns.oracle.com/DEV/ProcessARReceiptReversalOSGToOracle/ProcessARReceiptReversalOSGToOracleBPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/DEV/ProcessARReceiptReversalOSGToOracle/ProcessARReceiptReversalOSGToOracleBPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/DEV/ProcessARReceiptReversalOSGToOracle/PollOSGReceiptReversalFeedFile" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/DEV/ProcessARReceiptReversalOSGToOracle/InsertReceiptReversalOSGFeed" xmlns:ns3="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns4="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://www.sunpowercorp.com/PollOSGReceiptReversalFeedFile" xmlns:ns6="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        PollOSGReceiptReversalFeedFile.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="PollOSGReceiptReversalFeedFile" partnerLinkType="ns1:Read_plt" myRole="Read_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns3:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="InsertReceiptReversalOSGFeed" partnerLinkType="ns2:InsertReceiptReversalOSGFeed_plt" partnerRole="InsertReceiptReversalOSGFeed_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="ReceivePollFile_Read_IV" messageType="ns1:Read_msg"/>
+    <variable name="Title" type="xsd:string"/>
+    <variable name="InvInsertReceiptReversalOSGFeed_IV" messageType="ns2:XxspwrArOsgRevInboundCollection_msg"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns3:requestMessage"/>
+    <variable name="FileName" type="xsd:string"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss0">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:UniqueIdentNum/ns4:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultDescription"/>
+          </copy>
+          <copy bpelx:ignoreMissingFromData="yes">
+            <from expression="concat(&quot;Failed to process the record for   Account Number -&quot;,bpws:getVariableData('ReceivePollFile_Read_IV','body','/ns5:OSGReversalFeedItems/ns5:OSGReversalFeed/ns5:AccountNumber'),&quot;due to invalid/missing data. Please validate and reprocess this record.&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:Fault/ns4:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="&quot;E&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns4:CommonSFDCErrorLog/ns4:CommonErrorHandlerInputDetails/ns4:status"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns3:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq1">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in ProcessARReceiptReversalOSGToOracleBPEL.wsdl) -->
+    <receive name="ReceivePollFile" partnerLink="PollOSGReceiptReversalFeedFile" portType="ns1:Read_ptt" operation="Read" variable="ReceivePollFile_Read_IV" createInstance="yes" id="BpRcv0">
+      <bpelx:property name="jca.file.FileName" variable="FileName"/>
+    </receive>
+    <assign name="setTitle" id="BpAss1">
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle('ProcessARReceiptReversalOSGToOracle')"/>
+        <to variable="Title"/>
+      </copy>
+    </assign>
+    <assign name="TransReceiptReversalFile2DB" id="BpAss2">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/TransReceiptReversalFile2DB.xsl', $ReceivePollFile_Read_IV.body)"/>
+        <to variable="InvInsertReceiptReversalOSGFeed_IV" part="XxspwrArOsgRevInboundCollection"/>
+      </copy>
+    </assign>
+    <invoke name="InvInsertReceiptReversalOSGFeed" inputVariable="InvInsertReceiptReversalOSGFeed_IV" partnerLink="InsertReceiptReversalOSGFeed" portType="ns2:InsertReceiptReversalOSGFeed_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv1"/>
+  </sequence>
+</process>

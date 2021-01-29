@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectOSGSupplPaymntsFeedFromOracle" adapter="db"
+                wsdlLocation="WSDLs/SelectOSGSupplPaymntsFeedFromOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS_XXSPWRSOA" adapterRef=""/>
+  <endpoint-interaction portType="SelectOSGSupplPaymntsFeedFromOracle_ptt" operation="SelectOSGSupplPaymntsFeedFromOracle">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select ACCOUNT_NUMBER,TRX_NUMBER,PAYMENT_DATE,RECEIPT_AMOUNT,PAYMENT_TYPE,PAYMENT_SUB_TYPE,PAYMENT_ACC_LAST4 from (Select rownum rn, a.* from XXSPWR.XXSPWR_AR_OSG_RCP_OUTBOUND  a where STATUS='NEW' and SOA_STATUS is null) where rn >= #minrow and rn &lt;= #maxrow"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

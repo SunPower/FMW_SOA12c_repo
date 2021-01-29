@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case</loc>
+      <line>364</line>
+      <col/>
+      <file>JobFeedSF2Oracle.bpel</file>
+      <name>JobFeedSF2Oracle.bpel</name>
+      <fix>Use one of the built-in boolean functions from xpath http://www.w3.org/TR/xpath#section-Boolean-Functions to convert the return value to boolean</fix>
+      <msg>xpath expression "bpws:getVariableData('RecordsFailed')" used in &lt;case> may not return boolean type value, the xpath engine would automatically try to convert the return value to boolean</msg>
+   </Fault>
+</Faults>

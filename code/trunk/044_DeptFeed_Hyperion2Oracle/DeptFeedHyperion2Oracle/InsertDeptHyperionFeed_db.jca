@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="InsertDeptHyperionFeed" adapter="db" wsdlLocation="InsertDeptHyperionFeed.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_HRREADONLY" UIConnectionName="hreadonly_DEV" adapterRef=""/>
+  <endpoint-interaction portType="InsertDeptHyperionFeed_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="InsertDeptHyperionFeed.XxspwrHypDeptBuMapTab"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="InsertDeptHyperionFeed-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

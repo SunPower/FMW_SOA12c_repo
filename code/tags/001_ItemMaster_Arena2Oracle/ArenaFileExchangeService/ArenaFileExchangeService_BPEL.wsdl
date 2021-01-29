@@ -1,0 +1,41 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ArenaFileExchangeService_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/ArenaOracleDataFeed/ArenaFileExchangeService/ArenaFileExchangeService_BPEL"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/ArenaOracleDataFeed/ArenaFileExchangeService/ArenaFileExchangeService_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="ArenaFileExchangeService_BPEL">
+        <plnk:role name="ArenaFileExchangeService_BPELProvider">
+            <plnk:portType name="client:ArenaFileExchangeService_BPEL"/>
+        </plnk:role>
+        <plnk:role name="ArenaFileExchangeService_BPELRequester">
+            <plnk:portType name="client:ArenaFileExchangeService_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/ArenaOracleDataFeed/ArenaFileExchangeService/ArenaFileExchangeService_BPEL"
+                 schemaLocation="Schemas/ArenaFileExchangeService_BPEL.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="ArenaFileExchangeService_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="ArenaFileExchangeService_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ArenaFileExchangeService_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ArenaFileExchangeService_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="ArenaFileExchangeService_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:ArenaFileExchangeService_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

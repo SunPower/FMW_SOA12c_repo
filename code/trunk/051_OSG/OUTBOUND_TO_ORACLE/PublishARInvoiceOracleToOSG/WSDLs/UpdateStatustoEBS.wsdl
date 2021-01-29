@@ -1,0 +1,22 @@
+<?binding.jca UpdateStatustoEBS_db.jca?>
+<wsdl:definitions name="UpdateStatustoEBS" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SOA_DEV/PublishARInvoiceOracleToOSG/UpdateStatustoEBS" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateStatustoEBS" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SOA_DEV/PublishARInvoiceOracleToOSG/UpdateStatustoEBS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="UpdateStatustoEBS_plt">
+        <plt:role name="UpdateStatustoEBS_role">
+            <plt:portType name="tns:UpdateStatustoEBS_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateStatustoEBS"
+                    schemaLocation="../Schemas/UpdateStatustoEBS.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="UpdateStatustoEBSInput_msg">
+        <wsdl:part name="UpdateStatustoEBSInput_msg" element="db:UpdateStatustoEBSInput"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateStatustoEBS_ptt">
+        <wsdl:operation name="UpdateStatustoEBS">
+            <wsdl:input message="tns:UpdateStatustoEBSInput_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

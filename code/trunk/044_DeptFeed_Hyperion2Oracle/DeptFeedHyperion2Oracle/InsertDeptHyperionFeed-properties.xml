@@ -1,0 +1,42 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="root_descriptor_alias">XXSPWR_HYP_DEPT_BU_MAP_TAB</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_SUB_BU:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.STATUS:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_NUM:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_ALIAS:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.EXEC_OWNER_EMP_ID:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.STATUS:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.EXEC_OWNER_EMP_ID:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_SUB_BU:db_column_size">150</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.STATUS:db_column_size">1</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_NUM:db_column_size">150</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_NUM:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_BU:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.EXEC_OWNER_EMP_ID:db_column_size">150</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.ERROR_MESSAGE:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_8">ERROR_MESSAGE</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_7">STATUS</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.EXEC_OWNER_NAME:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_COGS_OPEX:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_6">DEPT_COGS_OPEX</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_5">DEPT_BU</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_4">DEPT_SUB_BU</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_3">DEPT_ALIAS</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_COGS_OPEX:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_2">DEPT_NUM</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_BU:db_column_size">150</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_BU:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_1">EXEC_OWNER_EMP_ID</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_column_0">EXEC_OWNER_NAME</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.ERROR_MESSAGE:db_column_size">2000</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.EXEC_OWNER_NAME:db_column_size">150</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_COGS_OPEX:db_column_size">150</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.EXEC_OWNER_NAME:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_SUB_BU:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_ALIAS:db_column_type">VARCHAR2</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB:db_table_type">TABLE</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.ERROR_MESSAGE:db_column_not_null">false</entry>
+   <entry key="XXSPWR_HYP_DEPT_BU_MAP_TAB.DEPT_ALIAS:db_column_size">150</entry>
+</properties>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/utilities/inputparam/xsd/v1"
+            targetNamespace="http://www.sunpowercorp.com/utilities/inputparam/xsd/v1"
+            elementFormDefault="qualified">
+  <xsd:element name="InputParams">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="instanceID" type="xsd:string"/>
+        <xsd:element name="JNDI" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

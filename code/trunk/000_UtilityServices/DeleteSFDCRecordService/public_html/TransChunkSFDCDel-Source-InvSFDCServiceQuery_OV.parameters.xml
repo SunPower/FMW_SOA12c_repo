@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<queryResponse xmlns="urn:partner.soap.sforce.com">
+   <result>
+      <done>true</done>
+      <queryLocator>queryLocator3</queryLocator>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type4</type>
+         <Body xmlns="urn:sobject.partner.soap.sforce.com">NQ==</Body>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">Name6</Name>
+         <Account__c xmlns="urn:sobject.partner.soap.sforce.com">Account__c7</Account__c>
+         <Allowance__c xmlns="urn:sobject.partner.soap.sforce.com">80.73</Allowance__c>
+         <Approved__c xmlns="urn:sobject.partner.soap.sforce.com">90.73</Approved__c>
+         <Balance__c xmlns="urn:sobject.partner.soap.sforce.com">100.73</Balance__c>
+         <Claimed_Amt__c xmlns="urn:sobject.partner.soap.sforce.com">110.73</Claimed_Amt__c>
+         <Frozen__c xmlns="urn:sobject.partner.soap.sforce.com">120.72</Frozen__c>
+         <Promotion_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Promotion_Description__c13</Promotion_Description__c>
+         <Promotion__c xmlns="urn:sobject.partner.soap.sforce.com">Promotion__c14</Promotion__c>
+         <Spent__c xmlns="urn:sobject.partner.soap.sforce.com">150.72</Spent__c>
+         <ACBParanet_ID__c xmlns="urn:sobject.partner.soap.sforce.com">ACBParanet_ID__c16</ACBParanet_ID__c>
+         <promotion_year__c xmlns="urn:sobject.partner.soap.sforce.com">promotion_year__c17</promotion_year__c>
+         <Smart_Store_Purchase__c xmlns="urn:sobject.partner.soap.sforce.com">180.73</Smart_Store_Purchase__c>
+         <Expiration__c xmlns="urn:sobject.partner.soap.sforce.com">2013-01-08</Expiration__c>
+         <LastModifiedDate xmlns="urn:sobject.partner.soap.sforce.com">2013-01-08</LastModifiedDate>
+         <OwnerId xmlns="urn:sobject.partner.soap.sforce.com">OwnerId19</OwnerId>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull20</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull21</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull22</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id2323232323232323</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type24</type>
+         <Body xmlns="urn:sobject.partner.soap.sforce.com">MjU=</Body>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">Name26</Name>
+         <Account__c xmlns="urn:sobject.partner.soap.sforce.com">Account__c27</Account__c>
+         <Allowance__c xmlns="urn:sobject.partner.soap.sforce.com">280.73</Allowance__c>
+         <Approved__c xmlns="urn:sobject.partner.soap.sforce.com">290.73</Approved__c>
+         <Balance__c xmlns="urn:sobject.partner.soap.sforce.com">300.73</Balance__c>
+         <Claimed_Amt__c xmlns="urn:sobject.partner.soap.sforce.com">310.73</Claimed_Amt__c>
+         <Frozen__c xmlns="urn:sobject.partner.soap.sforce.com">320.72</Frozen__c>
+         <Promotion_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Promotion_Description__c33</Promotion_Description__c>
+         <Promotion__c xmlns="urn:sobject.partner.soap.sforce.com">Promotion__c34</Promotion__c>
+         <Spent__c xmlns="urn:sobject.partner.soap.sforce.com">350.72</Spent__c>
+         <ACBParanet_ID__c xmlns="urn:sobject.partner.soap.sforce.com">ACBParanet_ID__c36</ACBParanet_ID__c>
+         <promotion_year__c xmlns="urn:sobject.partner.soap.sforce.com">promotion_year__c37</promotion_year__c>
+         <Smart_Store_Purchase__c xmlns="urn:sobject.partner.soap.sforce.com">380.72</Smart_Store_Purchase__c>
+         <Expiration__c xmlns="urn:sobject.partner.soap.sforce.com">2013-01-08</Expiration__c>
+         <LastModifiedDate xmlns="urn:sobject.partner.soap.sforce.com">2013-01-08</LastModifiedDate>
+         <OwnerId xmlns="urn:sobject.partner.soap.sforce.com">OwnerId39</OwnerId>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull40</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull41</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull42</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id4343434343434343</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type44</type>
+         <Body xmlns="urn:sobject.partner.soap.sforce.com">NDU=</Body>
+         <Name xmlns="urn:sobject.partner.soap.sforce.com">Name46</Name>
+         <Account__c xmlns="urn:sobject.partner.soap.sforce.com">Account__c47</Account__c>
+         <Allowance__c xmlns="urn:sobject.partner.soap.sforce.com">480.72</Allowance__c>
+         <Approved__c xmlns="urn:sobject.partner.soap.sforce.com">490.72</Approved__c>
+         <Balance__c xmlns="urn:sobject.partner.soap.sforce.com">500.72</Balance__c>
+         <Claimed_Amt__c xmlns="urn:sobject.partner.soap.sforce.com">510.72</Claimed_Amt__c>
+         <Frozen__c xmlns="urn:sobject.partner.soap.sforce.com">520.72</Frozen__c>
+         <Promotion_Description__c xmlns="urn:sobject.partner.soap.sforce.com">Promotion_Description__c53</Promotion_Description__c>
+         <Promotion__c xmlns="urn:sobject.partner.soap.sforce.com">Promotion__c54</Promotion__c>
+         <Spent__c xmlns="urn:sobject.partner.soap.sforce.com">550.72</Spent__c>
+         <ACBParanet_ID__c xmlns="urn:sobject.partner.soap.sforce.com">ACBParanet_ID__c56</ACBParanet_ID__c>
+         <promotion_year__c xmlns="urn:sobject.partner.soap.sforce.com">promotion_year__c57</promotion_year__c>
+         <Smart_Store_Purchase__c xmlns="urn:sobject.partner.soap.sforce.com">580.72</Smart_Store_Purchase__c>
+         <Expiration__c xmlns="urn:sobject.partner.soap.sforce.com">2013-01-08</Expiration__c>
+         <LastModifiedDate xmlns="urn:sobject.partner.soap.sforce.com">2013-01-08</LastModifiedDate>
+         <OwnerId xmlns="urn:sobject.partner.soap.sforce.com">OwnerId59</OwnerId>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull60</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull61</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull62</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id6363636363636363</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <size>-0</size>
+   </result>
+</queryResponse>

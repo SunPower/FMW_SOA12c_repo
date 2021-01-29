@@ -1,0 +1,63 @@
+<wsdl:definitions name="Lease2OutboundSFDCProv_BPEL" targetNamespace="http://www.sunpowercorp.com/SunPowerApp/Lease2OutboundSFDCProv/Lease2OutboundSFDCProv_BPEL" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://www.sunpowercorp.com/SunPowerApp/Lease2OutboundSFDCProv/Lease2OutboundSFDCProv_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:documentation>
+        <abstractWSDL>http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/Lease2OutboundSFDCProv!1.0/Lease2OutboundSFDCProv_BPEL.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="Lease2OutboundSFDCProv_BPEL">
+        <plnk:role name="Lease2OutboundSFDCProv_BPELRequester">
+            <plnk:portType name="client:Lease2OutboundSFDCProv_BPELCallback"/>
+        </plnk:role>
+        <plnk:role name="Lease2OutboundSFDCProv_BPELProvider">
+            <plnk:portType name="client:Lease2OutboundSFDCProv_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+<wsp:Policy wsu:Id="wsaddr_policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+   <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
+</wsp:Policy>    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/SunPowerApp/Lease2OutboundSFDCProv/Lease2OutboundSFDCProv_BPEL" schemaLocation="../xsd/Lease2OutboundSFDCProv_BPEL.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessLease2Outbound/V1" schemaLocation="../xsd/CDM/BOD/Nouns/Lease2Outbound/V1/ProcessLease2Outbound.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="Lease2OutboundSFDCProv_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Lease2OutboundSFDCProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessLease2Outbound"/>
+    </wsdl:message>
+    <wsdl:portType name="Lease2OutboundSFDCProv_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:Lease2OutboundSFDCProv_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="Lease2OutboundSFDCProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:Lease2OutboundSFDCProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="Lease2OutboundSFDCProv_BPELBinding" type="client:Lease2OutboundSFDCProv_BPEL">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsp:PolicyReference URI="#wsaddr_policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="Lease2OutboundSFDCProv_BPELCallbackBinding" type="client:Lease2OutboundSFDCProv_BPELCallback">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="processResponse">
+            <soap:operation style="document" soapAction="processResponse"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://www.sunpowercorp.com/SunPowerApp/Lease2OutboundSFDCProv/Lease2OutboundSFDCProv_BPEL"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="lease2outboundsfdcprov_bpel_client_ep">
+        <wsdl:port name="Lease2OutboundSFDCProv_BPEL_pt" binding="client:Lease2OutboundSFDCProv_BPELBinding">
+            <soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/Lease2OutboundSFDCProv/lease2outboundsfdcprov_bpel_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

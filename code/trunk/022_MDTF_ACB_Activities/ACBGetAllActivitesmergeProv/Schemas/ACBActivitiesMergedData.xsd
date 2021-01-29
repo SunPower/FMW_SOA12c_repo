@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.sunpowercorp.com/ACBClaimToSFDCMergeDetails"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ACBClaimToSFDCMergeRows">
+    <complexType>
+      <sequence>
+        <element name="row" maxOccurs="unbounded" minOccurs="0">
+          <complexType>
+            <sequence>
+              <xsd:element name="Id" type="string"/>
+              <xsd:element name="Account__c" type="string" nillable="true"/>
+              <xsd:element name="Promotion__c" type="string" nillable="true"/>
+              <xsd:element name="Promotion_Description__c" type="string"
+                           nillable="true"/>
+              <xsd:element name="Transaction_Type__c" type="string"
+                           nillable="true"/>
+              <xsd:element name="Transaction_Year__c" type="xsd:decimal"
+                           nillable="true"/>
+              <xsd:element name="Transaction_Month__c" type="string"
+                           nillable="true"/>
+              <xsd:element name="Sum_of_Transaction_Amt__c" type="xsd:decimal"
+                           nillable="true"/>
+              <xsd:element name="Comment__c" type="string" nillable="true"/>
+              <xsd:element name="Promotion_Year__c" type="xsd:decimal"
+                           nillable="true"/>
+              <xsd:element name="Record_Number__c" type="xsd:decimal"
+                           nillable="true"/>
+              <xsd:element name="ACBParanet_ID__C" type="string"
+                           nillable="true"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='SunpowerStoreSvc']</loc>
+      <line>116</line>
+      <col>17</col>
+      <file>E:\JDeveloper1221\mywork\SunPowerStore_ONF2SFDC\010_SunPowerStore_ONF2SFDC\SunpowerStoreONFReq\composite.xml</file>
+      <name>E:\JDeveloper1221\mywork\SunPowerStore_ONF2SFDC\010_SunPowerStore_ONF2SFDC\SunpowerStoreONFReq\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

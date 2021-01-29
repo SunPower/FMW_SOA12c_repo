@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SOAComposite" default="all" basedir=".">
+    <echo message="basedir ${basedir}"></echo>
+    <property name="src.root" value="${basedir}/../../MIGRATION_SCRIPTS"/>
+	<echo message="src.root ${src.root}"></echo>
+	<echo message="1...setting properties"></echo>
+    <property file="${src.root}/build.env.properties"/>
+	<echo message="build.env.properties location = ${src.root}/build.env.properties"></echo>
+    <import file="${src.root}/common-build.xml"/>
+    <property file="build.properties"/>
+	<echo message="2...imported common-build.xml"></echo>	
+    <!--taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${ant.contrib.library}"/>
+        </classpath>
+    </taskdef-->
+    <target name="env">
+        <property name="default.env.name" value="NULL"/>
+        <echo message="3...picked from console parameters - default.env.name= ${default.env.name}"/>
+    </target>	
+    <target name="all" description="Build the project" depends="build,undeploy,deploy"/>
+    <target name="build">
+	    <echo message="3...target build..."></echo>
+        <property name="sca-inf.classes.dir" value="SCA-INF/classes"/>
+        <mkdir dir="${sca-inf.classes.dir}"/>
+		<echo message="mkdir sca-inf.classes.dir = ${sca-inf.classes.dir}"></echo>	
+        <mkdir dir="${sca.out.dir}"/>
+		<echo message="mkdir sca.out.dir = ${sca.out.dir}"></echo>	
+        <delete dir="${sca-inf.classes.dir}" includeemptydirs="true"
+                includes="*/**" failonerror="false"/>
+
+        <copy file="fault-policies.xml" todir="stage" overwrite="true"/>
+        <!--replace file="fault-policies.xml" token="@ErrorEmailFrom@" value="${ErrorEmailFrom}"/>
+        <replace file="fault-policies.xml" token="@ErrorEmailTo@" value="${ErrorEmailTo}"/>
+        <replace file="fault-policies.xml" token="@EmailServerHost@" value="${EmailServerHost}"/>
+        <replace file="fault-policies.xml" token="@EmailServerPort@" value="${EmailServerPort}"/-->
+        <ant antfile="${oracle.home}/bin/ant-sca-package.xml" target="package"
+             inheritall="false">
+            <property name="oracle.home" value="${oracle.home}"/>
+            <property name="deploy.dir" value="${sca.out.dir}"/>
+            <property name="compositeDir" value="${basedir}"/>
+            <property name="scac.application.home" value="${basedir}/.."/>
+            <property name="compositeName" value="${composite.name}"/>
+            <property name="revision" value="${composite.revision}"/>
+            <property name="java.passed.home" value="${java.home}"/>
+        </ant>
+		<echo message="{oracle.home}/bin/ant-sca-package.xml = ${oracle.home}/bin/ant-sca-package.xml"></echo>
+		<echo message="composite.name = ${composite.name}"></echo>
+		<echo message="composite.revision = ${composite.revision}"></echo>
+		<echo message="{java.home} = ${java.home}"></echo>
+		
+		<echo message="4...set all composite properties.."></echo>
+        <!--copy todir="${sca.out.dir}">
+            <fileset dir="${basedir}/../ConfigurationPlans">
+                <exclude name="*TEMPLATE*"/>
+            </fileset>
+        </copy-->
+        <copy file="stage/fault-policies.xml" todir="." overwrite="true"/>
+        <delete dir="stage" deleteonexit="true"/>
+    </target>
+    <!--target name="deployToCluster">
+        <foreach list="${soa.server.hosts}" param="soa.server.host"
+                 target="deploy" inheritall="true"/>
+    </target>
+    <target name="undeployFromCluster">
+        <foreach list="${soa.server.hosts}" param="soa.server.host"
+                 target="undeploy" inheritall="true"/>
+    </target-->
+    <target name="deploy">
+	<echo message="5...target deploy..."></echo>
+        <condition property="deploymentplan.name" value="null">
+            <not>
+                <isset property="${deploymentplan.name}"/>
+            </not>
+        </condition>
+        <echo>Deploying to http://${soa.server.host}:${soa.server.port}/soa-infra/deployer with config plan ${deploymentplan.name}</echo>
+        <ant antfile="${oracle.home}/bin/ant-sca-deploy.xml" target="deploy"
+             inheritall="false">
+            <!-- reformat of prop names -->
+            <property name="user" value="${server.user}"/>
+            <property name="password" value="${server.password}"/>
+            <!-- create the url for deployment -->
+            <property name="serverURL"
+                      value="http://${soa.server.host}:${soa.server.port}/soa-infra/deployer"/>
+		    <property name="partition" value="${composite.partition}"/>
+            <!-- location of the sar -->
+            <property name="sarLocation"
+                      location="${sca.out.dir}/sca_${composite.name}_rev${composite.revision}.jar"/>
+            <!-- force overwrite if already there -->
+            <property name="overwrite" value="true"/>
+            <!-- configplan-->
+            <property name="configplan" value="${deploymentplan.name}"/>
+        </ant>
+    </target>
+    <target name="undeploy">
+	<echo message="3....target undeploy.."></echo>
+        <echo>Undeploying from http://${soa.server.host}:${soa.server.port}/soa-infra/deployer</echo>
+        <ant antfile="${oracle.home}/bin/ant-sca-deploy.xml" target="undeploy"
+             inheritall="false">
+            <!-- reformat of prop names -->
+            <property name="user" value="${server.user}"/>
+            <property name="password" value="${server.password}"/>
+            <!-- create the url for deployment -->
+            <property name="serverURL"
+                      value="http://${soa.server.host}:${soa.server.port}/soa-infra/deployer"/>
+            <property name="compositeName" value="${composite.name}"/>
+            <property name="revision" value="${composite.revision}"/>
+			<property name="partition" value="${composite.partition}"/>
+        </ant>
+    </target>
+    <target name="buildAndDeploy" depends="build,deploy"/>
+</project>

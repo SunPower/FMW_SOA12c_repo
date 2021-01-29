@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="DeleteSFDCRecordService_BPEL" targetNamespace="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL" xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+   <plnk:partnerLinkType name="DeleteSFDCRecordService_BPEL">
+      <plnk:role name="DeleteSFDCRecordService_BPELProvider">
+         <plnk:portType name="client:DeleteSFDCRecordService_BPEL"/>
+      </plnk:role>
+      <plnk:role name="DeleteSFDCRecordService_BPELRequester">
+         <plnk:portType name="client:DeleteSFDCRecordService_BPELCallback"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.sunpowercorp.com/DeleteSFDCRecordService/DeleteSFDCRecordService_BPEL" schemaLocation="xsd/DeleteSFDCRecordService_BPEL.xsd"/>
+      </schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="xsd/wsaaddress.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/DeleteSFDCRecordService/initParams/xsd/v1" schemaLocation="xsd/inputParams.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="DeleteSFDCRecordService_BPELRequestMessage">
+      <wsdl:part name="payload" element="client:process"/>
+   </wsdl:message>
+   <wsdl:message name="DeleteSFDCRecordService_BPELResponseMessage">
+      <wsdl:part name="payload" element="client:processResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="DeleteSFDCRecordService_BPEL">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:DeleteSFDCRecordService_BPELRequestMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:portType name="DeleteSFDCRecordService_BPELCallback">
+      <wsdl:operation name="processResponse">
+         <wsdl:input message="client:DeleteSFDCRecordService_BPELResponseMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

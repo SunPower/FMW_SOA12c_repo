@@ -1,0 +1,26 @@
+<?binding.jca SelectSalesOrderEBS_db.jca?>
+<wsdl:definitions name="SelectSalesOrderEBS" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/UpdateSalesOrderResponseOracleReq/SelectSalesOrderEBS" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/SelectSalesOrderEBS" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/UpdateSalesOrderResponseOracleReq/SelectSalesOrderEBS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="SelectSalesOrderEBS_plt">
+        <plt:role name="SelectSalesOrderEBS_role">
+            <plt:portType name="tns:SelectSalesOrderEBS_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectSalesOrderEBS"
+                    schemaLocation="../Schemas/SelectSalesOrderEBS.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectSalesOrderEBSInput_msg">
+        <wsdl:part name="SelectSalesOrderEBSInput_msg" element="db:SelectSalesOrderEBSInput"/>
+    </wsdl:message>
+    <wsdl:message name="SelectSalesOrderEBSOutputCollection_msg">
+        <wsdl:part name="SelectSalesOrderEBSOutputCollection" element="db:SelectSalesOrderEBSOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectSalesOrderEBS_ptt">
+        <wsdl:operation name="SelectSalesOrderEBS">
+            <wsdl:input message="tns:SelectSalesOrderEBSInput_msg"/>
+            <wsdl:output message="tns:SelectSalesOrderEBSOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

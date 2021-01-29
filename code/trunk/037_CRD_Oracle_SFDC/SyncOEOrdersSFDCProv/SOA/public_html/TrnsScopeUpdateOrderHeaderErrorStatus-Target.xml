@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrOmHeaderSyncCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateOrderHeaderStatus">
+   <top:XxspwrOmHeaderSync>
+      <top:headerId/>
+      <top:soaFlag>E</top:soaFlag>
+      <top:soaErrormsg>process716</top:soaErrormsg>
+   </top:XxspwrOmHeaderSync>
+   <top:XxspwrOmHeaderSync>
+      <top:headerId/>
+      <top:soaFlag>E</top:soaFlag>
+      <top:soaErrormsg>process716</top:soaErrormsg>
+   </top:XxspwrOmHeaderSync>
+</top:XxspwrOmHeaderSyncCollection>

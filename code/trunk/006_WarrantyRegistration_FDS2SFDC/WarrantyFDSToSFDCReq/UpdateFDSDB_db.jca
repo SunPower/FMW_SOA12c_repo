@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="UpdateFDSDB" adapter="db" wsdlLocation="WSDLs/UpdateFDSDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/FDS" UIConnectionName="FDSTestConnection" adapterRef=""/>
+  <endpoint-interaction portType="UpdateFDSDB_ptt" operation="update">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="UpdateFDSDB.WarrantyViewFlush"/>
+      <property name="DmlType" value="update"/>
+      <property name="MappingsMetaDataURL" value="UpdateFDSDB-or-mappings.xml"/>
+      <property name="DetectOmissions" value="true"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/assign[3]/copy[2]</loc>
+      <line>432</line>
+      <col/>
+      <file>Lease2OutboundSFDCProv_BPEL.bpel</file>
+      <name>Lease2OutboundSFDCProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://schemas.xmlsoap.org/ws/2003/03/addressing}AttributedURI"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='CommonSFDCErrorLogService']</loc>
+      <line>177</line>
+      <col>17</col>
+      <file>C:\SunPower\SOAProjcts\workspace\053_TPS_Lease2Outbound_Oracle\Lease2OutboundSFDCProv\composite.xml</file>
+      <name>C:\SunPower\SOAProjcts\workspace\053_TPS_Lease2Outbound_Oracle\Lease2OutboundSFDCProv\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

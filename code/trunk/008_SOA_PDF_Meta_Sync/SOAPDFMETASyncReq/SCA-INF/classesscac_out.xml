@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[2]/copy</loc>
+      <line>530</line>
+      <col/>
+      <file>SOAPDFMETASyncReq_BPEL.bpel</file>
+      <name>SOAPDFMETASyncReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}base64Binary" is not compatible with &lt;to> value type "{http://www.sunpowercorp.com/Common/CommonDataTypes/V1}base64_1"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[2]/copy[2]</loc>
+      <line>535</line>
+      <col/>
+      <file>SOAPDFMETASyncReq_BPEL.bpel</file>
+      <name>SOAPDFMETASyncReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.sunpowercorp.com/Common/CommonDataTypes/V1}String200"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[2]/copy[3]</loc>
+      <line>541</line>
+      <col/>
+      <file>SOAPDFMETASyncReq_BPEL.bpel</file>
+      <name>SOAPDFMETASyncReq_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.sunpowercorp.com/Common/CommonDataTypes/V1}String200"</msg>
+   </Fault>
+</Faults>

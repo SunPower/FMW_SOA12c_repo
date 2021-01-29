@@ -1,0 +1,38 @@
+2019-05-02 19:34:10.478/1.616 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/E:/Jdev1221/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2019-05-02 19:34:10.520/1.657 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/E:/Jdev1221/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2019-05-02 19:34:10.521/1.659 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2019-05-02 19:34:10.524/1.661 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2019-05-02 19:34:10.525/1.663 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2019-05-02 19:34:10.526/1.664 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2019-05-02 19:34:10.650/1.787 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2019-05-02 19:34:10.653/1.790 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2019-05-02 19:34:11.243/2.380 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "RD42768's cluster" has been automatically generated
+May 02, 2019 7:34:16 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+May 02, 2019 7:34:24 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+May 02, 2019 7:34:26 PM com.collaxa.cube.CubeLogger info
+INFO: validating "SOAPDFMETASyncProv_BPEL.bpel" ...
+May 02, 2019 7:34:26 PM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+May 02, 2019 7:34:38 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+May 02, 2019 7:34:38 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+May 02, 2019 7:34:38 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+May 02, 2019 7:34:38 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "SOAPDFMETASyncProv_BPEL" in 134.0 milliseconds [nodes 106=0+106, 790.9 nodes/sec]
+May 02, 2019 7:34:40 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "SOAPDFMETASyncProv_BPEL" in 1.954 seconds
+May 02, 2019 7:34:40 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 7 files in 1.4 milliseconds
+May 02, 2019 7:34:40 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "SOAPDFMETASyncProv_BPEL" in 23.5 milliseconds
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

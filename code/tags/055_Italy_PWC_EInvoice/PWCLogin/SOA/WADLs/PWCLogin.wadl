@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="PWCLogin">RestReference</doc>
+   <resources>
+      <resource path="/login">
+         <method name="POST" soa:name="Login">
+            <request>
+               <param name="username" style="query" type="xsd:string"/>
+               <param name="password" style="query" type="xsd:string"/>
+               <representation mediaType="application/x-www-form-urlencoded"/>
+            </request>
+            <response/>
+            <response/>
+         </method>
+      </resource>
+   </resources>
+</application>

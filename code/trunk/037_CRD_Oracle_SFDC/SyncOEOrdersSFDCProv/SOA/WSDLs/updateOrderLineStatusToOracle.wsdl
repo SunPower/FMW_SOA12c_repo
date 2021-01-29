@@ -1,0 +1,21 @@
+<?binding.jca updateOrderLineStatusToOracle_db.jca?>
+<wsdl:definitions name="updateOrderLineStatusToOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersSFDCProv/updateOrderLineStatusToOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersSFDCProv/updateOrderLineStatusToOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateOrderLineStatusToOracle">
+    <plt:partnerLinkType name="updateOrderLineStatusToOracle_plt">
+        <plt:role name="updateOrderLineStatusToOracle_role">
+            <plt:portType name="tns:updateOrderLineStatusToOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateOrderLineStatusToOracle" schemaLocation="../Schemas/updateOrderLineStatusToOracle_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrOmLineSyncCollection_msg">
+        <wsdl:part name="XxspwrOmLineSyncCollection" element="top:XxspwrOmLineSyncCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="updateOrderLineStatusToOracle_ptt">
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:XxspwrOmLineSyncCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

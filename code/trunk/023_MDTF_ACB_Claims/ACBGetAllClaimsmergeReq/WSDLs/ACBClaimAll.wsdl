@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.acbcoop.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.acbcoop.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.acbcoop.com/">
+      <s:element name="GetAllClaims">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllClaimsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClaimsResult" type="tns:ArrayOfWebServiceClaims" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWebServiceClaims">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WebServiceClaims" nillable="true" type="tns:WebServiceClaims" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebServiceClaims">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DlrNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promotion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreApprovalNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaimNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActivityDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityFromDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityToDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClaimedAmt" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApprovedAmt" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaidAmt" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditMemo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActivityCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetClaimsSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dealerNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="preApprovalNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="claimNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClaimsSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClaimsSearchResult" type="tns:ArrayOfWebServiceClaims" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFundDetails">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllFundDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFundDetailsResult" type="tns:ArrayOfWebServiceFundDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWebServiceFundDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WebServiceFundDetails" nillable="true" type="tns:WebServiceFundDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebServiceFundDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DlrNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promotion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionMonth" nillable="true" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionYear" nillable="true" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionYear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFundDetailsSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dealerNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="promotionYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFundDetailsSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFundDetailsSearchResult" type="tns:ArrayOfWebServiceFundDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFundActivity">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllFundActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFundActivityResult" type="tns:ArrayOfWebServiceFundActivity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWebServiceFundActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WebServiceFundActivity" nillable="true" type="tns:WebServiceFundActivity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebServiceFundActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DlrNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promotion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromoDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Year" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Allowance" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Claimed" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Approved" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Spent" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Frozen" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFundActivitySearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dealerNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="promotionYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFundActivitySearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFundActivitySearchResult" type="tns:ArrayOfWebServiceFundActivity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPriorApprovalDetails">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPriorApprovalDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPriorApprovalDetailsResult" type="tns:ArrayOfWebServicePAs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWebServicePAs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WebServicePAs" nillable="true" type="tns:WebServicePAs" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebServicePAs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DlrNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promotion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApprNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFrom" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTo" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Media" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MediaDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstimatedCost" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Open" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpireDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPriorApprovalDetailsSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dealerNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="promotionYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPriorApprovalDetailsSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPriorApprovalDetailsSearchResult" type="tns:ArrayOfWebServicePAs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllFundBreakdown">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllFundBreakdownResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllFundBreakdownResult" type="tns:ArrayOfWebServiceFundBreakdown" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWebServiceFundBreakdown">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WebServiceFundBreakdown" nillable="true" type="tns:WebServiceFundBreakdown" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebServiceFundBreakdown">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DlrNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DlrName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Promotion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromoDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Year" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Accruals" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdvertisingClaims" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SmartStore" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LMS" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Expiration" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFundBreakdownSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dealerNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="promotionYear" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFundBreakdownSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFundBreakdownSearchResult" type="tns:ArrayOfWebServiceFundBreakdown" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllClaimsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllClaims" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClaimsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllClaimsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClaimsSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClaimsSearch" />
+  </wsdl:message>
+  <wsdl:message name="GetClaimsSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClaimsSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFundDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFundDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFundDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFundDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFundDetailsSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFundDetailsSearch" />
+  </wsdl:message>
+  <wsdl:message name="GetFundDetailsSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFundDetailsSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFundActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFundActivity" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFundActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFundActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFundActivitySearchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFundActivitySearch" />
+  </wsdl:message>
+  <wsdl:message name="GetFundActivitySearchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFundActivitySearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPriorApprovalDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPriorApprovalDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPriorApprovalDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPriorApprovalDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPriorApprovalDetailsSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPriorApprovalDetailsSearch" />
+  </wsdl:message>
+  <wsdl:message name="GetPriorApprovalDetailsSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPriorApprovalDetailsSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFundBreakdownSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllFundBreakdown" />
+  </wsdl:message>
+  <wsdl:message name="GetAllFundBreakdownSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllFundBreakdownResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFundBreakdownSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFundBreakdownSearch" />
+  </wsdl:message>
+  <wsdl:message name="GetFundBreakdownSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFundBreakdownSearchResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DataStoreSoap">
+    <wsdl:operation name="GetAllClaims">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all claim details</wsdl:documentation>
+      <wsdl:input message="tns:GetAllClaimsSoapIn" />
+      <wsdl:output message="tns:GetAllClaimsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimsSearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns claim details based on nullable parameters dealerNumber, preApprovalNumber, and claimNumber. Submit null or string.empty to ignore the attributes you don't need to search by.</wsdl:documentation>
+      <wsdl:input message="tns:GetClaimsSearchSoapIn" />
+      <wsdl:output message="tns:GetClaimsSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all fund details.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllFundDetailsSoapIn" />
+      <wsdl:output message="tns:GetAllFundDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFundDetailsSearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns fund details based on nullable parameters dealerNumber and promotionYear. Submit null or string.empty to ignore the attributes you don't need to search by.</wsdl:documentation>
+      <wsdl:input message="tns:GetFundDetailsSearchSoapIn" />
+      <wsdl:output message="tns:GetFundDetailsSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundActivity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all fund activity records.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllFundActivitySoapIn" />
+      <wsdl:output message="tns:GetAllFundActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFundActivitySearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns fund activities based on nullable parameters dealerNumber and promotionYear. Submit null or string.empty to ignore the attributes you don't need to search by.</wsdl:documentation>
+      <wsdl:input message="tns:GetFundActivitySearchSoapIn" />
+      <wsdl:output message="tns:GetFundActivitySearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPriorApprovalDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all prior approval detail records.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllPriorApprovalDetailsSoapIn" />
+      <wsdl:output message="tns:GetAllPriorApprovalDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPriorApprovalDetailsSearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns prior approval details based on nullable parameters dealerNumber and promotionYear. Submit null or string.empty to ignore the attributes you don't need to search by.</wsdl:documentation>
+      <wsdl:input message="tns:GetPriorApprovalDetailsSearchSoapIn" />
+      <wsdl:output message="tns:GetPriorApprovalDetailsSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundBreakdown">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns Fund Summary Breakdown</wsdl:documentation>
+      <wsdl:input message="tns:GetAllFundBreakdownSoapIn" />
+      <wsdl:output message="tns:GetAllFundBreakdownSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFundBreakdownSearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns Fund Summary Breakdown based on nullable parameters dealerNumber and promotionYear. Submit null or string.empty to ignore the attributes you don't need to search by.</wsdl:documentation>
+      <wsdl:input message="tns:GetFundBreakdownSearchSoapIn" />
+      <wsdl:output message="tns:GetFundBreakdownSearchSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DataStoreSoap" type="tns:DataStoreSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllClaims">
+      <soap:operation soapAction="http://www.acbcoop.com/GetAllClaims" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimsSearch">
+      <soap:operation soapAction="http://www.acbcoop.com/GetClaimsSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundDetails">
+      <soap:operation soapAction="http://www.acbcoop.com/GetAllFundDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFundDetailsSearch">
+      <soap:operation soapAction="http://www.acbcoop.com/GetFundDetailsSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundActivity">
+      <soap:operation soapAction="http://www.acbcoop.com/GetAllFundActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFundActivitySearch">
+      <soap:operation soapAction="http://www.acbcoop.com/GetFundActivitySearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPriorApprovalDetails">
+      <soap:operation soapAction="http://www.acbcoop.com/GetAllPriorApprovalDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriorApprovalDetailsSearch">
+      <soap:operation soapAction="http://www.acbcoop.com/GetPriorApprovalDetailsSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundBreakdown">
+      <soap:operation soapAction="http://www.acbcoop.com/GetAllFundBreakdown" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFundBreakdownSearch">
+      <soap:operation soapAction="http://www.acbcoop.com/GetFundBreakdownSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DataStoreSoap12" type="tns:DataStoreSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllClaims">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetAllClaims" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimsSearch">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetClaimsSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundDetails">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetAllFundDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFundDetailsSearch">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetFundDetailsSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundActivity">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetAllFundActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFundActivitySearch">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetFundActivitySearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPriorApprovalDetails">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetAllPriorApprovalDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriorApprovalDetailsSearch">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetPriorApprovalDetailsSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFundBreakdown">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetAllFundBreakdown" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFundBreakdownSearch">
+      <soap12:operation soapAction="http://www.acbcoop.com/GetFundBreakdownSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataStore">
+    <wsdl:port name="DataStoreSoap" binding="tns:DataStoreSoap">
+      <soap:address location="https://sunpowerws.acbcoop.net/datastore.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DataStoreSoap12" binding="tns:DataStoreSoap12">
+      <soap12:address location="https://sunpowerws.acbcoop.net/datastore.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

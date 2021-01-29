@@ -1,0 +1,574 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Aug 17 11:07:47 CDT 2012
+  Author:  pilla
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="CommonBankInterface"
+               targetNamespace="http://xmlns.oracle.com/SunPowerApp/Common/CommonBankInterface"
+               xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+               xmlns:client="http://xmlns.oracle.com/SunPowerApp/Common/CommonBankInterface"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SunPowerApp/Common/pollBankFiles"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/ftp/SunPowerApp/Common/WriteFTPFile"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://schemas.oracle.com/spwr/businessfault"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+         xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+         xmlns:ns6="http://www.sunpowercorp.com/SunPowerApp/CommonErrorHandler/CommonErrorHandler_BPEL"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns7="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[pollBankFiles.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="pollBankFiles" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="WriteFTPFile" partnerLinkType="ns2:Put_plt"
+                 partnerRole="Put_role"/>
+    <partnerLink name="CommonLoggingService"
+                 partnerLinkType="ns5:CommonLoggingService_BPEL"
+                 myRole="CommonLoggingService_BPELRequester"
+                 partnerRole="CommonLoggingService_BPELProvider"/>
+    <partnerLink name="CommonErrorHandler"
+                 partnerLinkType="ns6:CommonErrorHandler_BPEL"
+                 partnerRole="CommonErrorHandler_BPELProvider"/>
+  </partnerLinks>
+  <variables>
+    <variable name="PollForBankFiles_Read_InputVariable"
+              messageType="ns1:Read_msg"/>
+    <variable name="invokeDynamicFTPJNDI_Put_InputVariable"
+              messageType="ns2:Put_msg"/>
+    <variable name="fileName" type="xsd:string"/>
+    <variable name="fileDirectory" type="xsd:string"/>
+    <variable name="BankFileType" type="xsd:string"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="dynamicFTPJndi" type="xsd:string"/>
+    <variable name="outBankFileName" type="xsd:string"/>
+    <variable name="FaultVar" messageType="ns1:Fault_msg"/>
+    <variable name="systemFault" messageType="bpelx:RuntimeFaultMessage"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <scope name="scopeCatchAll" variableAccessSerializable="no">
+        <!--variables>
+          <variable name="invokeCommonErrorHandler_process_InputVariable"
+                    messageType="ns6:CommonErrorHandler_BPELRequestMessage"/>
+        </variables-->
+        <variables>
+          <variable name="invokeCommonErrorHandler_process_InputVariable"
+                    messageType="ns6:CommonErrorHandler_BPELRequestMessage"/>
+        </variables>
+        <sequence name="seqCatchAll">
+          <assign name="assignFaultVar"
+                  bpelx:skipCondition="string-length(bpws:getVariableData('FaultVar','fault','/ns4:FaultElement/code')) !=0 and string-length(bpws:getVariableData('FaultVar','fault','/ns4:FaultElement/summary')) != 0 and string-length(bpws:getVariableData('FaultVar','fault','/ns4:FaultElement/detail')) != 0">
+            <copy>
+              <from expression="ora:getFaultAsString()"/>
+              <to variable="FaultVar" part="fault"
+                  query="/ns4:FaultElement/detail"/>
+            </copy>
+            <copy>
+              <from expression="'GEN_ERR'"/>
+              <to variable="FaultVar" part="fault"
+                  query="/ns4:FaultElement/code"/>
+            </copy>
+            <copy>
+              <from expression="ora:getFaultName()"/>
+              <to variable="FaultVar" part="fault"
+                  query="/ns4:FaultElement/summary"/>
+            </copy>
+          </assign>
+          
+          <assign name="assignErrorHandlerParams">
+            <copy>
+              <from expression="ora:getCompositeInstanceId()"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:InstanceNumber"/>
+            </copy>
+            <copy>
+              <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;InterfaceNo&quot;,&quot;ERROR&quot;)"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:InterfaceNumber"/>
+            </copy>
+            <copy>
+              <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;InterfaceName&quot;,&quot;ERROR&quot;)"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:InterfaceName"/>
+            </copy>
+            <copy>
+              <from expression="'CommonBankInterface'"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:ProcessName"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;FaultSeverity&quot;)"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:Severity"/>
+            </copy>
+            <copy>
+              <from expression="'SOA'"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:FaultSystemName"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;OpenServiceTicket&quot;)"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:bOpenServiceTicket"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:CorrectiveAction"/>
+            </copy>
+            <copy>
+              <from expression="bpws:getVariableData('FaultVar','fault','/ns4:FaultElement/detail')"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:Fault"/>
+            </copy>
+            <copy>
+              <from expression="bpws:getVariableData('fileName')"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:UniqueIdentifier"/>
+            </copy>
+            <copy>
+              <from expression="ora:getPreference(&quot;isImmediateEmailRequiredOnFailure&quot;)"/>
+              <to variable="invokeCommonErrorHandler_process_InputVariable"
+                  part="payload"
+                  query="/ns7:CommonErrorHandlerInput/ns7:SendEmail"/>
+            </copy>
+          </assign>
+          
+          <invoke name="invokeCommonErrorHandler"
+                  inputVariable="invokeCommonErrorHandler_process_InputVariable"
+                  partnerLink="CommonErrorHandler"
+                  portType="ns6:CommonErrorHandler_BPEL" operation="process"
+                  bpelx:invokeAsDetail="no"/>
+          <terminate name="terminate"/>
+        </sequence>
+      </scope>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main">
+    <receive name="pollForBankFiles" createInstance="yes"
+             variable="PollForBankFiles_Read_InputVariable"
+             partnerLink="pollBankFiles" portType="ns1:Read_ptt"
+             operation="Read">
+      <bpelx:property name="jca.file.FileName" variable="fileName"/>
+      <bpelx:property name="jca.file.Directory" variable="fileDirectory"/>
+    </receive>
+    <scope name="scopeProcessBankFiles" variableAccessSerializable="no">
+      <faultHandlers>
+        <catch faultName="bpelx:remoteFault" faultVariable="systemFault">
+          <sequence name="Sequence2">
+            <scope name="scopeRemoteFault" variableAccessSerializable="no">
+              <sequence name="seqRemoteFault"><assign name="assignRemoteFault"
+                                                      xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/">
+      
+      
+      
+   <copy>
+         <from variable="systemFault" part="code"/>
+         <to variable="FaultVar" part="fault" query="/ns4:FaultElement/code"/>
+      </copy><copy>
+         <from variable="systemFault" part="summary"/>
+         <to variable="FaultVar" part="fault"
+             query="/ns4:FaultElement/summary"/>
+      </copy><copy>
+         <from variable="systemFault" part="detail"/>
+         <to variable="FaultVar" part="fault" query="/ns4:FaultElement/detail"/>
+      </copy></assign><throw name="throwRemoteFault" faultName="ns4:fault"
+                       faultVariable="FaultVar"/>
+              </sequence>
+            </scope>
+          </sequence>
+        </catch>
+        <catch faultName="bpelx:bindingFault" faultVariable="systemFault">
+          <scope name="scopeBindingFault" variableAccessSerializable="no">
+            <sequence name="seqBindingFault">
+              <assign name="assignBindingFault">
+                <copy>
+                  <from variable="systemFault" part="code"/>
+                  <to variable="FaultVar" part="fault"
+                      query="/ns4:FaultElement/code"/>
+                </copy>
+                <copy>
+                  <from variable="systemFault" part="summary"/>
+                  <to variable="FaultVar" part="fault"
+                      query="/ns4:FaultElement/summary"/>
+                </copy>
+                <copy>
+                  <from variable="systemFault" part="detail"/>
+                  <to variable="FaultVar" part="fault"
+                      query="/ns4:FaultElement/detail"/>
+                </copy>
+              </assign>
+              <throw name="throwBindingFault"
+                     faultVariable="FaultVar" faultName="ns4:fault"/>
+            </sequence>
+          </scope>
+        </catch>
+      </faultHandlers>
+      <sequence name="seqProcessBankFiles">
+        <assign name="assignSetTitle">
+          <copy>
+            <from expression='oraext:setFlowInstanceTitle(concat("FileName: ",$fileName))'/>
+            <to variable="title"/>
+          </copy>
+        </assign>
+        <assign name="assignFileTypes">
+          <copy>
+            <from expression="substring-before(bpws:getVariableData('fileName'),'_')"/>
+            <to variable="BankFileType"/>
+          </copy>
+          <copy>
+            <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;DynamicJNDI&quot;,&quot;ERROR&quot;)"/>
+            <to variable="dynamicFTPJndi"/>
+          </copy>
+          <copy>
+            <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;BankFileOut&quot;,&quot;ERROR&quot;)"/>
+            <to variable="outBankFileName"/>
+          </copy>
+        </assign>
+        <switch name="Switch1">
+          <case condition="bpws:getVariableData('dynamicFTPJndi') != 'ERROR' and bpws:getVariableData('outBankFileName') != 'ERROR'">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">Valid JNDI or FileName exists</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <!--invoke name="invokeDynamicFTPJNDI"
+                inputVariable="invokeDynamicFTPJNDI_Put_InputVariable"
+                partnerLink="WriteFTPFile" portType="ns2:Put_ptt"
+                operation="Put"              
+                bpelx:invokeAsDetail="no"/ -->
+            <invoke name="invokeDynamicFTPJNDI"
+                    inputVariable="invokeDynamicFTPJNDI_Put_InputVariable"
+                    partnerLink="WriteFTPFile" portType="ns2:Put_ptt"
+                    operation="Put" bpelx:invokeAsDetail="no">
+              <bpelx:inputProperty name="jca.file.FileName"
+                                   variable="outBankFileName"/>
+              <bpelx:inputProperty name="jca.jndi" variable="dynamicFTPJndi"/>
+            </invoke>
+          </case>
+          <otherwise>
+            <sequence name="Sequence1">
+              <scope name="ScopeValidJNDIorFileNameDOESNOTExist"
+                     variableAccessSerializable="no">
+                <sequence name="seqInvalidJNDIorFileNameInDVM">
+                  <assign name="assignFaultVar">
+                    <copy>
+                      <from expression="concat('Valid value for Bank File Type = ',bpws:getVariableData('BankFileType'), ' does NOT exist in BankFTPJNDIList DVM. Please check the DVM and insert proper values in DVM.' )"/>
+                      <to variable="FaultVar" part="fault"
+                          query="/ns4:FaultElement/detail"/>
+                    </copy>
+                    <copy>
+                      <from expression="'DVM_ERR'"/>
+                      <to variable="FaultVar" part="fault"
+                          query="/ns4:FaultElement/code"/>
+                    </copy>
+                    <copy>
+                      <from expression="'lookup-dvm() in BankFTPJNDIList returned a NULL value '"/>
+                      <to variable="FaultVar" part="fault"
+                          query="/ns4:FaultElement/summary"/>
+                    </copy>
+                  </assign>
+                  <throw name="throwNullDVMFault" faultName="ns4:fault"
+                         faultVariable="FaultVar"/>
+                </sequence>
+              </scope>
+            </sequence>
+          </otherwise>
+        </switch>
+        <!--scope name="scopeLoggingRequired" variableAccessSerializable="no"
+               bpelx:skipCondition="xp20:upper-case(ora:getPreference(&quot;isLoggingRequired&quot;)) != 'Y' and  xp20:upper-case(ora:getPreference(&quot;isLoggingRequired&quot;)) != 'YES'">
+          <variables>
+            <variable name="invokeLoggingService_process_InputVariable"
+                      messageType="ns5:CommonLoggingService_BPELRequestMessage"/>
+          </variables>
+          <sequence name="seqLoggingRequired">
+            <assign name="assignLoggingService">
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultmessage"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultcode"/>
+              </copy>
+              <copy>
+                <from expression="xp20:current-dateTime()"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faulttime"/>
+              </copy>
+              <copy>
+                <from expression="concat('File: ', bpws:getVariableData('fileName') , 'processed successfully')"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultdescription"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:correctiveaction"/>
+              </copy>
+              <copy>
+                <from expression="'N'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:bopenserviceticket"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultsystemname"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:severity"/>
+              </copy>
+              <copy>
+                <from expression="'SUCCESS'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:status"/>
+              </copy>
+              <copy>
+                <from expression="xp20:current-dateTime()"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:createddatetime"/>
+              </copy>
+              <copy>
+                <from expression="bpws:getVariableData('fileName')"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:uniqueIdentifier"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:emailSent"/>
+              </copy>
+              <copy>
+                <from expression="ora:getCompositeInstanceId()"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:instancenumber"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;InterfaceNo&quot;,&quot;ERROR&quot;)"  />
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:interfacenumber"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;InterfaceName&quot;,&quot;ERROR&quot;)"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:interfacename"/>
+              </copy>
+              <copy>
+                <from expression="'CommonBankInterface'"/>
+                <to variable="invokeLoggingService_process_InputVariable"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:processname"/>
+              </copy>
+            </assign>
+            <invoke name="invokeLoggingService"
+                    inputVariable="invokeLoggingService_process_InputVariable"
+                    partnerLink="CommonLoggingService"
+                    portType="ns5:CommonLoggingService_BPEL"
+                    operation="process" bpelx:invokeAsDetail="no"/>
+          </sequence>
+        </scope-->
+        <switch name="switchLogging">
+          <case condition="xp20:upper-case(ora:getPreference(&quot;isLoggingRequired&quot;)) = 'Y' or  xp20:upper-case(ora:getPreference(&quot;isLoggingRequired&quot;)) = 'YES'">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">switchLoggingRequired</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <scope name="scopeLoggingRequired" variableAccessSerializable="no">
+              <variables>
+                <variable name="inLoggingService"
+                          messageType="ns5:CommonLoggingService_BPELRequestMessage"/>
+              </variables>
+              <sequence name="seqLoggingRequired">
+                <!--assign name="assignLoggingParams">
+                  <copy>
+                    <from expression="'asd'"/>
+                    <to variable="inLoggingService" part="payload"
+                        query="/ns5:Process/ns5:ProcessLog/ns5:processname"/>
+                  </copy>
+                </assign-->
+                
+                
+                
+           <assign name="assignLoggingServiceParams">
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultmessage"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultcode"/>
+              </copy>
+              <copy>
+                <from expression="xp20:current-dateTime()"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faulttime"/>
+              </copy>
+              <copy>
+                <from expression="concat('File: ', bpws:getVariableData('fileName') , 'processed successfully')"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultdescription"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:correctiveaction"/>
+              </copy>
+              <copy>
+                <from expression="'N'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:bopenserviceticket"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:faultsystemname"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:severity"/>
+              </copy>
+              <copy>
+                <from expression="'S'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:status"/>
+              </copy>
+              <copy>
+                <from expression="xp20:current-dateTime()"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:createddatetime"/>
+              </copy>
+              <copy>
+                <from expression="bpws:getVariableData('fileName')"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:uniqueIdentifier"/>
+              </copy>
+              <copy>
+                <from expression="'NA'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:emailSent"/>
+              </copy>
+              <copy>
+                <from expression="ora:getCompositeInstanceId()"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:instancenumber"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;InterfaceNo&quot;,&quot;ERROR&quot;)"  />
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:interfacenumber"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;BankFTPJNDIList.dvm&quot;,&quot;FileToken&quot;, bpws:getVariableData('BankFileType')  ,&quot;InterfaceName&quot;,&quot;ERROR&quot;)"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:interfacename"/>
+              </copy>
+              <copy>
+                <from expression="'CommonBankInterface'"/>
+                <to variable="inLoggingService"
+                    part="payload"
+                    query="/ns5:Process/ns5:ProcessLog/ns5:processname"/>
+              </copy>
+            </assign>
+            
+            
+            
+            
+            
+                <invoke name="invokeCommonLoggingService"
+                        inputVariable="inLoggingService"
+                        partnerLink="CommonLoggingService"
+                        portType="ns5:CommonLoggingService_BPEL"
+                        operation="process" bpelx:invokeAsDetail="no"/>
+              </sequence>
+            </scope>
+          </case>
+          <otherwise>
+            <empty/>
+          </otherwise>
+        </switch>
+      </sequence>
+    </scope>
+  </sequence>
+</process>

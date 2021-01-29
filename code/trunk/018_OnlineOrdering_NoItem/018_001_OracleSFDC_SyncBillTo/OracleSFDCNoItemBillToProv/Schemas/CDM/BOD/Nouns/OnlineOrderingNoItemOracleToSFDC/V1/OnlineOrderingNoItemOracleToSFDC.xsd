@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Noun/OnlineOrderingNoItemOracleToSFDC/V1" targetNamespace="http://www.sunpowercorp.com/Noun/OnlineOrderingNoItemOracleToSFDC/V1" xmlns:osNoItCommon="http://www.sunpowercorp.com/Common/OnlineOrderingNoItemOracleToSFDCCommonTypes/V1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+   <xsd:import namespace="http://www.sunpowercorp.com/Common/OnlineOrderingNoItemOracleToSFDCCommonTypes/V1"
+               schemaLocation="OnlineOrderingNoItemOracleToSFDCCommonTypes.xsd"/>
+   <xsd:element name="OnlineOrderingNoItemOracleToSFDC" type="OnlineOrderingNoItemOracleToSFDCType"/>
+   <xsd:complexType name="OnlineOrderingNoItemOracleToSFDCType">
+      <xsd:sequence>
+         <xsd:element ref="OnlineOrderingNoItemOracleToSFDCDetails" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="OnlineOrderingNoItemOracleToSFDCDetails" type="OnlineOrderingNoItemOracleToSFDCDetailsType"/>
+   <xsd:complexType name="OnlineOrderingNoItemOracleToSFDCDetailsType">
+      <xsd:sequence>
+         <xsd:element ref="osNoItCommon:ACCOUNT_NAME"/>
+         <xsd:element ref="osNoItCommon:ACCOUNT_NUMBER"/>
+         <xsd:element ref="osNoItCommon:CUST_ACCT_SITE_ID"/>
+         <xsd:element ref="osNoItCommon:ADDRESS1"/>
+         <xsd:element ref="osNoItCommon:ADDRESS2"/>
+         <xsd:element ref="osNoItCommon:ADDRESS3"/>
+         <xsd:element ref="osNoItCommon:ADDRESS4"/>
+         <xsd:element ref="osNoItCommon:CITY"/>
+         <xsd:element ref="osNoItCommon:POSTAL_CODE"/>
+         <xsd:element ref="osNoItCommon:STATE"/>
+         <xsd:element ref="osNoItCommon:COUNTRY"/>
+         <xsd:element ref="osNoItCommon:PRIMARY_FLAG"/>
+         <xsd:element ref="osNoItCommon:OU_SHORT_CODE"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

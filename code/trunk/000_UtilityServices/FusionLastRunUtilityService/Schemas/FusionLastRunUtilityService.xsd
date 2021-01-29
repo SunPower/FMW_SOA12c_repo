@@ -1,0 +1,22 @@
+<schema targetNamespace="http://www.sunpowercorp.com/SOAUtilityServices/FusionLastRunUtilityService/xsd/v1" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.sunpowercorp.com/SOAUtilityServices/FusionLastRunUtilityService/xsd/v1" elementFormDefault="qualified">
+   <element name="InputParameters">
+      <complexType>
+         <sequence>
+            <element name="IN_ORCHESTRATION_NAME" type="string" minOccurs="1" nillable="true"/>
+            <element name="IN_LAST_RUN" type="string" minOccurs="0" nillable="true"/>
+            <element name="IN_LAST_SUCCESSFUL_RUN" type="string" minOccurs="0" nillable="true"/>
+            <element name="IN_MODE" type="string" minOccurs="1" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <element name="OutputParameters">
+      <complexType>
+         <sequence>
+            <element name="OUT_ORCHESTRATION_NAME" type="string" minOccurs="0" nillable="true"/>
+            <element name="OUT_LAST_RUN" type="string"  minOccurs="0" nillable="true"/>
+            <element name="OUT_LAST_SUCCESSFUL_RUN" type="string" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+</schema>

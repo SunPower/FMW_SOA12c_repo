@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="oraclesfdcitemprodprov_bpel_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="189" width="137" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="182" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="oraclesfdcitemprodprov_bpel_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODProv/OracleSFDCItemPRODProv_BPEL#wsdl.interface(OracleSFDCItemPRODProv_BPEL)" callbackInterface="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODProv/OracleSFDCItemPRODProv_BPEL#wsdl.interface(OracleSFDCItemPRODProv_BPELCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+            <dgm:item>processResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="CommonSFDCErrorLogService">
+        <dgm:body borderWidth="2" arcRad="20" X="604" Y="26" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="594" Y="19" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="CommonSFDCErrorLogService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="SFDCUtilityService">
+        <dgm:body borderWidth="2" arcRad="20" X="604" Y="144" width="136" height="144">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="594" Y="137" width="156" height="158">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="SFDCUtilityService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityService)" callbackInterface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>update</dgm:item>
+            <dgm:item>upsert</dgm:item>
+            <dgm:item>create</dgm:item>
+            <dgm:item>updateResponse</dgm:item>
+            <dgm:item>upsertResponse</dgm:item>
+            <dgm:item>createResponse</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="NotificationService1">
+        <dgm:body borderWidth="2" arcRad="20" X="604" Y="322" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="594" Y="315" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="NotificationService1" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>sendIMNotification</dgm:item>
+            <dgm:item>sendFaxNotification</dgm:item>
+            <dgm:item>sendVoiceNotification</dgm:item>
+            <dgm:item>sendSMSNotification</dgm:item>
+            <dgm:item>sendPagerNotification</dgm:item>
+            <dgm:item>sendURINotification</dgm:item>
+            <dgm:item>sendEmailNotification</dgm:item>
+            <dgm:item>sendNotificationToUser</dgm:item>
+            <dgm:item>sendNotificationToGroup</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="OracleSFDCItemPRODProv_BPEL">
+        <dgm:body borderWidth="2" arcRad="20" X="316" Y="174" width="130" height="111">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="306" Y="167" width="150" height="127">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="oraclesfdcitemprodprov_bpel_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODProv/OracleSFDCItemPRODProv_BPEL#wsdl.interface(OracleSFDCItemPRODProv_BPEL)" callbackInterface="http://www.sunpowercorp.com/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODProv/OracleSFDCItemPRODProv_BPEL#wsdl.interface(OracleSFDCItemPRODProv_BPELCallback)"/>
+        <dgm:outputPort name="CommonSFDCErrorLogService" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator#wsdl.interface(execute_ptt)"/>
+        <dgm:outputPort name="SFDCUtilityService" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityService)" callbackInterface="http://xmlns.oracle.com/SFDCUtilityService/SFDCUtilityServiceMediator#wsdl.interface(SFDCUtilityServiceCallback)"/>
+        <dgm:outputPort name="NotificationService1" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="oraclesfdcitemprodprov_bpel_client_ep" target="OracleSFDCItemPRODProv_BPEL/oraclesfdcitemprodprov_bpel_client" width="2">
+        <dgm:gSegment X1="168" Y1="199" X2="306" Y2="199"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="OracleSFDCItemPRODProv_BPEL/CommonSFDCErrorLogService" target="CommonSFDCErrorLogService" width="2">
+        <dgm:gSegment X1="456" Y1="199" X2="480" Y2="199"/>
+        <dgm:gSegment X1="480" Y1="199" X2="480" Y2="36"/>
+        <dgm:gSegment X1="480" Y1="36" X2="594" Y2="36"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="OracleSFDCItemPRODProv_BPEL/SFDCUtilityService" target="SFDCUtilityService" width="2">
+        <dgm:gSegment X1="456" Y1="224" X2="495" Y2="224"/>
+        <dgm:gSegment X1="495" Y1="224" X2="495" Y2="154"/>
+        <dgm:gSegment X1="495" Y1="154" X2="594" Y2="154"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="OracleSFDCItemPRODProv_BPEL/NotificationService1" target="NotificationService1" width="2">
+        <dgm:gSegment X1="456" Y1="249" X2="480" Y2="249"/>
+        <dgm:gSegment X1="480" Y1="249" X2="480" Y2="332"/>
+        <dgm:gSegment X1="480" Y1="332" X2="594" Y2="332"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

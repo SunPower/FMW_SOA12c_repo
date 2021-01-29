@@ -1,0 +1,46 @@
+<wsdl:definitions name="ACBClaimAll" targetNamespace="http://www.sunpowercorp.com/ACBClaimAll/" xmlns:ns2="http://www.sunpowercorp.com/BOD/ProcessACBActivitiesToSFDC/V1" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessACBApproverToSFDC/V1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.sunpowercorp.com/ACBClaimAll/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessACBApproverToSFDC/V1" schemaLocation="../XSD/CDM/BOD/Nouns/ACBApproverToSFDC/V1/ProcessACBApproverToSFDC.xsd"/>
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http://www.sunpowercorp.com/ACBClaimAll/">
+			<xsd:element name="ACBClaimAllResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="ACBClaimAllRequest">
+		<wsdl:part name="payload" element="ns1:ProcessACBApproverToSFDC"/>
+	</wsdl:message>
+	<wsdl:message name="ACBClaimAllResponse">
+		<wsdl:part element="tns:ACBClaimAllResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="ACBClaimAll">
+		<wsdl:operation name="ACBClaimAll">
+			<wsdl:input message="tns:ACBClaimAllRequest"/>
+			<wsdl:output message="tns:ACBClaimAllResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ACBClaimAllSOAP" type="tns:ACBClaimAll">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="ACBClaimAll">
+			<soap:operation soapAction="http://www.sunpowercorp.com/ACBClaimAll/ACBClaimAll"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ACBClaimAll">
+		<wsdl:port binding="tns:ACBClaimAllSOAP" name="ACBClaimAllSOAP">
+			<soap:address location="http://www.example.org/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

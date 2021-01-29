@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<InitParams xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sunpowercorp.com/SunPowerDevelopment/DeleteSFDCRecordService/initParams/xsd/v1 file:/D:/Mywork/SunPowerDevelopment/system/DeleteSFDCRecordService/xsd/inputParams.xsd" xmlns="http://www.sunpowercorp.com/SunPowerDevelopment/DeleteSFDCRecordService/initParams/xsd/v1">
+   <startIndex>1</startIndex>
+   <endIndex>3</endIndex>
+</InitParams>

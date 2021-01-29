@@ -1,0 +1,47 @@
+<wsdl:definitions
+     name="WriteEDI_856FileToLocal"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/WriteEDI_856FileToLocal"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:FILEAPP="http://xmlns.oracle.com/pcbpel/adapter/file/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/WriteEDI_856FileToLocal"
+     xmlns:imp1="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI_856/xsd/v1"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+  <plt:partnerLinkType name="Write_plt" >
+    <plt:role name="Write_role" >
+      <plt:portType name="tns:Write_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/WriteEDI_856FileToLocal"
+              xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI_856/xsd/v1"
+                schemaLocation="Schemas/EDIOutboundFile_856.xsd" />
+      </schema>
+    <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/" xmlns="http://www.w3.org/2001/XMLSchema"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified" >
+       <element name="OutboundFileHeaderType" >
+         <complexType>
+           <sequence>
+             <element name="fileName" type="string" />
+             <element name="directory" type="string" />
+            </sequence>
+           </complexType>
+       </element>
+    </schema>
+    </wsdl:types>
+    <wsdl:message name="Write_msg">
+        <wsdl:part name="body" element="imp1:OrderDetails"/>
+    </wsdl:message>
+    <wsdl:message name="Output_msg">
+        <wsdl:part name="body" element="FILEAPP:OutboundFileHeaderType"/>
+    </wsdl:message>
+    <wsdl:portType name="Write_ptt">
+        <wsdl:operation name="Write">
+            <wsdl:input message="tns:Write_msg"/>
+            <wsdl:output message="tns:Output_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

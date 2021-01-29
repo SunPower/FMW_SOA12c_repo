@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='import'][2]</loc>
+      <line>43</line>
+      <col/>
+      <file>BPEL/DecsFeedSF2Sql.bpel</file>
+      <name>BPEL/DecsFeedSF2Sql.bpel</name>
+      <fix>You have stumbled onto a BPEL 2.0 validator bug. Please send us a test case to fix this problem.</fix>
+      <msg>Validator error on &lt;bpel:import> while running rule "ImportValidator.CheckNamespaceOfImport.8" - exception "java.io.FileNotFoundException: C:\JDeveloper\mywork\SOA_DEV\DecsFeedSF2Sql\SOA\WSDLs\DecsFeedSF2Sql.wsdl (The system cannot find the file specified)" near (FileInputStream.java:-2).</msg>
+   </Fault>
+</Faults>

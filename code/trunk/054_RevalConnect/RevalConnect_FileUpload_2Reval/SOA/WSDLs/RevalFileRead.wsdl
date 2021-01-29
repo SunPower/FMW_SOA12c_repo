@@ -1,0 +1,34 @@
+<wsdl:definitions
+     name="RevalFileRead"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalFileRead"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalFileRead"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:imp1="http://TargetNamespace.com/RevalFileRead"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="SynchRead_plt" >
+    <plt:role name="SynchRead_role" >
+      <plt:portType name="tns:SynchRead_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/054_RevalConnect/RevalConnect_FileUpload_2Reval/RevalFileRead"
+              xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://TargetNamespace.com/RevalFileRead" schemaLocation="../Schemas/RevalFileRead_schema.xsd" />
+      <element name="empty"><complexType/></element>
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="Empty_msg">
+        <wsdl:part name="Empty" element="tns:empty"/>
+    </wsdl:message>
+    <wsdl:message name="SynchRead_msg">
+        <wsdl:part name="body" element="imp1:Root-Element"/>
+    </wsdl:message>
+    <wsdl:portType name="SynchRead_ptt">
+        <wsdl:operation name="SynchRead">
+            <wsdl:input message="tns:Empty_msg"/>
+            <wsdl:output message="tns:SynchRead_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

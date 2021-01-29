@@ -1,0 +1,22 @@
+<?binding.jca UpdateStatusToEBS_db.jca?>
+<wsdl:definitions name="UpdateStatusToEBS" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/Lease2Outbound/Lease2OutboundSFDCProv/UpdateStatusToEBS" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/Lease2Outbound/Lease2OutboundSFDCProv/UpdateStatusToEBS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateStatusToEBS">
+    <plt:partnerLinkType name="UpdateStatusToEBS_plt">
+        <plt:role name="UpdateStatusToEBS_role">
+            <plt:portType name="tns:UpdateStatusToEBS_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateStatusToEBS"
+                    schemaLocation="../Schemas/UpdateStatusToEBS_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrLease2OutboundDetailsCollection_msg">
+        <wsdl:part name="XxspwrLease2OutboundDetailsCollection" element="top:XxspwrLease2OutboundDetailsCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateStatusToEBS_ptt">
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:XxspwrLease2OutboundDetailsCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

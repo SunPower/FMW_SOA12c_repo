@@ -1,0 +1,30 @@
+<wsdl:definitions name="OracleSFDCNoItemBillToProv_BPEL" targetNamespace="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleSFDCNoItemBillToProv/OracleSFDCNoItemBillToProv_BPEL" xmlns:ns2="urn:partner.soap.sforce.com" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessOnlineOrderingNoItemOracleToSFDC/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:client="http://www.sunpowercorp.com/OnlineOrderingNoItemOracleToSFDC/OracleSFDCNoItemBillToProv/OracleSFDCNoItemBillToProv_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+   
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessOnlineOrderingNoItemOracleToSFDC/V1" schemaLocation="../xsd/CDM/BOD/Nouns/OnlineOrderingNoItemOracleToSFDC/V1/ProcessOnlineOrderingNoItemOracleToSFDC.xsd"/>
+        </schema>      
+    </wsdl:types>
+    <wsdl:message name="OracleSFDCNoItemBillToProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessOnlineOrderingNoItemOracleToSFDC"/>
+    </wsdl:message>
+    <wsdl:portType name="OracleSFDCNoItemBillToProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:OracleSFDCNoItemBillToProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="OracleSFDCNoItemBillToProv_BPELBinding" type="client:OracleSFDCNoItemBillToProv_BPEL">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="oraclesfdcnoitembilltoprov_bpel_client_ep">
+        <wsdl:port name="OracleSFDCNoItemBillToProv_BPEL_pt" binding="client:OracleSFDCNoItemBillToProv_BPELBinding">
+            <soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/OracleSFDCNoItemBillToProv/oraclesfdcnoitembilltoprov_bpel_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

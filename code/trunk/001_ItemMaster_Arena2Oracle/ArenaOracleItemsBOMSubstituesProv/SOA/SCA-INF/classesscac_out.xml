@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catch/sequence/assign[3]/copy[13]</loc>
+      <line>356</line>
+      <col/>
+      <file>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</file>
+      <name>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}dateTime"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catch[2]/sequence/assign[3]/copy[12]</loc>
+      <line>570</line>
+      <col/>
+      <file>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</file>
+      <name>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}dateTime"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catchAll/sequence/assign[3]/copy[12]</loc>
+      <line>791</line>
+      <col/>
+      <file>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</file>
+      <name>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}dateTime"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/while/sequence/scope/sequence/switch/case/sequence/assign/copy</loc>
+      <line>990</line>
+      <col/>
+      <file>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</file>
+      <name>ArenaOracleItemsBOMSubstituesProv_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}anySimpleType" is not compatible with &lt;to> value type "{http://www.w3.org/2001/XMLSchema}int"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='ArenaOracleItemsBOMSubstituesProv_BPEL/ArenaOracleItemsBOMSubstituesProv_bpel_client']</loc>
+      <line>159</line>
+      <col>19</col>
+      <file>C:\Users\sn38854\Desktop\Temp\SOA_CODE\ArenaOracleItemsBOMSubstituesProv\SOA\composite.xml</file>
+      <name>C:\Users\sn38854\Desktop\Temp\SOA_CODE\ArenaOracleItemsBOMSubstituesProv\SOA\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

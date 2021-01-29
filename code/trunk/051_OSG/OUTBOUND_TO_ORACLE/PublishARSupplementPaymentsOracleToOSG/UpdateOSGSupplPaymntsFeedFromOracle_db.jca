@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="UpdateOSGSupplPaymntsFeedFromOracle" adapter="db"
+                wsdlLocation="WSDLs/UpdateOSGSupplPaymntsFeedFromOracle.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS_XXSPWRSOA" adapterRef=""/>
+  <endpoint-interaction portType="UpdateOSGSupplPaymntsFeedFromOracle_ptt" operation="UpdateOSGSupplPaymntsFeedFromOracle">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="update XXSPWR.XXSPWR_AR_OSG_RCP_OUTBOUND set SOA_STATUS = #SoaStatus, LAST_UPDATE_DATE = #LastUpdateDate,LAST_UPDATED_BY=#LastUpdatedBy,SOA_MESSAGE=#SoaMessage where status = 'NEW' and SOA_STATUS is null"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+  </endpoint-interaction>
+
+</adapter-config>

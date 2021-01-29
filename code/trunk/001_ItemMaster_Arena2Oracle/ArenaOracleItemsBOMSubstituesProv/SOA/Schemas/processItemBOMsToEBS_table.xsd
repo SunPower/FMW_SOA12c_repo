@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/processItemBOMsToEBS" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/processItemBOMsToEBS" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxspwrArenaComponentsCollection" type="XxspwrArenaComponentsCollection"/>
+   <xs:complexType name="XxspwrArenaComponentsCollection">
+      <xs:sequence>
+         <xs:element name="XxspwrArenaComponents" type="XxspwrArenaComponents" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrArenaComponents">
+      <xs:sequence>
+         <xs:element name="itemId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="componentId" type="xs:decimal" nillable="true"/>
+         <xs:element name="lastUpdateDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdatedBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="creationDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="createdBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="componentSequence" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="componentQuantity" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="componentRemarks" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="240"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="componentItemNumber" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="240"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="processFlag" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="componentRevision" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="3"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="setProcessId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="arenaComponentSeqId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="xxspwrArenaSubstitutesCollection" minOccurs="0">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="XxspwrArenaSubstitutes" type="XxspwrArenaSubstitutes" minOccurs="0" maxOccurs="unbounded"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrArenaSubstitutes">
+      <xs:sequence>
+         <xs:element name="substituteItemQuantity" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="substituteRank" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="substituteCompNumber" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="240"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="setProcessId" type="xs:decimal" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

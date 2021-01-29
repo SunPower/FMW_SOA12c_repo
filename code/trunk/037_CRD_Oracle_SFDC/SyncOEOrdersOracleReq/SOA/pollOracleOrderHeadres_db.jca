@@ -1,0 +1,21 @@
+<adapter-config name="pollOracleOrderHeadres" adapter="db" wsdlLocation="WSDLs/pollOracleOrderHeadres.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS_XXSPWRSOA" adapterRef=""/>
+  <endpoint-activation portType="pollOracleOrderHeadres_ptt" operation="receive">
+    <activation-spec className="oracle.tip.adapter.db.DBActivationSpec">
+      <property name="DescriptorName" value="pollOracleOrderHeadres.XxspwrOmHeaderSync"/>
+      <property name="QueryName" value="pollOracleOrderHeadresSelect"/>
+      <property name="MappingsMetaDataURL" value="pollOracleOrderHeadres-or-mappings.xml"/>
+      <property name="PollingStrategy" value="LogicalDeletePollingStrategy"/>
+      <property name="MarkReadColumn" value="SOA_FLAG"/>
+      <property name="MarkReadValue" value="W"/>
+      <property name="MarkUnreadValue" value="Y"/>
+      <property name="PollingInterval" value="5"/>
+      <property name="MaxRaiseSize" value="50"/>
+      <property name="MaxTransactionSize" value="100"/>
+      <property name="NumberOfThreads" value="1"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

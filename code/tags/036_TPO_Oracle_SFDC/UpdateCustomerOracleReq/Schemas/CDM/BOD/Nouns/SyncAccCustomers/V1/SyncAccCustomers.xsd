@@ -1,0 +1,272 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Noun/SyncAccCustomers/V1"
+            targetNamespace="http://www.sunpowercorp.com/Noun/SyncAccCustomers/V1"
+            xmlns:tns="http://www.sunpowercorp.com/Noun/SyncAccCustomers/V1"
+            xmlns:ac="http://www.sunpowercorp.com/Common/SyncAccCustCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/SyncAccCustCommonTypes/V1"
+                schemaLocation="SyncAccCustCommonTypes.xsd"/>
+    <xsd:element name="SyncCostomers" type="tns:SyncCustsType"/>
+    <xsd:complexType name="SyncCustsType">
+        <xsd:sequence>
+            <xsd:element name="Customer" type="tns:CustomerType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerType">
+        <xsd:sequence>
+            <xsd:element name="Account" type="tns:AccountType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="CustSite" type="tns:CustSiteType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="Contact" type="tns:ContactType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="SyncAccCustomers" type="SyncAccCustomersType"/>
+    <xsd:complexType name="SyncAccCustomersType">
+        <xsd:sequence>
+            <xsd:element ref="Accounts" minOccurs="0"/>
+            <xsd:element ref="CustSites" minOccurs="0"/>
+            <xsd:element ref="Contacts" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="Accounts" type="tns:AccountsType"/>
+    <xsd:complexType name="AccountsType">
+        <xsd:sequence>
+            <xsd:element name="Account" type="tns:AccountType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AccountType">
+        <xsd:sequence>
+            <xsd:element ref="ac:SFDC_ACCOUNT_ID" minOccurs="0"/>
+            <xsd:element ref="ac:ACCOUNT_NUMBER" minOccurs="0"/>
+            <xsd:element ref="ac:PROCESS_FLAG" minOccurs="0"/>
+            <xsd:element ref="ac:ERROR_MESSAGE" minOccurs="0"/>
+            <xsd:element ref="ac:CREATION_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_SYNCED" minOccurs="0"/>
+            <xsd:element ref="ac:TEMP_CUST_ID" minOccurs="0"/>
+            <xsd:element ref="ac:CUSTOMER_NAME" minOccurs="0"/>
+            <xsd:element ref="ac:STATUS" minOccurs="0"/>
+            <xsd:element ref="ac:OPERATING_UNIT" minOccurs="0"/>
+            <xsd:element ref="ac:CUSTOMER_CLASSIFICATION" minOccurs="0"/>
+            <xsd:element ref="ac:ACCOUNT_TYPE" minOccurs="0"/>
+            <xsd:element ref="ac:SALES_CHANNEL" minOccurs="0"/>
+            <xsd:element ref="ac:RELATED_PARTNER_ACCOUNT" minOccurs="0"/>
+            <xsd:element ref="ac:RECIPROCAL" minOccurs="0"/>
+            <xsd:element ref="ac:BILL_TO" minOccurs="0"/>
+            <xsd:element ref="ac:SHIP_TO" minOccurs="0"/>
+            <xsd:element ref="ac:PAYMENT_TERMS" minOccurs="0"/>
+            <xsd:element ref="ac:WAREHOUSE_CODE" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_UPDATE_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:CREATED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_MODIFIED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_UPDATED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:CREDIT_HOLD" minOccurs="0"/>
+            <xsd:element ref="ac:CREDIT_LIMIT" minOccurs="0"/>
+            <xsd:element ref="ac:CURRENCY_TYPE" minOccurs="0"/>
+            <xsd:element ref="ac:MODE" minOccurs="0"/>
+            <xsd:element ref="ac:ISACTIVE" minOccurs="0"/>
+            <xsd:element ref="ac:CUSTOMER_TYPE" minOccurs="0"/>
+            
+             <xsd:element ref="ac:RELATIONSHIP_ACCOUNT_NUMBER" minOccurs="0"/>
+            <xsd:element ref="ac:RELATIONSHIP_TYPE" minOccurs="0"/>
+            <xsd:element ref="ac:RELATIONSHIP_RECIPROCAL_FLAG" minOccurs="0"/>
+            
+            
+            <xsd:element ref="CustSites" minOccurs="0"/>
+            <xsd:element ref="Contacts" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="CustSites" type="CustSitesType"/>
+    <xsd:complexType name="CustSitesType">
+        <xsd:sequence>
+            <xsd:element name="CustSite" type="CustSiteType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustSiteType">
+        <xsd:sequence>
+            <xsd:element ref="ac:TEMP_CUST_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:PROCESS_FLAG" minOccurs="0"/>
+            <xsd:element ref="ac:ERROR_MESSAGE" minOccurs="0"/>
+            <xsd:element ref="ac:CREATION_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:CUST_ACCT_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SITE_USAGE" minOccurs="0"/>
+            <xsd:element ref="ac:LOCATION" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_BILLTO_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_SHIPTO_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:ADDRESS1" minOccurs="0"/>
+            <xsd:element ref="ac:ADDRESS2" minOccurs="0"/>
+            <xsd:element ref="ac:ADDRESS3" minOccurs="0"/>
+            <xsd:element ref="ac:ADDRESS4" minOccurs="0"/>
+            <xsd:element ref="ac:CITY" minOccurs="0"/>
+            <xsd:element ref="ac:STATUS" minOccurs="0"/>
+            <xsd:element ref="ac:SITE_USAGE_STATUS" minOccurs="0"/>
+            <xsd:element ref="ac:OPERATING_UNIT" minOccurs="0"/>
+            <xsd:element ref="ac:STATE" minOccurs="0"/>
+            <xsd:element ref="ac:POSTAL_CODE" minOccurs="0"/>
+            <xsd:element ref="ac:COUNTRY" minOccurs="0"/>
+            <xsd:element ref="ac:PRIMARY_SALESREP" minOccurs="0"/>
+            <xsd:element ref="ac:PRICE_LIST_NAME" minOccurs="0"/>
+            <xsd:element ref="ac:COUNTY" minOccurs="0"/>
+            <xsd:element ref="ac:PRIMARY_FLAG" minOccurs="0"/>
+            <xsd:element ref="ac:TEMP_CUST_ID" minOccurs="0"/>
+            <xsd:element ref="ac:ORDER_TYPE" minOccurs="0"/>
+            <xsd:element ref="ac:PROVINCE" minOccurs="0"/>
+            <xsd:element ref="ac:WAREHOUSE_CODE" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_UPDATE_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:CREATED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_UPDATED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:REQUEST_ID" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_MODIFIED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:MODE" minOccurs="0"/>
+            <xsd:element ref="ac:ISACTIVE" minOccurs="0"/>
+            <xsd:element ref="ac:ACCOUNT_NUMBER" minOccurs="0"/>
+            
+            <xsd:element ref="ac:ATTRIBUTE7" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE8" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE9" minOccurs="0"/>
+            
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="Contacts" type="ContactsType"/>
+    <xsd:complexType name="ContactsType">
+        <xsd:sequence>
+            <xsd:element name="Contact" type="ContactType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ContactType">
+        <xsd:sequence>
+            <xsd:element ref="ac:position" minOccurs="0"/>
+            <xsd:element ref="ac:TEMP_CONTACT_ID" minOccurs="0"/>
+            <xsd:element ref="ac:CUST_ACCOUNT_ROLE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_CONTACT_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_SYNCED" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_NAME" minOccurs="0"/>
+            <xsd:element ref="ac:FIRST_NAME" minOccurs="0"/>
+            <xsd:element ref="ac:RAW_PHONE_NUMBER" minOccurs="0"/>
+            <xsd:element ref="ac:FAX_NO" minOccurs="0"/>
+            <xsd:element ref="ac:MOBILE_NO" minOccurs="0"/>
+            <xsd:element ref="ac:EMAIL_ID" minOccurs="0"/>
+            <xsd:element ref="ac:TEMP_CUST_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:CONTACT_ROLE" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE1" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE2" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE3" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE4" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE5" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE6" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE7" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE8" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE9" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE10" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE11" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE12" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE13" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE14" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE15" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE16" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE17" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE18" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE19" minOccurs="0"/>
+            <xsd:element ref="ac:ATTRIBUTE20" minOccurs="0"/>
+            <xsd:element ref="ac:CREATION_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_UPDATE_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:CREATED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_UPDATED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:LAST_MODIFIED_BY" minOccurs="0"/>
+            <xsd:element ref="ac:REQUEST_ID" minOccurs="0"/>
+            <xsd:element ref="ac:PROCESS_FLAG" minOccurs="0"/>
+            <xsd:element ref="ac:MODE" minOccurs="0"/>
+            <xsd:element ref="ac:ISACTIVE" minOccurs="0"/>
+            <xsd:element ref="ac:PRIMARY_FLAG" minOccurs="0"/>
+             <xsd:element ref="ac:STATUS" minOccurs="0"/>
+             
+            <xsd:element ref="ac:ACCOUNT_NUMBER" minOccurs="0"/>
+            <xsd:element ref="ac:TEMP_CUST_ID" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="SyncAccCustomersResp" type="SyncAccCustomersRespType"/>
+    <xsd:complexType name="SyncAccCustomersRespType">
+        <xsd:sequence>
+            <xsd:element ref="AccountsResp" minOccurs="0"/>
+            <xsd:element ref="CustSitesResp" minOccurs="0"/>
+            <xsd:element ref="ContactsResp" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="AccountsResp" type="tns:AccountsRespType"/>
+    <xsd:complexType name="AccountsRespType">
+        <xsd:sequence>
+            <xsd:element name="AccountResp" type="tns:AccountRespType"
+                         minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AccountRespType">
+        <xsd:sequence>
+            <xsd:element ref="ac:SFDC_ACCOUNT_ID" minOccurs="0"/>
+            <xsd:element ref="ac:ACCOUNT_NUMBER" minOccurs="0"/>
+            <xsd:element ref="ac:PROCESS_FLAG" minOccurs="0"/>
+            <xsd:element ref="ac:ERROR_MESSAGE" minOccurs="0"/>
+            <xsd:element ref="ac:CREATION_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_SYNCED" minOccurs="0"/>
+            <xsd:element ref="ac:TEMP_CUST_ID" minOccurs="0"/>
+            <xsd:element ref="ac:position" minOccurs="0"/>
+            <xsd:element ref="ac:success" minOccurs="0"/>
+            <xsd:element ref="errors" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="CustSitesResp" type="CustSitesRespType"/>
+    <xsd:complexType name="CustSitesRespType">
+        <xsd:sequence>
+            <xsd:element name="CustSiteResp" type="CustSiteRespType"
+                         minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustSiteRespType">
+        <xsd:sequence>
+            <xsd:element ref="ac:TEMP_CUST_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:PROCESS_FLAG" minOccurs="0"/>
+            <xsd:element ref="ac:ERROR_MESSAGE" minOccurs="0"/>
+            <xsd:element ref="ac:CREATION_DATE" minOccurs="0"/>
+            <xsd:element ref="ac:CUST_ACCT_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SITE_USAGE" minOccurs="0"/>
+            <xsd:element ref="ac:LOCATION" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_BILLTO_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_SHIPTO_SITE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:position" minOccurs="0"/>
+            <xsd:element ref="ac:success" minOccurs="0"/>
+            <xsd:element ref="errors" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="ContactsResp" type="ContactsRespType"/>
+    <xsd:complexType name="ContactsRespType">
+        <xsd:sequence>
+            <xsd:element name="ContactResp" type="ContactRespType" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ContactRespType">
+        <xsd:sequence>
+            <xsd:element ref="ac:TEMP_CONTACT_ID" minOccurs="0"/>
+            <xsd:element ref="ac:CUST_ACCOUNT_ROLE_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_CONTACT_ID" minOccurs="0"/>
+            <xsd:element ref="ac:SFDC_SYNCED" minOccurs="0"/>
+            <xsd:element ref="ac:PROCESS_FLAG" minOccurs="0"/>
+            <xsd:element ref="ac:ERROR_MESSAGE" minOccurs="0"/>
+            <xsd:element ref="ac:position" minOccurs="0"/>
+            <xsd:element ref="ac:success" minOccurs="0"/>
+            <xsd:element ref="errors" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="errors" type="ErrorType"/>
+    <xsd:complexType name="ErrorType">
+        <xsd:sequence>
+            <xsd:element ref="ac:message" minOccurs="0"/>
+            <xsd:element ref="ac:statusCode" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

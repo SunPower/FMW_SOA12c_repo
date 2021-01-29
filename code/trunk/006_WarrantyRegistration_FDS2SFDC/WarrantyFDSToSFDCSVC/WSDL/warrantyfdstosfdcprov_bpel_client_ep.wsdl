@@ -1,0 +1,68 @@
+<wsdl:definitions name="WarrantyFDSToSFDCProv_BPEL" targetNamespace="http://www.sunpowercorp.com/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/WarrantyFDSToSFDCProv_BPEL" xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:ns3="urn:partner.soap.sforce.com" xmlns:client="http://www.sunpowercorp.com/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/WarrantyFDSToSFDCProv_BPEL" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    
+    <plnk:partnerlinktype name="WarrantyFDSToSFDCProv_BPEL">
+        <plnk:role name="WarrantyFDSToSFDCProv_BPELProvider">
+            <plnk:porttype name="client:WarrantyFDSToSFDCProv_BPEL"/>
+        </plnk:role>
+        <plnk:role name="WarrantyFDSToSFDCProv_BPELRequester">
+            <plnk:porttype name="client:WarrantyFDSToSFDCProv_BPELCallback"/>
+        </plnk:role>
+    </plnk:partnerlinktype>
+   
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/WarrantyFDSToSFDCProv_BPEL" schemaLocation="../xsd/WarrantyFDSToSFDCProv_BPEL.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1" schemaLocation="../xsd/ProcessWarratyFDSToSFDC.xsd"/>
+        </schema>
+       
+    </wsdl:types>
+  
+    <wsdl:message name="WarrantyFDSToSFDCProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns1:ProcessWarrantyFDSToSFDC"/>
+    </wsdl:message>
+    <wsdl:message name="WarrantyFDSToSFDCProv_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+	
+	
+    <wsdl:portType name="WarrantyFDSToSFDCProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:WarrantyFDSToSFDCProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+	
+    <wsdl:portType name="WarrantyFDSToSFDCProv_BPELCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:WarrantyFDSToSFDCProv_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+	
+    <wsdl:binding name="WarrantyFDSToSFDCProv_BPELBinding" type="client:WarrantyFDSToSFDCProv_BPEL">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsp:policyreference URI="#wsaddr_policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+	
+    <wsdl:binding name="WarrantyFDSToSFDCProv_BPELCallbackBinding" type="client:WarrantyFDSToSFDCProv_BPELCallback">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="processResponse">
+            <soap:operation style="document" soapAction="processResponse"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://www.sunpowercorp.com/WarrantyRegistrationFDSToSFDC/WarrantyFDSToSFDCProv/WarrantyFDSToSFDCProv_BPEL"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+	
+    <wsdl:service name="warrantyfdstosfdcprov_bpel_client_ep">
+        <wsdl:port name="WarrantyFDSToSFDCProv_BPEL_pt" binding="client:WarrantyFDSToSFDCProv_BPELBinding">
+            <soap:address location="http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/WarrantyFDSToSFDCProv/warrantyfdstosfdcprov_bpel_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

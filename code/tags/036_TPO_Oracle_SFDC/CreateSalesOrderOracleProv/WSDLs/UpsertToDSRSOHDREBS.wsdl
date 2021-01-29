@@ -1,0 +1,22 @@
+<?binding.jca UpsertToDSRSOHDREBS_db.jca?>
+<wsdl:definitions name="UpsertToDSRSOHDREBS" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/UpsertToDSRSOHDREBS" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OnLineSalesOrder/CreateSalesOrderOracleProv/UpsertToDSRSOHDREBS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpsertToDSRSOHDREBS">
+    <plt:partnerLinkType name="UpsertToDSRSOHDREBS_plt">
+        <plt:role name="UpsertToDSRSOHDREBS_role">
+            <plt:portType name="tns:UpsertToDSRSOHDREBS_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpsertToDSRSOHDREBS"
+                    schemaLocation="../Schemas/UpsertToDSRSOHDREBS_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrDsrSoHeaderCollection_msg">
+        <wsdl:part name="XxspwrDsrSoHeaderCollection" element="top:XxspwrDsrSoHeaderCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="UpsertToDSRSOHDREBS_ptt">
+        <wsdl:operation name="merge">
+            <wsdl:input message="tns:XxspwrDsrSoHeaderCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,22 @@
+<?binding.jca updateStatusToOracle_db.jca?>
+<wsdl:definitions name="updateStatusToOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/updateStatusToOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/updateStatusToOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToOracle">
+    <plt:partnerLinkType name="updateStatusToOracle_plt">
+        <plt:role name="updateStatusToOracle_role">
+            <plt:portType name="tns:updateStatusToOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToOracle"
+                    schemaLocation="Schemas/updateStatusToOracle_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrEdicom856N204OutboundCollection_msg">
+        <wsdl:part name="XxspwrEdicom856N204OutboundCollection" element="top:XxspwrEdicom856N204OutboundCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="updateStatusToOracle_ptt">
+        <wsdl:operation name="update">
+            <wsdl:input message="tns:XxspwrEdicom856N204OutboundCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

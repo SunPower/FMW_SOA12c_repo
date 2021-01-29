@@ -1,0 +1,52 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions name="UpdateCustomerOracleReq"
+                  targetNamespace="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerOracleReq/UpdateCustomerOracleReq"
+                  xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+                  xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessSFDCSyncCust/V1"
+                  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+                  xmlns:client="http://xmlns.oracle.com/TPOSOACustomerSync/UpdateCustomerOracleReq/UpdateCustomerOracleReq"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:tns="http://www.example.org/NewWSDLFile/">
+    <plnk:partnerLinkType name="UpdateCustomerOracleReq">
+        <plnk:role name="UpdateCustomerOracleReqProvider">
+            <plnk:portType name="client:UpdateCustomerOracleReq"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.example.org/NewWSDLFile/"
+                    elementFormDefault="qualified">
+            <xsd:element name="NewOperation">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="dataSource" type="xsd:string"
+                                     nillable="true" minOccurs="0"/>
+                       <!-- <xsd:element name="batchId" type="xsd:string"
+                                     nillable="true" minOccurs="0"/>
+                        <xsd:element name="callAPI" type="xsd:string"
+                                     nillable="true" minOccurs="0"/>-->
+                        <!--<xsd:simpleType>
+                               <xsd:restriction base="xsd:string">
+                                   <xsd:pattern value="[xyz]"/>
+                                    <xsd:enumeration value="N"/>
+                                    <xsd:enumeration value="Y"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>-->
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHold/initParams/xsd/v1"
+                        schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="UpdateCustomerOracleReqRequestMessage">
+        <wsdl:part name="payload" element="tns:NewOperation"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateCustomerOracleReq">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:UpdateCustomerOracleReqRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

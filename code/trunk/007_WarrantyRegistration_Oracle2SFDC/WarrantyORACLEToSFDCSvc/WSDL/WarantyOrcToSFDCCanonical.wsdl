@@ -1,0 +1,47 @@
+<wsdl:definitions name="WarrantyOracleToSFDCCanonical" targetNamespace="http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema>
+		
+			<xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessWarrantyOracleToSFDC/V1" schemaLocation="../XSD/CDM/BOD/Nouns/WarrantyOracleToSFDC/V1/ProcessWarrantyOracleToSFDC.xsd"/>
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/">
+			<xsd:element name="WarrantyOracleToSFDCCanonicalResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="WarrantyOracleToSFDCCanonicalRequest">
+		<wsdl:part element="ns1:ProcessWarrantyOracleToSFDC" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="WarrantyOracleToSFDCCanonicalResponse">
+		<wsdl:part element="tns:WarrantyOracleToSFDCCanonicalResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="WarrantyOracleToSFDCCanonical">
+		<wsdl:operation name="WarrantyOracleToSFDC">
+			<wsdl:input message="tns:WarrantyOracleToSFDCCanonicalRequest"/>
+			<wsdl:output message="tns:WarrantyOracleToSFDCCanonicalResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="WarrantyOracleToSFDCCanonicalSOAP" type="tns:WarrantyOracleToSFDCCanonical">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="WarrantyOracleToSFDC">
+			<soap:operation soapAction="http://www.sunpowercorp.com/WarrantyOracleToSFDCCanonical/WarrantyOracleToSFDC"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="WarrantyOracleToSFDCCanonical">
+		<wsdl:port binding="tns:WarrantyOracleToSFDCCanonicalSOAP" name="WarrantyOracleToSFDCCanonicalSOAP">
+			<soap:address location="http://www.example.org/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,338 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/EBSPollDBAdapter" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/EBSPollDBAdapter" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxspwrLease2OutboundDetailsCollection" type="XxspwrLease2OutboundDetailsCollection"/>
+   <xs:complexType name="XxspwrLease2OutboundDetailsCollection">
+      <xs:sequence>
+         <xs:element name="XxspwrLease2OutboundDetails" type="XxspwrLease2OutboundDetails" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrLease2OutboundDetails">
+      <xs:sequence>
+         <xs:element name="leaseNumber" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="soNumber" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="soHeaderId" type="xs:decimal"/>
+         <xs:element name="schDelivDatePv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="schDelivDateInv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="schDelivDateMount" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="delivDatePv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="delivDateInv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="delivDateMount" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="poNumberOrig" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poNumberInstall" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poNumberInter" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poCreationDateOrig" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poCreationDateInstall" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poCreationDateInter" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poAmountOrig" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="poAmountInstall" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="poAmountInter" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="poReceiptDateOrigination" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poReceiptDateInstallation" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="poReceiptDateInterconnect" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="supInvNumOrigination" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="supInvNumInstallation" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="supInvNumInterconnect" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="supInvAmtOrigination" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="supInvAmtInstallation" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="supInvAmtInterconnect" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="paymentAmtOrigination" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="paymentAmtInstallation" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="paymentAmtInterconnect" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="paymentDateOrigination" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="paymentDateInstallation" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="paymentDateInterconnect" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="schedulePayDateOrig" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="schedulePayDateInstall" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="schedulePayDateInter" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="200"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="custReqDatePv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="custReqDateInv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="custReqDateMount" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="custPromiseDatePv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="custPromiseDateInv" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="custPromiseDateMount" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="attribute1" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute2" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute3" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute4" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute5" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute6" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute7" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute8" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute9" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="attribute10" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="100"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="soaStatus" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="10"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="leaseCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="leaseCloseStatus" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="3"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="leaseCloseDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="leaseCloseReqId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="createdBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="creationDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdatedBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdateDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="stateTaxRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="countyTaxRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="cityTaxRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="countyName" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="40"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="spwrSupMtlTaxAmount" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="pvCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="inverterCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="monitoringCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="bosCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="rackingCostInternal" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="miscCostInternal" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="rackingCostInstaller" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="miscCostInstaller" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="totalSpwrSuppMaterial" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="totalDealerSuppMaterial" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="totalMaterialCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="totalServiceCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="taxAmount" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="netDealerServiceCost" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="orderStatus" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="errorMessage" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="4000"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="taxIdentifier" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="40"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="leaseType" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="sfdcId" minOccurs="0" nillable="true">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="50"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

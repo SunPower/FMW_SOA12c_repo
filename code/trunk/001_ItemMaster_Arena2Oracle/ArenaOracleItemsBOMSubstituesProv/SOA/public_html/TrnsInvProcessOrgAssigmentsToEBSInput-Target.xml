@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<top:XxspwrArenaOrgAssignmentsCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/processOrgAssigmentsToEBS">
+   <top:XxspwrArenaOrgAssignments>
+      <top:itemId>-0</top:itemId>
+      <top:buOrOuName>Name21</top:buOrOuName>
+      <top:buOrOuValue>Value22</top:buOrOuValue>
+      <top:setProcessId>-0</top:setProcessId>
+      <top:itemNumber>-0</top:itemNumber>
+   </top:XxspwrArenaOrgAssignments>
+   <top:XxspwrArenaOrgAssignments>
+      <top:itemId>-0</top:itemId>
+      <top:buOrOuName>Name23</top:buOrOuName>
+      <top:buOrOuValue>Value24</top:buOrOuValue>
+      <top:setProcessId>-0</top:setProcessId>
+      <top:itemNumber>-0</top:itemNumber>
+   </top:XxspwrArenaOrgAssignments>
+   <top:XxspwrArenaOrgAssignments>
+      <top:itemId>-0</top:itemId>
+      <top:buOrOuName>Name25</top:buOrOuName>
+      <top:buOrOuValue>Value26</top:buOrOuValue>
+      <top:setProcessId>-0</top:setProcessId>
+      <top:itemNumber>-0</top:itemNumber>
+   </top:XxspwrArenaOrgAssignments>
+</top:XxspwrArenaOrgAssignmentsCollection>

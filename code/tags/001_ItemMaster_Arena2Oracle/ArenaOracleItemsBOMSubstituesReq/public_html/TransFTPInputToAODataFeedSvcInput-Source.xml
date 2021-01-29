@@ -1,0 +1,2471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <ProductDataeXchangePackage thisDocumentIdentifier="_14226554"
+                                thisDocumentGenerationDateTime="2012-07-06T11:00:56-08:00"
+                                thisDocumentModificationDateTime="2012-07-06T11:00:56-08:00"
+                                originatedByContactName="Sunpower Oracle Integration Test Adapter"
+                                packageType="Arena Solutions ProductDataeXchangePackage"
+                                dataSource="Arena Solutions"
+                                thisDocumentCopyright="Arena Solutions">
+      <Items>
+        <Item itemIdentifier="501934" itemUniqueIdentifier="IVI10025936038"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Module" revisionIdentifier="B"
+              proprietaryProductFamily="" category="Module"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-06-30T00:00:00-08:00" ownerName=""
+              isTopLevel="Yes" description="PVM, SPR-435NE-WHT-D CAR 1KV">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value="Include Gen 3 Cells in SPR-435NE-WHT D CAR 1KV (PV # 501934)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="DEV-000029"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="No"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="No"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-28T02:59:14-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2012-03-29T22:29:41-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/ZH0CO8R8RAA57NLZ?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Module"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path" value="Part\PV\Module"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="rollup"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="rollup"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description"
+                                 value="128C SKU using Amphenol 1000V JBOX"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Australia" value="" dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="WHITE"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Belgium" value="" dataType="String"/>
+            <AdditionalAttribute name="Billable Watts" value="435"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Canada" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Color" value="WHITE B"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Technology" value="C60"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value="DUAL"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Components BU" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="France" value="" dataType="String"/>
+            <AdditionalAttribute name="Germany" value="" dataType="String"/>
+            <AdditionalAttribute name="Glass Type" value="AR"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Greece" value="" dataType="String"/>
+            <AdditionalAttribute name="Italy" value="" dataType="String"/>
+            <AdditionalAttribute name="Korea" value="" dataType="String"/>
+            <AdditionalAttribute name="Market Segment" value="Commercial"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="New Homes BU" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="North America - Non US" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="No"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Platform" value="128" dataType="String"/>
+            <AdditionalAttribute name="Portugal" value="" dataType="String"/>
+            <AdditionalAttribute name="Power Type" value="DC"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="MODULE"
+                                 dataType="String"/>
+            <AdditionalAttribute name="RLC BU" value="" dataType="String"/>
+            <AdditionalAttribute name="Series" value="NA" dataType="String"/>
+            <AdditionalAttribute name="Spain" value="" dataType="String"/>
+            <AdditionalAttribute name="Systems BU" value="" dataType="String"/>
+            <AdditionalAttribute name="UK" value="" dataType="String"/>
+            <AdditionalAttribute name="US O AND M" value="" dataType="String"/>
+            <AdditionalAttribute name="USA" value="Yes" dataType="String"/>
+          </AdditionalAttributes>
+          <BillOfMaterial>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="100131"
+                                billOfMaterialItemUniqueIdentifier="IVI10025387238"
+                                itemQuantity=".0038"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530044902">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="100219"
+                                billOfMaterialItemUniqueIdentifier="IVI10025387508"
+                                itemQuantity=".0087"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530045167">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="100221"
+                                billOfMaterialItemUniqueIdentifier="IVI10025387528"
+                                itemQuantity=".00334"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther=""
+                                notes="> Frame Usage is 0.00245 ea > JBOX usage is 0.00089"
+                                description=""
+                                proprietarySequenceIdentifier="1530047853">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="100228"
+                                billOfMaterialItemUniqueIdentifier="IVI10025412638"
+                                itemQuantity="8"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530048412">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="100345"
+                                billOfMaterialItemUniqueIdentifier="IVI10025387908"
+                                itemQuantity=".029412"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530032488">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="108643"
+                                billOfMaterialItemUniqueIdentifier="IVI10025388238"
+                                itemQuantity="8"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530043457">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="110495"
+                                billOfMaterialItemUniqueIdentifier="IVI10025371768"
+                                itemQuantity=".029412"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530041836">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="110496"
+                                billOfMaterialItemUniqueIdentifier="IVI10025371778"
+                                itemQuantity=".029412"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530041920">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="B"
+                                billOfMaterialItemIdentifier="111699"
+                                billOfMaterialItemUniqueIdentifier="IVI10025372338"
+                                itemQuantity="1"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530049230">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="B"
+                                billOfMaterialItemIdentifier="125907"
+                                billOfMaterialItemUniqueIdentifier="IVI10025390918"
+                                itemQuantity="1"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530047832">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="D"
+                                billOfMaterialItemIdentifier="500832"
+                                billOfMaterialItemUniqueIdentifier="IVI10025402608"
+                                itemQuantity="1"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description="Horizon Laminate"
+                                proprietarySequenceIdentifier="1530040606">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+              <AlternateItems>
+                <AlternateItem itemIdentifier="501319"
+                               itemUniqueIdentifier="IVI10025402628"
+                               globalPreferredStatusCode="1">
+                  <AdditionalAttributes groupLabel="Substitute BOM Line Information">
+                    <AdditionalAttribute name="Substitute Type"
+                                         value="Substitute Item"
+                                         dataType="Float"/>
+                    <AdditionalAttribute name="Quantity" value="1"
+                                         dataType="Float"/>
+                    <AdditionalAttribute name="Notes" value=""
+                                         dataType="String"/>
+                    <AdditionalAttribute name="Substitute Bom Line Identifier"
+                                         value="379944966" dataType="Float"/>
+                  </AdditionalAttributes>
+                </AlternateItem>
+              </AlternateItems>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="A"
+                                billOfMaterialItemIdentifier="501900"
+                                billOfMaterialItemUniqueIdentifier="IVI10025417818"
+                                itemQuantity="1"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description="Assembled Amphenol Helios Hercules series junction box. Full Description: Amphenol Hercules HBH Series PV Junction Box Assembly with Cable (Powerlink 4.0 mm2 / 12 AWG), Connector (Helios H4 Connector), Vishay Diode, and Tape.Rated UL 1KVSee material spec for full specifications.Uses H4 connectors, which are FFF compatible with MC4 where code permits."
+                                proprietarySequenceIdentifier="1530054466">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+            <BillOfMaterialItem revisionIdentifier="B"
+                                billOfMaterialItemIdentifier="501908"
+                                billOfMaterialItemUniqueIdentifier="IVI10025406808"
+                                itemQuantity="1"
+                                globalProductQuantityTypeCode="PerAssembly"
+                                globalProductQuantityTypeCodeOther="" notes=""
+                                description=""
+                                proprietarySequenceIdentifier="1530054476">
+              <AdditionalAttributes groupLabel="Filter Information">
+                <AdditionalAttribute name="Excluded By Category Filtering"
+                                     value="Yes" dataType="Boolean"/>
+              </AdditionalAttributes>
+            </BillOfMaterialItem>
+          </BillOfMaterial>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="501934"
+                                          manufacturerPartUniqueIdentifier="IMI10025936038-1189965928"
+                                          manufacturerContactUniqueIdentifier="ECI258453515"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description="PVM, SPR-435NE-WHT-D CAR 1KV"
+                                          manufacturedBy="SunPower Corp Production">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="Yes"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="100131" itemUniqueIdentifier="IVI10025387238"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Other-Bulk" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Other-Bulk"
+              globalProductUnitOfMeasureCode="Roll 1 Pc"
+              revisionReleasedDate="2012-05-21T05:22:25-08:00" ownerName=""
+              isTopLevel="No"
+              description="Tape, Frame, 5/8 inch, Duplomont 9183">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000237"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-21T05:22:25-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-06-13T21:07:32-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/CUDP1L4L4NNIKWYQ?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Other-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Other-Bulk"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Off-the-Shelf (OTS)" dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPDV" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="TAPE"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="Duplomont 9183"
+                                          manufacturerPartUniqueIdentifier="IMI10025387238-1189979818"
+                                          manufacturerContactUniqueIdentifier="ECI895885502"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="LOHMANN ADHESIVE TAPE TECHNOLOGIES (TIAN JIN) CO. LTD">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="Duplomont 9183"
+                                          manufacturerPartUniqueIdentifier="IMI10025387238-1189979819"
+                                          manufacturerContactUniqueIdentifier="ECI895885632"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="SAUNDERS CORPORATION">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="100219" itemUniqueIdentifier="IVI10025387508"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Other-Bulk" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Other-Bulk"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-21T05:22:25-08:00" ownerName=""
+              isTopLevel="No"
+              description="Sealant, jbox, RTV White PV804, cartridge">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000237"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-21T05:22:25-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-06-13T21:06:10-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/WEX9L5O5O7724D2I?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Other-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Other-Bulk"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Off-the-Shelf (OTS)" dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPDV" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="SEALANT"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="PV-804 White"
+                                          manufacturerPartUniqueIdentifier="IMI10025387508-1189979820"
+                                          manufacturerContactUniqueIdentifier="ECI895885606"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="DOW CORNING INC">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="PV-804 White"
+                                          manufacturerPartUniqueIdentifier="IMI10025387508-1189979821"
+                                          manufacturerContactUniqueIdentifier="ECI895885461"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="DOW CORNING SINGAPORE PTE LTD">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="100221" itemUniqueIdentifier="IVI10025387528"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Other-Bulk" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Other-Bulk"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-21T05:22:25-08:00" ownerName=""
+              isTopLevel="No"
+              description="Sealant, jbox, RTV White PV804, pail">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000237"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-21T05:22:25-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:59:12-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/R9S4G0J0J22XZD5E?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Other-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Other-Bulk"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Off-the-Shelf (OTS)" dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPDV" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="SEALANT"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="PV-804 White"
+                                          manufacturerPartUniqueIdentifier="IMI10025387528-1189979820"
+                                          manufacturerContactUniqueIdentifier="ECI895885606"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="DOW CORNING INC">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="PV-804 White"
+                                          manufacturerPartUniqueIdentifier="IMI10025387528-1189979821"
+                                          manufacturerContactUniqueIdentifier="ECI895885461"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="DOW CORNING SINGAPORE PTE LTD">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="100228" itemUniqueIdentifier="IVI10025412638"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Other-Bulk" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Other-Bulk"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-21T05:22:25-08:00" ownerName=""
+              isTopLevel="No" description="Screw, DIN 7982 3.5x19mm, black">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000237"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-21T05:22:25-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:59:13-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/UCV7J3M3M5502G80?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Other-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Other-Bulk"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Off-the-Shelf (OTS)" dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPDV" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="SCREW"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="BN696M3.519MBO"
+                                          manufacturerPartUniqueIdentifier="IMI10025412638-1189979817"
+                                          manufacturerContactUniqueIdentifier="ECI895885491"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="JIAWEI SOLARCHINA COMPANY LIMITED">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 100228"
+                                          manufacturerPartUniqueIdentifier="IMI10025412638-1189979884"
+                                          manufacturerContactUniqueIdentifier="ECI895885612"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="GENNEX SOLUTIONS PHILS INC">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="100345" itemUniqueIdentifier="IVI10025387908"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Other-Bulk" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Other-Bulk"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-21T05:22:25-08:00" ownerName=""
+              isTopLevel="No"
+              description="Safety and Installation Manual, UL, Doc 001-14158">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000237"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-21T05:22:25-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:59:14-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/YGZBN7Q7Q9946KCE?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Other-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Other-Bulk"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value="UL"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPDV" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="SAFETY MANUAL"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 100345"
+                                          manufacturerPartUniqueIdentifier="IMI10025387908-1189979913"
+                                          manufacturerContactUniqueIdentifier="ECI895885623"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="MALINTA CORRUGATED BOXES MFG CORP.">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 100345"
+                                          manufacturerPartUniqueIdentifier="IMI10025387908-1189979914"
+                                          manufacturerContactUniqueIdentifier="ECI895885633"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="SHINSEI PRINTING PHILIPPINES INC">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="108643" itemUniqueIdentifier="IVI10025388238"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Other-Bulk" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Other-Bulk"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-21T05:22:25-08:00" ownerName=""
+              isTopLevel="No" description="Label Grounding PV Frame">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000237"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-21T05:22:25-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:59:16-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/4M5HTDWDWFFACQHF?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Other-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Other-Bulk"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Off-the-Shelf (OTS)" dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPDV" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="LABEL"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 108643"
+                                          manufacturerPartUniqueIdentifier="IMI10025388238-1189979943"
+                                          manufacturerContactUniqueIdentifier="ECI895885421"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="STEVEN LABEL">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="110495" itemUniqueIdentifier="IVI10025371768"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Packaging" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Packaging"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-04-01T00:55:09-08:00" ownerName=""
+              isTopLevel="No" description="Cover Pad, 128 Cell Module, Top">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value='Removing the "Modco CM MX, PL, CN" field and replacing it with 3 separate fields:Modco CM MXModco CM PLModco CM CNThis if for the Cost Rollup / 5 day close project'
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000195"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-04-01T00:55:09-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:59:26-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/1J2EQATATCC79NE7?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Packaging"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Packaging"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Glass Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Platform" value="128" dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="PACKAGING"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 110495"
+                                          manufacturerPartUniqueIdentifier="IMI10025371768-1189979972"
+                                          manufacturerContactUniqueIdentifier="ECI895885633"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="SHINSEI PRINTING PHILIPPINES INC">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 110495"
+                                          manufacturerPartUniqueIdentifier="IMI10025371768-1189979973"
+                                          manufacturerContactUniqueIdentifier="ECI895885638"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="TAIPHIL PACKAGING CO., INC.">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="110496" itemUniqueIdentifier="IVI10025371778"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Packaging" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Packaging"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-04-01T00:55:09-08:00" ownerName=""
+              isTopLevel="No" description="Layer Pad, 128 Cell Module, Bottom">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value='Removing the "Modco CM MX, PL, CN" field and replacing it with 3 separate fields:Modco CM MXModco CM PLModco CM CNThis if for the Cost Rollup / 5 day close project'
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000195"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-04-01T00:55:09-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:59:26-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/2K3FRBUBUDD8AOFI?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Packaging"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Packaging"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Glass Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Platform" value="128" dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="PACKAGING"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 110496"
+                                          manufacturerPartUniqueIdentifier="IMI10025371778-1189979974"
+                                          manufacturerContactUniqueIdentifier="ECI895885633"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="SHINSEI PRINTING PHILIPPINES INC">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 110496"
+                                          manufacturerPartUniqueIdentifier="IMI10025371778-1189979975"
+                                          manufacturerContactUniqueIdentifier="ECI895885638"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="TAIPHIL PACKAGING CO., INC.">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="111699" itemUniqueIdentifier="IVI10025372338"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Other-Bulk" revisionIdentifier="B"
+              proprietaryProductFamily="" category="Other-Bulk"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-04-01T00:55:09-08:00" ownerName=""
+              isTopLevel="No"
+              description="Label, Carton, 7 in x 1 in, bulk packaging, HN">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value='Removing the "Modco CM MX, PL, CN" field and replacing it with 3 separate fields:Modco CM MXModco CM PLModco CM CNThis if for the Cost Rollup / 5 day close project'
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000195"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-04-01T00:55:09-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:59:21-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/FXGS4O7O7QQLN1S0?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Other-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Other-Bulk"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Off-the-Shelf (OTS)" dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="" dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="LABEL"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 111699"
+                                          manufacturerPartUniqueIdentifier="IMI10025372338-1189980089"
+                                          manufacturerContactUniqueIdentifier="ECI895885596"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="ADAMPAK &amp; PRINT PHILS, INC.">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="125907" itemUniqueIdentifier="IVI10025390918"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Frame" revisionIdentifier="B"
+              proprietaryProductFamily="" category="Frame"
+              globalProductUnitOfMeasureCode="ST"
+              revisionReleasedDate="2012-05-24T15:09:12-08:00" ownerName=""
+              isTopLevel="No"
+              description="Frame Set, 3.2mm, 128-cell module, clear class II, RTV v2.0">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value="1)  Each part has 5 associated files.  1x end extrusion (.pdf),1x end frame (.pdf), 1x side extrusion(.pdf),  1x side frame(.pdf), 1x incoming matl spec (.pdf).  All extrusion drawing items should have 2 files (.pdf, .dwg) and all end/side frame drawing items should have 3 files (.pdf, .dwg, .igs).  Note, a standard is set forth here to only associate .PDF drawing files to the parent frame set. ==> DONE2)  Grounding holes on 001-68352 and 001-68354 are to be moved from 847mm to 785mm to match Gen2.  Add straightness and twist requirements to all end frames.  Update sheet tolerance on all Gen3 drawings to include X.XXX +/- 0.1mm.  Add &quot;NON-ANODIZE&quot; to ground hole on 001-68353. ==> DONE3)  Update all Gen2 silver &amp; Gen3 drawings to reflect change ==> DONE4)  Reduce the minimum specification for black frames from 20um to 18um to align with AAMA 611-98, Class I.  This change will lower part cost by easing requirements on our suppliers.  Change will require revision to all black frame drawings (Gen2 and Gen3; 72, and 96 cell;) and notification to all vendors.  Since the change is a relaxation of current specifications the 'phase in' plan is simplified (i.e. all old parts would still adhere to the new specification).  Change will also require updates to the frame material specification (001-42230) and incoming inspection (001-61085).  Material specification update will require coordination with DMS because it is not controlled in Arena.  This change is not considered to be a reliability risk as it still adheres to AAMA Class I, and exceeds the specification of our clear frames (AAMA ClassII, 10-18um).  Quotes are required from suppliers to estimate cost savings.  FAI for each MFG. is required prior to final approval.  ==> DRAWINGS AND INCOMING INSPECTION UPDATED5) Add IGES for all end/side ==> DONE6)  As part of change the material specification must be revised to reflect all ACTIVE frame parts, and all OBSOLETE frame parts must be removed. ==> INCOMPLETE"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="ECO-000780"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-24T15:09:12-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-09-15T14:58:28-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/VDW8K4N4N6613HER?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Frame"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path" value="PV Component\Frame"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value="ALL"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Platform" value="128" dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="FRAME SET"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 125907"
+                                          manufacturerPartUniqueIdentifier="IMI10025390918-1189980177"
+                                          manufacturerContactUniqueIdentifier="ECI895885629"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description=""
+                                          manufacturedBy="PA EXTRUSION (M) SDN. BHD.">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="No"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="500832" itemUniqueIdentifier="IVI10025402608"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Laminate Subassy" revisionIdentifier="D"
+              proprietaryProductFamily="" category="Laminate Subassy"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-04T00:44:51-08:00" ownerName=""
+              isTopLevel="No"
+              description="LAMINATE-WHITE-128 NE C60 CELL(J/K/I)-CAR, I/U/D">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value="Primary      Jinjing                5009021st Alternate            SGG China                5012372nd AlternateAGC Phils                5008253rd AlternateAGC China5008244th AlternateAGC US                1253665th AlternateCS                111515"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="ECO-000769"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="No"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="No"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-04T00:44:51-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2011-12-08T14:12:51-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/YGZBN7Q7Q9946A1O?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Laminate Subassy"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Subassembly\Laminate Subassy"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="593.23"
+                                 dimension="$" dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description"
+                                 value="Horizon Laminate" dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="WHITE"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Technology" value="C60"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Glass Type" value="AR"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX PL or CN" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Platform" value="128" dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="LAMINATE"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Series" value="NA" dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="500832"
+                                          manufacturerPartUniqueIdentifier="IMI10025402608-1189981748"
+                                          manufacturerContactUniqueIdentifier="ECI258453515"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description="LAMINATE-WHITE-128 NE C60 CELL(J/K/I)-CAR, I/U/D"
+                                          manufacturedBy="SunPower Corp Production">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="Yes"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="501900" itemUniqueIdentifier="IVI10025417818"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Jbox Subassy" revisionIdentifier="A"
+              proprietaryProductFamily="" category="Jbox Subassy"
+              globalProductUnitOfMeasureCode="ST"
+              revisionReleasedDate="2012-05-31T12:21:30-08:00"
+              ownerName="Shiela Tolentino" isTopLevel="No"
+              description="J-Box Fully Assy, Amphenol HBH, Powerlink Cable (2x680mm), 1KV, H4 Connectors">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes" value="Added latest IQA"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="BCV2382853223"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-31T12:21:30-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2012-03-27T18:15:59-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/J1KW8SBSBUUPR8UX?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Jbox Subassy"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Subassembly\Jbox Subassy"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="7" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2"
+                                 value="QLI1529977286" dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description"
+                                 value="Assembled Amphenol Helios Hercules series junction box. Full Description: Amphenol Hercules HBH Series PV Junction Box Assembly with Cable (Powerlink 4.0 mm2 / 12 AWG), Connector (Helios H4 Connector), Vishay Diode, and Tape.Rated UL 1KVSee material spec for full specifications.Uses H4 connectors, which are FFF compatible with MC4 where code permits."
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Certification" value="ALL"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="JUNCTION BOX"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="HBHAAIBYBYRRH"
+                                          manufacturerPartUniqueIdentifier="IMI10025417818-1189983347"
+                                          manufacturerContactUniqueIdentifier="ECI895885654"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          globalPreferredStatusCode="Active Production"
+                                          description="1000V UL Jbox"
+                                          manufacturedBy="Amphenol Technology (Shenzhen)">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="Yes"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+              <AdditionalAttributes groupLabel="Active Supplier Part Information">
+                <AdditionalAttribute name="productionSupplierPartUniqueIdentifier"
+                                     value="ISI1189983347" dataType="String"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="501908" itemUniqueIdentifier="IVI10025406808"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Product Label" revisionIdentifier="B"
+              proprietaryProductFamily="" category="Product Label"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-01T19:42:50-08:00"
+              ownerName="Arlene Dimaandal" isTopLevel="No"
+              description="Label, SPR-435NE-WHT-D (UL, 1KV)">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value="Replace the released labels with updated artwork."
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="AC-000216"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-01T19:42:50-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2012-03-29T00:26:12-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/SAT5H1K1K33Y0HKL?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Product Label"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Product Label"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value=".084"
+                                 dimension="$" dataType="Decimal"
+                                 description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2"
+                                 value="QLI1529976794" dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CN" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM PL" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Platform" value="128" dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="LABEL"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="SunPower Corp 501908"
+                                          manufacturerPartUniqueIdentifier="IMI10025406808-1189979558"
+                                          manufacturerContactUniqueIdentifier="ECI895885596"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          globalPreferredStatusCode="Active Production"
+                                          description="Label, SPR-435NE-WHT-D (1000 V)"
+                                          manufacturedBy="ADAMPAK &amp; PRINT PHILS, INC.">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="Yes"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+              <AdditionalAttributes groupLabel="Active Supplier Part Information">
+                <AdditionalAttribute name="productionSupplierPartUniqueIdentifier"
+                                     value="ISI1189979558" dataType="String"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+        <Item itemIdentifier="501319" itemUniqueIdentifier="IVI10025402628"
+              globalLifeCyclePhaseCode="Production"
+              globalProductTypeCode="Laminate Subassy" revisionIdentifier="D"
+              proprietaryProductFamily="" category="Laminate Subassy"
+              globalProductUnitOfMeasureCode="EA"
+              revisionReleasedDate="2012-05-04T00:44:51-08:00" ownerName=""
+              isTopLevel="No"
+              description="LAMINATE-WHITE-128 NE C60 CELL-135_microns(J/K/I)-CAR, I/U/D">
+          <AdditionalAttributes groupLabel="Version Information">
+            <AdditionalAttribute name="Version Notes"
+                                 value="Primary      Jinjing                5009021st Alternate            SGG China                5012372nd AlternateAGC Phils                5008253rd AlternateAGC China5008244th AlternateAGC US                1253665th AlternateCS                111515"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Change Number" value="ECO-000769"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Version Shared" value="No"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Effective Version Shared" value="No"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Material Effectivity Date"
+                                 value="2012-05-04T00:44:51-08:00"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Item Creation Date"
+                                 value="2012-02-08T00:22:36-08:00"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Permanent Link Information">
+            <AdditionalAttribute name="Item Specification Summary"
+                                 value="https://app.bom.com/a/ASBNZJ2J2LLGILRY?v=spec.summary"
+                                 dataType="UriReference"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Category Information">
+            <AdditionalAttribute name="Category Name" value="Laminate Subassy"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Category Path"
+                                 value="PV Component\Subassembly\Laminate Subassy"
+                                 dataType="String"/>
+          </AdditionalAttributes>
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="Standard Cost" value="593.23"
+                                 dimension="$" dataType="Decimal"/>
+            <AdditionalAttribute name="Target Cost" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Target Price" value="" dimension="$"
+                                 dataType="Decimal"/>
+            <AdditionalAttribute name="Active Cost #1" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost #2" value="" dimension="$"
+                                 dataType="Decimal" description="quoted"/>
+            <AdditionalAttribute name="Active Cost Line #1" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Active Cost Line #2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Arena Solutions Description"
+                                 value="Horizon Laminate" dataType="String"/>
+            <AdditionalAttribute name="Procurement Type"
+                                 value="Made-to-Specification (MTS)"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Backsheet" value="WHITE"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Fab 1 and 2" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cell Technology" value="C60"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Glass Type" value="AR"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco" value="Yes" dataType="String"/>
+            <AdditionalAttribute name="Modco CM CA" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco CM MX PL or CN" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Modco CM SW" value="" dataType="String"/>
+            <AdditionalAttribute name="Modco SPMX" value="Yes"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Part of BOM" value="Yes-Non Bulk"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Platform" value="128" dataType="String"/>
+            <AdditionalAttribute name="Product Type" value="LAMINATE"
+                                 dataType="String"/>
+            <AdditionalAttribute name="Series" value="NA" dataType="String"/>
+          </AdditionalAttributes>
+          <ApprovedManufacturerList>
+            <ApprovedManufacturerListItem manufacturerPartIdentifier="501319"
+                                          manufacturerPartUniqueIdentifier="IMI10025402628-1189982494"
+                                          manufacturerContactUniqueIdentifier="ECI258453515"
+                                          globalManufacturerPartStatusCode="Approved"
+                                          description="LAMINATE-WHITE-128 NE C60 CELL-135_microns(J/K/I)-CAR, I/U/D"
+                                          manufacturedBy="SunPower Corp Production">
+              <AdditionalAttributes groupLabel="Supplier Item Type">
+                <AdditionalAttribute name="Manufacturer Item" value="Yes"
+                                     dataType="Boolean"/>
+                <AdditionalAttribute name="Vendor Item" value="Yes"
+                                     dataType="Boolean"/>
+              </AdditionalAttributes>
+            </ApprovedManufacturerListItem>
+          </ApprovedManufacturerList>
+        </Item>
+      </Items>
+      <ManufacturerParts>
+        <ManufacturerPart manufacturerPartIdentifier="501934"
+                          manufacturerPartUniqueIdentifier="IMI10025936038-1189965928"
+                          manufacturerName="SunPower Corp Production"
+                          manufacturerContactUniqueIdentifier="ECI258453515"
+                          referenceNotes="128C SKU using Amphenol 1000V JBOX"
+                          manufacturerPartType="Part"
+                          description="PVM, SPR-435NE-WHT-D CAR 1KV"
+                          isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="501934"
+                                      supplierPartUniqueIdentifier="ISI1189965928"
+                                      supplierPartContactUniqueIdentifier="ECI258453515"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="SunPower Corp Production"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="Duplomont 9183"
+                          manufacturerPartUniqueIdentifier="IMI10025387238-1189979818"
+                          manufacturerName="LOHMANN ADHESIVE TAPE TECHNOLOGIES (TIAN JIN) CO. LTD"
+                          manufacturerContactUniqueIdentifier="ECI895885502"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="Duplomont 9183"
+                                      supplierPartUniqueIdentifier="ISI1189979818"
+                                      supplierPartContactUniqueIdentifier="ECI895885502"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="LOHMANN ADHESIVE TAPE TECHNOLOGIES (TIAN JIN) CO. LTD"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="Duplomont 9183"
+                          manufacturerPartUniqueIdentifier="IMI10025387238-1189979819"
+                          manufacturerName="SAUNDERS CORPORATION"
+                          manufacturerContactUniqueIdentifier="ECI895885632"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="Duplomont 9183"
+                                      supplierPartUniqueIdentifier="ISI1189979819"
+                                      supplierPartContactUniqueIdentifier="ECI895885632"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="SAUNDERS CORPORATION"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="PV-804 White"
+                          manufacturerPartUniqueIdentifier="IMI10025387508-1189979820"
+                          manufacturerName="DOW CORNING INC"
+                          manufacturerContactUniqueIdentifier="ECI895885606"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="PV-804 White"
+                                      supplierPartUniqueIdentifier="ISI1189979820"
+                                      supplierPartContactUniqueIdentifier="ECI895885606"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments="" suppliedBy="DOW CORNING INC"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="PV-804 White"
+                          manufacturerPartUniqueIdentifier="IMI10025387508-1189979821"
+                          manufacturerName="DOW CORNING SINGAPORE PTE LTD"
+                          manufacturerContactUniqueIdentifier="ECI895885461"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="PV-804 White"
+                                      supplierPartUniqueIdentifier="ISI1189979821"
+                                      supplierPartContactUniqueIdentifier="ECI895885461"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="DOW CORNING SINGAPORE PTE LTD"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="PV-804 White"
+                          manufacturerPartUniqueIdentifier="IMI10025387528-1189979820"
+                          manufacturerName="DOW CORNING INC"
+                          manufacturerContactUniqueIdentifier="ECI895885606"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="PV-804 White"
+                                      supplierPartUniqueIdentifier="ISI1189979820"
+                                      supplierPartContactUniqueIdentifier="ECI895885606"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments="" suppliedBy="DOW CORNING INC"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="PV-804 White"
+                          manufacturerPartUniqueIdentifier="IMI10025387528-1189979821"
+                          manufacturerName="DOW CORNING SINGAPORE PTE LTD"
+                          manufacturerContactUniqueIdentifier="ECI895885461"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="PV-804 White"
+                                      supplierPartUniqueIdentifier="ISI1189979821"
+                                      supplierPartContactUniqueIdentifier="ECI895885461"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="DOW CORNING SINGAPORE PTE LTD"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="BN696M3.519MBO"
+                          manufacturerPartUniqueIdentifier="IMI10025412638-1189979817"
+                          manufacturerName="JIAWEI SOLARCHINA COMPANY LIMITED"
+                          manufacturerContactUniqueIdentifier="ECI895885491"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="BN696M3.519MBO"
+                                      supplierPartUniqueIdentifier="ISI1189979817"
+                                      supplierPartContactUniqueIdentifier="ECI895885491"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="JIAWEI SOLARCHINA COMPANY LIMITED"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 100228"
+                          manufacturerPartUniqueIdentifier="IMI10025412638-1189979884"
+                          manufacturerName="GENNEX SOLUTIONS PHILS INC"
+                          manufacturerContactUniqueIdentifier="ECI895885612"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 100228"
+                                      supplierPartUniqueIdentifier="ISI1189979884"
+                                      supplierPartContactUniqueIdentifier="ECI895885612"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="GENNEX SOLUTIONS PHILS INC"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 100345"
+                          manufacturerPartUniqueIdentifier="IMI10025387908-1189979913"
+                          manufacturerName="MALINTA CORRUGATED BOXES MFG CORP."
+                          manufacturerContactUniqueIdentifier="ECI895885623"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 100345"
+                                      supplierPartUniqueIdentifier="ISI1189979913"
+                                      supplierPartContactUniqueIdentifier="ECI895885623"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="MALINTA CORRUGATED BOXES MFG CORP."/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 100345"
+                          manufacturerPartUniqueIdentifier="IMI10025387908-1189979914"
+                          manufacturerName="SHINSEI PRINTING PHILIPPINES INC"
+                          manufacturerContactUniqueIdentifier="ECI895885633"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 100345"
+                                      supplierPartUniqueIdentifier="ISI1189979914"
+                                      supplierPartContactUniqueIdentifier="ECI895885633"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="SHINSEI PRINTING PHILIPPINES INC"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 108643"
+                          manufacturerPartUniqueIdentifier="IMI10025388238-1189979943"
+                          manufacturerName="STEVEN LABEL"
+                          manufacturerContactUniqueIdentifier="ECI895885421"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 108643"
+                                      supplierPartUniqueIdentifier="ISI1189979943"
+                                      supplierPartContactUniqueIdentifier="ECI895885421"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments="" suppliedBy="STEVEN LABEL"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 110495"
+                          manufacturerPartUniqueIdentifier="IMI10025371768-1189979972"
+                          manufacturerName="SHINSEI PRINTING PHILIPPINES INC"
+                          manufacturerContactUniqueIdentifier="ECI895885633"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 110495"
+                                      supplierPartUniqueIdentifier="ISI1189979972"
+                                      supplierPartContactUniqueIdentifier="ECI895885633"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="SHINSEI PRINTING PHILIPPINES INC"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 110495"
+                          manufacturerPartUniqueIdentifier="IMI10025371768-1189979973"
+                          manufacturerName="TAIPHIL PACKAGING CO., INC."
+                          manufacturerContactUniqueIdentifier="ECI895885638"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 110495"
+                                      supplierPartUniqueIdentifier="ISI1189979973"
+                                      supplierPartContactUniqueIdentifier="ECI895885638"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="TAIPHIL PACKAGING CO., INC."/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 110496"
+                          manufacturerPartUniqueIdentifier="IMI10025371778-1189979974"
+                          manufacturerName="SHINSEI PRINTING PHILIPPINES INC"
+                          manufacturerContactUniqueIdentifier="ECI895885633"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 110496"
+                                      supplierPartUniqueIdentifier="ISI1189979974"
+                                      supplierPartContactUniqueIdentifier="ECI895885633"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="SHINSEI PRINTING PHILIPPINES INC"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 110496"
+                          manufacturerPartUniqueIdentifier="IMI10025371778-1189979975"
+                          manufacturerName="TAIPHIL PACKAGING CO., INC."
+                          manufacturerContactUniqueIdentifier="ECI895885638"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 110496"
+                                      supplierPartUniqueIdentifier="ISI1189979975"
+                                      supplierPartContactUniqueIdentifier="ECI895885638"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="TAIPHIL PACKAGING CO., INC."/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 111699"
+                          manufacturerPartUniqueIdentifier="IMI10025372338-1189980089"
+                          manufacturerName="ADAMPAK &amp; PRINT PHILS, INC."
+                          manufacturerContactUniqueIdentifier="ECI895885596"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 111699"
+                                      supplierPartUniqueIdentifier="ISI1189980089"
+                                      supplierPartContactUniqueIdentifier="ECI895885596"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="ADAMPAK &amp; PRINT PHILS, INC."/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 125907"
+                          manufacturerPartUniqueIdentifier="IMI10025390918-1189980177"
+                          manufacturerName="PA EXTRUSION (M) SDN. BHD."
+                          manufacturerContactUniqueIdentifier="ECI895885629"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 125907"
+                                      supplierPartUniqueIdentifier="ISI1189980177"
+                                      supplierPartContactUniqueIdentifier="ECI895885629"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="PA EXTRUSION (M) SDN. BHD."/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="500832"
+                          manufacturerPartUniqueIdentifier="IMI10025402608-1189981748"
+                          manufacturerName="SunPower Corp Production"
+                          manufacturerContactUniqueIdentifier="ECI258453515"
+                          referenceNotes="Horizon Laminate"
+                          manufacturerPartType="Part"
+                          description="LAMINATE-WHITE-128 NE C60 CELL(J/K/I)-CAR, I/U/D"
+                          isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="500832"
+                                      supplierPartUniqueIdentifier="ISI1189981748"
+                                      supplierPartContactUniqueIdentifier="ECI258453515"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="SunPower Corp Production"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="HBHAAIBYBYRRH"
+                          manufacturerPartUniqueIdentifier="IMI10025417818-1189983347"
+                          manufacturerName="Amphenol Technology (Shenzhen)"
+                          manufacturerContactUniqueIdentifier="ECI895885654"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="1000V UL Jbox" isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="HBHAAIBYBYRRH"
+                                      supplierPartUniqueIdentifier="ISI1189983347"
+                                      supplierPartContactUniqueIdentifier="ECI895885654"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="Amphenol Technology (Shenzhen)"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="SunPower Corp 501908"
+                          manufacturerPartUniqueIdentifier="IMI10025406808-1189979558"
+                          manufacturerName="ADAMPAK &amp; PRINT PHILS, INC."
+                          manufacturerContactUniqueIdentifier="ECI895885596"
+                          referenceNotes="" manufacturerPartType="Part"
+                          description="Label, SPR-435NE-WHT-D (1000 V)"
+                          isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="SunPower Corp 501908"
+                                      supplierPartUniqueIdentifier="ISI1189979558"
+                                      supplierPartContactUniqueIdentifier="ECI895885596"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="ADAMPAK &amp; PRINT PHILS, INC."/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+        <ManufacturerPart manufacturerPartIdentifier="501319"
+                          manufacturerPartUniqueIdentifier="IMI10025402628-1189982494"
+                          manufacturerName="SunPower Corp Production"
+                          manufacturerContactUniqueIdentifier="ECI258453515"
+                          referenceNotes="Horizon Laminate"
+                          manufacturerPartType="Part"
+                          description="LAMINATE-WHITE-128 NE C60 CELL-135_microns(J/K/I)-CAR, I/U/D"
+                          isTopLevel="No">
+          <ApprovedSupplierList>
+            <ApprovedSupplierListItem supplierPartIdentifier="501319"
+                                      supplierPartUniqueIdentifier="ISI1189982494"
+                                      supplierPartContactUniqueIdentifier="ECI258453515"
+                                      globalSupplierPartStatusCode="Approved"
+                                      comments=""
+                                      suppliedBy="SunPower Corp Production"/>
+          </ApprovedSupplierList>
+        </ManufacturerPart>
+      </ManufacturerParts>
+      <SupplierParts>
+        <SupplierPart supplierPartIdentifier="501934"
+                      supplierPartUniqueIdentifier="ISI1189965928"
+                      supplierName="SunPower Corp Production"
+                      supplierContactUniqueIdentifier="ECI258453515"
+                      referenceNotes="128C SKU using Amphenol 1000V JBOX"
+                      supplierPartType="Part"
+                      description="PVM, SPR-435NE-WHT-D CAR 1KV"
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="Duplomont 9183"
+                      supplierPartUniqueIdentifier="ISI1189979818"
+                      supplierName="LOHMANN ADHESIVE TAPE TECHNOLOGIES (TIAN JIN) CO. LTD"
+                      supplierContactUniqueIdentifier="ECI895885502"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="Duplomont 9183"
+                      supplierPartUniqueIdentifier="ISI1189979819"
+                      supplierName="SAUNDERS CORPORATION"
+                      supplierContactUniqueIdentifier="ECI895885632"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="PV-804 White"
+                      supplierPartUniqueIdentifier="ISI1189979820"
+                      supplierName="DOW CORNING INC"
+                      supplierContactUniqueIdentifier="ECI895885606"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="PV-804 White"
+                      supplierPartUniqueIdentifier="ISI1189979821"
+                      supplierName="DOW CORNING SINGAPORE PTE LTD"
+                      supplierContactUniqueIdentifier="ECI895885461"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="BN696M3.519MBO"
+                      supplierPartUniqueIdentifier="ISI1189979817"
+                      supplierName="JIAWEI SOLARCHINA COMPANY LIMITED"
+                      supplierContactUniqueIdentifier="ECI895885491"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 100228"
+                      supplierPartUniqueIdentifier="ISI1189979884"
+                      supplierName="GENNEX SOLUTIONS PHILS INC"
+                      supplierContactUniqueIdentifier="ECI895885612"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 100345"
+                      supplierPartUniqueIdentifier="ISI1189979913"
+                      supplierName="MALINTA CORRUGATED BOXES MFG CORP."
+                      supplierContactUniqueIdentifier="ECI895885623"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 100345"
+                      supplierPartUniqueIdentifier="ISI1189979914"
+                      supplierName="SHINSEI PRINTING PHILIPPINES INC"
+                      supplierContactUniqueIdentifier="ECI895885633"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 108643"
+                      supplierPartUniqueIdentifier="ISI1189979943"
+                      supplierName="STEVEN LABEL"
+                      supplierContactUniqueIdentifier="ECI895885421"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 110495"
+                      supplierPartUniqueIdentifier="ISI1189979972"
+                      supplierName="SHINSEI PRINTING PHILIPPINES INC"
+                      supplierContactUniqueIdentifier="ECI895885633"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 110495"
+                      supplierPartUniqueIdentifier="ISI1189979973"
+                      supplierName="TAIPHIL PACKAGING CO., INC."
+                      supplierContactUniqueIdentifier="ECI895885638"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 110496"
+                      supplierPartUniqueIdentifier="ISI1189979974"
+                      supplierName="SHINSEI PRINTING PHILIPPINES INC"
+                      supplierContactUniqueIdentifier="ECI895885633"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 110496"
+                      supplierPartUniqueIdentifier="ISI1189979975"
+                      supplierName="TAIPHIL PACKAGING CO., INC."
+                      supplierContactUniqueIdentifier="ECI895885638"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 111699"
+                      supplierPartUniqueIdentifier="ISI1189980089"
+                      supplierName="ADAMPAK &amp; PRINT PHILS, INC."
+                      supplierContactUniqueIdentifier="ECI895885596"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 125907"
+                      supplierPartUniqueIdentifier="ISI1189980177"
+                      supplierName="PA EXTRUSION (M) SDN. BHD."
+                      supplierContactUniqueIdentifier="ECI895885629"
+                      referenceNotes="" supplierPartType="Part" description=""
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="500832"
+                      supplierPartUniqueIdentifier="ISI1189981748"
+                      supplierName="SunPower Corp Production"
+                      supplierContactUniqueIdentifier="ECI258453515"
+                      referenceNotes="Horizon Laminate" supplierPartType="Part"
+                      description="LAMINATE-WHITE-128 NE C60 CELL(J/K/I)-CAR, I/U/D"
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="HBHAAIBYBYRRH"
+                      supplierPartUniqueIdentifier="ISI1189983347"
+                      supplierName="Amphenol Technology (Shenzhen)"
+                      supplierContactUniqueIdentifier="ECI895885654"
+                      referenceNotes="" supplierPartType="Part"
+                      description="1000V UL Jbox" isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="SunPower Corp 501908"
+                      supplierPartUniqueIdentifier="ISI1189979558"
+                      supplierName="ADAMPAK &amp; PRINT PHILS, INC."
+                      supplierContactUniqueIdentifier="ECI895885596"
+                      referenceNotes="" supplierPartType="Part"
+                      description="Label, SPR-435NE-WHT-D (1000 V)"
+                      isTopLevel="No"/>
+        <SupplierPart supplierPartIdentifier="501319"
+                      supplierPartUniqueIdentifier="ISI1189982494"
+                      supplierName="SunPower Corp Production"
+                      supplierContactUniqueIdentifier="ECI258453515"
+                      referenceNotes="Horizon Laminate" supplierPartType="Part"
+                      description="LAMINATE-WHITE-128 NE C60 CELL-135_microns(J/K/I)-CAR, I/U/D"
+                      isTopLevel="No"/>
+      </SupplierParts>
+      <Contacts>
+        <Contact contactIdentifier="10137"
+                 contactUniqueIdentifier="ECI895885596"
+                 contactName="ADAMPAK &amp; PRINT PHILS, INC." addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="ADAMPAK &amp; PRINT PHILS, INC."
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="26506"
+                 contactUniqueIdentifier="ECI895885654"
+                 contactName="Amphenol Technology (Shenzhen)" addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="Amphenol Technology (Shenzhen)"
+                 emailAddress=""
+                 universalResourceIdentifier="http://www.amphenol-industrial.com/"
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="" contactUniqueIdentifier="ECI895885606"
+                 contactName="DOW CORNING INC" addressLine1="" addressLine2=""
+                 cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="DOW CORNING INC" emailAddress=""
+                 universalResourceIdentifier="" contactStatus="Approved"
+                 isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="15980"
+                 contactUniqueIdentifier="ECI895885461"
+                 contactName="DOW CORNING SINGAPORE PTE LTD" addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="DOW CORNING SINGAPORE PTE LTD"
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="" contactUniqueIdentifier="ECI895885612"
+                 contactName="GENNEX SOLUTIONS PHILS INC" addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="GENNEX SOLUTIONS PHILS INC"
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="13768"
+                 contactUniqueIdentifier="ECI895885491" contactName="Tina Hu"
+                 addressLine1="" addressLine2="" cityName="" regionName=""
+                 globalCountryCode="" nationalPostalCode="" telephoneNumber=""
+                 facsimileNumber="" department="CQE"
+                 businessName="JIAWEI SOLARCHINA COMPANY LIMITED"
+                 emailAddress="huhuiting@sunenergychina.com"
+                 universalResourceIdentifier="http://www.solarchina.com.hk/"
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="11175"
+                 contactUniqueIdentifier="ECI895885502"
+                 contactName="LOHMANN ADHESIVE TAPE TECHNOLOGIES (TIAN JIN) CO. LTD"
+                 addressLine1="" addressLine2="" cityName="" regionName=""
+                 globalCountryCode="" nationalPostalCode="" telephoneNumber=""
+                 facsimileNumber="" department=""
+                 businessName="LOHMANN ADHESIVE TAPE TECHNOLOGIES (TIAN JIN) CO. LTD"
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="10450"
+                 contactUniqueIdentifier="ECI895885623"
+                 contactName="MALINTA CORRUGATED BOXES MFG CORP."
+                 addressLine1="" addressLine2="" cityName="" regionName=""
+                 globalCountryCode="" nationalPostalCode="" telephoneNumber=""
+                 facsimileNumber="" department=""
+                 businessName="MALINTA CORRUGATED BOXES MFG CORP."
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="15924"
+                 contactUniqueIdentifier="ECI895885629"
+                 contactName="PA EXTRUSION (M) SDN. BHD." addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="PA EXTRUSION (M) SDN. BHD."
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="12215"
+                 contactUniqueIdentifier="ECI895885632"
+                 contactName="SAUNDERS CORPORATION" addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="SAUNDERS CORPORATION"
+                 emailAddress=""
+                 universalResourceIdentifier="http://www.saunderscorp.com/"
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="11098"
+                 contactUniqueIdentifier="ECI895885633"
+                 contactName="SHINSEI PRINTING PHILIPPINES INC" addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="SHINSEI PRINTING PHILIPPINES INC"
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="11297"
+                 contactUniqueIdentifier="ECI895885421"
+                 contactName="STEVEN LABEL" addressLine1="" addressLine2=""
+                 cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="STEVEN LABEL" emailAddress=""
+                 universalResourceIdentifier="http://www.stevenlabel.com/"
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+        <Contact contactIdentifier="" contactUniqueIdentifier="ECI258453515"
+                 contactName="SunPower PROJ" addressLine1="" addressLine2=""
+                 cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="SunPower PROJ" emailAddress=""
+                 universalResourceIdentifier="" contactStatus="Unrated"
+                 isTopLevel="No"/>
+        <Contact contactIdentifier="11802"
+                 contactUniqueIdentifier="ECI895885638"
+                 contactName="TAIPHIL PACKAGING CO., INC." addressLine1=""
+                 addressLine2="" cityName="" regionName="" globalCountryCode=""
+                 nationalPostalCode="" telephoneNumber="" facsimileNumber=""
+                 department="" businessName="TAIPHIL PACKAGING CO., INC."
+                 emailAddress="" universalResourceIdentifier=""
+                 contactStatus="Approved" isTopLevel="No">
+          <AdditionalAttributes groupLabel="Arena Solutions Custom Attributes">
+            <AdditionalAttribute name="ISO 9001 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="ISO 9001 exp date" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Type" value="" dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Status" value=""
+                                 dataType="String"/>
+            <AdditionalAttribute name="Cert 1 Exp Date" value=""
+                                 dataType="String"/>
+          </AdditionalAttributes>
+        </Contact>
+      </Contacts>
+    </ProductDataeXchangePackage>

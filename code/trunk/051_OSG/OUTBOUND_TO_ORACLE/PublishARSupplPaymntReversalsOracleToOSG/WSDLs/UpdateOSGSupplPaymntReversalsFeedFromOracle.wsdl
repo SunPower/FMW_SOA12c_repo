@@ -1,0 +1,22 @@
+<?binding.jca UpdateOSGSupplPaymntReversalsFeedFromOracle_db.jca?>
+<wsdl:definitions name="UpdateOSGSupplPaymntReversalsFeedFromOracle" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplPaymntReversalsOracleToOSG/UpdateOSGSupplPaymntReversalsFeedFromOracle" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOSGSupplPaymntReversalsFeedFromOracle" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OSG/PublishARSupplPaymntReversalsOracleToOSG/UpdateOSGSupplPaymntReversalsFeedFromOracle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="UpdateOSGSupplPaymntReversalsFeedFromOracle_plt">
+        <plt:role name="UpdateOSGSupplPaymntReversalsFeedFromOracle_role">
+            <plt:portType name="tns:UpdateOSGSupplPaymntReversalsFeedFromOracle_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/UpdateOSGSupplPaymntReversalsFeedFromOracle"
+                    schemaLocation="../Schemas/UpdateOSGSupplPaymntReversalsFeedFromOracle.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg">
+        <wsdl:part name="UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg" element="db:UpdateOSGSupplPaymntReversalsFeedFromOracleInput"/>
+    </wsdl:message>
+    <wsdl:portType name="UpdateOSGSupplPaymntReversalsFeedFromOracle_ptt">
+        <wsdl:operation name="UpdateOSGSupplPaymntReversalsFeedFromOracle">
+            <wsdl:input message="tns:UpdateOSGSupplPaymntReversalsFeedFromOracleInput_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

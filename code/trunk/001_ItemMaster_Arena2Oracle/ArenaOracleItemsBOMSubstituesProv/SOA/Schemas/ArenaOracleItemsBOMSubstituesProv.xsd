@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1" xmlns:noun="http://www.sunpowercorp.com/Noun/ArenaOracleDataFeed/V1" targetNamespace="http://www.sunpowercorp.com/BOD/ProcessArenaOracleDataFeed/V1" elementFormDefault="qualified">
+   <xsd:include schemaLocation="CDM/BOD/Nouns/ArenaOracleDataFeed/V1/ProcessArenaOracleDataFeed.xsd"/>
+   <xsd:element name="Item" type="noun:ItemType"/>
+</xsd:schema>

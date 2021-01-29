@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns:tns="http://www.sunpowercorp.com/WriteCostCenterFeedToLocal" targetNamespace="http://www.sunpowercorp.com/WriteCostCenterFeedToLocal" elementFormDefault="qualified" attributeFormDefault="unqualified" nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="UTF-8" nxsd:hasHeader="true" nxsd:headerLines="1" nxsd:headerLinesTerminatedBy="${eol}">
+   <xsd:element name="CostCenterFeedSF">
+      <xsd:complexType>
+         <xsd:choice minOccurs="1" maxOccurs="unbounded" nxsd:choiceCondition="terminated" nxsd:terminatedBy="${eol}">
+            <xsd:element name="Header" minOccurs="1" maxOccurs="unbounded" nxsd:style="array">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="TEXT" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="${eol}" nxsd:quotedBy="&quot;"/>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:sequence>
+               <xsd:element name="CostCenterFeed" minOccurs="1" maxOccurs="unbounded">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="TEXT" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy="${eol}" nxsd:quotedBy="&quot;"/>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:choice>
+      </xsd:complexType>
+   </xsd:element>
+</xsd:schema>

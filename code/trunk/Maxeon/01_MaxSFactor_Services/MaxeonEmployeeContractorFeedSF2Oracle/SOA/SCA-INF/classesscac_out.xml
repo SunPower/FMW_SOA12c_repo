@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case</loc>
+      <line>305</line>
+      <col/>
+      <file>MaxeonEmployeeContractorFeedSF2Oracle_BPEL.bpel</file>
+      <name>MaxeonEmployeeContractorFeedSF2Oracle_BPEL.bpel</name>
+      <fix>Use one of the built-in boolean functions from xpath http://www.w3.org/TR/xpath#section-Boolean-Functions to convert the return value to boolean</fix>
+      <msg>xpath expression "bpws:getVariableData('FailedRecords')" used in &lt;case> may not return boolean type value, the xpath engine would automatically try to convert the return value to boolean</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='faultHandlers']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='catchAll']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='assign'][@name='asg_CommonSFDCErrorLogService']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='copy'][10]</loc>
+      <line>126</line>
+      <col/>
+      <file>MaxeonEmpContractorFeedSF2Orcl_BPEL.bpel</file>
+      <name>MaxeonEmpContractorFeedSF2Orcl_BPEL.bpel</name>
+      <fix>Types must be compatible.</fix>
+      <msg>The from-spec of "xsd:string" is not compatible with to-spec of "ns12:UniqueIdentType"</msg>
+   </Fault>
+</Faults>

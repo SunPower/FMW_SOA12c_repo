@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/updateRecordsStatus" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/updateRecordsStatus" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="updateRecordsStatusInput" type="updateRecordsStatusInput"/>
+   <xs:complexType name="updateRecordsStatusInput">
+      <xs:sequence>
+         <xs:element name="EMAIL_SENT" type="xs:string" nillable="true"/>
+         <xs:element name="INTERFACENUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="INSTANCENUMBER" type="xs:decimal" nillable="true"/>
+         <xs:element name="UNIQUE_IDENTIFIER" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

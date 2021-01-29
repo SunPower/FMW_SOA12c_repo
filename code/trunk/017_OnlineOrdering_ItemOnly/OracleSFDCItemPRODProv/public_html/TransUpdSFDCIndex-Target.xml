@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:update xmlns:tns="urn:partner.soap.sforce.com">
+   <tns:sObjects>
+      <ens:type xmlns:ens="urn:sobject.partner.soap.sforce.com">Item__c</ens:type>
+      <ens:Active__c xmlns:ens="urn:sobject.partner.soap.sforce.com">false</ens:Active__c>
+      <ens:Id xmlns:ens="urn:sobject.partner.soap.sforce.com">Id8686868686868686</ens:Id>
+   </tns:sObjects>
+   <tns:sObjects>
+      <ens:type xmlns:ens="urn:sobject.partner.soap.sforce.com">Item__c</ens:type>
+      <ens:Active__c xmlns:ens="urn:sobject.partner.soap.sforce.com">false</ens:Active__c>
+      <ens:Id xmlns:ens="urn:sobject.partner.soap.sforce.com">Id1001001001001001</ens:Id>
+   </tns:sObjects>
+</tns:update>

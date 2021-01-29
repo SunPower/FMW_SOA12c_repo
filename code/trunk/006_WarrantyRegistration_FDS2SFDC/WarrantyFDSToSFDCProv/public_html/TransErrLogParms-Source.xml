@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ProcessWarrantyFDSToSFDC xmlns="http://www.sunpowercorp.com/BOD/ProcessWarratyFDSToSFDC/V1">
+   <ApplicationArea xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+      <CreationDateTime>2012-10-18T17:51:20.913</CreationDateTime>
+      <Signature>Signature215</Signature>
+      <BODID>BODID216</BODID>
+      <UserArea/>
+      <Sender/>
+   </ApplicationArea>
+   <DataArea>
+      <process xmlns="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">process217</process>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"/>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"/>
+      <WRFDS2SFDC xmlns="http://www.sunpowercorp.com/Noun/WarrantyFDSToSFDC/V1"/>
+   </DataArea>
+</ProcessWarrantyFDSToSFDC>

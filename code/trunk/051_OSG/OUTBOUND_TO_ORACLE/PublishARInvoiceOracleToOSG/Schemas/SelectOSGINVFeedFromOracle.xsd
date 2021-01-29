@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGINVFeedFromOracle" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGINVFeedFromOracle" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectOSGINVFeedFromOracleInput" type="SelectOSGINVFeedFromOracleInput"/>
+   <xs:complexType name="SelectOSGINVFeedFromOracleInput">
+      <xs:sequence>
+         <xs:element name="minrow" type="xs:string" nillable="true"/>
+         <xs:element name="maxrow" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectOSGINVFeedFromOracleOutputCollection" type="SelectOSGINVFeedFromOracleOutputCollection"/>
+   <xs:complexType name="SelectOSGINVFeedFromOracleOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectOSGINVFeedFromOracleOutput" type="SelectOSGINVFeedFromOracleOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectOSGINVFeedFromOracleOutput">
+      <xs:sequence>
+         <xs:element name="SEQUENCE_ID" type="xs:string" nillable="true"/>
+         <xs:element name="ORG_ID" type="xs:string" nillable="true"/>
+         <xs:element name="SOURCE" type="xs:string" nillable="true"/>
+         <xs:element name="TRANSACTION_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_TYPE_ID" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="CUSTOMER_TRX_ID" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_TYPE_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="ORDER_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="CUSTOMER_NAME" type="xs:string" nillable="true"/>
+         <xs:element name="ADDRESS1" type="xs:string" nillable="true"/>
+         <xs:element name="ADDRESS2" type="xs:string" nillable="true"/>
+         <xs:element name="ADDRESS3" type="xs:string" nillable="true"/>
+         <xs:element name="ADDRESS4" type="xs:string" nillable="true"/>
+         <xs:element name="CITY" type="xs:string" nillable="true"/>
+         <xs:element name="COUNTY" type="xs:string" nillable="true"/>
+         <xs:element name="STATE" type="xs:string" nillable="true"/>
+         <xs:element name="POSTALCODE" type="xs:string" nillable="true"/>
+         <xs:element name="COUNTRY" type="xs:string" nillable="true"/>
+         <xs:element name="ACCOUNT_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="EMAIL_ADDRESS" type="xs:string" nillable="true"/>         
+         <xs:element name="INVOICE_AMOUNT" type="xs:string" nillable="true"/>
+         <xs:element name="ITEM_DESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="PAST_PAYMENT_DUE" type="xs:string" nillable="true"/>
+         <xs:element name="BALANCE_DUE" type="xs:string" nillable="true"/>
+         <xs:element name="BATCH_ID" type="xs:string" nillable="true"/>
+         <xs:element name="SOA_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="SOA_MESSAGE" type="xs:string" nillable="true"/>
+         <xs:element name="STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="PROCESS_MESSAGE" type="xs:string" nillable="true"/>
+         <xs:element name="REQUEST_ID" type="xs:string" nillable="true"/>
+         <xs:element name="CREATION_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="CREATED_BY" type="xs:string" nillable="true"/>
+         <xs:element name="LAST_UPDATE_DATE" type="xs:string" nillable="true"/>
+         <xs:element name="LAST_UPDATED_BY" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE1" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE2" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE3" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE4" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE5" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE6" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE7" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE8" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE9" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE10" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE11" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE12" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE13" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE14" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE15" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE16" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE17" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE18" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE19" type="xs:string" nillable="true"/>
+         <xs:element name="ATTRIBUTE20" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Inputparam xmlns="http://www.sunpowercorp.com/SFDCSyncLeaseCustomerReq/xsd/v1">
+   <orderAccountLinkId>orderAccountLinkId1</orderAccountLinkId>
+   <jndi>jndi2</jndi>
+   <iteration>-0</iteration>
+   <finalLoop>-0</finalLoop>
+</Inputparam>

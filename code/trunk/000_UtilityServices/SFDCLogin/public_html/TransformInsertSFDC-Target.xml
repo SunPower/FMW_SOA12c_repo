@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:SfdcLoginDetailsCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB">
+   <top:SfdcLoginDetails>
+      <top:serverurl>serverUrl2</top:serverurl>
+      <top:sessionid>sessionId3</top:sessionid>
+      <top:userid>userId444444444444</top:userid>
+      <top:username>userName17</top:username>
+      <top:no>1001</top:no>
+      <top:status>VALID</top:status>
+      <top:createtimestamp>2012-12-23T19:41:05.935+05:30</top:createtimestamp>
+      <top:exptimestamp>2012-12-24T19:41:04+05:30</top:exptimestamp>
+   </top:SfdcLoginDetails>
+</top:SfdcLoginDetailsCollection>

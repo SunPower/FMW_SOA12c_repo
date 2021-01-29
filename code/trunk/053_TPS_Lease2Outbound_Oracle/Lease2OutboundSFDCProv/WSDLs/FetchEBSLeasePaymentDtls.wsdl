@@ -1,0 +1,87 @@
+<wsdl:definitions
+     name="FetchEBSLeasePaymentDtls"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/Lease2Outbound/Lease2OutboundSFDCProv/FetchEBSLeasePaymentDtls"
+     xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/Lease2Outbound/Lease2OutboundSFDCProv/FetchEBSLeasePaymentDtls"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchEBSLeasePaymentDtls_plt" >
+    <plt:role name="FetchEBSLeasePaymentDtls_role" >
+      <plt:portType name="tns:FetchEBSLeasePaymentDtls_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchEBSLeasePaymentDtls" schemaLocation="../Schemas/FetchEBSLeasePaymentDtls.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="FetchEBSLeasePaymentDtlsInput_msg">
+        <wsdl:part name="FetchEBSLeasePaymentDtlsInput_msg" element="db:FetchEBSLeasePaymentDtlsInput"/>
+    </wsdl:message>
+    <wsdl:message name="FetchEBSLeasePaymentDtlsOutputCollection_msg">
+        <wsdl:part name="FetchEBSLeasePaymentDtlsOutputCollection" element="db:FetchEBSLeasePaymentDtlsOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="FetchEBSLeasePaymentDtls_ptt">
+        <wsdl:operation name="FetchEBSLeasePaymentDtls">
+            <wsdl:input message="tns:FetchEBSLeasePaymentDtlsInput_msg"/>
+            <wsdl:output message="tns:FetchEBSLeasePaymentDtlsOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

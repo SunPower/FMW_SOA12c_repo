@@ -1,0 +1,27 @@
+2016-12-07 17:57:52.380/2.578 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2016-12-07 17:57:52.471/2.669 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2016-12-07 17:57:52.474/2.672 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2016-12-07 17:57:52.479/2.676 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2016-12-07 17:57:52.481/2.679 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2016-12-07 17:57:52.483/2.681 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2016-12-07 17:57:52.695/2.893 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2016-12-07 17:57:52.702/2.900 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2016-12-07 17:57:53.538/3.737 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "sn38854's cluster" has been automatically generated
+Dec 07, 2016 5:57:56 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Dec 07, 2016 5:57:59 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+WARNING: Failed to load WSDL from http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/WSDLs/CallCommSFDCErrMediator_ep?WSDL due to: Error in getting XML input stream: http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/WSDLs/CallCommSFDCErrMediator_ep?WSDL: http://dev-fusappdca02.sunpowercorp.com:7003/soa-infra/services/default/CommonSFDCErrorLogService/WSDLs/CallCommSFDCErrMediator_ep?WSDL
+INFO: validating "EnqueOracleSFDCNoItemOperatingUnit_BPEL.bpel" ...
+WARNING: JRF is unable to determine the current application server platform.
+INFO: Composed "EnqueOracleSFDCNoItemOperatingUnit_BPEL" in 117.2 milliseconds [nodes 24=0+24, 204.8 nodes/sec]
+INFO: Compiled "EnqueOracleSFDCNoItemOperatingUnit_BPEL" in 2.547 seconds
+INFO: Gathered 4 files in 1.6 milliseconds
+INFO: Packaged "EnqueOracleSFDCNoItemOperatingUnit_BPEL" in 61.6 milliseconds
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

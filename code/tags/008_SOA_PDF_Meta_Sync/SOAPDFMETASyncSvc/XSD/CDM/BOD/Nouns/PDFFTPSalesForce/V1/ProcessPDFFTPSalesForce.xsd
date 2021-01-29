@@ -1,0 +1,26 @@
+<!--
+    Name: ProcessPDFFTPSalesForce.xsd
+    Change history
+
+    Author      date        purpose
+
+--><xsd:schema targetNamespace="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/BOD/ProcessPDFFTPSalesForce/V1" xmlns:pdf="http://www.sunpowercorp.com/Noun/PDFFTPSalesForce/V1" xmlns:v="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/PDFFTPSalesForce/V1" schemaLocation="PDFFTPSalesForce.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/Verb/VerbCommonTypes/V1" schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessPDFFTPSalesForce" type="ProcessPDFFTPSalesForceType"/>
+    <xsd:complexType name="ProcessPDFFTPSalesForceType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="PDFFTPSalesForceDataAreaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PDFFTPSalesForceDataAreaType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+            <xsd:element ref="pdf:PDFSalesForce" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

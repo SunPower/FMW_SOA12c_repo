@@ -1,0 +1,291 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Dec 11 18:20:44 IST 2015
+  Author:  RD42768
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="EmpContractorFeedSF2Orcl_BPEL"
+               targetNamespace="http://xmlns.oracle.com/SFEC/EmployeeContractorFeedSF2Oracle/EmpContractorFeedSF2Orcl_BPEL"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/SFEC/EmployeeContractorFeedSF2Oracle/EmpContractorFeedSF2Orcl_BPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Poll_WORKFORCE_FEED_File"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Chunk_WORKFORCE_FEED_File"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/SFEC/EmployeeContractorFeedSF2Oracle/XXSPWR_SF_EMP_FEED_DB"
+         xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Read_WORKFORCE_FEED_File"
+         xmlns:ns6="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+         xmlns:ns7="http://TargetNamespace.com/InboundService"
+         xmlns:ns8="http://xmlns.oracle.com/SFEC/EmployeeContractorFeedSF2Oracle/EmployeeContractorFeedSF2Oracle_BPEL"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB"
+         xmlns:ns10="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL"
+         xmlns:ns11="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd"
+         xmlns:ns12="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Poll_WORKFORCE_FEED_File"
+          location="WSDLs/Poll_WORKFORCE_FEED_File.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
+  <import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+          location="Schemas/Params.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <partnerLinks>
+    <partnerLink name="Poll_WORKFORCE_FEED_File" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="Chunk_WORKFORCE_FEED_File"
+                 partnerLinkType="ns2:SynchRead_plt"
+                 partnerRole="SynchRead_role"/>
+    <partnerLink name="XXSPWR_SF_EMP_FEED_DB"
+                 partnerLinkType="ns3:XXSPWR_SF_EMP_FEED_DB_plt"
+                 partnerRole="XXSPWR_SF_EMP_FEED_DB_role"/>
+    <partnerLink name="CommonSFDCErrorLogService"
+                 partnerLinkType="ns4:CommonSFDCErrorLogService"
+                 partnerRole="execute_ptt"/>
+    <partnerLink name="EmployeeContractorFeedSF2Oracle_BPEL.WORKFORCE_FEED_Data_ep"
+                 partnerLinkType="ns8:EmployeeContractorFeedSF2Oracle_BPEL"
+                 partnerRole="EmployeeContractorFeedSF2Oracle_BPELProvider"/>
+    <partnerLink name="FileUtilityService"
+                 partnerLinkType="ns10:FileUtilityService_BPEL"
+                 partnerRole="FileUtilityService_BPELProvider"/>
+  </partnerLinks>
+  <variables>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="isEOF" type="xsd:string"/>
+    <variable name="LineNumber" type="xsd:string"/>
+    <variable name="ColumnNumber" type="xsd:string"/>
+    <variable name="NoDataFound" type="xsd:string"/>
+    <variable name="Rcv_WorkForce_Feed_IV" messageType="ns1:Read_msg"/>
+    <variable name="Inv_Chunk_WORKFORCE_FEED_IV" messageType="ns2:Empty_msg"/>
+    <variable name="Inv_Chunk_WORKFORCE_FEED_OV"
+              messageType="ns2:SynchRead_msg"/>
+    <variable name="Inv_XXSPWR_SF_EMP_FEED_DB_IV"
+              messageType="ns3:XxspwrSfEmpFeedCollection_msg"/>
+    <variable name="Params" element="ns6:Params"/>
+    <variable name="Inv_EmployeeContractorFeedSF2Oracle_BPEL_IV"
+              messageType="ns8:EmployeeContractorFeedSF2Oracle_BPELRequestMessage"/>
+    <variable name="Inv_CommonSFDCErrorLogService_IV"
+              messageType="ns4:requestMessage"/>
+    <variable name="Inv_FileUtilityService_IV"
+              messageType="ns10:FileUtilityService_BPELRequestMessage"/>
+    <variable name="Inv_FileUtilityService_OV"
+              messageType="ns10:FileUtilityService_BPELResponseMessage"/>
+    <variable name="title" type="xsd:string"/>
+  </variables>
+  <faultHandlers>
+    <catchAll>
+      <sequence>
+        <assign name="asg_CommonSFDCErrorLogService">
+          <copy>
+            <from>ora:getComponentInstanceId()</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:InstanceNumber</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("Severity")</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Severity</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("InterfaceNum")</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:InterfaceNumber</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("InterfaceName")</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:InterfaceName</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("ProcessName")</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:ProcessName</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("FaultCode")</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultCode</to>
+          </copy>
+          <copy>
+            <from>ora:getFaultName()</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultDescription</to>
+          </copy>
+          <copy>
+            <from>ora:getFaultAsString()</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultMessage</to>
+          </copy>
+          <copy>
+            <from>xp20:current-dateTime()</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:Fault/ns12:FaultTime</to>
+          </copy>
+          <copy>
+            <from>$FileName</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:UniqueIdentNum</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("SendEmail")</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:SendEmail</to>
+          </copy>
+          <copy>
+            <from>ora:getPreference("FaultSystemName")</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:FaultSystemName</to>
+          </copy>
+          <copy>
+            <from>'E'</from>
+            <to>$Inv_CommonSFDCErrorLogService_IV.request/ns12:CommonErrorHandlerInputDetails/ns12:status</to>
+          </copy>
+        </assign>
+        <invoke name="Inv_CommonSFDCErrorLogService" bpelx:invokeAsDetail="no"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns4:execute_ptt" operation="execute"
+                inputVariable="Inv_CommonSFDCErrorLogService_IV"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main">
+    <receive name="Rcv_WorkForce_Feed" createInstance="yes"
+             partnerLink="Poll_WORKFORCE_FEED_File" portType="ns1:Read_ptt"
+             operation="Read" variable="Rcv_WorkForce_Feed_IV">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.file.FileName" variable="FileName"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="Init_Params">
+      <copy>
+        <from>"false"</from>
+        <to>$isEOF</to>
+      </copy>
+      <copy>
+        <from>$FileName</from>
+        <to>$Params/ns6:FileName</to>
+      </copy>
+      <copy>
+        <from>number(2)</from>
+        <to>$LineNumber</to>
+      </copy>
+      <copy>
+        <from>number(1)</from>
+        <to>$ColumnNumber</to>
+      </copy>
+      <copy>
+        <from>oraext:setFlowInstanceTitle($FileName)</from>
+        <to>$title</to>
+      </copy>
+    </assign>
+    <while name="While_EOF">
+      <condition>$isEOF = 'false'</condition>
+      <sequence name="Sequence1">
+        <invoke name="Inv_Chunk_WORKFORCE_FEED"
+                partnerLink="Chunk_WORKFORCE_FEED_File"
+                portType="ns2:SynchRead_ptt" operation="SynchRead"
+                inputVariable="Inv_Chunk_WORKFORCE_FEED_IV"
+                outputVariable="Inv_Chunk_WORKFORCE_FEED_OV"
+                bpelx:invokeAsDetail="no">
+          <bpelx:toProperties>
+            <bpelx:toProperty name="jca.file.FileName" variable="FileName"/>
+            <bpelx:toProperty name="jca.file.LineNumber" variable="LineNumber"/>
+            <bpelx:toProperty name="jca.file.ColumnNumber"
+                              variable="ColumnNumber"/>
+          </bpelx:toProperties>
+          <bpelx:fromProperties>
+            <bpelx:fromProperty name="jca.file.LineNumber"
+                                variable="LineNumber"/>
+            <bpelx:fromProperty name="jca.file.ColumnNumber"
+                                variable="ColumnNumber"/>
+            <bpelx:fromProperty name="jca.file.IsEOF" variable="isEOF"/>
+            <bpelx:fromProperty name="jca.file.NoDataFound"
+                                variable="NoDataFound"/>
+          </bpelx:fromProperties>
+        </invoke>
+        <if name="If_DataFound">
+          <condition>$NoDataFound = 'false'</condition>
+          <sequence name="Sequence2">
+            <scope name="Scope1">
+              <faultHandlers>
+                <catchAll>
+                  <sequence name="Sequence4">
+                    <assign name="asg_WorkForceFeed_Bulk">
+                      <copy>
+                        <from>$Inv_XXSPWR_SF_EMP_FEED_DB_IV.XxspwrSfEmpFeedCollection</from>
+                        <to>$Inv_EmployeeContractorFeedSF2Oracle_BPEL_IV.payload</to>
+                      </copy>
+                    </assign>
+                    <invoke name="Inv_EmployeeContractorFeedSF2Oracle_BPEL"
+                            inputVariable="Inv_EmployeeContractorFeedSF2Oracle_BPEL_IV"
+                            bpelx:invokeAsDetail="no"
+                            partnerLink="EmployeeContractorFeedSF2Oracle_BPEL.WORKFORCE_FEED_Data_ep"
+                            portType="ns8:EmployeeContractorFeedSF2Oracle_BPEL"
+                            operation="process"/>
+                  </sequence>
+                </catchAll>
+              </faultHandlers>
+              <sequence>
+                <assign name="Trans_WorkForceFeedData_Bulk">
+                  <bpelx:annotation>
+                    <bpelx:pattern patternName="bpelx:transformation"/>
+                  </bpelx:annotation>
+                  <copy>
+                    <from>ora:doXSLTransformForDoc("Transformations/Trans_WorkForceFeedData_Bulk.xsl", $Inv_Chunk_WORKFORCE_FEED_OV.body, "Params", $Params)</from>
+                    <to variable="Inv_XXSPWR_SF_EMP_FEED_DB_IV"
+                        part="XxspwrSfEmpFeedCollection"/>
+                  </copy>
+                </assign>
+                <invoke name="Inv_XXSPWR_SF_EMP_FEED_DB"
+                        bpelx:invokeAsDetail="no"
+                        partnerLink="XXSPWR_SF_EMP_FEED_DB"
+                        portType="ns3:XXSPWR_SF_EMP_FEED_DB_ptt"
+                        operation="insert"
+                        inputVariable="Inv_XXSPWR_SF_EMP_FEED_DB_IV"/>
+              </sequence>
+            </scope>
+          </sequence>
+          <else>
+            <empty name="NoData"/>
+          </else>
+        </if>
+      </sequence>
+    </while>
+    <assign name="AssignFileParms">
+      <copy>
+        <from>$FileName</from>
+        <to>$Inv_FileUtilityService_IV.payload/ns11:SourceFileName</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference("ArchiveDir")</from>
+        <to>$Inv_FileUtilityService_IV.payload/ns11:TargetPhysicalDirectory</to>
+      </copy>
+      <copy>
+        <from>ora:getPreference("LocalFileDir")</from>
+        <to>$Inv_FileUtilityService_IV.payload/ns11:SourcePhysicalDirectory</to>
+      </copy>
+      <copy>
+        <from>$FileName</from>
+        <to>$Inv_FileUtilityService_IV.payload/ns11:TargetFileName</to>
+      </copy>
+    </assign>
+    <invoke name="Inv_FileUtilityService"
+            partnerLink="FileUtilityService"
+            portType="ns10:FileUtilityService_BPEL" operation="Move"
+            inputVariable="Inv_FileUtilityService_IV"
+            bpelx:invokeAsDetail="no"
+            outputVariable="Inv_FileUtilityService_OV"/>
+  </sequence>
+</process>

@@ -1,0 +1,790 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Mar 12 21:07:32 IST 2014
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="Publish856n204OracleToEDICOMBPEL" targetNamespace="http://xmlns.oracle.com/EDICom/Publish856n204OracleToEDICOM/Publish856n204OracleToEDICOMBPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/EDICom/Publish856n204OracleToEDICOM/Publish856n204OracleToEDICOMBPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/selectDetailsFromOracle" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/EDI_204/WriteEDIFileToLocal" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns4="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/selectDetailsFromOracle" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns6="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI_204/xsd/v1" xmlns:ns8="http://www.sunpowercorp.com/utilities/indexparams/xsdV1" xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/WriteEDI_856FileToLocal" xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish856n204OracleToEDICOM/updateStatusToOracle" xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToOracle" xmlns:ns11="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI_856/xsd/v1" xmlns:ns13="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns14="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:ns15="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/Publish856n204OracleToEDICOM/SyncReadEDIFiles" xmlns:ns16="http://impl.webservice.services.broker.edicom.com/" xmlns:ns17="http://com.edicom.broker.adapter.services" xmlns:ns18="http://xmlns.oracle.com/ias/pcbpel/NotificationService" xmlns:ns19="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL" xmlns:ns20="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd" id="BpPrc0">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        DequeEDISignal.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="DequeEDISignal" partnerLinkType="ns1:Dequeue_plt" myRole="Dequeue_role"/>
+    <partnerLink name="selectDetailsFromOracle" partnerLinkType="ns2:selectDetailsFromOracle_plt" partnerRole="selectDetailsFromOracle_role"/>
+    <partnerLink name="WriteEDIFileToLocal" partnerLinkType="ns3:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="WriteEDI_856FileToLocal" partnerLinkType="ns7:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="updateStatusToOracle" partnerLinkType="ns10:updateStatusToOracle_plt" partnerRole="updateStatusToOracle_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns13:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="SyncReadEDIFiles" partnerLinkType="ns15:SynchRead_plt" partnerRole="SynchRead_role"/>
+    <partnerLink name="EBIBrokerWebServiceV2ImplService" partnerLinkType="ns16:EBIBrokerWebServiceV2ImplService" partnerRole="EBIBrokerWebServiceV2"/>
+    <partnerLink name="FileUtilityService" partnerLinkType="ns19:FileUtilityService_BPEL" partnerRole="FileUtilityService_BPELProvider"/>
+    <partnerLink name="NotificationService1" partnerLinkType="ns18:NotificationServiceLink" partnerRole="NotificationServiceProvider"/>
+  </partnerLinks>
+  <variables>
+    <variable name="inputVariable" messageType="ns1:Dequeue_msg"/>
+    <variable name="InvSelectDetailsFromOracle_IV" messageType="ns2:selectDetailsFromOracleInput_msg"/>
+    <variable name="InvSelectDetailsFromOracle_OV" messageType="ns2:selectDetailsFromOracleOutputCollection_msg"/>
+    <variable name="EdiOutbounFileBunch" element="ns4:EDIOutboundFileBunch"/>
+    <variable name="I" type="xsd:int"/>
+    <variable name="InvUpdateStatusToOracle_IV" messageType="ns10:XxspwrEdicom856N204OutboundCollection_msg"/>
+    <variable name="indexVariable" element="ns8:params"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns13:requestMessage"/>
+    <variable name="SOA_Outbound_Dir" type="xsd:string"/>
+    <variable name="faultVar_Glob" messageType="bpelx:RuntimeFaultMessage"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catch faultName="client:NoRecFound" faultVariable="faultVar_Glob" id="BpCFt0">
+      <sequence id="BpSeq0">
+      <!--
+        <assign name="asgnCommonSFDCErrorLogService">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("InterfaceNum")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression='"Publish856n204OracleToEDICOM"'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceName"/>
+          </copy>
+          <copy>
+            <from variable="faultVar_Glob" part="summary"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultMessage"/>
+          </copy>
+          <copy>
+            <from variable="faultVar_Glob" part="detail"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression='"Publish856n204OracleToEDICOMBPEL"'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("Severity")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Severity"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("FaultSystemName")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("bOpenServiceTicket")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("CorrectiveAction")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression='ora:getPreference("SendEmail")'/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request"
+                query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService"
+                inputVariable="InvCommonSFDCErrorLogService_IV"
+                partnerLink="CommonSFDCErrorLogService"
+                portType="ns13:execute_ptt" operation="execute"
+                bpelx:invokeAsDetail="no"/>  -->
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catch>
+    <catchAll id="BpCAl0">
+      <sequence id="BpSeq1">
+        <assign name="asgnErrorMessage" id="BpAss0">
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="indexVariable" query="/ns8:params/ns8:ErrorMessage"/>
+          </copy>
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="indexVariable" query="/ns8:params/ns8:InstanceNo"/>
+          </copy>
+        </assign>
+        <assign name="xfromUpdateStatusToOracle" id="BpAss1">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/xfromGlobSystmErrorUpdateStatusToOracle.xsl', $InvSelectDetailsFromOracle_OV.selectDetailsFromOracleOutputCollection, 'indexVariable', $indexVariable)"/>
+            <to variable="InvUpdateStatusToOracle_IV" part="XxspwrEdicom856N204OutboundCollection"/>
+          </copy>
+        </assign>
+        <invoke name="InvUpdateStatusToOracle" inputVariable="InvUpdateStatusToOracle_IV" partnerLink="updateStatusToOracle" portType="ns10:updateStatusToOracle_ptt" operation="update" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <assign name="asgnCommonSFDCErrorLogService" id="BpAss2">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="&quot;Publish856n204OracleToEDICOM&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;Publish856n204OracleToEDICOMBPEL&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Severity"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns13:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv1"/>
+        <terminate name="Terminate" id="BpTer1"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main" id="BpSeq2">
+    <receive name="RecDequeEDISignal" createInstance="yes" variable="inputVariable" partnerLink="DequeEDISignal" portType="ns1:Dequeue_ptt" operation="Dequeue" id="BpRcv0"/>
+    <invoke name="InvSelectDetailsFromOracle" inputVariable="InvSelectDetailsFromOracle_IV" outputVariable="InvSelectDetailsFromOracle_OV" partnerLink="selectDetailsFromOracle" portType="ns2:selectDetailsFromOracle_ptt" operation="selectDetailsFromOracle" bpelx:invokeAsDetail="no" id="BpInv2"/>
+    <switch name="SwitchNoRecordsFound" id="BpSwt0">
+      <case condition="ora:countNodes('InvSelectDetailsFromOracle_OV','selectDetailsFromOracleOutputCollection','/ns5:selectDetailsFromOracleOutputCollection/ns5:selectDetailsFromOracleOutput') &lt;= 0">
+        <bpelx:annotation>
+          <bpelx:general>
+            <bpelx:property name="userLabel">NoRecordsFound</bpelx:property>
+          </bpelx:general>
+        </bpelx:annotation>
+        <sequence name="SeqNoRecFound" id="BpSeq3">
+          <assign name="asgnNoRecFoundFault" id="BpAss3">
+            <copy>
+              <from expression="oraext:setFlowInstanceTitle('NoRecordsFound')"/>
+              <to variable="title"/>
+            </copy>
+            <copy>
+              <from expression="&quot;No Records Found&quot;"/>
+              <to variable="faultVar_Glob" part="summary"/>
+            </copy>
+            <copy>
+              <from expression="&quot;No eligible records  found to process for the published event&quot;"/>
+              <to variable="faultVar_Glob" part="detail"/>
+            </copy>
+          </assign>
+          <throw name="ThrowNoRecordsFound" faultName="client:NoRecFound" faultVariable="faultVar_Glob" id="BpThw0"/>
+        </sequence>
+      </case>
+    </switch>
+    <assign name="asgnInstanceId" id="BpAss4">
+      <copy>
+        <from expression="ora:getCompositeInstanceId()"/>
+        <to variable="indexVariable" query="/ns8:params/ns8:InstanceNo"/>
+      </copy>
+    </assign>
+    <assign name="xfromInProgressStatus" id="BpAss5">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/xfromInProgressStatus.xsl', $InvSelectDetailsFromOracle_OV.selectDetailsFromOracleOutputCollection, 'indexVariable', $indexVariable)"/>
+        <to variable="InvUpdateStatusToOracle_IV" part="XxspwrEdicom856N204OutboundCollection"/>
+      </copy>
+    </assign>
+    <invoke name="InvUpdateInProgressStatusToOracle" bpelx:invokeAsDetail="no" inputVariable="InvUpdateStatusToOracle_IV" partnerLink="updateStatusToOracle" portType="ns10:updateStatusToOracle_ptt" operation="update" id="BpInv3"/>
+    <assign name="xfromOralceRecordsToEDIFileBunch" id="BpAss6">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/xfromOralceRecordsToEDIFileBunch.xsl', $InvSelectDetailsFromOracle_OV.selectDetailsFromOracleOutputCollection)"/>
+        <to variable="EdiOutbounFileBunch"/>
+      </copy>
+    </assign>
+    <assign name="setInstanceTitle" id="BpAss7">
+      <copy>
+        <from expression="concat(&quot;GroupId:&quot;,bpws:getVariableData('InvSelectDetailsFromOracle_OV','selectDetailsFromOracleOutputCollection','/ns5:selectDetailsFromOracleOutputCollection/ns5:selectDetailsFromOracleOutput[1]/ns5:group_id'),&quot;DeliveryCount:&quot;,ora:countNodes('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails'))"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;SOA_Outbound_Dir&quot;)"/>
+        <to variable="SOA_Outbound_Dir"/>
+      </copy>
+    </assign>
+    <bpelx:flowN name="FlowForAllDeliverySigls" N="ora:countNodes('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails')" indexVariable="I" id="BpFlN0">
+      <sequence name="Sequence1" id="BpSeq4">
+        <scope name="Scope1" id="BpScp0">
+          <variables>
+            <variable name="InvWriteEDIFileToLocal_Write_IV" messageType="ns3:Write_msg"/>
+            <variable name="indexVariable" element="ns8:params"/>
+            <variable name="fileName" type="xsd:string"/>
+            <variable name="date" type="xsd:string"/>
+            <variable name="InvWriteEDI_856FileToLocal_IV" messageType="ns7:Write_msg"/>
+            <variable name="InvUpdateStatusToOracle_IV" messageType="ns10:XxspwrEdicom856N204OutboundCollection_msg"/>
+            <variable name="formatedDatetime" type="xsd:string"/>
+            <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns13:requestMessage"/>
+            <variable name="InvWriteEDI_856FileToLocal_OV" messageType="ns7:Output_msg"/>
+            <variable name="InvWriteEDIFileToLocal_Write_OV" messageType="ns3:Output_msg"/>
+            <variable name="InvSyncReadEDIFiles_IV" messageType="ns15:Empty_msg"/>
+            <variable name="InvSyncReadEDIFiles_OV" messageType="ns15:SynchRead_msg"/>
+            <variable name="InvEBIBrokerWebServiceV2ImplService_IV" messageType="ns17:publishWS"/>
+            <variable name="InvEBIBrokerWebServiceV2ImplService_OV" messageType="ns17:publishWSResponse"/>
+            <variable name="Signal" type="xsd:string"/>
+            <variable name="InvFileUtilityService_Move_IV" messageType="ns19:FileUtilityService_BPELRequestMessage"/>
+            <variable name="InvFileUtilityService_Move_OV" messageType="ns19:FileUtilityService_BPELResponseMessage"/>
+            <variable name="filePlaced" type="xsd:string"/>
+            <variable messageType="bpelx:RuntimeFaultMessage" name="faultVar"/>
+          </variables>
+          <faultHandlers id="BpFhs1">
+            <catch faultName="client:BusinessFault" faultVariable="faultVar" id="BpCFt1">
+              <sequence id="BpSeq5">
+                <assign name="asgnErrorMessage" id="BpAss8">
+                  <copy>
+                    <from variable="faultVar" part="detail"/>
+                    <to variable="indexVariable" query="/ns8:params/ns8:ErrorMessage"/>
+                  </copy>
+                </assign>
+                <assign name="xfromErrorUpdateStatusToOracle" id="BpAss9">
+                  <bpelx:annotation>
+                    <bpelx:pattern>transformation</bpelx:pattern>
+                  </bpelx:annotation>
+                  <copy>
+                    <from expression="ora:doXSLTransformForDoc('Transformations/xfromErrorUpdateStatusToOracle.xsl', $EdiOutbounFileBunch, 'indexVariable', $indexVariable)"/>
+                    <to variable="InvUpdateStatusToOracle_IV" part="XxspwrEdicom856N204OutboundCollection"/>
+                  </copy>
+                </assign>
+                <invoke name="InvUpdateStatusToOracle" inputVariable="InvUpdateStatusToOracle_IV" partnerLink="updateStatusToOracle" portType="ns10:updateStatusToOracle_ptt" operation="update" bpelx:invokeAsDetail="no" id="BpInv4"/>
+                <assign name="AsgnFileUtilityService" id="BpAss10">
+                  <copy>
+                    <from variable="fileName"/>
+                    <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:SourceFileName"/>
+                  </copy>
+                  <copy>
+                    <from variable="SOA_Outbound_Dir"/>
+                    <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:SourcePhysicalDirectory"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;ErrorDir&quot;)"/>
+                    <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:TargetPhysicalDirectory"/>
+                  </copy>
+                  <copy>
+                    <from variable="fileName"/>
+                    <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:TargetFileName"/>
+                  </copy>
+                </assign>
+                <invoke name="InvFileUtilityService" inputVariable="InvFileUtilityService_Move_IV" outputVariable="InvFileUtilityService_Move_OV" partnerLink="FileUtilityService" portType="ns19:FileUtilityService_BPEL" operation="Move" bpelx:invokeAsDetail="no" id="BpInv5"/>
+                <assign name="asgnCommonSFDCErrorLogService" id="BpAss11">
+                  <copy>
+                    <from expression="ora:getCompositeInstanceId()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InstanceNumber"/>
+                  </copy>
+                  <copy>
+                    <from expression="bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:DELIVERY_NUMBER')"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:UniqueIdentNum/ns14:UniqueIdentifier"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceNumber"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getFaultName()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultMessage"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getFaultAsString()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultDescription"/>
+                  </copy>
+                  <copy>
+                    <from expression="&quot;Publish856n204OracleToEDICOMBPEL&quot;"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:ProcessName"/>
+                  </copy>
+                  <copy>
+                    <from expression="&quot;Publish856n204OracleToEDICOM&quot;"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceName"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Severity"/>
+                  </copy>
+                  <copy>
+                    <from expression="xp20:current-dateTime()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultTime"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:FaultSystemName"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:bOpenServiceTicket"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:CorrectiveAction"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:SendEmail"/>
+                  </copy>
+                  <copy>
+                    <from expression="'E'"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:status"/>
+                  </copy>
+                  <copy>
+                    <from expression="xp20:current-dateTime()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:createddatetime"/>
+                  </copy>
+                </assign>
+                <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns13:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv6"/>
+              </sequence>
+            </catch>
+            <catchAll id="BpCAl1">
+              <sequence id="BpSeq6">
+                <assign name="asgnErrorMessage" id="BpAss12">
+                  <copy>
+                    <from expression="ora:getFaultAsString()"/>
+                    <to variable="indexVariable" query="/ns8:params/ns8:ErrorMessage"/>
+                  </copy>
+                </assign>
+                <assign name="xfromErrorUpdateStatusToOracle" id="BpAss13">
+                  <bpelx:annotation>
+                    <bpelx:pattern>transformation</bpelx:pattern>
+                  </bpelx:annotation>
+                  <copy>
+                    <from expression="ora:doXSLTransformForDoc('Transformations/xfromSystemErrorUpdateStatusToOracle.xsl', $EdiOutbounFileBunch, 'indexVariable', $indexVariable)"/>
+                    <to variable="InvUpdateStatusToOracle_IV" part="XxspwrEdicom856N204OutboundCollection"/>
+                  </copy>
+                </assign>
+                <invoke name="InvUpdateStatusToOracle" inputVariable="InvUpdateStatusToOracle_IV" partnerLink="updateStatusToOracle" portType="ns10:updateStatusToOracle_ptt" operation="update" bpelx:invokeAsDetail="no" id="BpInv7"/>
+                <switch name="Switch1" id="BpSwt1">
+                  <case condition="$filePlaced=&quot;true&quot;">
+                    <bpelx:annotation>
+                      <bpelx:general>
+                        <bpelx:property name="userLabel">FilePlacedInOutDir</bpelx:property>
+                      </bpelx:general>
+                    </bpelx:annotation>
+                    <sequence id="BpSeq7">
+                      <assign name="AsgnFileUtilityService" id="BpAss14">
+                        <copy>
+                          <from variable="fileName"/>
+                          <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:SourceFileName"/>
+                        </copy>
+                        <copy>
+                          <from variable="SOA_Outbound_Dir"/>
+                          <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:SourcePhysicalDirectory"/>
+                        </copy>
+                        <copy>
+                          <from variable="fileName"/>
+                          <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:TargetFileName"/>
+                        </copy>
+                        <copy>
+                          <from expression="ora:getPreference(&quot;ErrorDir&quot;)"/>
+                          <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:TargetPhysicalDirectory"/>
+                        </copy>
+                      </assign>
+                      <invoke name="InvFileUtilityService" inputVariable="InvFileUtilityService_Move_IV" outputVariable="InvFileUtilityService_Move_OV" partnerLink="FileUtilityService" portType="ns19:FileUtilityService_BPEL" operation="Move" bpelx:invokeAsDetail="no" id="BpInv8"/>
+                    </sequence>
+                  </case>
+                </switch>
+                <assign name="asgnCommonSFDCErrorLogService" id="BpAss15">
+                  <copy>
+                    <from expression="ora:getCompositeInstanceId()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InstanceNumber"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceNumber"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getFaultName()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultMessage"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getFaultAsString()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultDescription"/>
+                  </copy>
+                  <copy>
+                    <from expression="&quot;Publish856n204OracleToEDICOM&quot;"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:InterfaceName"/>
+                  </copy>
+                  <copy>
+                    <from expression="&quot;Publish856n204OracleToEDICOMBPEL&quot;"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:ProcessName"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Severity"/>
+                  </copy>
+                  <copy>
+                    <from expression="xp20:current-dateTime()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:Fault/ns14:FaultTime"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:FaultSystemName"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:bOpenServiceTicket"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:CorrectiveAction"/>
+                  </copy>
+                  <copy>
+                    <from expression="bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:DELIVERY_NUMBER')"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:UniqueIdentNum/ns14:UniqueIdentifier"/>
+                  </copy>
+                  <copy>
+                    <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:SendEmail"/>
+                  </copy>
+                  <copy>
+                    <from expression="'E'"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:status"/>
+                  </copy>
+                  <copy>
+                    <from expression="xp20:current-dateTime()"/>
+                    <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns14:CommonSFDCErrorLog/ns14:CommonErrorHandlerInputDetails/ns14:createddatetime"/>
+                  </copy>
+                </assign>
+                <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns13:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv9"/>
+              </sequence>
+            </catchAll>
+          </faultHandlers>
+          <sequence name="SeqWriteFile" id="BpSeq8">
+            <assign name="intialiseScopeVariables" id="BpAss16">
+              <copy>
+                <from expression="substring-before(xp20:current-dateTime(),'.')"/>
+                <to variable="date"/>
+              </copy>
+              <copy>
+                <from expression="concat(substring($date,1,4),substring($date,6,2),substring($date,9,2),substring($date,12,2),substring($date,15,2),substring($date,18,2),$I)"/>
+                <to variable="formatedDatetime"/>
+              </copy>
+              <copy>
+                <from variable="I"/>
+                <to variable="indexVariable" query="/ns8:params/ns8:Index"/>
+              </copy>
+            </assign>
+            <switch name="SwitchSignal" id="BpSwt2">
+              <case condition="bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:SIGNAL_TYPE')='856'">
+                <bpelx:annotation>
+                  <bpelx:general>
+                    <bpelx:property name="userLabel">856</bpelx:property>
+                  </bpelx:general>
+                </bpelx:annotation>
+                <sequence name="Sequence3" id="BpSeq9">
+                  <assign name="asgnFileNameRegion" id="BpAss17">
+                    <copy>
+                      <from expression="concat(&quot;DESADV_&quot;,bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:REGION'),&quot;_&quot;,bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:DELIVERY_NUMBER'),&quot;_&quot;,bpws:getVariableData('formatedDatetime'),&quot;.csv&quot;)"/>
+                      <to variable="fileName"/>
+                    </copy>
+                    <copy>
+                      <from expression="concat(&quot;DESADV_&quot;,bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:REGION'))"/>
+                      <to variable="Signal"/>
+                    </copy>
+                    <copy>
+                      <from expression="bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:REGION')"/>
+                      <to variable="indexVariable" query="/ns8:params/ns8:Region"/>
+                    </copy>
+                  </assign>
+                  <assign name="xfromEDI_856_FileInput" id="BpAss18">
+                    <bpelx:annotation>
+                      <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                      <from expression="ora:doXSLTransformForDoc('Transformations/xfromEDI_856_FileInput.xsl', $EdiOutbounFileBunch, 'indexVariable', $indexVariable)"/>
+                      <to variable="InvWriteEDI_856FileToLocal_IV" part="body"/>
+                    </copy>
+                  </assign>
+                  <invoke name="InvWriteEDI_856FileToLocal" inputVariable="InvWriteEDI_856FileToLocal_IV" partnerLink="WriteEDI_856FileToLocal" portType="ns7:Write_ptt" operation="Write" outputVariable="InvWriteEDI_856FileToLocal_OV" bpelx:invokeAsDetail="no" id="BpInv10">
+                    <bpelx:inputProperty name="jca.file.Directory" variable="SOA_Outbound_Dir"/>
+                    <bpelx:inputProperty name="jca.file.FileName" variable="fileName"/>
+                  </invoke>
+                </sequence>
+              </case>
+              <case condition="bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:SIGNAL_TYPE')='204'">
+                <bpelx:annotation>
+                  <bpelx:general>
+                    <bpelx:property name="userLabel">204</bpelx:property>
+                  </bpelx:general>
+                </bpelx:annotation>
+                <sequence id="BpSeq10">
+                  <assign name="asgnFileName" id="BpAss19">
+                    <copy>
+                      <from expression="concat(&quot;INSDES_&quot;,bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:REGION'),&quot;_&quot;,bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:DELIVERY_NUMBER'),&quot;_&quot;,bpws:getVariableData('formatedDatetime'),&quot;.csv&quot;)"/>
+                      <to variable="fileName"/>
+                    </copy>
+                    <copy>
+                      <from expression="concat(&quot;INSDES_&quot;,bpws:getVariableData('EdiOutbounFileBunch','/ns4:EDIOutboundFileBunch/ns4:OrderDetails[$I]/ns4:OrderLines[1]/ns4:REGION'))"/>
+                      <to variable="Signal"/>
+                    </copy>
+                  </assign>
+                  <assign name="xfromEDI_204_FileInput" id="BpAss20">
+                    <bpelx:annotation>
+                      <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                      <from expression="ora:doXSLTransformForDoc('Transformations/xfromEDI_204_FileInput.xsl', $EdiOutbounFileBunch, 'indexVariable', $indexVariable)"/>
+                      <to variable="InvWriteEDIFileToLocal_Write_IV" part="body"/>
+                    </copy>
+                  </assign>
+                  <invoke name="InvWriteEDI_204_FileToLocal" inputVariable="InvWriteEDIFileToLocal_Write_IV" partnerLink="WriteEDIFileToLocal" portType="ns3:Write_ptt" operation="Write" outputVariable="InvWriteEDIFileToLocal_Write_OV" bpelx:invokeAsDetail="no" id="BpInv11">
+                    <bpelx:inputProperty name="jca.file.Directory" variable="SOA_Outbound_Dir"/>
+                    <bpelx:inputProperty name="jca.file.FileName" variable="fileName"/>
+                  </invoke>
+                </sequence>
+              </case>
+            </switch>
+            <assign name="asgnFilePlacedTrue" id="BpAss21">
+              <copy>
+                <from expression="&quot;true&quot;"/>
+                <to variable="filePlaced"/>
+              </copy>
+              <copy>
+                <from variable="fileName"/>
+                <to variable="indexVariable" query="/ns8:params/ns8:fileName"/>
+              </copy>
+            </assign>
+            <invoke name="InvSyncReadEDIFiles" inputVariable="InvSyncReadEDIFiles_IV" outputVariable="InvSyncReadEDIFiles_OV" partnerLink="SyncReadEDIFiles" portType="ns15:SynchRead_ptt" operation="SynchRead" bpelx:invokeAsDetail="no" id="BpInv12">
+              <bpelx:inputProperty name="jca.file.Directory" variable="SOA_Outbound_Dir"/>
+              <bpelx:inputProperty name="jca.file.FileName" variable="fileName"/>
+            </invoke>
+            <assign name="AsgnEBIBrokerWebServiceV2ImplServiceInput" id="BpAss22">
+              <copy>
+                <from expression="ora:getPreference(&quot;clientId&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/clientId"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;EDIOutboundConfig.dvm&quot;,&quot;Signal&quot;,bpws:getVariableData(&quot;Signal&quot;),&quot;user&quot;,&quot;NA&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/user"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;EDIOutboundConfig.dvm&quot;,&quot;Signal&quot;,bpws:getVariableData('Signal'),&quot;password&quot;,&quot;NA&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/password"/>
+              </copy>
+              <copy>
+                <from expression="ora:getPreference(&quot;domain&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/domain"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;EDIOutboundConfig.dvm&quot;,&quot;Signal&quot;,bpws:getVariableData('Signal'),&quot;application&quot;,&quot;NA&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/application"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;EDIOutboundConfig.dvm&quot;,&quot;Signal&quot;,bpws:getVariableData('Signal'),&quot;Schema&quot;,&quot;NA&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/schema"/>
+              </copy>
+              <copy>
+                <from expression="ora:getPreference(&quot;destination&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/destination"/>
+              </copy>
+              <copy>
+                <from expression="ora:getCompositeInstanceId()"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/reference"/>
+              </copy>
+              <copy>
+                <from expression="ora:getPreference(&quot;duplicates&quot;)"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/duplicates"/>
+              </copy>
+              <copy>
+                <from variable="fileName"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/messages/name"/>
+              </copy>
+              <copy>
+                <from variable="InvSyncReadEDIFiles_OV" part="opaque" query="/ns9:opaqueElement"/>
+                <to variable="InvEBIBrokerWebServiceV2ImplService_IV" part="parameters" query="/ns17:publishWS/messages/message"/>
+              </copy>
+            </assign>
+            <invoke name="InvEBIBrokerWebServiceV2ImplService" inputVariable="InvEBIBrokerWebServiceV2ImplService_IV" outputVariable="InvEBIBrokerWebServiceV2ImplService_OV" partnerLink="EBIBrokerWebServiceV2ImplService" portType="ns17:EBIBrokerWebServiceV2" operation="publishWS" bpelx:invokeAsDetail="no" id="BpInv13"/>
+            <switch name="SwitchFaultCodeReceived" id="BpSwt3">
+              <case condition="(bpws:getVariableData('InvEBIBrokerWebServiceV2ImplService_OV','parameters','/ns17:publishWSResponse/return') >= 0) and (ora:getPreference('SendSuccessMail')='Y')">
+                <bpelx:annotation>
+                  <bpelx:general>
+                    <bpelx:property name="userLabel">SuccessCodeReceived</bpelx:property>
+                  </bpelx:general>
+                </bpelx:annotation>
+                <sequence name="Sequence2" id="BpSeq11">
+                  <scope name="Email2" id="BpScp1">
+                    <bpelx:annotation>
+                      <bpelx:pattern patternName="bpelx:email"/>
+                      <bpelx:general>
+                        <bpelx:property name="userLabel">SendSuccessEmail</bpelx:property>
+                      </bpelx:general>
+                    </bpelx:annotation>
+                    <variables>
+                      <variable name="varNotificationReq" messageType="ns18:EmailNotificationRequest"/>
+                      <variable name="varNotificationResponse" messageType="ns18:ArrayOfResponse"/>
+                      <variable name="NotificationServiceFaultVariable" messageType="ns18:NotificationServiceErrorMessage"/>
+                    </variables>
+                    <sequence name="Sequence4" id="BpSeq12">
+                      <assign name="EmailParamsAssign" id="BpAss23">
+                        <copy>
+                          <from expression="string('Default')"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:FromAccountName"/>
+                        </copy>
+                        <copy>
+                          <from expression="string('')"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:Bcc"/>
+                        </copy>
+                        <copy>
+                          <from expression="string('')"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:Cc"/>
+                        </copy>
+                        <copy>
+                          <from expression="string('')"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:ReplyToAddress"/>
+                        </copy>
+                        <copy>
+                          <from expression="concat('Outbound file ', bpws:getVariableData('fileName'), ' Successfully Published To EDI &lt;EOM>')"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:Subject"/>
+                        </copy>
+                        <copy>
+                          <from expression="concat(string('sdfas@gmail.com'), dvm:lookupValue(&quot;oramds:/deployed-composites/default/CommonSFDCErrorLogService_rev1.0/EmailDistributionList.dvm&quot;,&quot;InterfaceNumber&quot;,ora:getPreference(&quot;InterfaceSuccessNum&quot;),&quot;emailDistrubtionList&quot;,&quot; &quot;))"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:To"/>
+                        </copy>
+                        <copy>
+                          <from expression="string('')"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:Content/ns18:ContentBody"/>
+                        </copy>
+                        <copy>
+                          <from expression="string('text/html; charset=UTF-8')"/>
+                          <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns18:Content/ns18:MimeType"/>
+                        </copy>
+                      </assign>
+                      <invoke name="InvokeNotificationService" portType="ns18:NotificationService" partnerLink="NotificationService1" inputVariable="varNotificationReq" outputVariable="varNotificationResponse" operation="sendEmailNotification" id="BpInv14"/>
+                    </sequence>
+                  </scope>
+                </sequence>
+              </case>
+              <case condition="bpws:getVariableData('InvEBIBrokerWebServiceV2ImplService_OV','parameters','/ns17:publishWSResponse/return') &lt;0">
+                <bpelx:annotation>
+                  <bpelx:general>
+                    <bpelx:property name="userLabel">FaultCodeReceived</bpelx:property>
+                  </bpelx:general>
+                </bpelx:annotation>
+                <sequence name="SeqBusinessFault" id="BpSeq13">
+                  <assign name="AsgnFault" id="BpAss24">
+                    <copy>
+                      <from variable="InvEBIBrokerWebServiceV2ImplService_OV" part="parameters" query="/ns17:publishWSResponse/return"/>
+                      <to variable="faultVar" part="code"/>
+                    </copy>
+                    <copy>
+                      <from expression="dvm:lookupValue('EDIOutBoundFaultCodes.dvm','Code',bpws:getVariableData('faultVar','code'),'Message','InvalidFaultCode')"/>
+                      <to variable="faultVar" part="detail"/>
+                    </copy>
+                  </assign>
+                  <throw name="ThrowBusinessFault" faultVariable="faultVar" faultName="client:BusinessFault" id="BpThw1"/>
+                </sequence>
+              </case>
+            </switch>
+            <assign name="xfromUpdateStatusToOracle" id="BpAss25">
+              <bpelx:annotation>
+                <bpelx:pattern>transformation</bpelx:pattern>
+              </bpelx:annotation>
+              <copy>
+                <from expression="ora:doXSLTransformForDoc('Transformations/xfromUpdateStatusToOracle.xsl', $EdiOutbounFileBunch, 'indexVariable', $indexVariable)"/>
+                <to variable="InvUpdateStatusToOracle_IV" part="XxspwrEdicom856N204OutboundCollection"/>
+              </copy>
+            </assign>
+            <invoke name="InvUpdateStatusToOracle" inputVariable="InvUpdateStatusToOracle_IV" partnerLink="updateStatusToOracle" portType="ns10:updateStatusToOracle_ptt" operation="update" bpelx:invokeAsDetail="no" id="BpInv15"/>
+            <assign name="AsgnFileUtilityService" id="BpAss26">
+              <copy>
+                <from variable="fileName"/>
+                <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:SourceFileName"/>
+              </copy>
+              <copy>
+                <from variable="SOA_Outbound_Dir"/>
+                <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:SourcePhysicalDirectory"/>
+              </copy>
+              <copy>
+                <from variable="fileName"/>
+                <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:TargetFileName"/>
+              </copy>
+              <copy>
+                <from expression="dvm:lookupValue(&quot;EDIOutboundConfig.dvm&quot;,&quot;Signal&quot;,bpws:getVariableData('Signal'),&quot;SuccessDir&quot;,&quot;NA&quot;)"/>
+                <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns20:FileUtilityReq/ns20:TargetPhysicalDirectory"/>
+              </copy>
+            </assign>
+            <invoke name="InvFileUtilityService" inputVariable="InvFileUtilityService_Move_IV" outputVariable="InvFileUtilityService_Move_OV" partnerLink="FileUtilityService" portType="ns19:FileUtilityService_BPEL" operation="Move" bpelx:invokeAsDetail="no" id="BpInv16"/>
+          </sequence>
+        </scope>
+      </sequence>
+    </bpelx:flowN>
+  </sequence>
+</process>

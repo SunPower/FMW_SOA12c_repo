@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ns3:upsert xmlns:ns3="urn:partner.soap.sforce.com">
+   <ns3:externalIDFieldName>Serial_Number__c</ns3:externalIDFieldName>
+   <ns3:sObjects>
+      <ens:type xmlns:ens="urn:sobject.partner.soap.sforce.com">WR_FDS_Product__c</ens:type>
+      <ens:Packing_Slip__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+      <ens:Serial_Number__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+      <ens:PickUpDate__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+      <ens:Dealer_Name__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+      <ens:Product_Type__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+      <ens:Third_PL_Name__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+      <ens:Manufacturer__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+      <ens:Product_Name__c xmlns:ens="urn:sobject.partner.soap.sforce.com"/>
+   </ns3:sObjects>
+</ns3:upsert>

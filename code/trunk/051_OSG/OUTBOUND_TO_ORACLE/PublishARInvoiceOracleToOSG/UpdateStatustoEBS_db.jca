@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="UpdateStatustoEBS" adapter="db" wsdlLocation="WSDLs/UpdateStatustoEBS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="UpdateStatustoEBS_ptt" operation="UpdateStatustoEBS">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="update XXSPWR.XXSPWR_AR_OSG_INV_OUTBOUND set SOA_STATUS = #SoaStatus, LAST_UPDATE_DATE =  #LastUpdateDate,LAST_UPDATED_BY=#LastUpdatedBy,SOA_MESSAGE=#SoaMessage where status = 'NEW' and SOA_STATUS is null"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+  </endpoint-interaction>
+
+</adapter-config>

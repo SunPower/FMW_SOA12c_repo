@@ -1,0 +1,34 @@
+2016-11-17 09:58:28.144/2.864 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2016-11-17 09:58:28.324/3.043 Oracle Coherence 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2016-11-17 09:58:28.327/3.046 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2016-11-17 09:58:28.344/3.062 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2016-11-17 09:58:28.346/3.065 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2016-11-17 09:58:28.348/3.067 Oracle Coherence 12.2.1.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.0.0 Build 60603
+ Grid Edition: Development mode
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+2016-11-17 09:58:32.057/6.777 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Loaded FMW commons version: 12.2.1-0-0-SNAPSHOT b60603
+2016-11-17 09:58:32.064/6.783 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+2016-11-17 09:58:35.019/9.738 Oracle Coherence GE 12.2.1.0.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "sn38854's cluster" has been automatically generated
+Nov 17, 2016 9:58:38 AM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Nov 17, 2016 9:58:38 AM oracle.fabric.common.wsdl.SchemaBuilder resolveWorkFlowSchemas
+WARNING: Ignoring composite local workflow schema of file:/D:/12c_Ant/ant_soa/code/CommonErrorHandler/Schemas/NotificationService.xsd as there is a MDS shared version of the schema used by workflow engine oramds:/soa/shared/workflow/NotificationService.xsd
+Nov 17, 2016 9:58:38 AM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Nov 17, 2016 9:58:40 AM com.collaxa.cube.CubeLogger info
+INFO: validating "CommonErrorHandler_BPEL.bpel" ...
+Nov 17, 2016 9:58:40 AM oracle.integration.platform.blocks.PlatformConfigurationProvider getPlatformConfigurationProvider
+WARNING: JRF is unable to determine the current application server platform.
+Nov 17, 2016 9:58:41 AM com.collaxa.cube.CubeLogger info
+INFO: Composed "CommonErrorHandler_BPEL" in 256.5 milliseconds [nodes 17=1+16, 66.3 nodes/sec]
+Nov 17, 2016 9:58:52 AM com.collaxa.cube.CubeLogger info
+INFO: Compiled "CommonErrorHandler_BPEL" in 10.718 seconds
+Nov 17, 2016 9:58:52 AM com.collaxa.cube.CubeLogger info
+INFO: Gathered 6 files in 1.1 milliseconds
+Nov 17, 2016 9:58:53 AM com.collaxa.cube.CubeLogger info
+INFO: Packaged "CommonErrorHandler_BPEL" in 1.174 seconds
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

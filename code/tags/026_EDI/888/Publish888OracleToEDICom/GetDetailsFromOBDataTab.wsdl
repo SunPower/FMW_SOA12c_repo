@@ -1,0 +1,26 @@
+<?binding.jca GetDetailsFromOBDataTab_db.jca?>
+<wsdl:definitions name="GetDetailsFromOBDataTab" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish888OracleToEDICom/GetDetailsFromOBDataTab" xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/GetDetailsFromOBDataTab" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/Publish888OracleToEDICom/GetDetailsFromOBDataTab" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <plt:partnerLinkType name="GetDetailsFromOBDataTab_plt">
+        <plt:role name="GetDetailsFromOBDataTab_role">
+            <plt:portType name="tns:GetDetailsFromOBDataTab_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetDetailsFromOBDataTab"
+                    schemaLocation="Schemas/GetDetailsFromOBDataTab.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="GetDetailsFromOBDataTabInput_msg">
+        <wsdl:part name="GetDetailsFromOBDataTabInput_msg" element="db:GetDetailsFromOBDataTabInput"/>
+    </wsdl:message>
+    <wsdl:message name="GetDetailsFromOBDataTabOutputCollection_msg">
+        <wsdl:part name="GetDetailsFromOBDataTabOutputCollection" element="db:GetDetailsFromOBDataTabOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="GetDetailsFromOBDataTab_ptt">
+        <wsdl:operation name="GetDetailsFromOBDataTab">
+            <wsdl:input message="tns:GetDetailsFromOBDataTabInput_msg"/>
+            <wsdl:output message="tns:GetDetailsFromOBDataTabOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

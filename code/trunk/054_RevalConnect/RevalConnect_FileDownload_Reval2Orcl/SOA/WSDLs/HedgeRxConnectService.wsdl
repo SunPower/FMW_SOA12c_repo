@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions
+    
+     targetNamespace="http://com.reval.webservices/"
+     xmlns:s="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+     xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:tns="http://com.reval.webservices/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+     xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://com.reval.webservices/">
+            <s:element name="Upload">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="SessionId" type="s:string"/>
+                        <s:element minOccurs="0" maxOccurs="1" name="ParamXML" type="s:string"/>
+                        <s:element minOccurs="0" maxOccurs="1" name="inData" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="UploadResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="UploadResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Process">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="SessionId" type="s:string"/>
+                        <s:element minOccurs="0" maxOccurs="1" name="ParamXML" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="ProcessResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="ProcessResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Login">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string"/>
+                        <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="LoginResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="UploadSoapIn">
+        <wsdl:part name="parameters" element="tns:Upload"/>
+    </wsdl:message>
+    <wsdl:message name="UploadSoapOut">
+        <wsdl:part name="parameters" element="tns:UploadResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ProcessSoapIn">
+        <wsdl:part name="parameters" element="tns:Process"/>
+    </wsdl:message>
+    <wsdl:message name="ProcessSoapOut">
+        <wsdl:part name="parameters" element="tns:ProcessResponse"/>
+    </wsdl:message>
+    <wsdl:message name="LoginSoapIn">
+        <wsdl:part name="parameters" element="tns:Login"/>
+    </wsdl:message>
+    <wsdl:message name="LoginSoapOut">
+        <wsdl:part name="parameters" element="tns:LoginResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ProcessServerSoap">
+        <wsdl:operation name="Upload">
+            <wsdl:input message="tns:UploadSoapIn"/>
+            <wsdl:output message="tns:UploadSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Process">
+            <wsdl:input message="tns:ProcessSoapIn"/>
+            <wsdl:output message="tns:ProcessSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Login">
+            <wsdl:input message="tns:LoginSoapIn"/>
+            <wsdl:output message="tns:LoginSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ProcessServerSoap" type="tns:ProcessServerSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Upload">
+            <soap:operation style="document" soapAction="http://com.reval.webservices/Upload"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Process">
+            <soap:operation style="document" soapAction="http://com.reval.webservices/Process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Login">
+            <soap:operation style="document" soapAction="http://com.reval.webservices/Login"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ProcessServerSoap12" type="tns:ProcessServerSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Upload">
+            <soap12:operation style="document" soapAction="http://com.reval.webservices/Upload" soapActionRequired="false"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Process">
+            <soap12:operation style="document" soapAction="http://com.reval.webservices/Process" soapActionRequired="false"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Login">
+            <soap12:operation style="document" soapAction="http://com.reval.webservices/Login" soapActionRequired="false"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ProcessServer">
+        <wsdl:port name="ProcessServerSoap" binding="tns:ProcessServerSoap">
+            <soap:address location="https://r1pdhrxc01.reval.com/HedgeRxConnectService.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="ProcessServerSoap12" binding="tns:ProcessServerSoap12">
+            <soap12:address location="https://r1pdhrxc01.reval.com/HedgeRxConnectService.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

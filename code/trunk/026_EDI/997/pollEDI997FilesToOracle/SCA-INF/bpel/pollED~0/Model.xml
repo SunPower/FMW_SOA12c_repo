@@ -1,0 +1,202 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jan 03 15:30:42 IST 2013
+  Author:  va35739
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="pollEDI997FilesToOracle_BPEL" targetNamespace="http://xmlns.oracle.com/EDICOMApplication/pollEDI997FilesToOracle/pollEDI997FilesToOracle_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/EDICOMApplication/pollEDI997FilesToOracle/pollEDI997FilesToOracle_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns6="http://www.sunpowercorp.com/utilities/inputparam/xsd/v1" xmlns:ns7="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:ns8="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:ns9="http://xmlns.oracle.com/ias/pcbpel/NotificationService" xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI997FilesToOracle/updateStatusToDB" xmlns:ns11="http://xmlns.oracle.com/pcbpel/adapter/db/top/updateStatusToDB" xmlns:ns12="http://xmlns.oracle.com/SOAUtilityServices/FileUtilityService/FileUtilityService_BPEL" xmlns:ns13="http://www.sunpowercorp.com/SunPowerDevelopment/FileUtilityService/v1/xsd" xmlns:ns18="http://xmlns.oracle.com/pcbpel/adapter/file/EDICom/pollEDI997FilesToOracle/pollEDI997Files" xmlns:ns19="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI997FilesToOracle/insertEDI997ToOracle" xmlns:ns1="http://sunpowercorp.com/pollEDI997FileToOracle/InboundService/xsd/v1" id="BpPrc0">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        CallCommSFDCErrMediatorWrapper.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns7:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="FileUtilityService" partnerLinkType="ns12:FileUtilityService_BPEL" partnerRole="FileUtilityService_BPELProvider"/>
+    <partnerLink name="pollEDI997Files" partnerLinkType="ns18:Read_plt" myRole="Read_role"/>
+    <partnerLink name="insertEDI997ToOracle" partnerLinkType="ns19:insertEDI997ToOracle_plt" partnerRole="insertEDI997ToOracle_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="fileName" type="xsd:string"/>
+    <variable name="inputParam" element="ns6:InputParams"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns7:requestMessage"/>
+    <variable name="signalType" type="xsd:string"/>
+    <variable name="InvFileUtilityService_Move_IV" messageType="ns12:FileUtilityService_BPELRequestMessage"/>
+    <variable name="InvFileUtilityService_Move_OV" messageType="ns12:FileUtilityService_BPELResponseMessage"/>
+    <variable name="InputDir" type="xsd:string"/>
+    <variable name="SuccessDir" type="xsd:string"/>
+    <variable name="ErrorDir" type="xsd:string"/>
+    <variable name="signal" type="xsd:string"/>
+    <variable name="pollInboundFiles_IV" messageType="ns18:Read_msg"/>
+    <variable name="InvInsertEDI997ToOracle_IV" messageType="ns19:XxspwrEdi997_InboundStgCollection_msg"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="SeqCatchAll" id="BpSeq0">
+        <assign name="AsgnInvFileUtilityService" id="BpAss0">
+          <copy>
+            <from variable="InputDir"/>
+            <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:SourcePhysicalDirectory"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:SourceFileName"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:TargetFileName"/>
+          </copy>
+          <copy>
+            <from variable="ErrorDir"/>
+            <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:TargetPhysicalDirectory"/>
+          </copy>
+        </assign>
+        <invoke name="InvFileUtilityService" inputVariable="InvFileUtilityService_Move_IV" outputVariable="InvFileUtilityService_Move_OV" partnerLink="FileUtilityService" portType="ns12:FileUtilityService_BPEL" operation="Move" bpelx:invokeAsDetail="no" id="BpInv0"/>
+        <assign name="AsgnCommonSFDCErrorLogService" id="BpAss1">
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from variable="fileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:UniqueIdentNum/ns8:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression="&quot;EDICom&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="&quot;pollEDI997FilesToOracle&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:Fault/ns8:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;CorrectiveAction&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:CorrectiveAction"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="'E'"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:status"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns8:CommonSFDCErrorLog/ns8:CommonErrorHandlerInputDetails/ns8:createddatetime"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" inputVariable="InvCommonSFDCErrorLogService_IV" partnerLink="CommonSFDCErrorLogService" portType="ns7:execute_ptt" operation="execute" bpelx:invokeAsDetail="no" id="BpInv1"/>
+        <terminate name="Terminate" id="BpTer0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main" id="BpSeq1">
+    <receive name="recInboundFiles" createInstance="yes" variable="pollInboundFiles_IV" partnerLink="pollEDI997Files" portType="ns18:Read_ptt" operation="Read" id="BpRcv0">
+      <bpelx:property name="jca.file.Directory" variable="InputDir"/>
+      <bpelx:property name="jca.file.FileName" variable="fileName"/>
+    </receive>
+    <assign name="setTitle" id="BpAss2">
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($fileName)"/>
+        <to variable="fileName"/>
+      </copy>
+    </assign>
+    <assign name="AsgnFileName" id="BpAss3">
+      <copy>
+        <from expression="ora:getPreference(&quot;ErrorDir&quot;)"/>
+        <to variable="ErrorDir"/>
+      </copy>
+      <copy>
+        <from expression="ora:getPreference(&quot;JNDI&quot;)"/>
+        <to variable="inputParam" query="/ns6:InputParams/ns6:JNDI"/>
+      </copy>
+      <copy>
+        <from variable="fileName"/>
+        <to variable="inputParam" query="/ns6:InputParams/ns6:fileName"/>
+      </copy>
+      <copy>
+        <from expression="&quot;997&quot;"/>
+        <to variable="signalType"/>
+      </copy>
+    </assign>
+    <assign name="TrnsInsertEDI997Files" id="BpAss4">
+      <bpelx:annotation>
+        <bpelx:pattern>transformation</bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from expression="ora:doXSLTransformForDoc('Transformations/trnsInsertEDI997ToOracle.xsl', $pollInboundFiles_IV.body, 'inputParam', $inputParam)"/>
+        <to variable="InvInsertEDI997ToOracle_IV" part="XxspwrEdi997_InboundStgCollection"/>
+      </copy>
+    </assign>
+    <invoke name="InvInsertEDI997ToOracle" inputVariable="InvInsertEDI997ToOracle_IV" partnerLink="insertEDI997ToOracle" portType="ns19:insertEDI997ToOracle_ptt" operation="insert" bpelx:invokeAsDetail="no" id="BpInv2"/>
+    <assign name="AsgnInvFileUtilityService" id="BpAss5">
+      <copy>
+        <from expression="concat($signalType,'_',substring(substring-after($fileName,'_'),1,2))"/>
+        <to variable="signal"/>
+      </copy>
+      <copy>
+        <from variable="InputDir"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:SourcePhysicalDirectory"/>
+      </copy>
+      <copy>
+        <from variable="fileName"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:SourceFileName"/>
+      </copy>
+      <copy>
+        <from variable="fileName"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:TargetFileName"/>
+      </copy>
+      <copy>
+        <from expression="dvm:lookupValue(&quot;oramds:/deployed-composites/edi/GetEDI997ProcessProv_rev1.0/EDIInboundConfig997.dvm&quot;,&quot;Signal&quot;,$signal,&quot;SuccessDir&quot;,$ErrorDir)"/>
+        <to variable="InvFileUtilityService_Move_IV" part="payload" query="/ns13:FileUtilityReq/ns13:TargetPhysicalDirectory"/>
+      </copy>
+    </assign>
+    <invoke name="InvFileUtilityService" inputVariable="InvFileUtilityService_Move_IV" outputVariable="InvFileUtilityService_Move_OV" partnerLink="FileUtilityService" portType="ns12:FileUtilityService_BPEL" operation="Move" bpelx:invokeAsDetail="no" id="BpInv3"/>
+  </sequence>
+</process>

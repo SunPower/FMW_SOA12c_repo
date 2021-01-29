@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<db:fetchOracleOraderLinesInput xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/fetchOracleOraderLines">
+   <db:arg1>5:111:217</db:arg1>
+</db:fetchOracleOraderLinesInput>

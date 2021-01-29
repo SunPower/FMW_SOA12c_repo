@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="RecordType" xmlns="http://xmlns.oracle.com/dvm">
+   <description/>
+   <columns>
+      <column name="Oracle"/>
+      <column name="SFDC"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>CASH_BOOKED</cell>
+         <cell>01280000000Q6hOAAS</cell>
+      </row>
+      <row>
+         <cell>CASH_SHIPPED</cell>
+         <cell>01280000000Q6hQAAS</cell>
+      </row>
+      <row>
+         <cell>LEASE_BOOKED</cell>
+         <cell>01280000000Q6hRAAS</cell>
+      </row>
+      <row>
+         <cell>LEASE_SHIPPED</cell>
+         <cell>01280000000Q6hTAAS</cell>
+      </row>
+      <row>
+         <cell>LEASE_CANCELLED</cell>
+         <cell>01280000000Q6hSAAS</cell>
+      </row>
+      <row>
+         <cell>CASH_CANCELLED</cell>
+         <cell>01280000000Q6hPAAS</cell>
+      </row>
+      <row>
+         <cell>Oracle_Account_Number</cell>
+         <cell>001800000113T5t</cell>
+      </row>
+      <row>
+         <cell>Parent_Account</cell>
+         <cell>001800000113T5t</cell>
+      </row>
+   </rows>
+</dvm>

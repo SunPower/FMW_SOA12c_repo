@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelecNewNARecords" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelecNewNARecords" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelecNewNARecordsInput" type="SelecNewNARecordsInput"/>
+   <xs:complexType name="SelecNewNARecordsInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="SelecNewNARecordsOutputCollection" type="SelecNewNARecordsOutputCollection"/>
+   <xs:complexType name="SelecNewNARecordsOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelecNewNARecordsOutput" type="SelecNewNARecordsOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelecNewNARecordsOutput">
+      <xs:sequence>
+         <xs:element name="BATCH_ID" type="xs:decimal" nillable="true"/>
+         <xs:element name="PURPOSE_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="ITEM_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="PRODUCT_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="ITEM_DESCRIPTION" type="xs:string" nillable="true"/>
+         <xs:element name="ITEM_STATUS" type="xs:string" nillable="true"/>
+         <xs:element name="UNIT_LENGTH" type="xs:decimal" nillable="true"/>
+         <xs:element name="UNIT_WEIGHT" type="xs:decimal" nillable="true"/>
+         <xs:element name="WEIGHT_UOM_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="UNIT_LENGTH" type="xs:decimal" nillable="true"/>
+         <xs:element name="DIMENSION_UOM_CODE" type="xs:string" nillable="true"/>
+         <xs:element name="RECEIVING_PARTNER" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="Chunk_WORKFORCE_FEED_File" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Chunk_WORKFORCE_FEED_File" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Chunk_WORKFORCE_FEED_File" xmlns:imp1="http://TargetNamespace.com/InboundService" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <plt:partnerLinkType name="SynchRead_plt">
+      <plt:role name="SynchRead_role">
+         <plt:portType name="tns:SynchRead_ptt"/>
+      </plt:role>
+   </plt:partnerLinkType>
+   <wsdl:types>
+      <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Chunk_WORKFORCE_FEED_File" xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://TargetNamespace.com/InboundService" schemaLocation="../Schemas/SPWR_WORKFORCE_FEED_CSV.xsd"/>
+         <element name="empty">
+            <complexType/>
+         </element>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="Empty_msg">
+      <wsdl:part name="Empty" element="tns:empty"/>
+   </wsdl:message>
+   <wsdl:message name="SynchRead_msg">
+      <wsdl:part name="body" element="imp1:WorkForceFeeds"/>
+   </wsdl:message>
+   <wsdl:portType name="SynchRead_ptt">
+      <wsdl:operation name="SynchRead">
+         <wsdl:input message="tns:Empty_msg"/>
+         <wsdl:output message="tns:SynchRead_msg"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

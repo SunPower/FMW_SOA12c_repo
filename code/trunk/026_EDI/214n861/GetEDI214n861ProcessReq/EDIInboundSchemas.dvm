@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="EDIInboundSchemas" xmlns="http://xmlns.oracle.com/dvm">
+   <description/>
+   <columns>
+      <column name="SchemaName"/>
+      <column name="Values"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>ALL</cell>
+         <cell>214_US,861_US,214_AU,861_AU,214_EU,861_EU,214T_US,214_EU_OSTRPT_D00</cell>
+      </row>
+   </rows>
+</dvm>

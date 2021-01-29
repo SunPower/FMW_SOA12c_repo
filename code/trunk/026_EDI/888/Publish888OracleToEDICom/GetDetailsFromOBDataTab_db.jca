@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="GetDetailsFromOBDataTab" adapter="db" wsdlLocation="GetDetailsFromOBDataTab.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+  <endpoint-interaction portType="GetDetailsFromOBDataTab_ptt" operation="GetDetailsFromOBDataTab">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select BATCH_ID,PURPOSE_CODE,ITEM_NUMBER,PRODUCT_TYPE,ITEM_DESCRIPTION,ITEM_STATUS,UNIT_WEIGHT,WEIGHT_UOM_CODE,UNIT_LENGTH,UNIT_WIDTH,UNIT_HEIGHT,DIMENSION_UOM_CODE,PRIMARY_UOM_CODE,HTS_CODE,ATTRIBUTE1,ATTRIBUTE2,ATTRIBUTE3,ATTRIBUTE4,ATTRIBUTE5,UNIT_COST from XXSPWR_EDICOM_888_OB_DATA where BATCH_ID=#batch_id"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

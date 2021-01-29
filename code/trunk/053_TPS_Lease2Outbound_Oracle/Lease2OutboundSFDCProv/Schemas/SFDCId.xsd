@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/SunPowerApp/SFDCId"
+            targetNamespace="http://www.sunpowercorp.com/SunPowerApp/SFDCId"
+            elementFormDefault="qualified">
+  <xsd:element name="SFDCRecordDetails">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="id" type="xsd:string"/>
+        <xsd:element name="type" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

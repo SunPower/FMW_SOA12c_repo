@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/ArenaOracleDataFeed/ProductDataeXchangePackage/xsd/v1"
+            targetNamespace="http://www.sunpowercorp.com/ArenaOracleDataFeed/ProductDataeXchangePackage/xsd/v1"
+            elementFormDefault="qualified">
+  <xsd:element name="ProductDataeXchangePackage">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Items">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Item" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="AdditionalAttributes"
+                                 maxOccurs="unbounded">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="AdditionalAttribute"
+                                       maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="name" type="xsd:string"/>
+                              <xsd:attribute name="value" type="xsd:string"/>
+                              <xsd:attribute name="dataType" type="xsd:string"/>
+                              <xsd:attribute name="dimension"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="description"
+                                             type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="groupLabel" type="xsd:string"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="BillOfMaterial" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="BillOfMaterialItem"
+                                       maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="AlternateItems"
+                                             minOccurs="0">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="AlternateItem"
+                                                   maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:sequence>
+                                            <xsd:element name="AdditionalAttributes">
+                                              <xsd:complexType>
+                                                <xsd:sequence>
+                                                  <xsd:element name="AdditionalAttribute"
+                                                               maxOccurs="unbounded">
+                                                    <xsd:complexType>
+                                                      <xsd:attribute name="name"
+                                                                     type="xsd:string"/>
+                                                      <xsd:attribute name="value"
+                                                                     type="xsd:string"/>
+                                                      <xsd:attribute name="dataType"
+                                                                     type="xsd:string"/>
+                                                    </xsd:complexType>
+                                                  </xsd:element>
+                                                </xsd:sequence>
+                                                <xsd:attribute name="groupLabel"
+                                                               type="xsd:string"/>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:sequence>
+                                          <xsd:attribute name="itemIdentifier"
+                                                         type="xsd:integer"/>
+                                          <xsd:attribute name="itemUniqueIdentifier"
+                                                         type="xsd:string"/>
+                                          <xsd:attribute name="globalPreferredStatusCode"
+                                                         type="xsd:integer"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                
+                            <xsd:element name="AdditionalAttributes" maxOccurs="unbounded" minOccurs="0">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="AdditionalAttribute"
+                                                   maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="name"
+                                                         type="xsd:string"/>
+                                          <xsd:attribute name="value"
+                                                         type="xsd:string"/>
+                                          <xsd:attribute name="dataType"
+                                                         type="xsd:string"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="groupLabel"
+                                                   type="xsd:string"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                
+                                
+                              </xsd:sequence>
+                              <xsd:attribute name="revisionIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="billOfMaterialItemIdentifier"
+                                             type="xsd:integer"/>
+                              <xsd:attribute name="billOfMaterialItemUniqueIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="itemQuantity"
+                                             type="xsd:float"/>
+                              <xsd:attribute name="globalProductQuantityTypeCode"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="globalProductQuantityTypeCodeOther"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="notes" type="xsd:string"/>
+                              <xsd:attribute name="description"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="proprietarySequenceIdentifier"
+                                             type="xsd:integer"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ApprovedManufacturerList" minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ApprovedManufacturerListItem"
+                                       maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="AdditionalAttributes">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="AdditionalAttribute"
+                                                   maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                          <xsd:attribute name="name"
+                                                         type="xsd:string"/>
+                                          <xsd:attribute name="value"
+                                                         type="xsd:string"/>
+                                          <xsd:attribute name="dataType"
+                                                         type="xsd:string"/>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="groupLabel"
+                                                   type="xsd:string"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="manufacturerPartIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="manufacturerPartUniqueIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="manufacturerContactUniqueIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="globalManufacturerPartStatusCode"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="description"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="manufacturedBy"
+                                             type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="itemIdentifier" type="xsd:integer"/>
+                  <xsd:attribute name="itemUniqueIdentifier" type="xsd:string"/>
+                  <xsd:attribute name="globalLifeCyclePhaseCode"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="globalLifeCyclePhaseCodeOther"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="globalProductTypeCode"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="revisionIdentifier" type="xsd:string"/>
+                  <xsd:attribute name="proprietaryProductFamily"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="category" type="xsd:string"/>
+                  <xsd:attribute name="globalProductUnitOfMeasureCode"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="revisionReleasedDate" type="xsd:string"/>
+                  <xsd:attribute name="ownerName" type="xsd:string"/>
+                  <xsd:attribute name="isTopLevel" type="xsd:string"/>
+                  <xsd:attribute name="description" type="xsd:string"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="ManufacturerParts">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ManufacturerPart" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ApprovedSupplierList">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ApprovedSupplierListItem"
+                                       maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:attribute name="supplierPartIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="supplierPartUniqueIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="supplierPartContactUniqueIdentifier"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="globalSupplierPartStatusCode"
+                                             type="xsd:string"/>
+                              <xsd:attribute name="comments" type="xsd:string"/>
+                              <xsd:attribute name="suppliedBy"
+                                             type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="manufacturerPartIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="manufacturerPartUniqueIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="manufacturerName" type="xsd:string"/>
+                  <xsd:attribute name="manufacturerContactUniqueIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="referenceNotes" type="xsd:string"/>
+                  <xsd:attribute name="manufacturerPartType" type="xsd:string"/>
+                  <xsd:attribute name="description" type="xsd:string"/>
+                  <xsd:attribute name="isTopLevel" type="xsd:string"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="SupplierParts">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="SupplierPart" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:attribute name="supplierPartIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="supplierPartUniqueIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="supplierName" type="xsd:string"/>
+                  <xsd:attribute name="supplierContactUniqueIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="referenceNotes" type="xsd:string"/>
+                  <xsd:attribute name="supplierPartType" type="xsd:string"/>
+                  <xsd:attribute name="description" type="xsd:string"/>
+                  <xsd:attribute name="isTopLevel" type="xsd:string"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Contacts">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Contact" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:attribute name="contactIdentifier" type="xsd:string"/>
+                  <xsd:attribute name="contactUniqueIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="contactName" type="xsd:string"/>
+                  <xsd:attribute name="addressLine1" type="xsd:string"/>
+                  <xsd:attribute name="addressLine2" type="xsd:string"/>
+                  <xsd:attribute name="cityName" type="xsd:string"/>
+                  <xsd:attribute name="regionName" type="xsd:string"/>
+                  <xsd:attribute name="globalCountryCode" type="xsd:string"/>
+                  <xsd:attribute name="nationalPostalCode" type="xsd:string"/>
+                  <xsd:attribute name="telephoneNumber" type="xsd:string"/>
+                  <xsd:attribute name="facsimileNumber" type="xsd:string"/>
+                  <xsd:attribute name="department" type="xsd:string"/>
+                  <xsd:attribute name="businessName" type="xsd:string"/>
+                  <xsd:attribute name="emailAddress" type="xsd:string"/>
+                  <xsd:attribute name="universalResourceIdentifier"
+                                 type="xsd:string"/>
+                  <xsd:attribute name="contactStatus" type="xsd:string"/>
+                  <xsd:attribute name="isTopLevel" type="xsd:string"/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="thisDocumentIdentifier" type="xsd:string"/>
+      <xsd:attribute name="thisDocumentGenerationDateTime" type="xsd:string"/>
+      <xsd:attribute name="thisDocumentModificationDateTime" type="xsd:string"/>
+      <xsd:attribute name="originatedByContactName" type="xsd:string"/>
+      <xsd:attribute name="packageType" type="xsd:string"/>
+      <xsd:attribute name="dataSource" type="xsd:string"/>
+      <xsd:attribute name="thisDocumentCopyright" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

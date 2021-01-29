@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+        targetNamespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+        elementFormDefault="qualified">
+    <element name="EmailContent">
+        <complexType>
+            <sequence>
+               <element name="To" type="string"/>
+                <element name="Subject" type="string"/>
+                <element name="body" type="string"/>               
+            </sequence>
+        </complexType>
+    </element>   
+   
+</schema>

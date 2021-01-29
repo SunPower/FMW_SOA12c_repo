@@ -1,0 +1,138 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Noun/OracleSFDCNoItemOrders/V1"
+            targetNamespace="http://www.sunpowercorp.com/Noun/OracleSFDCNoItemOrders/V1"
+            xmlns:osNoItCommon="http://www.sunpowercorp.com/Common/OracleSFDCNoItemOrdersCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:import namespace="http://www.sunpowercorp.com/Common/OracleSFDCNoItemOrdersCommonTypes/V1"
+              schemaLocation="OracleSFDCNoItemOrdersCommonTypes.xsd"/>
+  <xsd:element name="OracleSFDCNoItemOrder" type="OracleSFDCNoItemOrderType"/>
+  <xsd:complexType name="OracleSFDCNoItemOrderType">
+    <xsd:sequence>
+      <xsd:element ref="OracleSFDCNoItemOrderDetails" minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OracleSFDCNoItemOrderDetails"
+               type="OracleSFDCNoItemOrderDetailsType"/>
+  <xsd:complexType name="OracleSFDCNoItemOrderDetailsType">
+    <xsd:sequence>
+      <xsd:element ref="osNoItCommon:FANANCIER"/>
+      <xsd:element ref="osNoItCommon:SFDC_ID"/>
+      <xsd:element ref="osNoItCommon:ORDER_STATUS"/>
+      <xsd:element ref="osNoItCommon:SHIP_TO_SITE_ID"/>
+      <xsd:element ref="osNoItCommon:INTERFACE_MESSAGE"/>
+      <xsd:element ref="osNoItCommon:ORDER_NUMBER"/>
+      <xsd:element ref="osNoItCommon:CREATION_DATE"/>
+      <xsd:element ref="osNoItCommon:LAST_UPDATE_DATE"/>
+       <xsd:element ref="osNoItCommon:POSITION"/>
+       <xsd:element ref="osNoItCommon:HEADER_ID"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OracleSFDCNoItemOrderHeader"
+               type="OracleSFDCNoItemOrderHeaderType"/>
+  <xsd:complexType name="OracleSFDCNoItemOrderHeaderType">
+    <xsd:sequence>
+      <xsd:element ref="OracleSFDCNoItemOrderDetailsHeader" minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element ref="OracleSFDCNoItemOrderDetailsLine" minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OracleSFDCNoItemOrderDetailsHeader"
+               type="OracleSFDCNoItemOrderDetailsHeaderType"/>
+  <xsd:element name="OracleSFDCNoItemOrderDetailsLine"
+               type="OracleSFDCNoItemOrderDetailsLineType"/>
+  <xsd:complexType name="OracleSFDCNoItemOrderDetailsHeaderType">
+    <xsd:sequence>
+      <xsd:element ref="osNoItCommon:SFDC_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:DSR_ORACLE_USER_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ORG_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SHIP_FROM_ORG_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:BILL_TO_SITE_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_SHIPTO" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_BILLTO" minOccurs="0"/>
+       <xsd:element ref="osNoItCommon:SFDC_SHIPTO_CONTACT_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_BILLTO_CONTACT_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_PARTNER_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_HOMEOWNER_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_TPO_ID" minOccurs="0"/>
+      
+      <xsd:element ref="osNoItCommon:SHIP_TO_SITE_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SHIP_TO_CONTACT_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ADJUSTED_AMOUNT" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ORDER_NUMBER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CREATED_BY" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:LEASE_VALUE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:EFFECTIVE_GOODS_PRICE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:DSR_EMAIL_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CUST_ACCT_NUMBER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CUST_PO_NUMBER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ADDRESS_LINE_1" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ADDRESS_LINE_2" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ADDRESS_LINE_3" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CITY" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:STATE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:COUNTRY" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:POSTAL_CODE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:STATUS" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CONTACT_PHONE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CONTACT_PHONE1" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CONTACT_PHONE2" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CONTACT_PERSON_NAME" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CONTACT_EMAIL" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CONTACT_FAX" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SHIPPING_METHOD" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SPECIAL_INSTRUCTIONS" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:TAX_FLAG" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ORDER_CURRENCY_CODE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:REQUESTED_DELIVERY_DATE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SMARTPACK_FLAG" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ORDER_STATUS" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:INTERFACE_STATUS" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:INTERFACE_MESSAGE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:LAST_UPDATE_DATE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CREATION_DATE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:NEW_ORDER_CLASS" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:INVERTER_TYPE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ORDER_TYPE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:OPERATING_UNIT" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:VENDOR_NUMBER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:VENDOR_SITE_CODE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:PARTNER_NAME" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:LEASE_FLAG" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:LEASE_NUMBER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:FINANCIER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:PARTNER_ACC_NUMBER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CUSTOMER_SYNC" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SALES_TYPE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CUSTOMER_ORDER_LINK_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_ACCOUNT_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:TRANSACTION_STATUS" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:CHANNEL_TYPE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:PAYMENT_TYPE" minOccurs="0"/>
+      <xsd:element ref="OracleSFDCNoItemOrderDetailsLine" minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OracleSFDCNoItemOrderDetailsLineType">
+    <xsd:sequence>
+      <xsd:element ref="osNoItCommon:SFDC_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:SFDC_ORDER_LINE_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:LINE_NUMBER" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:INVENTORY_ITEM_ID" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:REQUESTED_QTY" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:UOM" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:UNIT_PRICE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ORDER_LINE_TYPE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:PRODUCT_TYPE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ITEM_TYPE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:LINE_REQUEST_DATE" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ATTRIBUTE1" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ATTRIBUTE2" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ATTRIBUTE3" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ATTRIBUTE4" minOccurs="0"/>
+      <xsd:element ref="osNoItCommon:ATTRIBUTE5" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

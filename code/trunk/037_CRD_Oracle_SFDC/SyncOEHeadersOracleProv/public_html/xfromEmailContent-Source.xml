@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<selectRecFromErrorLogTabOutputCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/selectRecFromErrorLogTab">
+   <selectRecFromErrorLogTabOutput>
+      <UNIQUE_IDENTIFIER>19202074#2012-11-14</UNIQUE_IDENTIFIER>
+      <FAULTMESSAGE>com.oracle.bpel.client.BPELFault: faultName:</FAULTMESSAGE>
+      <INSTANCENUMBER>15303210</INSTANCENUMBER>
+      <INTERFACENAME>SyncOEOrdersOracleProv</INTERFACENAME>
+   </selectRecFromErrorLogTabOutput>
+   <selectRecFromErrorLogTabOutput>
+      <UNIQUE_IDENTIFIER>19202075#2012-11-14</UNIQUE_IDENTIFIER>
+      <FAULTMESSAGE>FAULTMESSAGE6</FAULTMESSAGE>
+      <INSTANCENUMBER>15303210</INSTANCENUMBER>
+      <INTERFACENAME>SyncOEOrdersOracleProv</INTERFACENAME>
+   </selectRecFromErrorLogTabOutput>
+   <selectRecFromErrorLogTabOutput>
+      <UNIQUE_IDENTIFIER>19202076#2012-11-14</UNIQUE_IDENTIFIER>
+      <FAULTMESSAGE>FAULTMESSAGE10</FAULTMESSAGE>
+      <INSTANCENUMBER>11</INSTANCENUMBER>
+      <INTERFACENAME>INTERFACENAME12</INTERFACENAME>
+   </selectRecFromErrorLogTabOutput>
+</selectRecFromErrorLogTabOutputCollection>

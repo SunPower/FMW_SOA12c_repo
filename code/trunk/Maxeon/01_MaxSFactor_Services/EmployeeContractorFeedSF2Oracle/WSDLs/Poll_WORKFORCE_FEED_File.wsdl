@@ -1,0 +1,43 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="Poll_WORKFORCE_FEED_File"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Poll_WORKFORCE_FEED_File"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:ns1="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Poll_WORKFORCE_FEED_File"
+     xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+    <plt:partnerLinkType name="Read_plt">
+        <plt:role name="Read_role">
+            <plt:portType name="tns:Read_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns="http://www.w3.org/2001/XMLSchema"
+             xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:ns1="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Poll_WORKFORCE_FEED_File"
+             xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+             xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+            <element name="opaqueElement" type="base64Binary"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+             xmlns:ns1="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/EmployeeContractorFeedSF2Oracle/Poll_WORKFORCE_FEED_File"
+             xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+             xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+                 schemaLocation="../Schemas/Params.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="Read_msg">
+        <wsdl:part name="opaque" element="opaque:opaqueElement"/>
+    </wsdl:message>
+    <wsdl:portType name="Read_ptt">
+        <wsdl:operation name="Read">
+            <wsdl:input message="tns:Read_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

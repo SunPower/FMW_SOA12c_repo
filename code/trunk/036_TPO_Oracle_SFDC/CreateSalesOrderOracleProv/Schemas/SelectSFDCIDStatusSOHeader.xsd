@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectSFDCIDStatusSOHeader" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectSFDCIDStatusSOHeader" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectSFDCIDStatusSOHeaderInput" type="SelectSFDCIDStatusSOHeaderInput"/>
+   <xs:complexType name="SelectSFDCIDStatusSOHeaderInput">
+      <xs:sequence>
+         <xs:element name="arg1" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectSFDCIDStatusSOHeaderOutputCollection" type="SelectSFDCIDStatusSOHeaderOutputCollection"/>
+   <xs:complexType name="SelectSFDCIDStatusSOHeaderOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectSFDCIDStatusSOHeaderOutput" type="SelectSFDCIDStatusSOHeaderOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectSFDCIDStatusSOHeaderOutput">
+      <xs:sequence>
+         <xs:element name="SFDC_ID" type="xs:string" nillable="true"/>
+         <xs:element name="status" type="xs:string" nillable="true"/>
+         <xs:element name="interface_status" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

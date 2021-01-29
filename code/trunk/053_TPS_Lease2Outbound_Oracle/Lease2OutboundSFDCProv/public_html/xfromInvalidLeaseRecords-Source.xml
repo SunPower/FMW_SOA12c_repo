@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<queryResponse xmlns="urn:partner.soap.sforce.com">
+   <result>
+      <done>true</done>
+      <queryLocator>queryLocator1</queryLocator>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type2</type>
+         <Lease__c xmlns="urn:sobject.partner.soap.sforce.com">123</Lease__c>
+         <Sales_order_number__c xmlns="urn:sobject.partner.soap.sforce.com">Sales_order_number__c4</Sales_order_number__c>
+         <Sched_Delivery_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_PV__c5</Sched_Delivery_Date_PV__c>
+         <Sched_Delivery_Date_Inverters__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_Inverters__c6</Sched_Delivery_Date_Inverters__c>
+         <Sched_Delivery_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_Mounting__c7</Sched_Delivery_Date_Mounting__c>
+         <Delivery_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_PV__c8</Delivery_Date_PV__c>
+         <Delivery_Date_Inverters__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_Inverters__c9</Delivery_Date_Inverters__c>
+         <Delivery_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_Mounting__c10</Delivery_Date_Mounting__c>
+         <Purchase_Order_Number_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Origination__c11</Purchase_Order_Number_Origination__c>
+         <Purchase_Order_Number_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Installation__c12</Purchase_Order_Number_Installation__c>
+         <Purchase_Order_Number_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Interconnect__c13</Purchase_Order_Number_Interconnect__c>
+         <PO_Creation_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Origination__c14</PO_Creation_Date_Origination__c>
+         <PO_Creation_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Installation__c15</PO_Creation_Date_Installation__c>
+         <PO_Creation_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Interconnect__c16</PO_Creation_Date_Interconnect__c>
+         <PO_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Origination__c17</PO_Amount_Origination__c>
+         <PO_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Installation__c18</PO_Amount_Installation__c>
+         <PO_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Interconnect__c19</PO_Amount_Interconnect__c>
+         <PO_Receipt_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Origination__c20</PO_Receipt_Origination__c>
+         <PO_Receipt_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Installation__c21</PO_Receipt_Installation__c>
+         <PO_Receipt_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Interconnect__c22</PO_Receipt_Interconnect__c>
+         <Supplier_Invoice_Number_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Origination__c23</Supplier_Invoice_Number_Origination__c>
+         <Supplier_Invoice_Number_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Installation__c24</Supplier_Invoice_Number_Installation__c>
+         <Supplier_Invoice_Number_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Interconnect__c25</Supplier_Invoice_Number_Interconnect__c>
+         <Supplier_Invoice_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Origination__c26</Supplier_Invoice_Amount_Origination__c>
+         <Supplier_Invoice_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Installation__c27</Supplier_Invoice_Amount_Installation__c>
+         <Supplier_Invoice_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Interconnect__c28</Supplier_Invoice_Amount_Interconnect__c>
+         <Payment_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Origination__c29</Payment_Amount_Origination__c>
+         <Payment_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Installation__c30</Payment_Amount_Installation__c>
+         <Payment_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Interconnect__c31</Payment_Amount_Interconnect__c>
+         <Payment_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Origination__c32</Payment_Date_Origination__c>
+         <Payment_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Installation__c33</Payment_Date_Installation__c>
+         <Payment_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Interconnect__c34</Payment_Date_Interconnect__c>
+         <Scheduled_Payment_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Origination__c35</Scheduled_Payment_Date_Origination__c>
+         <Scheduled_Payment_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Installation__c36</Scheduled_Payment_Date_Installation__c>
+         <Scheduled_Payment_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Interconnect__c37</Scheduled_Payment_Date_Interconnect__c>
+         <Customer_Request_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_PV__c38</Customer_Request_Date_PV__c>
+         <Customer_Request_Date_Inverter__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_Inverter__c39</Customer_Request_Date_Inverter__c>
+         <Customer_Request_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_Mounting__c40</Customer_Request_Date_Mounting__c>
+         <Customer_Promise_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_PV__c41</Customer_Promise_Date_PV__c>
+         <Customer_Promise_Date_Inverter__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_Inverter__c42</Customer_Promise_Date_Inverter__c>
+         <Customer_Promise_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_Mounting__c43</Customer_Promise_Date_Mounting__c>
+         <Lease_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Lease_Cost__c44</Lease_Cost__c>
+         <PV_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">PV_Cost__c45</PV_Cost__c>
+         <Inverter_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Inverter_Cost__c46</Inverter_Cost__c>
+         <Monitoring__c xmlns="urn:sobject.partner.soap.sforce.com">Monitoring__c47</Monitoring__c>
+         <BOS_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">BOS_Cost__c48</BOS_Cost__c>
+         <Racking_Cost_Internal__c xmlns="urn:sobject.partner.soap.sforce.com">Racking_Cost_Internal__c49</Racking_Cost_Internal__c>
+         <Misc_Cost_Internal_Future_Use__c xmlns="urn:sobject.partner.soap.sforce.com">Misc_Cost_Internal_Future_Use__c50</Misc_Cost_Internal_Future_Use__c>
+         <Racking_Cost_Installer__c xmlns="urn:sobject.partner.soap.sforce.com">Racking_Cost_Installer__c51</Racking_Cost_Installer__c>
+         <Misc_Items_Installer__c xmlns="urn:sobject.partner.soap.sforce.com">Misc_Items_Installer__c52</Misc_Items_Installer__c>
+         <Total_SPWR_Supplier_Material__c xmlns="urn:sobject.partner.soap.sforce.com">Total_SPWR_Supplier_Material__c53</Total_SPWR_Supplier_Material__c>
+         <Total_Dealer_Supplied_Material__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Dealer_Supplied_Material__c54</Total_Dealer_Supplied_Material__c>
+         <Total_Material_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Material_Cost__c55</Total_Material_Cost__c>
+         <Total_Service_Cost_Dealer_Fee__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Service_Cost_Dealer_Fee__c56</Total_Service_Cost_Dealer_Fee__c>
+         <Net_Dealer_Service_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Net_Dealer_Service_Cost__c57</Net_Dealer_Service_Cost__c>
+         <Tax_Identifier__c xmlns="urn:sobject.partner.soap.sforce.com">Tax_Identifier__c58</Tax_Identifier__c>
+         <Sales_Tax_Amount__c xmlns="urn:sobject.partner.soap.sforce.com">Sales_Tax_Amount__c59</Sales_Tax_Amount__c>
+         <Status__c xmlns="urn:sobject.partner.soap.sforce.com">Status__c60</Status__c>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull61</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull62</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull63</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id6464646464646464</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type65</type>
+         <Lease__c xmlns="urn:sobject.partner.soap.sforce.com">124</Lease__c>
+         <Sales_order_number__c xmlns="urn:sobject.partner.soap.sforce.com">Sales_order_number__c67</Sales_order_number__c>
+         <Sched_Delivery_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_PV__c68</Sched_Delivery_Date_PV__c>
+         <Sched_Delivery_Date_Inverters__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_Inverters__c69</Sched_Delivery_Date_Inverters__c>
+         <Sched_Delivery_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_Mounting__c70</Sched_Delivery_Date_Mounting__c>
+         <Delivery_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_PV__c71</Delivery_Date_PV__c>
+         <Delivery_Date_Inverters__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_Inverters__c72</Delivery_Date_Inverters__c>
+         <Delivery_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_Mounting__c73</Delivery_Date_Mounting__c>
+         <Purchase_Order_Number_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Origination__c74</Purchase_Order_Number_Origination__c>
+         <Purchase_Order_Number_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Installation__c75</Purchase_Order_Number_Installation__c>
+         <Purchase_Order_Number_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Interconnect__c76</Purchase_Order_Number_Interconnect__c>
+         <PO_Creation_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Origination__c77</PO_Creation_Date_Origination__c>
+         <PO_Creation_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Installation__c78</PO_Creation_Date_Installation__c>
+         <PO_Creation_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Interconnect__c79</PO_Creation_Date_Interconnect__c>
+         <PO_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Origination__c80</PO_Amount_Origination__c>
+         <PO_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Installation__c81</PO_Amount_Installation__c>
+         <PO_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Interconnect__c82</PO_Amount_Interconnect__c>
+         <PO_Receipt_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Origination__c83</PO_Receipt_Origination__c>
+         <PO_Receipt_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Installation__c84</PO_Receipt_Installation__c>
+         <PO_Receipt_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Interconnect__c85</PO_Receipt_Interconnect__c>
+         <Supplier_Invoice_Number_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Origination__c86</Supplier_Invoice_Number_Origination__c>
+         <Supplier_Invoice_Number_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Installation__c87</Supplier_Invoice_Number_Installation__c>
+         <Supplier_Invoice_Number_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Interconnect__c88</Supplier_Invoice_Number_Interconnect__c>
+         <Supplier_Invoice_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Origination__c89</Supplier_Invoice_Amount_Origination__c>
+         <Supplier_Invoice_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Installation__c90</Supplier_Invoice_Amount_Installation__c>
+         <Supplier_Invoice_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Interconnect__c91</Supplier_Invoice_Amount_Interconnect__c>
+         <Payment_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Origination__c92</Payment_Amount_Origination__c>
+         <Payment_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Installation__c93</Payment_Amount_Installation__c>
+         <Payment_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Interconnect__c94</Payment_Amount_Interconnect__c>
+         <Payment_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Origination__c95</Payment_Date_Origination__c>
+         <Payment_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Installation__c96</Payment_Date_Installation__c>
+         <Payment_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Interconnect__c97</Payment_Date_Interconnect__c>
+         <Scheduled_Payment_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Origination__c98</Scheduled_Payment_Date_Origination__c>
+         <Scheduled_Payment_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Installation__c99</Scheduled_Payment_Date_Installation__c>
+         <Scheduled_Payment_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Interconnect__c100</Scheduled_Payment_Date_Interconnect__c>
+         <Customer_Request_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_PV__c101</Customer_Request_Date_PV__c>
+         <Customer_Request_Date_Inverter__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_Inverter__c102</Customer_Request_Date_Inverter__c>
+         <Customer_Request_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_Mounting__c103</Customer_Request_Date_Mounting__c>
+         <Customer_Promise_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_PV__c104</Customer_Promise_Date_PV__c>
+         <Customer_Promise_Date_Inverter__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_Inverter__c105</Customer_Promise_Date_Inverter__c>
+         <Customer_Promise_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_Mounting__c106</Customer_Promise_Date_Mounting__c>
+         <Lease_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Lease_Cost__c107</Lease_Cost__c>
+         <PV_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">PV_Cost__c108</PV_Cost__c>
+         <Inverter_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Inverter_Cost__c109</Inverter_Cost__c>
+         <Monitoring__c xmlns="urn:sobject.partner.soap.sforce.com">Monitoring__c110</Monitoring__c>
+         <BOS_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">BOS_Cost__c111</BOS_Cost__c>
+         <Racking_Cost_Internal__c xmlns="urn:sobject.partner.soap.sforce.com">Racking_Cost_Internal__c112</Racking_Cost_Internal__c>
+         <Misc_Cost_Internal_Future_Use__c xmlns="urn:sobject.partner.soap.sforce.com">Misc_Cost_Internal_Future_Use__c113</Misc_Cost_Internal_Future_Use__c>
+         <Racking_Cost_Installer__c xmlns="urn:sobject.partner.soap.sforce.com">Racking_Cost_Installer__c114</Racking_Cost_Installer__c>
+         <Misc_Items_Installer__c xmlns="urn:sobject.partner.soap.sforce.com">Misc_Items_Installer__c115</Misc_Items_Installer__c>
+         <Total_SPWR_Supplier_Material__c xmlns="urn:sobject.partner.soap.sforce.com">Total_SPWR_Supplier_Material__c116</Total_SPWR_Supplier_Material__c>
+         <Total_Dealer_Supplied_Material__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Dealer_Supplied_Material__c117</Total_Dealer_Supplied_Material__c>
+         <Total_Material_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Material_Cost__c118</Total_Material_Cost__c>
+         <Total_Service_Cost_Dealer_Fee__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Service_Cost_Dealer_Fee__c119</Total_Service_Cost_Dealer_Fee__c>
+         <Net_Dealer_Service_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Net_Dealer_Service_Cost__c120</Net_Dealer_Service_Cost__c>
+         <Tax_Identifier__c xmlns="urn:sobject.partner.soap.sforce.com">Tax_Identifier__c121</Tax_Identifier__c>
+         <Sales_Tax_Amount__c xmlns="urn:sobject.partner.soap.sforce.com">Sales_Tax_Amount__c122</Sales_Tax_Amount__c>
+         <Status__c xmlns="urn:sobject.partner.soap.sforce.com">Status__c123</Status__c>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull124</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull125</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull126</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id1271271271271271</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <records>
+         <type xmlns="urn:sobject.partner.soap.sforce.com">type128</type>
+         <Lease__c xmlns="urn:sobject.partner.soap.sforce.com">123</Lease__c>
+         <Sales_order_number__c xmlns="urn:sobject.partner.soap.sforce.com">Sales_order_number__c130</Sales_order_number__c>
+         <Sched_Delivery_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_PV__c131</Sched_Delivery_Date_PV__c>
+         <Sched_Delivery_Date_Inverters__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_Inverters__c132</Sched_Delivery_Date_Inverters__c>
+         <Sched_Delivery_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Sched_Delivery_Date_Mounting__c133</Sched_Delivery_Date_Mounting__c>
+         <Delivery_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_PV__c134</Delivery_Date_PV__c>
+         <Delivery_Date_Inverters__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_Inverters__c135</Delivery_Date_Inverters__c>
+         <Delivery_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Delivery_Date_Mounting__c136</Delivery_Date_Mounting__c>
+         <Purchase_Order_Number_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Origination__c137</Purchase_Order_Number_Origination__c>
+         <Purchase_Order_Number_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Installation__c138</Purchase_Order_Number_Installation__c>
+         <Purchase_Order_Number_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Purchase_Order_Number_Interconnect__c139</Purchase_Order_Number_Interconnect__c>
+         <PO_Creation_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Origination__c140</PO_Creation_Date_Origination__c>
+         <PO_Creation_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Installation__c141</PO_Creation_Date_Installation__c>
+         <PO_Creation_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Creation_Date_Interconnect__c142</PO_Creation_Date_Interconnect__c>
+         <PO_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Origination__c143</PO_Amount_Origination__c>
+         <PO_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Installation__c144</PO_Amount_Installation__c>
+         <PO_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Amount_Interconnect__c145</PO_Amount_Interconnect__c>
+         <PO_Receipt_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Origination__c146</PO_Receipt_Origination__c>
+         <PO_Receipt_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Installation__c147</PO_Receipt_Installation__c>
+         <PO_Receipt_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">PO_Receipt_Interconnect__c148</PO_Receipt_Interconnect__c>
+         <Supplier_Invoice_Number_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Origination__c149</Supplier_Invoice_Number_Origination__c>
+         <Supplier_Invoice_Number_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Installation__c150</Supplier_Invoice_Number_Installation__c>
+         <Supplier_Invoice_Number_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Number_Interconnect__c151</Supplier_Invoice_Number_Interconnect__c>
+         <Supplier_Invoice_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Origination__c152</Supplier_Invoice_Amount_Origination__c>
+         <Supplier_Invoice_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Installation__c153</Supplier_Invoice_Amount_Installation__c>
+         <Supplier_Invoice_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Supplier_Invoice_Amount_Interconnect__c154</Supplier_Invoice_Amount_Interconnect__c>
+         <Payment_Amount_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Origination__c155</Payment_Amount_Origination__c>
+         <Payment_Amount_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Installation__c156</Payment_Amount_Installation__c>
+         <Payment_Amount_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Amount_Interconnect__c157</Payment_Amount_Interconnect__c>
+         <Payment_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Origination__c158</Payment_Date_Origination__c>
+         <Payment_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Installation__c159</Payment_Date_Installation__c>
+         <Payment_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Payment_Date_Interconnect__c160</Payment_Date_Interconnect__c>
+         <Scheduled_Payment_Date_Origination__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Origination__c161</Scheduled_Payment_Date_Origination__c>
+         <Scheduled_Payment_Date_Installation__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Installation__c162</Scheduled_Payment_Date_Installation__c>
+         <Scheduled_Payment_Date_Interconnect__c xmlns="urn:sobject.partner.soap.sforce.com">Scheduled_Payment_Date_Interconnect__c163</Scheduled_Payment_Date_Interconnect__c>
+         <Customer_Request_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_PV__c164</Customer_Request_Date_PV__c>
+         <Customer_Request_Date_Inverter__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_Inverter__c165</Customer_Request_Date_Inverter__c>
+         <Customer_Request_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Request_Date_Mounting__c166</Customer_Request_Date_Mounting__c>
+         <Customer_Promise_Date_PV__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_PV__c167</Customer_Promise_Date_PV__c>
+         <Customer_Promise_Date_Inverter__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_Inverter__c168</Customer_Promise_Date_Inverter__c>
+         <Customer_Promise_Date_Mounting__c xmlns="urn:sobject.partner.soap.sforce.com">Customer_Promise_Date_Mounting__c169</Customer_Promise_Date_Mounting__c>
+         <Lease_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Lease_Cost__c170</Lease_Cost__c>
+         <PV_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">PV_Cost__c171</PV_Cost__c>
+         <Inverter_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Inverter_Cost__c172</Inverter_Cost__c>
+         <Monitoring__c xmlns="urn:sobject.partner.soap.sforce.com">Monitoring__c173</Monitoring__c>
+         <BOS_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">BOS_Cost__c174</BOS_Cost__c>
+         <Racking_Cost_Internal__c xmlns="urn:sobject.partner.soap.sforce.com">Racking_Cost_Internal__c175</Racking_Cost_Internal__c>
+         <Misc_Cost_Internal_Future_Use__c xmlns="urn:sobject.partner.soap.sforce.com">Misc_Cost_Internal_Future_Use__c176</Misc_Cost_Internal_Future_Use__c>
+         <Racking_Cost_Installer__c xmlns="urn:sobject.partner.soap.sforce.com">Racking_Cost_Installer__c177</Racking_Cost_Installer__c>
+         <Misc_Items_Installer__c xmlns="urn:sobject.partner.soap.sforce.com">Misc_Items_Installer__c178</Misc_Items_Installer__c>
+         <Total_SPWR_Supplier_Material__c xmlns="urn:sobject.partner.soap.sforce.com">Total_SPWR_Supplier_Material__c179</Total_SPWR_Supplier_Material__c>
+         <Total_Dealer_Supplied_Material__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Dealer_Supplied_Material__c180</Total_Dealer_Supplied_Material__c>
+         <Total_Material_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Material_Cost__c181</Total_Material_Cost__c>
+         <Total_Service_Cost_Dealer_Fee__c xmlns="urn:sobject.partner.soap.sforce.com">Total_Service_Cost_Dealer_Fee__c182</Total_Service_Cost_Dealer_Fee__c>
+         <Net_Dealer_Service_Cost__c xmlns="urn:sobject.partner.soap.sforce.com">Net_Dealer_Service_Cost__c183</Net_Dealer_Service_Cost__c>
+         <Tax_Identifier__c xmlns="urn:sobject.partner.soap.sforce.com">Tax_Identifier__c184</Tax_Identifier__c>
+         <Sales_Tax_Amount__c xmlns="urn:sobject.partner.soap.sforce.com">Sales_Tax_Amount__c185</Sales_Tax_Amount__c>
+         <Status__c xmlns="urn:sobject.partner.soap.sforce.com">Status__c186</Status__c>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull187</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull188</fieldsToNull>
+         <fieldsToNull xmlns="urn:sobject.partner.soap.sforce.com">fieldsToNull189</fieldsToNull>
+         <Id xmlns="urn:sobject.partner.soap.sforce.com">Id1901901901901901</Id>
+         <any_0 xmlns="##any">
+            <any_01>any content</any_01>
+         </any_0>
+         <any_1 xmlns="##any">
+            <any_11>any content</any_11>
+         </any_1>
+         <any_2 xmlns="##any">
+            <any_21>any content</any_21>
+         </any_2>
+      </records>
+      <size>-0</size>
+   </result>
+</queryResponse>

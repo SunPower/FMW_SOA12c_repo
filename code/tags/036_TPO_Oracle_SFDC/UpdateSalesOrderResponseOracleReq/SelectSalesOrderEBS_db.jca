@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectSalesOrderEBS" adapter="db" wsdlLocation="WSDLs/SelectSalesOrderEBS.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="SelectSalesOrderEBS_ptt" operation="SelectSalesOrderEBS">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="SELECT  SFDC_ID, ORDER_STATUS, INTERFACE_MESSAGE, ORDER_NUMBER, CREATION_DATE, LAST_UPDATE_DATE,SFDC_SYNCED FROM   ( SELECT ROWNUM RN,  A.SFDC_ID, A.ORDER_STATUS,  A.INTERFACE_MESSAGE, A.ORDER_NUMBER, A.CREATION_DATE,   A.LAST_UPDATE_DATE ,A.SFDC_SYNCED FROM XXSPWR.XXSPWR_DSR_SO_HEADER A   WHERE SFDC_ID IS NOT NULL AND   SFDC_SYNCED = 'N' and  DATA_SOURCE = #dataSource ) where rn > #minrow and rn &lt;= #maxrow"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns5:MergedRows xmlns:ns5="http://www.sunpowercorp.com/MergedItems">
+   <ns5:Item__c>
+      <ns5:Item_ID__c>'Item_ID__c4','Item_ID__c13','Item_ID__c22',</ns5:Item_ID__c>
+   </ns5:Item__c>
+</ns5:MergedRows>

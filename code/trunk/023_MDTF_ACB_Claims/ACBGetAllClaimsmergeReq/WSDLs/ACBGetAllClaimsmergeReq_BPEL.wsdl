@@ -1,0 +1,35 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ACBGetAllClaimsmergeReq_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllClaimsmergeReq/ACBGetAllClaimsmergeReq_BPEL"
+     xmlns:ns2="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllClaimsmergeReq/ACBGetAllClaimsmergeReq_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="ACBGetAllClaimsmergeReq_BPEL">
+        <plnk:role name="ACBGetAllClaimsmergeReq_BPELProvider">
+            <plnk:portType name="client:ACBGetAllClaimsmergeReq_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllClaimsmergeReq/ACBGetAllClaimsmergeReq_BPEL"
+                 schemaLocation="../Schemas/ACBGetAllClaimsmergeReq_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/initParams/xsd/v1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ACBGetAllClaimsmergeReq_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="ACBGetAllClaimsmergeReq_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ACBGetAllClaimsmergeReq_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

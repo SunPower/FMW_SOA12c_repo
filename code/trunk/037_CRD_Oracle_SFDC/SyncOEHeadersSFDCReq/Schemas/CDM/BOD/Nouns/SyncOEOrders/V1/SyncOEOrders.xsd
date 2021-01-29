@@ -1,0 +1,167 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.sunpowercorp.com/Noun/SyncOEOrders/V1"
+            targetNamespace="http://www.sunpowercorp.com/Noun/SyncOEOrders/V1"
+            xmlns:soeCommon="http://www.sunpowercorp.com/Common/SyncOEOrdersCommonTypes/V1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:import namespace="http://www.sunpowercorp.com/Common/SyncOEOrdersCommonTypes/V1"
+              schemaLocation="SyncOEOrdersCommonTypes.xsd"/>
+  <xsd:element name="SyncOEOrders" type="SyncOEOrdersType"/>
+  <xsd:complexType name="SyncOEOrdersType">
+    <xsd:sequence>
+      <xsd:element ref="SyncOEOrderHeaderDetails" maxOccurs="unbounded"/>
+      <xsd:element ref="SyncOEOrderLineDetails" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SyncOEOrderHeaderDetails"
+               type="SyncOEOrderHeaderDetailsType"/>
+  <xsd:complexType name="SyncOEOrderHeaderDetailsType">
+    <xsd:sequence>
+      <xsd:element ref="soeCommon:SFDC_ID"/>
+      <xsd:element ref="soeCommon:OPERATING_UNIT"/>
+      <xsd:element ref="soeCommon:HEADER_ID"/>
+       <xsd:element ref="soeCommon:ORDER_NUMBER"/>
+      <xsd:element ref="soeCommon:ORACLE_REQUEST_ID"/>
+      <xsd:element ref="soeCommon:SFDC_REQUEST_ID"/>
+      <xsd:element ref="soeCommon:SFDC_REQUEST_STATUS"/>
+      <xsd:element ref="soeCommon:EMAIL_ID"/>
+      <xsd:element ref="soeCommon:ORACLE_USER_ID"/>
+      <xsd:element ref="soeCommon:CUST_ACCT_NUMBER"/>
+      <xsd:element ref="soeCommon:CREDIT_LIMIT"/>
+      <xsd:element ref="soeCommon:TRANSACTION_DATE"/>
+      <xsd:element ref="soeCommon:DUE_DATE"/>
+      <xsd:element ref="soeCommon:AMOUNT"/>
+      <xsd:element ref="soeCommon:AMOUNT_OPEN"/>
+      <xsd:element ref="soeCommon:PAYMENT_SCHEDULE_ID"/>
+      <xsd:element ref="soeCommon:BALANCE"/>
+      <xsd:element ref="soeCommon:LOCATION_NUMBER"/>
+      <xsd:element ref="soeCommon:REFERENCE"/>
+      <xsd:element ref="soeCommon:TRASACTION_TYPE"/>
+      <xsd:element ref="soeCommon:QAD_CUSTOMER_NUMBER"/>
+      <xsd:element ref="soeCommon:CUSTOMER_NAME"/>
+      <xsd:element ref="soeCommon:REGION"/>
+      <xsd:element ref="soeCommon:INVOICE_REFERENCE"/>
+      <xsd:element ref="soeCommon:SITE_STATUS"/>
+      <xsd:element ref="soeCommon:ORG_ID"/>
+      <xsd:element ref="soeCommon:PO_SUBMIT_DATE"/>
+      <xsd:element ref="soeCommon:SHIP_FROM_ORG_ID"/>
+      <xsd:element ref="soeCommon:BILL_TO_SITE_ID"/>
+      <xsd:element ref="soeCommon:SHIP_TO_SITE_ID"/>
+      <xsd:element ref="soeCommon:ADDRESS_LINE_1"/>
+      <xsd:element ref="soeCommon:ADDRESS_LINE_2"/>
+      <xsd:element ref="soeCommon:ADDRESS_LINE_3"/>
+      <xsd:element ref="soeCommon:CITY"/>
+      <xsd:element ref="soeCommon:STATE"/>
+      <xsd:element ref="soeCommon:COUNTRY"/>
+      <xsd:element ref="soeCommon:POSTAL_CODE"/>
+      <xsd:element ref="soeCommon:CONTACT_PHONE1"/>
+      <xsd:element ref="soeCommon:CONTACT_PHONE2"/>
+      <xsd:element ref="soeCommon:CONTACT_PERSON_NAME"/>
+      <xsd:element ref="soeCommon:CONTACT_EMAIL"/>
+      <xsd:element ref="soeCommon:CONTACT_FAX"/>
+      <xsd:element ref="soeCommon:SHIP_TO_CONTACT_ID"/>
+      <xsd:element ref="soeCommon:SHIPPING_METHOD"/>
+      <xsd:element ref="soeCommon:SPECIAL_INSTRUCTIONS"/>
+      <xsd:element ref="soeCommon:SHIPPING_INSTRUCTIONS"/>
+      <xsd:element ref="soeCommon:PACKING_INSTRUCTIONS"/>
+      <xsd:element ref="soeCommon:REQUESTED_DELIVERY_DATE"/>
+      <xsd:element ref="soeCommon:ADJUSTED_AMOUNT"/>
+      <xsd:element ref="soeCommon:SMARTPACK_FLAG"/>
+      <xsd:element ref="soeCommon:ORDER_STATUS"/>
+      <xsd:element ref="soeCommon:LAST_UPDATE_DATE"/>
+      <xsd:element ref="soeCommon:LAST_UPDATED_BY"/>
+      <xsd:element ref="soeCommon:CREATION_DATE"/>
+      <xsd:element ref="soeCommon:CREATED_BY"/>
+      <xsd:element ref="soeCommon:ORDER_TYPE"/>
+      <xsd:element ref="soeCommon:LEASE_VALUE"/>
+      <xsd:element ref="soeCommon:VENDOR_NUMBER"/>
+      <xsd:element ref="soeCommon:VENDOR_SITE_CODE"/>
+      <xsd:element ref="soeCommon:PARTNER_NAME"/>
+      <xsd:element ref="soeCommon:LEASE_FLAG"/>
+      <xsd:element ref="soeCommon:LEASE_NUMBER"/>
+      <xsd:element ref="soeCommon:ORDER_RECORD_TYPE"/>
+      <xsd:element ref="soeCommon:FINANCIER"/>
+      <xsd:element ref="soeCommon:PARTNER_ACC_NUMBER"/>
+      <xsd:element ref="soeCommon:SOA_FLAG"/>
+      <xsd:element ref="soeCommon:SOA_ERRORMSG"/>
+      <xsd:element ref="soeCommon:PROCESS_FLAG"/>
+      <xsd:element ref="soeCommon:PROCESS_MESSAGE"/>
+         <xsd:element ref="soeCommon:OK_TO_SHIP_FLAG"/>
+         <xsd:element ref="soeCommon:CANCEL_FLAG"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SyncOEOrderLineDetails" type="SyncOEOrderLineDetailsType"/>
+  <xsd:complexType name="SyncOEOrderLineDetailsType">
+    <xsd:sequence>
+      <xsd:element ref="soeCommon:SFDC_ID"/>
+      <xsd:element ref="soeCommon:LINE_NUMBER"/>
+      <xsd:element ref="soeCommon:ORACLE_REQUEST_ID"/>
+      <xsd:element ref="soeCommon:SFDC_REQUEST_ID"/>
+      <xsd:element ref="soeCommon:SFDC_REQUEST_STATUS"/>
+      <xsd:element ref="soeCommon:HEADER_ID"/>
+      <xsd:element ref="soeCommon:LINE_ID"/>
+      <xsd:element ref="soeCommon:INVENTORY_ITEM_ID"/>
+      <xsd:element ref="soeCommon:ITEM_NUMBER"/>
+      <xsd:element ref="soeCommon:ITEM_DESCRIPTION"/>
+      <xsd:element ref="soeCommon:REQUESTED_QTY"/>
+      <xsd:element ref="soeCommon:UOM"/>
+      <xsd:element ref="soeCommon:UNIT_PRICE"/>
+      <xsd:element ref="soeCommon:ORDER_LINE_TYPE"/>
+      <xsd:element ref="soeCommon:INE_STATUS"/>
+      <xsd:element ref="soeCommon:PACKING_SLIP_NUMBER"/>
+      <xsd:element ref="soeCommon:PRODUCT_TYPE"/>
+      <xsd:element ref="soeCommon:WATTAGE_TYPE"/>
+      <xsd:element ref="soeCommon:ITEM_TYPE"/>
+      <xsd:element ref="soeCommon:LINE_REQUEST_DATE"/>
+      <xsd:element ref="soeCommon:LINE_SCH_SHIP_DATE"/>
+      <xsd:element ref="soeCommon:SCHEDULED_ARRIVAL_DATE"/>
+      <xsd:element ref="soeCommon:PROMISED_DATE"/>
+      <xsd:element ref="soeCommon:SHIP_FROM_ORG_ID"/>
+      <xsd:element ref="soeCommon:BILL_TO_SITE_ID"/>
+      <xsd:element ref="soeCommon:BILL_ADDRESS_LINE_1"/>
+      <xsd:element ref="soeCommon:BILL_ADDRESS_LINE_2"/>
+      <xsd:element ref="soeCommon:BILL_ADDRESS_LINE_3"/>
+      <xsd:element ref="soeCommon:BILL_CITY"/>
+      <xsd:element ref="soeCommon:BILL_STATE"/>
+      <xsd:element ref="soeCommon:BILL_COUNTRY"/>
+      <xsd:element ref="soeCommon:BILL_POSTAL_CODE"/>
+      <xsd:element ref="soeCommon:DELIVER_TO_ORG_ID"/>
+      <xsd:element ref="soeCommon:DELIVER_ADDRESS_LINE_1"/>
+      <xsd:element ref="soeCommon:DELIVER_ADDRESS_LINE_2"/>
+      <xsd:element ref="soeCommon:DELIVER_ADDRESS_LINE_3"/>
+      <xsd:element ref="soeCommon:DELIVER_CITY"/>
+      <xsd:element ref="soeCommon:DELIVER_STATE"/>
+      <xsd:element ref="soeCommon:DELIVER_COUNTRY"/>
+      <xsd:element ref="soeCommon:DELIVER_POSTAL_CODE"/>
+      <xsd:element ref="soeCommon:SHIP_TO_SITE_ID"/>
+      <xsd:element ref="soeCommon:ADDRESS_LINE_1"/>
+      <xsd:element ref="soeCommon:ADDRESS_LINE_2"/>
+      <xsd:element ref="soeCommon:ADDRESS_LINE_3"/>
+      <xsd:element ref="soeCommon:CITY"/>
+      <xsd:element ref="soeCommon:STATE"/>
+      <xsd:element ref="soeCommon:COUNTRY"/>
+      <xsd:element ref="soeCommon:POSTAL_CODE"/>
+      <xsd:element ref="soeCommon:CONTACT_PHONE1"/>
+      <xsd:element ref="soeCommon:CONTACT_PHONE2"/>
+      <xsd:element ref="soeCommon:CONTACT_PERSON_NAME"/>
+      <xsd:element ref="soeCommon:CONTACT_EMAIL"/>
+      <xsd:element ref="soeCommon:CONTACT_FAX"/>
+      <xsd:element ref="soeCommon:SHIP_TO_CONTACT_ID"/>
+      <xsd:element ref="soeCommon:SHIPPING_METHOD"/>
+      <xsd:element ref="soeCommon:SPECIAL_INSTRUCTIONS"/>
+      <xsd:element ref="soeCommon:SHIPPING_INSTRUCTIONS"/>
+      <xsd:element ref="soeCommon:PACKING_INSTRUCTIONS"/>
+      <xsd:element ref="soeCommon:TAX_FLAG"/>
+      <xsd:element ref="soeCommon:REQUESTED_DELIVERY_DATE"/>
+      <xsd:element ref="soeCommon:DATE_DELIVERED"/>
+      <xsd:element ref="soeCommon:LAST_UPDATE_DATE"/>
+      <xsd:element ref="soeCommon:LAST_UPDATED_BY"/>
+      <xsd:element ref="soeCommon:CREATION_DATE"/>
+      <xsd:element ref="soeCommon:CREATED_BY"/>
+      <xsd:element ref="soeCommon:SOA_FLAG"/>
+      <xsd:element ref="soeCommon:SOA_ERRORMSG"/>
+      <xsd:element ref="soeCommon:PROCESS_FLAG"/>
+      <xsd:element ref="soeCommon:PROCESS_MESSAGE"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

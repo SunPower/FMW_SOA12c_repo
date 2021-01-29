@@ -1,0 +1,160 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Oct 26 16:45:44 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="FusionLastRunUtilityService"
+               targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/FusionLastRunUtilityService/FusionLastRunUtilityService"
+               xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+               xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/FusionLastRunUtilityService/FusionLastRunUtilityService"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/FusionLastRunUtilityService/executeFusionOrchestrationsProc"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns2="http://www.sunpowercorp.com/SOAUtilityServices/FusionLastRunUtilityService/xsd/v1"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/sp/executeFusionOrchestrationsProc"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[FusionLastRunUtilityService.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="FusionLastRunUtilityService_client" partnerLinkType="client:FusionLastRunUtilityService" myRole="FusionLastRunUtilityServiceProvider"/>
+    <partnerLink name="executeFusionOrchestrationsProc"
+                 partnerLinkType="ns1:executeFusionOrchestrationsProc_plt"
+                 partnerRole="executeFusionOrchestrationsProc_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:FusionLastRunUtilityServiceRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:FusionLastRunUtilityServiceResponseMessage"/>
+    <variable name="InvExecuteFusionOrchestrationsProc_IV"
+              messageType="ns1:args_in_msg"/>
+    <variable name="InvExecuteFusionOrchestrationsProc_OV"
+              messageType="ns1:args_out_msg"/>
+    <variable name="title" type="xsd:string"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in FusionLastRunUtilityService.wsdl) -->
+    <receive name="receiveInput" partnerLink="FusionLastRunUtilityService_client" portType="client:FusionLastRunUtilityService" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="SetTitle">
+      <copy>
+        <from expression="bpws:getVariableData('inputVariable','payload','/ns2:InputParameters/ns2:IN_ORCHESTRATION_NAME')"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <assign name="AsgnExecuteFusionOrchestrationsProc">
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/ns2:InputParameters/ns2:IN_ORCHESTRATION_NAME"/>
+        <to variable="InvExecuteFusionOrchestrationsProc_IV"
+            part="InputParameters"
+            query="/ns3:InputParameters/ns3:IN_ORCHESTRATION_NAME"/>
+      </copy>
+      <copy>
+        <from expression="string(ora:getNodes('inputVariable','payload','/ns2:InputParameters/ns2:IN_LAST_RUN/text()'))"/>
+        <to variable="InvExecuteFusionOrchestrationsProc_IV"
+            part="InputParameters"
+            query="/ns3:InputParameters/ns3:IN_LAST_RUN"/>
+      </copy>
+      <copy>
+        <from expression="string(ora:getNodes('inputVariable','payload','/ns2:InputParameters/ns2:IN_LAST_SUCCESSFUL_RUN/text()'))"/>
+        <to variable="InvExecuteFusionOrchestrationsProc_IV"
+            part="InputParameters"
+            query="/ns3:InputParameters/ns3:IN_LAST_SUCCESSFUL_RUN"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/ns2:InputParameters/ns2:IN_MODE"/>
+        <to variable="InvExecuteFusionOrchestrationsProc_IV"
+            part="InputParameters" query="/ns3:InputParameters/ns3:IN_MODE"/>
+      </copy>
+    </assign>
+    <invoke name="InvExecuteFusionOrchestrationsProc"
+            inputVariable="InvExecuteFusionOrchestrationsProc_IV"
+            outputVariable="InvExecuteFusionOrchestrationsProc_OV"
+            partnerLink="executeFusionOrchestrationsProc"
+            portType="ns1:executeFusionOrchestrationsProc_ptt"
+            operation="executeFusionOrchestrationsProc"
+            bpelx:invokeAsDetail="no"/>
+    <assign name="AsgnExecuteFusionOrchestrationsProc">
+      <copy>
+        <from variable="InvExecuteFusionOrchestrationsProc_OV"
+              part="OutputParameters"
+              query="/ns3:OutputParameters/ns3:OUT_ORCHESTRATION_NAME"/>
+        <to variable="outputVariable" part="payload"
+            query="/ns2:OutputParameters/ns2:OUT_ORCHESTRATION_NAME"/>
+      </copy>
+      <copy>
+        <from variable="InvExecuteFusionOrchestrationsProc_OV"
+              part="OutputParameters"
+              query="/ns3:OutputParameters/ns3:OUT_LAST_RUN"/>
+        <to variable="outputVariable" part="payload"
+            query="/ns2:OutputParameters/ns2:OUT_LAST_RUN"/>
+      </copy>
+      <copy>
+        <from variable="InvExecuteFusionOrchestrationsProc_OV"
+              part="OutputParameters"
+              query="/ns3:OutputParameters/ns3:OUT_LAST_SUCCESSFUL_RUN"/>
+        <to variable="outputVariable" part="payload"
+            query="/ns2:OutputParameters/ns2:OUT_LAST_SUCCESSFUL_RUN"/>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="FusionLastRunUtilityService_client" portType="client:FusionLastRunUtilityService" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

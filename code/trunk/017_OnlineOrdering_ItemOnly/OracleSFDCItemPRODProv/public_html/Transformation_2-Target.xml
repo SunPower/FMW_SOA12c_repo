@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns10:OracleIndexRows xmlns:ns10="http://www.sunpowercorp.com/OracleIndexItems">
+   <ns10:Item__c>
+      <ns10:Item_ID__c>'Item_ID__c122','Item_ID__c131','Item_ID__c140',</ns10:Item_ID__c>
+   </ns10:Item__c>
+</ns10:OracleIndexRows>

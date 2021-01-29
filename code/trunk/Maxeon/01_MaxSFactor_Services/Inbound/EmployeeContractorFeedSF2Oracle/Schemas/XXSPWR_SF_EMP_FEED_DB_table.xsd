@@ -1,0 +1,131 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/XXSPWR_SF_EMP_FEED_DB" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="XxspwrMaxnSfEmpFeedCollection" type="XxspwrMaxnSfEmpFeedCollection"/>
+   <xs:complexType name="XxspwrMaxnSfEmpFeedCollection">
+      <xs:sequence>
+         <xs:element name="XxspwrMaxnSfEmpFeed" type="XxspwrMaxnSfEmpFeed" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="XxspwrMaxnSfEmpFeed">
+      <xs:sequence>
+         <xs:element name="sfEmployeeNumber" type="string30" nillable="true"/>
+         <xs:element name="oracleEmployeeNumber" type="string30" nillable="true"/>
+         <xs:element name="oraclePersonId" type="xs:decimal" nillable="true"/>
+         <xs:element name="personEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastName" type="string150" minOccurs="0" nillable="true"/>
+         <xs:element name="firstName" type="string150" minOccurs="0" nillable="true"/>
+         <xs:element name="middleName" type="string60" minOccurs="0" nillable="true"/>
+         <xs:element name="preferredName" type="string80" minOccurs="0" nillable="true"/>
+         <xs:element name="gender" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="nationality" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="dateOfBirth" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="hireDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="termDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="termReasonCode" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="emailAddress" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="addressEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="country" type="string60" minOccurs="0" nillable="true"/>
+         <xs:element name="addressLine1" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="addressLine2" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="addressLine3" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="townOrCity" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="stateOrProvince" type="string240" minOccurs="0" nillable="true"/>
+         <xs:element name="postalCode" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="jobEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="employeeStatus" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="employeeClass" type="string80" minOccurs="0" nillable="true"/>
+         <xs:element name="workLocationCode" type="string60" minOccurs="0" nillable="true"/>
+         <xs:element name="jobCode" type="string700" minOccurs="0" nillable="true"/>
+         <xs:element name="businessTitle" type="string150" minOccurs="0" nillable="true"/>
+         <xs:element name="managerId" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="oraclePayrollId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="oracleLeId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="oracleLedgerId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="oraclePayBasisId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="company" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="department" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="future" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="channel" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="account" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="line" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="project" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="intercompany" type="string25" minOccurs="0" nillable="true"/>
+         <xs:element name="salaryEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="salaryAmount" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="salaryCurrencyCode" type="string30" minOccurs="0" nillable="true"/>
+         <xs:element name="rateEffectiveDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="rateBasis" type="string150" minOccurs="0" nillable="true"/>
+         <xs:element name="payRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="billRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="overtimeRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="doubleTimeRate" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="currency" type="string150" minOccurs="0" nillable="true"/>
+         <xs:element name="vendor" type="string150" minOccurs="0" nillable="true"/>
+         <xs:element name="projectedAssEndDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="fileName" type="string512" minOccurs="0" nillable="true"/>
+         <xs:element name="requestId" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="status" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="errorMessage" type="string4000" minOccurs="0" nillable="true"/>
+         <xs:element name="statusBeforeProcess" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="statusAfterProcess" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="empNumBeforeProcess" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="empNumAfterProcess" type="string100" minOccurs="0" nillable="true"/>
+         <xs:element name="hireDateBeforeProcess" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="hireDateAfterProcess" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="creationDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="createdBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdateDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="lastUpdatedBy" type="xs:decimal" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string30">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="30"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string150">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="150"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string60">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="60"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string80">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="80"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string240">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="240"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string700">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="700"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string25">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="25"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string512">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="512"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string100">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="100"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="string4000">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="4000"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

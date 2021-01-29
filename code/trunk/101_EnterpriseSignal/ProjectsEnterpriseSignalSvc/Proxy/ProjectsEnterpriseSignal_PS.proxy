@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ser:proxyServiceEntry xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:oper="http://xmlns.oracle.com/servicebus/proxy/operations" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ser:coreEntry isAutoPublish="false">
+        <ser:description/>
+        <ser:security xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:env="http://www.bea.com/wli/config/env" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config">
+            <con4:inboundWss processWssHeader="true" xmlns:con4="http://www.bea.com/wli/sb/services/security/config"/>
+            <con4:access-control-policies xmlns:con4="http://www.bea.com/wli/sb/services/security/config">
+                <con4:message-level-policies>
+                    <con5:default-policy xsi:type="con4:ProviderPolicyContainerType" xmlns:con4="http://www.bea.com/wli/sb/security/accesscontrol/config" xmlns:con5="http://www.bea.com/wli/sb/services/security/config">
+                        <con4:policy provider-id="XACMLAuthorizer">
+                            <con4:policy-expression>Usr(spwrexternal)</con4:policy-expression>
+                        </con4:policy>
+                    </con5:default-policy>
+                    <con4:operation-policy operation-name="getData">
+                        <con4:policy-container xsi:type="con5:ProviderPolicyContainerType" xmlns:con5="http://www.bea.com/wli/sb/security/accesscontrol/config">
+                            <con5:policy provider-id="XACMLAuthorizer">
+                                <con5:policy-expression>Usr(spwrexternal)</con5:policy-expression>
+                            </con5:policy>
+                        </con4:policy-container>
+                    </con4:operation-policy>
+                </con4:message-level-policies>
+            </con4:access-control-policies>
+        </ser:security>
+        <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:env="http://www.bea.com/wli/config/env" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config">
+            <con:wsdl ref="ProjectsEnterpriseSignalSvc/wsdl/ProjectsEnterpriseSignal"/>
+            <con:port>
+                <con:name>GenericWSHttpsSoap11Endpoint</con:name>
+                <con:namespace>http://webservice.es.com</con:namespace>
+            </con:port>
+            <con:selector type="SOAP body"/>
+            <con:WSI-compliant>false</con:WSI-compliant>
+        </ser:binding>
+        <oper:operations enabled="true">
+            <oper:monitoring enabled="false" aggregationInterval="10"/>
+            <oper:sla-alerting enabled="true" level="normal"/>
+        </oper:operations>
+        <ser:ws-policy xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:env="http://www.bea.com/wli/config/env" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config">
+            <ser:binding-mode>owsm-policy-bindings</ser:binding-mode>
+            <ser:owsm-policy-metadata>
+                <orawsp:wsm-assembly xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy">
+                    <sca11:policySet name="policySet" appliesTo="PROXY-SERVICE()" attachTo="PROXY-SERVICE('.')" orawsp:highId="1" xml:id="PROXY-SERVICE__PROXY-SERVICE_____" xmlns:sca11="http://docs.oasis-open.org/ns/opencsa/sca/200912">
+                        <wsp:PolicyReference DigestAlgorithm="http://www.w3.org/ns/ws-policy/Sha1Exc" URI="oracle/wss_username_token_service_policy" orawsp:status="enabled" orawsp:id="1" xmlns:wsp="http://www.w3.org/ns/ws-policy"/>
+                    </sca11:policySet>
+                </orawsp:wsm-assembly>
+            </ser:owsm-policy-metadata>
+        </ser:ws-policy>
+        <ser:invoke ref="ProjectsEnterpriseSignalSvc/Proxy/ProjectsEnterpriseSignal_PS" xsi:type="con:PipelineRef" xmlns:con="http://www.bea.com/wli/sb/pipeline/config"/>
+    </ser:coreEntry>
+    <ser:endpointConfig xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:env="http://www.bea.com/wli/config/env" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config">
+        <tran:provider-id>http</tran:provider-id>
+        <tran:inbound>true</tran:inbound>
+        <tran:URI>
+            <env:value>osb/ProjectsEnterpriseSignalSvc/Proxy/ProjectsEnterpriseSignal_PS</env:value>
+        </tran:URI>
+        <tran:inbound-properties/>
+        <tran:all-headers>true</tran:all-headers>
+        <tran:provider-specific xsi:type="http:HttpEndPointConfiguration">
+            <http:inbound-properties/>
+            <http:compression>
+                <http:compression-support>false</http:compression-support>
+            </http:compression>
+        </tran:provider-specific>
+    </ser:endpointConfig>
+</ser:proxyServiceEntry>

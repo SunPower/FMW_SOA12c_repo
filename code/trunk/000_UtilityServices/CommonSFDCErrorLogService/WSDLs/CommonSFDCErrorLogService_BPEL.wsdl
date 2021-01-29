@@ -1,0 +1,37 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="CommonSFDCErrorLogService_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+     xmlns:ns2="urn:partner.soap.sforce.com"
+     xmlns:ns1="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="CommonSFDCErrorLogService_BPEL">
+        <plnk:role name="CommonSFDCErrorLogService_BPELProvider">
+            <plnk:portType name="client:CommonSFDCErrorLogService_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL"
+                 schemaLocation="../Schemas/CommonSFDCErrorLogService_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CommonSFDCErrorLogService_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:CommonSFDCErrorLog"/>
+    </wsdl:message>
+    <wsdl:portType name="CommonSFDCErrorLogService_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:CommonSFDCErrorLogService_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,22 @@
+<?binding.jca insertEDI861Files_db.jca?>
+<wsdl:definitions name="insertEDI861Files" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI214n861FilesToOracle/insertEDI861Files" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EDICom/pollEDI214n861FilesToOracle/insertEDI861Files" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/insertEDI861Files">
+    <plt:partnerLinkType name="insertEDI861Files_plt">
+        <plt:role name="insertEDI861Files_role">
+            <plt:portType name="tns:insertEDI861Files_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/insertEDI861Files"
+                    schemaLocation="Schemas/insertEDI861Files_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="XxspwrEdi861InboundStgCollection_msg">
+        <wsdl:part name="XxspwrEdi861InboundStgCollection" element="top:XxspwrEdi861InboundStgCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="insertEDI861Files_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:XxspwrEdi861InboundStgCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

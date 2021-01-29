@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='NotificationService1']</loc>
+      <line>113</line>
+      <col>17</col>
+      <file>C:\JDeveloper\mywork\POCApp\OracleSFDCItemPRODProv\composite.xml</file>
+      <name>C:\JDeveloper\mywork\POCApp\OracleSFDCItemPRODProv\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="EmailDistributionList" xmlns="http://xmlns.oracle.com/dvm">
+   <description/>
+   <columns>
+      <column name="InterfaceNumber"/>
+      <column name="emailDistrubtionList"/>
+   </columns>
+   <rows>
+      <row markdefault="false">
+         <cell>ARN101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>WTY101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>PDF101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ORD101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ORD102</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>MDT101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>MDT102</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>MDT103</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>MDTF104</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>LTO108</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>OSNI100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>ADV100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ACC103</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>LTO109</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ORD300</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>VTX101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ORD203</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ACC102</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>SCH100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>ONF100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>MDTF101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>EDI101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>EDI102</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>CRD100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>CRD200</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row markdefault="false">
+         <cell>CRD210</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>CSO100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>USOR100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>USSP101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>LMS102</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>LMSORG100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>LMSJOB100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>USR_CERT</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>CRF100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ORF100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>DFHN100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>UTL100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>EDI201</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>EDI997</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>EDI846</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>OSGINV100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>OSGREV100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>POSG100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>RECP100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>SupPyt100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>SupPytRev1</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>SFJOB100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>CCFO2SF100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>CPFSF100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ECFO2SF100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>ECFSF2O100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>PolFeed101</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>PEmpFeed10</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>FPNAO2SF100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>TrewIAG100</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+      <row>
+         <cell>PEmpFeed20</cell>
+         <cell>SOASupport@sunpowercorp.com</cell>
+      </row>
+   </rows>
+</dvm>

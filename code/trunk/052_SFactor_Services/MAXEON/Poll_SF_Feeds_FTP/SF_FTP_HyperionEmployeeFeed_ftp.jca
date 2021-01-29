@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SF_FTP_HyperionEmployeeFeed" adapter="ftp" wsdlLocation="SF_FTP_HyperionEmployeeFeed.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/ftp/SuccessFactor" UIincludeWildcard="*.csv"/>
+  <endpoint-activation portType="Get_ptt" operation="Get">
+    <activation-spec className="oracle.tip.adapter.ftp.inbound.FTPActivationSpec">
+      <property name="AsAttachment" value="true"/>
+      <property name="Recursive" value="false"/>
+      <property name="FileModificationTime" value="FileSystem"/>
+      <property name="LogicalDirectory" value="HyperionReadLoc"/>
+      <property name="PollingFrequency" value="60"/>
+      <property name="UseHeaders" value="false"/>
+      <property name="IncludeFiles" value=".*\.csv"/>
+      <property name="ModificationTimeFormat" value="4,18,yyyyMMddHHmmSS"/>
+      <property name="UseRemoteArchive" value="true"/>
+      <property name="LogicalArchiveDirectory" value="HyperionArchLoc"/>
+      <property name="DeleteFile" value="true"/>
+      <property name="MinimumAge" value="60"/>
+      <property name="FileType" value="ascii"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

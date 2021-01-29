@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="TrewIAG_FTP_Get" adapter="ftp" wsdlLocation="WSDLs/TrewIAG_FTP_Get.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/ftp/TrewIAG"/>
+  <endpoint-interaction portType="SynchRead_ptt" operation="SynchRead">
+    <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPReadInteractionSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="LogicalArchiveDirectory" value="TrewIAG_ArchLoc"/>
+      <property name="FileName" value="dynamicfilename"/>
+      <property name="LogicalDirectory" value="TrewIAG_ReadLoc"/>
+      <property name="FileType" value="ascii"/>
+      <property name="UseRemoteArchive" value="true"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

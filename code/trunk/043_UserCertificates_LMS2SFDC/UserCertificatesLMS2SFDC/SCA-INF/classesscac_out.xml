@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/faultHandlers/catchAll/sequence/assign/copy[14]</loc>
+      <line>158</line>
+      <col/>
+      <file>UserCertificatesLMS2SFDC.bpel</file>
+      <name>UserCertificatesLMS2SFDC.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL}UniqueIdentType"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/assign[3]/copy[2]</loc>
+      <line>210</line>
+      <col/>
+      <file>UserCertificatesLMS2SFDC.bpel</file>
+      <name>UserCertificatesLMS2SFDC.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://schemas.xmlsoap.org/ws/2003/03/addressing}AttributedURI"</msg>
+   </Fault>
+</Faults>

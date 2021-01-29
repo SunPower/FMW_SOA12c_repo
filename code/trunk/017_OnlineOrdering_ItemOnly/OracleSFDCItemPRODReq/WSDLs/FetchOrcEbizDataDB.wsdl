@@ -1,0 +1,39 @@
+<wsdl:definitions
+     name="FetchOrcEbizDataDB"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODReq/FetchOrcEbizDataDB"
+     xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/FetchOrcEbizDataDB"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/OnlineOrderingItemOnlyOracleToSFDC/OracleSFDCItemPRODReq/FetchOrcEbizDataDB"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+  <plt:partnerLinkType name="FetchOrcEbizDataDB_plt" >
+    <plt:role name="FetchOrcEbizDataDB_role" >
+      <plt:portType name="tns:FetchOrcEbizDataDB_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+  <plt:partnerLinkType name="FetchOrcEbizDataDB_plt" >
+    <plt:role name="FetchOrcEbizDataDB_role" >
+      <plt:portType name="tns:FetchOrcEbizDataDB_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchOrcEbizDataDB" schemaLocation="../Schemas/FetchOrcEbizDataDB.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/FetchOrcEbizDataDB" schemaLocation="../Schemas/FetchOrcEbizDataDB.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="FetchOrcEbizDataDBInput_msg">
+        <wsdl:part name="FetchOrcEbizDataDBInput_msg" element="db:FetchOrcEbizDataDBInput"/>
+    </wsdl:message>
+    <wsdl:message name="FetchOrcEbizDataDBOutputCollection_msg">
+        <wsdl:part name="FetchOrcEbizDataDBOutputCollection" element="db:FetchOrcEbizDataDBOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="FetchOrcEbizDataDB_ptt">
+        <wsdl:operation name="FetchOrcEbizDataDB">
+            <wsdl:input message="tns:FetchOrcEbizDataDBInput_msg"/>
+            <wsdl:output message="tns:FetchOrcEbizDataDBOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

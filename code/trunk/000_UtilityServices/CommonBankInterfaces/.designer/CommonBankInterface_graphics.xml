@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<graphics>
+   <diagram optimizeLayout="false" popupEditor="true" fixedWidthSwimlanes="true" roundedPartnerlinks="true" centerZoom="true" validateOnLoad="true" confirmBeforeDelete="true" selectedPartnerLinkColor="0,0,153" swimlaneBackground="240,240,240" swimlaneDividerBackground="218,218,218" graphBackground="255,255,255" selectedBorderBackground="49,105,198" connectedPartnerLinkColor="204,204,255" connectablePartnerLinkColor="0,0,255" unconnectedPartnerLinkColor="192,192,192"/>
+   <annotationfile/>
+   <iconize/>
+   <partnerlink_locations>
+      <partnerlink name="pollBankFiles" x="15" y="90" side="left"/>
+      <partnerlink name="WriteFTPFile" x="1679" y="512" side="right"/>
+      <partnerlink name="CommonLoggingService" x="1679" y="1235" side="right"/>
+      <partnerlink name="CommonErrorHandler" x="1679" y="379" side="right"/>
+   </partnerlink_locations>
+   <graph_layout viewport="0,0,816,393" show_swimlanes="true">
+      <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll" type="catchall"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/faultHandlers/catchAll/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/faultHandlers/catch[1]" type="catch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/faultHandlers/catch[1]/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/faultHandlers/catch[1]/sequence/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/faultHandlers/catch[1]/sequence/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/faultHandlers/catch[2]" type="catch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/faultHandlers/catch[2]/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/faultHandlers/catch[2]/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence/switch[1]" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence/switch[1]/otherwise/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence/switch[1]/otherwise/sequence/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence/switch[1]/otherwise/sequence/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence/switch[2]" type="switch"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence/switch[2]/case/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/sequence/switch[2]/case/scope/sequence" type="sequence"/>
+   </graph_layout>
+   <bookmarks/>
+</graphics>

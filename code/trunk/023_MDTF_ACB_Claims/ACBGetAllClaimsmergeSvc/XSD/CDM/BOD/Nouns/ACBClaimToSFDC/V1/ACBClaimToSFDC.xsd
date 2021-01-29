@@ -1,0 +1,30 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Noun/ACBClaimToSFDC/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Noun/ACBClaimToSFDC/V1" xmlns:Os="http://www.sunpowercorp.com/Common/ACBClaimToSFDCCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/ACBClaimToSFDCCommonTypes/V1" schemaLocation="ACBClaimToSFDCCommonTypes.xsd"/>
+    <xsd:element name="ACBClaimToSFDC" type="ACBClaimToSFDCType"/>
+    <xsd:complexType name="ACBClaimToSFDCType">
+        <xsd:sequence>
+            <xsd:element ref="ACBClaimToSFDCDetails" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="ACBClaimToSFDCDetails" type="ACBClaimToSFDCDetailsType"/>
+    <xsd:complexType name="ACBClaimToSFDCDetailsType">
+        <xsd:sequence>
+            <xsd:element ref="Os:DlrNum"/>
+            <xsd:element ref="Os:DlrName"/>
+            <xsd:element ref="Os:Promotion" minOccurs="0"/>
+            <xsd:element ref="Os:PromotionDescription" minOccurs="0"/>
+            <xsd:element ref="Os:ProcessDate" minOccurs="0"/>
+            <xsd:element ref="Os:PreApprovalNumber" minOccurs="0"/>
+            <xsd:element ref="Os:ClaimNumber" minOccurs="0"/>
+            <xsd:element ref="Os:ActivityDescription" minOccurs="0"/>
+            <xsd:element ref="Os:ActivityFromDate" minOccurs="0"/>
+            <xsd:element ref="Os:ActivityToDate" minOccurs="0"/>
+            <xsd:element ref="Os:ClaimedAmt" minOccurs="0"/>
+            <xsd:element ref="Os:ApprovedAmt" minOccurs="0"/>
+            <xsd:element ref="Os:PaidAmt" minOccurs="0"/>
+            <xsd:element ref="Os:CreditMemo" minOccurs="0"/>
+            <xsd:element ref="Os:Comment" minOccurs="0"/>
+             <xsd:element ref="Os:RecordNumber" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

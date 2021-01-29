@@ -1,0 +1,39 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SFDCLogin_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="urn:partner.soap.sforce.com"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SFDCLogin_BPEL">
+        <plnk:role name="SFDCLogin_BPELProvider">
+            <plnk:portType name="client:SFDCLogin_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+   
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/SunPowerApp/SFDCLogin/SFDCLogin_BPEL"
+                 schemaLocation="../Schemas/SFDCLogin_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SFDCLogin_BPELRequestMessage">
+        <wsdl:part name="payload" element="client:SFDCLoginReq"/>
+    </wsdl:message>
+    <wsdl:message name="SFDCLogin_BPELResponseMessage">
+        <wsdl:part name="payload" element="client:SFDCLoginResp"/>
+    </wsdl:message>
+    <wsdl:portType name="SFDCLogin_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SFDCLogin_BPELRequestMessage"/>
+            <wsdl:output message="client:SFDCLogin_BPELResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,32 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="PollPDFFileFTP"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/ftp/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/PollPDFFileFTP"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/ftp/PDFFTPSalesforceT0042/SOAPDFMETASyncReq/PollPDFFileFTP"
+     xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+    <plt:partnerLinkType name="Get_plt">
+        <plt:role name="Get_role">
+            <plt:portType name="tns:Get_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns="http://www.w3.org/2001/XMLSchema">
+            <element name="opaqueElement" type="base64Binary"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="Get_msg">
+        <wsdl:part name="opaque" element="opaque:opaqueElement"/>
+    </wsdl:message>
+    <wsdl:portType name="Get_ptt">
+        <wsdl:operation name="Get">
+            <wsdl:input message="tns:Get_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

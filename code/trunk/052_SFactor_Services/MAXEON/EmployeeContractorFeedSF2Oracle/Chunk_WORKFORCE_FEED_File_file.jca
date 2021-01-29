@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="Chunk_WORKFORCE_FEED_File" adapter="file" wsdlLocation="WSDLs/Chunk_WORKFORCE_FEED_File.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FileAdapter"/>
+  <endpoint-interaction portType="SynchRead_ptt" operation="SynchRead">
+    <interaction-spec className="oracle.tip.adapter.file.outbound.ChunkedInteractionSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="LogicalArchiveDirectory" value="ChunkArchLoc"/>
+      <property name="FileName" value="filename.txt"/>
+      <property name="LogicalDirectory" value="ChunkReadLoc"/>
+      <property name="ChunkSize" value="100"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

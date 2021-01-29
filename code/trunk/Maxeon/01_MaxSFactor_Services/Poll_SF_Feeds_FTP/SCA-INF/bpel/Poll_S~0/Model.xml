@@ -1,0 +1,198 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Sep 01 18:02:11 IST 2015
+  Author:  RD42768
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="Poll_SF_Feeds_FTP_BPEL" targetNamespace="http://xmlns.oracle.com/SFEC/Poll_SF_Feeds_FTP/Poll_SF_Feeds_FTP_BPEL" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/SFEC/Poll_SF_Feeds_FTP/Poll_SF_Feeds_FTP_BPEL" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ftp/SFEC/Poll_SF_Feeds_FTP/SF_FTP_EmployeeFeed" xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/Poll_SF_Feeds_FTP/Write_EmployeeFeed_Local" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns4="http://xmlns.oracle.com/testingapplication/CommonSFDCErrorLogService/CallCommSFDCErrMediator" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ns5="http://www.sunpowercorp.com/SOAUtilityServices/CommonSFDCErrorLogService/CommonSFDCErrorLogService_BPEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns6="http://gnupgapi/" xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/ftp/SFEC/Poll_SF_Feeds_FTP/SF_FTP_OracleEmployeeFeed" xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/file/SFEC/Poll_SF_Feeds_FTP/SF_FTP_HyperionEmployeeFeed" xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/ftp/SFEC/Poll_SF_Feeds_FTP/SF_FTP_HyperionFeed" xmlns:ns10="http://xmlns.oracle.com/pcbpel/adapter/ftp/SFEC/Poll_SF_Feeds_FTP/SF_FTP_HyperionEmployeeFeed" xmlns:ns11="http://xmlns.oracle.com/pcbpel/adapter/ftp/SFEC/Poll_SF_Feeds_FTP/SF_FTP_TrewIAGFeed" xmlns:ns12="http://xmlns.oracle.com/pcbpel/adapter/ftp/SOA_UAT/Poll_SF_Feeds_FTP/SF_FTP_MDECSFeed" xmlns:ns13="http://xmlns.oracle.com/pcbpel/adapter/ftp/attachment/" xmlns:ess="http://xmlns.oracle.com/scheduler" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        SF_FTP_EmployeeFeed.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <partnerLink name="SF_FTP_EmployeeFeed" partnerLinkType="ns1:Get_plt" myRole="Get_role"/>
+    <partnerLink name="Write_EmployeeFeed_Local" partnerLinkType="ns2:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="CommonSFDCErrorLogService" partnerLinkType="ns4:CommonSFDCErrorLogService" partnerRole="execute_ptt"/>
+    <partnerLink name="SF_FTP_OracleEmployeeFeed" partnerLinkType="ns7:Get_plt" myRole="Get_role"/>
+    <partnerLink name="SF_FTP_HyperionEmployeeFeed" partnerLinkType="ns10:Get_plt" myRole="Get_role"/>
+    <partnerLink name="SF_FTP_TrewIAGFeed" partnerLinkType="ns11:Get_plt" myRole="Get_role"/>
+    <partnerLink name="SF_FTP_MDECSFeed" partnerLinkType="ns12:Get_plt" myRole="Get_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Inv_Write_EmployeeFeed_Local" messageType="ns2:Write_msg"/>
+    <variable name="Rcv_SF_FTP_EmployeeFeed" messageType="ns1:Get_msg"/>
+    <variable name="FileName" type="xsd:string"/>
+    <variable name="InvCommonSFDCErrorLogService_IV" messageType="ns4:requestMessage"/>
+    <variable name="WriteLoc" type="xsd:string"/>
+    <variable name="OnMessage_Get_OracleEmpFeed" messageType="ns7:Get_msg"/>
+    <variable name="InstanceTitle" type="xsd:string"/>
+    <variable name="OnMessage_Get_HyperionEmployeeFeed" messageType="ns10:Get_msg"/>
+    <variable name="OnMessage_Get_TrewIAGInput" messageType="ns11:Get_msg"/>
+    <variable name="SF_MDECS_Get_InputVariable" messageType="ns12:Get_msg"/>
+  </variables>
+  <faultHandlers id="BpFhs0">
+    <catchAll id="BpCAl0">
+      <sequence name="Sequence1" id="BpSeq0">
+        <assign name="asgCommonSFDCErrorLogService" id="BpAss0">          
+          <copy>
+            <from expression="ora:getComponentInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getCompositeInstanceId()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InstanceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceNum&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceNumber"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;InterfaceName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:InterfaceName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;ProcessName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:ProcessName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;Severity&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Severity"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultCode&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultCode"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultName()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultDescription"/>
+          </copy>
+          <copy>
+            <from expression="ora:getFaultAsString()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultMessage"/>
+          </copy>
+          <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:Fault/ns5:FaultTime"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;FaultSystemName&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:FaultSystemName"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;bOpenServiceTicket&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:bOpenServiceTicket"/>
+          </copy>
+          <copy>
+            <from variable="FileName"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:UniqueIdentNum/ns5:UniqueIdentifier"/>
+          </copy>
+          <copy>
+            <from expression="ora:getPreference(&quot;SendEmail&quot;)"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:SendEmail"/>
+          </copy>
+          <copy>
+            <from expression="&quot;E&quot;"/>
+            <to variable="InvCommonSFDCErrorLogService_IV" part="request" query="/ns5:CommonSFDCErrorLog/ns5:CommonErrorHandlerInputDetails/ns5:status"/>
+          </copy>
+        </assign>
+        <invoke name="InvCommonSFDCErrorLogService" partnerLink="CommonSFDCErrorLogService" portType="ns4:execute_ptt" operation="execute" inputVariable="InvCommonSFDCErrorLogService_IV" bpelx:invokeAsDetail="no" id="BpInv0"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <sequence name="main" id="BpSeq1">
+    <pick name="PickFeedFiles" createInstance="yes" id="BpPck0">
+      <onMessage variable="Rcv_SF_FTP_EmployeeFeed" partnerLink="SF_FTP_EmployeeFeed" portType="ns1:Get_ptt" operation="Get" id="BpOMs0">
+        <bpelx:property name="jca.ftp.FileName" variable="FileName"/>
+        <sequence name="Sequence2" id="BpSeq2">
+          <assign name="asg_Data" id="BpAss1">
+            <copy>
+              <from variable="Rcv_SF_FTP_EmployeeFeed" part="attach" query="/ns3:attachmentElement/@href"/>
+              <to variable="Inv_Write_EmployeeFeed_Local" part="body" query="/ns3:attachmentElement/@href"/>
+            </copy>
+            <copy>
+              <from expression="dvm:lookupValue('FileLocations.dvm','FileName',concat(substring-before(bpws:getVariableData('FileName'),'FEED'),'FEED'),'WriteLoc','/soadata/SuccessFactor/inbound')"/>
+              <to variable="WriteLoc"/>
+            </copy>
+          </assign>
+        </sequence>
+      </onMessage>
+      <onMessage variable="OnMessage_Get_OracleEmpFeed" partnerLink="SF_FTP_OracleEmployeeFeed" portType="ns7:Get_ptt" operation="Get" id="BpOMs1">
+        <bpelx:property name="jca.ftp.FileName" variable="FileName"/>
+        <assign name="asg_OracleEmpData" id="BpAss2">
+          <copy>
+            <from expression="dvm:lookupValue('FileLocations.dvm','FileName',concat(substring-before(bpws:getVariableData('FileName'),'FEED'),'FEED'),'WriteLoc','/soadata/SuccessFactor/inbound')"/>
+            <to variable="WriteLoc"/>
+          </copy>
+          <copy>
+            <from variable="OnMessage_Get_OracleEmpFeed" part="attach" query="/ns3:attachmentElement/@href"/>
+            <to variable="Inv_Write_EmployeeFeed_Local" part="body" query="/ns3:attachmentElement/@href"/>
+          </copy>
+        </assign>
+      </onMessage>
+      <onMessage variable="OnMessage_Get_HyperionEmployeeFeed" partnerLink="SF_FTP_HyperionEmployeeFeed" portType="ns10:Get_ptt" operation="Get" id="BpOMs2">
+        <bpelx:property name="jca.ftp.FileName" variable="FileName"/>
+        <assign name="asg_Data" id="BpAss3">
+          <copy>
+            <from variable="OnMessage_Get_HyperionEmployeeFeed" part="attach" query="/ns3:attachmentElement/@href"/>
+            <to variable="Inv_Write_EmployeeFeed_Local" part="body" query="/ns3:attachmentElement/@href"/>
+          </copy>
+          <copy>
+            <from expression="dvm:lookupValue('FileLocations.dvm','FileName','HYPERION_FEED','WriteLoc','/soadata/SuccessFactor/inbound')"/>
+            <to variable="WriteLoc"/>
+          </copy>
+        </assign>
+      </onMessage>
+      <onMessage partnerLink="SF_FTP_TrewIAGFeed" portType="ns11:Get_ptt" operation="Get" variable="OnMessage_Get_TrewIAGInput" id="BpOMs3">
+        <bpelx:property name="jca.ftp.FileName" variable="FileName"/>
+        <assign name="asg_TrewIAGData" id="BpAss4">
+          <copy>
+            <from variable="OnMessage_Get_TrewIAGInput" part="attach" query="/ns3:attachmentElement/@href"/>
+            <to variable="Inv_Write_EmployeeFeed_Local" part="body" query="/ns3:attachmentElement/@href"/>
+          </copy>
+          <copy>
+            <from expression="dvm:lookupValue('FileLocations.dvm','FileName','TrewIAG_FEED','WriteLoc','/soadata/SuccessFactor/inbound')" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+            <to variable="WriteLoc"/>
+          </copy>
+        </assign>
+      </onMessage>
+      <onMessage partnerLink="SF_FTP_MDECSFeed" variable="SF_MDECS_Get_InputVariable" portType="ns12:Get_ptt" operation="Get" id="BpOMs4">
+        <bpelx:property name="jca.ftp.FileName" variable="FileName"/>
+        <assign name="asg_mdesData" id="BpAss5">
+          <copy>
+            <from bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="SF_MDECS_Get_InputVariable" part="attach" query="/ns3:attachmentElement/@href"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="Inv_Write_EmployeeFeed_Local" part="body" query="/ns3:attachmentElement/@href"/>
+          </copy>
+          <copy>
+            <from expression="dvm:lookupValue('FileLocations.dvm','FileName','SF_MDECS_FEED','WriteLoc','/soadata/SuccessFactor/Maxeon/inbound/DecsFeed')" bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"/>
+            <to bpelx:language="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" variable="WriteLoc"/>
+          </copy>
+        </assign>
+      </onMessage>
+    </pick>
+    <assign name="asgInstanceTitile" id="BpAss6">
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle(bpws:getVariableData('FileName'))"/>
+        <to variable="InstanceTitle"/>
+      </copy>
+    </assign>
+    <invoke name="Inv_Write_EmployeeFeed_Local" inputVariable="Inv_Write_EmployeeFeed_Local" partnerLink="Write_EmployeeFeed_Local" portType="ns2:Write_ptt" operation="Write" bpelx:invokeAsDetail="no" id="BpInv1">
+      <bpelx:inputProperty name="jca.file.Directory" variable="WriteLoc"/>
+      <bpelx:inputProperty name="jca.file.FileName" variable="FileName"/>
+    </invoke>
+  </sequence>
+</process>

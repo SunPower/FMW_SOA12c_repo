@@ -1,0 +1,312 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Dec 05 15:06:51 IST 2012
+  Author:  va39018
+  Type: BPEL 1.1 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BulkEmailServiceProviderBPEL"
+         targetNamespace="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://xmlns.oracle.com/SOAUtilityServices/BulkEmailServiceProvider/BulkEmailServiceProviderBPEL"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/selectErrorRecordsFromDB"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/top/selectErrorRecordsFromDB"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://www.sunpowercorp.com/SunPowerDevelopment/BulkEmailServiceProvider/initParams/xsd/v1"
+         xmlns:ns4="http://www.sunpowercorp.com/SunPowerDevelopment/utility/BatchEmailUtilityService/xsd/V1"
+         xmlns:ns5="http://xmlns.oracle.com/ias/pcbpel/NotificationService"
+         xmlns:ns6="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/selectRecordsFromDB"
+         xmlns:ns7="http://xmlns.oracle.com/pcbpel/adapter/db/selectRecordsFromDB"
+         xmlns:ns8="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/updateRecordsStatus"
+         xmlns:ns9="http://xmlns.oracle.com/pcbpel/adapter/db/SOAUtilityServices/BulkEmailServiceProvider/updateEmailStatusToDB">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        <![CDATA[BulkEmailServiceProviderBPEL.wsdl]]>
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="bulkemailserviceproviderbpel_client"
+                 partnerLinkType="client:BulkEmailServiceProviderBPEL"
+                 myRole="BulkEmailServiceProviderBPELProvider"/>
+    <partnerLink name="NotificationService1"
+                 partnerLinkType="ns5:NotificationServiceLink"
+                 partnerRole="NotificationServiceProvider"/>
+    <partnerLink name="selectRecordsFromDB"
+                 partnerLinkType="ns6:selectRecordsFromDB_plt"
+                 partnerRole="selectRecordsFromDB_role"/>
+    <partnerLink name="updateEmailStatusToDB"
+                 partnerLinkType="ns9:updateEmailStatusToDB_plt"
+                 partnerRole="updateEmailStatusToDB_role"/>
+  </partnerLinks>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable"
+              messageType="client:BulkEmailServiceProviderBPELRequestMessage"/>
+    <variable name="recordsProcessed" type="xsd:int"/>
+    <variable name="totalRecords" type="xsd:integer"/>
+    <variable name="noOfIterations" type="xsd:integer"/>
+    <variable name="sizeofBunch" type="xsd:integer"/>
+    <variable name="recordsLeft" type="xsd:integer"/>
+    <variable name="initParams" element="ns3:InitParams"/>
+    <variable name="EmailContent" element="ns4:EmailContent"/>
+    <variable name="title" type="xsd:string"/>
+    <variable name="InvSelectRecordsFromDB_IV"
+              messageType="ns6:selectRecordsFromDBInput_msg"/>
+    <variable name="InvSelectRecordsFromDB_OV"
+              messageType="ns6:selectRecordsFromDBOutputCollection_msg"/>
+    <variable name="InvUpdateEmailStatusToDB_IV"
+              messageType="ns9:MiddlewareErrorLogCollection_msg"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+    <!-- Receive input from requestor. (Note: This maps to operation defined in BulkEmailServiceProviderBPEL.wsdl) -->
+    <receive name="receiveInput"
+             partnerLink="bulkemailserviceproviderbpel_client"
+             portType="client:BulkEmailServiceProviderBPEL" operation="process"
+             variable="inputVariable" createInstance="yes"/>
+    <assign name="SetTitle">
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:BulkEmailServiceProviderInput/client:interfaceNumber"/>
+        <to variable="title"/>
+      </copy>
+      <copy>
+        <from expression="oraext:setFlowInstanceTitle($title)"/>
+        <to variable="title"/>
+      </copy>
+    </assign>
+    <assign name="AsgnSelectRecordsFromDB">
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:BulkEmailServiceProviderInput/client:interfaceNumber"/>
+        <to variable="InvSelectRecordsFromDB_IV"
+            part="selectRecordsFromDBInput_msg"
+            query="/ns7:selectRecordsFromDBInput/ns7:interfacenumber"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("email_sent")'/>
+        <to variable="InvSelectRecordsFromDB_IV"
+            part="selectRecordsFromDBInput_msg"
+            query="/ns7:selectRecordsFromDBInput/ns7:email_sent"/>
+      </copy>
+    </assign>
+    <invoke name="InvSelectRecordsFromDB"
+            inputVariable="InvSelectRecordsFromDB_IV"
+            outputVariable="InvSelectRecordsFromDB_OV"
+            partnerLink="selectRecordsFromDB"
+            portType="ns6:selectRecordsFromDB_ptt"
+            operation="selectRecordsFromDB" bpelx:invokeAsDetail="no"/>
+    <assign name="AssignTotalRecords">
+      <copy>
+        <from expression="ora:countNodes('InvSelectRecordsFromDB_OV','selectRecordsFromDBOutputCollection','/ns7:selectRecordsFromDBOutputCollection/ns7:selectRecordsFromDBOutput')"/>
+        <to variable="totalRecords"/>
+      </copy>
+      <copy>
+        <from expression="1"/>
+        <to variable="initParams" query="/ns3:InitParams/ns3:startIndex"/>
+      </copy>
+      <copy>
+        <from expression="0"/>
+        <to variable="initParams" query="/ns3:InitParams/ns3:endIndex"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:BulkEmailServiceProviderInput/client:interfaceNumber"/>
+        <to variable="initParams" query="/ns3:InitParams/ns3:interfaceNo"/>
+      </copy>
+      <copy>
+        <from expression="0"/>
+        <to variable="recordsProcessed"/>
+      </copy>
+      <copy>
+        <from expression='ora:getPreference("sizeOfBunch")'/>
+        <to variable="sizeofBunch"/>
+      </copy>
+      <copy>
+        <from expression="ceiling($totalRecords div $sizeofBunch) "/>
+        <to variable="noOfIterations"/>
+      </copy>
+    </assign>
+    <while name="WhileProcessRecordsEqualtoTotalRecords"
+           condition="$noOfIterations > 0">
+      <sequence name="ForEachBunchOfRecords">
+        <assign name="updateInitPrams">
+          <copy>
+            <from expression="$totalRecords - $recordsProcessed"/>
+            <to variable="recordsLeft"/>
+          </copy>
+          <copy>
+            <from expression="$recordsProcessed + 1"/>
+            <to variable="initParams" query="/ns3:InitParams/ns3:startIndex"/>
+          </copy>
+        </assign>
+        <switch name="SwitchMoreBunchofRecordsLeft">
+          <case condition="($recordsLeft div $sizeofBunch) >= 1">
+            <bpelx:annotation>
+              <bpelx:general>
+                <bpelx:property name="userLabel">moreBunchofRecordsLeft</bpelx:property>
+              </bpelx:general>
+            </bpelx:annotation>
+            <assign name="updateEndIndex">
+              <copy>
+                <from expression="$recordsProcessed + $sizeofBunch"/>
+                <to variable="initParams" query="/ns3:InitParams/ns3:endIndex"/>
+              </copy>
+            </assign>
+          </case>
+          <otherwise>
+            <assign name="updateEndIndex">
+              <copy>
+                <from variable="totalRecords"/>
+                <to variable="initParams" query="/ns3:InitParams/ns3:endIndex"/>
+              </copy>
+            </assign>
+          </otherwise>
+        </switch>
+        <assign name="TrnsErrorEmailBody">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TrnsErrorEmailBody.xsl', $InvSelectRecordsFromDB_OV.selectRecordsFromDBOutputCollection, 'initParams', $initParams)"/>
+            <to variable="EmailContent"/>
+          </copy>
+        </assign>
+        <scope name="Email1">
+          <bpelx:annotation>
+            <bpelx:pattern patternName="bpelx:email"></bpelx:pattern>
+            <bpelx:general>
+              <bpelx:property name="userLabel">SendEmail</bpelx:property>
+            </bpelx:general>
+          </bpelx:annotation>
+          <variables>
+            <variable name="varNotificationReq"
+                      messageType="ns5:EmailNotificationRequest"/>
+            <variable name="varNotificationResponse"
+                      messageType="ns5:ArrayOfResponse"/>
+            <variable name="NotificationServiceFaultVariable"
+                      messageType="ns5:NotificationServiceErrorMessage"/>
+          </variables>
+          <sequence name="Sequence1">
+            <assign name="EmailParamsAssign">
+              <copy>
+                <from expression="string('Default')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:FromAccountName"/>
+              </copy>
+              <copy>
+                <from expression="string('')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:Bcc"/>
+              </copy>
+              <copy>
+                <from expression="string('')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:Cc"/>
+              </copy>
+              <copy>
+                <from expression="string('')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:ReplyToAddress"/>
+              </copy>
+              <copy>
+                <from expression="bpws:getVariableData('EmailContent','/ns4:EmailContent/ns4:Subject')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:Subject"/>
+              </copy>
+              <copy>
+                <from expression="bpws:getVariableData('EmailContent','/ns4:EmailContent/ns4:To')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:To"/>
+              </copy>
+              <copy>
+                <from expression="bpws:getVariableData('EmailContent','/ns4:EmailContent/ns4:body')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:Content/ns5:ContentBody"/>
+              </copy>
+              <copy>
+                <from expression="string('text/html; charset=UTF-8')"/>
+                <to variable="varNotificationReq" part="EmailPayload"
+                    query="/EmailPayload/ns5:Content/ns5:MimeType"/>
+              </copy>
+            </assign>
+            <invoke name="InvokeNotificationService"
+                    portType="ns5:NotificationService"
+                    partnerLink="NotificationService1"
+                    inputVariable="varNotificationReq"
+                    outputVariable="varNotificationResponse"
+                    operation="sendEmailNotification"/>
+          </sequence>
+        </scope>
+        <assign name="TrnsUpdateErrorRecordStatus">
+          <bpelx:annotation>
+            <bpelx:pattern>transformation</bpelx:pattern>
+          </bpelx:annotation>
+          <copy>
+            <from expression="ora:doXSLTransformForDoc('Transformations/TrnsEmailStatusToDB.xsl', $InvSelectRecordsFromDB_OV.selectRecordsFromDBOutputCollection, 'initParams', $initParams)"/>
+            <to variable="InvUpdateEmailStatusToDB_IV"
+                part="MiddlewareErrorLogCollection"/>
+          </copy>
+        </assign>
+        <invoke name="InvUpdateEmailStatusToDB"
+                inputVariable="InvUpdateEmailStatusToDB_IV"
+                partnerLink="updateEmailStatusToDB"
+                portType="ns9:updateEmailStatusToDB_ptt"
+                operation="update" bpelx:invokeAsDetail="no"/>
+        <assign name="updateRecordProcessed">
+          <copy>
+            <from expression="(($recordsProcessed + bpws:getVariableData('initParams','/ns3:InitParams/ns3:endIndex')) - bpws:getVariableData('initParams','/ns3:InitParams/ns3:startIndex') ) + 1"/>
+            <to variable="recordsProcessed"/>
+          </copy>
+          <copy>
+            <from expression="$noOfIterations -1"/>
+            <to variable="noOfIterations"/>
+          </copy>
+        </assign>
+      </sequence>
+    </while>
+  </sequence>
+</process>

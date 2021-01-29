@@ -1,0 +1,44 @@
+<!--
+    Name: ProcessArenaOracleDataFeed.xsd
+    Change history
+
+    Author      date        purpose
+
+--><xsd:schema targetNamespace="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOrders/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCNoItemOrders/V1" xmlns:noItem="http://www.sunpowercorp.com/Noun/OracleSFDCNoItemOrders/V1" xmlns:v="http://www.sunpowercorp.com/order/Verb/VerbCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Noun/OracleSFDCNoItemOrders/V1" schemaLocation="OracleSFDCNoItemOrders.xsd"/>
+    <xsd:import namespace="http://www.sunpowercorp.com/order/Verb/VerbCommonTypes/V1" schemaLocation="../../../../Common/V1/VerbCommonType.xsd"/>
+    <xsd:element name="ProcessOracleSFDCNoItemOrdersReq" type="ProcessOracleSFDCNoItemOrdersReqType"/>
+    <xsd:complexType name="ProcessOracleSFDCNoItemOrdersReqType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="OnlineOrderingNoItemOracleToSFDCReqType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OnlineOrderingNoItemOracleToSFDCReqType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+             <xsd:element ref="v:callService"/>
+            <xsd:element ref="noItem:OracleSFDCNoItemOrderHeader" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="ProcessOracleSFDCNoItemOrdersRes" type="ProcessOracleSFDCNoItemOrdersResType"/>
+    <xsd:complexType name="ProcessOracleSFDCNoItemOrdersResType">
+        <xsd:complexContent>
+            <xsd:extension base="v:BusinessObjectDocumentType">
+                <xsd:sequence>
+                    <xsd:element name="DataArea" type="OnlineOrderingNoItemOracleToSFDCResType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OnlineOrderingNoItemOracleToSFDCResType">
+        <xsd:sequence>
+            <xsd:element ref="v:process"/>
+             <xsd:element ref="v:callService"/>
+            <xsd:element ref="noItem:OracleSFDCNoItemOrder" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

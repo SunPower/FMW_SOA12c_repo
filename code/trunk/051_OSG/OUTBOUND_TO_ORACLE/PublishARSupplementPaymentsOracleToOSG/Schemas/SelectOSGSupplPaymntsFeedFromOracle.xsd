@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGSupplPaymntsFeedFromOracle" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/SelectOSGSupplPaymntsFeedFromOracle" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="SelectOSGSupplPaymntsFeedFromOracleInput" type="SelectOSGSupplPaymntsFeedFromOracleInput"/>
+   <xs:complexType name="SelectOSGSupplPaymntsFeedFromOracleInput">
+      <xs:sequence>
+         <xs:element name="minrow" type="xs:string" nillable="true"/>
+         <xs:element name="maxrow" type="xs:string" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="SelectOSGSupplPaymntsFeedFromOracleOutputCollection" type="SelectOSGSupplPaymntsFeedFromOracleOutputCollection"/>
+   <xs:complexType name="SelectOSGSupplPaymntsFeedFromOracleOutputCollection">
+      <xs:sequence>
+         <xs:element name="SelectOSGSupplPaymntsFeedFromOracleOutput" type="SelectOSGSupplPaymntsFeedFromOracleOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SelectOSGSupplPaymntsFeedFromOracleOutput">
+      <xs:sequence>
+         <xs:element name="ACCOUNT_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="TRX_NUMBER" type="xs:string" nillable="true"/>
+         <xs:element name="PAYMENT_DATE" type="xs:dateTime" nillable="true"/>
+         <xs:element name="RECEIPT_AMOUNT" type="xs:decimal" nillable="true"/>
+         <xs:element name="PAYMENT_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="PAYMENT_SUB_TYPE" type="xs:string" nillable="true"/>
+         <xs:element name="PAYMENT_ACC_LAST4" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

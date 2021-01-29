@@ -1,0 +1,35 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="OrgConnectorSFDCtoLMS"
+     targetNamespace="http://www.sunpowercorp.com/LMS_DEV/OrgConnectorSFDCtoLMS/OrgConnectorSFDCtoLMS"
+     xmlns:ns2="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:ns1="urn:partner.soap.sforce.com"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://www.sunpowercorp.com/LMS_DEV/OrgConnectorSFDCtoLMS/OrgConnectorSFDCtoLMS"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="OrgConnectorSFDCtoLMS">
+        <plnk:role name="OrgConnectorSFDCtoLMSProvider">
+            <plnk:portType name="client:OrgConnectorSFDCtoLMS"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/LMS_DEV/OrgConnectorSFDCtoLMS/OrgConnectorSFDCtoLMS"
+                 schemaLocation="../Schemas/OrgConnectorSFDCtoLMS.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="OrgConnectorSFDCtoLMSRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="OrgConnectorSFDCtoLMS">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:OrgConnectorSFDCtoLMSRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

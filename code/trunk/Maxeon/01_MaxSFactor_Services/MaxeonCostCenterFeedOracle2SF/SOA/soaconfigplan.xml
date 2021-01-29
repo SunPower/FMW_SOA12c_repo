@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAConfigPlan xmlns:jca="http://platform.integration.oracle/blocks/adapter/fw/metadata" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy" xmlns:edl="http://schemas.oracle.com/events/edl" xmlns="http://schemas.oracle.com/soa/configplan">
+   <composite name="*">
+      <import>
+         <searchReplace>
+            <search>http://uat-fusappdca02.sunpowercorp.com</search>
+            <replace>http://fusappdca02.sunpowercorp.com</replace>
+         </searchReplace>
+         <searchReplace>
+            <search>http://dev-fusappdca02.sunpowercorp.com</search>
+            <replace>http://fusappdca02.sunpowercorp.com</replace>
+         </searchReplace>
+         <searchReplace>
+            <search>http://10.0.102.48</search>
+            <replace>http://10.0.100.239</replace>
+         </searchReplace>
+         <searchReplace>
+            <search>http://10.0.102.110</search>
+            <replace>http://10.0.100.239</replace>
+         </searchReplace>
+         <searchReplace>
+            <search>7003</search>
+            <replace>7003</replace>
+         </searchReplace>
+         <searchReplace>
+            <search>7004</search>
+            <replace>7004</replace>
+         </searchReplace>
+      </import>
+   </composite>
+   <wsdlAndSchema name="*">
+      <searchReplace>
+         <search/>
+         <replace/>
+      </searchReplace>
+   </wsdlAndSchema>
+</SOAConfigPlan>

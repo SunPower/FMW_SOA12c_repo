@@ -1,0 +1,25 @@
+Oct 6, 2016 9:33:13 AM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+Oct 6, 2016 9:33:14 AM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Oct 6, 2016 9:33:14 AM com.collaxa.cube.CubeLogger info
+INFO: validating "GetEDI997ProcessProv_BPEL.bpel" ...
+Oct 6, 2016 9:33:14 AM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+Oct 6, 2016 9:33:14 AM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSequenceBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELWhileBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELSwitchBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchFaultBlock
+node class name com.collaxa.cube.engine.ext.bpel.v1.blocks.BPELCatchAllBlock
+Oct 6, 2016 9:33:15 AM com.collaxa.cube.CubeLogger info
+INFO: Composed "GetEDI997ProcessProv_BPEL" in 39.0 milliseconds [nodes 28=0+28, 717.5 nodes/sec]
+Oct 6, 2016 9:33:17 AM com.collaxa.cube.CubeLogger info
+INFO: Compiled "GetEDI997ProcessProv_BPEL" in 1.477 seconds
+Oct 6, 2016 9:33:17 AM com.collaxa.cube.CubeLogger info
+INFO: Gathered 3 files in 0.6 milliseconds
+
+Oct 6, 2016 9:33:17 AM com.collaxa.cube.CubeLogger info
+INFO: Packaged "GetEDI997ProcessProv_BPEL" in 30.6 milliseconds
+

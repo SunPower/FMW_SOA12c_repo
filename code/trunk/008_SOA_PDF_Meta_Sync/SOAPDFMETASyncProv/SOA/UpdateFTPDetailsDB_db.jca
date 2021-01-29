@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config name="UpdateFTPDetailsDB" adapter="db" wsdlLocation="UpdateFTPDetailsDB.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="DEV_EBS" adapterRef=""/>
+   <endpoint-interaction portType="UpdateFTPDetailsDB_ptt" operation="UpdateFTPDetailsDB">
+      <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+         <property name="SqlString" value="UPDATE XXSPWR.XXSPWR_SOA_INV_HIST_TBL SET RECORD_STATUS =#RECORD_STATUS, ERROR_MESSAGE = #ERROR_MESSAGE  WHERE  PDF_FILE_NAME=#PDF_FILE_NAME"/>
+         <property name="GetActiveUnitOfWork" value="false"/>
+      </interaction-spec>
+      <input/>
+   </endpoint-interaction>
+</adapter-config>

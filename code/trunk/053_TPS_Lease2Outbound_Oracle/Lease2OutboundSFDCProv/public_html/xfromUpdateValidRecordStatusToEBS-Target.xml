@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrLease2OutboundDetailsCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateStatusToEBS">
+   <top:XxspwrLease2OutboundDetails>
+      <top:soNumber>Sales_order_number__c217</top:soNumber>
+      <top:soaStatus>SentToSFDC</top:soaStatus>
+   </top:XxspwrLease2OutboundDetails>
+   <top:XxspwrLease2OutboundDetails>
+      <top:soNumber>Sales_order_number__c280</top:soNumber>
+      <top:soaStatus>ERROR</top:soaStatus>
+      <top:errorMessage>message567</top:errorMessage>
+   </top:XxspwrLease2OutboundDetails>
+   <top:XxspwrLease2OutboundDetails>
+      <top:soNumber>Sales_order_number__c343</top:soNumber>
+      <top:soaStatus>SentToSFDC</top:soaStatus>
+   </top:XxspwrLease2OutboundDetails>
+</top:XxspwrLease2OutboundDetailsCollection>

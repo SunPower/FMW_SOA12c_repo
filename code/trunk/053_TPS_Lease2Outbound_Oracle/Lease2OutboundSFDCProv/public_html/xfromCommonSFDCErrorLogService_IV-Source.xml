@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XxspwrLease2OutboundDetailsCollection xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/UpdateStatusToEBS">
+   <XxspwrLease2OutboundDetails>
+      <soNumber>387</soNumber>
+      <soaStatus>ERROR</soaStatus>
+      <errorMessage>string390</errorMessage>
+   </XxspwrLease2OutboundDetails>
+   <XxspwrLease2OutboundDetails>
+      <soNumber>392</soNumber>
+      <soaStatus>string393</soaStatus>
+      <errorMessage>string395</errorMessage>
+   </XxspwrLease2OutboundDetails>
+   <XxspwrLease2OutboundDetails>
+      <soNumber>397</soNumber>
+      <soaStatus>ERROR</soaStatus>
+      <errorMessage>string400</errorMessage>
+   </XxspwrLease2OutboundDetails>
+</XxspwrLease2OutboundDetailsCollection>

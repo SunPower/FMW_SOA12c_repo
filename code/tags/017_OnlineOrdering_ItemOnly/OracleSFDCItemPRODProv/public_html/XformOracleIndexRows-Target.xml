@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ns10:OracleIndexRows xmlns:ns10="http://www.sunpowercorp.com/OracleIndexItems">
+   <ns10:Item__c>
+      <ns10:Id>Id1</ns10:Id>
+      <ns10:Name>Name2</ns10:Name>
+      <ns10:Active__c>true</ns10:Active__c>
+      <ns10:Description__c>Description__c3</ns10:Description__c>
+      <ns10:Item_ID__c>Item_ID__c4</ns10:Item_ID__c>
+      <ns10:Long_Description__c>Long_Description__c5</ns10:Long_Description__c>
+      <ns10:Item_Category_3__c>Item_Category_3__c6</ns10:Item_Category_3__c>
+      <ns10:Item_Category_2__c>Item_Category_2__c7</ns10:Item_Category_2__c>
+      <ns10:Item_Category_1__c>Item_Category_1__c8</ns10:Item_Category_1__c>
+      <ns10:Product_Type__c>Product_Type__c9</ns10:Product_Type__c>
+   </ns10:Item__c>
+   <ns10:Item__c>
+      <ns10:Id>Id10</ns10:Id>
+      <ns10:Name>Name11</ns10:Name>
+      <ns10:Active__c>true</ns10:Active__c>
+      <ns10:Description__c>Description__c12</ns10:Description__c>
+      <ns10:Item_ID__c>Item_ID__c13</ns10:Item_ID__c>
+      <ns10:Long_Description__c>Long_Description__c14</ns10:Long_Description__c>
+      <ns10:Item_Category_3__c>Item_Category_3__c15</ns10:Item_Category_3__c>
+      <ns10:Item_Category_2__c>Item_Category_2__c16</ns10:Item_Category_2__c>
+      <ns10:Item_Category_1__c>Item_Category_1__c17</ns10:Item_Category_1__c>
+      <ns10:Product_Type__c>Product_Type__c18</ns10:Product_Type__c>
+   </ns10:Item__c>
+</ns10:OracleIndexRows>

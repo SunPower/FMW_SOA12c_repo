@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/switch/case/sequence/scope/sequence/assign/copy</loc>
+      <line>156</line>
+      <col/>
+      <file>SFDCLogin_BPEL.bpel</file>
+      <name>SFDCLogin_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectSFDCLoginDB}username anonymous type" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB}username anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/switch/case/sequence/scope/sequence/assign[3]/copy[2]</loc>
+      <line>192</line>
+      <col/>
+      <file>SFDCLogin_BPEL.bpel</file>
+      <name>SFDCLogin_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectSFDCLoginDB}serverurl anonymous type" is not compatible with &lt;to> value type "{http://schemas.xmlsoap.org/ws/2003/03/addressing}AttributedURI"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[2]/copy</loc>
+      <line>240</line>
+      <col/>
+      <file>SFDCLogin_BPEL.bpel</file>
+      <name>SFDCLogin_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB}serverurl anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[2]/copy[2]</loc>
+      <line>247</line>
+      <col/>
+      <file>SFDCLogin_BPEL.bpel</file>
+      <name>SFDCLogin_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB}sessionid anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[2]/copy[3]</loc>
+      <line>254</line>
+      <col/>
+      <file>SFDCLogin_BPEL.bpel</file>
+      <name>SFDCLogin_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{urn:partner.soap.sforce.com}ID" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB}userid anonymous type"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/process/sequence/switch/case/sequence/assign[2]/copy[4]</loc>
+      <line>261</line>
+      <col/>
+      <file>SFDCLogin_BPEL.bpel</file>
+      <name>SFDCLogin_BPEL.bpel</name>
+      <fix>Make sure that the return value of from-spec query is compatible with the to-spec query</fix>
+      <msg>&lt;from> value type "{http://www.w3.org/2001/XMLSchema}string" is not compatible with &lt;to> value type "{http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertSFDCLoginDB}username anonymous type"</msg>
+   </Fault>
+</Faults>

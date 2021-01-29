@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oper="http://xmlns.oracle.com/servicebus/pipeline/operations">
+    <con:coreEntry>
+        <con:description/>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con2:wsdl ref="CommonErrorHandler/WSDL/ProcessOSBErrorLogs_BS" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:env="http://www.bea.com/wli/config/env" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:con2="http://www.bea.com/wli/sb/pipeline/config"/>
+            <con:binding>
+                <con:name>ProcessOSBErrorLogs_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/pcbpel/adapter/db/OSBJDEVResource/JDEVDBResources/ProcessOSBErrorLogs</con:namespace>
+            </con:binding>
+        </con:binding>
+        <oper:operations>
+            <oper:monitoring enabled="false" aggregationInterval="10" level="pipeline"/>
+            <oper:tracingEnabled>false</oper:tracingEnabled>
+            <oper:reporting>true</oper:reporting>
+            <oper:logging enabled="true" level="debug"/>
+            <oper:sla-alerting enabled="true" level="normal"/>
+            <oper:pipeline-alerting enabled="true" level="normal"/>
+        </oper:operations>
+    </con:coreEntry>
+    <con:router errorHandler="_onErrorHandler-7820831869171059993-e95cbe3.14811f6825e.-7fb7" xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:jca="http://www.bea.com/wli/sb/transports/jca" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+        <con:pipeline type="error" name="_onErrorHandler-7820831869171059993-e95cbe3.14811f6825e.-7fb7">
+            <con:stage name="ExceptionOccured">
+                <con1:context xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+                    <con2:varNsDecl namespace="http://www.sunpowercorp.com/SunPowerDevelopment/utility/CommonErrorHandler/xsd/V1" prefix="v1"/>
+                </con1:context>
+                <con1:actions xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+                    <con6:log xmlns:con6="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id>_ActionId-7820831869171059993-e95cbe3.14811f6825e.-7edc</con2:id>
+                        <con6:logLevel>debug</con6:logLevel>
+                        <con6:expr>
+                            <con2:xqueryText>fn:concat("&lt;&lt;&lt;Exception raise in CommonErrorHandlerPS while processing with instance number: ",$body/v1:CommonErrorHandlerInput/v1:InstanceNumber,">>>>>>>>")</con2:xqueryText>
+                        </con6:expr>
+                    </con6:log>
+                </con1:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:flow>
+            <con:route-node name="RouteTo_ProcessOSBErrorLogs_BS">
+                <con:context/>
+                <con:actions>
+                    <con1:route xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config">
+                        <conid1:id xmlns:conid1="http://www.bea.com/wli/sb/stages/config">_ActionId-5873909675745795988-50a2f757.1477c830337.-7f00</conid1:id>
+                        <con1:service ref="CommonErrorHandler/BusinessService/ProcessOSBErrorLogs_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation passThrough="true"/>
+                        <con1:outboundTransform/>
+                        <con1:responseTransform/>
+                    </con1:route>
+                </con:actions>
+            </con:route-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

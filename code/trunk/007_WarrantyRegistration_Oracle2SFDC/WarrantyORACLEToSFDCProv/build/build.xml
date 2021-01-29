@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="WarrantyORACLEToSFDCProv" default="deploy" basedir=".">
+
+  <!-- build.properties -->  
+
+  <property file="build.properties"/>       
+
+  <property name="deploy.dir" value="${basedir}/../deploy"/>
+  
+
+<!--[if !supportEmptyParas]--> <!--[endif]-->
+
+  <!-- Add targets here -->
+  
+  <target name="compile-package">    
+      
+      <property name="sca-inf.classes.dir" value="../SCA-INF/classes"/>
+  
+      <mkdir dir="${sca-inf.classes.dir}"/>
+  
+      <ant antfile="${oracle.home}/bin/ant-sca-package.xml" target="package" inheritall="false">
+  
+          <property name="oracle.home" value="${oracle.home}"/>
+  
+          <property name="compositeDir" value="${basedir}/../"/>
+  
+          <!-- needed for adf config -->
+  
+          <property name="scac.application.home" value="${basedir}/../.."/>
+  
+          <!-- name of the composite -->
+  
+          <property name="compositeName" value="${composite.name}"/>
+  
+          <!-- revision of the composite -->
+  
+          <property name="revision" value="${composite.revision}"/>
+  
+            
+          <property name="java.passed.home" value="${java.home.set}"/>
+  
+      </ant>
+  
+    </target>
+    <target name="deploy" depends="compile-package">
+    
+        <condition property="deploymentplan.name" value="null">
+    
+           <not>
+    
+              <isset property="${deploymentplan.name}"/>
+    
+           </not>
+    
+        </condition>
+    
+        <echo>Deploying to http://${managed.server.host}:${managed.server.port}/soa-infra/deployer</echo>
+        
+    
+        <ant antfile="${oracle.home}/bin/ant-sca-deploy.xml" target="deploy" inheritall="false">
+    
+            <!-- reformat of prop names -->
+    
+            <property name="user" value="${server.user}"/>
+    
+            <property name="password" value="${server.password}"/>
+            
+               
+            <!-- create the url for deployment -->
+    
+            <property name="serverURL" value="http://${managed.server.host}:${managed.server.port}/soa-infra/deployer"/>
+    
+            <!-- location of the sar -->
+    
+            <property name="sarLocation" value="${deploy.dir}/sca_${composite.name}_rev${composite.revision}.jar"/>
+    
+            <!-- force overwrite if already there   value="${deploy.dir}/sca_${composite.name}_rev${composite.revision}.jar"-->
+    
+            <property name="overwrite" value="true"/>
+    
+            <!-- configplan-->
+    
+            <property name="configplan" value="${deploymentplan.name}"/>
+    
+        </ant>
+       
+      </target>
+
+<target name="undeploy">
+    
+        <condition property="deploymentplan.name" value="null">
+    
+           <not>
+    
+              <isset property="${deploymentplan.name}"/>
+    
+           </not>
+    
+        </condition>
+    
+        <echo>undeploying from  http://${managed.server.host}:${managed.server.port}/soa-infra/deployer</echo>         
+ 
+    <ant antfile="${oracle.home}/bin/ant-sca-deploy.xml" target="undeploy" inheritall="false">
+    
+            <!-- reformat of prop names -->
+    
+            <property name="user" value="${server.user}"/>
+    
+            <property name="password" value="${server.password}"/>
+            
+             <property name="compositeName" value="${composite.name}"/>
+            
+            <property name="revision" value="${composite.revision}"/>
+	    <property name="partition" value="${domain.partition}"/>
+    
+            <!-- create the url for deployment -->
+    
+            <property name="serverURL" value="http://${managed.server.host}:${managed.server.port}/soa-infra/deployer"/>
+    
+            <!-- location of the sar -->
+    
+            <property name="sarLocation" value="${deploy.dir}/sca_${composite.name}_rev${composite.revision}.jar"/>
+    
+            <!-- force overwrite if already there   value="${deploy.dir}/sca_${composite.name}_rev${composite.revision}.jar"-->
+    
+            <property name="overwrite" value="true"/>
+    
+            <!-- configplan-->
+    
+            <property name="configplan" value="${deploymentplan.name}"/>
+    
+        </ant>
+    
+      </target>
+
+</project>

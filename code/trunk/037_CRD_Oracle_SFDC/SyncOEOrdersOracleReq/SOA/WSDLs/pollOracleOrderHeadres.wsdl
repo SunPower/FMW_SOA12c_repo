@@ -1,0 +1,27 @@
+<?binding.jca pollOracleOrderHeadres_db.jca?>
+<wsdl:definitions name="pollOracleOrderHeadres"
+                  targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/pollOracleOrderHeadres"
+                  xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/SyncOEOrdersOracleToSFDC/SyncOEOrdersOracleReq/pollOracleOrderHeadres"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+                  xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/pollOracleOrderHeadres">
+  <plt:partnerLinkType name="pollOracleOrderHeadres_plt">
+    <plt:role name="pollOracleOrderHeadres_role">
+      <plt:portType name="tns:pollOracleOrderHeadres_ptt"/>
+    </plt:role>
+  </plt:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/pollOracleOrderHeadres"
+              schemaLocation="../Schemas/pollOracleOrderHeadres_table.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="XxspwrOmHeaderSyncCollection_msg">
+    <wsdl:part name="XxspwrOmHeaderSyncCollection" element="top:XxspwrOmHeaderSyncCollection"/>
+  </wsdl:message>
+  <wsdl:portType name="pollOracleOrderHeadres_ptt">
+    <wsdl:operation name="receive">
+      <wsdl:input message="tns:XxspwrOmHeaderSyncCollection_msg"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

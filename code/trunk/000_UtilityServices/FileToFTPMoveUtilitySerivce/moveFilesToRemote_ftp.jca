@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="moveFilesToRemote" adapter="ftp" wsdlLocation="WSDLs/moveFilesToRemote.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="eis/Ftp/FtpAdapter"/>
+  <endpoint-interaction portType="FTPMove_ptt" operation="FTPMove">
+    <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPIoInteractionSpec">
+      <property name="SourcePhysicalDirectory" value="source"/>
+      <property name="SourceFileName" value="inbound"/>
+       <property name="SourceIsRemote" value="false"/>
+      <property name="TargetPhysicalDirectory" value="target"/>
+      <property name="TargetFileName" value="outbound"/>
+      <property name="Type" value="MOVE"/>
+    </interaction-spec>
+  </endpoint-interaction>
+   <endpoint-interaction portType="FTPMove_ptt" operation="FTPCopy">
+      <interaction-spec className="oracle.tip.adapter.ftp.outbound.FTPIoInteractionSpec">
+         <property name="SourcePhysicalDirectory" value="source"/>
+         <property name="SourceFileName" value="inbound"/>
+         <property name="SourceIsRemote" value="false"/>
+         <property name="TargetPhysicalDirectory" value="target"/>
+         <property name="TargetFileName" value="outbound"/>
+         <property name="Type" value="COPY"/>
+      </interaction-spec>
+   </endpoint-interaction>
+</adapter-config>

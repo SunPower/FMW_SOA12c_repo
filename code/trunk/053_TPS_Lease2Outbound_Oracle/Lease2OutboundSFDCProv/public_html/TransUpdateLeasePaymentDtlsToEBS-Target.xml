@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<top:XxspwrOmLeasePaymentDtlsCollection xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/Update_xxspwr_om_Lease_Payment_Dtls">
+   <top:XxspwrOmLeasePaymentDtls>
+      <top:sfdcId>id79</top:sfdcId>
+   </top:XxspwrOmLeasePaymentDtls>
+</top:XxspwrOmLeasePaymentDtlsCollection>

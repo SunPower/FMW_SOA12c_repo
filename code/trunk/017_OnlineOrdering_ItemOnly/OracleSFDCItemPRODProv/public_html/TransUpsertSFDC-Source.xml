@@ -1,0 +1,30 @@
+<ProcessOracleSFDCItem xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCItem/V1"
+                       xmlns="http://www.sunpowercorp.com/BOD/ProcessOracleSFDCItem/V1">
+  <ns1:DataArea>
+    <ns5:OracleSFDCItem xmlns:ns5="http://www.sunpowercorp.com/Noun/OracleSFDCItem/V1">
+      <ns5:OracleSFDCItemDetails>
+        <ns4:ITEM_NUMBER xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">114632</ns4:ITEM_NUMBER>
+        <ns4:DESCRIPTION xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">PVM</ns4:DESCRIPTION>
+        <ns4:LONG_DESCRIPTION xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1"/>
+        <ns4:INVENTORY_ITEM_ID xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">602422</ns4:INVENTORY_ITEM_ID>
+        <ns4:ITEM_CATEGORY1 xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">FGMODULE</ns4:ITEM_CATEGORY1>
+        <ns4:ITEM_CATEGORY2 xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">WHT96CELL</ns4:ITEM_CATEGORY2>
+        <ns4:ITEM_CATEGORY3 xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">308</ns4:ITEM_CATEGORY3>
+        <ns4:PROD_TYPE xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">FGMODULE</ns4:PROD_TYPE>
+        <ns4:ITEM_STATUS_CODE xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">Active</ns4:ITEM_STATUS_CODE>
+      </ns5:OracleSFDCItemDetails>
+      <ns5:OracleSFDCItemDetails>
+        <ns4:ITEM_NUMBER xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">500613</ns4:ITEM_NUMBER>
+        <ns4:DESCRIPTION xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">LEASEORIGINATION</ns4:DESCRIPTION>
+        <ns4:LONG_DESCRIPTION xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">Service item forOrigination</ns4:LONG_DESCRIPTION>
+        <ns4:INVENTORY_ITEM_ID xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">1003704</ns4:INVENTORY_ITEM_ID>
+        <ns4:ITEM_CATEGORY1 xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">SERVICES</ns4:ITEM_CATEGORY1>
+        <ns4:ITEM_CATEGORY2 xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">DEFAULT</ns4:ITEM_CATEGORY2>
+        <ns4:ITEM_CATEGORY3 xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">DEFAULT</ns4:ITEM_CATEGORY3>
+        <ns4:PROD_TYPE xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1"/>
+        <ns4:ITEM_STATUS_CODE xmlns:ns4="http://www.sunpowercorp.com/Common/OracleSFDCItemCommonTypes/V1">Active</ns4:ITEM_STATUS_CODE>
+      </ns5:OracleSFDCItemDetails>
+   
+    </ns5:OracleSFDCItem>
+  </ns1:DataArea>
+</ProcessOracleSFDCItem>

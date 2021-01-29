@@ -1,0 +1,56 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ACBGetAllActivitesmergeProv_BPEL"
+     targetNamespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllActivitesmergeProv/ACBGetAllActivitesmergeProv_BPEL"
+     xmlns:ns2="http://www.sunpowercorp.com/BOD/ProcessACBActivitiesToSFDC/V1"
+     xmlns:ns1="http://www.sunpowercorp.com/BOD/ProcessACBClaimToSFDC/V1"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:ns4="urn:partner.soap.sforce.com"
+     xmlns:ns3="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+     xmlns:client="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllActivitesmergeProv/ACBGetAllActivitesmergeProv_BPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:ns5="http://www.sunpowercorp.com/ACBAccountClaimToSFDCDetails"
+     xmlns:ns6="http://www.sunpowercorp.com/ACBClaimToSFDCMergeDetails"
+     xmlns:ns7="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+    >
+    <plnk:partnerLinkType name="ACBGetAllActivitesmergeProv_BPEL">
+        <plnk:role name="ACBGetAllActivitesmergeProv_BPELProvider">
+            <plnk:portType name="client:ACBGetAllActivitesmergeProv_BPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="urn:partner.soap.sforce.com" location="partner.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.sunpowercorp.com/MarketingNTrainingActAppClmACBToSFDC/ACBGetAllActivitesmergeProv/ACBGetAllActivitesmergeProv_BPEL"
+                 schemaLocation="../Schemas/ACBGetAllActivitesmergeProv_BPEL.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/BOD/ProcessACBActivitiesToSFDC/V1"
+                        schemaLocation="../Schemas/CDM/BOD/Nouns/ACBClaimToSFDC/V1/ProcessACBActivitiesToSFDC.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                        schemaLocation="../Schemas/wsaaddress.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/ACBAccountClaimToSFDCDetails"
+                        schemaLocation="../Schemas/ACBActivitiesAccountData.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/ACBClaimToSFDCMergeDetails"
+                        schemaLocation="../Schemas/ACBActivitiesMergedData.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sunpowercorp.com/SunPowerDevelopment/DealerPartnerCreditINFO/EnqueSyncCreditHoldLimit/initParams/xsd/v1"
+                 schemaLocation="../Schemas/inputParams.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ACBGetAllActivitesmergeProv_BPELRequestMessage">
+        <wsdl:part name="payload" element="ns2:ProcessACBActivitiesToSFDC"/>
+    </wsdl:message>
+    <wsdl:portType name="ACBGetAllActivitesmergeProv_BPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ACBGetAllActivitesmergeProv_BPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

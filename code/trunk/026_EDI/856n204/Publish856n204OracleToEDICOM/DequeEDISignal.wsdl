@@ -1,0 +1,72 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="DequeEDISignal"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:ns2="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI/xsd/v1"
+     xmlns:ns1="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+     xmlns:ns4="http://www.sunpowercorp.com/utilities/indexparams/xsdV1"
+     xmlns:ns3="http://www.sunpowercorp.com/utilities/xsd/OrgAssignments/V1"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:ns5="http://schemas.oracle.com/bpel/extension"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+    <plt:partnerLinkType name="Dequeue_plt">
+        <plt:role name="Dequeue_role">
+            <plt:portType name="tns:Dequeue_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns="http://www.w3.org/2001/XMLSchema"
+             xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:ns2="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI/xsd/v1"
+             xmlns:ns1="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+             xmlns:ns4="http://www.sunpowercorp.com/utilities/indexparams/xsdV1" xmlns:ns3="http://www.sunpowercorp.com/utilities/xsd/OrgAssignments/V1"
+             xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+             xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+            <element name="opaqueElement" type="base64Binary"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+             xmlns:ns2="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI/xsd/v1"
+             xmlns:ns1="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+             xmlns:ns4="http://www.sunpowercorp.com/utilities/indexparams/xsdV1" xmlns:ns3="http://www.sunpowercorp.com/utilities/xsd/OrgAssignments/V1"
+             xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+             xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+            <xsd:import namespace="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+                 schemaLocation="Schemas/EDIOutboundFileBunch.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+             xmlns:ns2="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI/xsd/v1"
+             xmlns:ns1="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+             xmlns:ns4="http://www.sunpowercorp.com/utilities/indexparams/xsdV1" xmlns:ns3="http://www.sunpowercorp.com/utilities/xsd/OrgAssignments/V1"
+             xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+             xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+            <xsd:import namespace="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI_204/xsd/v1"
+                 schemaLocation="Schemas/EDIOutboundFile_204.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+             xmlns:ns2="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDI/xsd/v1"
+             xmlns:ns1="http://www.sunpowercorp.com/Publish856n204OracleToEDICOM/EDIOutboundFileBunch/xsd/v1"
+             xmlns:ns4="http://www.sunpowercorp.com/utilities/indexparams/xsdV1" xmlns:ns3="http://www.sunpowercorp.com/utilities/xsd/OrgAssignments/V1"
+             xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/AQ/EDICom/Publish856n204OracleToEDICOM/DequeEDISignal"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+             xmlns:pc="http://xmlns.oracle.com/pcbpel/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+            <xsd:import namespace="http://www.sunpowercorp.com/utilities/indexparams/xsdV1"
+                        schemaLocation="Schemas/indexParam.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="Dequeue_msg">
+        <wsdl:part name="opaque" element="opaque:opaqueElement"/>
+    </wsdl:message>
+    <wsdl:portType name="Dequeue_ptt">
+        <wsdl:operation name="Dequeue">
+            <wsdl:input message="tns:Dequeue_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="qualified" elementFormDefault="qualified"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.sunpowercorp.com/SOAUtilityServices/CommonLoggingService/CommonLoggingService_BPEL"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Process">
+    <complexType>
+      <sequence>
+        <element name="ProcessLog" maxOccurs="unbounded" minOccurs="0">
+          <complexType>
+            <sequence>
+              <element name="faultmessage" type="string"/>
+              <element name="faultcode" type="string"/>
+              <element name="faulttime" type="dateTime"/>
+              <element name="faultdescription" type="string"/>
+              <element name="correctiveaction" type="string"/>
+              <element name="interfacenumber" type="string"/>
+              <element name="interfacename" type="string"/>
+              <element name="instancenumber" type="string"/>
+              <element name="processname" type="string"/>
+              <element name="bopenserviceticket" type="string"/>
+              <element name="severity" type="string"/>
+              <element name="faultsystemname" type="string"/>
+              <element name="status" type="string"/>
+              <element name="createddatetime" type="dateTime"/>
+              <element name="uniqueIdentifier" type="string"/>
+                <element name="emailSent" type="string"/>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processResponse">
+		<complexType>
+			<sequence>
+				<element name="result" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

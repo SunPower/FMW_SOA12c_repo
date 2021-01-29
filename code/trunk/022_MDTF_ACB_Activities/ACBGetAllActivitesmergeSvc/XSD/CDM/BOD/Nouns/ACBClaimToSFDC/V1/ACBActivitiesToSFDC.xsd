@@ -1,0 +1,26 @@
+<xsd:schema targetNamespace="http://www.sunpowercorp.com/Noun/ACBActivitiesToSFDC/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sunpowercorp.com/Noun/ACBActivitiesToSFDC/V1" xmlns:Os="http://www.sunpowercorp.com/Common/ACBActivitiesToSFDCCommonTypes/V1">
+    <xsd:import namespace="http://www.sunpowercorp.com/Common/ACBActivitiesToSFDCCommonTypes/V1" schemaLocation="ACBActivitiesToSFDCCommonTypes.xsd"/>
+    <xsd:element name="ACBActivitiesToSFDC" type="ACBActivitiesToSFDCType"/>
+    <xsd:complexType name="ACBActivitiesToSFDCType">
+        <xsd:sequence>
+            <xsd:element ref="ACBActivitiesToSFDCDetails" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="ACBActivitiesToSFDCDetails" type="ACBActivitiesToSFDCDetailsType"/>
+    <xsd:complexType name="ACBActivitiesToSFDCDetailsType">
+        <xsd:sequence>
+            <xsd:element ref="Os:Id"/>
+            <xsd:element ref="Os:Account__c"/>
+            <xsd:element ref="Os:Promotion__c" minOccurs="0"/>
+            <xsd:element ref="Os:Promotion_Description__c" minOccurs="0"/>
+            <xsd:element ref="Os:Transaction_Type__c" minOccurs="0"/>
+            <xsd:element ref="Os:Transaction_Month__c" minOccurs="0"/>
+            <xsd:element ref="Os:Transaction_Year__c" minOccurs="0"/>
+            <xsd:element ref="Os:Sum_of_Transaction_Amt__c" minOccurs="0"/>
+            <xsd:element ref="Os:Comment__c" minOccurs="0"/>
+            <xsd:element ref="Os:Promotion_Year__c" minOccurs="0"/>
+            <xsd:element ref="Os:Record_Number__c" minOccurs="0"/>
+            <xsd:element ref="Os:ACBParanet_ID__C" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

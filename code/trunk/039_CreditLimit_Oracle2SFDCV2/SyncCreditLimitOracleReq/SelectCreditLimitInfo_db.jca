@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapter-config name="SelectCreditLimitInfo" adapter="db" wsdlLocation="WSDLs/SelectCreditLimitInfo.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/EBS_FUSION" UIConnectionName="TPODEV" adapterRef=""/>
+  <endpoint-interaction portType="SelectCreditLimitInfo_ptt" operation="SelectCreditLimitInfo">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="SELECT ACCOUNT_NUMBER, ACCOUNT_NAME,CUST_ACCOUNT_ID, OVERALL_CREDIT_LIMIT, LAST_UPDATE_DATE, Avaiable_CreditLimit,AMOUNT_PAST_DUE,NetTerm  FROM (   select distinct  ROWNUM rn ,accts.ACCOUNT_NUMBER, accts.ACCOUNT_NAME, climit.CUST_ACCOUNT_ID,  climit.OVERALL_CREDIT_LIMIT, climit.LAST_UPDATE_DATE, (SELECT s.Available_Credit FROM APPS.XXSPWR_SOA_T s  WHERE s.Customer_ID = climit.CUST_ACCOUNT_ID AND ROWNUM          = 1 ) AS   Avaiable_CreditLimit,    (SELECT s.Amount_Past_Due   FROM APPS.XXSPWR_SOA_T s   WHERE s.Customer_ID = climit.CUST_ACCOUNT_ID   AND ROWNUM = 1   )  AS   AMOUNT_PAST_DUE,     (select rt.name  from apps.RA_TERMS_TL rt  where rt.TERM_ID = (select distinct b.STANDARD_TERMS from apps.hz_customer_profiles b  where b.cust_account_profile_id =  climit.cust_account_profile_id) and   rt.LANGUAGE = userenv('LANG') ) AS NetTerm    FROM apps.hz_cust_profile_amts climit inner join apps.hz_cust_accounts accts ON  CLIMIT.CUST_ACCOUNT_ID=ACCTS.CUST_ACCOUNT_ID  WHERE ( sysdate - #noOfDays )  &lt; climit.last_update_date and climit.site_use_id IS NULL order by accts.account_number, climit.last_update_date  ) where rn > #minrow and rn &lt;= #maxrow"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+    <input/>
+    <output/>
+  </endpoint-interaction>
+
+</adapter-config>

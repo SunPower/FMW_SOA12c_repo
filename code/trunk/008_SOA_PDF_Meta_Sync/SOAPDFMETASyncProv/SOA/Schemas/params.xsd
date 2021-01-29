@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.pdf_meta_sync_params.org"
+            targetNamespace="http://www.pdf_meta_sync_params.org" elementFormDefault="qualified">
+  <xsd:element name="params">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="loopCounter" type="xsd:int" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
